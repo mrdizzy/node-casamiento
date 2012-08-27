@@ -1,0 +1,22 @@
+<% documents.forEach(function(doc) { -%>
+<%= "12160\t" /* Deposit Account */ -%>
+<%= doc._id + "\t" -%>
+<% date = new Date(doc.date); -%>
+<% date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear(); -%>
+<%= date + "\t" -%>
+<%= doc.name + "\t" -%>
+<%= "\t" /* First Name */ -%>
+<%= doc.name + "\t" /* Memo */ -%>
+<%= "\t" /* Inclusive */ -%>
+<%= "\t" /* Allocation Account Number - MUST LEAVE BLANK */ -%>
+<%= "£" + doc.amount + "\t\r\n" /* Amount - MUST BE PREFIXED WITH POUND SIGN followed by newline seperators /r/n */ -%>
+<%= "\t" /* Cheque Account */ -%>
+<%= doc._id + "\t" /* Cheque No. */ -%>
+<%= date + "\t" /* Date */ -%>
+<%= doc.name + "\t" -%>
+<%= "\t" /* First Name */ -%>
+<%= doc.name + "\t" /* Memo */ -%>
+<%= "\t" /* Inclusive */ -%>
+<%= doc.account + "\t" -%>
+<%= "£" + doc.amount + "\t\r\n\r\n" -%>
+<% }); %>

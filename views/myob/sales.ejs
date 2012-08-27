@@ -1,0 +1,35 @@
+<% documents.forEach(function(doc) { -%>
+<%= doc.L_NAME + "\t" /* Co./Last Name */ -%>
+<%= "\t" /* First Name */ -%>
+<%= "\t" /* Journal Number */ -%>
+<% date = new Date(doc.L_TIMESTAMP); -%>
+<% date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear(); -%>
+<%= date + "\t" -%>
+<%= doc.L_NAME + "\t" /* Memo */ -%>
+<%= "\t" /* Description */ -%>
+<%= "41100\t" /* Account Number */ -%>
+<% var amount = parseFloat(doc.L_AMT) -%>
+<%= amount + "\t" /* Amount */ -%>
+<%= "\t" /* Job */ -%>
+<%= "\t" /* VAT COde */ -%>
+<%= "\t" /* VAT AMount */ -%>
+<%= "\t" /* Sale Status */ -%>
+<%= "\t" /* Terms - Payment Is Due */ -%>
+<%= "\t" /* Terms - Balance Due Days */ -%>
+<% if (amount < 0) { /* Handle credits */
+var amount_paid = 0;
+} else {
+var amount_paid = amount;
+}
+-%>
+<%= amount_paid + "\t" /* Amount Paid */ -%>
+<%= "PayPal" + "\t" /* Payment Method */ -%>
+<%= "\t" /* Payment Notes */ -%>
+<%= "\t" /* Name on Card */ -%>
+<%= "\t" /* Card Number */ -%>
+<%= "\t" /* Expiry Date */ -%>
+<%= "\t" /* Authorisation Number */ -%>
+<%= doc.L_TRANSACTIONID.substring(0,8) /* Cheque Number */ -%>
+<%= "\t" /* Inclusive */ -%>
+<%= "\r\n\r\n" /* Seperator */ -%>
+<% }); %>
