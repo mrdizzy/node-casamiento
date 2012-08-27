@@ -1,7 +1,7 @@
 var express = require('express'),
     http = require('http'),
     _ = require('underscore'),
-    importEbayMessage = require('./../import_ebay_messages');
+    importEbayMessage = require('./import_ebay_messages');
 
 var app = express();
 
