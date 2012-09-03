@@ -1,6 +1,7 @@
 var express = require('express'),
     http = require('http'),
     _ = require('underscore'),
+    products = require('./models/products'),
     importEbayMessage = require('./import_ebay_messages');
 
 var app = express();
@@ -11,6 +12,7 @@ app.configure(function() {
     app.set('view engine', 'ejs');
     app.use(express.favicon());
     app.use(express.logger('dev'));
+    app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(app.router);
     app.use(express.static(__dirname + '/public'));
@@ -22,6 +24,11 @@ app.configure('development', function() {
 
 app.get('/', function(req, res) {
     res.end();
+});
+app.post("/products", products.create)
+app.get('/products/new', function(req, res) {
+    
+    res.render('products/new.ejs')
 });
 
 // The eBay Notify API posts a message to this address that we need to parse
