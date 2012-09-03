@@ -9,7 +9,8 @@
     "node-ebay-trading-api": "git://github.com/mrdizzy/node-ebay-trading-api.git",
     "async": "0.1.x",
     "couchdb-migrator": "git://github.com/mrdizzy/couchdb-migrator.git",
-    "xml2js": "0.1.x"
+    "xml2js": "0.1.x",
+    "ejs"
   },
   "engines": {
     "node": "0.8.x",
