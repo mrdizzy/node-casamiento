@@ -1,7 +1,6 @@
 var express = require('express'),
     http = require('http'),
-    _ = require('underscore'),
-    products = require('./models/products'),
+    productsController = require('./controllers/products'),
     importEbayMessage = require('./import_ebay_messages');
 
 var app = express();
@@ -18,6 +17,7 @@ app.configure(function() {
     app.use(express.static(__dirname + '/public'));
 });
 
+// CONFIGURATION
 app.configure('development', function() {
     app.use(express.errorHandler());
 });
@@ -25,11 +25,15 @@ app.configure('development', function() {
 app.get('/', function(req, res) {
     res.end();
 });
-app.post("/products", products.create)
-app.get('/products/new', function(req, res) {
-    
-    res.render('products/new.ejs')
+
+// Products
+app.get("/products/:id/attachments/:filename", productsController.show);
+app.delete("/products/:productId/attachments/:id", function(req, res) {
+    console.log(req.params); 
 });
+app.get("/products", productsController.index);
+app.post("/products", productsController.create)
+app.get('/products/new', productsController.new);
 
 // The eBay Notify API posts a message to this address that we need to parse
 app.post('/ebay', function(req, res) {

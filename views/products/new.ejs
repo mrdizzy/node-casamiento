@@ -66,17 +66,18 @@ $(function() {
 <p>
 Theme:
 <select name="theme">
-<option value="ace_of_hearts">Ace of Hearts</option>
-<option value="chess">Chess</option>
+<% themes.forEach(function(theme) { %>
+<option value="<%= theme%>"><%= theme %></option>
+<% }) %>
 </select>
 </p>
 
 <p>
 Product Type:
 <select name="product_type">
-<option value="invitation">Invitation</option>
-<option value="name_place">Name Place</option>
-<option value="rsvp">RSVP</option>
+<% product_types.forEach(function(type) { %>
+<option value="<%= type %>"><%= type %></option>
+<% }) %>
 </select>
 </p>
 <p id="add_image">Add Image</p>

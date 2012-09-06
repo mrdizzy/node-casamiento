@@ -4,11 +4,31 @@ module.exports.db = new(cradle.Connection)('https://casamiento.iriscouch.com', 4
     auth: {
         username: "casamiento",
         password: "floppsy1"
-    }
+    },
+    cache: false
 }).database("test_ebay");
 
 module.exports.documents = [
 // Design documents
+
+// Security 
+
+{ 
+    _id: '_design/blockAnonymousWrites',
+    language: "javascript", 
+    validate_doc_update: function(new_doc, old_doc, userCtx) {   if(userCtx.name != 'casamiento') {     throw({forbidden: "Not Authorized"});   } }
+},
+{
+    _id: "_security", 
+        "admins": {
+            "names": [],
+            "roles": ["admin"]
+        },
+        "members": {
+            "names": [],
+            "roles": []
+        }
+},
 
 // Customers 
 
