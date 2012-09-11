@@ -1,7 +1,7 @@
 var db = require('couchdb-migrator').db,
 async = require('async'),
 fs = require('fs'), 
-themes = ["ace-of-hearts", "simplicity", "rose", "chequers"],
+themes = ["ace_of_hearts", "simplicity", "rose", "chequers", "birds_of_paradise"],
 product_types = ["invitation", "name_place", "wrap", "rsvp", "envelope"]
 
 exports.show = function(req, res) {
@@ -13,10 +13,25 @@ exports.show = function(req, res) {
         res.end(); 
     });
 }
+exports.update = function(req, res) {
+    db.save(req.body, function(err, documents) {
+        if(err) {
+            console.log(err)
+            res.status(500);
+            res.end();
+        } else {
+            console.log("DONE", documents);
+            req.body._rev = documents.rev;
+            res.json(req.body)
+            res.end();
+        }
+    });
+}
+
 exports.index = function(req, res) {
     console.log(req.accepted);
     db.view('all/type', { key: 'product' }, function(err, documents) {
-        res.render("products/index", { products: documents.toArray() } )
+        res.render("products/index", { products: documents.toArray(), themes: themes, product_types: product_types } )
     });
 };
 

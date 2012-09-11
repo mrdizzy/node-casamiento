@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- MAIN image: 648 px wide, smaller images 320px wide, margin middle 6px wide-->
+
+  <title>Casamiento</title>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/stylesheets/main.css" />
+  
+<style type="text/css">
+#nav { padding:0; }
+.navbar {
+    height:35px;
+    float:left;   
+    text-align:center;
+    width:242px;
+    background-color:light-grey;
+    border-right:1px dotted grey;
+    border-bottom: 1px dotted grey; 
+}
+.noUiSlider        	{
+	width:				400px;
+	height:				4px;
+    
+    background-color: lightgrey;
+}
+.noUi-midBar		{
+	height:				4px;
+	z-index:			0;
+    background-color: #690172;
+    
+}
+.noUi-handle > div	{
+	z-index: 			5;
+	width:				8px;
+	height:				20px;
+	position:			absolute;
+	top:				-8px;
+	left:				-8px;
+	background:			#690172;
+}
+.noUi-handle > div:hover,
+.noUi-activeHandle	{
+    cursor: pointer;
+	background:			grey !important;
+	border-color:		grey !important;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2){
+
+	.noUi-handle > div {
+
+		height:				32px;
+		width:				32px;
+		top:				-13px;
+		left:				-16px;
+
+	}
+
+}
+
+
+.rollover a{
+   display: block;
+   cursor: pointer;
+   margin: auto; 
+}
+#button a{
+   height: 42px; /*This height is the visible portion of the button only*/
+   width: 89px; /*Put your image width here*/
+   background: url('/images/cartrollover.gif') no-repeat left top;
+}
+#button a:hover{
+   background-position: left -42px; /*This negative value should match the height above*/
+}
+
+#a_slider {  width:180px; margin:auto; margin-top:20px;}
+
+.section0 { text-align:center; float:left; width:320px; padding:0; margin:0;  }
+.section1 {text-align:center; margin-left:320px;padding-left:6px; }
+td { border-top: 1px grey dotted; }
+.section2 { text-align:center; float:left; width:648px; padding:0; margin:0;  }
+.section3 {text-align:center; margin-left:648px;padding-left:6px; }
+ .slides_container {
+     background-color: white;
+                width:974px;
+                margin:0;
+                border:0;
+                display:none; 
+                height:700px;
+                padding:0;
+            }
+            .slides_container .a_slide{
+                
+     background-color: white;
+                border:0; 
+                padding:0;
+                margin:0;
+                width:974px;
+                display:block;
+            }
+</style>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/javascripts/slides.min.jquery.js"></script>
+        <script src="/javascripts/jquery.nouislider.min.js"></script>
+    
+        <script>
+            $(function(){
+                
+                $('#a_slider').noUiSlider('init', { knobs: 1,  scale: [0, 128], step: 8, start: [16], connect: "lower", change: function() {
+                    console.log($(this).noUiSlider('value'));
+                    }
+                    });
+                $("#slides").slides({play: 5000,  effect: 'fade, slide', crossfade: true, fadeSpeed: 2000});
+            });
+            
+        </script>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div id="top_container">
+  <div id="logo"><img src="/images/logo_branding/casamiento.png" /></div>
+  <div id="slogan">
+    <div id="slogan_text"><img src="/images/logo_branding/slogan.png" /></div>
+  </div>
+</div>
+<div id="page_container">   
+
+<div id="nav">
+<div class="navbar"><img src="/images/logo_branding/dreamsonpaper.png" /></div>
+
+<div class="navbar"><a class="trolley" href="">0 items in your trolley</a><img src="/images/trolley.png" /></div>
+<div class="navbar">ABOUT</div>
+
+<div class="navbar">CONTACT</div>
+</div>
+
+<div class="clear"></div>
+    <p class="center"><img src="/images/welcome_page/welcome.png" />
+    
+    </p>
+
+    <div id="slides">
+        <div class="slides_container">
+        
+            <div class="a_slide">
+                <div class="container">
+                    <div class="section0">
+                        <img src="http://www.casamiento.co.uk/products/birds_of_paradise-name_place/attachments/display-4" />
+                        <img src="http://www.casamiento.co.uk/products/birds_of_paradise-name_place/attachments/display-2" />  
+                        <p class="center">
+                   <img src="/images/product_types/place.png" />
+                  
+<table>
+<tr>
+<td>
+
+<div id="a_slider" class="noUiSlider"></div>
+
+<h3>&pound;0.50</h3>
+</td>
+<td>
+<div class="rollover" id="button">
+  <a href="link location here">
+  </a>
+</div>
+</td>
+</tr>
+</table>
+</p>
+                    </div>
+                    
+                    <div class="section1">
+                        <img src="http://www.casamiento.co.uk/products/birds_of_paradise-name_place/attachments/large-1" />
+                            <h1><span class="theme_name">&mdash; Birds of Paradise &mdash;</span></h1>
+    
+    		<h1>Dashes of bright colour illuminate this contemporary design. </h1>
+            
+                  <p><a href="">View more&hellip;</a></p>
+    
+                    </div>
+                 </div>
+                
+            </div>
+                        <div class="a_slide">
+                <div class="container">
+                    <div class="section2">
+                        
+                        <img src="http://www.casamiento.co.uk/products/simplicity-name_place/attachments/large-1" />
+                        
+                            <h1><span class="theme_name">&mdash; Simplicity &mdash;</span></h1>
+    
+            <h1>In black-and-white, this traditional simple card is the essence of understated elegance. </h1>
+                    </div>
+                    
+                    <div class="section3">
+                    
+                        <img src="http://www.casamiento.co.uk/products/simplicity-name_place/attachments/display-4" />
+                        <img src="http://www.casamiento.co.uk/products/simplicity-name_place/attachments/display-2" /> 
+                        
+                   <img src="/images/product_types/place.png" />
+    
+                    </div>
+                 </div>
+                
+            </div>
+        </div>            
+    </div>
+    
+</div>
+<!-- FOOTER -->
+
+<div id="footer">
+  <div class="collection"><img src="/images/logo_branding/genesis_footer.png" /></div>
+  <div class="footer_seperator"><img src="/images/page_seperators/three_across.png" /></div>
+  <div class="collection"><img src="/images/logo_branding/castello.png" /></div>
+</div>
+
+</body>
+</html> </body>
+  </head>

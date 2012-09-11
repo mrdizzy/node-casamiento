@@ -1,0 +1,83 @@
+/* YAHOO RESET =========================================== */
+  html {color:#000;background:#FFF;}
+  body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+  fieldset,img {border:0;}
+  address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+  li{list-style:none;}
+  caption,th{text-align:left;}
+  h1,h2,h3,h4,h5,h6{font: normal 100%/2 Georgia, serif; letter-spacing:-0.05em; margin: 0.3em 0 0.3em; }
+  q:before,q:after{content:'';}
+  abbr,acronym{border:0;font-variant:normal;}
+  sup{vertical-align:text-top;}
+  sub{vertical-align:text-bottom;}
+  input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+  input,textarea,select{*font-size:100%;}legend{color:#000;}del,ins{text-decoration:none;}
+
+/* YAHOO FONTS =========================================== */
+  body { font:13px/1.5 "Arial","Helvetica",sans-serif;*font-size:small;*font:x-small;color:#636667; background-image:url('/images/backgrounds/grey_header.png');}
+  select, input, button, textarea { font:99% arial,helvetica,clean,sans-serif; }
+  table { font-size:inherit;font:100%;width:100%; }
+  pre, code, kbd, samp, tt { font-family:monospace;*font-size:108%;line-height:100%; }
+  
+/* Typography
+==================================== */
+  b, strong, em { font-weight: bold; }  
+  i { font-style:italic;}  
+  
+  h1 { font: normal 161.6%/2 Georgia, "Times New Roman", serif; text-align:center; letter-spacing:0.025em;}
+    .theme_name { text-align:center; letter-spacing:0.2em; font-variant:small-caps; font-size: 2em;}
+  
+  h2 { font: bold 1.8em, Georgia, "Times New Roman", "Serif"; text-align:center; border-bottom: 1px dashed; color:#690172; }
+  h3 { color:#690172; font-weight:bold; margin-bottom: 1em; font-size:1.5em; }
+.trolley {  font-weight:bold; font-size:0.85em; color:#690172; border-bottom:1px solid #C9C9C9; text-align:center;}
+  a:link, a:hover, a:visited { color: #690172; }
+  a:active { color: #29A4BD; }
+
+/* TABLES
+==================================== */
+table { border-collapse:collapse; text-align:center; }
+  th { font-weight:bold; font-size:0.85em; color:#690172; border-bottom:1px solid #C9C9C9; text-align:center;}
+  
+  #items th { padding-top:0px;  background-image:url('/images/backgrounds/background2.png');}
+    #items td { border: 1px dotted #C9C9C9; padding:5px;}
+    
+    #navigation table td {padding-top:6px;  color:#939598; font-variant:caps;font: normal 10px Arial, serif;padding-bottom:10px; letter-spacing:0.2em;font-weight:bold;}
+   
+/* FURNITURE
+==================================== */
+  #top_container { width:974px; margin:0 auto; padding-top:10px; height:50px; border-bottom: 1px dashed #939598; 
+  padding-bottom:5px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; background-color:white;}
+    #logo { text-align:left; width:50%;  padding-left:20px; margin: 0 auto; float:left; }
+    #slogan { width:168px; float:right; margin-right:70px; }
+      #slogan_text { width:132px; height:34px; padding-left:4px; float:right; }
+      #slogan_picture { width:32px; height:32px; float:left; }
+#navigation_seperator { height: 2px; border-bottom: 1px dotted #939598;}
+    #navigation { height:30px; border-bottom: 1px dotted #939598;}
+      #view_box {  margin-right:50px; text-align:right }
+    
+  #page_container { width:974px; margin: 0 auto; background-color: white; border-left: 1px dotted #939598; border-right: 1px dotted #939598;}
+
+
+
+  #footer { width:974px; margin: 0 auto; clear:both; padding-top:20px; height:75px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; }
+    .footer_seperator {  text-align:center; padding-top:1em;  float:left;  width:20%; }
+    .collection { width:40%; float:left; text-align:center; }
+  
+/* WELCOME
+==================================== */
+  .center { text-align:center; }
+  
+/* CARDS 
+================================================================================= */
+  .clear { clear:both; }
+
+/* FORMS
+===================================== */  
+form { display:inline;}
+input:focus { background-color: #EFCCE3; }
+  input.add_to_bag { width: 158px; height:51px; margin: 1em 0 auto; background:url('/images/box/add_to_bag.png') no-repeat; outline: none; padding:0; border:0; }
+  input.standard_button, input.envelope_button, input.submit { border:0; color:white; background-color:#C9C9C9; }
+
+.field_with_errors { background-color: #EFCCE3 }
+
+label { font: bold 0.85em Arial; color:#636667; display:block; padding-top:10px;}
