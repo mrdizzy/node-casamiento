@@ -63,6 +63,14 @@ app.post('/ebay', function(req, res) {
     })
 });
 
+app.get("/", function(req, res) {
+    db.view('all/type', { key: 'product' }, function(error, documents) {
+        res.render("welcome/index", {  
+            documents: documents.toArray()
+        })
+    })
+});
+
 http.createServer(app).listen(app.get('port'), function() {
     console.log("Express server listening on port " + app.get('port'));
 });

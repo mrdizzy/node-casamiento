@@ -21,17 +21,26 @@
   
 /* Typography
 ==================================== */
-  b, strong, em { font-weight: bold; }  
+  b, strong, em, .bold { font-weight: bold; }  
   i { font-style:italic;}  
   
   h1 { font: normal 161.6%/2 Georgia, "Times New Roman", serif; text-align:center; letter-spacing:0.025em;}
     .theme_name { text-align:center; letter-spacing:0.2em; font-variant:small-caps; font-size: 2em;}
-  
-  h2 { font: bold 1.8em, Georgia, "Times New Roman", "Serif"; text-align:center; border-bottom: 1px dashed; color:#690172; }
+    .left { text-align:left; }
+    .product_name { font-style: italic; font-size:2em; letter-spacing:-0em; text-align:left;}
+    
+  h2 { font: bold 1.8em Georgia, "Times New Roman", "Serif"; text-align:center; border-bottom: 1px dashed; color:#690172; }
   h3 { color:#690172; font-weight:bold; margin-bottom: 1em; font-size:1.5em; }
+  .small { font-size:0.85em;}
 .trolley {  font-weight:bold; font-size:0.85em; color:#690172; border-bottom:1px solid #C9C9C9; text-align:center;}
+  
+  
+  h5 { font: bold 0.85em "Arial", "Helvetica", sans-serif; padding-bottom: 10px; border-bottom: 1px solid grey; }
   a:link, a:hover, a:visited { color: #690172; }
   a:active { color: #29A4BD; }
+    .number {  font-size:2em;  }
+    .decimal {  font-size:1.4em; position:relative;top:-8px; }
+    
 
 /* TABLES
 ==================================== */
@@ -40,24 +49,17 @@ table { border-collapse:collapse; text-align:center; }
   
   #items th { padding-top:0px;  background-image:url('/images/backgrounds/background2.png');}
     #items td { border: 1px dotted #C9C9C9; padding:5px;}
-    
-    #navigation table td {padding-top:6px;  color:#939598; font-variant:caps;font: normal 10px Arial, serif;padding-bottom:10px; letter-spacing:0.2em;font-weight:bold;}
-   
+     
 /* FURNITURE
 ==================================== */
   #top_container { width:974px; margin:0 auto; padding-top:10px; height:50px; border-bottom: 1px dashed #939598; 
   padding-bottom:5px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; background-color:white;}
-    #logo { text-align:left; width:50%;  padding-left:20px; margin: 0 auto; float:left; }
-    #slogan { width:168px; float:right; margin-right:70px; }
-      #slogan_text { width:132px; height:34px; padding-left:4px; float:right; }
-      #slogan_picture { width:32px; height:32px; float:left; }
+    #logo {  margin-left:35px; float:left;}
+    #cart { float:right; padding-top:5px; padding-right:20px; }
 #navigation_seperator { height: 2px; border-bottom: 1px dotted #939598;}
     #navigation { height:30px; border-bottom: 1px dotted #939598;}
-      #view_box {  margin-right:50px; text-align:right }
     
   #page_container { width:974px; margin: 0 auto; background-color: white; border-left: 1px dotted #939598; border-right: 1px dotted #939598;}
-
-
 
   #footer { width:974px; margin: 0 auto; clear:both; padding-top:20px; height:75px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; }
     .footer_seperator {  text-align:center; padding-top:1em;  float:left;  width:20%; }

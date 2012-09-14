@@ -1,238 +1,150 @@
+<!DOCTYPE html>
 <html>
-<body>
+    <head>
+        <!-- MAIN image: 648 px wide, middle: 482px, smaller images 320px wide, thumb: 120px, margin middle 6px wide-->
+
+        <title>Casamiento</title>
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/stylesheets/main.css" />
+  
 <style type="text/css">
-/* Main elements
-==================================== */
-#page_container_casamiento { font-family: "Arial",sans-serif; color: #636667; background-color: #fff; font-size: 10px; width:950px; }
-#top_container_casamiento { width:100%; height:70px; background-image:url("http://www.casamiento.co.uk/images/backgrounds/grey_header.png");  }
-#main_logo_casamiento { text-align:left; width:25%; float:left; padding-top:15px; }
-#main_slogan_casamiento { width:168px; float:right; padding-top:15px; }
-#slogan_text_casamiento { width:132px; height:34px; padding-left:4px; float:right; }
-#slogan_picture_casamiento { width:32px; height:32px; float:left; }
-#genesis { text-align:center; padding:5px 0 5px 0; border-top: 1px dotted #808284; border-bottom: 1px dotted #808284;}
+#genesis { margin:auto; display:block; padding:10px;}
 
-/* Main Typography
-==================================== */
-h2.casamiento { font: bold 14px "Arial"; color:#690172; }
-p.casamiento { font-size: 12px; line-height: 1.8em;  }
+#nav { padding:0; }
+.navbar {
+    height:35px;
+    float:left;   
+    text-align:center;
+    width:242px;
+    background-color:light-grey;
+    border-right:1px dotted grey;
+    border-bottom: 1px dotted grey; 
+}
 
-/* Classes
-==================================== */
-.casamiento_clearfix { clear:both; }
+.colour_shown { margin-left:20px; padding-top:10px; text-align:left; }
 
-/* Feedback
-==================================== */
-.casamiento_feedback { vertical-align:middle; padding:3px 0 3px 0; text-align:center; }
+#section0 img { padding:5px; border: 1px solid white; } 
 
-/* How it works 
-==================================== */
-#how_it_works { width:100%; border-collapse:collapse; }
-#how_it_works td {width:50%; padding:10px;}
-#how_it_works h2.casamiento_how_it_works { color:#636667; font: bold italic 16px Georgia; text-align:left;}
-p.casamiento_how_it_works { color:#636667; font-size: 12px; text-align:justify; }
+#section0 img:hover { border:1px solid grey; }
 
-/* Tables 
-==================================== */
-table.casamiento { width:100%; text-align:center; border-collapse:collapse;}
-#casamiento_this_auction { border-bottom: 1px dotted #939598;  margin-bottom:10px;}
-#casamiento_this_auction td { padding:2px; border: 1px dotted #939598; font-size:11px;font-weight:bold; color:#636667; text-align:center;}
+#section0 { text-align:center; width:200px;  margin-right:648px;}
 
-#casamiento_this_auction .casamiento_price { font-size:14px; color:#690172; }
-.casamiento_thumb { width:120px; }
-.prevent_table_stretching { width:100%;}
+#section1 { text-align:left; padding-left:6px; width:648px; float:right;  margin-right:150px; }
 
-/* Columns
-==================================== */ 
-#section0_casamiento { text-align:center; float:left; width:470px; padding:0; margin:0;}
-#section1_casamiento {text-align:center; margin-left:470px;padding-left:5px; }
+.a_slide { height:400px }
 
-/* Monograms
-==================================== */
-#monograms_casamiento { width:100%; text-align:center; border-collapse: collapse;}
-#monograms_casamiento td { background-repeat: no-repeat; background-position:10px 10px; width:25%;border: 1px dotted #939598;  padding-top:15px; padding-bottom:15px; }
-#monogram_A { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/A.png'); }
-#monogram_B { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/B.png'); }
-#monogram_C { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/C.png'); }
-#monogram_D { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/D.png'); }
-#monogram_E { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/E.png'); }
-#monogram_F { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/F.png'); }
-#monogram_G { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/G.png'); }
-#monogram_H { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/H.png'); }
-#monogram_I { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/I.png'); }
-#monogram_J { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/J.png'); }
-#monogram_K { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/K.png'); }
-#monogram_L { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/L.png'); }
-#monogram_M { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/M.png'); }
-#monogram_N { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/N.png'); }
+.ui-effects-transfer { border:1px dashed black; }
 
-#colour_table_casamiento { text-align:left; font:normal 12px Arial; color:#636667; }
-#colour_table_casamiento td { width:10%; }
-
-/* Links
-==================================== */
-a.casamiento:link, a.casamiento:active, a.casamiento:visited { color: #690172; font-style:underline; }
-a.casamiento:hover { background-color: #690172; color:white;}
-a.casamiento img { border:0; } 
-
-/* Classes
-==================================== */
-.casamiento_center { text-align:center; }
 </style>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/javascripts/slides.min.jquery.js"></script>
+        <script src="/javascripts/jquery.nouislider.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+        <script>
+        $(function() {
+            
+    		$('#maincontainer').slides({
+				effect: 'slide, fade',
+				crossfade: true,
+				slideSpeed: 350,
+				fadeSpeed: 500,
+				generateNextPrev: true,
+				generatePagination: false
+			});
+		
+            
+        $('#cart').click(function(){
+            
+            $(this).effect("transfer", { to: $("#maincontainer")}, 500, function() {
+            $("#maincontainer").fadeOut();
+            })
+        })
+        })
+        </script>
 
-<div id="page_container_casamiento"> 
+    </head>
+
+    <body>
+
 <!-- HEADER -->
-    <div id="top_container_casamiento">
-        <div id="main_logo_casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/mainlogo.png" height="41" width="140"></div>
-        <div id="main_slogan_casamiento">
-            <div id="slogan_picture_casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/slogan_pictures/1.png"></div>
-            <div id="slogan_text_casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/slogan.png" height="34" width="132"></div>
-        </div>
-    </div>
-    <!-- BAR -->
-    <div id="genesis">
-   <img alt="Genesis_footer2" src="http://www.casamiento.co.uk/images/logo_branding/genesis_footer2.png" />
-         </div>   
 
-<!-- #######################################################################################
-FIRST COLUMN #######################################################################################
-####################################################################################### -->
-
-    <div id="section0_casamiento">
-    
-    <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-2" /> <br/><br/>
-    <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-4" />  
-      
-     <h2 class="casamiento"><img alt="Serif_flower" height="17" src="http://www.casamiento.co.uk/images/bullets/serif_flower.png" width="16" /> How it works&hellip;</h2>
-    
-    <table class="casamiento" id="how_it_works">
-        <tbody>
-            <tr>
-            <td>    
-                <h2 class="casamiento_how_it_works">&mdash; Send us a list of names</h2>
-                <p class="casamiento_how_it_works">Provide us with a list of your guests' names and we will individually print their details on each card. Just send us an email or an eBay message with one name on each line!</p>
-                <p class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/chequer.png"></p> 
-                 <h2 class="casamiento_how_it_works">&mdash; Wait for delivery</h2>
-                <p class="casamiento_how_it_works">After you have given us all the information you need, your cards will be with you in 5 working days.</p>
-           
-            </td>
-            <td>
-                <h2 class="casamiento_how_it_works">&mdash; Choose a monogram</h2>
-                <p class="casamiento_how_it_works">If you'd like a custom-made monogram, just choose a template from our available styles shown 
-                below</p>
-                <p class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/chequer.png"></p> 
-                <h2 class="casamiento_how_it_works">&mdash; Choose a colour scheme</h2>
-                <p class="casamiento_how_it_works">Many of our cards have a variety of different colour schemes, choose one to suit your tastes!</p>
-            </td>
-            </tr>
-           
-        </tbody>
-    </table>
-    </div>
-    
-<!-- #######################################################################################
-SECOND COLUMN #######################################################################################
-####################################################################################### -->
-
-    <div id="section1_casamiento">
-      <h2 class="casamiento">
-        <img alt="Serif_flower" height="17" src="http://s3.amazonaws.com/casamiento/furniture/bullets/serif_flower.png" width="16" /> 
-        This listing is for&hellip;
-      </h2>
-    
-    <!-- THIS AUCTION IS FOR ################# -->
-    <div class="prevent_table_stretching">
-    <table class="casamiento prevent_table_stretching" id="casamiento_this_auction">
-    <tbody>
-        <tr>
-            <td><img alt="Sample" src="http://www.casamiento.co.uk/images/product_types/small/name_place.png" /></td>
-            <td class="casamiento_thumb"><img src="http://www.casamiento.co.uk/products/<%=_id %>/attachments/thumb-2" /></td>
-            <td><img alt="Quantity" src="http://www.casamiento.co.uk/images/specs/quantity_24.png" /></td><td class="casamiento_price">&pound;2.99</td>
-            <td><img alt="A7 Tent" src="http://www.casamiento.co.uk/images/specs/tent.png" /></td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <a class="casamiento" href="">Click here for a buy-it-now listing of this product with FREE postage&hellip;
-            </td>
-        </tr>
-    </tbody>
-    </table>  
-    </div>
-    
-    <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-3" width="464" /><br/><br/>
-    <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-1" />  
-  
-    <br/>
-      <p class="casamiento_center"><img alt="Curl" height="12" src="http://www.casamiento.co.uk/images/page_seperators/curl.png" width="24" /></p>
-  
-    <!-- FEEDBACK --> 
-        <div class="casamiento_feedback"> 
-        <p class="casamiento"><img src="http://s3.amazonaws.com/casamiento/furniture/ebay/3.png" height="52" width="273"></p> 
-            <div id="casamiento_ebay_user_id">
-                <img alt="Black_medieval_2" height="19" src="http://s3.amazonaws.com/casamiento/furniture/page_seperators/black_medieval_2.png" width="18" />
-                <p class="casamiento">&mdash;
-                    <a class="casamiento" href="http://myworld.ebay.co.uk/reggit40">reggit40</a> 
-                    ( <a class="casamiento" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback&userid=reggit40">125</a> )
-                </p>
-            </div> 
-        </div>
-    
-    <!-- MONOGRAMS -->
-        <div id="box" class="prevent_table_stretching"></div>
-
-    </div>
-    
-    <div class="casamiento_clearfix"></div>
-    <p class="casamiento_center"><img alt="Curl" height="12" src="http://www.casamiento.co.uk/images/page_seperators/curl.png" width="24" /></p>
-  
-     <h2 class="casamiento">
-        <img alt="Serif_flower" height="17" src="http://www.casamiento.co.uk/images/bullets/serif_flower.png" width="16" /> 
-        Monogram styles&hellip;
-    </h2>
-    
-    <table id="monograms_casamiento">
-    <tbody>
-        <tr>
-            <td id="monogram_A"><img alt="A" src="http://s3.amazonaws.com/casamiento/monogram_2.png" /></td>
-            <td id="monogram_B"><img alt="B" src="http://s3.amazonaws.com/casamiento/monogram_3.png" /></td> 
-            <td id="monogram_C"><img alt="C" src="http://s3.amazonaws.com/casamiento/monogram_4.png" /></td>
-            <td id="monogram_D"><img alt="D" src="http://s3.amazonaws.com/casamiento/monogram_5.png" /></td>
-        </tr> 
-        <tr>
-            <td id="monogram_E"><img alt="E" src="http://s3.amazonaws.com/casamiento/monogram_6.png" /></td>
-            <td id="monogram_F"><img alt="F" src="http://s3.amazonaws.com/casamiento/monogram_7.png" /></td>
-            <td id="monogram_G"><img alt="G" src="http://s3.amazonaws.com/casamiento/monograms_big/1.png" /></td>
-            <td id="monogram_H"><img alt="H" src="http://s3.amazonaws.com/casamiento/monograms_big/2.png" /></td>
-        </tr>
-        <tr>
-            <td id="monogram_I"><img alt="I" src="http://s3.amazonaws.com/casamiento/monograms_big/3.png" /></td>
-            <td id="monogram_J"><img alt="J" src="http://s3.amazonaws.com/casamiento/monograms_big/4.png" /></td> 
-            <td id="monogram_K"><img alt="K" src="http://s3.amazonaws.com/casamiento/monograms_big/5.png" /></td>
-            <td id="monogram_L"><img alt="L" src="http://s3.amazonaws.com/casamiento/monograms_big/6.png" /></td>
-        </tr> 
-        <tr>
-            <td id="monogram_M"><img alt="M" src="http://s3.amazonaws.com/casamiento/monograms_big/7.png" /></td>
-            <td id="monogram_N"><img alt="N" src="http://s3.amazonaws.com/casamiento/monograms_big/8.png" /></td>
-        </tr> 
-    </tbody>
-    </table>  
-    
-    <h2 class="casamiento">
-        <img alt="Serif_flower" height="17" src="http://www.casamiento.co.uk/images/bullets/serif_flower.png" width="16" /> 
-        Colours&hellip;
-    </h2>
-   
-    <table class="casamiento" id="colour_table_casamiento"> 
-    	<tr>
-        	<td><div style="width:20px;height:10px;border:1px solid grey;background-color:#000000"></td><td>Black &amp; white</td>	
-    		<td></td><td></td>
-    		<td></td><td></td>	
-    		<td></td><td></td>	
-    		<td></td><td></td>			
-		</tr>
-	</table>
-    <p class="casamiento_center">
-        <img alt="Curl" height="12" src="http://www.casamiento.co.uk/images/page_seperators/curl.png" width="24" />
-    </p>
+<div id="top_container">
+  <div id="logo"><img src="/images/logo_branding/casamiento.png" /></div>
+  <div id="cart"><a class="trolley" href="">0 items in your trolley</a><img src="/images/trolley.png" /></div>
 </div>
+
+<div id="page_container">   
+
+    <div id="nav">
+        <div class="navbar"><img src="/images/logo_branding/dreamsonpaper.png" /></div>
+        <div class="navbar">ABOUT</div>
+        <div class="navbar">CONTACT</div>
+         <div class="navbar">LOGIN</div>
+    </div>
+
+<img src="/images/logo_branding/genesis_footer.png" id="genesis"/>
+
+<div id="maincontainer">
+
+
+
+    <div id="section1">
+    <div>
+            <h1 class="product_name" style="float:left";>Simplicity</h1>
+        
+        <img src="/images/product_types/small/name_place.png" style="float:right;" />
+        <div class="slides_container" style="clear:both">
+        <div class="a_slide">
+        <img src="/products/<%= _id %>/attachments/large-1" />
+        </div>
+        <div class="a_slide">
+        <img src="/products/<%= _id %>/attachments/large-2" />
+        </div>
+        <div class="a_slide">
+        
+        <img src="/products/<%= _id %>/attachments/large-3" />
+        </div>
+        <div class="a_slide">
+        <img src="/products/<%= _id %>/attachments/large-4" />
+        </div>
+        </div>
+        <div class="colour_shown" style="clear:both">
+        
+            <h5>Colours shown:</h5>
+        
+            <div style="background-color:darkblue;width:20px;height:10px;border:1px solid grey;float:left;margin:20px;"></div>
+        
+            <span class="small">Midnight blue</span>
+        
+            <p class="small bold">Price per 16:</p>
+        
+            <span class="number">£1</span><span class="decimal">.95</span>
+        </div>
+        ...
+        </div>
+  ...
+  </div>
+...
+</div>
+
+    <div id="section0">
+        <ul class="pagination section0">
+            <li><a href="#"><img src="/products/<%= _id %>/attachments/thumb-1" /></a></li>
+            <li><a href="#"><img src="/products/<%= _id %>/attachments/thumb-2" /></a></li>
+            <li><a href="#"><img src="/products/<%= _id %>/attachments/thumb-3" /></a></li>
+           <li><a href="#"> <img src="/products/<%= _id %>/attachments/thumb-4" /></a></li>
+       </ul>
+    </div>
+    
+</div>
+</div>
+    <!-- FOOTER -->
+    
+    <div id="footer">
+      <div class="collection"><img src="/images/logo_branding/genesis_footer.png" /></div>
+      <div class="footer_seperator"><img src="/images/page_seperators/three_across.png" /></div>
+      <div class="collection"><img src="/images/logo_branding/castello.png" /></div>
+    </div>
+
 </body>
 </html>
