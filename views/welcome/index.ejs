@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- MAIN image: 648 px wide, middle: 482px, smaller images 320px wide, thumb: 120px, margin middle 6px wide-->
+
+        <title>Casamiento</title>
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/stylesheets/main.css" />
+  
+<style type="text/css">
+
+.pagination {
+    background:white;
+	width:110px;
+    height:20px;
+    margin-top:6px;
+    padding-left:7px;
+    padding-top:8px;
+    position: relative;
+    top:-680px;
+    left:800px;
+    z-index:100;
+}
+
+.pagination li {
+	float:left;
+	margin:0 5px;
+	list-style:none;
+}
+
+.pagination li a {
+	display:block;
+	width:10px;
+	height:0;
+	padding-top:10px;
+	background-image:url(./images/pagination.png);
+	background-position:0 0;
+	float:left;
+	overflow:hidden;
+}
+
+.pagination li.current a {
+	background-position:0 -10px;
+}
+
+#nav { padding:0; }
+.navbar {
+    height:35px;
+    float:left;   
+    text-align:center;
+    width:242px;
+    background-color:light-grey;
+    border-right:1px dotted grey;
+    border-bottom: 1px dotted grey; 
+}
+.description { border: 1px solid grey; padding:20px 40px 20px 40px; margin-left: 20px; margin-right: 20px;}
+
+.welcome { text-align:center; margin: auto; padding:10px; display:block; }
+
+.colour_shown { margin-left:20px; padding-top:10px; text-align:left; }
+
+td { border-top: 1px grey dotted; }
+
+.section0 { text-align:center; float:left; width:320px; padding:0; margin:0;  }
+.section1 {text-align:center; margin-left:320px;padding-left:6px; }
+.section2 { text-align:center; float:left; width:648px; padding:0; margin:0;  }
+.section3 {text-align:center; margin-left:648px;padding-left:6px; }
+ .slides_container {
+     background-color: white;
+                width:974px;
+                margin:0;
+                border:0;
+                display:none; 
+                height:740px;
+                padding:0;
+            }
+            .slides_container .a_slide{
+                
+     background-color: white;
+                border:0; 
+                padding:0;
+                margin:0;
+                width:974px;
+                display:block;
+            }
+</style>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/javascripts/slides.min.jquery.js"></script>
+        <script src="/javascripts/jquery.nouislider.min.js"></script>
+        <script>
+            $(function(){
+                $("#slides").slides({play: 5000,  effect: 'fade, slide', crossfade: true, preload: true, preloadImage: "/images/spinner.gif", fadeSpeed: 2000});
+            });    
+        </script>
+    </head>
+
+    <body>
+
+<!-- HEADER -->
+
+<div id="top_container">
+  <div id="logo"><img src="/images/logo_branding/casamiento.png" /></div>
+  <div id="cart"><a class="trolley" href="">0 items in your trolley</a><img src="/images/trolley.png" /></div>
+</div>
+
+<div id="page_container">   
+    <div id="nav">
+        <div class="navbar"><img src="/images/logo_branding/dreamsonpaper.png" /></div>
+        <div class="navbar">ABOUT</div>
+        <div class="navbar">CONTACT</div>
+         <div class="navbar">LOGIN</div>
+    </div>
+
+<div class="clear"></div>
+   <img src="/images/welcome_page/welcome.png" class="welcome" />
+
+    <div id="slides">
+        <div class="slides_container">
+        
+            <% documents.forEach(function(doc) { %>
+            <div class="a_slide">
+                <div class="container">
+                
+                <!-- SECTION 0 -->
+                    <div class="section0">
+                        <img src="http://www.casamiento.co.uk/products/<%= doc._id %>/attachments/display-2" />
+                        <img src="http://www.casamiento.co.uk/products/<%= doc._id %>/attachments/display-3" />  
+                        <p class="center"><img src="/images/product_types/place.png" /></p>
+                        <div class="colour_shown">
+                        <h5>Colours shown:</h5> 
+                        
+                        <div style="background-color:darkblue;width:20px;height:10px;border:1px solid grey;float:left;margin:5px;"></div>
+                        
+                      <span class="small">Midnight blue</span>
+                        
+                        <h5 style="clear:both;">Price per 16:</h5>
+                        
+                      <span class="number">£1</span><span class="decimal">.95</span>
+                       </div>
+                    </div>
+                    
+                <!-- SECTION 1 -->
+                    <div class="section1">
+                        <img src="http://www.casamiento.co.uk/products/<%= doc._id %>/attachments/large-1" />
+                        
+                       
+                        <h1><span class="theme_name">&mdash; Birds of Paradise &mdash;</span></h1>
+     <div class="description">
+        	            <p>Dashes of bright colour illuminate this contemporary design. A beautiful selection of
+                            words that contain amazing prophecies and chequered squares can induce hypnosis
+                            in the most ignorant of fellow men.</p><br/>
+          <p class="center"><img src="/images/armament.png" /></p></div>
+    
+                    </div>
+                 </div>
+                
+            </div>
+            
+            <% }) %>
+            
+        </div>
+    </div>
+    
+</div>
+    <!-- FOOTER -->
+    
+    <div id="footer">
+      <div class="collection"><img src="/images/logo_branding/genesis_footer.png" /></div>
+      <div class="footer_seperator"><img src="/images/page_seperators/three_across.png" /></div>
+      <div class="collection"><img src="/images/logo_branding/castello.png" /></div>
+    </div>
+
+</body>
+</html>

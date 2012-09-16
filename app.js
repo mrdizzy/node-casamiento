@@ -22,7 +22,13 @@ app.configure(function() {
 app.configure('development', function() {
     app.use(express.errorHandler());
 });
-
+app.get('/catalog/ebay/:id', function(req, res) {
+    var id = req.params.id;
+    db.get(id, function(error, document) {
+        console.log(document);
+        res.render('catalog/product_ebay.ejs', document); 
+    });
+});
 
 app.get('/catalog/:id', function(req, res) {
     var id = req.params.id;
