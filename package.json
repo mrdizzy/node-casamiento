@@ -11,6 +11,7 @@
     "couchdb-migrator": "git://github.com/mrdizzy/couchdb-migrator.git",
     "xml2js": "0.1.x",
     "ejs": "0.8.x"
+    "express-partials": "0.0.6"
   },
   "engines": {
     "node": "0.8.x",
