@@ -2,7 +2,8 @@ var express = require('express'),
     http = require('http'),
     productsController = require('./controllers/products'),
     importEbayMessage = require('./import_ebay_messages'),
-    db = require('couchdb-migrator').db;
+    db = require('couchdb-migrator').db,
+    partials = require('express-partials');
 
 var app = express();
 
@@ -11,6 +12,7 @@ app.configure(function() {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'ejs');
     app.use(express.favicon());
+    app.use(partials());
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
@@ -26,7 +28,7 @@ app.get('/catalog/ebay/:id', function(req, res) {
     var id = req.params.id;
     db.get(id, function(error, document) {
         console.log(document);
-        res.render('catalog/product_ebay.ejs', document); 
+        res.render('catalog/product_ebay.ejs',  {layout:false, locals: document}); 
     });
 });
 

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- MAIN image: 648 px wide, middle: 482px, smaller images 320px wide, thumb: 120px, margin middle 6px wide-->
+
+        <title>Casamiento</title>
+        
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/stylesheets/main.css" />
+  
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/javascripts/slides.min.jquery.js"></script>
+        <script src="/javascripts/jquery.nouislider.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+        <script>
+        
+        $(function() {
+            $('#slider').noUiSlider('init', {
+                knobs: 1,
+                connect: "lower"
+            });
+            $('#maincontainer').slides({
+                effect: 'slide, fade',
+                crossfade: true,
+                slideSpeed: 350,
+                fadeSpeed: 500,
+                generateNextPrev: true,
+                generatePagination: false
+            });
+            $("#slides").slides({
+                play: 5000,
+                effect: 'fade, slide',
+                crossfade: true,
+                preload: true,
+                preloadImage: "/images/spinner.gif",
+                fadeSpeed: 2000
+            });
+        
+            $('#buy').click(function() {
+                $(this).effect("transfer", {
+                    to: $("#maincontainer")
+                }, 500, function() {
+                    $("#product").fadeOut(function() {
+                        $("#cart_page").fadeIn();
+                    });
+                })
+            })
+        })
+        </script>
+
+    </head>
+
+    <body>
+
+<!-- HEADER -->
+
+<div id="top_container">
+  <div id="logo"><img src="/images/logo_branding/casamiento.png" /></div>
+  <div id="cart"><a class="trolley" href="">0 items in your trolley</a><img src="/images/trolley.png" /></div>
+</div>
+
+<div id="page_container">   
+
+    <div id="nav">
+        <div class="navbar"><img src="/images/logo_branding/dreamsonpaper.png" /></div>
+        <div class="navbar">ABOUT</div>
+        <div class="navbar">CONTACT</div>
+         <div class="navbar">LOGIN</div>
+    </div>
+
+    <%- body %>
+</div>
+<!-- FOOTER -->
+    
+    <div id="footer">
+      <div class="collection"><img src="/images/logo_branding/genesis_footer.png" /></div>
+      <div class="footer_seperator"><img src="/images/page_seperators/three_across.png" /></div>
+      <div class="collection"><img src="/images/logo_branding/castello.png" /></div>
+    </div>
+</body>
+</html>

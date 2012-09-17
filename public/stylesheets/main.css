@@ -27,21 +27,18 @@
   h1 { font: normal 161.6%/2 Georgia, "Times New Roman", serif; text-align:center; letter-spacing:0.025em;}
     .theme_name { text-align:center; letter-spacing:0.2em; font-variant:small-caps; font-size: 2em;}
     .left { text-align:left; }
-    .product_name { font-style: italic; font-size:2em; letter-spacing:-0em; text-align:left;}
-    
+    .product_name { font-style: italic; font-size:2em; letter-spacing:-0em; text-align:left; }
     
   h2 { font: bold 1.8em Georgia, "Times New Roman", "Serif"; text-align:center; border-bottom: 1px dashed; color:#690172; }
   h3 { color:#690172; font-weight:bold; margin-bottom: 1em; font-size:1.5em; }
   .small { font-size:0.85em;}
 .trolley {  font-weight:bold; font-size:0.85em; color:#690172; border-bottom:1px solid #C9C9C9; text-align:center;}
   
-  
   h5 { font: bold 0.85em "Arial", "Helvetica", sans-serif; padding-bottom: 10px; border-bottom: 1px solid grey; }
   a:link, a:hover, a:visited { color: #690172; }
   a:active { color: #29A4BD; }
     .number {  font-size:2.4em;  }
     .decimal {  font-size:1.6em; position:relative;top:-8px; }
-    
 
 /* TABLES
 ==================================== */
@@ -57,23 +54,23 @@ table { border-collapse:collapse; text-align:center; }
   padding-bottom:5px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; background-color:white;}
     #logo {  margin-left:35px; float:left;}
     #cart { float:right; padding-top:5px; padding-right:20px; }
-#navigation_seperator { height: 2px; border-bottom: 1px dotted #939598;}
-    #navigation { height:30px; border-bottom: 1px dotted #939598;}
-    
+    #nav { padding:0; }
+.navbar {
+    height:35px;
+    float:left;   
+    text-align:center;
+    width:242px;
+    border-right:1px dotted grey;
+    border-bottom: 1px dotted grey; 
+}
   #page_container { width:974px; margin: 0 auto; background-color: white;  border-left: 1px dotted #939598; border-right: 1px dotted #939598;}
-#backdrop {}
-  #footer { width:974px; margin: 0 auto; clear:both; padding-top:20px; height:75px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; }
+
+  #footer { width:974px; margin: 0 auto; clear:both; padding-top:20px; height:75px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; border-top: 1px solid #939598;}
+  
+#genesis { margin:auto; clear:both; margin-bottom:10px; padding-top:10px; }
     .footer_seperator {  text-align:center; padding-top:1em;  float:left;  width:20%; }
     .collection { width:40%; float:left; text-align:center; }
     
-    .prev, .next { display:none; }
-  
-/* WELCOME
-==================================== */
-  .center { text-align:center; }
-  
-/* CARDS 
-================================================================================= */
   .clear { clear:both; }
 
 /* FORMS
@@ -86,3 +83,75 @@ input:focus { background-color: #EFCCE3; }
 .field_with_errors { background-color: #EFCCE3 }
 
 label { font: bold 0.85em Arial; color:#636667; display:block; padding-top:10px;}
+
+/* USER INTERFACE - SLIDER
+==================================== */
+#slider { float:left; clear:both; }
+
+/* The main bar. Give this class to whatever element you call .noUiSlider on. */
+.noUiSlider { width: 200px; border:	none; height: 1px; background: grey; }
+
+/* The bar connecting the dots. */
+.noUi-midBar {  height: 1px; Z-index: 0; background-color: grey; }
+
+/* The visible handles for the slider.
+// ( .noUi-handle itself has 0 width, keep it that way. ) */
+.noUi-handle > div {
+	z-index: 		5;
+	width:			9px;
+	height:			17px;
+    background-color:white;
+	position:		absolute;
+	top:			-8px;
+	left:			-8px;
+	border:			1px solid grey;
+	background-image:		url('/images/sliderhandledots.png'); background-image:no-repeat;
+}
+
+/* The handles on hover. */
+.noUi-handle > div:hover,
+.noUi-activeHandle {
+	background:		light-gray !important;
+	border-color:		black !important;
+    cursor: pointer;
+    cursor: hand;
+}
+
+#buy { width:63px; height:53px;  background-image:url('/images/buy.png');}
+#buy:hover { background-position: 0 -53px; }
+
+/* WELCOME PAGE 
+============================================== */
+.pagination { background:white; width:110px; height:20px; margin-top:6px; padding-left:7px; padding-top:8px; position:relative; top:-680px; left:800px; z-index:100; }
+    
+    .pagination li { float:left; margin:0 5px; list-style:none; }
+        
+        .pagination li a {
+            display:block; 	width:10px;
+        	height:0;
+        	padding-top:10px;
+        	background-image:url('/images/pagination.png');
+        	background-position:0 0;
+        	float:left;
+        	overflow:hidden;
+        }
+        
+        .pagination li.current a {
+        	background-position:0 -10px;
+        }
+
+.description { border: 1px solid grey; padding:20px 40px 20px 40px; margin-left: 20px; margin-right: 20px;}
+
+.welcome { text-align:center; margin: auto; padding:10px; display:block; }
+
+.colour_shown { margin-left:20px; padding-top:10px; text-align:left; }
+
+.section0 { text-align:center; float:left; width:320px; padding:0; margin:0;  }
+.section1 {text-align:center; margin-left:320px;padding-left:6px; }
+.section2 { text-align:center; float:left; width:648px; padding:0; margin:0;  }
+.section3 {text-align:center; margin-left:648px;padding-left:6px; }
+
+ .slides_container { width:974px; display:none; height:740px; }
+    .slides_container .a_slide { background-color: white; width:974px; display:block;  }
+    
+.ui-effects-transfer { border:1px dashed black; }
