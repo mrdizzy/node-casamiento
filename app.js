@@ -42,6 +42,9 @@ app.get('/catalog/:id', function(req, res) {
 
 // Products
 app.get("/products/:id/attachments/:filename", productsController.show);
+
+app.get("/products/:id/attachments/:filename.:png/", productsController.show);
+
 app.delete("/products/:productId/attachments/:id", function(req, res) {
     console.log(req.params); 
 });

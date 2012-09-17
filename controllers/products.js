@@ -5,6 +5,8 @@ themes = ["ace_of_hearts", "simplicity", "rose", "chequers", "birds_of_paradise"
 product_types = ["invitation", "name_place", "wrap", "rsvp", "envelope"]
 
 exports.show = function(req, res) {
+    
+        res.type("image/png");
     var stream = db.getAttachment(req.params["id"], req.params["filename"])
     stream.on("data", function(chunk) {
        res.write(chunk)
