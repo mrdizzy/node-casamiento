@@ -1,23 +1,24 @@
-<!doctype html >
 <html>
 <body>
 <style type="text/css">
 /* Main elements
 ==================================== */
-body { margin:0;padding:0; }
 #page_container_casamiento { font-family: "Arial",sans-serif; color: #636667; background-color: #fff; font-size: 10px; width:974px; }
 #top_container_casamiento { width:100%; height:80px; background-image:url("http://www.casamiento.co.uk/images/backgrounds/grey_header.png");  }
 #main_logo_casamiento { text-align:left; width:25%; float:left; padding-top:15px; padding-left:20px; }
 #main_slogan_casamiento { width:168px; float:right; padding-top:15px; }
-#genesis { text-align:center; padding:10px 0 10px 100px; }
-#genesis_container { border-top:1px dotted grey; border-bottom:1px solid grey; }
+#genesis { text-align:center; width:450px;margin-top:20px;float:right; }
+#genesis_logo_top { padding:0; margin-top:10px; }
+#genesis_container { border-top:1px dotted grey; border-bottom:1px solid grey; height:60px;}
+
 
 /* Main Typography
 ==================================== */
-h5.casamiento { font: bold 11px "Arial"; color: #636667; text-align:left; border-bottom: 1px solid #636667; padding-bottom:10px; padding-left:10px;}
+h5.casamiento { font: bold 11px "Arial"; color: #636667;margin:0; text-align:left; border-bottom: 1px solid #636667; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px; padding-left:10px;}
 h2.casamiento { font: bold 14px "Arial"; color:#636667; }
-h1.casamiento { color:#636667; font: italic 22px Georgia; text-align:left; }
+h1.casamiento { color:#636667; font: italic 22px Georgia; text-align:left; padding-top:10px; padding-bottom:5px; margin:0; }
 p.casamiento { font-size: 12px; line-height: 1.8em;  }
+.decimal { font-size:18px; position:relative;top:-8px;  };
 
 /* Classes
 ==================================== */
@@ -35,7 +36,7 @@ p.casamiento_how_it_works { color:#636667; font-size: 12px; text-align:justify; 
 table.casamiento, table.casamiento_related { width:100%; text-align:center; border-collapse:collapse; }
 table.casamiento_related td { text-align:center; }
     table.casamiento th { font: bold 11px "Arial"; color: #636667; text-align:center; }
-    td.casamiento_price, td.casamiento_quantity { font: normal 22px "Arial"; color: #636667; text-align:center; }
+    td.casamiento_price, td.casamiento_quantity { font: normal 24px "Arial"; color: #636667; text-align:center; }
 table.casamiento td, table.casamiento th { border:1px dotted grey; padding:10px; } 
 table.casamiento_related td { border:0; }
 
@@ -43,16 +44,16 @@ table.casamiento_related td { border:0; }
 
 /* Columns
 ==================================== */ 
-#section0_casamiento { text-align:center; float:left; width:320px; padding:0; margin:0; }
-#section1_casamiento { text-align:center; margin:0; padding:0; margin-left:320px; padding-left:5px; width:648px; }
+#section0_casamiento {  padding:0; margin:0; float:left; width:320px;  }
+#section1_casamiento { padding:0; margin:0;margin-left:323px;  }
 
-#section2_casamiento { clear:both; text-align:left; float:left; width:467px; padding:0; margin:0;}
-#section3_casamiento {margin:0; margin-left:520px;  padding:0; }
+#section2_casamiento { clear:both; text-align:left; float:left; width:467px; }
+#section3_casamiento { margin-left:487px; }
 
 /* Monograms
 ==================================== */
-#monograms_casamiento { width:100%; text-align:center; border-collapse: separate; border-spacing:20px;}
-#monograms_casamiento td { background-repeat: no-repeat; width:25%; background-position:10px 10px;border-top: 1px dotted grey; padding-top:20px;}
+#monograms_casamiento { width:100%; text-align:center; border-collapse: separate;}
+#monograms_casamiento td { background-repeat: no-repeat; width:25%; background-position:10px 10px;border-spacing:5px;border-top: 1px dotted grey; padding-top:20px;padding-bottom:10px;}
 #monogram_A { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/A.png'); }
 #monogram_B { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/B.png'); }
 #monogram_C { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/C.png'); }
@@ -69,20 +70,18 @@ table.casamiento_related td { border:0; }
 #monogram_N { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/N.png'); }
 
 #colour_table_casamiento { text-align:left; font:normal 11px Arial; color:#636667; border:0; padding:2px; }
-    #colour_table_casamiento td {  border:0; padding:3px; text-align:left; }
+    #colour_table_casamiento td {  border:0; padding:5px; text-align:left; }
     #colour_table_casamiento th { border:0; text-align:center; font:bold 12px Arial; padding-top:20px;}
 
-.casamiento_colour { border-radius: 5px;width:20px;height:10px;margin:auto;border:1px solid grey; }
+.casamiento_colour { border-radius:5px;width:20px;height:10px;margin:auto;border:1px solid grey; }
 
 /* Links
 ==================================== */
 a.casamiento:link, a.casamiento:active, a.casamiento:visited { color: #636667; font-style:underline;  font-weight:bold;}
 a.casamiento:hover { color:black;}
-a.casamiento img { border:0; } 
-
-.casamiento_related_product { border: 1px solid white; width:243px; padding:8px; margin:auto;}
-.casamiento_related_product:hover { border:1px solid grey; cursor:pointer, hand; }
-
+table.casamiento_related img { padding:2px; } 
+a.casamiento_related { font: normal 14px Georgia; font-style:italic; display:block; padding-bottom:10px;}
+table.casamiento_related td img { padding:5px; }
 /* Classes
 ==================================== */
 .casamiento_center { text-align:center; }
@@ -97,22 +96,22 @@ a.casamiento img { border:0; }
     </div>
     
     <!-- BAR -->
-    <div id="genesis_container" style="width:100%; margin:auto">
-        <div id="genesis" style="float:left";>
-            <img alt="Genesis_footer2" src="http://www.casamiento.co.uk/images/logo_branding/genesis_footer.png" />
-        </div>   
-        <div id="genesis">
-            <h5 class="casamiento" style="text-align:center;border-bottom:0;padding:0;">
+    <div id="genesis_container" style="width:100%; margin:auto; text-align:center;">
+    <div id="genesis">
+            <h5 class="casamiento" style="text-align:center;border-bottom:0;padding:0;float:right;">
             <img src="http://www.casamiento.co.uk/images/bullets/line_diamond.png" /> 
             <a class="casamiento" href="">Can't wait? Click here for a buy-it-now listing for this item</a></h5>
-        </div>   
+        </div>  
+            <img id="genesis_logo_top" alt="Genesis_footer2" src="http://www.casamiento.co.uk/images/logo_branding/genesis_footer.png" />
+       
+         
     </div>
 
     <div style="clear:both;float:left;width:200px;">
         <h1 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/bullet_square_dots.png" /> Simplicity</h1>
     </div>
 
-    <div style="float:right;padding-top:20px;width:200px;">
+    <div style="float:right;margin-top:5px;width:200px;">
         <img src="http://www.casamiento.co.uk/images/product_types/small/name_place_grey.png" /> 
     </div>
 
@@ -161,34 +160,39 @@ C O L U M N
         </table>
         
         </div>
-        
+<!-- #######################################################################################
+S P E C S
+####################################################################################### -->
         <div id="section3_casamiento">
         
             <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> Colours shown:</h5>
-            <div style="background-color:midnightblue;width:20px;height:10px;border:1px solid grey;float:left;margin:5px;margin-left:50px;"></div>
+            <% colours.forEach(function(colour) { %>
     
-            <p class="casamiento">Midnight blue</p>
+                <div style="background-color:<%= colour %>;width:20px;border-radius:5px;height:10px;border:1px solid grey;float:left;margin:10px;margin-left:75px;padding:0;"></div><p class="casamiento" style="padding:0; margin-top:15px;"><%= colour %></p>
             
-             <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> This auction is for:</h5>
+            <% }) %>
+            
+            
+            <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> This auction is for:</h5>
                     
-   <div class="prevent_table_stretching">
-            <table class="casamiento">
-                <tr>
-                    <th>Quantity</th>
-                    <th>Size</th>
-                    <th>Type</th>
-                    <th>Price</th>
-                </tr>
-                <tr>
-                    <td class="casamiento_quantity">100</td>
-                    <td><img src="http://www.casamiento.co.uk/images/specs/background_tent.png" /></td>
-                    <td><img src="http://www.casamiento.co.uk//images/product_types/small/name_place_grey.png" /</td>
-                    <td class="casamiento_price">&pound;21<span class="decimal">.99</span></td>
-                </tr>
-            </table>
+           <div class="prevent_table_stretching">
+                    <table class="casamiento">
+                        <tr>
+                            <th>Quantity</th>
+                            <th>Size</th>
+                            <th>Type</th>
+                            <th>Price</th>
+                        </tr>
+                        <tr>
+                            <td class="casamiento_quantity">24</td>
+                            <td><img src="http://www.casamiento.co.uk/images/specs/background_tent.png" /></td>
+                            <td><img src="http://www.casamiento.co.uk//images/product_types/small/name_place_grey.png" /</td>
+                            <td class="casamiento_price">&pound;2<span class="decimal">.99</span></td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
     
 <!-- #######################################################################################
 R E L A T E D
@@ -202,37 +206,25 @@ R E L A T E D
         </h5>
         <table class="casamiento_related">
             <tr>    
+                <td><a class="casamiento_related" href="">Chequers</a>
+                    <img src="http://www.casamiento.co.uk/products/chequers-name_place/attachments/thumb-1" /><img src="http://www.casamiento.co.uk/products/chequers-name_place/attachments/thumb-2" /><br/><img src="http://www.casamiento.co.uk/products/chequers-name_place/attachments/thumb-3" /><img src="http://www.casamiento.co.uk/products/chequers-name_place/attachments/thumb-4" /></td>
                 <td>
-                    <div class="casamiento_related_product">
-                        <img src="http://www.casamiento.co.uk/products/chequers-name_place/attachments/thumb-1" />  
-                        <img src="http://www.casamiento.co.uk/products/chequers-name_place/attachments/thumb-2" /><br/>
-                        <img src="http://www.casamiento.co.uk/products/chequers-name_place/attachments/thumb-3" />
-                        <img src="http://www.casamiento.co.uk/products/chequers-name_place/attachments/thumb-4" />
-                    </div>
+                    <a class="casamiento_related" href="">Border</a>
+                        <img src="http://www.casamiento.co.uk/products/border-name_place/attachments/thumb-1" /><img src="http://www.casamiento.co.uk/products/border-name_place/attachments/thumb-2" /><br/><img src="http://www.casamiento.co.uk/products/border-name_place/attachments/thumb-3" /><img src="http://www.casamiento.co.uk/products/border-name_place/attachments/thumb-4" />
+                   
                 </td>
                 <td>
-                    <div class="casamiento_related_product">
-                        <img src="http://www.casamiento.co.uk/products/birds_of_paradise-name_place/attachments/thumb-1" />  
-                        <img src="http://www.casamiento.co.uk/products/birds_of_paradise-name_place/attachments/thumb-2" /><br/>
-                        <img src="http://www.casamiento.co.uk/products/birds_of_paradise-name_place/attachments/thumb-3" />
-                        <img src="http://www.casamiento.co.uk/products/birds_of_paradise-name_place/attachments/thumb-4" />
-                    </div>
-                </td>
-                <td>
-                    <div class="casamiento_related_product">
-                        <img src="http://www.casamiento.co.uk/products/simplicity-name_place/attachments/thumb-1" />  
-                        <img src="http://www.casamiento.co.uk/products/simplicity-name_place/attachments/thumb-2" /><br/>
-                        <img src="http://www.casamiento.co.uk/products/simplicity-name_place/attachments/thumb-3" />
-                        <img src="http://www.casamiento.co.uk/products/simplicity-name_place/attachments/thumb-4" />
-                    </div>
+                    <a class="casamiento_related" href="">Rose</a><img src="http://www.casamiento.co.uk/products/rose-name_place/attachments/thumb-1" /><img src="http://www.casamiento.co.uk/products/rose-name_place/attachments/thumb-2" /><br/><img src="http://www.casamiento.co.uk/products/rose-name_place/attachments/thumb-3" /><img src="http://www.casamiento.co.uk/products/rose-name_place/attachments/thumb-4" />
+                  
                 </td>
             </tr>
         </table>
     
+        <p class="casamiento_center"><img src="http://www.casamiento.co.uk/images/armament.png" /></p>
 <!-- #######################################################################################
 M O N O G R A M S 
 ####################################################################################### -->
-    
+
     <div id="section5" style="width:600px;float:left">
     <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> Monogram styles&hellip;</h5>
     
@@ -268,58 +260,51 @@ M O N O G R A M S
 <!-- #######################################################################################
 C O L O U R S 
 ####################################################################################### -->
-    <div id="section6" style="margin-left:620px; width:354px">
-        <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> Colours available&hellip;</h5>
 
+    <div id="section6" style="margin-left:620px;"><h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> Colours available for this design&hellip;</h5>
+        <% if (colours.length == 1 && colours[0] == "Black") { %> 
+        <table class="casamiento" id="colour_table_casamiento"> 
+                
+                <tr>
+                <td><div class="casamiento_colour" style="background-color:Black"></td> <td>Black</td>
+                </tr>
+                </table>
+        <% } else { %>
+            <div style="width:100%;">
         <table class="casamiento" id="colour_table_casamiento"> 
                 <tr>
                 <th colspan="6">Reds &amp; Pinks</th>
                 </tr>
                 <tr>
-                <td><div class="casamiento_colour" style="background-color:IndianRed"></td> <td>IndianRed</td>
-                 <td><div class="casamiento_colour" style="background-color:Salmon"></td>  <td>Salmon</td>
-                 <td><div class="casamiento_colour" style="background-color:LightSalmon"></td> <td>LightSalmon</td>
+                 
                 </tr>
               
             <tr>
             	<td><div class="casamiento_colour" style="background-color:Red"></td>   <td>Red</td>
-                 <td><div class="casamiento_colour" style="background-color:Crimson"></td>  <td>Crimson</td>
+                
+                <td><div class="casamiento_colour" style="background-color:MediumVioletRed"></td>   <td>VioletRed</td>
                  <td><div class="casamiento_colour" style="background-color:Firebrick"></td><td>Firebrick</td>
                 </tr>
                 
                 <tr>
-                <td><div class="casamiento_colour" style="background-color:Pink"></td> <td>Pink</td>
+                
                  <td><div class="casamiento_colour" style="background-color:HotPink"></td>  <td>HotPink</td>
                  <td><div class="casamiento_colour" style="background-color:DeepPink"></td> <td>DeepPink</td>
                 </tr>
               
-            <tr>
-                <td><div class="casamiento_colour" style="background-color:MediumVioletRed"></td>   <td>VioletRed</td>
-                 <td><div class="casamiento_colour" style="background-color:PaleVioletRed"></td>  <td>PaleRed</td>
-                 <td></td>
-                </tr>
                 
                <tr>
                 <th colspan="6">Oranges &amp; Yellows</th>
                 </tr>
                 <tr>
                 <td><div class="casamiento_colour" style="background-color:LightSalmon"></td> <td>LightSalmon</td>
-                 <td><div class="casamiento_colour" style="background-color:Coral"></td>  <td>Coral</td>
-                 <td><div class="casamiento_colour" style="background-color:Tomato"></td> <td>Tomato</td>
-                </tr>
-              
-            <tr>
                 <td><div class="casamiento_colour" style="background-color:OrangeRed"></td>   <td>OrangeRed</td>
-                 <td><div class="casamiento_colour" style="background-color:DarkOrange"></td>  <td>DarkOrange</td>
                  
                  <td><div class="casamiento_colour" style="background-color:Orange"></td>  <td>Orange</td>
-                 <td></td>
                 </tr>
-                
+              
                 <tr>
-                <td><div class="casamiento_colour" style="background-color:Gold"></td> <td>Gold</td>
                  <td><div class="casamiento_colour" style="background-color:Yellow"></td>  <td>Yellow</td>
-                 <td><div class="casamiento_colour" style="background-color:DarkKhaki"></td> <td>DarkKhaki</td>
                 </tr>
                              <tr>
                 <th colspan="6">Purples</th>
@@ -330,63 +315,46 @@ C O L O U R S
                  <td><div class="casamiento_colour" style="background-color:MediumOrchid"></td> <td>MediumOrchid</td>
                 </tr>
                         <tr>
-                <td><div class="casamiento_colour" style="background-color:MediumPurple"></td> <td>MediumPurple</td>
                  <td><div class="casamiento_colour" style="background-color:DarkViolet"></td>  <td>DarkViolet</td>
                  <td><div class="casamiento_colour" style="background-color:Purple"></td> <td>Purple</td>
-                </tr>
-                           <tr>
                 <td><div class="casamiento_colour" style="background-color:Indigo"></td> <td>Indigo</td>
-                 <td><div class="casamiento_colour" style="background-color:DarkSlatebLue"></td>  <td>DarkSlateBlue</td>
-                 <td><div class="casamiento_colour" style="background-color:MediumSlateBlue"></td> <td>MediumSlateBlue</td>
+                          
                 </tr>
                                          <tr>
-                <th colspan="6">Greens</th>
+                <th colspan="6">Greens &amp; Blues</th>
                 </tr>
                 <tr>
-                <td><div class="casamiento_colour" style="background-color:GreenYellow"></td> <td>GreenYellow</td>            
+                <td><div class="casamiento_colour" style="background-color:GreenYellow"></td> <td>GreenYellow</td>          
+                 
                  <td><div class="casamiento_colour" style="background-color:LightSeaGreen"></td>  <td>LightSeaGreen</td>
-                 <td><div class="casamiento_colour" style="background-color:DeepSkyBlue"></td> <td>DeepSkyBlue</td>
-                </tr>
-                
-                <tr>            
-                 <td><div class="casamiento_colour" style="background-color:LimeGreen"></td>  <td>LimeGreen</td>             
-                 <td><div class="casamiento_colour" style="background-color:Teal"></td> <td>Teal</td>             
-                <td><div class="casamiento_colour" style="background-color:DodgerBlue"></td> <td>DodgerBlue</td>
-                </tr>            
-                
-                <tr>            
-                 <td><div class="casamiento_colour" style="background-color:SeaGreen"></td> <td>SeaGreen</td>             
-                <td><div class="casamiento_colour" style="background-color:Cyan"></td> <td>Cyan</td>            
+                 
                  <td><div class="casamiento_colour" style="background-color:CornflowerBlue"></td>  <td>CornflowerBlue</td>
                 </tr>
                 
+                <tr>            
+                 <td><div class="casamiento_colour" style="background-color:LimeGreen"></td>  <td>LimeGreen</td>  
+                 
+                    <td><div class="casamiento_colour" style="background-color:LightSkyBlue"></td>
+                    <td>LightSkyBlue</td>
+                    <td><div class="casamiento_colour" style="background-color:SteelBlue"></td>
+                    <td>SteelBlue</td>   
+                </tr>            
+                
+                
                 <tr>
                 <td><div class="casamiento_colour" style="background-color:ForestGreen"></td> <td>ForestGreen</td>
-                 <td><div class="casamiento_colour" style="background-color:Turquoise"></td>  <td>Turquoise</td> 
+                
+                 <td><div class="casamiento_colour" style="background-color:DeepSkyBlue"></td> <td>DeepSkyBlue</td>
+                 
+                 
                  <td><div class="casamiento_colour" style="background-color:Blue"></td> <td>Blue</td>
                 </tr>
                 
                 <tr>                                
                  <td><div class="casamiento_colour" style="background-color:DarkGreen"></td>
                  <td>DarkGreen</td>             
-                 <td><div class="casamiento_colour" style="background-color:CadetBlue"></td>
-                 <td>CadetBlue</td>             
-                <td><div class="casamiento_colour" style="background-color:DarkBlue"></td>
-                <td>DarkBlue</td>
-                </tr>
-               <tr>                             
-                    <td><div class="casamiento_colour" style="background-color:Olive"></td>
-                    <td>Olive</td>             
-                    <td><div class="casamiento_colour" style="background-color:SteelBlue"></td>
-                    <td>SteelBlue</td>            
-                    <td><div class="casamiento_colour" style="background-color:Navy"></td>
-                    <td>Navy</td>
-                </tr>
-                <tr>
-                    <td><div class="casamiento_colour" style="background-color:DarkOliveGreen"></td>
-                    <td>DarkOliveGreen</td>            
-                    <td><div class="casamiento_colour" style="background-color:LightSkyBlue"></td>
-                    <td>LightSkyBlue</td>
+                 
+                <td><div class="casamiento_colour" style="background-color:DodgerBlue"></td> <td>DodgerBlue</td>
                     <td><div class="casamiento_colour" style="background-color:Midnightblue"></td>
                     <td>Midnightblue</td>
                 </tr>
@@ -396,12 +364,13 @@ C O L O U R S
                 <tr>
                     <td><div class="casamiento_colour" style="background-color:SaddleBrown"></td>
                     <td>SaddleBrown</td>
-                    <td><div class="casamiento_colour" style="background-color:Brown"></td>
-                    <td>Brown</td>
                     <td><div class="casamiento_colour" style="background-color:Maroon"></td>
                     <td>Maroon</td>
                 </tr>
         </table>
+        
+        </div>
+        <% } %>
         </div>
     </div>
 </div>

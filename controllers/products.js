@@ -1,7 +1,7 @@
 var db = require('couchdb-migrator').db,
 async = require('async'),
 fs = require('fs'), 
-themes = ["ace_of_hearts", "simplicity", "rose", "chequers", "birds_of_paradise"],
+themes = ["ace_of_hearts", "simplicity", "rose", "chequers", "birds_of_paradise", "border"],
 product_types = ["invitation", "name_place", "wrap", "rsvp", "envelope"]
 
 exports.show = function(req, res) {

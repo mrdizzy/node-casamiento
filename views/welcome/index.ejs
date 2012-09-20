@@ -1,3 +1,35 @@
+ <script>
+    $(function() {
+        $('#slider').noUiSlider('init', {
+            knobs: 1,
+            connect: "lower"
+        });
+        $("#slides").slides({
+            play: 5000,
+            effect: 'fade, slide',
+            crossfade: true,
+            preload: true,
+            preloadImage: "/images/spinner.gif",
+            fadeSpeed: 2000
+        });    
+    })
+</script>
+<style type="text/css">
+.description { border: 1px solid grey; padding:20px 40px 20px 40px; margin-left: 20px; margin-right: 20px;}
+
+.welcome { text-align:center; margin: auto; padding:10px; display:block; }
+
+.colour_shown { margin-left:20px; padding-top:10px; text-align:left; }
+
+.section0 { text-align:center; float:left; width:320px; padding:0; margin:0;  }
+.section1 {text-align:center; margin-left:320px;padding-left:6px; }
+.section2 { text-align:center; float:left; width:648px; padding:0; margin:0;  }
+.section3 {text-align:center; margin-left:648px;padding-left:6px; }
+
+ .slides_container { width:974px; display:none; height:740px; }
+    .slides_container .a_slide { background-color: white; width:974px; display:block;  }
+</style>
+
 <div class="clear"></div>
 
 <img src="/images/welcome_page/welcome.png" class="welcome" />
@@ -32,10 +64,10 @@
            <div>
                 <h1><span class="theme_name">&mdash; Birds of Paradise &mdash;</span></h1>
                 <div class="description">
-                <p>Dashes of bright colour illuminate this contemporary design. A beautiful selection of
-                    words that contain amazing prophecies and chequered squares can induce hypnosis
-                    in the most ignorant of fellow men.</p><br/>
-  <p class="center"><img src="/images/armament.png" /></p>
+                    <p>Dashes of bright colour illuminate this contemporary design. A beautiful selection of
+                        words that contain amazing prophecies and chequered squares can induce hypnosis
+                        in the most ignorant of fellow men.</p><br/>
+                    <p class="center"><img src="/images/armament.png" /></p>
                 </div>
 
             </div>

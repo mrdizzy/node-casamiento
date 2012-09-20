@@ -35,8 +35,7 @@ app.get('/catalog/ebay/:id', function(req, res) {
 app.get('/catalog/:id', function(req, res) {
     var id = req.params.id;
     db.get(id, function(error, document) {
-        console.log(document);
-        res.render('catalog/product.ejs', document); 
+        res.render('catalog/product.ejs', {locals: document}); 
     });
 });
 
@@ -45,9 +44,6 @@ app.get("/products/:id/attachments/:filename", productsController.show);
 
 app.get("/products/:id/attachments/:filename.:png/", productsController.show);
 
-app.delete("/products/:productId/attachments/:id", function(req, res) {
-    console.log(req.params); 
-});
 app.put("/products/:productId", productsController.update);
 app.get("/products", productsController.index);
 app.post("/products", productsController.create)

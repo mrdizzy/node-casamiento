@@ -12,42 +12,6 @@
         <script src="/javascripts/slides.min.jquery.js"></script>
         <script src="/javascripts/jquery.nouislider.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-        <script>
-        
-        $(function() {
-            $('#slider').noUiSlider('init', {
-                knobs: 1,
-                connect: "lower"
-            });
-            $('#maincontainer').slides({
-                effect: 'slide, fade',
-                crossfade: true,
-                slideSpeed: 350,
-                fadeSpeed: 500,
-                generateNextPrev: true,
-                generatePagination: false
-            });
-            $("#slides").slides({
-                play: 5000,
-                effect: 'fade, slide',
-                crossfade: true,
-                preload: true,
-                preloadImage: "/images/spinner.gif",
-                fadeSpeed: 2000
-            });
-        
-            $('#buy').click(function() {
-                $(this).effect("transfer", {
-                    to: $("#maincontainer")
-                }, 500, function() {
-                    $("#product").fadeOut(function() {
-                        $("#cart_page").fadeIn();
-                    });
-                })
-            })
-        })
-        </script>
-
     </head>
 
     <body>
@@ -70,12 +34,13 @@
 
     <%- body %>
 </div>
+
 <!-- FOOTER -->
-    
-    <div id="footer">
-      <div class="collection"><img src="/images/logo_branding/genesis_footer.png" /></div>
-      <div class="footer_seperator"><img src="/images/page_seperators/three_across.png" /></div>
-      <div class="collection"><img src="/images/logo_branding/castello.png" /></div>
-    </div>
+
+<div id="footer">
+  <div class="collection"><img src="/images/logo_branding/genesis_footer.png" /></div>
+  <div class="footer_seperator"><img src="/images/page_seperators/three_across.png" /></div>
+  <div class="collection"><img src="/images/logo_branding/castello.png" /></div>
+</div>
 </body>
 </html>

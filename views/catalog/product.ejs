@@ -1,180 +1,77 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <!-- MAIN image: 648 px wide, middle: 482px, smaller images 320px wide, thumb: 120px, margin middle 6px wide-->
+<!-- MAIN image: 648 px wide, middle: 482px, smaller images 320px wide, thumb: 120px, margin middle 6px wide-->
+ <script>
+    $(function() {
+        $('#slider').noUiSlider('init', {
+            knobs: 1,
+            connect: "lower"
+        });
+        $('#maincontainer').slides({
+            effect: 'slide, fade',
+            crossfade: true,
+            slideSpeed: 350,
+            fadeSpeed: 500,
+            generateNextPrev: true,
+            generatePagination: false,
+            paginationClass: 'product_pagination'
+        });
+        $('#buy').click(function() {
+            $(this).effect("transfer", {
+                to: $("#maincontainer")
+            }, 500, function() {
+                $("#product").fadeOut(function() {
+                    $("#cart_page").fadeIn();
+                });
+            })
+        })
+    })
+</script>
 
-        <title>Casamiento</title>
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="/stylesheets/main.css" />
-  
 <style type="text/css">
-#slider { float:left; clear:both; }
-/* SLIDER  */
-/* The main bar. Give this class to whatever element you call .noUiSlider on. */
-.noUiSlider {
-    width:			200px;
-	border:			none;
-	height:			1px;
-	background:		grey;
-}
 
-/* The bar connecting the dots. */
-.noUi-midBar {
-	height:			1px;
-	z-index:		0;
-	background-color:	grey;
-}
+    #slider { float:left; clear:both; }
+    
+    .a_slide { height:400px }
 
-/* The visible handles for the slider.
-// ( .noUi-handle itself has 0 width, keep it that way. ) */
-.noUi-handle > div {
-	z-index: 		5;
-	width:			9px;
-	height:			17px;
-    background-color:white;
-	position:		absolute;
-	top:			-8px;
-	left:			-8px;
-	border:			1px solid grey;
-	background-image:		url('/images/sliderhandledots.png'); background-image:no-repeat;
-}
+    #buy { width:63px; height:53px;  background-image:url('/images/buy.png');}
+        #buy:hover { background-position: 0 -53px; }
 
-/* The handles on hover. */
-.noUi-handle > div:hover,
-.noUi-activeHandle {
-	background:		light-gray !important;
-	border-color:		black !important;
-    cursor: pointer;
-    cursor: hand;
-}
+    .colour_shown { margin-left:20px; padding-top:10px; text-align:left; }
 
-#genesis { margin:auto; clear:both; margin-bottom:10px;display:block; padding-top:10px;
-border-bottom:1px solid grey; text-align:center; }
+    #product_section0 { text-align:center; width:300px; margin-right:648px;}
+        #product_section0 img { padding:5px; border: 1px solid white; } 
+        #product_section0 img:hover { border:1px solid grey; }
+    
+    #product_section1 { text-align:left; padding-left:6px; width:648px; float:right;  margin-right:100px; }
+    #product_section2 { float:left; width:300px; }
+    #product_section3 { float:right; width:300px; }
 
-#buy { width:63px; height:53px;  background-image:url('/images/buy.png');}
-#buy:hover { background-position: 0 -53px; }
-#nav { padding:0; }
-.navbar {
-    height:35px;
-    float:left;   
-    text-align:center;
-    width:242px;
-    background-color:light-grey;
-    border-right:1px dotted grey;
-    border-bottom: 1px dotted grey; 
-}
-
-.colour_shown { margin-left:20px; padding-top:10px; text-align:left; }
-
-#section0 img { padding:5px; border: 1px solid white; } 
-
-#section0 img:hover { border:1px solid grey; }
-#monogram, #colours, #guests, #quantity { border:1px solid transparent; padding:10px; }
-#monogram:hover, #colours:hover, #guests:hover, #quantity:hover { border:1px solid grey; }
-#section0 { text-align:center; width:300px; margin-right:648px;}
-
-#section1 { text-align:left; padding-left:6px; width:648px; float:right;  margin-right:100px; }
-
-#section2 { float:left; width:300px; }
-#section3 { float:right; width:300px; }
-.a_slide { height:400px }
+    #monogram, #colours, #guests, #quantity { border:1px solid transparent; padding:10px; }
+    #monogram:hover, #colours:hover, #guests:hover, #quantity:hover { border:1px solid grey; }
 
 .ui-effects-transfer { border:1px dashed black; }
 
 </style>
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="/javascripts/slides.min.jquery.js"></script>
-        <script src="/javascripts/jquery.nouislider.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-        <script>
-        
-        $(function() {
-            $('#slider').noUiSlider('init', {
-    knobs: 1,
-	connect: "lower"
-});
-    		$('#maincontainer').slides({
-				effect: 'slide, fade',
-				crossfade: true,
-				slideSpeed: 350,
-				fadeSpeed: 500,
-				generateNextPrev: true,
-				generatePagination: false
-			});
-		
-        $('#buy').click(function(){            
-            $(this).effect("transfer", { to: $("#maincontainer")}, 500, function() {
-                $("#product").fadeOut(function() {
-                    $("#cart_page").fadeIn();
-                    });
-            })
-        })
-        })
-        </script>
-
-    </head>
-
-    <body>
-
-<!-- HEADER -->
-
-<div id="top_container">
-  <div id="logo"><img src="/images/logo_branding/casamiento.png" /></div>
-  <div id="cart"><a class="trolley" href="">0 items in your trolley</a><img src="/images/trolley.png" /></div>
-</div>
-
-<div id="page_container">   
-
-    <div id="nav">
-        <div class="navbar"><img src="/images/logo_branding/dreamsonpaper.png" /></div>
-        <div class="navbar">ABOUT</div>
-        <div class="navbar">CONTACT</div>
-         <div class="navbar">LOGIN</div>
-    </div>
 
 <div id="maincontainer" style="clear:both;">
-<div id="cart_page" style="display:none;">
-<div id="view_trolley" style="text-align:center;margin:auto; width:100%; border-bottom:1px solid grey; padding-top:10px; padding-bottom:10px;margin-bottom:10px;">
-    <img src="/images/view_trolley.png" />
-    </div>
-    <div style="float:left;width:340px;padding:10px;">
-        <h1 class="product_name" style="float:left";>  <img src="/images/bullets/bullet_square_dots.png" /> Simplicity</h1>
-        <img src="/products/<%= _id %>/attachments/display-1" />
-    </div>
-    <div style="float:left; width:350px;">
-    <div id="monogram" style="padding:10px;">
-        <h5><img src="/images/bullets/small_dot_square.png" /> Monogram style:</h5>
-        </div>
-        <div id="colours">
-        <h5><img src="/images/bullets/small_dot_square.png" /> Colours:</h5>
-        </div>
-        <div id="quantity">
-        <h5><img src="/images/bullets/small_dot_square.png" /> Quantity</h5>
-        </div>
-    </div>
-     <div style="float:left; width:200px; margin-left:15px;">
-    <div id="guests">
-        <h5><img src="/images/bullets/small_dot_square.png" /> Guests:</h5>
-        </div>
-        </div>
-</div>
-<div id="product" >
-    <div id="genesis">
-        <img src="/images/logo_branding/genesis_footer.png" />
-    </div>
-        <div id="section1">
+    <% include cart_page %>
+        
+    <div id="product" >
+        <div id="genesis"><img src="/images/logo_branding/genesis_footer.png" /></div>
+        
+        <div id="product_section1">
     
             <h1 class="product_name" style="float:left";>  <img src="/images/bullets/bullet_square_dots.png" /> Simplicity</h1>
+            
             <img src="/images/product_types/small/name_place.png" style="float:right;" />
         
-            <div class="slides_container" style="clear:both">
-            
+            <div class="slides_container" style="clear:both">            
                 <div class="a_slide"><img src="/products/<%= _id %>/attachments/large-1" /></div>
                 <div class="a_slide"><img src="/products/<%= _id %>/attachments/large-2" /></div>
                 <div class="a_slide"><img src="/products/<%= _id %>/attachments/large-3" /></div>
                 <div class="a_slide"><img src="/products/<%= _id %>/attachments/large-4" /></div>
             </div>
-            <div id="section2">
+            
+            <div id="product_section2">
         
                 <h5>Colours shown:</h5>
         
@@ -182,18 +79,22 @@ border-bottom:1px solid grey; text-align:center; }
         
                 <span class="small">Midnight blue</span>
             </div>
+            
             <div id="section3">
-            <div style="float:left;width:200px;margin-right:5px;">
-                <h5>Price per 16:</h5>
-        </div>
-        <div id="buy" style="float:left;"></div>
+                <div style="float:left;width:200px;margin-right:5px;">
+                    <h5>Price per 16:</h5>
+            </div>
+        
+            <div id="buy" style="float:left;"></div>
                 
             <div id="slider" class="noUiSlider"></div>
             <span style="clear:both;" class="number">£1</span><span class="decimal">.95</span>
-            </div>
         </div>
-    <div id="section0">
-        <ul class="pagination section0">
+    </div>
+
+    <!-- T H U M B N A I L S -->
+    <div id="product_section0">
+        <ul class="product_pagination">
             <li><a href="#"><img src="/products/<%= _id %>/attachments/thumb-1" /></a></li>
             <li><a href="#"><img src="/products/<%= _id %>/attachments/thumb-2" /></a></li>
             <li><a href="#"><img src="/products/<%= _id %>/attachments/thumb-3" /></a></li>
@@ -204,17 +105,3 @@ border-bottom:1px solid grey; text-align:center; }
     </div>
     
 </div>
-</div>
-<div style="clear: both;"></div>
-
-</div>
-    <!-- FOOTER -->
-     
-    <div id="footer">
-      <div class="collection"><img src="/images/logo_branding/genesis_footer.png" /></div>
-      <div class="footer_seperator"><img src="/images/page_seperators/three_across.png" /></div>
-      <div class="collection"><img src="/images/logo_branding/castello.png" /></div>
-    </div>
-
-</body>
-</html>
