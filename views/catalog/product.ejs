@@ -26,37 +26,11 @@
     })
 </script>
 
-<style type="text/css">
-
-    #slider { float:left; clear:both; }
-    
-    .a_slide { height:400px }
-
-    #buy { width:63px; height:53px;  background-image:url('/images/buy.png');}
-        #buy:hover { background-position: 0 -53px; }
-
-    .colour_shown { margin-left:20px; padding-top:10px; text-align:left; }
-
-    #product_section0 { text-align:center; width:300px; margin-right:648px;}
-        #product_section0 img { padding:5px; border: 1px solid white; } 
-        #product_section0 img:hover { border:1px solid grey; }
-    
-    #product_section1 { text-align:left; padding-left:6px; width:648px; float:right;  margin-right:100px; }
-    #product_section2 { float:left; width:300px; }
-    #product_section3 { float:right; width:300px; }
-
-    #monogram, #colours, #guests, #quantity { border:1px solid transparent; padding:10px; }
-    #monogram:hover, #colours:hover, #guests:hover, #quantity:hover { border:1px solid grey; }
-
-.ui-effects-transfer { border:1px dashed black; }
-
-</style>
-
 <div id="maincontainer" style="clear:both;">
     <% include cart_page %>
         
     <div id="product" >
-        <div id="genesis"><img src="/images/logo_branding/genesis_footer.png" /></div>
+        <div id="product_page_genesis"><img src="/images/logo_branding/genesis_footer.png" /></div>
         
         <div id="product_section1">
     
@@ -65,10 +39,10 @@
             <img src="/images/product_types/small/name_place.png" style="float:right;" />
         
             <div class="slides_container" style="clear:both">            
-                <div class="a_slide"><img src="/products/<%= _id %>/attachments/large-1" /></div>
-                <div class="a_slide"><img src="/products/<%= _id %>/attachments/large-2" /></div>
-                <div class="a_slide"><img src="/products/<%= _id %>/attachments/large-3" /></div>
-                <div class="a_slide"><img src="/products/<%= _id %>/attachments/large-4" /></div>
+                <div class="product_slide"><img src="/products/<%= _id %>/attachments/large-1" /></div>
+                <div class="product_slide"><img src="/products/<%= _id %>/attachments/large-2" /></div>
+                <div class="product_slide"><img src="/products/<%= _id %>/attachments/large-3" /></div>
+                <div class="product_slide"><img src="/products/<%= _id %>/attachments/large-4" /></div>
             </div>
             
             <div id="product_section2">

@@ -1,79 +1,71 @@
  <script>
     $(function() {
-        $('#slider').noUiSlider('init', {
+        $('.noUiSlider').noUiSlider('init', {
             knobs: 1,
             connect: "lower"
         });
+              
         $("#slides").slides({
             play: 5000,
             effect: 'fade, slide',
             crossfade: true,
-            preload: true,
+            preload: false,
             preloadImage: "/images/spinner.gif",
             fadeSpeed: 2000
         });    
     })
 </script>
 <style type="text/css">
-.description { border: 1px solid grey; padding:20px 40px 20px 40px; margin-left: 20px; margin-right: 20px;}
+.description { border: 1px solid grey; padding:20px 40px 20px 40px; margin-left: 20px; margin-right: 20px; font: italic 1.2em/160% "Georgia", serif;}
 
-.welcome { text-align:center; margin: auto; padding:10px; display:block; }
+.welcome { margin: auto; padding-top:5px; display:block; }
 
 .colour_shown { margin-left:20px; padding-top:10px; text-align:left; }
 
 .section0 { text-align:center; float:left; width:320px; padding:0; margin:0;  }
 .section1 {text-align:center; margin-left:320px;padding-left:6px; }
-.section2 { text-align:center; float:left; width:648px; padding:0; margin:0;  }
-.section3 {text-align:center; margin-left:648px;padding-left:6px; }
+.section2 { text-align:center; margin-right:326px; width:648px; padding:0; margin:0;  }
+.section3 {text-align:center; float:right;width:320px; }
 
  .slides_container { width:974px; display:none; height:740px; }
     .slides_container .a_slide { background-color: white; width:974px; display:block;  }
 </style>
 
-<div class="clear"></div>
-
 <img src="/images/welcome_page/welcome.png" class="welcome" />
 
+<div id="product_type"><img src="/images/product_types/small/name_place_grey.png" /></div>
 <div id="slides"><div class="slides_container">
 
-    <% documents.forEach(function(doc) { %>
-    <div class="a_slide"><div class="container">
+    <% for (var i=0; i < documents.length; i++) { %>
+    <% var doc = documents[i] %>
+    <div class="a_slide">
+        <div class="container">
         
-        <!-- SECTION 0 -->
-        <div class="section0">
-            <img src="http://www.casamiento.co.uk/products/<%= doc._id %>/attachments/display-2" />
-            <img src="http://www.casamiento.co.uk/products/<%= doc._id %>/attachments/display-3" />  
-            <p class="center"><img src="/images/product_types/place.png" /></p>
-                
-            <div class="colour_shown">
-                <h5>Colours shown:</h5> 
-                
-                <div style="background-color:darkblue;width:20px;height:10px;border:1px solid grey;float:left;margin:5px;"></div>
-                <span class="small">Midnight blue</span>
-            
-                <h5 style="clear:both;">Price per 16:</h5>
-                <span class="number">£1</span><span class="decimal">.95</span>
-           </div>
-        </div>
-            
-        <!-- SECTION 1 -->
-        <div class="section1">
-            
-            <img src="http://www.casamiento.co.uk/products/<%= doc._id %>/attachments/large-1" />
-                
-           <div>
-                <h1><span class="theme_name">&mdash; Birds of Paradise &mdash;</span></h1>
-                <div class="description">
-                    <p>Dashes of bright colour illuminate this contemporary design. A beautiful selection of
-                        words that contain amazing prophecies and chequered squares can induce hypnosis
-                        in the most ignorant of fellow men.</p><br/>
-                    <p class="center"><img src="/images/armament.png" /></p>
-                </div>
-
+    <% if ((i % 2) == 0) { %>
+            <!-- SECTION 0 -->
+            <div class="section0">
+                <% include small_picture %>
             </div>
+            
+            <div class="section1">
+                <% include big_picture %>
+            </div>
+            
+            <! ------- ELSE -------------------- >            
+            <% } else { %>
+           
+            <div class="section3">
+                <% include small_picture %>
+            </div>
+            <div class="section2">
+                <% include big_picture %>
+            </div>
+            
+    <% } %>
         </div>
-    </div></div>
+        
+    </div>
     
-    <% }) %>
+    <% } %>
         
 </div></div>

@@ -21,12 +21,11 @@
   
 /* Typography
 ==================================== */
-  b, strong, em, .bold { font-weight: bold; }  
+  b, strong, em { font-weight: bold; }  
   i { font-style:italic;}  
   
   h1 { font: normal 161.6%/2 Georgia, "Times New Roman", serif; text-align:center; letter-spacing:0.025em;}
-    .theme_name { text-align:center; letter-spacing:0.2em; font-variant:small-caps; font-size: 2em;}
-    .left { text-align:left; }
+    .theme_name { text-align:center; font-size: 2.8em;}
     .product_name { font-style: italic; font-size:2em; letter-spacing:-0em; text-align:left; }
     
   h2 { font: bold 1.8em Georgia, "Times New Roman", "Serif"; text-align:center; border-bottom: 1px dashed; color:#690172; }
@@ -44,17 +43,12 @@
 =================================== */
 /* The main bar. Give this class to whatever element you call .noUiSlider on. */
 .noUiSlider {
+    margin-top:20px;
+    margin-bottom:20px;
     width:    		200px;
 	border:			none;
-	height:			1px;
+	height:		    1px;
 	background:		grey;
-}
-
-/* The bar connecting the dots. */
-.noUi-midBar {
-	height:			1px;
-	z-index:		0;
-	background-color:	grey;
 }
 
 /* The visible handles for the slider.
@@ -100,6 +94,7 @@ table { border-collapse:collapse; text-align:center; }
     float:left;   
     text-align:center;
     width:242px;
+    padding-top:15px;
     border-right:1px dotted grey;
     border-bottom: 1px dotted grey; 
 }
@@ -107,7 +102,6 @@ table { border-collapse:collapse; text-align:center; }
 
   #footer { width:974px; margin: 0 auto; clear:both; padding-top:20px; height:75px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; border-top: 1px solid #939598;}
   
-#genesis { margin:auto; clear:both; margin-bottom:10px; padding-top:10px; }
     .footer_seperator {  text-align:center; padding-top:1em;  float:left;  width:20%; }
     .collection { width:40%; float:left; text-align:center; }
     
@@ -127,15 +121,30 @@ label { font: bold 0.85em Arial; color:#636667; display:block; padding-top:10px;
 #buy { width:63px; height:53px;  background-image:url('/images/buy.png');}
 #buy:hover { background-position: 0 -53px; }
 
+/* PRODUCT PAGE
+================================================================================================ */
+    #product_page_genesis {margin auto; border-bottom:1px solid grey; text-align:center; padding-top:10px;}
+    #product_section0 { text-align:center; width:300px; margin-right:648px;}
+        #product_section0 img { padding:5px; border: 1px solid white; } 
+        #product_section0 img:hover { border:1px solid grey; }
+    
+    #product_section1 { text-align:left; padding-left:6px; width:648px; float:right;  margin-right:100px; }
+    #product_section2 { float:left; width:300px; }
+    #product_section3 { float:right; width:300px; }
+    .product_slide { height:464px; }
+    
 /* WELCOME PAGE 
 ============================================== */
+    #product_type { width:320px; text-align:center }
+    #slider { width:50% }
+
+.pagination { background:white; width:110px; height:20px; margin-top:6px; padding-left:7px; padding-top:8px; position:relative; top:-720px; left:800px; z-index:100; }
     
-.pagination { background:white; width:110px; height:20px; margin-top:6px; padding-left:7px; padding-top:8px; position:relative; top:-680px; left:800px; z-index:100; }
-    
-    .pagination li { float:left; margin:0 5px; list-style:none; }
+    .pagination li { float:left; margin:0 5px; }
         
         .pagination li a {
-            display:block;     width:10px;
+            display:block;     
+            width:10px;
             height:0;
         	padding-top:10px;
         	background-image:url('/images/pagination.png');
