@@ -26,7 +26,7 @@
   
   h1 { text-align:center;  }
     .theme_name { color:black;text-align:center; font-size: 4em; line-height:1em;letter-spacing:0.15em;}
-    .product_name { color:black; font-size:2em;  text-align:left; }
+    .product_name { color:black; font-size:2em;  text-align:left; letter-spacing:0.2em;}
     
   h2 { font: bold 1.8em Georgia, "Times New Roman", "Serif"; text-align:center; border-bottom: 1px dashed; color:#690172; }
   h3 { color:#690172; font-weight:bold; margin-bottom: 1em; font-size:1.5em; }
