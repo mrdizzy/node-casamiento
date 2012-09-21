@@ -1,0 +1,20 @@
+<img src="http://www.casamiento.co.uk/products/<%= doc._id %>/attachments/display-2" />
+ <img src="http://www.casamiento.co.uk/products/<%= doc._id %>/attachments/display-3" />  
+    
+<div class="colour_shown">
+    <h5><img src="/images/bullets/small_dot_square.png" /> Colours shown:</h5> 
+   
+   <% doc.colours.forEach(function(colour) { %>
+   <div class="colour_container">
+        <div style="clear:both; background-color:<%= colour %>;width:20px;height:10px;border:1px solid grey;float:left;margin:5px;"></div>
+        <span class="small"><%= colour %></span>
+     </div>
+    <% }) %>
+  
+   <h5 style="clear:both;"><img src="/images/bullets/small_dot_square.png" /> Price per 16:</h5>
+    <div id="welcome_slider">
+        <div class="noUiSlider"></div>
+    </div>
+    <div id="buy" style="float:right;"></div>
+    <span class="number">£1</span><span class="decimal">.95</span>
+</div>
