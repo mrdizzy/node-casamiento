@@ -1,42 +1,66 @@
 <!-- MAIN image: 648 px wide, middle: 482px, smaller images 320px wide, thumb: 120px, margin middle 6px wide-->
+
  <script>
     $(function() {
+    $('#select-monogram').click(function() {
+       
+    $('#product').fadeOut(function() {
+        
+    $('#monogram_selection').fadeIn()
+    });
+    });
+ $('#buy').click(function() {
+    
+     $.pageslide({ direction: "left", speed:750, href:"#cartpage", modal: false });
+        })
         $('#slider').noUiSlider('init', {
             knobs: 1,
             connect: "lower"
         });
         $('#maincontainer').slides({
-            effect: 'slide, fade',
+            effect:'fade,slide',
             crossfade: true,
             slideSpeed: 350,
+            play:5000,
             fadeSpeed: 500,
-            generateNextPrev: true,
+            preload: true,
+            preloadImage: "/images/spinner.gif",
             generatePagination: false,
             paginationClass: 'product_pagination'
         });
-        $('#buy').click(function() {
-            $(this).effect("transfer", {
-                to: $("#maincontainer")
-            }, 500, function() {
-                $("#product").fadeOut(function() {
-                    $("#cart_page").fadeIn();
-                });
-            })
-        })
     })
 </script>
+<style type="text/css">
+/*box-shadow: -5px 5px 5px lightgrey;*/
+#pageslide {
+    /* These styles MUST be included. Do not change. */
+    display: none;
+    position: absolute;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    z-index: 999999;
+    border-left:1px solid grey;
+    /* Specify the width of your pageslide here */
+    width: 320px;
+    padding-left:10px;
+    
+box-shadow: -5px 5px 0 lightgrey;
+    /* These styles are optional, and describe how the pageslide will look */
+    background-color: white;
+}
+</style>
 
 <div id="maincontainer" style="clear:both;">
-    <% include cart_page %>
-        
-    <div id="product" >
+  
         <div id="product_page_genesis"><img src="/images/logo_branding/genesis_footer.png" /></div>
+    <div id="product" >
         
         <div id="product_section1">
     
-            <h1 class="product_name" style="float:left";>  <img src="/images/bullets/bullet_square_dots.png" /> Simplicity</h1>
+            <h1 class="product_name" style="float:left"> <img src="/images/bullets/bullet_square_dots.png" /> Simplicity</h1>
             
-            <img src="/images/product_types/small/name_place.png" style="float:right;" />
+            <img src="/images/product_types/small/name_place_grey.png" style="float:right;" />
         
             <div class="slides_container" style="clear:both">            
                 <div class="product_slide"><img src="/products/<%= _id %>/attachments/large-1" /></div>
@@ -48,13 +72,18 @@
             <div id="product_section2">
         
                 <h5>Colours shown:</h5>
+                <% colours.forEach(function(colour) { %>
+                
+                <div class="product_colour" style="clear:both;">
+                <div style="background-color:<%= colour %>;width:20px;height:10px;border:1px solid grey;float:left;margin:5px;margin-left:50px;"></div>
         
-                <div style="background-color:darkblue;width:20px;height:10px;border:1px solid grey;float:left;margin:5px;margin-left:50px;"></div>
-        
-                <span class="small">Midnight blue</span>
+                <span class="small"><%= colour %></span>
+                
+                </div>
+                <% }) %>
             </div>
             
-            <div id="section3">
+            <div id="section3" style="clear:both;">
                 <div style="float:left;width:200px;margin-right:5px;">
                     <h5>Price per 16:</h5>
             </div>
@@ -74,8 +103,44 @@
             <li><a href="#"><img src="/products/<%= _id %>/attachments/thumb-3" /></a></li>
            <li><a href="#"> <img src="/products/<%= _id %>/attachments/thumb-4" /></a></li>
        </ul>
+       <a href="#modal" class="second">Link text</a>
        
         <img src="/images/armament.png" />
     </div>
     
 </div>
+</div>
+<div id="monogram_selection" style="display:none;">
+    <table id="monograms_casamiento">
+        <tr>
+            <td id="monogram_A"><img alt="A" src="http://s3.amazonaws.com/casamiento/monogram_2.png" /></td>
+            <td id="monogram_B"><img alt="B" src="http://s3.amazonaws.com/casamiento/monogram_3.png" /></td> 
+            <td id="monogram_C"><img alt="C" src="http://s3.amazonaws.com/casamiento/monogram_4.png" /></td>
+        </tr> 
+        <tr>        
+            <td id="monogram_D"><img alt="D" src="http://s3.amazonaws.com/casamiento/monogram_5.png" /></td>
+            <td id="monogram_E"><img alt="E" src="http://s3.amazonaws.com/casamiento/monogram_6.png" /></td>
+            <td id="monogram_F"><img alt="F" src="http://s3.amazonaws.com/casamiento/monogram_7.png" /></td>
+        </tr>
+        <tr>        
+            <td id="monogram_G"><img alt="G" src="http://s3.amazonaws.com/casamiento/monograms_big/1.png" /></td>
+            <td id="monogram_H"><img alt="H" src="http://s3.amazonaws.com/casamiento/monograms_big/2.png" /></td>
+            <td id="monogram_I"><img alt="I" src="http://s3.amazonaws.com/casamiento/monograms_big/3.png" /></td>
+        </tr> 
+        <tr>        
+            <td id="monogram_J"><img alt="J" src="http://s3.amazonaws.com/casamiento/monograms_big/4.png" /></td> 
+            <td id="monogram_K"><img alt="K" src="http://s3.amazonaws.com/casamiento/monograms_big/5.png" /></td>
+            <td id="monogram_L"><img alt="L" src="http://s3.amazonaws.com/casamiento/monograms_big/6.png" /></td>
+            </tr>
+        <tr>
+            <td id="monogram_M"><img alt="M" src="http://s3.amazonaws.com/casamiento/monograms_big/7.png" /></td>
+            <td id="monogram_N"><img alt="N" src="http://s3.amazonaws.com/casamiento/monograms_big/8.png" /></td>
+        </tr> 
+    </table>  
+</div>
+<div id="cartpage" style="display:none">
+  <% include cart_page %>
+        
+</div>
+
+<script src="/javascripts/jquery.pageslide.min.js"></script>

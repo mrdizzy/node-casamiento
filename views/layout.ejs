@@ -7,11 +7,16 @@
         
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="stylesheet" href="/stylesheets/main.css" />
-  
+        
+    <script src="/javascripts/cufon.js"></script>
+    <script src="/javascripts/Trajan_Pro_400.font.js"></script>
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src="/javascripts/slides.min.jquery.js"></script>
         <script src="/javascripts/jquery.nouislider.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+        <script>
+        Cufon.replace('h1'); // Works without a selector engine
+        </script>
     </head>
 
     <body>
@@ -26,7 +31,7 @@
 <div id="page_container">   
 
     <div id="nav">
-        <div class="navbar"><img src="/images/logo_branding/dreamsonpaper.png" /></div>
+        <div class="navbar"><img class="dreams_on_paper" src="/images/logo_branding/dreamsonpaper.png" /></div>
         <div class="navbar"><img src="/images/bullets/line_diamond.png" /> ABOUT</div>
         <div class="navbar"><img src="/images/bullets/line_diamond.png" /> CONTACT</div>
          <div class="navbar"><img src="/images/bullets/line_diamond.png" /> LOGIN</div>
