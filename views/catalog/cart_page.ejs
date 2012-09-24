@@ -1,24 +1,18 @@
 <div id="view_trolley" style="text-align:center;margin:auto; width:100%; border-bottom:1px solid grey; padding-top:10px; padding-bottom:10px;margin-bottom:10px;">
-    <img src="/images/view_trolley.png" />
+    <img src="/images/viewcart.png" />
 </div>
-
-    <h1 class="product_name">  <img src="/images/bullets/bullet_square_dots.png" /> Simplicity</h1>
- 
-    <img src="/products/<%= _id %>/attachments/thumb-1" />
-      <div class="noUiSlider"></div>
-<div style="float:left; width:350px;">
-    <div id="select-monogram" style="padding:10px;">
-    
-        <h5><img src="/images/bullets/small_dot_square.png" /> Monogram style:</h5>
-        <div id="monogram_change"><img src="http://s3.amazonaws.com/casamiento/monogram_3.png" /></div>
-    </div>
-    <div id="colours">
+<div id="monogram_box">
+<h5><img src="/images/bullets/small_dot_square.png" /> Monogram style:</h5>
+<div id="select_monogram" style="width:75%;margin:auto;height:50px;color:grey;border:2px dashed grey; border-radius:8px;text-align:center;">No monogram</div>
+   </div>
+    <div id="colors_box">
         <h5><img src="/images/bullets/small_dot_square.png" /> Colours:</h5>
             <% colours.forEach(function(colour) { %>
-              <div class="product_colour" style="clear:both;">
-                <div style="background-color:<%= colour %>;width:20px;height:10px;border:1px solid grey;float:left;margin:5px;margin-left:50px;"></div>
-        <%= colour %>
-        </div>
+              <div class="colour_container">
+                    <div class="swatch" style="background-color:<%= colour %>;"></div>
+                        <span class="small"><%= colour %></span>
+                    </div>
+      
                 <% }) %>
     </div>
     <div id="quantity" style="clear:both;">
@@ -32,4 +26,3 @@
         <input type="text" size="25"></input><br/>
         <input type="text" size="25"></input><br/>
     </div>
-</div>

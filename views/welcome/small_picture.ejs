@@ -1,20 +1,24 @@
-<img src="http://www.casamiento.co.uk/products/<%= doc._id %>/attachments/display-2" />
- <img src="http://www.casamiento.co.uk/products/<%= doc._id %>/attachments/display-3" />  
+<img src="http://www.casamiento.co.uk/products/<%= doc._id %>/attachments/display-2" width="320" height="240" />
+<img src="http://www.casamiento.co.uk/products/<%= doc._id %>/attachments/display-3" width="320" height="240" />  
     
 <div class="colour_shown">
     <h5><img src="/images/bullets/small_dot_square.png" /> Colours shown:</h5> 
    
    <% doc.colours.forEach(function(colour) { %>
-   <div class="colour_container">
-        <div style="clear:both; background-color:<%= colour %>;width:20px;height:10px;border:1px solid grey;float:left;margin:5px;"></div>
-        <span class="small"><%= colour %></span>
-     </div>
+       <div class="colour_container" style="clear:both;">
+            <div class="swatch" style="background-color:<%= colour %>;"></div>
+            <span class="small"><%= colour %></span>
+        </div>
     <% }) %>
   
-   <h5 style="clear:both;"><img src="/images/bullets/small_dot_square.png" /> Price per 16:</h5>
-    <div id="welcome_slider">
-        <div class="noUiSlider"></div>
-    </div>
-    <div id="buy" style="float:right;"></div>
-    <span class="number">£1</span><span class="decimal">.95</span>
+    
+              <div id="buy" style="float:right";></div>
+                <div style="margin-right:63px;">
+                
+                    <h5><img src="/images/bullets/small_dot_square.png" /> Price per 16:</h5>
+                    <div id="slider" style="float:left;" class="noUiSlider"></div>
+                    <div id="price">
+                        <span class="number">£1</span><span class="decimal">.95</span>
+                    </div>
+                </div>
 </div>

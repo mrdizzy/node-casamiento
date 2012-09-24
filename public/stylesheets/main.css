@@ -31,7 +31,6 @@
   h2 { font: bold 1.8em Georgia, "Times New Roman", "Serif"; text-align:center; border-bottom: 1px dashed; color:#690172; }
   h3 { color:#690172; font-weight:bold; margin-bottom: 1em; font-size:1.5em; }
   .small { font-size:0.85em;}
-.trolley {  font-weight:bold; font-size:0.85em; color:#690172; border-bottom:1px solid #C9C9C9; text-align:center;}
   
   h5 { font: bold 0.85em "Arial", "Helvetica", sans-serif; padding-bottom: 10px; border-bottom: 1px solid grey; }
   a:link, a:hover, a:visited { color: #690172; }
@@ -39,22 +38,27 @@
     .number {  font-size:2.4em;  }
     .decimal {  font-size:1.6em; position:relative;top:-8px; }
     
+/* COLOURS
+================================== */
+.colour_shown { margin-left:20px; padding-top:10px; text-align:left; }
+.colour_container { clear:both; margin:10px; margin-left:20px; }
+.swatch { width:20px;height:10px;border:1px solid grey;float:left;margin:5px; border-radius:4px;}
 /* QUANTITY SLIDER
 =================================== */
 /* The main bar. Give this class to whatever element you call .noUiSlider on. */
 .noUiSlider {
     margin-top:20px;
+    width:70%;
     margin-bottom:20px;
-    width:    		200px;
-	border:			none;
 	height:		    1px;
+    margin-right:0;
 	background:		grey;
 }
 
 /* The visible handles for the slider.
 // ( .noUi-handle itself has 0 width, keep it that way. ) */
 .noUi-handle > div {
-	z-index: 		5;
+	z-index: 		200;
 	width:			9px;
 	height:			17px;
     background-color:white;
@@ -82,17 +86,24 @@ table { border-collapse:collapse; text-align:center; }
   #items th { padding-top:0px;  background-image:url('/images/backgrounds/background2.png');}
     #items td { border: 1px dotted #C9C9C9; padding:5px;}
      
+/* cart page
+=================================== */
+#colors_box,#monogram_box { border:1px solid transparent; width:90%; padding:0.5em; margin:auto; argin-bottom:1em; }
+
+#select_monogram:hover { border:2px dashed black; color:black }
+#colors_box:hover, #monogram_box:hover { border:1px solid grey; }
+
 /* FURNITURE
 ==================================== */
-  #top_container { width:974px; margin:0 auto; padding-top:10px; height:50px; border-bottom: 1px dashed #939598; 
+  #top_container { width:974px; margin:0 auto; padding-top:8px; height:50px; border-bottom: 1px dashed #939598; 
   padding-bottom:5px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; background-color:white;}
     #logo {  margin-left:35px; float:left;}
-    #cart { float:right; padding-top:5px; padding-right:20px; }
+    #cart { float:right; margin:0; padding:0; padding-top:10px; padding-right:10px;width:25%; }
+    #trolley { float:left; font-weight:bold;font-size:0.85em; color:grey; padding:8px; text-align:center;}
     #nav { padding:0; }
     .navbar img.dreams_on_paper { position:relative; top:-7px; }
 .navbar {
     height:30px;
-    
     padding-top:10px;
     float:left;   
     text-align:center;
@@ -119,7 +130,7 @@ input { padding:0; margin:0; border: 1px solid grey; }
 
 label { font: bold 0.85em Arial; color:#636667; display:block; padding-top:10px;}
 
-#buy { width:63px; height:53px;  background-image:url('/images/buy.png');}
+#buy { width:63px; height:53px;  background-image:url('/images/buy.png'); position:fixed; top:50%;right:2.5%;}
 #buy:hover { background-position: 0 -53px; }
 
 /* PRODUCT PAGE
@@ -130,14 +141,13 @@ label { font: bold 0.85em Arial; color:#636667; display:block; padding-top:10px;
         #product_section0 img:hover { border:1px solid grey; }
     
     #product_section1 { text-align:left; padding-left:6px; width:648px; float:right;  margin-right:100px; }
-    #product_section2 { float:left; width:300px; }
-    #product_section3 { float:right; width:300px; }
+    #product_section2 { float:left; width:33%; }
+    #product_section3 { margin-left:33%;}
     .product_slide { height:464px; }
     
 /* WELCOME PAGE 
 ============================================== */
     #product_type { width:320px; text-align:center }
-    #slider { width:50% }
 
 .pagination { background:white; width:110px; height:20px; margin-top:6px; padding-left:7px; padding-top:8px; position:relative; top:-720px; left:800px; z-index:100; }
     

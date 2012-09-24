@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
     <head>
         <!-- MAIN image: 648 px wide, middle: 482px, smaller images 320px wide, thumb: 120px, margin middle 6px wide-->
@@ -14,9 +14,7 @@
         <script src="/javascripts/slides.min.jquery.js"></script>
         <script src="/javascripts/jquery.nouislider.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-        <script>
-        Cufon.replace('h1'); // Works without a selector engine
-        </script>
+       
     </head>
 
     <body>
@@ -25,7 +23,8 @@
 
 <div id="top_container">
   <div id="logo"><img src="/images/logo_branding/casamiento.png" /></div>
-  <div id="cart"><a class="trolley" href="">0 items in your trolley</a><img src="/images/trolley.png" /></div>
+  
+  <div id="cart"><div id="trolley">0 items in your trolley</div><img src="/images/viewcart.png" /></div>
 </div>
 
 <div id="page_container">   
@@ -47,5 +46,8 @@
   <div class="footer_seperator"><img src="/images/page_seperators/three_across.png" /></div>
   <div class="collection"><img src="/images/logo_branding/castello.png" /></div>
 </div>
+ <script>
+        Cufon.replace('h1'); // Works without a selector engine
+        </script>
 </body>
 </html>

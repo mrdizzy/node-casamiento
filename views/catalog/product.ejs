@@ -2,17 +2,16 @@
 
  <script>
     $(function() {
-    $('#select-monogram').click(function() {
-       
-    $('#product').fadeOut(function() {
-        
-    $('#monogram_selection').fadeIn()
-    });
-    });
- $('#buy').click(function() {
+         $('#buy').click(function() {
+            $('#pageslide').show().animate({right:"+=320"})
+            $('body').animate({'margin-left': "-=320"})
+         });
     
-     $.pageslide({ direction: "left", speed:750, href:"#cartpage", modal: false });
-        })
+        $('#select-monogram').click(function() {
+            $('#product').fadeOut(function() {
+            $('#monogram_selection').fadeIn()
+        });     
+    });
         $('#slider').noUiSlider('init', {
             knobs: 1,
             connect: "lower"
@@ -35,6 +34,8 @@
 #pageslide {
     /* These styles MUST be included. Do not change. */
     display: none;
+    left: 'auto';
+    right: -329px; 
     position: absolute;
     position: fixed;
     top: 0;
@@ -44,21 +45,18 @@
     /* Specify the width of your pageslide here */
     width: 320px;
     padding-left:10px;
-    
-box-shadow: -5px 5px 0 lightgrey;
+    box-shadow: -5px 5px 0 lightgrey;
     /* These styles are optional, and describe how the pageslide will look */
     background-color: white;
 }
 </style>
 
 <div id="maincontainer" style="clear:both;">
-  
-        <div id="product_page_genesis"><img src="/images/logo_branding/genesis_footer.png" /></div>
-    <div id="product" >
-        
+    <div id="product_page_genesis"><img src="/images/logo_branding/genesis_footer.png" /></div>
+    <div id="product" >        
         <div id="product_section1">
     
-            <h1 class="product_name" style="float:left"> <img src="/images/bullets/bullet_square_dots.png" /> Simplicity</h1>
+            <h1 class="product_name" style="float:left"> <img src="/images/bullets/bullet_square_dots.png" />Simplicity</h1>
             
             <img src="/images/product_types/small/name_place_grey.png" style="float:right;" />
         
@@ -71,27 +69,30 @@ box-shadow: -5px 5px 0 lightgrey;
             
             <div id="product_section2">
         
-                <h5>Colours shown:</h5>
+                <h5><img src="/images/bullets/small_dot_square.png" /> Colours shown:</h5>
+               
                 <% colours.forEach(function(colour) { %>
-                
-                <div class="product_colour" style="clear:both;">
-                <div style="background-color:<%= colour %>;width:20px;height:10px;border:1px solid grey;float:left;margin:5px;margin-left:50px;"></div>
-        
-                <span class="small"><%= colour %></span>
-                
-                </div>
+                     <div class="colour_container">
+                        <div class="swatch" style="background-color:<%= colour %>;"></div>
+            
+                        <span class="small"><%= colour %></span>
+                    </div>
                 <% }) %>
             </div>
             
-            <div id="section3" style="clear:both;">
-                <div style="float:left;width:200px;margin-right:5px;">
-                    <h5>Price per 16:</h5>
-            </div>
-        
-            <div id="buy" style="float:left;"></div>
+            <div id="product_section3">
+            
+                <div style="margin-right:63px;">
                 
-            <div id="slider" class="noUiSlider"></div>
-            <span style="clear:both;" class="number">£1</span><span class="decimal">.95</span>
+                    <h5><img src="/images/bullets/small_dot_square.png" /> Price per 16:</h5>
+                    <div id="slider" style="float:left;" class="noUiSlider"></div>
+                    <div id="price">
+                        <span class="number">£1</span><span class="decimal">.95</span>
+                    </div>
+                </div>
+                
+                
+            </div>
         </div>
     </div>
 
@@ -103,12 +104,11 @@ box-shadow: -5px 5px 0 lightgrey;
             <li><a href="#"><img src="/products/<%= _id %>/attachments/thumb-3" /></a></li>
            <li><a href="#"> <img src="/products/<%= _id %>/attachments/thumb-4" /></a></li>
        </ul>
-       <a href="#modal" class="second">Link text</a>
        
         <img src="/images/armament.png" />
     </div>
-    
 </div>
+    &nbsp;
 </div>
 <div id="monogram_selection" style="display:none;">
     <table id="monograms_casamiento">
@@ -138,9 +138,8 @@ box-shadow: -5px 5px 0 lightgrey;
         </tr> 
     </table>  
 </div>
-<div id="cartpage" style="display:none">
+                <div id="buy" style="float:right"></div>
+<div id="pageslide">
   <% include cart_page %>
         
 </div>
-
-<script src="/javascripts/jquery.pageslide.min.js"></script>
