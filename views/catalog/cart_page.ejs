@@ -1,28 +1,31 @@
 <div id="view_trolley" style="text-align:center;margin:auto; width:100%; border-bottom:1px solid grey; padding-top:10px; padding-bottom:10px;margin-bottom:10px;">
     <img src="/images/viewcart.png" />
 </div>
-<div id="monogram_box">
-<h5><img src="/images/bullets/small_dot_square.png" /> Monogram style:</h5>
-<div id="select_monogram" style="width:75%;margin:auto;height:50px;color:grey;border:2px dashed grey; border-radius:8px;text-align:center;">No monogram</div>
-   </div>
-    <div id="colors_box">
-        <h5><img src="/images/bullets/small_dot_square.png" /> Colours:</h5>
-            <% colours.forEach(function(colour) { %>
-              <div class="colour_container">
-                    <div class="swatch" style="background-color:<%= colour %>;"></div>
-                        <span class="small"><%= colour %></span>
-                    </div>
-      
-                <% }) %>
-    </div>
-    <div id="quantity" style="clear:both;">
-        <h5><img src="/images/bullets/small_dot_square.png" /> Quantity</h5>
-    </div>
+
+<!-- MONOGRAM -->
+<div class="cart_box" id="monogram_box">
+    <h5><img src="/images/bullets/small_dot_square.png" /> Monogram style:</h5>
+    <div id="select_monogram" style="width:75%;margin:auto;height:50px;color:grey;border:2px dashed grey; border-radius:8px;text-align:center;">No monogram</div>
 </div>
-    <div id="guests">
-        <h5><img src="/images/bullets/small_dot_square.png" /> Guests:</h5>
-        <input type="text" size="25"></input><br/>
+   
+<!-- COLOURS --> 
+<div class="cart_box" id="colors_box">
+    <h5><img src="/images/bullets/small_dot_square.png" /> Colours:</h5>
         
-        <input type="text" size="25"></input><br/>
-        <input type="text" size="25"></input><br/>
-    </div>
+        <% colours.forEach(function(colour) { %>
+            <div class="colour_container">
+                <div class="swatch" style="background-color:<%= colour %>;"></div>
+                <span class="small"><%= colour %></span>
+            </div>
+        <% }) %>
+</div>
+    
+<!-- GUESTS -->
+<div class="cart_box" id="guests">
+    <h5><img src="/images/bullets/small_dot_square.png" /> Guests:</h5>
+    <p class="guests"><a href="">Andrew</a>, <a href="">Mark</a> David, Lucy, James, Jonathan, Sarah, Nanny, Arnie, Davina</p>
+
+    <input type="text" size="25"></input>
+    
+    </form>
+</div>

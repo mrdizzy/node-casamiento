@@ -1,9 +1,23 @@
+<script src="/javascripts/garamond.js"></script>
+
  <script>
     $(function() {
-        $('.noUiSlider').noUiSlider('init', {
+        <% documents.forEach(function(doc) { %>
+        $('#slider_<%= doc._id %>').noUiSlider('init', {
             knobs: 1,
-            connect: "lower"
+            scale: [1,128],
+            start: [16,0],
+            step: 1,
+            connect: "lower",
+            change: function(e, r) {
+                var number = $('#slider_<%= doc._id %>').noUiSlider('value')
+                var price = casamientoCalculator(number[1])
+               $('#quantity_<%= doc._id %>').html(number[1]);   
+               $('#price_main_<%= doc._id %>').html("£" + price[0]); 
+               $('#price_decimal_<%= doc._id %>').html("." + price[1]);
+            }
         });
+        <% }) %>
               
         $("#slides").slides({
             play: 5000,
@@ -14,9 +28,12 @@
             fadeSpeed: 2000
         });    
     })
+    
+    Cufon.replace("h6", "Garamond")
 </script>
+
 <style type="text/css">
-.description { border: 1px solid grey; padding:20px 40px 20px 40px; margin-left: 20px; margin-right: 20px; font: italic 1.2em/160% "Georgia", serif;}
+.description {  color:black; padding:20px 40px 20px 40px; margin-left: 40px; margin-right: 40px;}
 
 .welcome { margin: auto; padding-top:5px; display:block; }
 
@@ -25,13 +42,13 @@
 .welcome_section2 { text-align:center; margin-right:326px; width:648px; padding:0; margin:0;  }
 .welcome_section3 {text-align:center; float:right;width:320px; }
 
- .slides_container { width:974px; display:none; height:740px; }
+ .slides_container { width:974px; display:none; height:820px; }
     .slides_container .a_slide { background-color: white; width:974px; display:block;  }
 </style>
 
-<img src="/images/welcome_page/welcome.png" class="welcome" />
-
 <div id="product_type"><img src="/images/product_types/small/name_place_grey.png" /></div>
+<div id="welcome_logo"><img src="/images/welcome_page/welcome.png" class="welcome" /></div>
+
 <div id="slides"><div class="slides_container">
 
     <% for (var i=0; i < documents.length; i++) { %>

@@ -1,10 +1,13 @@
 <!-- MAIN image: 648 px wide, middle: 482px, smaller images 320px wide, thumb: 120px, margin middle 6px wide-->
 
  <script>
+ 
     $(function() {
          $('#buy').click(function() {
             $('#pageslide').show().animate({right:"+=320"})
-            $('body').animate({'margin-left': "-=320"})
+            $('body').animate({'margin-left': "-=320"}, function() {
+            $('#maincontainer, #top_container, #nav, #footer').fadeTo("medium", 0.5);
+            })
          });
     
         $('#select-monogram').click(function() {
@@ -14,7 +17,17 @@
     });
         $('#slider').noUiSlider('init', {
             knobs: 1,
-            connect: "lower"
+            scale: [1,128],
+            start: [16,0],
+            step: 1,
+            connect: "lower",
+            change: function(e, r) {
+                var number = $('#slider').noUiSlider('value')
+                var price = casamientoCalculator(number[1])
+               $('#quantity').html(number[1]);   
+               $('#price_main').html("£" + price[0]); 
+               $('#price_decimal').html("." + price[1]);
+            }
         });
         $('#maincontainer').slides({
             effect:'fade,slide',
@@ -30,6 +43,7 @@
     })
 </script>
 <style type="text/css">
+#cover { width:100%; height:100%; background-color:white; }
 /*box-shadow: -5px 5px 5px lightgrey;*/
 #pageslide {
     /* These styles MUST be included. Do not change. */
@@ -50,9 +64,12 @@
     background-color: white;
 }
 </style>
-
+<div id="cover">
 <div id="maincontainer" style="clear:both;">
     <div id="product_page_genesis"><img src="/images/logo_branding/genesis_footer.png" /></div>
+    <div id="select_monogram_panel" style="border:1px solid black; width:40%;">
+    Select monogram
+    </div>
     <div id="product" >        
         <div id="product_section1">
     
@@ -84,10 +101,10 @@
             
                 <div style="margin-right:63px;">
                 
-                    <h5><img src="/images/bullets/small_dot_square.png" /> Price per 16:</h5>
+                    <h5><img src="/images/bullets/small_dot_square.png" /> Price per <span id="quantity">16</span>:</h5>
                     <div id="slider" style="float:left;" class="noUiSlider"></div>
                     <div id="price">
-                        <span class="number">£1</span><span class="decimal">.95</span>
+                        <span class="number" id="price_main">£1</span><span id="price_decimal" class="decimal">.95</span>
                     </div>
                 </div>
                 
@@ -105,10 +122,11 @@
            <li><a href="#"> <img src="/products/<%= _id %>/attachments/thumb-4" /></a></li>
        </ul>
        
-        <img src="/images/armament.png" />
+        <img src="/images/shell.png" />
     </div>
 </div>
     &nbsp;
+    <div style="clear: both;"></div>
 </div>
 <div id="monogram_selection" style="display:none;">
     <table id="monograms_casamiento">
@@ -142,4 +160,5 @@
 <div id="pageslide">
   <% include cart_page %>
         
+</div>
 </div>

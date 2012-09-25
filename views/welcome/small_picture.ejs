@@ -11,14 +11,12 @@
         </div>
     <% }) %>
   
+    <div style="margin-right:63px;">
     
-              <div id="buy" style="float:right";></div>
-                <div style="margin-right:63px;">
-                
-                    <h5><img src="/images/bullets/small_dot_square.png" /> Price per 16:</h5>
-                    <div id="slider" style="float:left;" class="noUiSlider"></div>
-                    <div id="price">
-                        <span class="number">£1</span><span class="decimal">.95</span>
-                    </div>
-                </div>
+        <h5><img src="/images/bullets/small_dot_square.png" /> Price per <span id="quantity_<%= doc._id %>">16</span>:</h5>
+        <div id="slider_<%= doc._id %>" style="float:left;" class="noUiSlider"></div>
+        <div id="price_<%= doc._id %>">
+            <span class="number" id="price_main_<%= doc._id %>">£1</span><span id="price_decimal_<%= doc._id %>"class="decimal">.95</span>
+        </div>
+    </div>
 </div>
