@@ -3,6 +3,16 @@
  <script>
  
     $(function() {
+        $('#monogram_box').hover(function(){
+            $('#select_monogram_panel').fadeIn('medium');
+            }, function(){
+                 $('#select_monogram_panel').fadeOut('medium');
+                 });
+        $('#colors_box').hover(function(){
+            $('#select_colors_panel').fadeIn('medium');
+            }, function(){
+                 $('#select_colors_panel').fadeOut('medium');
+                 });
          $('#buy').click(function() {
             $('#pageslide').show().animate({right:"+=320"})
             $('body').animate({'margin-left': "-=320"}, function() {
@@ -64,12 +74,138 @@
     background-color: white;
 }
 </style>
+<div id="select_colors_panel" style="border:1px solid black; background-color:white; width:60%;top:10%;left:5%;position:fixed;margin:auto;display:none;z-index:999999">
+<table class="casamiento" id="colour_table_casamiento"> 
+                <tr>
+                <th colspan="6">Reds &amp; Pinks</th>
+                </tr>
+                <tr>
+                 
+                </tr>
+              
+            <tr>
+                <td><div class="casamiento_colour" style="background-color:Red"></td>   <td>Red</td>
+                
+                <td><div class="casamiento_colour" style="background-color:MediumVioletRed"></td>   <td>VioletRed</td>
+                 <td><div class="casamiento_colour" style="background-color:Firebrick"></td><td>Firebrick</td>
+                </tr>
+                
+                <tr>
+                
+                 <td><div class="casamiento_colour" style="background-color:HotPink"></td>  <td>HotPink</td>
+                 <td><div class="casamiento_colour" style="background-color:DeepPink"></td> <td>DeepPink</td>
+                </tr>
+              
+                
+               <tr>
+                <th colspan="6">Oranges &amp; Yellows</th>
+                </tr>
+                <tr>
+                <td><div class="casamiento_colour" style="background-color:LightSalmon"></td> <td>LightSalmon</td>
+                <td><div class="casamiento_colour" style="background-color:OrangeRed"></td>   <td>OrangeRed</td>
+                 
+                 <td><div class="casamiento_colour" style="background-color:Orange"></td>  <td>Orange</td>
+                </tr>
+              
+                <tr>
+                 <td><div class="casamiento_colour" style="background-color:Yellow"></td>  <td>Yellow</td>
+                </tr>
+                             <tr>
+                <th colspan="6">Purples</th>
+                </tr>
+                <tr>
+                <td><div class="casamiento_colour" style="background-color:Violet"></td> <td>Violet</td>
+                 <td><div class="casamiento_colour" style="background-color:Fuchsia"></td>  <td>Fuchsia</td>
+                 <td><div class="casamiento_colour" style="background-color:MediumOrchid"></td> <td>MediumOrchid</td>
+                </tr>
+                        <tr>
+                 <td><div class="casamiento_colour" style="background-color:DarkViolet"></td>  <td>DarkViolet</td>
+                 <td><div class="casamiento_colour" style="background-color:Purple"></td> <td>Purple</td>
+                <td><div class="casamiento_colour" style="background-color:Indigo"></td> <td>Indigo</td>
+                          
+                </tr>
+                                         <tr>
+                <th colspan="6">Greens &amp; Blues</th>
+                </tr>
+                <tr>
+                <td><div class="casamiento_colour" style="background-color:GreenYellow"></td> <td>GreenYellow</td>          
+                 
+                 <td><div class="casamiento_colour" style="background-color:LightSeaGreen"></td>  <td>LightSeaGreen</td>
+                 
+                 <td><div class="casamiento_colour" style="background-color:CornflowerBlue"></td>  <td>CornflowerBlue</td>
+                </tr>
+                
+                <tr>            
+                 <td><div class="casamiento_colour" style="background-color:LimeGreen"></td>  <td>LimeGreen</td>  
+                 
+                    <td><div class="casamiento_colour" style="background-color:LightSkyBlue"></td>
+                    <td>LightSkyBlue</td>
+                    <td><div class="casamiento_colour" style="background-color:SteelBlue"></td>
+                    <td>SteelBlue</td>   
+                </tr>            
+                
+                
+                <tr>
+                <td><div class="casamiento_colour" style="background-color:ForestGreen"></td> <td>ForestGreen</td>
+                
+                 <td><div class="casamiento_colour" style="background-color:DeepSkyBlue"></td> <td>DeepSkyBlue</td>
+                 
+                 
+                 <td><div class="casamiento_colour" style="background-color:Blue"></td> <td>Blue</td>
+                </tr>
+                
+                <tr>                                
+                 <td><div class="casamiento_colour" style="background-color:DarkGreen"></td>
+                 <td>DarkGreen</td>             
+                 
+                <td><div class="casamiento_colour" style="background-color:DodgerBlue"></td> <td>DodgerBlue</td>
+                    <td><div class="casamiento_colour" style="background-color:Midnightblue"></td>
+                    <td>Midnightblue</td>
+                </tr>
+                <tr>
+                    <th colspan="6">Browns</th>
+                </tr>
+                <tr>
+                    <td><div class="casamiento_colour" style="background-color:SaddleBrown"></td>
+                    <td>SaddleBrown</td>
+                    <td><div class="casamiento_colour" style="background-color:Maroon"></td>
+                    <td>Maroon</td>
+                </tr>
+        </table>
+        </div>
+<div id="select_monogram_panel" style="border:1px solid black; background-color:white; width:60%;top:10%;left:5%;position:fixed;margin:auto;display:none;z-index:999999">
+    
+    <table id="monograms_casamiento">
+        <tr>
+            <td id="monogram_A"><img alt="A" src="http://s3.amazonaws.com/casamiento/monogram_2.png" /></td>
+            <td id="monogram_B"><img alt="B" src="http://s3.amazonaws.com/casamiento/monogram_3.png" /></td> 
+            <td id="monogram_C"><img alt="C" src="http://s3.amazonaws.com/casamiento/monogram_4.png" /></td>
+        </tr> 
+        <tr>        
+            <td id="monogram_D"><img alt="D" src="http://s3.amazonaws.com/casamiento/monogram_5.png" /></td>
+            <td id="monogram_E"><img alt="E" src="http://s3.amazonaws.com/casamiento/monogram_6.png" /></td>
+            <td id="monogram_F"><img alt="F" src="http://s3.amazonaws.com/casamiento/monogram_7.png" /></td>
+        </tr>
+        <tr>        
+            <td id="monogram_G"><img alt="G" src="http://s3.amazonaws.com/casamiento/monograms_big/1.png" /></td>
+            <td id="monogram_H"><img alt="H" src="http://s3.amazonaws.com/casamiento/monograms_big/2.png" /></td>
+            <td id="monogram_I"><img alt="I" src="http://s3.amazonaws.com/casamiento/monograms_big/3.png" /></td>
+        </tr> 
+        <tr>        
+            <td id="monogram_J"><img alt="J" src="http://s3.amazonaws.com/casamiento/monograms_big/4.png" /></td> 
+            <td id="monogram_K"><img alt="K" src="http://s3.amazonaws.com/casamiento/monograms_big/5.png" /></td>
+            <td id="monogram_L"><img alt="L" src="http://s3.amazonaws.com/casamiento/monograms_big/6.png" /></td>
+            </tr>
+        <tr>
+            <td id="monogram_M"><img alt="M" src="http://s3.amazonaws.com/casamiento/monograms_big/7.png" /></td>
+            <td id="monogram_N"><img alt="N" src="http://s3.amazonaws.com/casamiento/monograms_big/8.png" /></td>
+        </tr> 
+    </table>  
+    </div>
 <div id="cover">
 <div id="maincontainer" style="clear:both;">
     <div id="product_page_genesis"><img src="/images/logo_branding/genesis_footer.png" /></div>
-    <div id="select_monogram_panel" style="border:1px solid black; width:40%;">
-    Select monogram
-    </div>
+    
     <div id="product" >        
         <div id="product_section1">
     
@@ -127,34 +263,6 @@
 </div>
     &nbsp;
     <div style="clear: both;"></div>
-</div>
-<div id="monogram_selection" style="display:none;">
-    <table id="monograms_casamiento">
-        <tr>
-            <td id="monogram_A"><img alt="A" src="http://s3.amazonaws.com/casamiento/monogram_2.png" /></td>
-            <td id="monogram_B"><img alt="B" src="http://s3.amazonaws.com/casamiento/monogram_3.png" /></td> 
-            <td id="monogram_C"><img alt="C" src="http://s3.amazonaws.com/casamiento/monogram_4.png" /></td>
-        </tr> 
-        <tr>        
-            <td id="monogram_D"><img alt="D" src="http://s3.amazonaws.com/casamiento/monogram_5.png" /></td>
-            <td id="monogram_E"><img alt="E" src="http://s3.amazonaws.com/casamiento/monogram_6.png" /></td>
-            <td id="monogram_F"><img alt="F" src="http://s3.amazonaws.com/casamiento/monogram_7.png" /></td>
-        </tr>
-        <tr>        
-            <td id="monogram_G"><img alt="G" src="http://s3.amazonaws.com/casamiento/monograms_big/1.png" /></td>
-            <td id="monogram_H"><img alt="H" src="http://s3.amazonaws.com/casamiento/monograms_big/2.png" /></td>
-            <td id="monogram_I"><img alt="I" src="http://s3.amazonaws.com/casamiento/monograms_big/3.png" /></td>
-        </tr> 
-        <tr>        
-            <td id="monogram_J"><img alt="J" src="http://s3.amazonaws.com/casamiento/monograms_big/4.png" /></td> 
-            <td id="monogram_K"><img alt="K" src="http://s3.amazonaws.com/casamiento/monograms_big/5.png" /></td>
-            <td id="monogram_L"><img alt="L" src="http://s3.amazonaws.com/casamiento/monograms_big/6.png" /></td>
-            </tr>
-        <tr>
-            <td id="monogram_M"><img alt="M" src="http://s3.amazonaws.com/casamiento/monograms_big/7.png" /></td>
-            <td id="monogram_N"><img alt="N" src="http://s3.amazonaws.com/casamiento/monograms_big/8.png" /></td>
-        </tr> 
-    </table>  
 </div>
                 <div id="buy" style="float:right"></div>
 <div id="pageslide">

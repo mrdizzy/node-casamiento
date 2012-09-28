@@ -84,8 +84,10 @@
      
 /* cart page
 =================================== */
+table td { text-align:center; }
 .cart_box { border:1px solid transparent; width:90%; padding:0.5em;margin-bottom:1em; }
 
+.casamiento_colour { border-radius:5px;width:20px;height:10px;margin:auto;border:1px solid grey; }
 #select_monogram:hover { border:2px dashed black; color:black }
 .cart_box:hover { border:1px solid grey; }
 

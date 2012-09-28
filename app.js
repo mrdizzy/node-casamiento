@@ -77,7 +77,7 @@ app.get("/", function(req, res) {
         })
     })
 });
-
-http.createServer(app).listen(app.get('port'), function() {
-    console.log("Express server listening on port " + app.get('port'));
+console.log(app.get("port"), process.env.C9_PORT);
+http.createServer(app).listen(process.env.C9_PORT, function() {
+    console.log("Express server listening on port " + process.env.C9_PORT);
 });
