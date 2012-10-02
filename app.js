@@ -1,6 +1,7 @@
 var express = require('express'),
     http = require('http'),
     productsController = require('./controllers/products'),
+    paypalController = require('./controllers/paypal'),
     importEbayMessage = require('./import_ebay_messages'),
     db = require('couchdb-migrator').db,
     partials = require('express-partials');
@@ -24,6 +25,7 @@ app.configure(function() {
 app.configure('development', function() {
     app.use(express.errorHandler());
 });
+app.get("/paypalrecent",paypalController.index);
 app.get('/catalog/ebay/:id', function(req, res) {
     var id = req.params.id;
     db.get(id, function(error, document) {

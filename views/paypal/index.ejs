@@ -1,0 +1,58 @@
+<html>
+<body>
+<head>
+<style type="text/css">
+body { text-align:left; }
+table { border-collapse:collapse;text-align:left;}
+td { border: 1px solid grey; text-align:left;}
+</style>
+</head>
+<table>
+<tr>
+<th>
+Date
+</th>
+<th>
+Name
+</th>
+<th>
+payer ID</th>
+<th>
+Email
+</th>
+<th>
+Memo</th><th>
+Items</th>
+<th>
+Amount</th>
+</tr>
+
+<% transactions.forEach(function(t) { %>
+<tr>
+<td>
+<%= t.date %></td>
+<td>
+<%= t.address %>
+</td>
+<td><input type="checkbox" value="<%=t.payer_id%>" />
+<%= t.payer_id %>
+</td>
+<td>
+<%= t.email %>
+</td><td>
+<%= t.note %>
+</td>
+
+<td>
+<% t.items.forEach(function(item) { %>
+<%= item.L_QTY %> <%= item.L_AMT %> <%= item.L_NUMBER %> <%= item.L_NAME %><br/>
+<% }) %>
+</td>
+<td>
+<%= t.amount %>
+</td>
+</tr>
+<% }) %>
+</table>
+</body>
+</html>
