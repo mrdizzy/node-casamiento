@@ -3,7 +3,8 @@ var express = require('express'),
     productsController = require('./controllers/products'),
     paypalController = require('./controllers/paypal'),
     importEbayMessage = require('./import_ebay_messages'),
-    db = require('couchdb-migrator').db,
+    db = require('couchdb-migrator').databases.test_ebay,
+    conversationsController = require('./controllers/conversations'),
     partials = require('express-partials');
 
 var app = express();
@@ -43,7 +44,6 @@ app.get('/catalog/:id', function(req, res) {
 
 // Products
 app.get("/products/:id/attachments/:filename", productsController.show);
-
 app.get("/products/:id/attachments/:filename.:png/", productsController.show);
 
 app.put("/products/:productId", productsController.update);
@@ -72,6 +72,12 @@ app.post('/ebay', function(req, res) {
     })
 });
 
+// Conversations
+app.get("/conversations", conversationsController.index);
+app.delete("/conversations/:id", conversationsController.destroy);
+app.get("/conversations/:id", conversationsController.show);
+
+//Home page
 app.get("/", function(req, res) {
     db.view('all/type', { key: 'product' }, function(error, documents) {
         res.render("welcome/index", {  
@@ -79,7 +85,7 @@ app.get("/", function(req, res) {
         })
     })
 });
-console.log(app.get("port"), process.env.C9_PORT);
+
 http.createServer(app).listen(process.env.C9_PORT, function() {
     console.log("Express server listening on port " + process.env.C9_PORT);
 });

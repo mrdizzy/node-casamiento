@@ -1,0 +1,111 @@
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.1/underscore-min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
+<script type="text/javascript">
+$(function() {
+    var Message = Backbone.Model.extend({});
+    var Messages = Backbone.Collection.extend({
+        model: Message,
+        url: function() {
+            return '/conversations/' + this.id;
+        }
+    });
+
+    var Conversation = Backbone.Model.extend({
+        idAttribute: "_id",
+        messages: function() { 
+            if (!this.thread) {
+                this.thread = new Messages()
+                this.thread.id = this.id;
+            }
+            return(this.thread);
+        }
+    });
+    
+    var Conversations = Backbone.Collection.extend({
+        url: '/conversations',
+        model: Conversation
+    });
+    
+    // VIEWS
+    
+    var MessageView = Backbone.View.extend({
+        tagName: "textarea",
+        attributes: {
+            cols: "100",
+            rows: "20"
+        },
+        render: function() {
+            this.$el.html(this.model.get("Content"));
+            return this;
+        }
+    });
+    
+    var MessagesView = Backbone.View.extend({
+        initialize: function() {
+            this.collection.bind('reset', this.render, this);
+        },
+        render: function() {
+            var messages = [];
+            this.collection.forEach(function(message) {
+                messages.push(new MessageView({model: message}).render().el) 
+            });
+            this.$el.html(messages);
+            return this;
+        }
+    });
+    var ConversationView = Backbone.View.extend({
+        events: {
+            'click': 'select',
+            'click .close' : 'closeThread'
+        },
+        closeThread: function(o) {
+            this.model.destroy();
+        },
+        select: function(o) {
+            this.model.messages().fetch();
+        },
+        initialize: function() {
+            _.bind(this.render, this);
+            this.model.bind('destroy', this.remove, this);
+        },
+        tagName: 'li',
+        render: function() {
+            var messages = new MessagesView({
+                collection: this.model.messages()
+            });
+            var messages_view = messages.render().el;
+            this.$el.html([this.model.get("subject"), "<div class=\"close\"><i>close</i></div>", messages_view ]);
+            return this;
+        }
+    });
+    var ConversationList = Backbone.View.extend({
+        el: '#conversation',
+        render: function() {
+            var conversationViews = [];
+            this.collection.forEach(function(conversation) {
+                var view = new ConversationView({
+                    model: conversation
+                }).render().el;
+                conversationViews.push(view);
+            })
+            this.$el.html(conversationViews);
+            return this;
+        }
+    })
+    
+    // INITIALIZATION
+    
+    var conversations = new Conversations( <%- JSON.stringify(documents) %> );
+    
+    var conversation_list = new ConversationList({
+        collection: conversations
+    })
+    conversation_list.render();
+
+})
+
+</script>
+<div id="selected_conversation">
+
+</div>
+<div id="conversation"></div>

@@ -1,6 +1,15 @@
 var cradle = require('cradle');
+var databases = {}
 
-module.exports.db = new(cradle.Connection)('https://casamiento.iriscouch.com', 443, {
+databases.ebay_messages = new(cradle.Connection)('https://casamiento.iriscouch.com', 443, {
+    auth: {
+        username: "casamiento",
+        password: "floppsy1"
+    },
+    cache: false
+}).database("ebay_messages");
+
+databases.test_ebay = new(cradle.Connection)('https://casamiento.iriscouch.com', 443, {
     auth: {
         username: "casamiento",
         password: "floppsy1"
@@ -8,37 +17,42 @@ module.exports.db = new(cradle.Connection)('https://casamiento.iriscouch.com', 4
     cache: false
 }).database("test_ebay");
 
-module.exports.documents = [
+databases.test_ebay.documents = [
 // Design documents
 
 // Security 
 
-{ 
-    _id: '_design/blockAnonymousWrites',
-    language: "javascript", 
-    validate_doc_update: function(new_doc, old_doc, userCtx) {   if(userCtx.name != 'casamiento') {     throw({forbidden: "Not Authorized"});   } }
-},
 {
-    _id: "_security", 
-        "admins": {
-            "names": [],
-            "roles": ["admin"]
-        },
-        "members": {
-            "names": [],
-            "roles": []
+    _id: '_design/blockAnonymousWrites',
+    language: "javascript",
+    validate_doc_update: function(new_doc, old_doc, userCtx) {
+        if (userCtx.name != 'casamiento') {
+            throw ({
+                forbidden: "Not Authorized"
+            });
         }
+    }
+}, {
+    _id: "_security",
+    "admins": {
+        "names": [],
+        "roles": ["admin"]
+    },
+    "members": {
+        "names": [],
+        "roles": []
+    }
 },
 
 // Customers 
 
-{ 
+{
     _id: '_design/customers',
-    language: "javascript", 
+    language: "javascript",
     views: {
         by_email: {
             map: function(doc) {
-                if(doc.type == 'Customer') {
+                if (doc.type == 'Customer') {
                     doc.emails.forEach(function(email) {
                         emit(email, doc)
                     });
@@ -47,21 +61,21 @@ module.exports.documents = [
         },
         email_for_customer: {
             map: function(doc) {
-                if(doc.type == 'Customer') {
+                if (doc.type == 'Customer') {
                     doc.emails.forEach(function(email) {
-                        emit([email, 0], doc);   
+                        emit([email, 0], doc);
                     })
                 }
                 else if (doc.type == 'email') {
-                       emit([doc.From, 1],doc);
+                    emit([doc.From, 1], doc);
                 }
             }
         },
         by_id_and_email: {
             map: function(doc) {
-                if(doc.type == "Customer") {
+                if (doc.type == "Customer") {
                     doc.emails.forEach(function(email) {
-                        emit([doc._id, email], doc);   
+                        emit([doc._id, email], doc);
                     })
                 }
             }
@@ -294,29 +308,25 @@ module.exports.documents = [
     emails: ["david.p@dizzy.co.uk", "david.p@casamiento.co.uk", "david.pettifer@dizzy.co.uk"],
     type: "Customer",
     UserIDs: ["casamiento"]
-},
-{
-        _id: "ANEIASTOKEN",
-        name: "Helena Betts", 
-        emails: ["helena@helena.com"],
-        type: "Customer",
-        UserIDs: ["happyhele"]
-},
-{
-    _id: "EIASTOKENFORGARY", 
-    name: "G COOLEY", 
+}, {
+    _id: "ANEIASTOKEN",
+    name: "Helena Betts",
+    emails: ["helena@helena.com"],
+    type: "Customer",
+    UserIDs: ["happyhele"]
+}, {
+    _id: "EIASTOKENFORGARY",
+    name: "G COOLEY",
     type: "Customer",
     emails: ["garycoo@coo.com"],
-},
-{
+}, {
     _id: "1",
     name: "Gary Cooley",
     type: "Customer",
     emails: ["rebelcoo7@hotmail.com"],
     UserIDs: ["rebelcoo7"]
-},
-{
-    _id: "2", 
+}, {
+    _id: "2",
     name: "Helena Betts",
     type: "Customer",
     emails: ["happyhele@hotmail.com", "helena.betts@fatima.com"]
@@ -359,3 +369,35 @@ module.exports.documents = [
     _id: 'time',
     lastModified: '2012-06-01T02:20:00.000Z'
 }]
+databases.ebay_messages.documents = [{
+    _id: '_design/conversations',
+    language: "javascript",
+    views: {
+        with_messages: {
+            map: function(doc) {
+                if (doc.status != null) {
+                    emit([doc._id, 0], doc);
+                }
+                else {
+                    emit([doc.conversation_id, 1], doc.Content);
+                }
+            }
+        },
+        messages_by_conversation: {
+            map: function(doc) {
+                if (doc.conversation_id) {
+                    emit(doc.conversation_id, doc);
+                }
+            }
+        },
+        all: {
+            map: function(doc) {
+                if (doc.status != null) {
+                    emit(doc._id, doc);
+                }
+            }
+        }
+    }
+}]
+
+module.exports = databases;
