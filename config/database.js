@@ -1,21 +1,16 @@
-var cradle = require('cradle');
-var databases = {}
+var cradle = require('cradle'),
+    connection = new(cradle.Connection)('https://casamiento.iriscouch.com', 443, {
+        auth: {
+            username: "casamiento",
+            password: "floppsy1"
+        },
+        cache: false
+    }),
+    databases = {}
 
-databases.ebay_messages = new(cradle.Connection)('https://casamiento.iriscouch.com', 443, {
-    auth: {
-        username: "casamiento",
-        password: "floppsy1"
-    },
-    cache: false
-}).database("ebay_messages");
-
-databases.test_ebay = new(cradle.Connection)('https://casamiento.iriscouch.com', 443, {
-    auth: {
-        username: "casamiento",
-        password: "floppsy1"
-    },
-    cache: false
-}).database("test_ebay");
+databases.test_import = connection.database("test_import");
+databases.ebay_messages = connection.database("ebay_messages");
+databases.test_ebay = connection.database("test_ebay");
 
 databases.test_ebay.documents = [
 // Design documents

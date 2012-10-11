@@ -29,13 +29,9 @@ $(function() {
     // VIEWS
     
     var MessageView = Backbone.View.extend({
-        tagName: "textarea",
-        attributes: {
-            cols: "100",
-            rows: "20"
-        },
+        
         render: function() {
-            this.$el.html(this.model.get("Content"));
+            this.$el.html("<p>" + this.model.get("ReceiveDate") + "</p><textarea rows=\"8\" cols=\"100\">" + this.model.get("Content") + "</textarea>");
             return this;
         }
     });
@@ -54,12 +50,13 @@ $(function() {
         }
     });
     var ConversationView = Backbone.View.extend({
+        className: "conversation",
         events: {
             'click': 'select',
             'click .close' : 'closeThread'
         },
         closeThread: function(o) {
-            this.model.destroy();
+            this.model.destroy({wait: true});
         },
         select: function(o) {
             this.model.messages().fetch();
@@ -74,7 +71,7 @@ $(function() {
                 collection: this.model.messages()
             });
             var messages_view = messages.render().el;
-            this.$el.html([this.model.get("subject"), "<div class=\"close\"><i>close</i></div>", messages_view ]);
+            this.$el.html(["<b>" + this.model.get("last_message_date") + "</b>", this.model.get("subject"), "<div class=\"close\"><i>close</i></div>", messages_view ]);
             return this;
         }
     });
@@ -105,7 +102,10 @@ $(function() {
 })
 
 </script>
+<style type="text/css">
+.message { padding:1em; margin-left:3em; border-top:1px dashed grey; }
+.conversation { padding:1em; border-bottom:1px solid grey; }
+</style>
 <div id="selected_conversation">
-
 </div>
-<div id="conversation"></div>
+<div  id="conversation"></div>

@@ -13,6 +13,7 @@ app.configure(function() {
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'ejs');
+    app.set('view options', { layout: false });
     app.use(express.favicon());
     app.use(partials());
     app.use(express.logger('dev'));
@@ -70,6 +71,21 @@ app.post('/ebay', function(req, res) {
         console.log(result);
         res.end();
     })
+});
+app.get("/poo.:format?", function(req, res) {
+    console.log(req.format);
+    res.format({
+       html: function() {
+           console.log("html");
+       },
+       text: function() {
+           console.log("text");
+       },
+       json: function() {
+           console.log("json");
+       }
+        
+    });
 });
 
 // Conversations

@@ -4,22 +4,6 @@ var db = require('couchdb-migrator').db,
 _ = require('underscore'),
     paypal = require('./../config/paypal_config')();
 
-function parseTransaction(t) {
-    console.log(t);
-    var address = [t.SHIPTONAME, t.SHIPTOSTREET, t.SHIPTOCITY, t.SHIPTOSTATE, t.SHIPTOZIP]
-    address = address.join("\n");
-    var date = Date.parse(t.ORDERTIME);
-    var t2 = {
-        items: t.GetTransactionDetailsResponse,
-        payer_id: t.PAYERID,
-        address: address,
-        email: t.EMAIL,
-        date: date,
-        amount: t.AMT,
-        note: t.NOTE
-    }
-    return t2;
-}
 
 function parseTransactions(transactions, maincallback) {
     async.map(transactions, function(transaction, callback) {
@@ -28,9 +12,10 @@ function parseTransactions(transactions, maincallback) {
         }
         else {
             paypal.buildQuery("GetTransactionDetails", function(err, response) {
-                var result = parseTransaction(response);
-                callback(err, result);
-            }, {
+                    response.items = response.GetTransactionDetailsResponse;
+                    console.log(response);
+                    callback(err,response)
+                }, {
                 TRANSACTIONID: transaction.L_TRANSACTIONID
             })
         }
@@ -47,8 +32,8 @@ module.exports.index = function(req, res) {
             }
         });
     }, {
-        startdate: "2012-09-20T00:00:00Z",
-        enddate: "2012-10-01T23:59:59Z",
+        startdate: "2012-09-30T00:00:00Z",
+        enddate: "2012-10-11T23:59:59Z",
         transactionclass: "BalanceAffecting"
     })
 }

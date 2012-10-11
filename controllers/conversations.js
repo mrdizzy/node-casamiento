@@ -2,8 +2,8 @@ var messages = require('couchdb-migrator').databases.ebay_messages,
 _ = require('underscore');
 
 exports.index = function(req, res) {
-    messages.view('conversations/all', function(error, documents) {
-        res.render("conversations/index", {
+    messages.view('conversations/all', { descending: true }, function(error, documents) {
+        res.render("conversations/index", { layout:'admin',
             documents: documents.toArray()
         });
     });
@@ -11,8 +11,12 @@ exports.index = function(req, res) {
 exports.destroy = function(req, res) {
     messages.merge(req.params.id, {
         status: "CLOSED"
-    }, function(err, res) {
-        console.log(err, res);
+    }, function(err, document) {
+        if(err) {
+            res.status(500).end();
+        } else {
+            res.status(200).end();
+        }
     });
 }
 exports.show = function(req, res) {
