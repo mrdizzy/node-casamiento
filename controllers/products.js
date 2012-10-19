@@ -1,4 +1,4 @@
-var db = require('couchdb-migrator').db,
+var db = require('couchdb-migrator').databases.test_ebay,
 async = require('async'),
 fs = require('fs'), 
 themes = ["ace_of_hearts", "simplicity", "rose", "chequers", "birds_of_paradise", "border"],

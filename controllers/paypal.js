@@ -1,9 +1,7 @@
 var db = require('couchdb-migrator').db,
     async = require('async'),
-    
 _ = require('underscore'),
     paypal = require('./../config/paypal_config')();
-
 
 function parseTransactions(transactions, maincallback) {
     async.map(transactions, function(transaction, callback) {
@@ -33,7 +31,7 @@ module.exports.index = function(req, res) {
         });
     }, {
         startdate: "2012-09-30T00:00:00Z",
-        enddate: "2012-10-11T23:59:59Z",
+        enddate: "2012-10-17T23:59:59Z",
         transactionclass: "BalanceAffecting"
     })
 }
