@@ -27,6 +27,9 @@ app.configure(function() {
 app.configure('development', function() {
     app.use(express.errorHandler());
 });
+app.configure('production', function() {
+    app.use(express.errorHandler());
+});
 app.get("/paypalrecent",paypalController.index);
 app.get('/catalog/ebay/:id', function(req, res) {
     var id = req.params.id;
