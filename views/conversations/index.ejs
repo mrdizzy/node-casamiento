@@ -29,9 +29,22 @@ $(function() {
     // VIEWS
     
     var MessageView = Backbone.View.extend({
-        
+        events: {
+            'click input' : 'createMessage'
+},  
+createMessage: function() {
+    var that = this;
+    this.reply = this.reply || (function() {
+        var message = new Message();
+        that.model.collection.add(message);
+return message})();
+this.reply.set("Content", this.$('textarea').val());
+    console.log(this.reply.get("Content"));
+
+},
         render: function() {
-            this.$el.html("<p>" + this.model.get("ReceiveDate") + "</p><textarea rows=\"8\" cols=\"100\">" + this.model.get("Content") + "</textarea>");
+
+            this.$el.html("<p>" + this.model.get("ReceiveDate") + "</p><textarea rows=\"8\" cols=\"100\">" + this.model.get("Content") + "</textarea><input type=\"submit\" />");
             return this;
         }
     });
@@ -43,7 +56,7 @@ $(function() {
         render: function() {
             var messages = [];
             this.collection.forEach(function(message) {
-                messages.push(new MessageView({model: message}).render().el) 
+                messages.push(new MessageView({model: message, reply: new Message()}).render().el) 
             });
             this.$el.html(messages);
             return this;

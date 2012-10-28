@@ -15,7 +15,7 @@ _.chunk = function(array, n) {
 api.makeRequest("GetMyMessages", {
     DetailLevel: "ReturnHeaders",
     StartTime: "2012-10-08T00:00:01Z",
-    EndTime: "2012-10-12T00:00:00Z"
+    EndTime: "2012-10-25T00:00:00Z"
 }, "json", null, function(err, response) {
     console.log(response.Messages.Message.length);
     retrieveMessages(response.Messages.Message);

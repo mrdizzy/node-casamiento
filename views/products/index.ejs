@@ -8,14 +8,10 @@
     <script type="text/template" id="current_product_form">
         <form id="edit_product">
             <h1>{{ _id }}</h1>
-            <h3>{{ _rev }}</h3>
-            <p>Price: <input type="text" name="price" value="{{ price ? price : ""}}"></input></p>
-            <p>Colours: <input type="text" name="colours" value="{{colours ? colours : "" }}"></input></p>
-            
+            Price: <input type="text" name="price" value="{{ price ? price : ""}}"></input></p>
             <input type="submit">
         </form>
     </script>
-    
     
 <script type="text/javascript">
 
@@ -52,8 +48,9 @@ $(function() {
         }
     });
     
-    var Product = Backbone.Model.CouchDB.extend({
+    var Product = Backbone.Model.extend({
         
+        idAttribute: "_id",
         productType: function() {
             this.product_type = this.product_type || this.id.split("-")[1]  
             return this.product_type;
@@ -84,8 +81,6 @@ $(function() {
     var CurrentProductView = Backbone.View.extend({
         el: '#current_product',
         initialize: function() {
-            console.log("initizing");
-            console.log(this.model);
             this.collection.bind('reset', this.render, this);
             this.collection.bind('change', this.render, this);
         },
@@ -142,17 +137,14 @@ $(function() {
     }).render();
 })
 
-
 </script>
 </head>
 <body>
 
-<div id="products">
+<div id="products"></div>
 
-</div>
 <h2>Current Product:</h2>
-<div id="current_product">
+<div id="current_product"></div>
 
-</div>
 </body>
 </html>

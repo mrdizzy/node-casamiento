@@ -93,7 +93,19 @@ databases.test_ebay.documents = [
     }
 },
 
-
+{
+    _id: '_design/products',
+    language: "javascript",
+    views: {
+        by_type: {
+            map: function(doc) {
+    if (doc.type && doc.type == 'product') {
+  emit(doc._id, doc)
+}
+}
+        }
+    }
+},
 {
     _id: '_design/paypal',
     language: "javascript",

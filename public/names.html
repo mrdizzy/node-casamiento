@@ -59,24 +59,24 @@ _.chunk = function(array, n) {
 <script type="text/javascript">
 $(function() {
     $('#button').click(
-        function() {
-             var names = $('#names').val()
-names = $.trim(names);
+    function() {
+        var names = $('#names').val()
+        names = $.trim(names);
 
-    names = names.split("\n");
-    names = names.sort();
-    for(i = 0; i < names.length; i++) {
-        names[i] = toTitleCase(names[i])   
-        names[i] = names[i].trim();
-    }
-    names = _.chunk(names, 8);
-      var template = $('#template').html();
-    var r = _.template(template, { names: names });
-    $('#result').text(r);
-            });
-   
-    
-  
+        names = names.split("\n");
+        names = names.sort();
+        for (i = 0; i < names.length; i++) {
+            names[i] = toTitleCase(names[i])
+            names[i] = names[i].trim();
+        }
+        names = _.chunk(names, 8);
+        var template = $('#template').html();
+        var r = _.template(template, {
+            names: names
+        });
+        $('#download').attr("href", "data:application/octet-stream," + encodeURIComponent(r));
+    });
+
 });
 </script>
 
@@ -115,7 +115,7 @@ Jasmin
 </textarea>
 <input type="submit" id="button"></input>
 <h1>Result</h1>
-<textarea id="result" cols="100" rows="20">
+<a href=""  download="names.xml" id="download">Download</a>
 
 </textarea>
 </body>

@@ -5,11 +5,13 @@ _ = require('underscore'),
 
 function parseTransactions(transactions, maincallback) {
     async.map(transactions, function(transaction, callback) {
-        if (transaction.L_TYPE == 'Fee' || transaction.L_TYPE == 'Fee Reversal') {
+        if (transaction.L_TYPE == 'Fee' || transaction.L_TYPE == 'Fee Reversal' || transaction.L_TYPE == 'Temporary Hold') {
             callback(null, null)
         }
         else {
+            console.log(transaction.L_TYPE);
             paypal.buildQuery("GetTransactionDetails", function(err, response) {
+                console.log(err, response);
                     response.items = response.GetTransactionDetailsResponse;
                     console.log(response);
                     callback(err,response)
@@ -31,7 +33,7 @@ module.exports.index = function(req, res) {
         });
     }, {
         startdate: "2012-09-30T00:00:00Z",
-        enddate: "2012-10-17T23:59:59Z",
+        enddate: "2012-10-26T23:59:59Z",
         transactionclass: "BalanceAffecting"
     })
 }

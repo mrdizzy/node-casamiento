@@ -1,10 +1,10 @@
 var express = require('express'),
     http = require('http'),
-    productsController = require('./controllers/products'),
+    resource = require('express-resource'),
     paypalController = require('./controllers/paypal'),
     importEbayMessage = require('./import_ebay_messages'),
     db = require('couchdb-migrator').databases.test_ebay,
-    conversationsController = require('./controllers/conversations'),
+    ebay = require('./controllers/ebay'),
     partials = require('express-partials');
 
 var app = express();
@@ -30,14 +30,24 @@ app.configure('development', function() {
 app.configure('production', function() {
     app.use(express.errorHandler());
 });
+
+// PAYPAL
 app.get("/paypalrecent",paypalController.index);
+
+// EBAY
 app.get('/catalog/ebay/:id', function(req, res) {
     var id = req.params.id;
     db.get(id, function(error, document) {
         console.log(document);
         res.render('catalog/product_ebay.ejs',  {layout:false, locals: document}); 
     });
-});
+})
+
+app.get('/ebay', ebay.index);
+app.get('/ebay/:theme_id', ebay.show);
+app.get('/ebay/sample/:theme_id', ebay.sample);
+
+// main catalog
 
 app.get('/catalog/:id', function(req, res) {
     var id = req.params.id;
@@ -46,14 +56,11 @@ app.get('/catalog/:id', function(req, res) {
     });
 });
 
-// Products
-app.get("/products/:id/attachments/:filename", productsController.show);
-app.get("/products/:id/attachments/:filename.:png/", productsController.show);
+var products = app.resource('products', require('./controllers/products'));
+    var attachments  = app.resource("attachments", require('./controllers/attachments'));
+    products.add(attachments);
 
-app.put("/products/:productId", productsController.update);
-app.get("/products", productsController.index);
-app.post("/products", productsController.create)
-app.get('/products/new', productsController.new);
+app.resource("conversations", require('./controllers/conversations'));
 
 // The eBay Notify API posts a message to this address that we need to parse
 app.post('/ebay', function(req, res) {
@@ -90,11 +97,6 @@ app.get("/poo.:format?", function(req, res) {
         
     });
 });
-
-// Conversations
-app.get("/conversations", conversationsController.index);
-app.delete("/conversations/:id", conversationsController.destroy);
-app.get("/conversations/:id", conversationsController.show);
 
 //Home page
 app.get("/", function(req, res) {

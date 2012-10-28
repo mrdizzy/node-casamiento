@@ -11,7 +11,6 @@
 #genesis_logo_top { padding:0; margin-top:10px; }
 #genesis_container { border-top:1px dotted grey; border-bottom:1px solid grey; height:60px;}
 
-
 /* Main Typography
 ==================================== */
 h5.casamiento { font: bold 11px "Arial"; color: #636667;margin:0; text-align:left; border-bottom: 1px solid #636667; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px; padding-left:10px;}
@@ -112,7 +111,7 @@ table.casamiento_related td img { padding:5px; }
     </div>
 
     <div style="float:right;margin-top:5px;width:200px;">
-        <img src="/images/product_types/small/sample_small.png" /> 
+        <img src="/images/product_types/small/<%= product_type %>_small.png" /> 
     </div>
 
 <!-- #######################################################################################
@@ -160,7 +159,6 @@ and we'll also give you a PDF file so you can use it on anything else you want. 
 <li class="casamiento"><b>Colours.</b> You can choose the colour scheme on some of our stationery to co-ordinate with your day. </li>
 </ul>
 
-
 <p class="casamiento">If you have any questions, please don't hesitate to get in touch with me&hellip;</p>
 <p class="casamiento">Have a wonderful day!</p>
  
@@ -186,7 +184,7 @@ S P E C S
                     <table class="casamiento">
                         
                         <tr>
-                            <td><img src="/images/product_types/SAMPLE.png" /></td>
+                            <td><img src="/images/product_types/<%= product_type %>.png" /></td>
                             <td class="casamiento">1 x sample package containing RSVP, name place, invitation, wrapper and envelope.<br/> Please note that samples are not personalised.</td>
                         </tr>
                     </table>
@@ -196,26 +194,16 @@ Also in this design:</h5>
                     
            <div class="prevent_table_stretching">
                     <table class="casamiento">
+<% related.forEach(function(r) { %>
                           <tr>
-                            <td><img src="/images/product_types/small/invitation_small.png" /</td>
-                            <td><img src="http://www.casamiento.co.uk/products/simplicity-invitation/attachments/thumb-5" /></td>
+                            <td><img src="/images/product_types/small/<%= r.product_type %>_small.png" /</td>
+                            <td><img src="http://www.casamiento.co.uk/products/simplicity-<%= r.product_type %>/attachments/thumb-1" /></td>
 
-<td class="casamiento">20 x invitationss</td>
+<td class="casamiento">20 x <%= r.product_type %></td>
                             <td class="casamiento_price">&pound;5<span class="decimal">.99</span></td>
                         </tr>
-                        <tr>
-                            <td><img src="http://www.casamiento.co.uk//images/product_types/small/name_place_grey.png" /</td>
-                            <td><img src="http://www.casamiento.co.uk/products/simplicity-name_place/attachments/thumb-1" /></td>
-
-<td class="casamiento">20 x name place cards</td>
-                            <td class="casamiento_price">&pound;3<span class="decimal">.99</span></td>
-                        </tr>
-                        <tr>
-                            <td><img src="/images/product_types/small/rsvp_small.png" /</td>
-                            <td><img src="http://www.casamiento.co.uk/products/simplicity-invitation/attachments/thumb-16" /></td>
-<td class="casamiento">20 x reply cards</td>
-                            <td class="casamiento_price">&pound;3<span class="decimal">.99</span></td>
-                        </tr>
+                       <% }) %>
+                      
                     </table>
                     </div>
                 </div>
