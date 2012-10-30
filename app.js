@@ -31,37 +31,15 @@ app.configure('production', function() {
     app.use(express.errorHandler());
 });
 
-// PAYPAL
-app.get("/paypalrecent",paypalController.index);
-
-// EBAY
-app.get('/catalog/ebay/:id', function(req, res) {
-    var id = req.params.id;
-    db.get(id, function(error, document) {
-        console.log(document);
-        res.render('catalog/product_ebay.ejs',  {layout:false, locals: document}); 
-    });
-})
-
-app.get('/ebay', ebay.index);
-app.get('/ebay/:theme_id', ebay.show);
-app.get('/ebay/sample/:theme_id', ebay.sample);
-
-// main catalog
-
-app.get('/catalog/:id', function(req, res) {
-    var id = req.params.id;
-    db.get(id, function(error, document) {
-        res.render('catalog/product.ejs', {locals: document}); 
-    });
-});
 
 var products = app.resource('products', require('./controllers/products'));
     var attachments  = app.resource("attachments", require('./controllers/attachments'));
     products.add(attachments);
 
+app.resource("admin/products", require('./controllers/admin/products'));
 app.resource("conversations", require('./controllers/conversations'));
-
+app.resource("paypal", require('./controllers/paypal'));
+app.resource("ebay", require('./controllers/ebay'));
 // The eBay Notify API posts a message to this address that we need to parse
 app.post('/ebay', function(req, res) {
     var result = "";
@@ -81,21 +59,6 @@ app.post('/ebay', function(req, res) {
         console.log(result);
         res.end();
     })
-});
-app.get("/poo.:format?", function(req, res) {
-    console.log(req.format);
-    res.format({
-       html: function() {
-           console.log("html");
-       },
-       text: function() {
-           console.log("text");
-       },
-       json: function() {
-           console.log("json");
-       }
-        
-    });
 });
 
 //Home page

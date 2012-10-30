@@ -21,7 +21,9 @@ function parseTransactions(transactions, maincallback) {
         }
     }, maincallback);
 }
-module.exports.index = function(req, res) {
+module.exports.index = {
+    json: function(req, res) {
+    
     paypal.buildQuery("TransactionSearch", function(error, response) {
         parseTransactions(response.TransactionSearchResponse, function(err, results) {
             if (err) {
@@ -33,7 +35,11 @@ module.exports.index = function(req, res) {
         });
     }, {
         startdate: "2012-09-30T00:00:00Z",
-        enddate: "2012-10-26T23:59:59Z",
+        enddate: "2012-10-01T23:59:59Z",
         transactionclass: "BalanceAffecting"
     })
+},
+html: function(req, res){
+       res.render('paypal/index');
+}
 }

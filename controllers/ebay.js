@@ -2,7 +2,7 @@ var db = require('couchdb-migrator').databases.test_ebay,
 _ = require('underscore');
 
 exports.show = function(req, res) {
-    var results = req.params.theme_id.split("-"),
+    var results = req.params.ebay.split("-"),
         theme_name = results[0],
         product_type = results[1];
         
@@ -13,7 +13,7 @@ exports.show = function(req, res) {
         console.log(docs);
         var documents = docs.toArray();
         var current = _.find(documents, function(doc) {
-            return doc._id == req.params.theme_id;
+            return doc._id == req.params.ebay;
             })
         var without = _.without(documents, current);
         current.related = without;

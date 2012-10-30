@@ -3,54 +3,48 @@
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js" type="text/javascript"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" type="text/javascript"></script>
-
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js"></script>
+    
     <script type="text/template" id="current_product_form">
         <form id="edit_product">
-            <h1>{{ _id }}</h1>
-            Price: <input type="text" name="price" value="{{ price ? price : ""}}"></input></p>
+            <h1>{{ _id }}</h1>        
+            <p><label for="price">Price:</label> <input type="text" name="price" value="{{price}}"></input></p>
             <input type="submit">
         </form>
     </script>
     
 <script type="text/javascript">
 
-_.templateSettings = {
-     evaluate : /\{\[([\s\S]+?)\]\}/g,
-  interpolate : /\{\{(.+?)\}\}/g
-};
 var product_types = <%- JSON.stringify(product_types) %>;
 var themes = <%- JSON.stringify(themes) %>;
 
-$(function() {
+$(function() {    
+    var Attachment = Backbone.Model.extend();
+    var Attachments = Backbone.Collection.extend({model: Attachment});
     Backbone.Model.CouchDB = Backbone.Model.extend({
-        host: "casamiento.iriscouch.com",
-        database: "test_ebay",
-        idAttribute: "_id",
-        attachments: function() {
-            if (this._attachments) {
-                return this._attachments
-            }
-            else {
-                this._attachments = _.map(Object.keys(this.get("_attachments")), function(a) {
-                    var attachment = {
-                        _id: a,
-                        url: this.collection.url + "/" + this.id + "/attachments/" + a,
-                        couch_url: this.host + "/" + this.database + "/" + this.id + "/" + a,
-                        destroy: function() {
-                            $.ajax({type: "DELETE", url: this.url});   
-                        }
-                    }
-                    return attachment;
-                }, this)
-                return this._attachments
-            }
-        }
+        initialize: function() {
+            this.attachments = new Attachments();
+            this.sortAttachments();
+            this.attachments.parent = this;
+        },
+        sortAttachments: function() {
+            
+            var model = this;
+                      var attachments = _.map(this.get("attachments_order"), function(attachment) {
+                var attachment = {
+                    id: attachment,
+                    position: attachment,
+                    thumb_url: model.url() + "/attachments/" + "thumb-" + attachment
+                }
+                return attachment;  
+            }, this)
+            this.attachments.reset(attachments);   
+        },
+        idAttribute: "_id"
     });
-    
-    var Product = Backbone.Model.extend({
-        
-        idAttribute: "_id",
+    var Product = Backbone.Model.CouchDB.extend({
         productType: function() {
             this.product_type = this.product_type || this.id.split("-")[1]  
             return this.product_type;
@@ -58,31 +52,20 @@ $(function() {
         theme: function() {
             this.theme = this.theme || this.id.split("-")[0]   
             return this.theme
-        }
+        },
+        urlRoot: "/products"
     });
     var Products = Backbone.Collection.extend({
-        model: Product,
-        url: '/products'
+        model: Product
     });
-    var products = new Products( <%- JSON.stringify(products) %> );
-    var AttachmentView = Backbone.View.extend({
-        events: {
-            'click .destroy': 'destroy'
-        },
-        destroy: function() {
-            this.model.destroy();
-        },
-        render: function() {
-            this.$el.html("<li><a href=\"http://" + this.model.couch_url + "\">" + this.model._id + " </a> <a class=\"destroy\">destroy</a>")
-            return this;
-        }
-    });
+    
+    var products = new Products( <%- JSON.stringify(products) %>, {parse: true} );
     
     var CurrentProductView = Backbone.View.extend({
         el: '#current_product',
         initialize: function() {
+            this.current_model = this.collection.at(0);
             this.collection.bind('reset', this.render, this);
-            this.collection.bind('change', this.render, this);
         },
         events: { 
             'click input[type=submit]': 'sendForm'
@@ -94,10 +77,39 @@ $(function() {
                 console.log(a,b,c)
             }});
         },
+        onDrop: function(e) {
+            this.collection.at(0).set("attachments_order", $('#thumbnails_'+ this.collection.at(0).id).sortable('toArray'));
+        },
         render: function() {
-            console.log("change");
-            var result = _.template($('#current_product_form').html(), this.collection.at(0).toJSON());
+            var result = Handlebars.compile($('#current_product_form').html())(this.collection.at(0).toJSON());
             this.$el.html(result);
+            this.$el.append(new AttachmentsView({collection: this.collection.at(0).attachments}).render().el);
+            return this;
+        }
+    })
+    
+    var AttachmentsView = Backbone.View.extend({
+        render: function() {
+            console.log(this.collection);
+            var attachments = this.collection.map(function(attachment) {
+                return new AttachmentView({model: attachment}).render().el; 
+            });
+            var that = this;
+            this.$el.html(attachments);
+            this.$el.sortable({update: function(a,b) {
+                that.collection.parent.set("attachments_order", that.$el.sortable("toArray"));
+                that.collection.parent.sortAttachments();
+                }});
+            return this;
+        }
+    });
+    
+    var AttachmentView = Backbone.View.extend({
+        tagName: "img",
+        
+        render: function() {
+            this.el.id = this.model.id;
+            this.el.src = this.model.get("thumb_url");
             return this;
         }
     })
