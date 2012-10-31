@@ -9,3 +9,11 @@ exports.show = function(req, res) {
         res.end();
     });
 }
+exports.update = function(req, res) {
+  console.log("Updated:", req.files)  
+};
+exports.destroy = function(req, res) {
+    
+   console.log("Body:", req.body); 
+    
+};
