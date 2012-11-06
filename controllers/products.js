@@ -3,9 +3,17 @@ var db = require('couchdb-migrator').databases.test_ebay;
 exports.show = function(req, res) {
     var id = req.params.product;
     db.get(id, function(error, document) {
-        res.render('catalog/product.ejs', {
-            locals: document
-        });
+        res.format({
+            json: function() {
+                console.log(document);
+                res.json(document)
+            },
+            html: function() {
+                res.render('catalog/product.ejs', {
+                    locals: document
+                });
+            }
+        })
     });
 };
 

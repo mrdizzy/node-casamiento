@@ -1,4 +1,5 @@
 var db = require('couchdb-migrator').databases.test_ebay,
+collate_attachments = require('./../../lib/collate_attachments');
     async = require('async'),
     fs = require('fs'),
     themes = ["ace_of_hearts", "simplicity", "rose", "chequers", "birds_of_paradise", "border"],
@@ -25,33 +26,6 @@ exports.create = function(req, res) {
         }, function(err, doc) {
             console.log(err, doc)
         })
-    })
-}
-
-function collateAttachments(req, callback) {
-    var collated = {}
-    async.forEach(Object.keys(req.files), function(key, callback) {
-        var thisFile = req.files[key];
-        if (thisFile.size > 0) {
-            fs.readFile(thisFile.path, function(err, data) {
-
-                collated[key] = {}
-                collated[key]["content_type"] = "image/png";
-                collated[key]["data"] = data.toString('base64');
-
-                callback(err);
-            })
-        }
-        else {
-            callback(null)
-        }
-    }, function(err) {
-        if (err == null) {
-            callback(null, collated)
-        }
-        else {
-            callback(null)
-        }
     })
 }
 

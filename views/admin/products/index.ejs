@@ -8,6 +8,20 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js"></script>
     <script src="/javascripts/couchdb_attachments.js"></script>
     
+    <script type="text/template" id="attachment_view">
+        <img src="{{path "thumb"}}"/><a class="destroy">Destroy</a>
+            <form method="POST" action="{{url}}" enctype="multipart/form-data" target="iframe_{{id}}">
+            <input type="hidden" name="rev" value="{{get "_rev"}}"></input>
+            {{get "_rev"}}
+            <input type="file" name="thumb-{{id}}"></input><br/>
+            <input type="file" name="medium-{{id}}"></input><br/>
+            <input type="file" name="display-{{id}}"></input><br/>
+            <input type="file" name="large-{{id}}"></input><br/>
+            <input type="hidden" name="_method" value="put" />
+            <input type="submit"></input>
+            </form>
+    </script>
+    
     <script type="text/template" id="current_product_form">
         <form id="edit_product">
             <h1>{{ _id }}</h1>        
@@ -20,25 +34,18 @@
 
 $(function() {    
     // MODELS
-    var Product = Backbone.Model.CouchDB.extend({
-        productType: function() {
-            this.product_type = this.product_type || this.id.split("-")[1]  
-            return this.product_type;
-        },
-        theme: function() {
-            this.theme = this.theme || this.id.split("-")[0]   
-            return this.theme
-        }
-    });
+    var Product = Backbone.Model.CouchDB.extend({});
     var Products = Backbone.Collection.extend({
         model: Product,
         url: "/products"
     });
-    
-        var ProductView = Backbone.View.extend({
-                events: { 'click': 'select' },
+
+    var ProductView = Backbone.View.extend({
+        events: {
+            'click': 'select'
+        },
         select: function() {
-             current_product_collection.reset(this.model);
+            current_product_collection.reset(this.model);
         },
         render: function() {
             this.$el.html(this.model.id);
@@ -64,7 +71,8 @@ $(function() {
     var CurrentProductView = Backbone.View.extend({
         el: '#current_product',
         initialize: function() {
-            this.collection.bind('reset', this.render, this);
+            this.collection.bind('reset', this.render, this);            
+            //this.collection.at(0).bind('change', this.render, this);
         },
         events: { 
             'click #submitter': 'sendForm'
@@ -77,28 +85,45 @@ $(function() {
             }});
         },
         render: function() {
+            console.log("Rendering current view");
+            var that = this;
             var result = Handlebars.compile($('#current_product_form').html())(this.collection.at(0).toJSON());
             this.$el.html(result);
             this.$el.append(new AttachmentsView({collection: this.collection.at(0).attachments}).render().el);
+                    
             return this;
         }
     })
-    
-    var AttachmentsView = Backbone.View.extend({
+    var AttachmentsView = Backbone.View.Attachment.extend({
         render: function() {
+
+                var that = this;
             var attachments = this.collection.map(function(attachment) {
-                return new AttachmentView({model: attachment}).render().el; 
+                return new AttachmentView({
+                    model: attachment
+                }).render().el;
             });
-            var that = this;
-            this.$el.html(attachments);
-            this.$el.sortable({update: function(a,b) {
-                that.collection.belongs_to.set("attachments_order", that.$el.sortable("toArray"));
-                }});
-            return this;
-        }
+            this.$('#sortable').html(attachments);
+            this.collection.forEach(function(attachment) {
+                var iframe = $("<iframe name=\"iframe_" + attachment.id + "\"><html><body>Horrah</body></html></iframe>");
+                this.$el.append(iframe);
+                var counter = 0;
+                iframe.load(function() {
+                    if (counter > 0) {
+                        console.log("Fetching");
+                        that.collection.belongs_to.fetch();
+                    }
+                    counter++;
+                })
+            }, this);
+        return this;
+    }
     });
-    
     var AttachmentView = Backbone.View.extend({
+        initialize: function() {
+             this.counter = 0;
+             this.model.bind('change', this.render, this);
+        },
         events: { 
             'click .destroy' : 'remove'  
         },
@@ -107,16 +132,19 @@ $(function() {
           this.model.destroy({data: "_rev=" + that.model.get("_rev") }); 
         },
         render: function() {
-            this.el.id = this.model.id;
-            var html = "<img src=\"" + this.model.path("thumb") + "\" /><a class=\"destroy\">Destroy</a>"
-            var form = "<form method=\"POST\" action=\"" + this.model.url() + "\" enctype=\"multipart/form-data\" target=\"iframe_" + this.model.id + "\">" +
-            "<input type=\"file\" name=\"thumb\"></input>"+
-            "<input type=\"hidden\" name=\"_method\" value=\"put\" />"+
-            "<input type=\"submit\"></input>" +
-            "</form>"; 
+            var that= this;
+            var result = Handlebars.compile($('#attachment_view').html())(this.model);
             
-            var iframe = "<iframe name=\"iframe_" + this.model.id + "\" style=\"display: none;\"></iframe>";
-            this.$el.html(html + form + iframe);
+            console.log("Rendering AAA VIEW");
+            this.el.id = this.model.id;
+            this.$el.html(result);
+            //this.$('iframe').load(function() {
+            //    if (that.counter > 0) {
+            //        console.log("Fetching");
+            //        //that.model.collection.belongs_to.fetch();
+            //    }                
+            //    that.counter++;
+            //});
             return this;
         }
     })
@@ -137,6 +165,7 @@ $(function() {
     new ProductsView({
         collection: products
     }).render();
+    
 })
 
 </script>
