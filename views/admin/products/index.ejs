@@ -26,15 +26,47 @@
         <form id="edit_product">
             <h1>{{ _id }}</h1>        
             <p><label for="price">Price:</label> <input type="text" name="price" value="{{price}}"></input></p>
+            
+            <select name="colours" multiple="true">
+            {{#colours}}
+            <option value="{{colour}}" {{selected}}>{{colour}}</option>
+            {{/colours}}
+            </select>
             <input type="submit" id="submitter">Submit</a>
         </form>
     </script>
     
 <script type="text/javascript">
 
+var colourList = ["Red", "VioletRed", "Firebrick", "HotPink", "DeepPink", "LightSalmon", "OrangeRed", "Orange", "Yellow", "Violet", "Fuschia", "MediumOrchid", "DarkViolet", "Purple", "Indigo", "GreenYellow", "LightSeaGreen","CornflowerBlue", "LimeGreen", "LightSkyBlue", "SteelBlue", "ForestGreen", "DeepSkyBlue", "Blue", "DarkGreen", "DodgerBlue", "MidnightBlue", "SaddleBrown", "Maroon"];
 $(function() {    
     // MODELS
-    var Product = Backbone.Model.CouchDB.extend({});
+    var Product = Backbone.Model.CouchDB.extend({
+        initialize: function() {
+            Backbone.Model.CouchDB.prototype.initialize.call(this);
+            var selectedColours = this.get("colours");
+            var colours = _.map(colourList, function(colour) {
+
+                   var matchingColour = _.any(selectedColours, function(selectedColour) {
+                    return selectedColour == colour;
+                })
+
+                if (matchingColour) {
+                    return {
+                        colour: colour,
+                        selected: "selected"
+                    }
+                }
+                else {
+                    return {
+                        colour: colour,
+                        selected: ""
+                    }
+                }
+            });
+            this.set("colours", colours);
+        }
+    });
     var Products = Backbone.Collection.extend({
         model: Product,
         url: "/products"
@@ -72,20 +104,23 @@ $(function() {
         el: '#current_product',
         initialize: function() {
             this.collection.bind('reset', this.render, this);
+
         },
         events: { 
             'click #submitter': 'sendForm'
         },
         sendForm: function(e) {
             e.preventDefault();
-            this.collection.at(0).set({ price: this.$('input[name="price"]').val(), colours: this.$('input[name="colours"]').val()});
-            this.collection.at(0).save({}, { success: function(a, b, c) {
-                console.log(a,b,c)
+            var product = this.collection.at(0);
+            product.set({ price: this.$('input[name="price"]').val(), colours: this.$('select[name="colours"]').val()});
+            product.save({}, { success: function(a, b, c) {
+               console.log(a,b,c)
             }});
         },
         render: function() {
             var that = this;
-            var result = Handlebars.compile($('#current_product_form').html())(this.collection.at(0).toJSON());
+            var json = this.collection.at(0).toJSON();
+            var result = Handlebars.compile($('#current_product_form').html())(json);
             this.$el.html(result);
             this.$el.append(new AttachmentsView({collection: this.collection.at(0).attachments}).render().el);
                     
