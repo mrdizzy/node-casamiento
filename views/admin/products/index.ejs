@@ -71,8 +71,7 @@ $(function() {
     var CurrentProductView = Backbone.View.extend({
         el: '#current_product',
         initialize: function() {
-            this.collection.bind('reset', this.render, this);            
-            //this.collection.at(0).bind('change', this.render, this);
+            this.collection.bind('reset', this.render, this);
         },
         events: { 
             'click #submitter': 'sendForm'
@@ -85,7 +84,6 @@ $(function() {
             }});
         },
         render: function() {
-            console.log("Rendering current view");
             var that = this;
             var result = Handlebars.compile($('#current_product_form').html())(this.collection.at(0).toJSON());
             this.$el.html(result);
@@ -96,7 +94,6 @@ $(function() {
     })
     var AttachmentsView = Backbone.View.Attachment.extend({
         render: function() {
-
                 var that = this;
             var attachments = this.collection.map(function(attachment) {
                 return new AttachmentView({
@@ -105,12 +102,11 @@ $(function() {
             });
             this.$('#sortable').html(attachments);
             this.collection.forEach(function(attachment) {
-                var iframe = $("<iframe name=\"iframe_" + attachment.id + "\"><html><body>Horrah</body></html></iframe>");
+                var iframe = $("<iframe name=\"iframe_" + attachment.id + "\" style=\"display:none;\"></iframe>");
                 this.$el.append(iframe);
                 var counter = 0;
                 iframe.load(function() {
                     if (counter > 0) {
-                        console.log("Fetching");
                         that.collection.belongs_to.fetch();
                     }
                     counter++;
@@ -121,7 +117,6 @@ $(function() {
     });
     var AttachmentView = Backbone.View.extend({
         initialize: function() {
-             this.counter = 0;
              this.model.bind('change', this.render, this);
         },
         events: { 
@@ -134,17 +129,8 @@ $(function() {
         render: function() {
             var that= this;
             var result = Handlebars.compile($('#attachment_view').html())(this.model);
-            
-            console.log("Rendering AAA VIEW");
             this.el.id = this.model.id;
             this.$el.html(result);
-            //this.$('iframe').load(function() {
-            //    if (that.counter > 0) {
-            //        console.log("Fetching");
-            //        //that.model.collection.belongs_to.fetch();
-            //    }                
-            //    that.counter++;
-            //});
             return this;
         }
     })
