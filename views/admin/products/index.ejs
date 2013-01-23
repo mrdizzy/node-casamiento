@@ -27,6 +27,9 @@
             <h1>{{ _id }}</h1>        
             <p><label for="price">Price:</label> <input type="text" name="price" value="{{price}}"></input></p>
             
+            <p><label for="price">Description:</label> <textarea name="description">{{description}}</textarea></p>
+            <p><label for="buy_it_now_id">Buy-it-now listing item number:</label> <input type="text" name="buy_it_now_id" value="{{buy_it_now_id}}"></input></p>
+            <p><label for="buy_it_now_price">Buy-it-now price:</label> <input type="text" name="buy_it_now_price" value="{{buy_it_now_price}}"></input></p>
             <select name="colours" multiple="true">
             {{#colours}}
             <option value="{{colour}}" {{selected}}>{{colour}}</option>
@@ -38,7 +41,10 @@
     
 <script type="text/javascript">
 
-var colourList = ["Red", "VioletRed", "Firebrick", "HotPink", "DeepPink", "LightSalmon", "OrangeRed", "Orange", "Yellow", "Violet", "Fuschia", "MediumOrchid", "DarkViolet", "Purple", "Indigo", "GreenYellow", "LightSeaGreen","CornflowerBlue", "LimeGreen", "LightSkyBlue", "SteelBlue", "ForestGreen", "DeepSkyBlue", "Blue", "DarkGreen", "DodgerBlue", "MidnightBlue", "SaddleBrown", "Maroon"];
+var colourList = ["Black", "Red", "VioletRed", "Firebrick", "HotPink", "DeepPink", "LightSalmon", "OrangeRed", "Orange", "Yellow", "Violet", "Fuschia", "MediumOrchid", "DarkViolet", "Purple", "Indigo", "GreenYellow", "LightSeaGreen","CornflowerBlue", "LimeGreen", "LightSkyBlue", "SteelBlue", "ForestGreen", "DeepSkyBlue", "Blue", "DarkGreen", "DodgerBlue", "MidnightBlue", "SaddleBrown", "Maroon"];
+
+var colourList = ["tent", "A6_single", "A6_foldout", "A7_single","A7_foldout"];
+
 $(function() {    
     // MODELS
     var Product = Backbone.Model.CouchDB.extend({
@@ -112,7 +118,7 @@ $(function() {
         sendForm: function(e) {
             e.preventDefault();
             var product = this.collection.at(0);
-            product.set({ price: this.$('input[name="price"]').val(), colours: this.$('select[name="colours"]').val()});
+            product.set({ price: this.$('input[name="price"]').val(), colours: this.$('select[name="colours"]').val(), buy_it_now_price: this.$('input[name="buy_it_now_price"]').val(), buy_it_now_id: this.$('input[name="buy_it_now_id"]').val()});
             product.save({}, { success: function(a, b, c) {
                console.log(a,b,c)
             }});

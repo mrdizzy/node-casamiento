@@ -3,14 +3,14 @@
     
 <div class="colour_shown">
     <h5><img src="/images/bullets/small_dot_square.png" /> Colours shown:</h5> 
-   
+   <% if (doc.colours) { %>
    <% doc.colours.forEach(function(colour) { %>
        <div class="colour_container" style="clear:both;">
             <div class="swatch" style="background-color:<%= colour %>;"></div>
             <span class="small"><%= colour %></span>
         </div>
     <% }) %>
-  
+  <% } %>
     <div style="margin-right:63px;">
     
         <h5><img src="/images/bullets/small_dot_square.png" /> Price per <span id="quantity_<%= doc._id %>">16</span>:</h5>

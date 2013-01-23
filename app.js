@@ -4,7 +4,7 @@ var express = require('express'),
     paypalController = require('./controllers/paypal'),
     importEbayMessage = require('./import_ebay_messages'),
     db = require('couchdb-migrator').databases.test_ebay,
-    ebay = require('./controllers/ebay'),
+    //ebay = require('./controllers/ebay'),
     partials = require('express-partials');
 
 var app = express();
@@ -39,7 +39,8 @@ var products = app.resource('products', require('./controllers/products'));
 app.resource("admin/products", require('./controllers/admin/products'));
 app.resource("conversations", require('./controllers/conversations'));
 app.resource("paypal", require('./controllers/paypal'));
-app.resource("ebay", require('./controllers/ebay'));
+var ebay = app.resource("ebay", require('./controllers/ebay'));
+ebay.get('/sample/:theme_id', require('./controllers/ebay').sample);
 // The eBay Notify API posts a message to this address that we need to parse
 app.post('/ebay', function(req, res) {
     var result = "";
@@ -64,6 +65,7 @@ app.post('/ebay', function(req, res) {
 //Home page
 app.get("/", function(req, res) {
     db.view('all/type', { key: 'product' }, function(error, documents) {
+        console.log(error, documents)
         res.render("welcome/index", {  
             documents: documents.toArray()
         })

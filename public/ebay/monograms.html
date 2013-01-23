@@ -1,0 +1,148 @@
+<html>
+<body>
+<style type="text/css">
+/* Main elements
+==================================== */
+#page_container_casamiento { font-family: "Arial",sans-serif; color: #444444; background-color: #fff; font-size: 10px; width:974px; }
+#top_container_casamiento { width:100%; height:80px; background-image:url("http://www.casamiento.co.uk/images/backgrounds/grey_header.png");  }
+#main_logo_casamiento { text-align:left; width:25%; float:left; padding-top:15px; padding-left:20px; }
+#main_slogan_casamiento { width:168px; float:right; padding-top:15px; }
+#genesis { text-align:center; width:450px;margin-top:20px;float:right; }
+#genesis_logo_top { padding:0; margin-top:10px; }
+#genesis_container { border-top:1px dotted grey; border-bottom:1px solid grey; height:60px;}
+
+/* Main Typography
+==================================== */
+h5.casamiento { font: bold 11px "Arial"; color: #444444;margin:0; text-align:left; border-bottom: 1px solid #636667; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px; padding-left:10px;}
+h2.casamiento { font: bold 14px "Arial"; color:#444444; }
+h1.casamiento { font-style:italic; }
+.casamiento_description { font: 17px Georgia italic;  padding-right:2em; line-height:1.5em; }
+h1.casamiento { color:#444444; font:normal 24px Georgia; text-align:left; padding-top:10px; padding-bottom:5px; margin:0; }
+ul.casamiento, p.casamiento { font-size: 12px; line-height: 1.6em; text-indent:2em; }
+ul.casamiento { text-indent:0;}
+.decimal { font-size:18px; position:relative;top:-8px;  };
+
+/* Classes
+==================================== */
+.casamiento_clearfix { clear:both; }
+
+/* How it works 
+==================================== */
+#how_it_works { margin-left:120px; padding:0;}
+#how_it_works h2.casamiento_how_it_works { color:#444444; font:normal 24px Georgia; line-height:1.6em;text-align:center;}
+p.casamiento_how_it_works { color:#444444; font-size: 12px; text-align justify; }
+
+#me_photo {float:left; width:115px; }
+
+/* Tables 
+==================================== */
+table.casamiento, table.casamiento_related, table.casamiento_feedback { width:100%; text-align:center; border-collapse:collapse; }
+table.casamiento_related td { text-align:center; }
+    table.casamiento th { font: bold 11px "Arial"; color: #444444; text-align:center; }
+table.casamiento td { font: bold 11px "Arial"; color: #444444; text-align:center; line-height:150%;}
+table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity { font: normal 24px "Arial"; color: #444444; text-align:center; }
+table.casamiento td.casamiento_sample { font-weight:normal; text-align:justify;}
+table.casamiento td, table.casamiento th { border:1px dotted grey; padding:10px; } 
+table.casamiento_related td { border:0; }
+
+table.casamiento_feedback td { font: normal 11px "Arial"; color: #444444; padding:5px; border:1px dotted grey; text-align:center; }
+
+.prevent_table_stretching { width:100%;}
+
+/* Columns
+==================================== */ 
+#section0_casamiento {  padding:0; margin:0; float:left; width:320px;  }
+#section1_casamiento { padding:0; margin:0;margin-left:323px;  }
+
+#section2_casamiento { clear:both; text-align:left; float:left; width:437px; }
+#section3_casamiento { margin-left:457px; }
+
+/* Monograms
+==================================== */
+#monograms_casamiento { width:100%; text-align:center; border-collapse: separate;}
+#monograms_casamiento td { background-repeat: no-repeat; width:25%; background-position:10px 10px;border-spacing:5px;border-top: 1px dotted grey; padding-top:20px;padding-bottom:10px;}
+#monogram_A { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/A.png'); }
+#monogram_B { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/B.png'); }
+#monogram_C { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/C.png'); }
+#monogram_D { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/D.png'); }
+#monogram_E { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/E.png'); }
+#monogram_F { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/F.png'); }
+#monogram_G { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/G.png'); }
+#monogram_H { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/H.png'); }
+#monogram_I { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/I.png'); }
+#monogram_J { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/J.png'); }
+#monogram_K { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/K.png'); }
+#monogram_L { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/L.png'); }
+#monogram_M { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/M.png'); }
+#monogram_N { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/N.png'); }
+
+#colour_table_casamiento { text-align:left; font:normal 11px Arial; color:#636667; border:0; padding:2px; }
+    #colour_table_casamiento td {  border:0; padding:0px; text-align:left; font-weight:normal;}
+    #colour_table_casamiento th { border:0; text-align:center; font:bold 14px Arial; padding-top:20px; margin-bottom:10px;border-bottom:1px dotted grey;}
+
+.casamiento_colour { width:40px;height:40px;margin:auto;  } 
+/* Links
+==================================== */
+a.casamiento:link, a.casamiento:active, a.casamiento:visited { color: <%= colours[0] %>; font-style:underline; }
+a.casamiento:hover { color:black;}
+table.casamiento_related img { padding:2px; } 
+a.casamiento_related { font: normal 14px Georgia; font-style:italic; display:block; padding-bottom:10px;}
+table.casamiento_related td img { padding:5px; }
+/* Classes
+==================================== */
+.casamiento_center { text-align:center; }
+</style>
+
+
+<div id="page_container_casamiento"> 
+<!-- HEADER -->
+    <div id="top_container_casamiento">
+        <div id="main_logo_casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/casamiento.png"></div>
+        <div id="main_slogan_casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/big_dreamsonpaper.png" />
+        </div>
+    </div>
+    
+    <!-- BAR -->
+    <div id="genesis_container" style="width:100%; margin:auto; text-align:center;">
+   
+            <img id="genesis_logo_top" alt="Genesis_footer2" src="http://www.casamiento.co.uk/images/logo_branding/genesis_footer.png" />         
+    </div>
+
+    <div style="clear:both;float:left;width:200px;">
+        <h1 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/bullet_square_dots.png" /> Simplicity</h1>
+    </div>
+
+    <div style="float:right;margin-top:5px;width:200px;">
+        <img src="images/product_types/monogram.png" /> 
+    </div>
+    <table id="monograms_casamiento">
+        <tr>
+            <td id="monogram_A"><img alt="A" src="http://s3.amazonaws.com/casamiento/monogram_2.png" /></td>
+            <td id="monogram_B"><img alt="B" src="http://s3.amazonaws.com/casamiento/monogram_3.png" /></td> 
+            <td id="monogram_C"><img alt="C" src="http://s3.amazonaws.com/casamiento/monogram_4.png" /></td>
+        </tr> 
+        <tr>        
+            <td id="monogram_D"><img alt="D" src="http://s3.amazonaws.com/casamiento/monogram_5.png" /></td>
+            <td id="monogram_E"><img alt="E" src="http://s3.amazonaws.com/casamiento/monogram_6.png" /></td>
+            <td id="monogram_F"><img alt="F" src="http://s3.amazonaws.com/casamiento/monogram_7.png" /></td>
+        </tr>
+        <tr>        
+            <td id="monogram_G"><img alt="G" src="http://s3.amazonaws.com/casamiento/monograms_big/1.png" /></td>
+            <td id="monogram_H"><img alt="H" src="http://s3.amazonaws.com/casamiento/monograms_big/2.png" /></td>
+            <td id="monogram_I"><img alt="I" src="http://s3.amazonaws.com/casamiento/monograms_big/3.png" /></td>
+        </tr> 
+        <tr>        
+            <td id="monogram_J"><img alt="J" src="http://s3.amazonaws.com/casamiento/monograms_big/4.png" /></td> 
+            <td id="monogram_K"><img alt="K" src="http://s3.amazonaws.com/casamiento/monograms_big/5.png" /></td>
+            <td id="monogram_L"><img alt="L" src="http://s3.amazonaws.com/casamiento/monograms_big/6.png" /></td>
+            </tr>
+        <tr>
+            <td id="monogram_M"><img alt="M" src="http://s3.amazonaws.com/casamiento/monograms_big/7.png" /></td>
+            <td id="monogram_N"><img alt="N" src="http://s3.amazonaws.com/casamiento/monograms_big/8.png" /></td>
+        </tr> 
+    </table>  
+    </div>
+    </div>
+    </div>
+    </body>
+    </html>

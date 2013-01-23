@@ -1,8 +1,6 @@
 var db = require('couchdb-migrator').databases.test_ebay,
-collate_attachments = require('./../../lib/collate_attachments');
-    async = require('async'),
-    fs = require('fs'),
-    themes = ["ace_of_hearts", "simplicity", "rose", "chequers", "birds_of_paradise", "border"],
+collateAttachments = require('./../../lib/collate_attachments'),
+    themes = ["ace_of_hearts", "simplicity", "rose", "chequers", "birds_of_paradise", "border", "eloquence"],
     product_types = ["invitation", "name_place", "wrap", "rsvp", "envelope"]
 
 exports.index = function(req, res) {
