@@ -1,7 +1,6 @@
 var express = require('express'),
     http = require('http'),
     resource = require('express-resource'),
-    paypalController = require('./controllers/paypal'),
     importEbayMessage = require('./import_ebay_messages'),
     db = require('couchdb-migrator').databases.test_ebay,
     //ebay = require('./controllers/ebay'),
@@ -13,34 +12,38 @@ app.configure(function() {
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'ejs');
-    app.set('view options', { layout: false });
+    app.set('view options', {
+        layout: false
+    });
     app.use(express.favicon());
     app.use(partials());
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
-    app.use(express.methodOverride());
     app.use(app.router);
     app.use(express.static(__dirname + '/public'));
 });
 
-// CONFIGURATION
 app.configure('development', function() {
     app.use(express.errorHandler());
 });
-app.configure('production', function() {
-    app.use(express.errorHandler());
+
+var products = app.resource('products', require('./controllers/products'), {
+    load: function(req, id, callback) {
+        var id_split = id.split("--");
+        callback(null, { rev: id_split[1], id: id_split[0]})
+    }
 });
+var attachments = app.resource("attachments", require('./controllers/attachments'));
 
+products.add(attachments);
 
-var products = app.resource('products', require('./controllers/products'));
-    var attachments  = app.resource("attachments", require('./controllers/attachments'));
-    products.add(attachments);
-
-app.resource("admin/products", require('./controllers/admin/products'));
 app.resource("conversations", require('./controllers/conversations'));
 app.resource("paypal", require('./controllers/paypal'));
+
 var ebay = app.resource("ebay", require('./controllers/ebay'));
+
 ebay.get('/sample/:theme_id', require('./controllers/ebay').sample);
+
 // The eBay Notify API posts a message to this address that we need to parse
 app.post('/ebay', function(req, res) {
     var result = "";
@@ -54,19 +57,38 @@ app.post('/ebay', function(req, res) {
                 console.log("DONE", e, r);
             })
         }
-        catch(e) {
-            console.log(e);   
+        catch (e) {
+            console.log(e);
         }
         console.log(result);
         res.end();
     })
 });
-
+var themes = ["ace_of_hearts", "simplicity", "rose", "chequers", "birds_of_paradise", "border", "eloquence"],
+    product_types = ["invitation", "name_place", "wrap", "rsvp", "envelope"]
+    app.get("/admin/products", function(req, res) {
+        db.view('all/type', {
+            key: 'product'
+        }, function(err, documents) {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                res.render("admin/products/index", {
+                    products: documents.toArray(),
+                    themes: themes,
+                    product_types: product_types
+                })
+            }
+        });
+    });
+    
 //Home page
 app.get("/", function(req, res) {
-    db.view('all/type', { key: 'product' }, function(error, documents) {
-        console.log(error, documents)
-        res.render("welcome/index", {  
+    db.view('all/type', {
+        key: 'product'
+    }, function(error, documents) {
+        res.render("welcome/index", {
             documents: documents.toArray()
         })
     })

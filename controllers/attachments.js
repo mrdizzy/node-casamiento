@@ -3,7 +3,8 @@ async = require('async'),
 collateAttachments = require('./../lib/collate_attachments');
 
 exports.show = function(req, res) {
-    var stream = db.getAttachment(req.params["product"], req.params["attachment"])
+    console.log("product", req.product, req.attachment)
+    var stream = db.getAttachment(req.product.id, req.params["attachment"])
     stream.on("data", function(chunk) {
         res.write(chunk)
     });

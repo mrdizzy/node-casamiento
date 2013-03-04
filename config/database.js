@@ -11,6 +11,7 @@ var cradle = require('cradle'),
 databases.test_import = connection.database("test_import");
 databases.ebay_messages = connection.database("ebay_messages");
 databases.test_ebay = connection.database("test_ebay");
+databases.boo = connection.database("boo");
 
 databases.test_ebay.documents = [
 // Design documents

@@ -15,6 +15,24 @@ exports.index = function(req, res) {
     });
 };
 
+
+exports.update = function(req, res) {
+    console.log(req.body)
+    db.save(req.body, function(err, documents) {
+        if (err) {
+            res.status(500);
+            res.end();
+        }
+        else {
+            db.get(documents.id, function(error, response) {
+                res.json(response)
+                res.end();
+            })
+        }
+
+    });
+}
+
 exports.create = function(req, res) {
     collateAttachments(req, function(err, collated) {
         var id = req.body.theme + "-" + req.body.product_type; // theme_name-product_type
