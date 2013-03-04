@@ -3,7 +3,6 @@ async = require('async'),
 collateAttachments = require('./../lib/collate_attachments');
 
 exports.show = function(req, res) {
-    console.log("product", req.product, req.attachment)
     var stream = db.getAttachment(req.product.id, req.params["attachment"])
     stream.on("data", function(chunk) {
         res.write(chunk)
@@ -13,7 +12,6 @@ exports.show = function(req, res) {
     });
 }
 exports.update = function(req, res) {
-    console.log(req.body);
     var currentRev = req.body.rev;
     
     collateAttachments(req, function(err, collated) {

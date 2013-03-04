@@ -88,9 +88,30 @@ $(function() {
             return this;
         }
     });
+    
     var AttachView = Backbone.View.Attachment.extend({
+        initialize: function() {
+            this.model.on("change:binary", this.loadAttachment, this)
+            this.model.on("change", this.render, this)
+        },
+        loadAttachment: function() {
+            var that = this;
+            var reader = new FileReader();
+            var img = new Image();
+            img.onload = function() {
+                that.model.set("width", this.width)
+                that.model.set("height", this.height)
+            }
+            reader.onload = function(target) {
+                that.$('img').attr('src', event.target.result);
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(this.model.get("binary"))
+        },
+        tagName: "td",
+        className: "attachment",
         render: function() {
-            this.$el.html(this.model.id + "<img src='" + this.model.url() + "' />")
+            this.$el.html(this.model.id + " - " + this.model.get("width") + "x" + this.model.get("height") + "<br/><img src='" + this.model.url() + "' width='120' height='90' />")
             return this;
         }
     })
@@ -108,6 +129,7 @@ $(function() {
             return this;
         }
     });
+    
     var CurrentProductView = Backbone.View.CouchDB.extend({
         events: { 
             'click input[type=submit]': 'sendForm',
@@ -128,7 +150,9 @@ $(function() {
         render: function() {
             var result = Handlebars.compile($('#current_product_form').html())(this.model.toJSON());
             this.$el.html(result);
-            this.$el.append(this.buildAttachments())
+          this.$el.append("<table>")
+            this.$el.append(this.buildAttachments({groupEl: 'tr'}))
+            this.$el.append("</table>")
             this.$el.append("<a class='addmore'>Add more</a>")
             this.$el.append("<a class='delete'>Delete</a>" )
             return this;
@@ -144,6 +168,10 @@ $(function() {
 })
 
 </script>
+<style type="text/css">
+
+    .attachment { text-align:center;}
+</style>
 </head>
 <body>
 <div id="products"></div>

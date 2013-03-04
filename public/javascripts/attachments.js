@@ -13,11 +13,12 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
         this._attachments.parent = this;
         Backbone.Model.apply(this, arguments)
         this.attachments_order = this.attachments_order || [];
-        
-    },
+    },    
+    // Splits the url so that it is the id and the revision,
+    // concatenated but delimited by two dashes --
     url: function() {
        var url = Backbone.Model.prototype.url.apply(this, arguments)
-       return url + "--" + this.get("_rev");
+       return this.isNew ? url : (url + "--" + this.get("_rev"));
     },
     // We overwrite the parse function as when attachments come down the 
     // wire we need to parse them out into a separate Backbone collection
@@ -37,7 +38,6 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
     },
 
     addAttachmentGroup: function() {
-        
         var max = this._attachments.max(function(attachment) {
             var split = attachment.id.split("-");
             return split[1];
@@ -95,9 +95,7 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
                             content_type: attach.get("content_type"),
                             data: data
                         }
-                        
                 if (counter == that._attachments.length) {
-                    console.log("Finished")
                     callback(json);
                 }
                     }
@@ -147,7 +145,6 @@ Backbone.View.Attachment = Backbone.View.extend({
 
 Backbone.View.Attachments = Backbone.View.extend({
     initialize: function() {
-        
         this.model.on("sync", this.render, this)
         this.model._attachments.on("add-group", this.addAttachmentGroup, this)
     },
@@ -173,7 +170,7 @@ Backbone.View.Attachments = Backbone.View.extend({
         return this;
     },
     _renderGroup: function(id) {
-        var these_attachments_el = $('<div></div>', {
+        var these_attachments_el = $('<'+this.options.groupEl + '></'+this.options.groupEl +'>', {
             id: id
         });
         this.model.attachment_types.forEach(function(type) {
@@ -199,11 +196,11 @@ Backbone.View.CouchDB = Backbone.View.extend({
     // Extend this view and then call buildAttachments(view) from within the 
     // extended view's render() method, passing it an extended Backbone view
     // to render each individual attachment. 
-    buildAttachments: function() {
-        var attachments_collection_view = new Backbone.View.Attachments({
-            model: this.model,
-            view: this.options.attachmentView
-        })
+    buildAttachments: function(options) {
+        options = options || {}
+        options.model = this.model
+        options.view = this.options.attachmentView
+        var attachments_collection_view = new Backbone.View.Attachments(options)
         var attachments_view_element = attachments_collection_view.render().el
         return attachments_view_element
     }

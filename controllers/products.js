@@ -1,4 +1,5 @@
-db = require('couchdb-migrator').databases.test_ebay,
+db = require('couchdb-migrator').databases.test_ebay;
+
 exports.update = function(req, res) {
     console.log("Updating", req.body)
     res.json(req.body);
@@ -15,12 +16,11 @@ exports.update = function(req, res) {
                 res.end();
             })
         }
-
     });
 }
 exports.destroy = function(req, res) {
     db.remove(req.product.id, req.product.rev, function(err, doc) {
-        if(err) {
+        if (err) {
             console.log(err)
         }
         else {
@@ -28,12 +28,8 @@ exports.destroy = function(req, res) {
             res.end()
         }
     })
-
 }
 exports.create = function(req, res) {
-    console.log("Updating", req.body)
-    res.json(req.body);
-    res.end()
     db.save(req.body, function(err, documents) {
         if (err) {
             console.log("ERROR", err)
