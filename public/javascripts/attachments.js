@@ -43,17 +43,17 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
         this.attachments_order = resp.attachments_order
         return resp;
     },
-
+    // Add a group of empty attachments based on their types
     addAttachmentGroup: function() {
-        var max = this._attachments.max(function(attachment) {
-            var split = attachment.id.split("-");
-            return split[1];
-        })
-        if (max) {
-        var new_id = parseInt(max.id.split("-")[1]) + 1;
+        if (this._attachments.length === 0) {
+            var new_id = 1
         }
         else {
-            var new_id = 1
+            var max = this._attachments.max(function(attachment) {
+                var split = attachment.id.split("-");
+                return split[1];
+            })
+            var new_id = parseInt(max.id.split("-")[1]) + 1;
         }
         this.attachment_types.forEach(function(type) {
             this._attachments.add({
