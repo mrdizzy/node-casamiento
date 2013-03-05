@@ -1,13 +1,14 @@
 Backbone.Model.Attachment = Backbone.Model.extend({
     url: function() {
-       var dataURL = this.get("dataURL");
+        var dataURL = this.get("dataURL");
         return dataURL ? dataURL : Backbone.Model.prototype.url.apply(this)
-    }})
+    }
+})
 
 Backbone.Collection.Attachments = Backbone.Collection.extend({
     model: Backbone.Model.Attachment,
     url: function() {
-        return this.parent.url()+ "/attachments"
+        return this.parent.url() + "/attachments"
     }
 })
 
@@ -19,10 +20,10 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
         this.attachments_order = this.attachments_order || [];
         this.attachments_loading_counter = 0;
         this.on("file-saved", this.savedFile, this)
-    },    
+    },
     savedFile: function() {
         this.attachments_loading_counter--
-        if(this.attachments_loading_counter === 0 && this.waitingForSave) {
+        if (this.attachments_loading_counter === 0 && this.waitingForSave) {
             this.sync.apply(this, this.waitingForSave);
         }
     },
@@ -32,8 +33,8 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
     // We concatenate the _rev onto the URL of  models which are not
     // new by using with two dashes (--)
     url: function() {
-       var url = Backbone.Model.prototype.url.apply(this, arguments)
-       return this.isNew ? url : (url + "--" + this.get("_rev"));
+        var url = Backbone.Model.prototype.url.apply(this, arguments)
+        return this.isNew() ? url : (url + "--" + this.get("_rev"));
     },
     // We overwrite the parse function as when attachments come down the 
     // wire we need to parse them out into a separate Backbone collection
@@ -43,8 +44,7 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
         var parsed_attachments = _.map(resp._attachments, function(value, key, list) {
             return {
                 id: key,
-                content_type: list[key].content_type,
-                length: list[key].length,
+                content_type: list[key].content_type
             }
         }, this)
         this._attachments.reset(parsed_attachments)
@@ -71,7 +71,7 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
         this.attachments_order.push(new_id)
         this._attachments.trigger("add-group", new_id)
     },
-    
+
     // We override the toJSON function as this is what Backbone.sync uses to 
     // save our model to the server.
     toJSON: function() {
@@ -94,7 +94,7 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
         return json;
     },
     sync: function() {
-        if(this.attachments_loading_counter > 0) {
+        if (this.attachments_loading_counter > 0) {
             this.waitingForSave = arguments;
         }
         else {
@@ -164,7 +164,7 @@ Backbone.View.Attachments = Backbone.View.extend({
         return this;
     },
     _renderGroup: function(id) {
-        var these_attachments_el = $('<'+this.options.groupEl + '></'+this.options.groupEl +'>', {
+        var these_attachments_el = $('<' + this.options.groupEl + '></' + this.options.groupEl + '>', {
             id: id
         });
         this.model.attachment_types.forEach(function(type) {
@@ -187,9 +187,9 @@ Backbone.View.CouchDB = Backbone.View.extend({
     addAttachment: function() {
         this.model.addAttachmentGroup();
     },
-    // Extend this view and then call buildAttachments(view) from within the 
-    // extended view's render() method, passing it an extended Backbone view
-    // to render each individual attachment. 
+    // Extend this view in your application and then call buildAttachments(view) 
+    // from within the extended view's render() method, passing it an Backbone view
+    // extended from Backbone.View.Attachment to render each individual attachment
     buildAttachments: function(options) {
         options = options || {}
         options.model = this.model
