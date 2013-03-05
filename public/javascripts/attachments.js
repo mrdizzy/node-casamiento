@@ -26,8 +26,11 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
             this.sync.apply(this, this.waitingForSave);
         }
     },
-    // Splits the url so that it is the id and the revision,
-    // concatenated but delimited by two dashes --
+    // CouchDB models have a revision (_rev) property as well 
+    // as an _id to identify them. Backbone's standard url() function
+    // just returns the id as part of the url. Eg. /products/1
+    // We concatenate the _rev onto the URL of  models which are not
+    // new by using with two dashes (--)
     url: function() {
        var url = Backbone.Model.prototype.url.apply(this, arguments)
        return this.isNew ? url : (url + "--" + this.get("_rev"));
@@ -115,7 +118,8 @@ Backbone.View.Attachment = Backbone.View.extend({
             e.preventDefault();
         });
         // Listen for a file to be dropped on the element and then get the file, set the 
-        // binary data of the attachment and save it
+        // binary data of the attachment and trigger an event on the parent model to 
+        // say the file has loaded into the browser successfully
         this.el.addEventListener('drop', function(e) {
             e.preventDefault();
             var file = e.dataTransfer.files[0];
@@ -156,9 +160,6 @@ Backbone.View.Attachments = Backbone.View.extend({
             update: function(event, ui) {
                 that.model.attachments_order = $(this).sortable("toArray");
             }
-        })
-        this.$el.bind("update", function(event, ui) {
-            that.model.attachments_order = $(this).sortable("toArray");
         })
         return this;
     },
