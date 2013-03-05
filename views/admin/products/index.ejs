@@ -103,8 +103,9 @@ $(function() {
                 that.model.set("height", this.height)
             }
             reader.onload = function(target) {
-                that.$('img').attr('src', event.target.result);
-                img.src = event.target.result;
+                var data = event.target.result
+                that.model.set("dataURL", data);
+                img.src = data;
             }
             reader.readAsDataURL(this.model.get("binary"))
         },

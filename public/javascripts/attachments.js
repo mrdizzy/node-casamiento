@@ -1,4 +1,11 @@
-Backbone.Model.Attachment = Backbone.Model.extend({})
+Backbone.Model.Attachment = Backbone.Model.extend({
+    url: function() {
+        if (this.get("dataURL")) {
+            return this.get("dataURL")
+        } else {
+            return Backbone.Model.prototype.url.apply(this)
+        }
+    }})
 
 Backbone.Collection.Attachments = Backbone.Collection.extend({
     model: Backbone.Model.Attachment,
