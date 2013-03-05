@@ -1,10 +1,7 @@
 Backbone.Model.Attachment = Backbone.Model.extend({
     url: function() {
-        if (this.get("dataURL")) {
-            return this.get("dataURL")
-        } else {
-            return Backbone.Model.prototype.url.apply(this)
-        }
+       var dataURL = this.get("dataURL");
+        return dataURL ? dataURL : Backbone.Model.prototype.url.apply(this)
     }})
 
 Backbone.Collection.Attachments = Backbone.Collection.extend({
@@ -20,7 +17,15 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
         this._attachments.parent = this;
         Backbone.Model.apply(this, arguments)
         this.attachments_order = this.attachments_order || [];
+        this.attachments_loading_counter = 0;
+        this.on("file-saved", this.savedFile, this)
     },    
+    savedFile: function() {
+        this.attachments_loading_counter--
+        if(this.attachments_loading_counter === 0 && this.waitingForSave) {
+            this.sync.apply(this, this.waitingForSave);
+        }
+    },
     // Splits the url so that it is the id and the revision,
     // concatenated but delimited by two dashes --
     url: function() {
@@ -63,65 +68,37 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
         this.attachments_order.push(new_id)
         this._attachments.trigger("add-group", new_id)
     },
-    sync: function() {
-        var xhr, args = arguments;
-
-        // Because the FileReader API is asynchronous we have to use a callback
-        // style to call Backbone.sync when the files have been read
-        this.saveForCouchDB(function(attrs) {
-            args[2].attrs = attrs; // args[2] is the options object from arguments
-            xhr = Backbone.sync.apply(this, args);
-        })
-        return xhr;
-    },
+    
     // We override the toJSON function as this is what Backbone.sync uses to 
     // save our model to the server.
-    saveForCouchDB: function(callback) {
+    toJSON: function() {
         var json = _.clone(this.attributes);
-        if (this._attachments.length > 0) {
-            json._attachments = {};
-            json.attachments_order = this.attachments_order;
-            // If no files have been added to the model then we return straight away
-            if (this._attachments.length === 0) {
-                callback(json)
-                return;
+        json._attachments = {};
+        json.attachments_order = this.attachments_order;
+        this._attachments.each(function(attachment) {
+            if (attachment.get("base64")) {
+                json._attachments[attachment.id] = {
+                    content_type: attachment.get("content_type"),
+                    data: attachment.get("base64")
+                }
             }
-            // We need to use a counter as loading of the files is asynchronous
-            // and we do not want to return until they are all loaded
-            var counter = 0;
-
-            this._attachments.each(function(attachment) {
-               var attach = attachment;
-                if (attachment.get("binary")) {
-                    var fReader = new FileReader();
-                    var that = this;
-                    fReader.onload = function(event) {
-                        counter++;
-                        var data = event.target.result.split(",")[1];
-                        json._attachments[attach.id] = {
-                            content_type: attach.get("content_type"),
-                            data: data
-                        }
-                if (counter == that._attachments.length) {
-                    callback(json);
+            else {
+                json._attachments[attachment.id] = {
+                    stub: true
                 }
-                    }
-                    fReader.readAsDataURL(attachment.get("binary"))
-                }
-                else {
-                    counter++;
-                    json._attachments[attachment.id] = {
-                        stub: true
-                    }
-                }
-                if (counter == this._attachments.length) {
-                    callback(json);
-                }
-            }, this)
+            }
+        })
+        return json;
+    },
+    sync: function() {
+        if(this.attachments_loading_counter > 0) {
+            this.waitingForSave = arguments;
         }
         else {
-            callback(json)
+            this.waitingForSave = null;
+            var xhr = Backbone.sync.apply(this, arguments);
         }
+        return xhr;
     },
     idAttribute: "_id"
 });
@@ -142,10 +119,19 @@ Backbone.View.Attachment = Backbone.View.extend({
         this.el.addEventListener('drop', function(e) {
             e.preventDefault();
             var file = e.dataTransfer.files[0];
-            that.model.set({
-                binary: file,
-                content_type: file.type
-            });
+
+            var fReader = new FileReader();
+            fReader.onload = function(event) {
+                var data = event.target.result.split(",")[1];
+                that.model.set({
+                    base64: data,
+                    dataURL: event.target.result,
+                    content_type: file.type
+                });
+                that.model.collection.parent.trigger("file-saved")
+            }
+            that.model.collection.parent.attachments_loading_counter++;
+            fReader.readAsDataURL(file)
         });
     }
 })

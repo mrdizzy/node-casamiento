@@ -91,23 +91,7 @@ $(function() {
     
     var AttachView = Backbone.View.Attachment.extend({
         initialize: function() {
-            this.model.on("change:binary", this.loadAttachment, this)
             this.model.on("change", this.render, this)
-        },
-        loadAttachment: function() {
-            var that = this;
-            var reader = new FileReader();
-            var img = new Image();
-            img.onload = function() {
-                that.model.set("width", this.width)
-                that.model.set("height", this.height)
-            }
-            reader.onload = function(target) {
-                var data = event.target.result
-                that.model.set("dataURL", data);
-                img.src = data;
-            }
-            reader.readAsDataURL(this.model.get("binary"))
         },
         tagName: "td",
         className: "attachment",
