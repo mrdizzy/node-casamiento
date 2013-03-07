@@ -1,4 +1,4 @@
-db = require('couchdb-migrator').databases.test_ebay;
+var db = require('./../config/db').test_ebay;
 
 exports.update = function(req, res) {
     console.log("Updating", req.body)

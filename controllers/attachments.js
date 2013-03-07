@@ -1,4 +1,4 @@
-var db = require('couchdb-migrator').databases.test_ebay,
+var db = require('./../config/db').test_ebay,
 async = require('async'),
 collateAttachments = require('./../lib/collate_attachments');
 

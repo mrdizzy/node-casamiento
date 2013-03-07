@@ -2,8 +2,7 @@ var express = require('express'),
     http = require('http'),
     resource = require('express-resource'),
     importEbayMessage = require('./import_ebay_messages'),
-    db = require('couchdb-migrator').databases.test_ebay,
-    //ebay = require('./controllers/ebay'),
+    db = require('./config/db').test_ebay,
     partials = require('express-partials');
 
 var app = express();
@@ -26,6 +25,7 @@ app.configure(function() {
 app.configure('development', function() {
     app.use(express.errorHandler());
 });
+app.resource("themes", require("./controllers/themes"))
 
 var products = app.resource('products', require('./controllers/products'), {
     load: function(req, id, callback) {
@@ -64,24 +64,7 @@ app.post('/ebay', function(req, res) {
         res.end();
     })
 });
-var themes = ["ace_of_hearts", "simplicity", "rose", "chequers", "birds_of_paradise", "border", "eloquence"],
-    product_types = ["invitation", "name_place", "wrap", "rsvp", "envelope"]
-    app.get("/admin/products", function(req, res) {
-        db.view('all/type', {
-            key: 'product'
-        }, function(err, documents) {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                res.render("admin/products/index", {
-                    products: documents.toArray(),
-                    themes: themes,
-                    product_types: product_types
-                })
-            }
-        });
-    });
+    app.get("/admin/products", require('./controllers/admin/products').index);
     
 //Home page
 app.get("/", function(req, res) {

@@ -7,7 +7,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js" type="text/javascript"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js"></script>
     <script src="/javascripts/backbone_syphon.js"></script>
-   
    <script src="/javascripts/attachments.js"></script>
     
     <script type="text/template" id="current_product_form">
@@ -31,6 +30,12 @@
 var colourList = ["Black", "Red", "VioletRed", "Firebrick", "HotPink", "DeepPink", "LightSalmon", "OrangeRed", "Orange", "Yellow", "Violet", "Fuschia", "MediumOrchid", "DarkViolet", "Purple", "Indigo", "GreenYellow", "LightSeaGreen","CornflowerBlue", "LimeGreen", "LightSkyBlue", "SteelBlue", "ForestGreen", "DeepSkyBlue", "Blue", "DarkGreen", "DodgerBlue", "MidnightBlue", "SaddleBrown", "Maroon"];
 
 $(function() {    
+    
+    var Themes = Backbone.Collection.extend({
+        url: "/themes"
+    })
+    var themes = new Themes(<%- JSON.stringify(themes) %>)
+    console.log(themes)
     // MODELS
     var Product = Backbone.Model.CouchDB.extend({
         urlRoot: "/products",
@@ -73,21 +78,39 @@ $(function() {
             'click #addnew': 'addNew'
         },
         addNew: function() {
-            var product = new Product({name: $('input').val()});
+            console.log($('#new_product').val())
+            var product = new Product({name: $('#new_product').val()});
+            console.log(product)
             this.collection.add(product);
         },
         render: function() {
+            console.log("rendering");
             this.$el.empty();
             this.collection.forEach(function(product) {
+                console.log(product.get("name"))
                 var productview = new ProductView({
                     model: product
                 }).render().el
             this.$el.append(productview);
             }, this) 
-            this.$el.append("<a id='addnew'>Add new</a> <input type='text' id='new_id'>")
+            this.$el.append("<a id='addnew'>Add new</a> <input type='text' id='new_product'>")
             return this;
         }
     });
+    
+    var ThemesView = Backbone.View.extend({
+        initialize: function() {
+            themes.on('add', this.render, this)  
+        },
+        tagName: "select",
+        render: function() {
+            this.$el.empty();
+            this.collection.forEach(function(theme) {
+                this.$el.append("<option>" + theme.get("name") + "</option>")
+            },this)
+            return this;
+        }
+    })
     
     var AttachView = Backbone.View.Attachment.extend({
         initialize: function() {
@@ -114,14 +137,17 @@ $(function() {
             return this;
         }
     });
-    
+    var themes_view = new ThemesView({collection:themes}).render().el
     var CurrentProductView = Backbone.View.CouchDB.extend({
+        initialize: function() {
+            this.model.on("destroy", this.remove, this)  
+        },
         events: { 
             'click input[type=submit]': 'sendForm',
             'click .addmore': 'addMore',
-            'click .delete': 'remove'
+            'click .delete': 'destroy'
         },
-        remove: function() {
+        destroy: function() {
           this.model.destroy();  
         },
         addMore: function() {
@@ -135,6 +161,7 @@ $(function() {
         render: function() {
             var result = Handlebars.compile($('#current_product_form').html())(this.model.toJSON());
             this.$el.html(result);
+            this.$('form').append(themes_view)
           this.$el.append("<table>")
             this.$el.append(this.buildAttachments({groupEl: 'tr'}))
             this.$el.append("</table>")
@@ -144,12 +171,28 @@ $(function() {
         }
     })
     var product_types = <%- JSON.stringify(product_types) %>;
-    var themes = <%- JSON.stringify(themes) %>;
     var products = new Products( <%- JSON.stringify(products) %>, {parse: true} );
     
     new ProductsView({
         collection: products
     }).render();
+    
+   var ThemeAdminView = Backbone.View.extend({
+       el: $('#themes_admin'),
+       events: {
+            'click input[type=submit]': 'addTheme'
+       },
+       addTheme: function(e) {
+         e.preventDefault();
+         var that = this;
+           var name = this.$('input[name=new_theme]').val();
+           var description = this.$('textarea[name=description]').val();
+           themes.create({name: name, description: description}, { wait:true })
+      },
+       render: function() {
+       }
+   })
+    new ThemeAdminView({collection:themes});
 })
 
 </script>
@@ -158,7 +201,12 @@ $(function() {
     .attachment { text-align:center;}
 </style>
 </head>
-<body>
+<body><div id="themes_admin"><h2>Add new theme</h1>
+<form>
+    Theme name: <input name="new_theme"></input>
+    Theme description: <textarea name="description"></textarea>
+    <input type="submit"></input></form>
+</div>
 <div id="products"></div>
 <div id="cpv"></div>
 </body>

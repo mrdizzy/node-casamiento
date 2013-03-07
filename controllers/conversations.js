@@ -1,4 +1,4 @@
-var messages = require('couchdb-migrator').databases.ebay_messages,
+var messages = require('./../config/db').ebay_messages,
 _ = require('underscore');
 
 exports.index = function(req, res) {
