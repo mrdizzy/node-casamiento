@@ -13,17 +13,20 @@
 
 /* Main Typography
 ==================================== */
-h5.casamiento { font: bold 11px "Arial"; color: #444444;margin:0; text-align:left; border-bottom: 1px solid #636667; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px; padding-left:10px;}
+h5.casamiento { font: bold 11px "Arial"; color: #444444;margin:0; text-align:left; border-bottom: 1px solid #636667; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px; }
+h3.casamiento  { color:#444444; font:normal 40px Georgia; text-align:left; padding-top:10px; padding-bottom:5px; margin:0; letter-spacing:-0.05em; line-height:1.4em;}
+h4.casamiento { font: bold italic 14px Georgia; text-align:left; text-indent:1em; margin:0; padding-top:0.5em; color: black; letter-spacing:-0.07em;}
+h6.casamiento { font: normal 20px Georgia; text-align:left;margin:0; line-height:1.6em;}
 h2.casamiento { font: bold 14px "Arial"; color:#444444; }
 h1.casamiento { font-style:italic; }
 .casamiento_description { font: 17px Georgia italic;  padding-right:2em; line-height:1.5em; }
-h1.casamiento { color:#444444; font:normal 24px Georgia; text-align:left; padding-top:10px; padding-bottom:5px; margin:0; }
-ul.casamiento, p.casamiento { font-size: 12px; line-height: 1.6em; text-indent:2em;}
+h1.casamiento { color:#444444; font:italic 24px Georgia; text-align:justify; padding-top:10px; padding-bottom:5px; margin:0; }
+ul.casamiento, p.casamiento { font-size: 12px; line-height: 1.6em; text-align:justify;}
 ul.casamiento { text-indent:0;}
 .decimal { font-size:18px; position:relative;top:-8px;  }
 #peace_of_mind { text-align:center; border:1px solid grey; padding:10px; float:left; margin-bottom:1.6em; font-size:11px;}
 
-.quote_container { position:relative;left:-75px; height:50px;width:360px;}
+.quote_container { position:relative;left:-75px; border-top: 1px dashed #444444; border-bottom:1px dashed #444444; padding-top:20px; padding-bottom:20px; height:50px;width:360px;}
 .quote { float:left; }
 .quote_text { float:right;  }
 /* Classes
@@ -42,10 +45,14 @@ p.casamiento_how_it_works { color:#444444; font-size: 12px; text-align justify; 
 table.casamiento_description { border:0; border-collapse:collapse;}
 
 table.casamiento, table.casamiento_related, table.casamiento_feedback { width:100%; text-align:center; border-collapse:collapse; }
+
+.italic { font-style:italic; }
+
+table.casamiento_feedback tr:nth-child(odd) { background-color: #F0F0F0 }
 table.casamiento_related td { text-align:center; }
     table.casamiento th { font: bold 11px "Arial"; color: #444444; text-align:center; }
 table.casamiento td { font: bold 11px "Arial"; color: #444444; text-align:center; line-height:150%;}
-table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity { font: normal 24px "Arial"; color: #444444; text-align:center; }
+table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity { font: normal 24px "Georgia"; color: #444444; text-align:center; }
 table.casamiento td.casamiento_sample { font-weight:normal; text-align:justify;}
 table.casamiento td, table.casamiento th { border:1px dotted grey; padding:10px; } 
 table.casamiento_related td { border:0; }
@@ -54,32 +61,21 @@ table.casamiento_feedback td { font: normal 11px "Arial"; color: #444444; paddin
 -radius:8px;}
 .prevent_table_stretching { width:100%;}
 
+.grey { background-color:#F0F0F0;  border-radius:8px; padding-left:5px; padding-right:5px;}
+.blank { border:10px transparent;padding-left:5px; padding-right:5px;}
 /* Columns
 ==================================== */ 
 #section0_casamiento {  padding:0; margin:0; float:left; width:320px;  }
 #section1_casamiento { padding:0; margin:0;margin-left:323px;  }
 
-#section2_casamiento { clear:both; text-align:left; float:left; width:437px; }
+#section2_casamiento { clear:both; text-align:left; float:left; width:387px; }
 #section3_casamiento { margin-left:457px; }
 
 /* Monograms
 ==================================== */
 #monograms_casamiento { width:100%; text-align:center; border-collapse: separate;}
 #monograms_casamiento td { background-repeat: no-repeat; width:25%; background-position:10px 10px;border-spacing:5px;border-top: 1px dotted grey; padding-top:20px;padding-bottom:10px;}
-#monogram_A { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/A.png'); }
-#monogram_B { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/B.png'); }
-#monogram_C { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/C.png'); }
-#monogram_D { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/D.png'); }
-#monogram_E { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/E.png'); }
-#monogram_F { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/F.png'); }
-#monogram_G { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/G.png'); }
-#monogram_H { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/H.png'); }
-#monogram_I { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/I.png'); }
-#monogram_J { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/J.png'); }
-#monogram_K { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/K.png'); }
-#monogram_L { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/L.png'); }
-#monogram_M { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/M.png'); }
-#monogram_N { background-image:url('http://www.casamiento.co.uk/images/bullets/letters/N.png'); }
+
 
 #colour_table_casamiento { text-align:left; font:normal 11px Arial; color:#636667; border:0; padding:2px; }
     #colour_table_casamiento td {  border:0; padding:0px; text-align:left; font-weight:normal;}
@@ -88,7 +84,7 @@ table.casamiento_feedback td { font: normal 11px "Arial"; color: #444444; paddin
 .casamiento_colour { width:20px;height:5px;margin:auto; border:1px solid grey; border-radius:7px; padding:5px; margin:5px; } 
 /* Links
 ==================================== */
-a.casamiento:link, a.casamiento:active, a.casamiento:visited { color: <%= colours[0] %>; font-style:underline; }
+a.casamiento:link, a.casamiento:active, a.casamiento:visited { font: normal 14px Georgia;color: <%= colours[0] %>; font-style:underline; }
 a.casamiento:hover { color:black;}
 table.casamiento_related img { padding:2px; } 
 a.casamiento_related { font: normal 14px Georgia; font-style:italic; display:block; padding-bottom:10px;}
@@ -150,79 +146,41 @@ C O L U M N
         
          <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> How it works&hellip;</h5>
 
-  <div id="me_photo"><img src="/images/me.jpg" /><p class="casamiento">
-<img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> <b>David Pettifer,<br/> Founder</b></p></div>
-<div id="how_it_works"><img src="/images/ebay/ebay_heading_3.png"  style="display:block;margin:auto;"/>
-     <p class="casamiento">&hellip;and there you were thinking that choosing the dress would be the most difficult bit? You've nearly compiled the 
-guest list, but now you've got to get all the addresses together. Not to mention the wording... you'd like to ask for money 
-rather than gifts (you really don't want another John Lewis cutlery set) but you don't want to sound rude. Then there's the 
-colours...</p>
-<p class="casamiento">&hellip;what if the colours don't match? The last thing you want is for the stationery to arrive and then discover the 
-pink is two shades darker than everything else&hellip; time's running out too: you're worried what will happen if things go 
-missing in the post or get damaged&mdash;that new postman always looks hungover&mdash;or </p>
-
-<p class="casamiento"><b>what if there's a printing mistake 
-at the last minute? What if they spell your name Sarah instead of Sara? It's happened before on the gas bill. Or&hellip;</b></p>
-<p class="casamiento">
-&hellip;slow down!<br/>
-&hellip;stop!<br/> 
-&hellip;relax!<br/>
-</p>
-<p class="casamiento">At this rate you're going to need more than meditation classes, you're going to need a counsellor&mdash;and I'm not 
-laughing either, because it's no laughing matter: I understand how tiring it can be planning your big day&hellip;</p>
-<div class="quote_container"><div class="quote"><img src="/images/ebay/quote1.png"></div><div class="quote_text"><p class="casamiento">&mdash; 
+  <div id="me_photo"><img src="/images/me2.jpg" /><p class="casamiento"> <b>David Pettifer,<br/> Founder</b></p></div>
+<div id="how_it_works"><h3 class="casamiento">What do you want from your wedding stationery?</h1>
+<p class="casamiento_center"><img src="/images/page_seperators/three_across.png" style="padding:10px"/></p>
+     <h6 class="casamiento">&hellip;you'll probably answer this question with something like &ldquo;I want colours that co-ordinate with my day&rdquo; or &hellip;</h6>
+     <p class="casamiento">&hellip;<span class="italic">&ldquo;I want a design with hearts&rdquo;</span>. But whatever your answer, it all boils down to one thing: you want your wedding stationery to impress your guests with its uniqueness, beauty and quality&hellip;</p>
+     <div class="quote_container"><div class="quote"><img src="/images/ebay/quote1.png"></div><div class="quote_text"><p class="casamiento">&mdash; 
 <a class="casamiento" href="">jglass100</a></p></div>&nbsp;</div>
-<p class="casamiento">&hellip;it's the 
-culmination of years of hopes and dreams since you were a small child and it's a lot of responsibility for one 
-day&mdash;and for you&mdash;to have. And the journey towards that fairytale day begins with your invitations: most brides 
-immediately think about the cosmetics of their invitations&mdash;<i>of course they have to look good</i>&mdash;but it's easy to 
-forget they serve a deeper, practical function too&hellip;</p>
+     <p class="casamiento">At Casamiento, we want to help make your day a very memorable one. Our carefully crafted collection of highly personalised wedding stationery stands out from the crowd of boring, mass-produced cards.</p>
+<p class="casamiento_center"><img src="/images/bullets/line_diamond.png"></p>
+<div class="grey">
+<h4 class="casamiento"><img src="/images/bullets/bullet_square_dots.png" /> Colour matching.</h4>
+<p class="casamiento">Choose from a wide range of colours: if you have an exact colour in mind just send a sample of it to us&mdash;preferably by post as screen colours can vary widely&mdash;and we will match it for you.</li>
 
-<h5 class="casamiento">Your invitations are created to help you organise your big day: to find out who is attending in advance so that you have 
-numbers to play with, and to communicate with your guests&mdash; the more information you provide your guests with, the 
-less time you'll be stressed out answering the same questions over and over again.</h5>
-<p class="casamiento"><img src="/images/ebay/4_important.png" /></p>
+</div>
+<div class="blank">
+<h4 class="casamiento"><img src="/images/bullets/bullet_square_dots.png" /> Co-ordinating envelopes</h4>
+<p class="casamiento">Most invitations come with simple, boring, throwaway envelopes&hellip; but our envelopes will be something you'll want to keep! Highly co-ordinated with the same design as your invitations, as well as being personalised with your monogram, they will wow your guests.</p>
+</div>
 
-<p class="casamiento"><b>Make it easy to reply&hellip;</b></P> <p class="casamiento">A pre-addressed reply card, pre-printed with the names of the guests who are responding and a "yes" 
-or "no" box to tick will increase your chances of getting a response. Brides like you who use reply cards get four times as 
-many responses as brides who don't: people are lazy and a pre-addressed reply card means your guests only have to tick the 
-box and post it on their way to work.</p>
-        
-<p class="casamiento"><b>Make it clear who is invited&hellip;</b></p>
-<p class="casamiento">by explicitly addressing your invitations to "Sarah, Jane & Jenny", it takes the guesswork 
-away from your guests: Sarah knows straight away that she can bring her flatmate and daughter. If it just says "Sarah & 
-Guest", she knows she is invited and can bring a guest. An invitation that isn't personalised makes it awkward for your 
-guests to know who they can and can't bring along (and awkward for you to know who they are bringing along too), but if you 
-address your guests individually, you'll make things easier from the start.</p>
-
-<p class="casamiento"><b>Provide instructions for your guests&hellip;</b></p> <p class="casamiento">where's the venue? They'll need the postcode for their sat-nav, otherwise you're 
-
-going to be answering the same question over and over again when they email or phone you. What do they wear? Explaining the 
-
-dress code is important if you don't want Auntie Edna turning up in that bright puce dress with the ostentatious hat. Can 
-
-children come? Can they give vouchers or money instead of buying you another garlic press? The number of details you 
-
-provide is inversely proportional to the stress you'll experience (more details, less stress!). Sometimes it's even worth 
-
-providing an additional instruction leaflet for all the extra stuff. 
-     </p>
-<p class="casamiento"><b>How long does it take to address the envelopes without your handwriting turning into a doctor's signature?</b> How easy is it to run 25 envelopes through your inkjet printer without the flaps jamming in its rollers or the ink smearing or printing the wrong way up?</b> Addressing envelopes individually is very time-consuming and stressful&hellip; it can easily take up a whole day and you can get in a real muddle. It's much easier to type out your addresses and let us take the pain out of addressing your envelopes.</p> 
-
-<h5 class="casamiento">Frequently Asked Questsion</h5>
-<p class="casamiento"><b>Can you do extra-fast delivery?</b></p>
-<p class="casamiento">If you need your stationery urgently, just email us: depending on our workload
-we may be able to speed up your order free of charge.</p>
-<p class="casamiento"><b>Can you do silver or gold colours?</b></p>
-<p class="casamiento">Unfortunately we can not do any metallic colours at the moment.</p>
-
-<p class="casamiento"><b>Can you change parts of the designs?</b></p>
-<p class="casamiento">We can customise the colours and wording free of charge. However any other alterationsw
-will incur a cost.</p>
-
-<p class="casamiento">If you have any questions, please don't hesitate to get in touch with me&hellip;</p>
-<p class="casamiento">Have a wonderful day!</p>
- 
+<div class="grey">
+   <h4 class="casamiento"><img src="/images/bullets/bullet_square_dots.png" /> Guest name printing</h4>
+   <p class="casamiento">We will individually print each item of stationery with the names of your guests: this includes reply cards, place cards and invitations. Just send us a list of names!</p>
+   </div>
+   <div class="blank">
+    <h4 class="casamiento"><img src="/images/bullets/bullet_square_dots.png" /> Envelope addressing</h4>
+    <p class="casamiento">We can print your guests' names and addresses individually on each envelope so your invitations are ready to post.</p>
+    </div>
+    <div class="grey">
+    <h4 class="casamiento"><img src="/images/bullets/bullet_square_dots.png" /> Customised wording.</h4>
+    <p class="casamiento">Choose whatever wording you like!</p>
+</div>
+<div class="blank">
+<h4 class="casamiento"><img src="/images/bullets/bullet_square_dots.png" /> Monogram</h4>
+<p class="casamiento">
+A monogram is a motif combining you and your partner's names, the perfect symbol of your marriage together: it makes an impact&mdash;much better than your names in boring plain text and  provides the ultimate touch of understated sophistication. We have many styles of monogram available, the only problem you'll have is deciding which one is for you!</p></div>
         </div>
 
 </div>
@@ -240,6 +198,8 @@ S P E C S
                 <div style="background-color:<%= colour %>;width:20px;border-radius:5px;height:10px;border:1px solid grey;float:left;margin:10px;margin-left:25px;padding:0;"></div><p class="casamiento" style="padding:0; margin-top:15px;"><%= colour %></p>
             
             <% }) %>
+            <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> Colours available:</h5>
+           
             </div>
   <div id="description" style="width:66%">
              <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> Description:</h5>
@@ -286,6 +246,25 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.</td
                         <% } %>
                     </table>
                     </div>
+                    
+<h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> 
+Also in this design:</h5>
+                    
+           <div class="prevent_table_stretching">
+                    <table class="casamiento">
+<% related.forEach(function(r) { %>
+                          <tr>
+                            <td><img src="/images/product_types/small/<%= r.product_type %>_small.png" /</td>
+                            <td><img src="http://www.casamiento.co.uk/products/<%= r.theme_id %>-<%= r.product_type %>/attachments/thumb-<%= r.attachments_order[0] %>" /></td>
+
+<td class="casamiento"><a class="casamiento" href="<%= r.buy_it_now_id %>">20 x <%= r.product_type %></a></td>
+                            <td class="casamiento_price">&pound;<%= r.pounds %><span class="decimal">.<%= r.pence %></span></td>
+                        </tr>
+                       <% }) %>
+                      
+                    </table>
+                    </div>
+                    
 <% if (product_type != "sample") { %>
 
 <p class="casamiento_center"><img src="/images/shell.png" /></p>
@@ -333,39 +312,6 @@ Why not try a sample&hellip;?</h5>
                     
                      <p class="casamiento_center"><img src="/images/shell.png" /></p>
         
-<h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> 
-Also in this design:</h5>
-                    
-           <div class="prevent_table_stretching">
-                    <table class="casamiento">
-<% related.forEach(function(r) { %>
-                          <tr>
-                            <td><img src="/images/product_types/small/<%= r.product_type %>_small.png" /</td>
-                            <td><img src="http://www.casamiento.co.uk/products/<%= r.theme_id %>-<%= r.product_type %>/attachments/thumb-<%= r.attachments_order[0] %>" /></td>
-
-<td class="casamiento"><a class="casamiento" href="<%= r.buy_it_now_id %>">20 x <%= r.product_type %></a></td>
-                            <td class="casamiento_price">&pound;<%= r.pounds %><span class="decimal">.<%= r.pence %></span></td>
-                        </tr>
-                       <% }) %>
-                      
-                    </table>
-                    </div>
-                    
-<div id="peace_of_mind" ><p class="casamiento"><img src="/images/ebay/peace_of_mind.png" /></p><p class="casamiento">Recently, a couple contacted me who'd been failed by their stationery suppliers and only had a few days to get some place cards. I delivered the cards on time--but lo and behold they'd forgotten to 
-
-update their delivery address so the package went to their old house! The only option was for me to reprint and use an 
-
-expensive next day delivery courier as time had run out. Even though it was their mistake and it cost me more for the 
-
-courier than it did to print the cards, I fulfilled my promise to them and those place cards arrived in time for their 
-
-wedding. </p> <p class="casamiento"><img src="/images/ebay/reputation.png" /></p><p class="casamiento">Why did I do this? Because your happiness builds my reputation: I could have saved a few pounds by refusing to 
-
-deliver those place cards as it wasn't my fault, but by going against the grain and delivering against the odds I added to 
-
-my reputation in a way that money can't buy&mdash;so you and me both win.</p>
-
-<p class="casamiento_center"><img src="/images/shell.png" /></p></div>
 <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> 
 Don't take my word for it&hellip;</h5>
            <div class="prevent_table_stretching">
@@ -542,119 +488,6 @@ M O N O G R A M S
 ####################################################################################### -->
 
    
-    
-<!-- #######################################################################################
-C O L O U R S 
-####################################################################################### -->
-
-  <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> Colours available for this design&hellip;</h5>
-        <% if (colours.length == 1 && colours[0] == "Black") { %> 
-        <table class="casamiento" id="colour_table_casamiento"> 
-                
-                <tr>
-                <td><div class="casamiento_colour" style="background-color:Black"></td> <td>Black</td>
-                </tr>
-                </table>
-        <% } else { %>
-        <table class="casamiento" id="colour_table_casamiento"> 
-<tr>
-<th colspan="6"><img src="/images/bullets/line_diamond.png"> Reds &amp; Pinks</th>
-</tr>
-<tr>
-
-</tr>
-
-<tr>
-<td><div class="casamiento_colour" style="background-color:Red"></td> <td>Red</td>
-
-<td><div class="casamiento_colour" style="background-color:MediumVioletRed"></td> <td>VioletRed</td>
-<td><div class="casamiento_colour" style="background-color:Firebrick"></td><td>Firebrick</td>
-</tr>
-
-<tr>
-
-<td><div class="casamiento_colour" style="background-color:HotPink"></td> <td>HotPink</td>
-<td><div class="casamiento_colour" style="background-color:DeepPink"></td> <td>DeepPink</td>
-</tr>
-
-
-<tr>
-<th colspan="6"><img src="/images/bullets/line_diamond.png"> Oranges &amp; Yellows</th>
-</tr>
-<tr>
-<td><div class="casamiento_colour" style="background-color:LightSalmon"></td> <td>LightSalmon</td>
-<td><div class="casamiento_colour" style="background-color:OrangeRed"></td> <td>OrangeRed</td>
-
-<td><div class="casamiento_colour" style="background-color:Orange"></td> <td>Orange</td>
-</tr>
-
-<tr>
-<td><div class="casamiento_colour" style="background-color:Yellow"></td> <td>Yellow</td>
-</tr>
-<tr>
-<th colspan="6"><img src="/images/bullets/line_diamond.png"> Purples</th>
-</tr>
-<tr>
-<td><div class="casamiento_colour" style="background-color:Violet"></td> <td>Violet</td>
-<td><div class="casamiento_colour" style="background-color:Fuchsia"></td> <td>Fuchsia</td>
-<td><div class="casamiento_colour" style="background-color:MediumOrchid"></td> <td>MediumOrchid</td>
-</tr>
-<tr>
-<td><div class="casamiento_colour" style="background-color:DarkViolet"></td> <td>DarkViolet</td>
-<td><div class="casamiento_colour" style="background-color:Purple"></td> <td>Purple</td>
-<td><div class="casamiento_colour" style="background-color:Indigo"></td> <td>Indigo</td>
-
-</tr>
-<tr>
-<th colspan="6"><img src="/images/bullets/line_diamond.png"> Greens &amp; Blues</th>
-</tr>
-<tr>
-<td><div class="casamiento_colour" style="background-color:GreenYellow"></td> <td>GreenYellow</td> 
-
-<td><div class="casamiento_colour" style="background-color:LightSeaGreen"></td> <td>LightSeaGreen</td>
-
-<td><div class="casamiento_colour" style="background-color:CornflowerBlue"></td> <td>CornflowerBlue</td>
-</tr>
-
-<tr> 
-<td><div class="casamiento_colour" style="background-color:LimeGreen"></td> <td>LimeGreen</td> 
-
-<td><div class="casamiento_colour" style="background-color:LightSkyBlue"></td>
-<td>LightSkyBlue</td>
-<td><div class="casamiento_colour" style="background-color:SteelBlue"></td>
-<td>SteelBlue</td> 
-</tr> 
-
-
-<tr>
-<td><div class="casamiento_colour" style="background-color:ForestGreen"></td> <td>ForestGreen</td>
-
-<td><div class="casamiento_colour" style="background-color:DeepSkyBlue"></td> <td>DeepSkyBlue</td>
-
-
-<td><div class="casamiento_colour" style="background-color:Blue"></td> <td>Blue</td>
-</tr>
-
-<tr> 
-<td><div class="casamiento_colour" style="background-color:DarkGreen"></td>
-<td>DarkGreen</td> 
-
-<td><div class="casamiento_colour" style="background-color:DodgerBlue"></td> <td>DodgerBlue</td>
-<td><div class="casamiento_colour" style="background-color:Midnightblue"></td>
-<td>Midnightblue</td>
-</tr>
-<tr>
-<th colspan="6"><img src="/images/bullets/line_diamond.png"> Browns</th>
-</tr>
-<tr>
-<td><div class="casamiento_colour" style="background-color:SaddleBrown"></td>
-<td>SaddleBrown</td>
-<td><div class="casamiento_colour" style="background-color:Maroon"></td>
-<td>Maroon</td>
-</tr>
-</table>
-        
-        <% } %>
 </div>
 </body>
 </html>

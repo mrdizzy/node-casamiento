@@ -26,6 +26,7 @@ app.configure('development', function() {
     app.use(express.errorHandler());
 });
 app.resource("themes", require("./controllers/themes"))
+app.resource("product_types", require("./controllers/product_types"))
 
 var products = app.resource('products', require('./controllers/products'), {
     load: function(req, id, callback) {

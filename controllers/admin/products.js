@@ -3,18 +3,29 @@ var db = require('./../../config/db').test_ebay,
     product_types = ["invitation", "name_place", "wrap", "rsvp", "envelope"]
 
     exports.index = function(req, res) {
-        db.view('all/type', {
-            key: 'theme'
-        }, function(error, t) {
-            console.log(t)
-            db.view('all/type', {
-                key: 'product',
-            }, function(err, documents) {
-                res.render("admin/products/index", {
-                    products: documents.toArray(),
-                    themes: t.toArray(),
-                    product_types: product_types
+        getTypes('theme', function(themes) {
+            getTypes('product_type', function(product_types) {
+                getTypes('product', function(products) {
+                    res.render("admin/products/index", {
+                        products: products,
+                        themes: themes,
+                        product_types: product_types
+                    })
                 })
-            });
+
+            })
         })
-    };
+    }
+
+    function getTypes(type, callback) {
+        db.view('all/type', {
+            key: type
+        }, function(error, docs) {
+            if (error) {
+                console.log(error)
+            }
+            else {
+                callback(docs.toArray())
+            }
+        })
+    }

@@ -30,16 +30,75 @@
 var colourList = ["Black", "Red", "VioletRed", "Firebrick", "HotPink", "DeepPink", "LightSalmon", "OrangeRed", "Orange", "Yellow", "Violet", "Fuschia", "MediumOrchid", "DarkViolet", "Purple", "Indigo", "GreenYellow", "LightSeaGreen","CornflowerBlue", "LimeGreen", "LightSkyBlue", "SteelBlue", "ForestGreen", "DeepSkyBlue", "Blue", "DarkGreen", "DodgerBlue", "MidnightBlue", "SaddleBrown", "Maroon"];
 
 $(function() {    
-    
+    var Theme = Backbone.Model.CouchDB.extend({
+        toJSON: function() {
+            var json = Backbone.Model.CouchDB.prototype.toJSON.apply(this, arguments)
+            if(!json._id) {
+                var theme_name = this.get("name").replace(/\s+/g, '_').toLowerCase();
+                json._id = theme_name;
+            }
+            return json;
+        }
+    })
     var Themes = Backbone.Collection.extend({
+        model: Theme,
         url: "/themes"
     })
+    var ProductTypes = Backbone.Collection.extend({
+        url: "/product_types"
+    })
     var themes = new Themes(<%- JSON.stringify(themes) %>)
-    console.log(themes)
+    var product_types = new ProductTypes(<%- JSON.stringify(product_types) %>);
+    
+    var SelectionView = Backbone.View.extend({
+        initialize: function() {
+            this.collection.on('add', this.render, this)  
+        },
+        tagName: "select",
+        render: function() {
+            this.$el.empty();
+            this.collection.forEach(function(theme) {
+                var t = theme.toJSON()
+                this.$el.append("<option value='" + t._id + "'>" + t.name + "</option>")
+            },this)
+            return this;
+        }
+    })
+       
+    var ProductTypesView = SelectionView.extend({attributes: { name: "product_type"}}) 
+    var ThemesView = SelectionView.extend({attributes: { name: "theme"}})
+    
+    var themes_view = new ThemesView({collection:themes}).render().el    
+    var product_types_view = new ProductTypesView({collection:product_types}).render().el    
+    
+   var ThemeAdminView = Backbone.View.extend({
+       el: $('#themes_admin'),
+       events: {
+            'click input[type=submit]': 'addTheme'
+       },
+       addTheme: function(e) {
+         e.preventDefault();
+         var that = this;
+           var name = this.$('input[name=new_theme]').val();
+           var description = this.$('textarea[name=description]').val();
+           themes.create({name: name, description: description}, { wait:true })
+      },
+       render: function() {
+       }
+   })
+    new ThemeAdminView({collection:themes});
+    
     // MODELS
     var Product = Backbone.Model.CouchDB.extend({
         urlRoot: "/products",
         defaults: { "type": "product" },
+        toJSON: function() {
+            var json = Backbone.Model.CouchDB.prototype.toJSON.apply(this, arguments)
+            if(!json._id && this.get("theme")) {
+                json._id = this.get("theme") + "-" + this.get("product_type")
+            }
+            return json;
+        },
         attachment_types: ["thumb","medium","display","large"],
         initialize: function() {
             var selectedColours = this.get("colours");
@@ -80,7 +139,6 @@ $(function() {
         addNew: function() {
             console.log($('#new_product').val())
             var product = new Product({name: $('#new_product').val()});
-            console.log(product)
             this.collection.add(product);
         },
         render: function() {
@@ -98,19 +156,6 @@ $(function() {
         }
     });
     
-    var ThemesView = Backbone.View.extend({
-        initialize: function() {
-            themes.on('add', this.render, this)  
-        },
-        tagName: "select",
-        render: function() {
-            this.$el.empty();
-            this.collection.forEach(function(theme) {
-                this.$el.append("<option>" + theme.get("name") + "</option>")
-            },this)
-            return this;
-        }
-    })
     
     var AttachView = Backbone.View.Attachment.extend({
         initialize: function() {
@@ -137,7 +182,6 @@ $(function() {
             return this;
         }
     });
-    var themes_view = new ThemesView({collection:themes}).render().el
     var CurrentProductView = Backbone.View.CouchDB.extend({
         initialize: function() {
             this.model.on("destroy", this.remove, this)  
@@ -162,6 +206,7 @@ $(function() {
             var result = Handlebars.compile($('#current_product_form').html())(this.model.toJSON());
             this.$el.html(result);
             this.$('form').append(themes_view)
+            this.$('form').append(product_types_view)
           this.$el.append("<table>")
             this.$el.append(this.buildAttachments({groupEl: 'tr'}))
             this.$el.append("</table>")
@@ -170,29 +215,12 @@ $(function() {
             return this;
         }
     })
-    var product_types = <%- JSON.stringify(product_types) %>;
     var products = new Products( <%- JSON.stringify(products) %>, {parse: true} );
     
     new ProductsView({
         collection: products
     }).render();
     
-   var ThemeAdminView = Backbone.View.extend({
-       el: $('#themes_admin'),
-       events: {
-            'click input[type=submit]': 'addTheme'
-       },
-       addTheme: function(e) {
-         e.preventDefault();
-         var that = this;
-           var name = this.$('input[name=new_theme]').val();
-           var description = this.$('textarea[name=description]').val();
-           themes.create({name: name, description: description}, { wait:true })
-      },
-       render: function() {
-       }
-   })
-    new ThemeAdminView({collection:themes});
 })
 
 </script>
