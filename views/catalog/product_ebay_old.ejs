@@ -1,9 +1,12 @@
 <html>
 <body>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
+
 <style type="text/css">
 /* Main elements
 ==================================== */
-#page_container_casamiento { font-family: "Arial",sans-serif; color: #444444; background-color: #fff; font-size: 10px; width:974px; }
+#page_container_casamiento { font-family: "Open Sans",sans-serif; color: #444444; background-color: #fff; font-size: 10px; width:974px; }
 #top_container_casamiento { width:100%; height:80px; background-image:url("http://www.casamiento.co.uk/images/backgrounds/grey_header.png");  }
 #main_logo_casamiento { text-align:left; width:25%; float:left; padding-top:15px; padding-left:20px; }
 #main_slogan_casamiento { width:168px; float:right; padding-top:15px; }
@@ -13,18 +16,16 @@
 
 /* Main Typography
 ==================================== */
+h1.casamiento { color:#444444; font:40px "Libre Baskerville";font-weight:normal; text-align:left; padding-top:10px; padding-bottom:5px; margin:0; text-align:center; line-height:1.4em; }
+h2.casamiento  { color:black; font: 28px "Libre Baskerville"; letter-spacing:0.7em;font-variant: small-caps;text-align:justify; padding-top:10px; padding-bottom:5px; margin:0; }
+h3.casamiento {  text-align:justify; color:black; font: normal 14px "Libre Baskerville";line-height:1.6em;letter-spacing:0.2em; padding-right:10px; padding-left:10px;}
+h4.casamiento { font:14px "Libre Baskerville"; font-weight:700; text-align:left; text-indent:1em; margin:0; padding-top:0.5em; color: black; }
 h5.casamiento { font: bold 11px "Arial"; color: #444444;margin:0; text-align:left; border-bottom: 1px solid #636667; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px; }
-h3.casamiento  { color:#444444; font:normal 40px Georgia; text-align:left; padding-top:10px; padding-bottom:5px; margin:0; letter-spacing:-0.05em; line-height:1.4em;}
-h4.casamiento { font: bold italic 14px Georgia; text-align:left; text-indent:1em; margin:0; padding-top:0.5em; color: black; letter-spacing:-0.07em;}
-h6.casamiento { font: normal 20px Georgia; text-align:left;margin:0; line-height:1.6em;}
-h2.casamiento { font: bold 14px "Arial"; color:#444444; }
-h1.casamiento { font-style:italic; }
-.casamiento_description { font: 17px Georgia italic;  padding-right:2em; line-height:1.5em; }
-h1.casamiento { color:#444444; font:italic 24px Georgia; text-align:justify; padding-top:10px; padding-bottom:5px; margin:0; }
-ul.casamiento, p.casamiento { font-size: 12px; line-height: 1.6em; text-align:justify;}
+h6.casamiento { color:black;font: italic 20px "Libre Baskerville"; text-align:left;margin:0; line-height:1.6em;}
+
+ul.casamiento, p.casamiento { font-size: 14px; line-height: 1.5em; text-align:left; letter-spacing:0;}
 ul.casamiento { text-indent:0;}
 .decimal { font-size:18px; position:relative;top:-8px;  }
-#peace_of_mind { text-align:center; border:1px solid grey; padding:10px; float:left; margin-bottom:1.6em; font-size:11px;}
 
 .quote_container { position:relative;left:-75px; border-top: 1px dashed #444444; border-bottom:1px dashed #444444; padding-top:20px; padding-bottom:20px; height:50px;width:360px;}
 .quote { float:left; }
@@ -36,59 +37,45 @@ ul.casamiento { text-indent:0;}
 /* How it works 
 ==================================== */
 #how_it_works { margin-left:120px; padding:0;}
-p.casamiento_how_it_works { color:#444444; font-size: 12px; text-align justify; }
 
 #me_photo {float:left; width:115px; }
 
 /* Tables 
 ==================================== */
-table.casamiento_description { border:0; border-collapse:collapse;}
 
-table.casamiento, table.casamiento_related, table.casamiento_feedback { width:100%; text-align:center; border-collapse:collapse; }
+table.casamiento, table.casamiento_related, table.casamiento_feedback { width:100%; text-align:center; border-collapse:collapse; color: #444444;}
 
 .italic { font-style:italic; }
 
-table.casamiento_feedback tr:nth-child(odd) { background-color: #F0F0F0 }
-table.casamiento_related td { text-align:center; }
-    table.casamiento th { font: bold 11px "Arial"; color: #444444; text-align:center; }
-table.casamiento td { font: bold 11px "Arial"; color: #444444; text-align:center; line-height:150%;}
-table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity { font: normal 24px "Georgia"; color: #444444; text-align:center; }
+    table.casamiento th { font: bold 11px "Arial";  }
+table.casamiento td { font: bold 11px "Arial"; line-height:150%;}
+table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity { font: normal 24px "Georgia"; }
 table.casamiento td.casamiento_sample { font-weight:normal; text-align:justify;}
 table.casamiento td, table.casamiento th { border:1px dotted grey; padding:10px; } 
-table.casamiento_related td { border:0; }
 
-table.casamiento_feedback td { font: normal 11px "Arial"; color: #444444; padding:5px; border:1px dotted grey; text-align:center; }
--radius:8px;}
+table.casamiento_feedback td { font: normal 11px "Arial";  padding:5px; border:1px dotted grey; text-align:center; }
+
+table.casamiento_feedback tr:nth-child(odd) { background-color: #F0F0F0 }
+
 .prevent_table_stretching { width:100%;}
 
-.grey { background-color:#F0F0F0;  border-radius:8px; padding-left:5px; padding-right:5px;}
-.blank { border:10px transparent;padding-left:5px; padding-right:5px;}
+.grey { background-color:#F0F0F0; border-radius:8px; padding-left:10px; padding-right:10px; padding-bottom:1px;}
+.blank { border:10px transparent; padding-left:10px; padding-right:10px;}
+
 /* Columns
 ==================================== */ 
-#section0_casamiento {  padding:0; margin:0; float:left; width:320px;  }
-#section1_casamiento { padding:0; margin:0;margin-left:323px;  }
+#section0_casamiento {  padding:0; margin:0; float:left; width:648px;  }
+#section1_casamiento { padding:0; margin:0;margin-left:648px;  }
 
-#section2_casamiento { clear:both; text-align:left; float:left; width:387px; }
+#section2_casamiento { clear:both; text-align:left; float:left; width:417px; }
 #section3_casamiento { margin-left:457px; }
 
-/* Monograms
-==================================== */
-#monograms_casamiento { width:100%; text-align:center; border-collapse: separate;}
-#monograms_casamiento td { background-repeat: no-repeat; width:25%; background-position:10px 10px;border-spacing:5px;border-top: 1px dotted grey; padding-top:20px;padding-bottom:10px;}
-
-
-#colour_table_casamiento { text-align:left; font:normal 11px Arial; color:#636667; border:0; padding:2px; }
-    #colour_table_casamiento td {  border:0; padding:0px; text-align:left; font-weight:normal;}
-    #colour_table_casamiento th { border:0; text-align:center; font:bold 14px Arial; padding-top:20px; margin-bottom:10px;border-bottom:1px dotted grey;}
-
 .casamiento_colour { width:20px;height:5px;margin:auto; border:1px solid grey; border-radius:7px; padding:5px; margin:5px; } 
+
 /* Links
 ==================================== */
 a.casamiento:link, a.casamiento:active, a.casamiento:visited { font: normal 14px Georgia;color: <%= colours[0] %>; font-style:underline; }
-a.casamiento:hover { color:black;}
-table.casamiento_related img { padding:2px; } 
-a.casamiento_related { font: normal 14px Georgia; font-style:italic; display:block; padding-bottom:10px;}
-table.casamiento_related td img { padding:5px; }
+a.casamiento:hover { color:black; }
 /* Classes
 ==================================== */
 .casamiento_center { text-align:center; }
@@ -116,9 +103,7 @@ table.casamiento_related td img { padding:5px; }
             <img id="genesis_logo_top" alt="Genesis_footer2" src="http://www.casamiento.co.uk/images/logo_branding/genesis_footer.png" />         
     </div>
 
-    <div style="clear:both;float:left;width:200px;">
-        <h1 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/bullet_square_dots.png" /> Simplicity</h1>
-    </div>
+    <div style="clear:both;float:left;width:200px;"></div>
 
     <div style="float:right;margin-top:5px;width:200px;">
         <img src="/images/product_types/small/<%= product_type %>_small.png" /> 
@@ -129,15 +114,14 @@ I M A G E S
 ####################################################################################### -->
  
     <div id="maincontainer" style="clear:both;">
+        
         <div id="section0_casamiento">
-          <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[1] %>" />  
-        <br/>
-            <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>" />  
-        </div>
-        <div id="section1_casamiento">
             <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[0] %>"  />
         </div>
-
+<div id="section1_casamiento"> <h2 class="casamiento"> Simplicity</h2>
+       <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3>       
+            <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>" />  
+        </div>
 <!-- #######################################################################################
 C O L U M N 
 ####################################################################################### -->
@@ -147,7 +131,7 @@ C O L U M N
          <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> How it works&hellip;</h5>
 
   <div id="me_photo"><img src="/images/me2.jpg" /><p class="casamiento"> <b>David Pettifer,<br/> Founder</b></p></div>
-<div id="how_it_works"><h3 class="casamiento">What do you want from your wedding stationery?</h1>
+<div id="how_it_works"><h1 class="casamiento">What do you want from your wedding stationery?</h1>
 <p class="casamiento_center"><img src="/images/page_seperators/three_across.png" style="padding:10px"/></p>
      <h6 class="casamiento">&hellip;you'll probably answer this question with something like &ldquo;I want colours that co-ordinate with my day&rdquo; or &hellip;</h6>
      <p class="casamiento">&hellip;<span class="italic">&ldquo;I want a design with hearts&rdquo;</span>. But whatever your answer, it all boils down to one thing: you want your wedding stationery to impress your guests with its uniqueness, beauty and quality&hellip;</p>

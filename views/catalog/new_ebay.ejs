@@ -1,0 +1,306 @@
+<html>
+<body>
+<!--<link href='http://fonts.googleapis.com/css?family=Dosis:200,600' rel='stylesheet' type='text/css'>-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,300,700' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+/* Main Typography
+==================================== */
+@font-face { font-family: Trajan; src: url('/javascripts/TrajanPro-Regular.otf') }
+@font-face { font-family:Gara; src: url('/javascripts/GARA.TTF'); url('/javascripts/GARA.eot') format('embedded-opentype'), }
+@font-face { font-family:GaraItalic; src: url('/javascripts/GARAIT.TTF') }
+
+/* Main elements
+==================================== */
+#page_container_casamiento {  text-align:justify; letter-spacing:0; color: #444444; background-color: #fff; width:974px; }
+#top_container_casamiento { width:100%; height:80px; background-image:url("http://www.casamiento.co.uk/images/backgrounds/grey_header.png");  }
+#main_logo_casamiento { text-align:left; width:25%; float:left; padding-top:15px; padding-left:20px; }
+#main_slogan_casamiento { width:168px; float:right; padding-top:15px; }
+#genesis { text-align:center; width:450px;margin-top:20px;float:right; }
+#genesis_logo_top { padding:0; margin-top:10px; }
+#genesis_container { border-top:1px dotted grey; border-bottom:1px solid grey; height:60px;}
+
+/* Columns
+==================================== */ 
+#section0_casamiento {  padding:0; margin:0; float:left; width:648px;  }
+#section1_casamiento { padding:0; margin:0;margin-left:648px;  }
+
+#section2_casamiento { clear:both; float:left; width:437px;padding-left:10px; padding-right:9px; }
+#section3_casamiento { margin-left:477px; }
+
+h1.casamiento { color:#444444; font:96px "GaraItalic"; border-top:1px solid #444;border-bottom:1px dashed #444; padding-top:10px; padding-bottom:20px; margin-top:5px;margin-bottom:5px; text-align:center; line-height:1em; }
+h2.casamiento  { color:black; font: 28px "Trajan"; letter-spacing:0.6em; padding:10px 10px 5px 10px;margin:0; }
+h3.casamiento { font:normal 20px "Gara"; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em; padding-right:10px; padding-left:10px;}
+h4.casamiento { font: 24px GaraItalic; border-bottom:1px dashed #444444; padding-bottom:5px;padding-top:5px;margin:0; text-align:center; }
+h5.casamiento { font: italic 14px "Open Sans";  color: #444444;margin:0; text-align:left; border-bottom: 1px solid #636667; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px;letter-spacing:0; }
+h6.casamiento { font:normal 24px "Gara"; line-height:1.2em; padding:0;margin:0; }
+
+ul.casamiento, p.casamiento { color:#444444;font:normal 16px "Gara";line-height: 1.4em; padding:0; margin-top:5px;}
+ul.casamiento { text-indent:0;}
+.decimal { font-size:18px; position:relative;top:-8px;  }
+
+.casamiento_clearfix { clear:both; }
+
+/* Tables 
+==================================== */
+
+table.casamiento, table.casamiento_related, table.casamiento_feedback { width:100%; text-align:center; border-collapse:collapse; color: #444444;}
+    table.casamiento th { font: bold 11px "Arial";  }
+table.casamiento td { font: 12px "Open Sans"; line-height:150%;}
+table.casamiento td:first-child { font: italic 12px "Open Sans"; line-height:150%;}
+table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity { font: normal 24px "Trajan"; }
+table.casamiento td.casamiento_sample { color:black; font: normal 12px "Open Sans"; line-height:1.5em; text-align:left;}
+table.casamiento td, table.casamiento th { border:1px dotted grey; padding:10px; } 
+
+td a { font: italic 12px "Open Sans" }
+.prevent_table_stretching { width:100%;}
+
+.grey { background-color:#F0F0F0; margin-top:10px; margin-bottom:10px;}
+
+.casamiento_colour { width:20px;height:5px;margin:auto; border:1px solid grey; border-radius:7px; padding:5px; margin:5px; } 
+
+/* Links
+==================================== */
+a.casamiento:link, a.casamiento:active, a.casamiento:visited { color: <%= colours[0] %>; font-style:underline; }
+a.casamiento:hover { color:black; }
+/* Classes
+==================================== */
+.casamiento_center { text-align:center; padding:5px; }
+</style>
+
+<div id="page_container_casamiento"> 
+<!-- HEADER -->
+    <div id="top_container_casamiento">
+        <div id="main_logo_casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/casamiento.png"></div>
+        <div id="main_slogan_casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/big_dreamsonpaper.png" />
+        </div>
+    </div>
+    
+    <!-- BAR -->
+    <div id="genesis_container" style="width:100%; margin:auto; text-align:center;">
+    <% if (auction) { %>
+    <div id="genesis">
+            <h5 class="casamiento" style="text-align:center;border-bottom:0;padding:0;float:right;">
+            <img src="http://www.casamiento.co.uk/images/bullets/line_diamond.png" /> 
+            
+            <a class="casamiento" href="">Can't wait? Click here for a buy-it-now listing for this item</a></h5>
+          
+       </div>  
+         <% } %>
+            <img id="genesis_logo_top" alt="Genesis_footer2" src="http://www.casamiento.co.uk/images/logo_branding/genesis_footer.png" />         
+    </div>
+
+    <div style="clear:both;float:left;width:200px;"></div>
+
+    <div style="float:left;margin-top:5px;width:300px;text-align:center">
+        <img src="/images/product_types/small/<%= product_type %>_small.png" /> 
+    </div>
+
+<!-- #######################################################################################
+I M A G E S 
+####################################################################################### -->
+ 
+    <div id="maincontainer" style="clear:both;">
+        
+        <div id="section0_casamiento">
+            <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[0] %>"  />
+        </div>
+<div id="section1_casamiento"> <h2 class="casamiento"> Simplicity</h2>
+       <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3>       
+            <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>" />  
+        </div>
+<!-- #######################################################################################
+C O L U M N 
+####################################################################################### -->
+<h1 class="casamiento">What do you want from<br/>your wedding stationery?</h1>
+        <div id="section2_casamiento">
+        
+        <p class="casamiento_center"><img src="/images/bullets/line_diamond.png" /></p>
+<div id="how_it_works"><h6 class="casamiento">You could answer this question in many ways: you might say <span class="italic">&ldquo;I want colours that co-ordinate with my day&rdquo;</span> or <span class="italic">&ldquo;I want luxurious, textured paper&rdquo;</span>. But whatever your answer, it all boils down to one thing: you want your wedding stationery to impress your guests with its uniqueness, beauty and quality&hellip;</h6>
+     
+<p class="casamiento_center"><img src="/images/page_seperators/three_across.png"></p>
+     <p class="casamiento">&hellip;<span class="italic">&ldquo;I want a design with hearts&rdquo;</span>. But whatever your answer, it all boils down to one thing: you want your wedding stationery to impress your guests with its uniqueness, beauty and quality&hellip;</p>
+    
+     <p class="casamiento">At Casamiento, we want to help make your day a very memorable one. Our carefully crafted collection of highly personalised wedding stationery stands out from the crowd of boring, mass-produced cards.</p>
+<p class="casamiento_center"><img src="/images/page_seperators/three_across.png"></p>  
+<div class="grey">
+<h4 class="casamiento"><img src="/images/bullets/bullet_square_dots.png" /> Colour matching.</h4>
+<p class="casamiento">Choose from a wide range of colours: if you have an exact colour in mind just send a sample of it to us&mdash;preferably by post as screen colours can vary widely&mdash;and we will match it for you.</p>
+
+</div>
+<h4 class="casamiento"><img src="/images/bullets/bullet_square_dots.png" /> Co-ordinating envelopes</h4>
+<p class="casamiento">Most invitations come with plain, boring, throwaway envelopes&hellip; but our envelopes will be something you'll want to keep! Highly co-ordinated with the same design as your invitations, as well as being personalised with your monogram, they will wow your guests.</p>
+</div>
+
+<div class="grey">
+   <h4 class="casamiento"><img src="/images/bullets/bullet_square_dots.png" /> Guest name printing</h4>
+   <p class="casamiento">We will individually print each item of stationery with the names of your guests: this includes reply cards, place cards and invitations. Just send us a list of names!</p>
+   </div>
+ <p class="casamiento_center">
+ <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[1] %>" /></p>
+    <h4 class="casamiento"><img src="/images/bullets/bullet_square_dots.png" /> Envelope addressing</h4>
+    <p class="casamiento">We can print your guests' names and addresses individually on each envelope so your invitations are ready to post.</p>
+
+    <div class="grey">
+    <h4 class="casamiento"><img src="/images/bullets/bullet_square_dots.png" /> Customised wording.</h4>
+    <p class="casamiento">Choose whatever wording you like!</p>
+</div>
+
+<h4 class="casamiento"><img src="/images/bullets/bullet_square_dots.png" /> Monogram</h4>
+<p class="casamiento">
+A monogram is a motif combining you and your partner's names, the perfect symbol of your marriage together: it makes an impact&mdash;much better than your names in boring plain text and  provides the ultimate touch of understated sophistication. We have many styles of monogram available, the only problem you'll have is deciding which one is for you!</p>
+        <p class="casamiento_center"><img src="/images/page_seperators/three_across.png" /></p></div>
+
+
+</div>
+<!-- #######################################################################################
+S P E C S
+####################################################################################### -->
+        <div id="section3_casamiento">
+            <div id="description_container" style="width:100%;">
+           
+          
+             <div id="colours_shown" style="width:32%;float:right;">
+            <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> Colours shown:</h5>
+            <% colours.forEach(function(colour) { %>
+    
+                <div style="background-color:<%= colour %>;width:20px;border-radius:5px;height:10px;border:1px solid grey;float:left;margin:10px;margin-left:25px;padding:0;"></div><p class="casamiento" style="padding:0; margin-top:15px;"><%= colour %></p>
+            
+            <% }) %>
+            <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> Colours available:</h5>
+           
+            </div>
+  <div id="description" style="width:66%">
+             <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> Description:</h5>
+           
+            <table class="casamiento" style="border:0;width:100%;text-align:left;">
+            <tr>            
+            <td>Weight:</td><td>250gsm<br/>300gsm (heavier)</td>
+            </tr>
+            <tr>
+            <td>Card colour:</td><td>White</td>
+            </tr>
+             <tr>
+                <td>Dimensions</td>            <td><img src="/images/specs/tent.png" /></td>
+            </tr>
+            </table>
+            </div>            
+            </div>
+            
+                     <p class="casamiento_center"><img src="/images/shell.png" /></p>
+            <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> This auction is for:</h5>
+                    
+           <div class="prevent_table_stretching">
+           
+           <table class="casamiento">
+           <% if (product_type == "sample") { %>
+             <tr>
+                            <td><img src="/images/product_types/small/<%= product_type %>_small.png" /></td>
+                            <td class="casamiento_sample">Each sample package contains
+an invitation with envelope and wrapper, an RSVP card and a name place card.</td>
+                            
+                            <td class="casamiento_price">&pound;0<span class="decimal">.99</span></td>
+                        </tr>
+           <% } else { %>                        
+                        <tr>
+                            <td><img src="/images/product_types/small/<%= product_type %>_small.png" /></td>
+                            <td><img src="/products/<%= theme_id %>-<%= product_type %>/attachments/thumb-<%= attachments_order[0] %>" /></td>
+                            <td class="casamiento"><img src="/images/specs/quantity_<%= quantity %>.png" /></td>
+                            
+                            <td class="casamiento_price">&pound;<%= pounds %><span class="decimal">.<%= pence %></span></td>
+                        </tr>
+                        
+                        <% } %>
+                    </table>
+                    </div>
+                    
+<h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> 
+Also in this design:</h5>
+                    
+           <div class="prevent_table_stretching">
+                    <table class="casamiento">
+<% related.forEach(function(r) { %>
+                          <tr>
+                            <td><img src="/images/product_types/small/<%= r.product_type %>_small.png" /</td>
+                            <td><img src="http://www.casamiento.co.uk/products/<%= r.theme_id %>-<%= r.product_type %>/attachments/thumb-<%= r.attachments_order[0] %>" /></td>
+
+<td class="casamiento"><a class="casamiento" href="<%= r.buy_it_now_id %>">20 x <%= r.product_type %></a></td>
+                            <td class="casamiento_price">&pound;<%= r.pounds %><span class="decimal">.<%= r.pence %></span></td>
+                        </tr>
+                       <% }) %>
+                      
+                    </table>
+                    </div>
+                    
+<% if (product_type != "sample") { %>
+
+<p class="casamiento_center"><img src="/images/shell.png" /></p>
+        
+<h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> 
+Options for this design&hellip;</h5>
+                    
+           <div class="prevent_table_stretching">
+                    <table class="casamiento">
+                          <tr>
+                            <td><img src="/images/product_types/monogram.png" /</td>
+                            
+<td class="casamiento_sample"><p style="text-align:center;"><img src="/images/ebay/mono.png" /></p>A monogram is a motif combining you and your partner's names, the perfect symbol
+of your marriage together: it makes an impact &mdash;much better than your names in boring plain text. <p><a class="casamiento" href="">
+Get a monogram created now by clicking here to 
+see our different styles</a></p><p> You'll also get your monogram as a PDF file for you
+to keep and use in the future on things like engravings or calling cards.</p></td>
+                            <td class="casamiento_price">&pound;5<span class="decimal">.00</span></td>
+                        </tr>
+                      
+                    </table>
+                    </div>
+<p class="casamiento_center"><img src="/images/shell.png" /></p>
+        
+<h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> 
+Why not try a sample&hellip;?</h5>
+                    
+           <div class="prevent_table_stretching">
+                    <table class="casamiento">
+                          <tr>
+                            <td><img src="/images/product_types/small/sample_small.png" /</td>
+                            
+<td class="casamiento_sample">Each sample package contains:
+<ul><li>1 x invitation with envelope and wrapper</li>
+<li>1 x RSVP card</li>
+<li>1 x name place card</li>
+</ul>
+<a class="casamiento" href="">Click here to buy a sample of this design now.</a></td>
+                            <td class="casamiento_price">&pound;0<span class="decimal">.99</span></td>
+                        </tr>
+                      
+                    </table>
+                    </div>
+                    <% } %>
+                    
+                     <p class="casamiento_center"><img src="/images/shell.png" /></p>
+        
+                </div>
+                
+<h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> 
+Don't take my word for it&hellip;</h5>
+         
+                   
+                    <h6 class="casamiento" style="margin:0 auto;width:75%;font: 16px Trajan;text-align:center;letter-spacing:0.2em;">&ldquo;David was so helpful everyone at wedding was talking about matching stationery&rdquo;</h6><h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%" href="">&mdash;dellajones65</a></h6>
+<p class="casamiento_center" style="margin-bottom:15px;margin-top:-3px;padding:0;"><img src="/images/page_seperators/tripol.png" /></p>
+ <h6 class="casamiento" style="margin:0 auto;width:75%;font: 16px Trajan;text-align:center;letter-spacing:0.2em;">&ldquo;These are Excellent great value i would defo buy from again he is brilliant AAAA&rdquo;</h6><h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%;" href="">&emdash;melanieb</a></h6>
+
+<p class="casamiento_center" style="margin-bottom:15px;margin-top:-3px;padding:0;"><img src="/images/page_seperators/tripol.png" /></p>
+
+            </div>
+    
+<!-- #######################################################################################
+R E L A T E D
+####################################################################################### -->
+
+    <div style="clear:both"></div>
+        
+   
+</div>
+</body>
+</html>
