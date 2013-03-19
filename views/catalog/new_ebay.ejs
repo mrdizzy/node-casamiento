@@ -1,7 +1,25 @@
 <html>
+<head>
+    <!-- JQUERY -->
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/javascripts/slides.min.jquery.js"></script>
+<script type="text/javascript">
+ $(function() {
+$("#slides").slides({
+            play: 5000,
+            effect: 'fade, slide',
+            crossfade: true,
+            preload: true,
+            preloadImage: "/images/spinner.gif",
+            fadeSpeed: 2000
+        });   
+ })
+</script>
+</head>
+</head>
 <body>
-<!--<link href='http://fonts.googleapis.com/css?family=Dosis:200,600' rel='stylesheet' type='text/css'>-->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,300,700' rel='stylesheet' type='text/css'>
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,700' rel='stylesheet' type='text/css'>
 
 <style type="text/css">
 
@@ -13,7 +31,7 @@
 
 /* Main elements
 ==================================== */
-#page_container_casamiento {  text-align:justify; letter-spacing:0; color: #444444; background-color: #fff; width:974px; }
+#page_container_casamiento {  text-align:justify; letter-spacing:0; color: #333; background-color: #fff; width:974px; }
 #top_container_casamiento { width:100%; height:80px; background-image:url("http://www.casamiento.co.uk/images/backgrounds/grey_header.png");  }
 #main_logo_casamiento { text-align:left; width:25%; float:left; padding-top:15px; padding-left:20px; }
 #main_slogan_casamiento { width:168px; float:right; padding-top:15px; }
@@ -24,28 +42,30 @@
 /* Columns
 ==================================== */ 
 #section0_casamiento {  padding:0; margin:0; float:left; width:648px;  }
-#section1_casamiento { padding:0; margin:0;margin-left:648px;  }
+#section1_casamiento { padding:0; margin:0;margin-left:652px;  }
 
 #section2_casamiento { clear:both; float:left; width:437px;padding-left:10px; padding-right:9px; }
 #section3_casamiento { margin-left:477px; }
 
-h1.casamiento { color:#444444; font:96px "GaraItalic"; border-top:1px solid #444;border-bottom:1px dashed #444; padding-top:10px; padding-bottom:20px; margin-top:5px;margin-bottom:5px; text-align:center; line-height:1em; }
-h2.casamiento  { color:black; font: 28px "Trajan"; letter-spacing:0.6em; padding:10px 10px 5px 10px;margin:0; }
-h3.casamiento { font:normal 20px "Gara"; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em; padding-right:10px; padding-left:10px;}
-h4.casamiento { font: 24px GaraItalic; border-bottom:1px dashed #444444; padding-bottom:5px;padding-top:5px;margin:0; text-align:center; }
-h5.casamiento { font: italic 14px "Open Sans";  color: #444444;margin:0; text-align:left; border-bottom: 1px solid #636667; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px;letter-spacing:0; }
+#description { height:246px; margin:0;padding:0;}
+
+h1.casamiento { color:#333; font:96px "GaraItalic"; border-top:1px solid #333;border-bottom:1px dashed #333; padding-top:10px; padding-bottom:20px; margin-top:5px;margin-bottom:5px; text-align:center; line-height:1em; }
+h2.casamiento  { color:black; font: 28px "Trajan"; letter-spacing:0.6em; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px; }
+h3.casamiento { font:normal 20px "Gara"; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
+h4.casamiento { font: 24px GaraItalic; border-bottom:1px dashed #333; padding-bottom:5px;padding-top:5px;margin:0; text-align:center; }
+h5.casamiento { font: italic 14px "Open Sans";  color: #333;margin:0; text-align:left; border-bottom: 1px solid #333; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px;letter-spacing:0; }
 h6.casamiento { font:normal 24px "Gara"; line-height:1.2em; padding:0;margin:0; }
 
-ul.casamiento, p.casamiento { color:#444444;font:normal 16px "Gara";line-height: 1.4em; padding:0; margin-top:5px;}
+ul.casamiento, p.casamiento { color:#333;font:normal 16px "Gara";line-height: 1.4em; padding:0; margin-top:5px;}
 ul.casamiento { text-indent:0;}
 .decimal { font-size:18px; position:relative;top:-8px;  }
-
+.slides_container { display:none; }
 .casamiento_clearfix { clear:both; }
 
 /* Tables 
 ==================================== */
 
-table.casamiento, table.casamiento_related, table.casamiento_feedback { width:100%; text-align:center; border-collapse:collapse; color: #444444;}
+table.casamiento, table.casamiento_related, table.casamiento_feedback { width:100%; text-align:center; border-collapse:collapse; color: black;}
     table.casamiento th { font: bold 11px "Arial";  }
 table.casamiento td { font: 12px "Open Sans"; line-height:150%;}
 table.casamiento td:first-child { font: italic 12px "Open Sans"; line-height:150%;}
@@ -102,14 +122,22 @@ I M A G E S
 ####################################################################################### -->
  
     <div id="maincontainer" style="clear:both;">
-        
-        <div id="section0_casamiento">
-            <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[0] %>"  />
+    <div id="slides">
+        <div class="slides_container">
+        <div class="a_slide">
+            <div id="section0_casamiento">
+                <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[0] %>"  />
+            </div>
+            <div id="section1_casamiento"> 
+                <div id="description"><h2 class="casamiento"> Simplicity</h2>
+                    <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3> 
+                </div>      
+                <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>" />  
+            </div>
+          </div>
+        <div class="a_slide">Boo</div>
         </div>
-<div id="section1_casamiento"> <h2 class="casamiento"> Simplicity</h2>
-       <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3>       
-            <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>" />  
-        </div>
+</div>
 <!-- #######################################################################################
 C O L U M N 
 ####################################################################################### -->
@@ -284,16 +312,25 @@ Why not try a sample&hellip;?</h5>
                 
 <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> 
 Don't take my word for it&hellip;</h5>
-         
-                   
-                    <h6 class="casamiento" style="margin:0 auto;width:75%;font: 16px Trajan;text-align:center;letter-spacing:0.2em;">&ldquo;David was so helpful everyone at wedding was talking about matching stationery&rdquo;</h6><h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%" href="">&mdash;dellajones65</a></h6>
-<p class="casamiento_center" style="margin-bottom:15px;margin-top:-3px;padding:0;"><img src="/images/page_seperators/tripol.png" /></p>
- <h6 class="casamiento" style="margin:0 auto;width:75%;font: 16px Trajan;text-align:center;letter-spacing:0.2em;">&ldquo;These are Excellent great value i would defo buy from again he is brilliant AAAA&rdquo;</h6><h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%;" href="">&emdash;melanieb</a></h6>
-
-<p class="casamiento_center" style="margin-bottom:15px;margin-top:-3px;padding:0;"><img src="/images/page_seperators/tripol.png" /></p>
-
+         <table class="casamiento"><tr><td><div class="quote" style="width:50%;padding-bottom:5px;padding-top:10px;"><h6 class="casamiento" style="margin:auto;font:italic 22px 'Open Sans';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="/images/QUOTE.png" /> David was so helpful everyone at wedding was talking about matching stationery&rdquo;</h6><h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%">&mdash;<a class="casamiento" href="">dellajones65</a></h6></div></td>
+             
+             <td>
+                           
+<div class="quote" style="width:50%; padding-bottom:5px;padding-top:10px;">
+ <h6 class="casamiento" style="width:75%; margin:auto;font: italic 22px 'Open Sans';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="/images/QUOTE.png" /> Absolutely amazing and beautiful, AAA+</h6><h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%" href="">&mdash;<a class="casamiento" href="">normalbaby</a></h6>
+ </div>
+                 
+             </td>
+             <td>
+                 
+                 
+ <div class="quote" style="width:90%;padding-bottom:5px;padding-top:10px;">
+ <h6 class="casamiento" style="margin:auto;font:italic 22px 'Open Sans';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="/images/QUOTE.png" /> Co-ordinated stationery was amazing, I was so impressed&rdquo;</h6><h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%">&mdash;<a class="casamiento" href="">melanieblue</a></h6>
             </div>
-    
+             </td>
+         </tr></table>
+         
+    </div>
 <!-- #######################################################################################
 R E L A T E D
 ####################################################################################### -->
