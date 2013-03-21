@@ -10,15 +10,17 @@
     document.write("</" + az + bz + cz + ">");
 </script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,700' rel='stylesheet' type='text/css'>
-
 <style type="text/css">
 
 /* Main Typography
 ==================================== */
-@font-face { font-family:TrajanPro; src: url('http://project-livec9030d54fb72.rhcloud.com/javascripts/t.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/javascripts/trajan.woff') format('woff');  }
-@font-face { font-family:Gara; src: url('https://project-livec9030d54fb72.rhcloud.com/javascripts/GARA.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/javascripts/GARA.woff') format('woff'); }
-@font-face { font-family:GaraItalic; src: url('https://project-livec9030d54fb72.rhcloud.com/javascripts/GARAIT.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/javascripts/GARAIT.woff') format('woff'); }
 
+@font-face {  font-family:"TrajanPro"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/t.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/trajan.woff') format('woff');  
+}
+
+@font-face { font-family:"Gara"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARA.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARA.woff') format('woff'); }
+
+@font-face { font-family:"GaraItalic"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARAIT.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARAIT.woff') format('woff'); }
 /* Main elements
 ==================================== */
 
@@ -39,11 +41,13 @@
 #section2_casamiento { clear:both; float:left; width:437px; padding-left:10px; padding-right:9px; }
 #section3_casamiento { margin-left:467px; }
 
+img.casamiento { padding:0; border:0; margin:0;}
 .description { border:1px solid black;margin:0;padding:0;}
 
 h1.casamiento { color:#333; font:96px "GaraItalic"; border-top:1px solid #333;border-bottom:1px dashed #333; padding-top:10px; padding-bottom:20px; margin-top:5px;margin-bottom:5px; text-align:center; line-height:1em; }
-h2.casamiento  { color:black; font: normal 28px "TrajanPro", sans-serif; letter-spacing:0.6em; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px; }
+h2.casamiento  { color:black; font: normal 28px "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px; }
 h3.casamiento { font:normal 20px "Gara"; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
+
 h4.casamiento { font: 24px GaraItalic; border-bottom:1px dashed #333; padding-bottom:5px;padding-top:5px;margin:0; text-align:center; }
 h5.casamiento { font: italic 14px "Open Sans", serif;  color: #333;margin:0; text-align:left; border-bottom: 1px solid #333; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px;letter-spacing:0; }
 h6.casamiento { font:normal 24px "Gara", sans-serif; line-height:1.2em; padding:0;margin:0; }
@@ -62,13 +66,13 @@ ul.casamiento { text-indent:0;}
 
 table.casamiento, table.casamiento_related, table.casamiento_feedback { width:100%; text-align:center; border-collapse:collapse; color: black;}
     table.casamiento th { font: bold 11px "Arial";  }
-table.casamiento td { font: 12px "Open Sans"; line-height:150%;}
-table.casamiento td:first-child { font: italic 12px "Open Sans"; line-height:150%;}
+table.casamiento td { font: 13px "Open Sans"; line-height:175%;}
+table.casamiento td:first-child { font: italic 13px "Open Sans"; line-height:150%;}
 table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity { font: normal 24px "TrajanPro"; }
-table.casamiento td.casamiento_sample { color:black; font: normal 12px "Open Sans"; line-height:1.5em; text-align:left;}
+table.casamiento td.casamiento_sample { color:black; font: normal 13px "Open Sans"; line-height:1.5em; text-align:left;}
 table.casamiento td, table.casamiento th { border:1px dotted grey; padding:10px; } 
 
-td a { font: italic 12px "Open Sans" }
+td a { font: italic 13px "Open Sans" }
 .prevent_table_stretching { width:100%;}
 
 .grey { background-color:#F0F0F0; margin-top:10px; margin-bottom:10px;}
@@ -112,21 +116,15 @@ I M A G E S
  
     <div class="casamiento" id="slides">
         <div class="casamiento slides_container">
-        <div class="casamiento a_slide" style="width:974px; height:486px; margin:0;padding:0">
-                <div class="casamiento" style="margin:0;padding:0;width:310px;height:200px;float:left;">
-                    <h2 class="casamiento"> Simplicity</h2>
-                     <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3> 
-                     </div>
-                     <div style="width:650px;margin-left:312px;height:486px;"> <img src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/large-<%= attachments_order[0] %>.jpg"  /></div>
-                  
-             </div>
+       
             <% related.forEach(function(r) { %>
-            <div class="casamiento a_slide" style="width:974px; height:486px; margin:0;padding:0">
-                <div class="casamiento" style="margin:0;padding:0;width:310px;height:200px;float:left;">
-                    <h2 class="casamiento"> Simplicity</h2>
+            <div class="casamiento a_slide" style="width:974px; height:486px; margin:0;padding:0;">
+                <div class="casamiento" style="margin:0;padding:0;width:320px;height:486px;overflow:hidden;float:left;">
+                    <h2 class="casamiento">Simplicity</h2>
                      <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3> 
-                     </div>
-                     <div style="width:650px;margin-left:312px;height:486px;"> <img src="https://project-livec9030d54fb72.rhcloud.com/products/<%= r._id %>/attachments/large-<%= r.attachments_order[0] %>.jpg"  /></div>
+                     <img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= r._id %>/attachments/display-<%= r.attachments_order[1] %>.jpg"/></div>
+                     
+                     <div style="padding:0;margin-left:323px;"><img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= r._id %>/attachments/large-<%= r.attachments_order[0] %>.jpg"  /></div>
                   
              </div>
                                <% }) %>
@@ -166,7 +164,7 @@ C O L U M N
    <p class="casamiento">We will individually print each item of stationery with the names of your guests: this includes reply cards, place cards and invitations. Just send us a list of names!</p>
    </div>
  <p class="casamiento_center">
- <img src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/display-<%= attachments_order[1] %>" /></p>
+ <img src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/display-<%= attachments_order[1] %>.jpg" /></p>
     <h4 class="casamiento"><img src="https://project-livec9030d54fb72.rhcloud.com/images/bullets/bullet_square_dots.png" /> Envelope addressing</h4>
     <p class="casamiento">We can print your guests' names and addresses individually on each envelope so your invitations are ready to post.</p>
 

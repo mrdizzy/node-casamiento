@@ -6,7 +6,17 @@ var express = require('express'),
     partials = require('express-partials');
 
 var app = express();
-
+app.configure(function(){
+  app.use(function(req, res, next) {
+      console.log(req.url)
+    var matchUrl = '/fonts';
+    if(req.url.substring(0, matchUrl.length) === matchUrl) {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      console.log("YESSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
+    }
+    return next();
+  });
+});
 app.configure(function() {
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
