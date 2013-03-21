@@ -1,3 +1,4 @@
+<!-- JQUERY -->
 
 <script type="text/javascript">
 
@@ -19,14 +20,13 @@ document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + g
 
 /* Main Typography
 ==================================== */
-@font-face { font-family: Trajan; src: url('https://project-livec9030d54fb72.rhcloud.com/javascripts/TrajanPro-Regular.eot?') format('eot') }
+@font-face { font-family: Trajan; src: url('https://project-livec9030d54fb72.rhcloud.com/javascripts/Trajan.eot?') format('eot') }
 @font-face { font-family:Gara; src: url('https://project-livec9030d54fb72.rhcloud.com/javascripts/GARA.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/javascripts/GARA.woff') format('woff'); }
 @font-face { font-family:GaraItalic; src: url('https://project-livec9030d54fb72.rhcloud.com/javascripts/GARAIT.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/javascripts/GARAIT.woff') format('woff'); }
 
 /* Main elements
-.casamiento { padding:0; margin: 0 }
 ==================================== */
-#page_container_casamiento {  text-align:justify; letter-spacing:0; color: #333; background-color: #fff; width:974px; margin:0; padding:0; }
+#page_container_casamiento {  text-align:justify; letter-spacing:0; color: #333; background-color: #fff; width:974px; }
 #top_container_casamiento { width:100%; height:80px; background-image:url("http://project-livec9030d54fb72.rhcloud.com/images/backgrounds/grey_header.png");  }
 #main_logo_casamiento { text-align:left; width:25%; float:left; padding-top:15px; padding-left:20px; }
 #main_slogan_casamiento { width:168px; float:right; padding-top:15px; }
@@ -36,16 +36,16 @@ document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + g
 
 /* Columns
 ==================================== */ 
-.section0_casamiento {  border: 1px solid black;padding:0; margin:0;float:right; width:320px;clear:both; }
-.section1_casamiento {border: 1px solid black; padding:0; margin:0;  }
+.section0_casamiento {  padding:0; margin:0; float:left; width:648px;  }
+.section1_casamiento { padding:0; margin:0;margin-left:650px;  }
 
 #section2_casamiento { clear:both; float:left; width:437px;padding-left:10px; padding-right:9px; }
 #section3_casamiento { margin-left:477px; }
 
-.description { border:1px solid black;margin:0;padding:0;}
+.description { height:246px; width:320px;margin:0;padding:0;}
 
 h1.casamiento { color:#333; font:96px "GaraItalic"; border-top:1px solid #333;border-bottom:1px dashed #333; padding-top:10px; padding-bottom:20px; margin-top:5px;margin-bottom:5px; text-align:center; line-height:1em; }
-h2.casamiento  { color:black; font: normal 28px "Trajan"; letter-spacing:0.6em; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px; }
+h2.casamiento  { color:black; font: 28px "Trajan"; letter-spacing:0.6em; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px; }
 h3.casamiento { font:normal 20px "Gara"; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
 h4.casamiento { font: 24px GaraItalic; border-bottom:1px dashed #333; padding-bottom:5px;padding-top:5px;margin:0; text-align:center; }
 h5.casamiento { font: italic 14px "Open Sans";  color: #333;margin:0; text-align:left; border-bottom: 1px solid #333; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px;letter-spacing:0; }
@@ -55,11 +55,17 @@ ul.casamiento, p.casamiento { color:#333;font:normal 16px "Gara", sans-serif;lin
 ul.casamiento { text-indent:0;}
 .decimal { font-size:18px; position:relative;top:-8px;  }
 
-#slides { width:974px; height:486px; padding:0; margin:0;}
-.slides_container {padding:0; margin:0; width:974px; height:486px; }
-.a_slide { display:block;clear:both; }
+#slides { width:975px; height:486px;}
+.slides_container {display:block; background-color:white; width:974px; height:486px; }
+
 .casamiento_clearfix { clear:both; }
 
+/* CSS for jQuery Orbit Plugin 1.2.3
+ * www.ZURB.com/playground
+ * Copyright 2010, ZURB
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ 
  
 /* Tables 
 ==================================== */
@@ -91,19 +97,34 @@ a.casamiento:hover { color:black; }
 <!-- #######################################################################################
 I M A G E S 
 ####################################################################################### -->
- <div id="page_container_casamiento">
-<div class="casamiento" id="slides">
-<div class="casamiento slides_container">
-
+ 
+<div id="slides">
+<div class="slides_container">
+        <div class="a_slide">
+            <div class="section0_casamiento">
+                <img src="http://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/large-<%= attachments_order[0] %>.jpg"  />
+            </div>
+            <div class="section1_casamiento"> 
+                <div class="description"><h2 class="casamiento"> Simplicity</h2>
+                    <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3> 
+                </div>      
+                <img src="http://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>.jpg" />  
+           </div>
+        </div>
+       
     <% related.forEach(function(r) { %>
-    <div class="casamiento a_slide" style="width:974px; height:486px; margin:0;padding:0">
-        <div class="casamiento" style="margin:0;padding:0;width:310px;height:200px;float:left;">
-            <h2 class="casamiento"> Simplicity</h2>
-             <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3> 
-             </div>
-             <div style="width:650px;margin-left:312px;height:486px;"> <img src="https://project-livec9030d54fb72.rhcloud.com/products/<%= r._id %>/attachments/large-<%= r.attachments_order[0] %>.jpg"  /></div>
-          
-     </div>
+        <div class="a_slide">
+            <div class="section0_casamiento">
+              <img src="http://project-livec9030d54fb72.rhcloud.com/products/<%= r._id %>/attachments/large-<%= r.attachments_order[0] %>.jpg"  />
+            </div>
+            <div class="section1_casamiento"> 
+                <div class="description"><h2 class="casamiento"> Simplicity</h2>
+                 <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3> 
+                </div>      
+                <img src="http://project-livec9030d54fb72.rhcloud.com/products/<%= r._id %>/attachments/display-<%= r.attachments_order[1] %>.jpg" />  
+            </div>
+        
+         </div>
                        <% }) %>
 </div>
 </div>
@@ -111,7 +132,6 @@ I M A G E S
 
 <script type="text/javascript">
 
-        $('#slides').slides({play: 5000, effect: 'fade', crossfade: true, start:3, generatePagination:false, currentClass: 'casamientocurrent'});
+         $('#slides').slides();
 
 </script>
-</div>
