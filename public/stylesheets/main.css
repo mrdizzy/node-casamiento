@@ -21,15 +21,23 @@
   
 /* Typography
 ==================================== */
+
+@font-face {  font-family:"TrajanPro"; src: url('/fonts/t.eot?') format('eot'), url('/fonts/trajan.woff') format('woff');  
+}
+
+@font-face { font-family:"Gara"; src: url('/fonts/GARA.eot?') format('eot'), url('/fonts/GARA.woff') format('woff'); }
+
+@font-face { font-family:"GaraItalic"; src: url('fonts/GARAIT.eot?') format('eot'), url('/fonts/GARAIT.woff') format('woff'); }
+
   b, strong, em { font-weight: bold; }  
   i { font-style:italic; }  
   
-  h1 { text-align:center;  }
+  h1 { text-align:center;  font-family: TrajanPro}
     .theme_name { color:black;text-align:center; font-size: 4em; line-height:1em;letter-spacing:0.15em;}
     .product_name { color:black; font-size:2em;  text-align:left; letter-spacing:0.2em;}
     
   h3 { color:#690172; font-weight:bold; margin-bottom: 1em; font-size:1.5em; }
-  h6 { font-size:1.4em; letter-spacing:0.025em; line-height:150%; }
+  h6 { font-size:20px; text-align:justify; letter-spacing:0.1em; line-height:150%; font-family: "Gara" }
   .small { font-size:0.85em;}
   
   h5 { font: bold 0.85em "Arial", "Helvetica", sans-serif; padding-bottom: 10px; border-bottom: 1px solid grey; }

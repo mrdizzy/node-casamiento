@@ -13,7 +13,7 @@ exports.show = function(req, res) {
         })
         var without = _.without(documents, current);
         current.related = without;
-        console.log(current);
+        console.log(without);
         current.quantity = req.query.quantity || 1;
         current.auction = req.query.auction;
         res.render('catalog/new_ebay.ejs', {

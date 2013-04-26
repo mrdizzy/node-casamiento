@@ -20,9 +20,11 @@ exports.destroy = function(req, res) {
     });
 }
 exports.show = function(req, res) {
+    
     messages.view('conversations/messages_by_conversation', {
-        key: req.params.id
-    }, function(err, documents) {
+        key: req.params.conversation
+        }, function(err, documents) {
+        console.log(err,documents)
         var parsed = documents.toArray();
         parsed = _.map(parsed, function(c) {
             c.Content = c.Content.trim();

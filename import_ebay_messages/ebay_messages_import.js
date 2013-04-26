@@ -1,6 +1,6 @@
 var api = require('./../config/ebay_config')(),
     crypto = require('crypto'),
-    db = require('./../config/database').ebay_messages,
+    db = require('./../config/db').ebay_messages,
     async = require('async'),
     _ = require('underscore');
 
@@ -15,9 +15,9 @@ _.chunk = function(array, n) {
 api.makeRequest("GetMyMessages", {
     DetailLevel: "ReturnHeaders",
     StartTime: "2012-10-08T00:00:01Z",
-    EndTime: "2012-10-25T00:00:00Z"
+    EndTime: "2013-04-25T00:00:00Z"
 }, "json", null, function(err, response) {
-    console.log(response.Messages.Message.length);
+    console.log(err, response);
     retrieveMessages(response.Messages.Message);
 });
 

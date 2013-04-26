@@ -6,13 +6,14 @@ var express = require('express'),
     partials = require('express-partials');
 
 var app = express();
+
+// Fonts need to be served with Access-Control-Allow-Origin set to * if
+// FireFox is to support cross-domain downloading of them (e.g. from an eBay listing)
 app.configure(function(){
   app.use(function(req, res, next) {
-      console.log(req.url)
     var matchUrl = '/fonts';
     if(req.url.substring(0, matchUrl.length) === matchUrl) {
       res.setHeader("Access-Control-Allow-Origin", "*");
-      console.log("YESSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
     }
     return next();
   });
@@ -79,9 +80,7 @@ app.post('/ebay', function(req, res) {
     
 //Home page
 app.get("/", function(req, res) {
-    db.view('all/type', {
-        key: 'product'
-    }, function(error, documents) {
+    db.view('products/invitation', function(error, documents) {
         res.render("welcome/index", {
             documents: documents.toArray()
         })
