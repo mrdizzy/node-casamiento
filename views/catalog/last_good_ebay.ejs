@@ -46,12 +46,12 @@ img.casamiento { padding:0; border:0; margin:0;}
 .description { border:1px solid black;margin:0;padding:0;}
 
 h1.casamiento { color:#000; font:100px "GaraItalic"; line-height:1em;border-top:1px solid #333;border-bottom:1px dashed #333; padding-bottom:20px; margin-top:5px;margin-bottom:5px; padding-left:50px; padding-right:50px;text-align:center; letter-spacing:0;}
-h2.casamiento  { color:black; text-align:center; font: normal 28px "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:10px;padding-top:10px; }
+h2.casamiento  { color:black; text-align:center; font: normal 32px "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px;padding-top:5px; }
 h3.casamiento { font:normal 20px "Gara"; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
 
 h4.casamiento { font: 24px GaraItalic; border-bottom:1px dashed #333; padding-bottom:5px;padding-top:5px;margin:0; text-align:center; }
 h5.casamiento { font: italic 14px "Open Sans", serif;  color: #000;margin:0; text-align:left; border-bottom: 1px solid #333; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px;letter-spacing:0; }
-h6.casamiento { font:normal 24px "Gara", sans-serif; text-indent:1em; line-height:1.2em; padding-top:1em;margin:0; }
+h6.casamiento { font:normal 18px "Open Sans", sans-serif; font-style:italic; text-indent:1em; line-height:1.2em; padding-top:1em;margin:0; }
 
 ul.casamiento, p.casamiento { color:#000;font:normal 16px "Gara", sans-serif;line-height: 1.4em; padding:0; text-indent:1em; margin-top:1em;}
 ul.casamiento { text-indent:0;}
@@ -68,6 +68,7 @@ ul.casamiento { text-indent:0;}
 .casamiento_clearfix { clear:both; }
 .colour_holder { background-color:white; display:none; width:460px;position:absolute;}
 #colour_table {padding:5px;background-color:white; width:100%; }
+.ornamental_line { text-align:center;padding-top:5px; margin-bottom:10px;}
 
 /* Tables 
 ==================================== */
@@ -123,7 +124,7 @@ I M A G E S
     <div style="clear:both;float:left;width:200px;"></div>
        
             <div  style="width:974px; height:486px; margin:0;padding:0;">
-                <div class="casamiento" style="margin:0;padding:0;width:320px;height:716px;overflow:hidden;float:left;">
+                <div class="casamiento" style="margin:0;padding:0;width:320px;float:left;">
                   
                       <img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>.jpg"/><br/>
                        <img class="casamiento"  src="/products/<%= _id %>/attachments/display-<%= attachments_order[1] %>.jpg"/><br/>
@@ -145,8 +146,8 @@ I M A G E S
         </div>
     </div>
 
-                     <p class="casamiento_center"><img src="/images/ornamentalline.png" /></p>
-                     <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3></div><br/></div>
+                     <p class="ornamental_line"><img src="/images/ornamentalline.png" /></p>
+                     <h3 class="casamiento"> <%= description %></h3></div><br/></div>
                   
              </div>
             
