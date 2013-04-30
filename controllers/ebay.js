@@ -16,7 +16,7 @@ exports.show = function(req, res) {
         console.log(without);
         current.quantity = req.query.quantity || 1;
         current.auction = req.query.auction;
-        res.render('catalog/new_ebay.ejs', {
+        res.render('catalog/last_good_ebay.ejs', {
             layout: false,
             locals: current
         });
@@ -45,7 +45,7 @@ exports.sample = function(req, res) {
         current.related = documents;
         current.auction = req.query.auction;
         current.quantity = req.query.quantity || 1;
-        res.render('catalog/product_ebay', {
+        res.render('catalog/new_ebay', {
             layout: false,
             locals: current
         });

@@ -45,7 +45,7 @@ img.casamiento { padding:0; border:0; margin:0;}
 .description { border:1px solid black;margin:0;padding:0;}
 
 h1.casamiento { color:#333; font:96px "GaraItalic"; border-top:1px solid #333;border-bottom:1px dashed #333; padding-top:10px; padding-bottom:20px; margin-top:5px;margin-bottom:5px; text-align:center; line-height:1em; }
-h2.casamiento  { color:black; font: normal 28px "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px; }
+h2.casamiento  { color:black; font: normal 28px "TrajanPro", sans-serif; letter-spacing:10px; text-align:center;margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px; }
 h3.casamiento { font:normal 20px "Gara"; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
 
 h4.casamiento { font: 24px GaraItalic; border-bottom:1px dashed #333; padding-bottom:5px;padding-top:5px;margin:0; text-align:center; }
@@ -56,8 +56,8 @@ ul.casamiento, p.casamiento { color:#333;font:normal 16px "Gara", sans-serif;lin
 ul.casamiento { text-indent:0;}
 .decimal { font-size:18px; position:relative;top:-8px;  }
 
-#slides { width:974px; height:486px; padding:0; margin:0;}
-.slides_container {padding:0; margin:0; width:974px; height:486px; }
+#slides { width:974px; height:716px; padding:0; margin:0;}
+.slides_container {padding:0; margin:0; width:974px; height:716px; }
 .a_slide { display:block;clear:both; }
 .casamiento_clearfix { clear:both; }
 
@@ -118,22 +118,26 @@ I M A G E S
         <div class="casamiento slides_container">
        
             <div class="casamiento a_slide" style="width:974px; height:486px; margin:0;padding:0;">
-                <div class="casamiento" style="margin:0;padding:0;width:320px;height:486px;overflow:hidden;float:left;">
-                    <h2 class="casamiento">Simplicity</h2>
-                     <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3> 
-                     <img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/display-<%= attachments_order[0] %>.jpg"/></div>
+                <div class="casamiento" style="margin:0;padding:0;width:320px;height:716px;overflow:hidden;float:left;">
+                  
+                      <img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>.jpg"/><br/>
+                       <img class="casamiento"  src="/products/<%= _id %>/attachments/display-<%= attachments_order[1] %>.jpg"/><br/>
+                     <img class="casamiento"  src="/products/<%= _id %>/attachments/display-<%= attachments_order[0] %>.jpg" style="padding-top:5px;" ></div>
                      
-                     <div style="padding:0;margin-left:323px;"><img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/large-<%= attachments_order[1] %>.jpg"  /></div>
+                     <div style="padding:0;margin-left:323px;"><div style="margin:auto;width:630px;"><h2 class="casamiento">Simplicity</h2>
+                     <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3></div><br/><img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/large-<%= attachments_order[1] %>.jpg"  /></div>
                   
              </div>
             <% related.forEach(function(r) { %>
             <div class="casamiento a_slide" style="width:974px; height:486px; margin:0;padding:0;">
                 <div class="casamiento" style="margin:0;padding:0;width:320px;height:486px;overflow:hidden;float:left;">
-                    <h2 class="casamiento">Simplicity</h2>
-                     <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3> 
+                    
                      <img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= r._id %>/attachments/display-<%= r.attachments_order[1] %>.jpg"/></div>
-                     
-                     <div style="padding:0;margin-left:323px;"><img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= r._id %>/attachments/large-<%= r.attachments_order[0] %>.jpg"  /></div>
+                     <h2 class="casamiento">Simplicity</h2>
+                     <h3 class="casamiento"> A beautiful design, this again works in black and white and is particularly suited to dark, decadent colours such as Midnight Blue and Velvet that evoke feelings of childlike magic.</h3><br/>
+                     <div style="padding:0;margin-left:323px;"><img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= r._id %>/attachments/large-<%= r.attachments_order[0] %>.jpg"  /><br/>
+                         
+                     </div>
                   
              </div>
                                <% }) %>
