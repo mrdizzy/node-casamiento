@@ -33,7 +33,7 @@
 #genesis_logo_top { padding:0; margin-top:10px; }
 #genesis_container { border-top:1px dotted grey; border-bottom:1px solid grey; height:60px;}
 
-.mono_image {position:absolute;display:none;text-align:center;background-color:white; margin:auto;text-align:center; width:300px;height:130px;}
+.mono_image {position:absolute;display:none;width:300px;height:130px;}
 /* Columns
 ==================================== */ 
 .section0_casamiento {  border: 1px solid black;padding:0; margin:0;float:right; width:320px;clear:both; }
@@ -49,7 +49,7 @@ h1.casamiento { color:#000; font:64px "GaraItalic"; line-height:1em;border-top:1
 h2.casamiento  { color:black; text-align:center; font: normal 32px "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px;padding-top:5px; }
 h3.casamiento { font:normal 22px "Gara"; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
 
-h4.casamiento { color:black;font: 24px Gara; border-bottom:1px solid black; padding-bottom:5px;padding-top:5px;margin:0; text-align:left; text-indent:1em; }
+h4.casamiento { color:black;font: 24px GaraItalic; border-bottom:1px solid black; padding-bottom:5px;padding-top:5px;margin:0; text-align:left; text-indent:1em; }
 h5.casamiento { font: italic 14px "Open Sans", serif;  color: #000;margin:0; text-align:left; border-bottom: 1px solid #333; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px;letter-spacing:0; }
 h6.casamiento { font:normal 24px "Gara", sans-serif; text-indent:1em; line-height:1.2em; padding-top:1em;margin:0; }
 
@@ -59,13 +59,15 @@ ul.casamiento { text-indent:0;}
 
 .right_arrow { background:url('/images/arrow_right.png'); width:17px; height:70px;}
 .right_arrow:hover { background-position:0 -70px; }
-
 .left_arrow { background:url('/images/arrow_left.png'); width:17px; height:70px;}
 .left_arrow:hover { background-position:0 -70px; }
+
 #slides { width:648px; height:486px; padding:0; margin:0;}
 .slides_container {padding:0; margin:0; width:648px; height:486px; }
 .a_slide { display:block; }
 .casamiento_clearfix { clear:both; }
+.holder { position:relative; float:left;}
+.color, .hiddencolor { width:15px;height:15px;background-color:lightgrey;margin:1px; border-radius:3px; }
 .colour_holder { background-color:white; display:none; width:460px;position:absolute;}
 #colour_table {padding:5px;background-color:white; width:100%; }
 .ornamental_line { text-align:center;padding-top:5px; margin-bottom:10px;}
@@ -88,18 +90,15 @@ td a, #show_colours  { font: italic 13px "Open Sans";  color: <%= colours[0] %>;
 
 .casamiento_colour { width:20px;height:5px;margin:auto; border:1px solid grey; border-radius:7px; padding:5px; margin:5px; } 
 #colour_available { margin:auto;width:50px;height:50px;background-color:#FF00FF; }
+
 /* Links
 ==================================== */
 a.casamiento:link, a.casamiento:active, a.casamiento:visited { color: <%= colours[0] %>; font-style:underline; }
 a.casamiento:hover { color:black; }
-/* Classes
-==================================== */
+
 .casamiento_center { text-align:center; padding:5px; }
 </style>
 
-<!-- #######################################################################################
-I M A G E S 
-####################################################################################### -->
  <div id="page_container_casamiento">
  <!-- HEADER -->
     <div id="top_container_casamiento">
@@ -177,8 +176,7 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.</td
                      <h3 class="casamiento"> <%= description %></h3></div><br/></div>
                   
              </div>
-            
-           
+        
            <div class="prevent_table_stretching">
                     <table class="casamiento">
                           <tr>
@@ -187,19 +185,19 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.</td
                               <div id="left_arrow" style="float:right;" class="left_arrow"></td>
                               <td>
 <div id="holder" style="height:128px;margin:auto;width:298px;">
-<div id="mono_1" style="display:block;" class="mono_image"><img id="mono" src="/images/monograms/1_mono.png" /></div>
-<div id="mono_2" class="mono_image"><img id="mono" src="/images/monograms/2_mono.png" /></div>
-<div id="mono_3" class="mono_image"><img id="mono" src="/images/monograms/3_mono.png" /></div>
-<div id="mono_4" class="mono_image"><img id="mono" src="/images/monograms/4_mono.png" /></div>
-<div id="mono_5" class="mono_image"><img id="mono" src="/images/monograms/5_mono.png" /></div>
-<div id="mono_6" class="mono_image"><img id="mono" src="/images/monograms/6_mono.png" /></div>
-
-<div id="mono_7" class="mono_image"><img id="mono" src="/images/monograms/7_mono.png" /></div>
-<div id="mono_8" class="mono_image"><img id="mono" src="/images/monograms/8_mono.png" /></div>
-<div id="mono_9" class="mono_image"><img id="mono" src="/images/monograms/9_mono.png" /></div>
-
-<div id="mono_10" class="mono_image"><img id="mono" src="/images/monograms/10_mono.png" /></div>
-<div id="mono_11" class="mono_image"><img id="mono" src="/images/monograms/11_mono.png" /></div>
+    <div id="mono_1" style="display:block;" class="mono_image"><img id="mono" src="/images/monograms/1_mono.png" /></div>
+    <div id="mono_2" class="mono_image"><img id="mono" src="/images/monograms/2_mono.png" /></div>
+    <div id="mono_3" class="mono_image"><img id="mono" src="/images/monograms/3_mono.png" /></div>
+    <div id="mono_4" class="mono_image"><img id="mono" src="/images/monograms/4_mono.png" /></div>
+    <div id="mono_5" class="mono_image"><img id="mono" src="/images/monograms/5_mono.png" /></div>
+    <div id="mono_6" class="mono_image"><img id="mono" src="/images/monograms/6_mono.png" /></div>
+    
+    <div id="mono_7" class="mono_image"><img id="mono" src="/images/monograms/7_mono.png" /></div>
+    <div id="mono_8" class="mono_image"><img id="mono" src="/images/monograms/8_mono.png" /></div>
+    <div id="mono_9" class="mono_image"><img id="mono" src="/images/monograms/9_mono.png" /></div>
+    
+    <div id="mono_10" class="mono_image"><img id="mono" src="/images/monograms/10_mono.png" /></div>
+    <div id="mono_11" class="mono_image"><img id="mono" src="/images/monograms/11_mono.png" /></div>
 </div>
                           </td>
                           <td><div class="right_arrow" id="right_arrow" style="float:left;"></div></td>
@@ -215,6 +213,42 @@ to keep and use in the future on things like engravings or calling cards.</p></t
                         </tr>
                       
                     </table>
+                    <% var colour_groups = [['#FFC0CB pink','#FFB6C1 lightpink','#FF69B4 hotpink','#FF1493 deeppink','#DB7093 palevioletred','#BC8F8F rosybrown','#C71585 mediumvioletred'],['#CD5C5C indianred','#F08080 lightcoral','#FFA07A lightsalmon','#FA8072 salmon','#E9967A darksalmon','#DC143C crimson'],['#DEB887 burlywood','#D2B48C tan','#BDB76B darkkhaki','#DAA520 goldenrod','#B8860B darkgoldenrod','#CD853F peru','#D2691E chocolate','#A0522D sienna','#A52A2A brown','#B22222 firebrick','#8B4513 saddlebrown','#8B0000 darkred','#800000 maroon'],['#FAA460 sandybrown','#FF7F50 coral','#FF6347 tomato','#FF0000 red','#FF4500 orangered','#FF8C00 darkorange','#FFA500 orange'],['#FFD700 gold','#FFFF00 yellow','#FFE4B5 moccasin','#FFDAB9 peachpuff','#EEE8AA palegoldenrod','#F0E68C khaki'],['#D8BFD8 thistle','#DDA0DD plum','#FF00FF magenta','#EE82EE violet','#DA70D6 orchid','#BA55D3 mediumorchid','#9370DB mediumpurple','#8A2BE2 blueviolet','#9400D3 darkviolet','#9932CC darkorchid','#8B008B darkmagenta','#800080 purple','#4B0082 indigo','#483D8B darkslateblue','#6A5ACD slateblue','#7B68EE mediumslateblue'],['#98FB98 palegreen','#ADFF2F greenyellow','#7FFF00 chartreuse','#7CFC00 lawngreen','#00FF00 lime','#00FF7F springgreen','#00FA9A mediumspringgreen','#90EE90 lightgreen','#32CD32 limegreen','#3CB371 mediumseagreen','#2E8B57 seagreen','#228B22 forestgreen','#008000 green','#006400 darkgreen','#9ACD32 yellowgreen','#6B8E23 olivedrab','#808000 olive','#556B2F darkolivegreen','#8FBC8F darkseagreen','#66CDAA mediumaquamarine','#20B2AA lightseagreen','#008B8B darkcyan','#008080 teal'],['#00FFFF cyan','#7FFFD4 aquamarine','#AFEEEE paleturquoise','#40E0D0 turquoise','#48D1CC mediumturquoise','#00CED1 darkturquoise','#5F9EA0 cadetblue','#4682B4 steelblue','#B0C4DE lightsteelblue','#B0E0E6 powderblue','#ADD8E6 lightblue','#87CEEB skyblue','#87CEFA lightskyblue','#00BFFF deepskyblue','#1E90FF dodgerblue','#6495ED cornflowerblue','#4169E1 royalblue','#0000FF blue','#0000CD mediumblue','#00008B darkblue','#000080 navy','#191970 midnightblue'],['#DCDCDC gainsboro','#D3D3D3 lightgrey','#C0C0C0 silver','#A9A9A9 darkgray','#778899 lightslategray','#708090 slategray','#808080 gray','#696969 dimgray','#2F4F4F darkslategray','#000000 black']] %>
+                    <table class="casamiento">
+                          <tr>
+                            <td style="width:25%">
+                                
+    <div id="chosenColor" style="margin-left:3em;width:50px;height:50px;background-color:white;border-radius:5px;"></div>
+               <p class="casamiento" id="colorName" style="margin-left:2em;text-indent:0;font-family:GaraItalic;padding:0; margin-top:5px;"></p></td>
+                                
+                            </td>
+                            <td style="width:75%">
+                            <% var c = 0; %>
+                            <% colour_groups.forEach(function(group) { %>
+                            
+                            <div id="colour<%= c %>_holder">
+                            <% group.forEach(function(colour) { %>
+                            <% var colourArray = colour.split(" "); %>
+                            <% var colourHex = colourArray[0] %>
+                            <% var colourName = colourArray[1] %>
+                            <div class="holder" style="position:relative;"><div class="hiddencolor colour<%= c %>" id="<%= colourName %>" style="position:absolute;background-color:<%= colourHex %>;display:none;"></div><div class="color" id="<%= colourName %>grey"></div></div>
+                           
+                            <% }) %>
+                             <% c++ %>
+                            </div>
+                            <% }) %>
+                            
+    </div>
+                          </td>
+                          <td style="width:25%">  <h5 class="casamiento"><img src="https://project-livec9030d54fb72.rhcloud.com/images/bullets/small_dot_square.png" /> Colours shown:</h5>
+            <% colours.forEach(function(colour) { %>
+    <div style="margin-left:3em;width:50px;height:50px;background-color:<%= colour %>;border-radius:5px;"></div>
+               <p class="casamiento" style="margin-left:3em;text-indent:0;font-family:GaraItalic;padding:0; margin-top:5px;"><%= colour %></p>
+            
+            <% }) %></td>
+                         </tr>
+                      
+                    </table>
                     </div>
 
 <script type="text/javascript">
@@ -222,10 +256,12 @@ to keep and use in the future on things like engravings or calling cards.</p></t
 </script>
 
     <div id="maincontainer" style="clear:both;">
+    
 <!-- #######################################################################################
 C O L U M N 
 ####################################################################################### -->
-<h1 class="casamiento" style="padding-top:20px;padding-bottom:20px;margin-bottom:10px;margin:0;clear:both;">8 Golden Rules To Impress Your Guests With Perfect Wedding Stationery</h1>
+
+<h1 class="casamiento" style="padding-top:20px;padding-bottom:20px;margin-bottom:10px;margin:0;clear:both;">I Getting The Right Wedding Stationery For Your Big Day? </h1>
         <div id="section2_casamiento" >
         
                     
@@ -326,53 +362,49 @@ Don't take my word for it&hellip;</h5>
                      <p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/images/shell.png" /></p>
         
                 </div>
-                
-
-<!-- #######################################################################################
-R E L A T E D
-####################################################################################### -->
 
     <div style="clear:both"></div>
     </div>
         
-   
 </div>
 
 <script>
 var monogram = 1;
-$('#show_colours').click(function() {
-    $('#colour_table').fadeIn(500);
-})
-
-
-var colour = 1;
-$('#colour_right').click(function() {
-    colour++;
-    if(colour > 9) {
-        colour = 1;
-    }
-    $('#colour_' + colour).fadeIn();
+<% var c = 0 %>
+<% colour_groups.forEach(function(colour_group) { %>
+<% colour_group.forEach(function(color) { %>
     
-    $('#colour_' + colour -1).fadeOut();
+    
+<% })%>
+$('#colour<%= c %>_holder').mouseenter(function() {
+    $('.colour<%= c %>').fadeIn(300);
+})
+$('#colour<%= c %>_holder').mouseleave(function() {
+    $('.colour<%= c %>').fadeOut(300);
+})
+<% c++%>
+<% }) %>
+
+$('.hiddencolor').mouseover(function() {
+   var id = $(this).attr('id');
+   var background = $(this).css('backgroundColor');
+   $('#chosenColor').css('backgroundColor', background)
+   
+   $('#colorName').html(id)
 })
 
 $('#left_arrow').click(function() {
-    
-    
     if(monogram >1) {
-        
-    $('#mono_' + monogram).fadeOut();
+        $('#mono_' + monogram).fadeOut();
         monogram--;
     }
 })
 
 $('#right_arrow').click(function() {
-   
     if(monogram < 11) {
         monogram++;
     }
     $('#mono_' + monogram).fadeIn();
 })
-
 
 </script>
