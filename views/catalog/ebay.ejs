@@ -9,7 +9,9 @@
     document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz1 + ">");
     document.write("</" + az + bz + cz + ">");
 </script>
+
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,700' rel='stylesheet' type='text/css'>
+
 <style type="text/css">
 
 /* Main Typography
@@ -33,7 +35,6 @@
 #genesis_logo_top { padding:0; margin-top:10px; }
 #genesis_container { border-top:1px dotted grey; border-bottom:1px solid grey; height:60px;}
 
-.mono_image {position:absolute;display:none;width:300px;height:130px;}
 /* Columns
 ==================================== */ 
 .section0_casamiento {  border: 1px solid black;padding:0; margin:0;float:right; width:320px;clear:both; }
@@ -46,50 +47,44 @@ img.casamiento { padding:0; border:0; margin:0;}
 .description { border:1px solid black;margin:0;padding:0;}
 
 h1.casamiento { color:#000; font:64px "GaraItalic"; line-height:1em;border-top:1px solid #333;border-bottom:1px dashed #333; padding-bottom:20px; margin-top:5px;margin-bottom:5px; padding-left:50px; padding-right:50px;text-align:center; letter-spacing:0em;}
+
 h2.casamiento  { color:black; text-align:center; font: normal 32px "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px;padding-top:5px; }
+
 h3.casamiento { font:normal 22px "Gara"; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
 
 h4.casamiento { color:black;font: 24px GaraItalic; border-bottom:1px solid black; padding-bottom:5px;padding-top:5px;margin:0; text-align:left; text-indent:1em; }
+
 h5.casamiento { font: italic 14px "Open Sans", serif;  color: #000;margin:0; text-align:left; border-bottom: 1px solid #333; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px;letter-spacing:0; }
+
 h6.casamiento { font:normal 24px "Gara", sans-serif; text-indent:1em; line-height:1.2em; padding-top:1em;margin:0; }
 
 ul.casamiento, p.casamiento { color:#000;font:normal 16px "Gara", sans-serif;line-height: 1.4em; padding:0; text-indent:1em; margin-top:1em;}
 ul.casamiento { text-indent:0;}
-.decimal { font-size:18px; position:relative;top:-8px;  }
 
-.right_arrow { background:url('/images/arrow_right.png'); width:17px; height:70px;}
-.right_arrow:hover { background-position:0 -70px; }
-.left_arrow { background:url('/images/arrow_left.png'); width:17px; height:70px;}
-.left_arrow:hover { background-position:0 -70px; }
+.decimal { font-size:18px; position:relative;top:-8px;  }
 
 #slides { width:648px; height:486px; padding:0; margin:0;}
 .slides_container {padding:0; margin:0; width:648px; height:486px; }
 .a_slide { display:block; }
 .casamiento_clearfix { clear:both; }
+
+/* Colours
+==================================== */
 .holder { position:relative; float:left;}
-.color, .hiddencolor { width:15px;height:15px;background-color:lightgrey;margin:1px; border-radius:3px; }
-.colour_holder { background-color:white; display:none; width:460px;position:absolute;}
-#colour_table {padding:5px;background-color:white; width:100%; }
-.ornamental_line { text-align:center;padding-top:5px; margin-bottom:10px;}
+.color, .hiddencolor { width:15px; height:15px; background-color:lightgrey; margin:1px; border-radius:3px; }
+
+.quote { padding-bottom:5px;padding-top:10px; }
 
 /* Tables 
 ==================================== */
 
-table.casamiento, table.casamiento_related, table.casamiento_feedback { width:100%; text-align:center; border-collapse:collapse; color: black;}
-    table.casamiento th { font: bold 11px "Arial";  }
+table.casamiento, table.casamiento_related { width:100%; text-align:center; border-collapse:collapse; color: black;}
 table.casamiento td { font: 13px "Open Sans"; line-height:175%;}
-table.casamiento td:first-child { font: italic 13px "Open Sans"; line-height:150%;}
 table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity { font: normal 24px "TrajanPro"; }
 table.casamiento td.casamiento_sample { color:black; font: normal 13px "Open Sans"; line-height:1.5em; text-align:left;}
 table.casamiento td, table.casamiento th { border:1px dotted grey; padding:10px; } 
 
-td a, #show_colours  { font: italic 13px "Open Sans";  color: <%= colours[0] %>; text-decoration:underline; }
 .prevent_table_stretching { width:100%;}
-
-.grey { background-color:#F0F0F0; margin-top:10px; margin-bottom:10px;}
-
-.casamiento_colour { width:20px;height:5px;margin:auto; border:1px solid grey; border-radius:7px; padding:5px; margin:5px; } 
-#colour_available { margin:auto;width:50px;height:50px;background-color:#FF00FF; }
 
 /* Links
 ==================================== */
@@ -97,6 +92,15 @@ a.casamiento:link, a.casamiento:active, a.casamiento:visited { color: <%= colour
 a.casamiento:hover { color:black; }
 
 .casamiento_center { text-align:center; padding:5px; }
+
+/* Monograms 
+======================================== */
+.mono_image {position:absolute;display:none;width:300px;height:130px;}
+
+.right_arrow { background:url('/images/arrow_right.png'); width:17px; height:70px;}
+.left_arrow { background:url('/images/arrow_left.png'); width:17px; height:70px;}
+.right_arrow:hover, .left_arrow:hover  { background-position:0 -70px; }
+
 </style>
 
  <div id="page_container_casamiento">
@@ -261,107 +265,129 @@ to keep and use in the future on things like engravings or calling cards.</p></t
 C O L U M N 
 ####################################################################################### -->
 
-<h1 class="casamiento" style="padding-top:20px;padding-bottom:20px;margin-bottom:10px;margin:0;clear:both;">I Getting The Right Wedding Stationery For Your Big Day? </h1>
-        <div id="section2_casamiento" >
+<h1 class="casamiento" style="padding-top:20px;padding-bottom:20px;margin-bottom:10px;margin:0;clear:both;">I Getting The Right Wedding Stationery For Your Big Day?</h1>
         
-                    
-<div id="how_it_works"><h6 class="casamiento">What makes something beautiful? 
-</h6><h6 class="casamiento">Why do we look at a Mercedes or an Audi and instantly know that they are expensive cars driven by wealthy people? </h6><h6 class="casamiento">What makes a Waitrose shopping bag look more sophisticated than one from Lidl?</h6>
+<div id="section2_casamiento" >
+
+    <div id="how_it_works">
+        <h6 class="casamiento">What makes something beautiful?</h6>
+        
+        <h6 class="casamiento">Why do we look at a Mercedes or an Audi and instantly know that they are expensive cars driven by wealthy people? </h6>
+        
+        <h6 class="casamiento">What makes a Waitrose shopping bag look more sophisticated than one from Lidl?</h6>
      
-<p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/images/page_seperators/three_across.png"></p>
-     <p class="casamiento">We all know beauty when we see it, but if we have to explain what makes something beautiful, elegant or sophisticated... well it's kind of hard to put your finger on it:</p>
-<p class="casamiento">
-...you just know.</p>
-<p class="casamiento">
-If I ask you to compare several dresses and pick out the most expensive designer dress, it probably wouldn't take long for you to choose correctly.</p>
-<p class="casamiento">
-And if I ask you the differences between them you'll be able to pick out certain things: maybe the quality of the fabric...</p>
-<p class="casamiento">
-...or the diamond-encrusted buttons...</p>
-<p class="casamiento">
-But while some of the ingredients of beauty are blazingly obvious, it's usually the small, subtle nuances---the things you can't put your finger on--that really make the difference.</p>
-<p class="casamiento">
-The gentle, soft click of a Mercedes' door closing...</p>
-<p class="casamiento">
-The lighting and shadows of that award-winning photograph...</p>
-<p class="casamiento">
-The way the dress falls on a supermodel's body in the evening breeze:</p>
-<p class="casamiento">
-Exquisite beauty is all about attention to detail--all the little dots that, when placed on the paper in the right places, join together to give you a beautiful picture.</p>
-<p class="casamiento">
-And that's why, if you want wedding stationery that really stands out from the crowd, you deserve to know the subtle secrets that will set your stationery head and shoulders above the rest...</p>
-<p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/images/page_seperators/three_across.png"></p>  
+        <p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/images/page_seperators/three_across.png"></p>
+     
+        <p class="casamiento">We all know beauty when we see it, but if we have to explain what makes something beautiful, elegant or sophisticated... well it's kind of hard to put your finger on it:</p>
 
-<h4 class="casamiento">Has your stationery gone to Finishing School?</h4>
-<p class="casamiento">There's nothing more upsetting than attractive stationery spoiled by poor finishing: edges that aren't cut straight or one side that you're sure looks slightly longer than the other...</p>
+        <p class="casamiento">...you just know.</p>
+        
+        <p class="casamiento">If I ask you to compare several dresses and pick out the most expensive designer dress, it probably wouldn't take long for you to choose correctly.</p>
+        
+        <p class="casamiento">And if I ask you the differences between them you'll be able to pick out certain things: maybe the quality of the fabric...</p>
+        <p class="casamiento">...or the diamond-encrusted buttons...</p>
 
-<p class="casamiento">it'll eat away at you until you get that ruler out and check for yourself!</p>
-<p class="casamiento">
-Unfortunately smaller suppliers often use manual guillotines to cut and score your stationery which make accurate cutting difficult.</p>
-<p class="casamiento">
-Because, like you, I am a perfectionist, I use an industrial guillotine with laser-guided cutting and mechanical scoring for razor-sharp edges and clean folds.</p>
+        <p class="casamiento">But while some of the ingredients of beauty are blazingly obvious, it's usually the small, subtle nuances---the things you can't put your finger on--that really make the difference.</p>
+        
+        <p class="casamiento">The gentle, soft click of a Mercedes' door closing...</p>
+        
+        <p class="casamiento">The lighting and shadows of that award-winning photograph...</p>
+        
+        <p class="casamiento">The way the dress falls on a supermodel's body in the evening breeze:</p>
+        
+        <p class="casamiento">Exquisite beauty is all about attention to detail--all the little dots that, when placed on the paper in the right places, join together to give you a beautiful picture.</p>
+        
+        <p class="casamiento">And that's why, if you want wedding stationery that really stands out from the crowd, you deserve to know the subtle secrets that will set your stationery head and shoulders above the rest...</p>
+        
+        <p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/images/page_seperators/three_across.png"></p>  
+        
+        <h4 class="casamiento">Has your stationery gone to Finishing School?</h4>
+        
+        <p class="casamiento">There's nothing more upsetting than attractive stationery spoiled by poor finishing: edges that aren't cut straight or one side that you're sure looks slightly longer than the other...</p>
+        
+        <p class="casamiento">it'll eat away at you until you get that ruler out and check for yourself!</p>
+        
+        <p class="casamiento">Unfortunately smaller suppliers often use manual guillotines to cut and score your stationery which make accurate cutting difficult.</p>
+        
+        <p class="casamiento">Because, like you, I am a perfectionist, I use an industrial guillotine with laser-guided cutting and mechanical scoring for razor-sharp edges and clean folds.</p>
+        
+        <h4 class="casamiento">Typesetting to rival professional bookmakers...</h4>
+        
+        <p class="casamiento">Most invitations come with plain, boring, throwaway envelopes&hellip; but our envelopes will be something you'll want to keep! Highly co-ordinated with the same design as your invitations, as well as being personalised with your monogram, they will wow your guests.</p>
+                    
+    </div>
 
+    <h4 class="casamiento">Guest name printing</h4>
+   
+    <p class="casamiento">We will individually print each item of stationery with the names of your guests: this includes reply cards, place cards and invitations. Just send us a list of names!</p>
 
-<h4 class="casamiento">Typesetting to rival professional bookmakers...</h4>
-<p class="casamiento">Most invitations come with plain, boring, throwaway envelopes&hellip; but our envelopes will be something you'll want to keep! Highly co-ordinated with the same design as your invitations, as well as being personalised with your monogram, they will wow your guests.</p>
-            
-</div>
-
-   <h4 class="casamiento">Guest name printing</h4>
-   <p class="casamiento">We will individually print each item of stationery with the names of your guests: this includes reply cards, place cards and invitations. Just send us a list of names!</p>
-
- <p class="casamiento_center">
- <img src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/medium-<%= attachments_order[1] %>.jpg" /></p>
+    <p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/medium-<%= attachments_order[1] %>.jpg" /></p>
+    
     <h4 class="casamiento">Envelope addressing</h4>
+    
     <p class="casamiento">We can print your guests' names and addresses individually on each envelope so your invitations are ready to post.</p>
 
     <h4 class="casamiento">Customised wording.</h4>
+    
     <p class="casamiento">Choose whatever wording you like!</p>
 
-<h4 class="casamiento">Monogram</h4>
-<p class="casamiento">
-A monogram is a motif combining you and your partner's names, the perfect symbol of your marriage together: it makes an impact&mdash;much better than your names in boring plain text and  provides the ultimate touch of understated sophistication. We have many styles of monogram available, the only problem you'll have is deciding which one is for you!</p>
-        <p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/images/page_seperators/three_across.png" /></p></div>
+    <h4 class="casamiento">Monogram</h4>
+
+    <p class="casamiento">A monogram is a motif combining you and your partner's names, the perfect symbol of your marriage together: it makes an impact&mdash;much better than your names in boring plain text and  provides the ultimate touch of understated sophistication. We have many styles of monogram available, the only problem you'll have is deciding which one is for you!</p>
+    
+    <p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/images/page_seperators/three_across.png" /></p>
+    
+    </div>
 
 
 </div>
+
+
 <!-- #######################################################################################
-S P E C S
+QUOTES 
 ####################################################################################### -->
+
         <div id="section3_casamiento">
             <h5 class="casamiento"><img src="https://project-livec9030d54fb72.rhcloud.com/images/bullets/small_dot_square.png" /> 
 Don't take my word for it&hellip;</h5>
-         
-             
-       
-    <div class="prevent_table_stretching">
-             
-         <table class="casamiento"><tr><td ><div class="quote" style="width:200px;padding-bottom:5px;padding-top:10px;"><h6 class="casamiento" style="margin:auto;font:italic 22px 'Open Sans';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="https://project-livec9030d54fb72.rhcloud.com/images/QUOTE.png" /> David was so helpful everyone at wedding was talking about matching stationery&rdquo;</h6><h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%">&mdash;<a class="casamiento" href="">dellajones65</a></h6></div></td>
             
-         </tr>
-         <tr>
-             <td >
+            <div class="prevent_table_stretching">
+             
+                <table class="casamiento">
+                    <tr>
+                        <td>
+                            <div class="quote" style="width:200px;">
+                                <h6 class="casamiento" style="margin:auto;font:italic 22px 'Open Sans';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="https://project-livec9030d54fb72.rhcloud.com/images/QUOTE.png" /> David was so helpful everyone at wedding was talking about matching stationery&rdquo;</h6>
+                                <h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%">&mdash;<a class="casamiento" href="">dellajones65</a></h6>
+                                
+                            </div>
+                        </td>
+            
+                    </tr>
+                    <tr>
+                        <td>
                            
-<div class="quote" style="padding-bottom:5px;padding-top:10px;">
- <h6 class="casamiento" style="width:75%; margin:auto;font: italic 22px 'Open Sans';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="https://project-livec9030d54fb72.rhcloud.com/images/QUOTE.png" /> Absolutely amazing and beautiful, AAA+</h6><h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%" href="">&mdash;<a class="casamiento" href="">normalbaby</a></h6>
- </div>
+                            <div class="quote">
+                                <h6 class="casamiento" style="width:75%; margin:auto;font: italic 22px 'Open Sans';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="https://project-livec9030d54fb72.rhcloud.com/images/QUOTE.png" /> Absolutely amazing and beautiful, AAA+</h6>
+                                <h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%" href="">&mdash;<a class="casamiento" href="">normalbaby</a></h6>
+                            </div>
                  
-             </td></tr>
-             <tr><td>
-                 
-                 
- <div class="quote" style="width:300px;padding-bottom:5px;padding-top:10px;">
- <h6 class="casamiento" style="margin:auto;font:italic 22px 'Open Sans';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="https://project-livec9030d54fb72.rhcloud.com/images/QUOTE.png" /> Co-ordinated stationery was amazing, I was so impressed&rdquo;</h6><h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%">&mdash;<a class="casamiento" href="">melanieblue</a></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="quote" style="width:300px;">
+                                <h6 class="casamiento" style="margin:auto;font:italic 22px 'Open Sans';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="https://project-livec9030d54fb72.rhcloud.com/images/QUOTE.png" /> Co-ordinated stationery was amazing, I was so impressed&rdquo;</h6>
+                                <h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%">&mdash;<a class="casamiento" href="">melanieblue</a></h6>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
-             </td>
-         </tr></table>
-         
-         
-         </div>
                    
-                     <p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/images/shell.png" /></p>
+            <p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/images/shell.png" /></p>
         
-                </div>
+        </div>
 
     <div style="clear:both"></div>
     </div>
