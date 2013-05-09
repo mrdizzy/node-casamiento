@@ -46,7 +46,7 @@
 img.casamiento { padding:0; border:0; margin:0;}
 .description { border:1px solid black;margin:0;padding:0;}
 
-h1.casamiento { color:#000; font:64px "GaraItalic"; line-height:1em;border-top:1px solid #333;border-bottom:1px dashed #333; padding-bottom:20px; margin-top:5px;margin-bottom:5px; padding-left:50px; padding-right:50px;text-align:center; letter-spacing:0em;}
+h1.casamiento { color:#000; font:76px "GaraItalic"; line-height:1em;border-top:1px solid #333;padding-bottom:20px; margin-top:5px;margin-bottom:5px; padding-left:50px; padding-right:50px;text-align:center; letter-spacing:0em;}
 
 h2.casamiento  { color:black; text-align:center; font: normal 32px "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px;padding-top:5px; }
 
@@ -56,7 +56,7 @@ h4.casamiento { color:black;font: 24px GaraItalic; border-bottom:1px solid black
 
 h5.casamiento { font: italic 14px "Open Sans", serif;  color: #000;margin:0; text-align:left; border-bottom: 1px solid #333; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px;letter-spacing:0; }
 
-h6.casamiento { font:normal 24px "Gara", sans-serif; text-indent:1em; line-height:1.2em; padding-top:1em;margin:0; }
+h6.casamiento { font:normal 24px "Gara", sans-serif; text-indent:1em; line-height:1.2em; padding-top:1em;margin:0; color:black;}
 
 ul.casamiento, p.casamiento { color:#000;font:normal 16px "Gara", sans-serif;line-height: 1.4em; padding:0; text-indent:1em; margin-top:1em;}
 ul.casamiento { text-indent:0;}
@@ -80,8 +80,8 @@ ul.casamiento { text-indent:0;}
 
 table.casamiento, table.casamiento_related { width:100%; text-align:center; border-collapse:collapse; color: black;}
 table.casamiento td { font: 13px "Open Sans"; line-height:175%;}
-table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity { font: normal 24px "TrajanPro"; }
-table.casamiento td.casamiento_sample { color:black; font: normal 13px "Open Sans"; line-height:1.5em; text-align:left;}
+table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity, .casamiento_price { font: normal 24px "TrajanPro"; }
+table.casamiento td.casamiento_sample, .smallbody { color:black; font: normal 13px "Open Sans"; line-height:1.5em; text-align:left;}
 table.casamiento td, table.casamiento th { border:1px dotted grey; padding:10px; } 
 
 .prevent_table_stretching { width:100%;}
@@ -91,7 +91,7 @@ table.casamiento td, table.casamiento th { border:1px dotted grey; padding:10px;
 a.casamiento:link, a.casamiento:active, a.casamiento:visited { color: <%= colours[0] %>; font-style:underline; }
 a.casamiento:hover { color:black; }
 
-.casamiento_center { text-align:center; padding:5px; }
+.casamiento_center { text-align:center; padding:2px; }
 
 /* Monograms 
 ======================================== */
@@ -217,8 +217,10 @@ to keep and use in the future on things like engravings or calling cards.</p></t
                         </tr>
                       
                     </table>
+            
+                    
                     <% var colour_groups = [['#FFC0CB pink','#FFB6C1 lightpink','#FF69B4 hotpink','#FF1493 deeppink','#DB7093 palevioletred','#BC8F8F rosybrown','#C71585 mediumvioletred'],['#CD5C5C indianred','#F08080 lightcoral','#FFA07A lightsalmon','#FA8072 salmon','#E9967A darksalmon','#DC143C crimson'],['#DEB887 burlywood','#D2B48C tan','#BDB76B darkkhaki','#DAA520 goldenrod','#B8860B darkgoldenrod','#CD853F peru','#D2691E chocolate','#A0522D sienna','#A52A2A brown','#B22222 firebrick','#8B4513 saddlebrown','#8B0000 darkred','#800000 maroon'],['#FAA460 sandybrown','#FF7F50 coral','#FF6347 tomato','#FF0000 red','#FF4500 orangered','#FF8C00 darkorange','#FFA500 orange'],['#FFD700 gold','#FFFF00 yellow','#FFE4B5 moccasin','#FFDAB9 peachpuff','#EEE8AA palegoldenrod','#F0E68C khaki'],['#D8BFD8 thistle','#DDA0DD plum','#FF00FF magenta','#EE82EE violet','#DA70D6 orchid','#BA55D3 mediumorchid','#9370DB mediumpurple','#8A2BE2 blueviolet','#9400D3 darkviolet','#9932CC darkorchid','#8B008B darkmagenta','#800080 purple','#4B0082 indigo','#483D8B darkslateblue','#6A5ACD slateblue','#7B68EE mediumslateblue'],['#98FB98 palegreen','#ADFF2F greenyellow','#7FFF00 chartreuse','#7CFC00 lawngreen','#00FF00 lime','#00FF7F springgreen','#00FA9A mediumspringgreen','#90EE90 lightgreen','#32CD32 limegreen','#3CB371 mediumseagreen','#2E8B57 seagreen','#228B22 forestgreen','#008000 green','#006400 darkgreen','#9ACD32 yellowgreen','#6B8E23 olivedrab','#808000 olive','#556B2F darkolivegreen','#8FBC8F darkseagreen','#66CDAA mediumaquamarine','#20B2AA lightseagreen','#008B8B darkcyan','#008080 teal'],['#00FFFF cyan','#7FFFD4 aquamarine','#AFEEEE paleturquoise','#40E0D0 turquoise','#48D1CC mediumturquoise','#00CED1 darkturquoise','#5F9EA0 cadetblue','#4682B4 steelblue','#B0C4DE lightsteelblue','#B0E0E6 powderblue','#ADD8E6 lightblue','#87CEEB skyblue','#87CEFA lightskyblue','#00BFFF deepskyblue','#1E90FF dodgerblue','#6495ED cornflowerblue','#4169E1 royalblue','#0000FF blue','#0000CD mediumblue','#00008B darkblue','#000080 navy','#191970 midnightblue'],['#DCDCDC gainsboro','#D3D3D3 lightgrey','#C0C0C0 silver','#A9A9A9 darkgray','#778899 lightslategray','#708090 slategray','#808080 gray','#696969 dimgray','#2F4F4F darkslategray','#000000 black']] %>
-                    <table class="casamiento">
+                    <table class="casamiento" style="clear:both;">
                           <tr>
                             <td style="width:25%">
                                 
@@ -226,7 +228,7 @@ to keep and use in the future on things like engravings or calling cards.</p></t
                <p class="casamiento" id="colorName" style="margin-left:2em;text-indent:0;font-family:GaraItalic;padding:0; margin-top:5px;"></p></td>
                                 
                             </td>
-                            <td style="width:75%">
+                            <td style="width:50%">
                             <% var c = 0; %>
                             <% colour_groups.forEach(function(group) { %>
                             
@@ -253,6 +255,18 @@ to keep and use in the future on things like engravings or calling cards.</p></t
                          </tr>
                       
                     </table>
+                             <h5 class="casamiento"><img src="https://project-livec9030d54fb72.rhcloud.com/images/bullets/small_dot_square.png" /> You will also like:</h5>
+<% related.forEach(function(r) { %>
+<div style="float:left;width:33%;text-align:center;border-right:1px dotted black;">
+                          <div style="border-bottom:1px dotted black;text-align:center;height:45px;padding-top:1px;">
+                          <img src="/images/product_types/small/<%= r.product_type %>_small.png" /></div>
+                           
+                            <img src="/products/<%= r.theme_id %>-<%= r.product_type %>/attachments/thumb-<%= r.attachments_order[0] %>.jpg" />
+                            
+                           <p class="casamiento_price"><span class="casamiento_center smallbody"> <a class="casamiento" href="<%= r.buy_it_now_id %>">20 x <%= r.product_type %></a></span><img src="/images/bullets/line_diamond.png" /> &pound;<%= r.pounds %><span class="decimal">.<%= r.pence %></span> 
+                         </p>
+                        </div>
+                       <% }) %>
                     </div>
 
 <script type="text/javascript">
@@ -267,16 +281,21 @@ C O L U M N
 
 <h1 class="casamiento" style="padding-top:20px;padding-bottom:20px;margin-bottom:10px;margin:0;clear:both;">I Getting The Right Wedding Stationery For Your Big Day?</h1>
         
+    <div style="border-bottom:1px dotted black;width:100%;border-top:1px dotted black;">
+            <p class="casamiento_center"><img src="/images/shell.png" /></p>
+            </div>
 <div id="section2_casamiento" >
 
-    <div id="how_it_works">
         <h6 class="casamiento">What makes something beautiful?</h6>
         
         <h6 class="casamiento">Why do we look at a Mercedes or an Audi and instantly know that they are expensive cars driven by wealthy people? </h6>
         
         <h6 class="casamiento">What makes a Waitrose shopping bag look more sophisticated than one from Lidl?</h6>
-     
-        <p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/images/page_seperators/three_across.png"></p>
+    
+    <div style="margin-top:20px;">
+            <p class="casamiento_center" style="padding:15px;"><img src="/images/ornamentalline.png" /></p>
+            </div>
+     <div>
      
         <p class="casamiento">We all know beauty when we see it, but if we have to explain what makes something beautiful, elegant or sophisticated... well it's kind of hard to put your finger on it:</p>
 
@@ -385,8 +404,10 @@ Don't take my word for it&hellip;</h5>
                 </table>
             </div>
                    
-            <p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/images/shell.png" /></p>
-        
+            <p class="casamiento_center"><img src="/images/shell.png" /></p>
+         <div class="prevent_table_stretching">
+                    
+                    </div>
         </div>
 
     <div style="clear:both"></div>
