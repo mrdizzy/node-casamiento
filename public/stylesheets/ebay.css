@@ -1,0 +1,86 @@
+    @font-face {  font-family:"TrajanPro"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/t.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/trajan.woff') format('woff'); }
+    
+    @font-face { font-family:"Gara"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARA.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARA.woff') format('woff'); }
+    
+    @font-face { font-family:"GaraItalic"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARAIT.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARAIT.woff') format('woff'); }
+
+.casamiento { padding:0; margin: 0 }
+
+body {  background-image:url("http://project-livec9030d54fb72.rhcloud.com/images/backgrounds/grey_header.png");   }
+
+#page_container_casamiento {  border-left:1px dotted black; border-right:1px dotted black; color: #333; background-color: #fff; width:92%;margin:auto; padding:0; }
+#header_container_casamiento { width:100%; }
+#main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
+#main_slogan_casamiento { width:168px; float:right;  }
+#genesis { text-align:center;  }
+#genesis_logo_top { padding:0; margin-top:10px; }
+#genesis_container { border-top:1px dotted grey; border-bottom:1px solid grey; width:100%; margin:auto; text-align:center;}
+
+/* Columns
+==================================== */ 
+#section2_casamiento { clear:both; float:left; width:60%;  }
+#section3_casamiento { margin-left:62%;  }
+
+img { width: 100%; height: auto; width: auto; /* ie8 fix*/  }
+img.casamiento { padding:0; border:0; margin:0; width:100%;}
+
+h1.casamiento { color:#333; font:56px "Playfair Display SC"; font-weight:400; line-height:1em; padding-bottom:40px; padding-top:20px; margin-top:5px;margin-bottom:5px; padding-left:10px; padding-right:10px;text-align:center; letter-spacing:0em;line-height:1.2em;}
+
+h2.casamiento  { color:black; text-align:center; font: normal 32px "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px;padding-top:5px; }
+
+h3.casamiento { font:normal 22px "Gara"; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
+
+h4.casamiento { color:black;font: 20px "Playfair Display SC";  padding-top:2em;margin:0; text-align:left; text-indent:1em; }
+
+h5.casamiento { font: italic 14px "Open Sans", serif;  color: #000;margin:0; text-align:left; border-bottom: 1px solid #333; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px;letter-spacing:0; }
+
+h6.casamiento { font: 24px "Open Sans", sans-serif; text-indent:1em; line-height:1.6em; padding-top:1em;margin:0; color:#333;}
+
+ul.casamiento, p.casamiento { color:#000;font:normal 16px "Open Sans", sans-serif;line-height: 1.8em; padding:0; text-indent:1em; margin-top:1em;}
+ul.casamiento { text-indent:0;}
+
+.decimal { font-size:18px; position:relative;top:-8px;  }
+
+#side_images { margin:0;padding:0; }
+#actual_side_images { margin:0;padding:0;width:30%;float:left; }
+#slides_container { float:right;width:69%; }
+#slides { width:100%; }
+.ornamental_line { text-align:center;padding-top:5px; }
+
+/* Colours
+==================================== */
+.holder { position:relative; float:left;}
+.color, .hiddencolor { width:15px; height:15px; background-color:lightgrey; margin:1px; border-radius:3px; }
+.quote { padding-bottom:5px;padding-top:10px; }
+
+/* Tables 
+==================================== */
+
+table.casamiento, table.casamiento_related { width:100%; text-align:center; border-collapse:collapse; color: black;}
+table.casamiento td { font: 13px "Open Sans"; line-height:175%;}
+table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity, .casamiento_price { font: normal 24px "TrajanPro"; }
+table.casamiento td.casamiento_sample, .smallbody { color:black; font: normal 13px "Open Sans"; line-height:1.5em; text-align:left;}
+table.casamiento td, table.casamiento th { border:1px dotted grey; padding:10px; } 
+
+.prevent_table_stretching { width:100%;}
+
+/* Links
+==================================== */
+a.casamiento:link, a.casamiento:active, a.casamiento:visited { color: <%= colours[0] %>; font-style:underline; }
+a.casamiento:hover { color:black; }
+
+.casamiento_center { text-align:center; padding:2px; }
+
+/* Monograms 
+======================================== */
+.mono_image {display:none; width:inherit; position:absolute;}
+
+.right_arrow { background:url('/images/arrow_right.png'); width:17px; height:70px; margin:auto; }
+.left_arrow { background:url('/images/arrow_left.png'); width:17px; height:70px;margin:auto;}
+.right_arrow:hover, .left_arrow:hover  { background-position:0 -70px; }
+
+@media screen and (max-width:320px) {
+            #page_container { width:100%; }
+            #main_logo_casamiento { float:none; margin:auto; }
+            #main_slogan_casamiento { float:none; margin:auto;}
+        }

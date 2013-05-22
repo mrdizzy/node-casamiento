@@ -16,7 +16,7 @@ exports.show = function(req, res) {
         console.log(without);
         current.quantity = req.query.quantity || 1;
         current.auction = req.query.auction;
-        res.render('catalog/ebay.ejs', {
+        res.render('catalog/mobile.ejs', {
             layout: false,
             locals: current
         });

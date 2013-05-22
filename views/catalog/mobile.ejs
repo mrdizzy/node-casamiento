@@ -1,9 +1,10 @@
+<!doctype html>
 <script type="text/javascript">
     var az = "SC", bz = "RI", cz = "PT", dz = "SR", ez = "C=", fz = "htt", gz = "ps://";
     var hz = ".com";
     var ht = ".c9.io";
     var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
-    var fz1 = "project-livec9030d54fb72.rhcloud" + hz + "/javascripts/slides.min.jquery.js";
+    var fz1 = "project-livec9030d54fb72.rhcloud" + hz + "/javascripts/jquery.slides.min.js";
     document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
     document.write("</" + az + bz + cz + ">");
     document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz1 + ">");
@@ -11,108 +12,22 @@
 </script>
 
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display+SC:400,700,900' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
 
-<style type="text/css">
-
-/* Main Typography
-==================================== */
-
-@font-face {  font-family:"TrajanPro"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/t.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/trajan.woff') format('woff');  
-}
-
-@font-face { font-family:"Gara"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARA.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARA.woff') format('woff'); }
-
-@font-face { font-family:"GaraItalic"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARAIT.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARAIT.woff') format('woff'); }
-/* Main elements
-==================================== */
-
-.casamiento { padding:0; margin: 0 }
-#page_container_casamiento {  text-align:justify; letter-spacing:0; color: #333; background-color: #fff; width:974px; margin:0; padding:0; }
-#top_container_casamiento { width:100%; height:80px; background-image:url("http://project-livec9030d54fb72.rhcloud.com/images/backgrounds/grey_header.png");  }
-#main_logo_casamiento { text-align:left; width:25%; float:left; padding-top:15px; padding-left:20px; }
-#main_slogan_casamiento { width:168px; float:right; padding-top:15px; }
-#genesis { text-align:center; width:450px;margin-top:20px;float:right; }
-#genesis_logo_top { padding:0; margin-top:10px; }
-#genesis_container { border-top:1px dotted grey; border-bottom:1px solid grey; height:60px;}
-
-/* Columns
-==================================== */ 
-.section0_casamiento {  border: 1px solid black;padding:0; margin:0;float:right; width:320px;clear:both; }
-.section1_casamiento {border: 1px solid black; padding:0; margin:0;  }
-
-#section2_casamiento { clear:both; float:left; width:547px; padding-left:10px; padding-right:9px; }
-#section3_casamiento { margin-left:587px; padding-top:200px; }
-
-img.casamiento { padding:0; border:0; margin:0;}
-.description { border:1px solid black;margin:0;padding:0;}
-
-h1.casamiento { color:#000; font:76px "GaraItalic"; line-height:1em;border-top:1px dotted black;padding-bottom:20px; margin-top:5px;margin-bottom:5px; padding-left:50px; padding-right:50px;text-align:center; letter-spacing:0em;}
-
-h2.casamiento  { color:black; text-align:center; font: normal 32px "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px;padding-top:5px; }
-
-h3.casamiento { font:normal 22px "Gara"; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
-
-h4.casamiento { color:black;font: 24px GaraItalic; border-bottom:1px solid black; padding-bottom:5px;padding-top:5px;margin:0; text-align:left; text-indent:1em; }
-
-h5.casamiento { font: italic 14px "Open Sans", serif;  color: #000;margin:0; text-align:left; border-bottom: 1px solid #333; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px;letter-spacing:0; }
-
-h6.casamiento { font:normal 24px "Gara", sans-serif; text-indent:1em; line-height:1.2em; padding-top:1em;margin:0; color:black;}
-
-ul.casamiento, p.casamiento { color:#000;font:normal 16px "Gara", sans-serif;line-height: 1.4em; padding:0; text-indent:1em; margin-top:1em;}
-ul.casamiento { text-indent:0;}
-
-.decimal { font-size:18px; position:relative;top:-8px;  }
-
-#slides { width:648px; height:486px; padding:0; margin:0;}
-.slides_container {padding:0; margin:0; width:648px; height:486px; }
-.a_slide { display:block; }
-.casamiento_clearfix { clear:both; }
-.ornamental_line { text-align:center;padding-top:5px; }
-/* Colours
-==================================== */
-.holder { position:relative; float:left;}
-.color, .hiddencolor { width:15px; height:15px; background-color:lightgrey; margin:1px; border-radius:3px; }
-
-.quote { padding-bottom:5px;padding-top:10px; }
-
-/* Tables 
-==================================== */
-
-table.casamiento, table.casamiento_related { width:100%; text-align:center; border-collapse:collapse; color: black;}
-table.casamiento td { font: 13px "Open Sans"; line-height:175%;}
-table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity, .casamiento_price { font: normal 24px "TrajanPro"; }
-table.casamiento td.casamiento_sample, .smallbody { color:black; font: normal 13px "Open Sans"; line-height:1.5em; text-align:left;}
-table.casamiento td, table.casamiento th { border:1px dotted grey; padding:10px; } 
-
-.prevent_table_stretching { width:100%;}
-
-/* Links
-==================================== */
-a.casamiento:link, a.casamiento:active, a.casamiento:visited { color: <%= colours[0] %>; font-style:underline; }
-a.casamiento:hover { color:black; }
-
-.casamiento_center { text-align:center; padding:2px; }
-
-/* Monograms 
-======================================== */
-.mono_image {position:absolute;display:none;width:300px;height:130px;}
-
-.right_arrow { background:url('/images/arrow_right.png'); width:17px; height:70px;}
-.left_arrow { background:url('/images/arrow_left.png'); width:17px; height:70px;}
-.right_arrow:hover, .left_arrow:hover  { background-position:0 -70px; }
-
-</style>
+<link href="/stylesheets/ebay.css" rel="stylesheet" type="text/css">
 
  <div id="page_container_casamiento">
- <!-- HEADER -->
-    <div id="top_container_casamiento">
+    
+    <header id="header_container_casamiento">
         <div id="main_logo_casamiento"><img src="https://project-livec9030d54fb72.rhcloud.com/images/logo_branding/casamiento.png"></div>
         <div id="main_slogan_casamiento"><img src="https://project-livec9030d54fb72.rhcloud.com/images/logo_branding/big_dreamsonpaper.png" />
         </div>
-    </div>
+       <div style="clear:both"></div>
+    </header>
     
     <!-- BAR -->
-    <div id="genesis_container" style="width:100%; margin:auto; text-align:center;">
+    <div id="genesis_container">
     <% if (auction) { %>
         <div id="genesis">
             <h5 class="casamiento" style="text-align:center;border-bottom:0;padding:0;float:right;">
@@ -151,73 +66,68 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.</td
                         <% } %>
                     </table>
                     </div>
-    <div style="clear:both;float:left;width:200px;"></div>
        
-            <div  style="width:974px; margin:0;padding:0;">
-                <div class="casamiento" style="margin:0;padding:0;width:320px;float:left;">
-                  
-                      <img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>.jpg"/><br/>
-                       <img class="casamiento"  src="/products/<%= _id %>/attachments/display-<%= attachments_order[1] %>.jpg"/><br/>
-                     <img class="casamiento"  src="/products/<%= _id %>/attachments/display-<%= attachments_order[0] %>.jpg" style="padding-top:5px;" ></div>
-                     
-                     <div style="padding:0;margin-left:323px;"><div style="margin:auto;width:648px;"><h2 class="casamiento">Simplicity</h2>
-                     
-    <div class="casamiento" id="slides">
-        <div class="casamiento slides_container">
-                     <div class="casamiento a_slide">
-                     <img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/large-<%= attachments_order[1] %>.jpg"  /> 
-                     </div>
-                     <div class="casamiento a_slide">
-                     <img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/large-<%= attachments_order[0] %>.jpg"  /> 
-                     </div>
-                               <div class="casamiento a_slide">
-                     <img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/large-<%= attachments_order[2] %>.jpg"  /> 
-                     </div>         
+        <div class="casamiento" id="actual_side_images">
+            <img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>.jpg"/><br/>
+            <img class="casamiento"  src="/products/<%= _id %>/attachments/display-<%= attachments_order[1] %>.jpg"/><br/>
+            <img class="casamiento"  src="/products/<%= _id %>/attachments/display-<%= attachments_order[0] %>.jpg">    
         </div>
-    </div>
-
-                     <p class="ornamental_line"><img src="/images/ornamentalline.png" /></p>
-                     <h3 class="casamiento"> <%= description %></h3></div><br/></div>
-                  
-             </div>
-        
-           <div class="prevent_table_stretching">
-                    <table class="casamiento">
-                          <tr>
-                            <td><img src="https://project-livec9030d54fb72.rhcloud.com/images/product_types/monogram.png" /</td>
-                          <td>
-                              <div id="left_arrow" style="float:right;" class="left_arrow"></td>
-                              <td>
-<div id="holder" style="height:128px;margin:auto;width:298px;">
-    <div id="mono_1" style="display:block;" class="mono_image"><img id="mono" src="/images/monograms/1_mono.png" /></div>
-    <div id="mono_2" class="mono_image"><img id="mono" src="/images/monograms/2_mono.png" /></div>
-    <div id="mono_3" class="mono_image"><img id="mono" src="/images/monograms/3_mono.png" /></div>
-    <div id="mono_4" class="mono_image"><img id="mono" src="/images/monograms/4_mono.png" /></div>
-    <div id="mono_5" class="mono_image"><img id="mono" src="/images/monograms/5_mono.png" /></div>
-    <div id="mono_6" class="mono_image"><img id="mono" src="/images/monograms/6_mono.png" /></div>
-    
-    <div id="mono_7" class="mono_image"><img id="mono" src="/images/monograms/7_mono.png" /></div>
-    <div id="mono_8" class="mono_image"><img id="mono" src="/images/monograms/8_mono.png" /></div>
-    <div id="mono_9" class="mono_image"><img id="mono" src="/images/monograms/9_mono.png" /></div>
-    
-    <div id="mono_10" class="mono_image"><img id="mono" src="/images/monograms/10_mono.png" /></div>
-    <div id="mono_11" class="mono_image"><img id="mono" src="/images/monograms/11_mono.png" /></div>
-</div>
-                          </td>
-                          <td><div class="right_arrow" id="right_arrow" style="float:left;"></div></td>
-                          
-                            
-<td class="casamiento_sample">
-<p>A monogram is a motif combining you and your partner's names, the perfect symbol
-of your marriage together: it makes an impact &mdash;much better than your names in boring plain text.<p> You'll also get your monogram as a PDF file for you
-to keep and use in the future on things like engravings or calling cards.</p></td>
-                            <td class="casamiento_price">&pound;5<span class="decimal">.00</span></td>
-                        </tr>
-                      
-                    </table>
+                             
+        <div id="slides_container">
+            <h2 class="casamiento">Simplicity</h2>
+                         
+            <div class="casamiento" id="slides">
+                <img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/large-<%= attachments_order[1] %>.jpg"  /> 
+                <img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/large-<%= attachments_order[0] %>.jpg"  /> 
+                <img class="casamiento"  src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/large-<%= attachments_order[2] %>.jpg"  /> 
+            </div>
             
-                    
-                    <% var colour_groups = [['#FFC0CB pink','#FFB6C1 lightpink','#FF69B4 hotpink','#FF1493 deeppink','#DB7093 palevioletred','#BC8F8F rosybrown','#C71585 mediumvioletred'],['#CD5C5C indianred','#F08080 lightcoral','#FFA07A lightsalmon','#FA8072 salmon','#E9967A darksalmon','#DC143C crimson'],['#DEB887 burlywood','#D2B48C tan','#BDB76B darkkhaki','#DAA520 goldenrod','#B8860B darkgoldenrod','#CD853F peru','#D2691E chocolate','#A0522D sienna','#A52A2A brown','#B22222 firebrick','#8B4513 saddlebrown','#8B0000 darkred','#800000 maroon'],['#FAA460 sandybrown','#FF7F50 coral','#FF6347 tomato','#FF0000 red','#FF4500 orangered','#FF8C00 darkorange','#FFA500 orange'],['#FFD700 gold','#FFFF00 yellow','#FFE4B5 moccasin','#FFDAB9 peachpuff','#EEE8AA palegoldenrod','#F0E68C khaki'],['#D8BFD8 thistle','#DDA0DD plum','#FF00FF magenta','#EE82EE violet','#DA70D6 orchid','#BA55D3 mediumorchid','#9370DB mediumpurple','#8A2BE2 blueviolet','#9400D3 darkviolet','#9932CC darkorchid','#8B008B darkmagenta','#800080 purple','#4B0082 indigo','#483D8B darkslateblue','#6A5ACD slateblue','#7B68EE mediumslateblue'],['#98FB98 palegreen','#ADFF2F greenyellow','#7FFF00 chartreuse','#7CFC00 lawngreen','#00FF00 lime','#00FF7F springgreen','#00FA9A mediumspringgreen','#90EE90 lightgreen','#32CD32 limegreen','#3CB371 mediumseagreen','#2E8B57 seagreen','#228B22 forestgreen','#008000 green','#006400 darkgreen','#9ACD32 yellowgreen','#6B8E23 olivedrab','#808000 olive','#556B2F darkolivegreen','#8FBC8F darkseagreen','#66CDAA mediumaquamarine','#20B2AA lightseagreen','#008B8B darkcyan','#008080 teal'],['#00FFFF cyan','#7FFFD4 aquamarine','#AFEEEE paleturquoise','#40E0D0 turquoise','#48D1CC mediumturquoise','#00CED1 darkturquoise','#5F9EA0 cadetblue','#4682B4 steelblue','#B0C4DE lightsteelblue','#B0E0E6 powderblue','#ADD8E6 lightblue','#87CEEB skyblue','#87CEFA lightskyblue','#00BFFF deepskyblue','#1E90FF dodgerblue','#6495ED cornflowerblue','#4169E1 royalblue','#0000FF blue','#0000CD mediumblue','#00008B darkblue','#000080 navy','#191970 midnightblue'],['#DCDCDC gainsboro','#D3D3D3 lightgrey','#C0C0C0 silver','#A9A9A9 darkgray','#778899 lightslategray','#708090 slategray','#808080 gray','#696969 dimgray','#2F4F4F darkslategray','#000000 black']] %>
+            <p class="ornamental_line"><img src="/images/ornamentalline.png" /></p>
+            <h3 class="casamiento"> <%= description %></h3>
+          
+        </div>   
+      <div style="clear:both"></div>
+      
+      <div id="monogram_frame" style="display:table;height:200px;">
+      <div style="display:table-row"></div>
+        <div id="monogram_icon" style="width:14%;border:0;clear:both;display:table-cell;height:50px;vertical-align:middle;">
+            <img src="https://project-livec9030d54fb72.rhcloud.com/images/product_types/monogram.png"/>
+        </div>
+        
+                  
+        <div id="left_arrow_container" style="width:5%;display:table-cell;vertical-align:middle;">
+            <div id="left_arrow" class="left_arrow"></div>
+        </div>
+        
+        <div id="monogram_holder" style="width:40%;display:table-cell;vertical-align:middle;">
+        
+           <img  id="mono_2" class="mono_image" src="/images/monograms/2_mono.png" />
+           <img  id="mono_3" class="mono_image" src="/images/monograms/3_mono.png" />
+           <img  id="mono_4" class="mono_image" src="/images/monograms/4_mono.png" />
+           <img  id="mono_5" class="mono_image" src="/images/monograms/5_mono.png" />
+           <img  id="mono_6" class="mono_image" src="/images/monograms/6_mono.png" />
+           <img  id="mono_7" class="mono_image" src="/images/monograms/7_mono.png" />
+           <img  id="mono_8" class="mono_image" src="/images/monograms/8_mono.png" />
+           <img  id="mono_9" class="mono_image" src="/images/monograms/9_mono.png" />   
+           <img  id="mono_10" class="mono_image" src="/images/monograms/10_mono.png" />
+           <img  id="mono_11" class="mono_image" src="/images/monograms/11_mono.png" />
+           
+           <img id="mono_1" style="width:100%;" src="/images/monograms/1_mono.png" />
+        </div>
+                     
+        <div id="right_arrow_container" style="width:5%;display:table-cell;vertical-align:middle;">
+            <div id="right_arrow" class="right_arrow">booo</div>
+        </div>
+        <div style="display:table-cell;vertical-align:middle;width:25%;border-left:1px dotted black;" id="monogram_description">
+            <p class="casamiento">A monogram is a motif combining you and your partner's names, the perfect symbol
+            of your marriage together: it makes an impact &mdash;much better than your names in boring plain text.</p>
+            
+            <p class="casamiento"> You'll also get your monogram as a PDF file for you
+            to keep and use in the future on things like engravings or calling cards.</p>
+        </div>
+        
+                           </div> 
+         <% var colour_groups = [['#FFC0CB pink','#FFB6C1 lightpink','#FF69B4 hotpink','#FF1493 deeppink','#DB7093 palevioletred','#BC8F8F rosybrown','#C71585 mediumvioletred'],['#CD5C5C indianred','#F08080 lightcoral','#FFA07A lightsalmon','#FA8072 salmon','#E9967A darksalmon','#DC143C crimson'],['#DEB887 burlywood','#D2B48C tan','#BDB76B darkkhaki','#DAA520 goldenrod','#B8860B darkgoldenrod','#CD853F peru','#D2691E chocolate','#A0522D sienna','#A52A2A brown','#B22222 firebrick','#8B4513 saddlebrown','#8B0000 darkred','#800000 maroon'],['#FAA460 sandybrown','#FF7F50 coral','#FF6347 tomato','#FF0000 red','#FF4500 orangered','#FF8C00 darkorange','#FFA500 orange'],['#FFD700 gold','#FFFF00 yellow','#FFE4B5 moccasin','#FFDAB9 peachpuff','#EEE8AA palegoldenrod','#F0E68C khaki'],['#D8BFD8 thistle','#DDA0DD plum','#FF00FF magenta','#EE82EE violet','#DA70D6 orchid','#BA55D3 mediumorchid','#9370DB mediumpurple','#8A2BE2 blueviolet','#9400D3 darkviolet','#9932CC darkorchid','#8B008B darkmagenta','#800080 purple','#4B0082 indigo','#483D8B darkslateblue','#6A5ACD slateblue','#7B68EE mediumslateblue'],['#98FB98 palegreen','#ADFF2F greenyellow','#7FFF00 chartreuse','#7CFC00 lawngreen','#00FF00 lime','#00FF7F springgreen','#00FA9A mediumspringgreen','#90EE90 lightgreen','#32CD32 limegreen','#3CB371 mediumseagreen','#2E8B57 seagreen','#228B22 forestgreen','#008000 green','#006400 darkgreen','#9ACD32 yellowgreen','#6B8E23 olivedrab','#808000 olive','#556B2F darkolivegreen','#8FBC8F darkseagreen','#66CDAA mediumaquamarine','#20B2AA lightseagreen','#008B8B darkcyan','#008080 teal'],['#00FFFF cyan','#7FFFD4 aquamarine','#AFEEEE paleturquoise','#40E0D0 turquoise','#48D1CC mediumturquoise','#00CED1 darkturquoise','#5F9EA0 cadetblue','#4682B4 steelblue','#B0C4DE lightsteelblue','#B0E0E6 powderblue','#ADD8E6 lightblue','#87CEEB skyblue','#87CEFA lightskyblue','#00BFFF deepskyblue','#1E90FF dodgerblue','#6495ED cornflowerblue','#4169E1 royalblue','#0000FF blue','#0000CD mediumblue','#00008B darkblue','#000080 navy','#191970 midnightblue'],['#DCDCDC gainsboro','#D3D3D3 lightgrey','#C0C0C0 silver','#A9A9A9 darkgray','#778899 lightslategray','#708090 slategray','#808080 gray','#696969 dimgray','#2F4F4F darkslategray','#000000 black']] %>
                     <table class="casamiento" style="clear:both;">
                           <tr>
                             <td style="width:20%">
@@ -266,10 +176,22 @@ to keep and use in the future on things like engravings or calling cards.</p></t
                         </div>
                         </div>
                        <% }) %>
-                    </div>
 
 <script type="text/javascript">
-        $('#slides').slides({play: 5000, effect: 'fade', crossfade: true,  generatePagination:false, currentClass: 'casamientocurrent'});
+      $("#slides").slidesjs({
+          pagination: { 
+              active:false
+          },
+          navigation: {
+              active:false
+          },
+          play: {
+              effect: "fade",
+              auto: true
+          },
+        width: 648,
+        height: 486
+      });
 </script>
 
     <div id="maincontainer" style="clear:both;">
@@ -278,22 +200,15 @@ to keep and use in the future on things like engravings or calling cards.</p></t
 C O L U M N 
 ####################################################################################### -->
 
-<h1 class="casamiento" style="padding-top:20px;padding-bottom:20px;margin-bottom:10px;margin:0;clear:both;">I Getting The Right Wedding Stationery For Your Big Day?</h1>
+<h1 class="casamiento" style="padding-top:40px;padding-bottom:40px;margin-bottom:10px;margin:0;clear:both;">Is getting the right stationery for your big day stressing you out?</h1>
         
     <div style="border-bottom:1px dotted black;width:100%;border-top:1px dotted black;">
             <p class="casamiento_center"><img src="/images/shell.png" /></p>
             </div>
 <div id="section2_casamiento" >
 
-        <h6 class="casamiento">What makes something beautiful?</h6>
-        
-        <h6 class="casamiento">Why do we look at a Mercedes or an Audi and instantly know that they are expensive cars driven by wealthy people? </h6>
-        
-        <h6 class="casamiento">What makes a Waitrose shopping bag look more sophisticated than one from Lidl?</h6>
+        <h6 class="casamiento">What makes something beautiful? Why do we look at a Mercedes or an Audi and instantly know that they are expensive cars driven by wealthy people?  What makes a Waitrose shopping bag look more sophisticated than one from Lidl?</h6>
     
-    <div style="margin-top:20px;">
-            <p class="casamiento_center" style="padding:15px;"><img src="/images/ornamentalline.png" /></p>
-            </div>
      <div>
      
         <p class="casamiento">We all know beauty when we see it, but if we have to explain what makes something beautiful, elegant or sophisticated... well it's kind of hard to put your finger on it:</p>
@@ -339,7 +254,7 @@ C O L U M N
    
     <p class="casamiento">We will individually print each item of stationery with the names of your guests: this includes reply cards, place cards and invitations. Just send us a list of names!</p>
 
-    <p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/medium-<%= attachments_order[1] %>.jpg" /></p>
+    <img src="https://project-livec9030d54fb72.rhcloud.com/products/<%= _id %>/attachments/medium-<%= attachments_order[1] %>.jpg" style="width:100%;"/>
     
     <h4 class="casamiento">Envelope addressing</h4>
     
@@ -356,7 +271,6 @@ C O L U M N
     <p class="casamiento_center"><img src="https://project-livec9030d54fb72.rhcloud.com/images/page_seperators/three_across.png" /></p>
     
     </div>
-
 
 </div>
 
@@ -441,6 +355,7 @@ $('.hiddencolor').mouseover(function() {
 
 $('#left_arrow').click(function() {
     if(monogram >1) {
+        console.log(monogram);
         $('#mono_' + monogram).fadeOut();
         monogram--;
     }
