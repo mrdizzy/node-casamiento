@@ -73,14 +73,31 @@ a.casamiento:hover { color:black; }
 
 /* Monograms 
 ======================================== */
-.mono_image {display:none; width:inherit; position:absolute;}
+#monogram_row {  display:table-row }
+#monogram_frame { display:table;border-top:1px dotted black; }
+#monogram_icon { width:14%;border:0;clear:both;display:table-cell;height:50px;vertical-align:middle;text-align:center; border-right:1px dotted black; }
+#monogram_slideshow { vertical-align:middle; width:100%;}
+#monogram_holder { width:25%;display:table-cell;vertical-align:middle; }
+#monogram_description { display:table-cell;vertical-align:middle;width:45%;border-left:1px dotted black }
+#left_arrow_container { width:5%;display:table-cell;vertical-align:middle; }
+#right_arrow_container { width:5%;display:table-cell;vertical-align:middle; }
 
 .right_arrow { background:url('/images/arrow_right.png'); width:17px; height:70px; margin:auto; }
 .left_arrow { background:url('/images/arrow_left.png'); width:17px; height:70px;margin:auto;}
 .right_arrow:hover, .left_arrow:hover  { background-position:0 -70px; }
 
-@media screen and (max-width:320px) {
-            #page_container { width:100%; }
-            #main_logo_casamiento { float:none; margin:auto; }
-            #main_slogan_casamiento { float:none; margin:auto;}
-        }
+.related_product_holder{ display:table;width:100%;text-align:center; border-collapse:collapse;}
+.related_product_row { display:table-row; width:100%;}
+.related_product { display:table-cell; text-align:center; width:33%; border:1px dotted black;vertical-align:middle;}
+.related_product img.thumb_related { width:100%; }
+
+/* Colours
+============================== */
+.img { margin:auto; }
+.c_contain { width:33%;   float:left;  margin:auto; }
+.swipe {overflow: hidden;     visibility: hidden;     position: relative;  }
+.swipe-wrap {     overflow: hidden;  position: relative;}
+.swipe-wrap > div {    float:left;   width:100%; position: relative;   }
+
+.img { width:75px; height:75px; }
+.c_contain {          text-align:center; width:20%; float:left;  margin:auto; } 
