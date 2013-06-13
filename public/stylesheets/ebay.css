@@ -4,53 +4,50 @@
     
     @font-face { font-family:"GaraItalic"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARAIT.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARAIT.woff') format('woff'); }
 
-.casamiento { padding:0; margin: 0 }
+.casamiento { padding:0; margin:0; }
+.clearboth {  clear:both }
+body {  background-image:url("http://project-livec9030d54fb72.rhcloud.com/images/backgrounds/grey_header.png"); padding:0;margin:0;  }
 
-body {  background-image:url("http://project-livec9030d54fb72.rhcloud.com/images/backgrounds/grey_header.png");   }
-
-#page_container_casamiento {  border-left:1px dotted black; border-right:1px dotted black; color: #333; background-color: #fff; width:92%;margin:auto; padding:0; }
+#page_container_casamiento {  border-left:1px dotted black; border-right:1px dotted black; color: #333; background-color: #fff; width:95%;margin:auto; }
 #header_container_casamiento { width:100%; }
 #main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
-#main_slogan_casamiento { width:168px; float:right;  }
+#main_slogan_casamiento { float:right;  }
 #genesis { text-align:center;  }
-#genesis_logo_top { padding:0; margin-top:10px; }
+#genesis_logo_top { margin-top:10px; width:22em; }
 #genesis_container { border-top:1px dotted grey; border-bottom:1px solid grey; width:100%; margin:auto; text-align:center;}
 
 /* Columns
 ==================================== */ 
-#section2_casamiento { clear:both; float:left; width:60%;  }
-#section3_casamiento { margin-left:62%;  }
+#section2_casamiento { clear:both; float:left; width:61%; padding-left:1.72%; }
+#section3_casamiento { margin-left:63.72%;  }
 
-img { width: 100%; height: auto; width: auto; /* ie8 fix*/  }
-img.casamiento { padding:0; border:0; margin:0; width:100%;}
+img.expand { width:100% }
 
-h1.casamiento { color:#333; font:56px "Playfair Display SC"; font-weight:400; line-height:1em; padding-bottom:40px; padding-top:20px; margin-top:5px;margin-bottom:5px; padding-left:10px; padding-right:10px;text-align:center; letter-spacing:0em;line-height:1.2em;}
+h1.casamiento { color:#444; font:4em "Playfair Display SC"; font-weight:400; line-height:1.5em; margin-bottom:1.5em;padding-left:10px; padding-right:10px;letter-spacing:0em;line-height:1.5em;padding-right:29%;}
 
-h2.casamiento  { color:black; text-align:center; font: normal 32px "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;padding-bottom:5px;padding-top:5px; }
+h2.casamiento  { color:black; text-align:center; font: normal 2.5em "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;margin-top:0.75em;margin-bottom:0.75em;  }
 
-h3.casamiento { font:normal 22px "Gara"; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
+h3.casamiento { font:normal 1.375em "Gara"; text-align:justify; color:black; line-height:1.5em;letter-spacing:0.1em;padding:0;margin:0; margin-bottom:1.5em; padding-right:10px; padding-left:10px;}
 
-h4.casamiento { color:black;font: 20px "Playfair Display SC";  padding-top:2em;margin:0; text-align:left; text-indent:1em; }
+h4.casamiento { color:#444;font: 1.25em "Playfair Display SC";  margin:0; margin-bottom:0.75em; margin-top:0.75em; text-align:left; }
 
-h5.casamiento { font: italic 14px "Open Sans", serif;  color: #000;margin:0; text-align:left; border-bottom: 1px solid #333; padding:0; padding-top:12px; padding-bottom:12px; margin-bottom:10px;letter-spacing:0; }
+h5.casamiento { font: italic 1em "Open Sans", serif;  font-weight:300;color: #000;margin:0; text-indent:1em;text-align:left; border-bottom: 1px solid #333; padding-top:0.75em; padding-bottom:0.75em;line-height:1.5em; margin-bottom:1.5em;margin-top:1.5em; }
 
-h6.casamiento { font: 24px "Open Sans", sans-serif; text-indent:1em; line-height:1.6em; padding-top:1em;margin:0; color:#333;}
+h6.casamiento { font: 1.375em "Open Sans", sans-serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
 
-ul.casamiento, p.casamiento { color:#000;font:normal 16px "Open Sans", sans-serif;line-height: 1.8em; padding:0; text-indent:1em; margin-top:1em;}
+ul.casamiento, p.casamiento { padding: 0 0.25em 1.5em 0.25em 0; color:#000;font: 1em normal "Open Sans", sans-serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
 ul.casamiento { text-indent:0;}
 
-.decimal { font-size:18px; position:relative;top:-8px;  }
+.decimal { font-size:0.75em; position:relative;top:-8px;  }
 
-#side_images { margin:0;padding:0; }
-#actual_side_images { margin:0;padding:0;width:30%;float:left; }
+#actual_side_images { width:30%;float:left; }
 #slides_container { float:right;width:69%; }
-#slides { width:100%; }
 .ornamental_line { text-align:center;padding-top:5px; }
 
 /* Colours
 ==================================== */
 .holder { position:relative; float:left;}
-.color, .hiddencolor { width:15px; height:15px; background-color:lightgrey; margin:1px; border-radius:3px; }
+.color, .hiddencolor { width:2em;height:2em; background-color:lightgrey;margin-right:2px;}
 .quote { padding-bottom:5px;padding-top:10px; }
 
 /* Tables 
@@ -61,43 +58,40 @@ table.casamiento td { font: 13px "Open Sans"; line-height:175%;}
 table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity, .casamiento_price { font: normal 24px "TrajanPro"; }
 table.casamiento td.casamiento_sample, .smallbody { color:black; font: normal 13px "Open Sans"; line-height:1.5em; text-align:left;}
 table.casamiento td, table.casamiento th { border:1px dotted grey; padding:10px; } 
-
+.specifications { text-align:left; padding:0;margin:0;vertical-align:0;}
+#product_format { text-align:center; }
+.quantity_sold { text-align:left; }
+.quantity_sold p { font-family:"Open Sans"; font-weight:300;font-size:2em; text-align:center; }
+td h1 { font-family:"Open Sans Condensed"; font-weight:700; font-size:1em; }
+.specifications p { padding:0; text-indent:3em; margin:0em; line-height:1em;}
 .prevent_table_stretching { width:100%;}
-
-/* Links
-==================================== */
-a.casamiento:link, a.casamiento:active, a.casamiento:visited { color: <%= colours[0] %>; font-style:underline; }
-a.casamiento:hover { color:black; }
 
 .casamiento_center { text-align:center; padding:2px; }
 
 /* Monograms 
 ======================================== */
-#monogram_row {  display:table-row }
-#monogram_frame { display:table;border-top:1px dotted black; }
-#monogram_icon { width:14%;border:0;clear:both;display:table-cell;height:50px;vertical-align:middle;text-align:center; border-right:1px dotted black; }
-#monogram_slideshow { vertical-align:middle; width:100%;}
-#monogram_holder { width:25%;display:table-cell;vertical-align:middle; }
-#monogram_description { display:table-cell;vertical-align:middle;width:45%;border-left:1px dotted black }
-#left_arrow_container { width:5%;display:table-cell;vertical-align:middle; }
-#right_arrow_container { width:5%;display:table-cell;vertical-align:middle; }
+#monogram_frame { clear:both;border-top:1px dotted black; border-bottom:1px dotted black; margin-bottom:10px; width:100%;}
+#monogram_icon { width:20%;border:0;clear:both;height:50px;text-align:center;float:left;}
 
-.right_arrow { background:url('/images/arrow_right.png'); width:17px; height:70px; margin:auto; }
-.left_arrow { background:url('/images/arrow_left.png'); width:17px; height:70px;margin:auto;}
-.right_arrow:hover, .left_arrow:hover  { background-position:0 -70px; }
+#monogram_holder { padding:2%;width:41%; float:left; border-left:1px dotted black; border-right:1px dotted black;}
+#monogram_description { width:34%;float:left;  }
+#monogram_description p { font-size:14px; padding-left:1em;}
+.clearfix { clear:both; }
 
 .related_product_holder{ display:table;width:100%;text-align:center; border-collapse:collapse;}
+.related_product_type_header { height:4em; }
 .related_product_row { display:table-row; width:100%;}
 .related_product { display:table-cell; text-align:center; width:33%; border:1px dotted black;vertical-align:middle;}
 .related_product img.thumb_related { width:100%; }
 
 /* Colours
 ============================== */
-.img { margin:auto; }
-.c_contain { width:33%;   float:left;  margin:auto; }
-.swipe {overflow: hidden;     visibility: hidden;     position: relative;  }
+#slider { display:none; }
+#more_colours { border:1px solid transparent; }
+#more_colours:hover { border:1px solid #555; border-radius:5px; }
+.c_contain { width:33%;   float:left;  margin:auto; font-family:GaraItalic; font-size:1.2em;}
+.swipe {overflow: hidden;     visibility: hidden;     position: relative;  width:100%; }
 .swipe-wrap {     overflow: hidden;  position: relative;}
-.swipe-wrap > div {    float:left;   width:100%; position: relative;   }
-
-.img { width:75px; height:75px; }
-.c_contain {          text-align:center; width:20%; float:left;  margin:auto; } 
+.swipe-wrap > div {    float:left;   position: relative;   }
+.img { width:3em; height:3em; border-radius:0.5em;}
+.c_contain {          text-align:center; width:25%; float:left;  margin:auto; } 
