@@ -1,19 +1,20 @@
-    @font-face {  font-family:"TrajanPro"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/t.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/trajan.woff') format('woff'); }
+@font-face {  font-family:"TrajanPro"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/t.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/trajan.woff') format('woff'); }
     
-    @font-face { font-family:"Gara"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARA.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARA.woff') format('woff'); }
+@font-face { font-family:"Gara"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARA.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARA.woff') format('woff'); }
     
-    @font-face { font-family:"GaraItalic"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARAIT.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARAIT.woff') format('woff'); }
+@font-face { font-family:"GaraItalic"; src: url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARAIT.eot?') format('eot'), url('https://project-livec9030d54fb72.rhcloud.com/fonts/GARAIT.woff') format('woff'); }
 
 .casamiento { padding:0; margin:0; }
 .clearboth {  clear:both }
-body {  background-image:url("http://project-livec9030d54fb72.rhcloud.com/images/backgrounds/grey_header.png"); padding:0;margin:0;  }
+
+body { background-image:url("http://project-livec9030d54fb72.rhcloud.com/images/backgrounds/grey_header.png"); padding:0;margin:0;  }
 
 #page_container_casamiento {  border-left:1px dotted black; border-right:1px dotted black; color: #333; background-color: #fff; width:95%;margin:auto; }
 #header_container_casamiento { width:100%; }
 #main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
 #main_slogan_casamiento { float:right;  }
 #genesis { text-align:center;  }
-#genesis_logo_top { margin-top:10px; width:22em; }
+#genesis_logo_top {  width:22em; }
 #genesis_container { border-top:1px dotted grey; border-bottom:1px solid grey; width:100%; margin:auto; text-align:center;}
 
 /* Columns
@@ -35,38 +36,29 @@ h5.casamiento { font: italic 1em "Open Sans", serif;  font-weight:300;color: #00
 
 h6.casamiento { font: 1.375em "Open Sans", sans-serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
 
-ul.casamiento, p.casamiento { padding: 0 0.25em 1.5em 0.25em 0; color:#000;font: 1em normal "Open Sans", sans-serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
-ul.casamiento { text-indent:0;}
+p.casamiento { padding: 0 0.25em 1.5em 0.25em 0; color:#000;font: 1em normal "Open Sans", sans-serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
 
 .decimal { font-size:0.75em; position:relative;top:-8px;  }
-
+.casamiento_center { text-align:center; }
 #actual_side_images { width:30%;float:left; }
 #slides_container { float:right;width:69%; }
-.ornamental_line { text-align:center;padding-top:5px; }
+.ornamental_line { text-align:center; width:100%;padding-top:5px; }
 
 /* Colours
 ==================================== */
-.holder { position:relative; float:left;}
-.color, .hiddencolor { width:2em;height:2em; background-color:lightgrey;margin-right:2px;}
 .quote { padding-bottom:5px;padding-top:10px; }
 
-/* Tables 
+.colour_square { width:100%;padding-bottom:100%;border-radius:0.5em; }
+.colour_label { font-family:'Open Sans';font-weight:300;font-size:1.5em;line-height:1em;margin-top:0.25em;margin-bottom:0.5em;}
+
+/* Specificatinos 
 ==================================== */
-
-table.casamiento, table.casamiento_related { width:100%; text-align:center; border-collapse:collapse; color: black;}
-table.casamiento td { font: 13px "Open Sans"; line-height:175%;}
-table.casamiento td.casamiento_price, table.casamiento td.casamiento_quantity, .casamiento_price { font: normal 24px "TrajanPro"; }
-table.casamiento td.casamiento_sample, .smallbody { color:black; font: normal 13px "Open Sans"; line-height:1.5em; text-align:left;}
-table.casamiento td, table.casamiento th { border:1px dotted grey; padding:10px; } 
-.specifications { text-align:left; padding:0;margin:0;vertical-align:0;}
-#product_format { text-align:center; }
-.quantity_sold { text-align:left; }
+#specifications { clear:both; display:table;width:100%; text-align:center; border-collapse:collapse;  }
+#paper { text-align:left; }
+.table-cell { display:table-cell;vertical-align:top; border:1px dotted grey; padding:10px; }
+    .table-cell  h1 { font-family:"Open Sans Condensed"; font-weight:700; font-size:0.8em; margin:0;}
+    .table-cell p { font-family:"Open Sans"; font-size:0.8em; padding:0; text-indent:3em; margin:0em; line-height:1em;}
 .quantity_sold p { font-family:"Open Sans"; font-weight:300;font-size:2em; text-align:center; }
-td h1 { font-family:"Open Sans Condensed"; font-weight:700; font-size:1em; }
-.specifications p { padding:0; text-indent:3em; margin:0em; line-height:1em;}
-.prevent_table_stretching { width:100%;}
-
-.casamiento_center { text-align:center; padding:2px; }
 
 /* Monograms 
 ======================================== */
@@ -76,7 +68,6 @@ td h1 { font-family:"Open Sans Condensed"; font-weight:700; font-size:1em; }
 #monogram_holder { padding:2%;width:41%; float:left; border-left:1px dotted black; border-right:1px dotted black;}
 #monogram_description { width:34%;float:left;  }
 #monogram_description p { font-size:14px; padding-left:1em;}
-.clearfix { clear:both; }
 
 .related_product_holder{ display:table;width:100%;text-align:center; border-collapse:collapse;}
 .related_product_type_header { height:4em; }
@@ -84,14 +75,8 @@ td h1 { font-family:"Open Sans Condensed"; font-weight:700; font-size:1em; }
 .related_product { display:table-cell; text-align:center; width:33%; border:1px dotted black;vertical-align:middle;}
 .related_product img.thumb_related { width:100%; }
 
-/* Colours
+/* Sldieshow
 ============================== */
-#slider { display:none; }
-#more_colours { border:1px solid transparent; }
-#more_colours:hover { border:1px solid #555; border-radius:5px; }
-.c_contain { width:33%;   float:left;  margin:auto; font-family:GaraItalic; font-size:1.2em;}
 .swipe {overflow: hidden;     visibility: hidden;     position: relative;  width:100%; }
 .swipe-wrap {     overflow: hidden;  position: relative;}
-.swipe-wrap > div {    float:left;   position: relative;   }
-.img { width:3em; height:3em; border-radius:0.5em;}
-.c_contain {          text-align:center; width:25%; float:left;  margin:auto; } 
+.swipe-wrap > div {    float:left;   position: relative;  }
