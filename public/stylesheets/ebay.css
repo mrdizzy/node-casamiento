@@ -55,7 +55,7 @@ p.casamiento { padding: 0 0.25em 1.5em 0.25em 0; color:#000;font: 1em normal "Op
 ==================================== */
 #specifications { clear:both; display:table;width:100%; text-align:center; border-collapse:collapse;  }
 #paper { text-align:left; }
-.table-cell { display:table-cell;vertical-align:top; border:1px dotted grey; padding:10px; }
+.table-cell { display:table-cell;vertical-align:top; border:1px dotted grey;  }
     .table-cell  h1 { font-family:"Open Sans Condensed"; font-weight:700; font-size:0.8em; margin:0;}
     .table-cell p { font-family:"Open Sans"; font-size:0.8em; padding:0; text-indent:3em; margin:0em; line-height:1em;}
 .quantity_sold p { font-family:"Open Sans"; font-weight:300;font-size:2em; text-align:center; }

@@ -37,17 +37,18 @@ a.casamiento:hover { color:black; }
 @media screen and (max-width:360px) {
     #specifications h1 { text-align:left; margin-bottom:0.75em;}
     
-    #colours-shown { display:block;float:none; width:100%; border:1px solid blue;}
+    #colours-shown { display:block;float:none; width:100%; }
     #specifications p { text-align:center; text-indent:0; }
     #specifications { display:block;padding:0;margin:0;}
     .table-cell { display:block; border-left:0; border-right:0; border-top:0; padding:0.5em; text-align:center;}
-    #page_container_casamiento { width:98%; margin:auto; }
-    #main_logo_casamiento { float:none; text-align:center; width:100%; }
+    body { padding:0; margin:0; }
+    #page_container_casamiento { width:100%; margin:auto;border:0;margin:0;}
+    #main_logo_casamiento { float:none; text-align:center; width:100%;padding:0;margin:0; }
     #main_slogan_casamiento { text-align:center; display:none; }
     #logo { padding-top:1em; padding-bottom:1em; width:152px; }
     #genesis_container { padding:0;margin:0;}
     #genesis_logo_top { width:90%; margin:0;padding-bottom:0.25em;padding-top:0.25em;;}
-    #header_container_casamiento { width:100%; }
+    #header_container_casamiento { width:100%; margin:0;padding:0;}
     #product_type { text-align:center; width:100%; float:none; border-bottom:1px solid black; }
     #actual_side_images { display:none; }
     #show_small { display:block; }
@@ -63,7 +64,7 @@ a.casamiento:hover { color:black; }
     #left_arrow_container, #right_arrow_container { display:none; }
     #section2_casamiento { float:none; padding:0; margin:0; width:100%;}
     #section3_casamiento { clear:both;float:none; width:100%; padding:0;margin:0;}
-    .quote {  border-left:0; border-right:0; border-bottom:1px dotted black;}
+    .quote {  border-left:0; border-right:0; border:0;margin:0;}
      
     .related_product_holder, .related_product_row,.related_product { display:block; }
     .related_product { width:100%; }
@@ -75,12 +76,14 @@ a.casamiento:hover { color:black; }
 </style>
 
 <div class="casamiento" id="page_container_casamiento">
+
     <header class="casamiento" id="header_container_casamiento">
         <div id="main_logo_casamiento" class="casamiento"><img src="https://project-livec9030d54fb72.rhcloud.com/images/logo_branding/casamiento_logo.png" style="width:202px;" id="logo" class="casamiento"></div>
         <div id="main_slogan_casamiento" class="casamiento"><img src="https://project-livec9030d54fb72.rhcloud.com/images/logo_branding/big_dreamsonpaper.png" />
         </div>
         <div class="clearboth casamiento"></div>
     </header>
+    
     
     <div id="genesis_container" class="casamiento">
     <% if (auction) { %>
@@ -155,7 +158,11 @@ a.casamiento:hover { color:black; }
                 </div>
             <%}) %>
         <div style="clear:both"></div>
-    </div>              
+    </div>          
+    <div>
+        <p class="casamiento_center"><img src="/images/shell.png" /></p>
+    </div>
+        
               
     <div id="specifications" class="casamiento">
         <% if (product_type == "sample") { %>
@@ -190,10 +197,6 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
         <% } %>
     </div>
 
-    <div>
-        <p class="casamiento_center"><img src="/images/shell.png" /></p>
-    </div>
-    
 <!-- MONOGRAM FRAME -->     
     
     <div id="monogram_frame">
@@ -360,7 +363,8 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
         <p class="casamiento_center"><img src="/images/shell.png" /></p>
             <div style="clear:both"></div>
         </div>
-
+        </div>
+</div>
 
 <script>
 $('.show').click(function() {
