@@ -4,6 +4,7 @@
   "dependencies": {
     "express": "git://github.com/visionmedia/express.git",
     "cradle": "0.6.x",
+    "express-resource": "1.x",
     "underscore": "1.3.x",
     "node-paypal-api-nv": "git://github.com/mrdizzy/node-paypal-api-nv.git",
     "node-ebay-trading-api": "git://github.com/mrdizzy/node-ebay-trading-api.git",
