@@ -40,9 +40,9 @@ a.casamiento:hover { color:black; }
     #colours-shown { display:block;float:none; width:100%; }
     #specifications p { text-align:center; text-indent:0; }
     #specifications { display:block;padding:0;margin:0;}
-    .table-cell { display:block; border-left:0; border-right:0; border-top:0; padding:0.5em; text-align:center;}
+    .table-cell { display:block; border-left:0; border-right:0; border-top:0; padding:1.em;padding:text-align:center;}
     body { padding:0; margin:0; }
-    #page_container_casamiento { width:100%; margin:auto;border:0;margin:0;}
+    #page_container_casamiento {  width:95%;margin:auto;}
     #main_logo_casamiento { float:none; text-align:center; width:100%;padding:0;margin:0; }
     #main_slogan_casamiento { text-align:center; display:none; }
     #logo { padding-top:1em; padding-bottom:1em; width:152px; }
@@ -77,13 +77,14 @@ a.casamiento:hover { color:black; }
 
 <div class="casamiento" id="page_container_casamiento">
 
-    <header class="casamiento" id="header_container_casamiento">
-        <div id="main_logo_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/casamiento_logo.png" style="width:202px;" id="logo" class="casamiento"></div>
-        <div id="main_slogan_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/big_dreamsonpaper.png" />
-        </div>
-        <div class="clearboth casamiento"></div>
-    </header>
-    
+    <div class="casamiento" id="inner_page_container_casamiento">
+        <header class="casamiento" id="header_container_casamiento">
+            <div id="main_logo_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/casamiento_logo.png" style="width:202px;" id="logo" class="casamiento"></div>
+            <div id="main_slogan_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/big_dreamsonpaper.png" />
+            </div>
+            <div class="clearboth casamiento"></div>
+        </header>
+
     
     <div id="genesis_container" class="casamiento">
     <% if (auction) { %>
@@ -162,9 +163,11 @@ a.casamiento:hover { color:black; }
     <div>
         <p class="casamiento_center"><img src="/images/shell.png" /></p>
     </div>
-        
-              
+    
+<!-- SPECIFICATIONS -->
+
     <div id="specifications" class="casamiento">
+    <div style="display:table-row">
         <% if (product_type == "sample") { %>
             <tr>
                 <td><img src="http://www.casamiento.co.uk/images/product_types/small/<%= product_type %>_small.png" /></td>
@@ -181,22 +184,30 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
                 
             <div id="paper" class="table-cell">
                   
-                 <h1>Specifications</h1>
-                 <p><span style="font-style:italic;font-variant:italic;">Paper texture</span> &middot; <img src="/images/icons/linen.png" style="width:2.5em"/>Linen &middot;  <img src="/images/icons/hammer.png" style="width:2.5em"/> Hammered &middot; Pearlescent</p>
-                 <p><span style="font-style:italic;font-variant:italic;">Paper weight</span> &middot; 300gsm &middot; 250gsm</p>
+                 <h1>Card Texture</h1>
+                 <div style="float:left;"><p><img src="/images/icons/linen.png" style="width:2.5em"/><br/>Linen &middot;</p></div>  <div style="float:left;"><p><img src="/images/icons/hammer.png" style="width:2.5em"/><br/> Hammered</p></div>
+                
             </div>
-            
+            <div id="paper" class="table-cell">
+            <h1>Thickness</h1>
+             <div style="margin-top:0.5em;margin-bottom:0.2em;width:2em;border-top:2px solid #666;"></div>
+             <p>300gsm</p>
+             <div style="margin-top:0.5em;width:2em;margin-bottom:0.2em;border-top:4px solid #666;"></div>
+             <p>250gsm</p>
+            </div>
             <div id="product_format"  class="table-cell">
-                <h1>Product format</h1> <p><img src="http://www.casamiento.co.uk/images/specs/tent.png" /></p>
+                <h1>Product format</h1> 
+                <div style="margin:auto;text-align:center;"><img src="http://www.casamiento.co.uk/images/specs/tent.png" /></div>
             </div>
             
             <div id="quantity" class="table-cell quantity_sold casamiento"><h1>Quantity</h1><p>25</p></div>
                        
-            <div id="casamiento_price" class="table-cell">&pound;<%= pounds %><span class="decimal">.<%= pence %></span></div>
-                    
         <% } %>
+        </div>
     </div>
 
+        
+              
 <!-- MONOGRAM FRAME -->     
     
     <div id="monogram_frame">
@@ -363,7 +374,8 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
         <p class="casamiento_center"><img src="/images/shell.png" /></p>
             <div style="clear:both"></div>
         </div>
-        </div>
+        </div>    
+    </div>
 </div>
 
 <script>

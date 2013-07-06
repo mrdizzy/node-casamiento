@@ -9,8 +9,9 @@
 
 body { background-image:url("http://project-livec9030d54fb72.rhcloud.com/images/backgrounds/grey_header.png"); padding:0;margin:0;  }
 
-#page_container_casamiento {  border-left:1px dotted black; border-right:1px dotted black; color: #333; background-color: #fff; width:95%;margin:auto; }
-#header_container_casamiento { width:100%; }
+#page_container_casamiento {  background-color: #fff; width:95%;margin:auto; }
+#inner_page_container_casamiento { border-left:1px dotted black; border-right:1px dotted black; }
+#header_container_casamiento { }
 #main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
 #main_slogan_casamiento { float:right;  }
 #genesis { text-align:center;  }
@@ -42,7 +43,7 @@ p.casamiento { padding: 0 0.25em 1.5em 0.25em 0; color:#000;font: 1em normal "Op
 .casamiento_center { text-align:center; }
 #actual_side_images { width:30%;float:left; }
 #slides_container { float:right;width:69%; }
-.ornamental_line { text-align:center; width:100%;padding-top:5px; }
+.ornamental_line { text-align:center; padding-top:5px; }
 
 /* Colours
 ==================================== */
@@ -53,12 +54,13 @@ p.casamiento { padding: 0 0.25em 1.5em 0.25em 0; color:#000;font: 1em normal "Op
 
 /* Specificatinos 
 ==================================== */
-#specifications { clear:both; display:table;width:100%; text-align:center; border-collapse:collapse;  }
+#specifications { clear:both; display:table;  border-collapse:collapse; width:100%; }
 #paper { text-align:left; }
-.table-cell { display:table-cell;vertical-align:top; border:1px dotted grey;  }
+.table-cell { display:table-cell;vertical-align:top; border:1px dotted grey; padding:0.5em; }
     .table-cell  h1 { font-family:"Open Sans Condensed"; font-weight:700; font-size:0.8em; margin:0;}
-    .table-cell p { font-family:"Open Sans"; font-size:0.8em; padding:0; text-indent:3em; margin:0em; line-height:1em;}
+    .table-cell p { font-family:"Open Sans"; font-size:0.8em; padding:0; margin:0em; line-height:1em;}
 .quantity_sold p { font-family:"Open Sans"; font-weight:300;font-size:2em; text-align:center; }
+#product_type { text-align:center; vertical-align:middle; }
 
 /* Monograms 
 ======================================== */
