@@ -1,9 +1,10 @@
 @font-face {  font-family:"TrajanPro"; src: url('http://www.casamiento.co.uk/fonts/t.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/trajan.woff') format('woff'); }
-    
 @font-face { font-family:"Gara"; src: url('http://www.casamiento.co.uk/fonts/GARA.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/GARA.woff') format('woff'); }
-    
 @font-face { font-family:"GaraItalic"; src: url('http://www.casamiento.co.uk/fonts/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/GARAIT.woff') format('woff'); }
-
+@font-face { font-family:"PlayFair Display SC"; src: url('/fonts/playfairdisplaysc.eot?') format('eot'), url('/fonts/playfairdisplaysc.woff') format('woff'); }
+@font-face { font-family:"Open Sans"; src: url('/fonts/OpenSans-Regular-webfont.eot?') format('eot'), url('/fonts/OpenSans-Light-webfont.woff') format('woff'); }
+@font-face { font-family:"Open Sans Light"; src: url('/fonts/OpenSans-Light-webfont.eot?') format('eot'), url('/fonts/OpenSans-Light-webfont.woff') format('woff'); }
+@font-face { font-family:"Open Sans Condensed"; src: url('/fonts/OpenSans-CondBold-webfont.eot?') format('eot'), url('/fonts/OpenSans-CondBold-webfont.woff') format('woff'); }
 .casamiento { padding:0; margin:0; }
 .clearboth {  clear:both }
 
@@ -25,7 +26,7 @@ body { background-image:url("http://project-livec9030d54fb72.rhcloud.com/images/
 
 img.expand { width:100% }
 
-h1.casamiento { color:#444; font:4em "Playfair Display SC"; font-weight:400; line-height:1.5em; margin-bottom:1.5em;padding-left:10px; padding-right:10px;letter-spacing:0em;line-height:1.5em;padding-right:29%;}
+h1.casamiento { color:#444; font:3em "Playfair Display SC";  line-height:1.5em; margin-bottom:1.5em;padding-left:10px; padding-right:10px;letter-spacing:0em;line-height:1.25em;padding-right:5%;}
 
 h2.casamiento  { color:black; text-align:center; font: normal 2.5em "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;margin-top:0.75em;margin-bottom:0.75em;  }
 
@@ -33,11 +34,11 @@ h3.casamiento { font:normal 1.375em "Gara"; text-align:justify; color:black; lin
 
 h4.casamiento { color:#444;font: 1.25em "Playfair Display SC";  margin:0; margin-bottom:0.75em; margin-top:0.75em; text-align:left; }
 
-h5.casamiento { font: italic 1em "Open Sans", serif;  font-weight:300;color: #000;margin:0; text-indent:1em;text-align:left; border-bottom: 1px solid #333; padding-top:0.75em; padding-bottom:0.75em;line-height:1.5em; margin-bottom:1.5em;margin-top:1.5em; }
+h5.casamiento { font: italic 1em "Open Sans Light", serif;  color: #000;margin:0; text-indent:1em;text-align:left; border-bottom: 1px solid #333; padding-top:0.75em; padding-bottom:0.75em;line-height:1.5em; margin-bottom:1.5em;margin-top:1.5em; }
 
-h6.casamiento { font: 1.375em "Open Sans", sans-serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
+h6.casamiento { font: normal 1.375em "Open Sans Light", serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
 
-p.casamiento { padding: 0 0.25em 1.5em 0.25em 0; color:#000;font: 1em normal "Open Sans", sans-serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
+p.casamiento { padding: 0 0.25em 1.5em 0.25em 0; color:#000;font: normal 1em "Open Sans", serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
 
 .decimal { font-size:0.75em; position:relative;top:-8px;  }
 .casamiento_center { text-align:center; }
@@ -57,7 +58,7 @@ p.casamiento { padding: 0 0.25em 1.5em 0.25em 0; color:#000;font: 1em normal "Op
 #specifications { clear:both; display:table;  border-collapse:collapse; width:100%; }
 #paper { text-align:left; }
 .table-cell { display:table-cell;vertical-align:top; border:1px dotted grey; padding:0.5em; }
-    .table-cell  h1 { font-family:"Open Sans Condensed"; font-weight:700; font-size:0.8em; margin:0;}
+    .table-cell  h1 { font-family:"Open Sans Condensed";  font-size:0.75em; margin:0;}
     .table-cell p { font-family:"Open Sans"; font-size:0.8em; padding:0; margin:0em; line-height:1em;}
 .quantity_sold p { font-family:"Open Sans"; font-weight:300;font-size:2em; text-align:center; }
 #product_type { text-align:center; vertical-align:middle; }
@@ -67,7 +68,7 @@ p.casamiento { padding: 0 0.25em 1.5em 0.25em 0; color:#000;font: 1em normal "Op
 #monogram_frame { clear:both;border-top:1px dotted black; border-bottom:1px dotted black; margin-bottom:10px; width:100%;}
 #monogram_icon { width:20%;border:0;clear:both;height:50px;text-align:center;float:left;}
 
-#monogram_holder { padding:2%;width:41%; float:left; border-left:1px dotted black; border-right:1px dotted black;}
+#monogram_holder { float:left; width:40%;border-left:1px dotted black; border-right:1px dotted black;}
 #monogram_description { width:34%;float:left;  }
 #monogram_description p { font-size:14px; padding-left:1em;}
 

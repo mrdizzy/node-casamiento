@@ -10,12 +10,16 @@
    <script src="/javascripts/attachments.js"></script>
     
     <script type="text/template" id="current_product_form">
-                <form>
+        <form>
             <h1>{{ id }}</h1>        
-            <p><label for="price">Price:</label> <input type="text" name="price" value="{{price}}"></input></p>
-            <p><label for="price">Description:</label> <textarea name="description">{{description}}</textarea></p>
-            <p><label for="buy_it_now_id">Buy-it-now listing item number:</label> <input type="text" name="buy_it_now_id" value="{{buy_it_now_id}}"></input></p>
-            <p><label for="buy_it_now_price">Buy-it-now price:</label> <input type="text" name="buy_it_now_price" value="{{buy_it_now_price}}"></input></p>
+            <p><label for="price">Price:</label> 
+                <input type="text" name="price" value="{{price}}"></input></p>
+            <p><label for="price">Description:</label> 
+                <textarea name="description">{{description}}</textarea></p>
+            <p><label for="buy_it_now_id">Buy-it-now listing item number:</label> 
+                <input type="text" name="buy_it_now_id" value="{{buy_it_now_id}}"></input></p>
+            <p><label for="buy_it_now_price">Buy-it-now price:</label> 
+                <input type="text" name="buy_it_now_price" value="{{buy_it_now_price}}"></input></p>
             <select name="colours" multiple="true">
             {{#colours}}
             <option value="{{colour}}" {{selected}}>{{colour}}</option>
@@ -99,7 +103,7 @@ $(function() {
             }
             return json;
         },
-        attachment_types: ["thumb","medium","display","large"],
+        attachment_types: ["thumb","display","medium","large"],
         initialize: function() {
             var selectedColours = this.get("colours");
             var colours = _.map(colourList, function(colour) {

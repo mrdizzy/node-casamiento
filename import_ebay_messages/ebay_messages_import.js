@@ -1,17 +1,12 @@
+// When this file is executed, it makes a request to the eBay API, asking it to return
+// message headers for a specific date range. It then 
+
 var api = require('./../config/ebay_config')(),
     crypto = require('crypto'),
     db = require('./../config/db').ebay_messages,
     async = require('async'),
     _ = require('underscore');
 
-_.chunk = function(array, n) {
-    var chunks = [];
-    var numChunks = Math.ceil(array.length / n);
-    for (var i = 0; i < numChunks; i++) {
-        chunks.push(array.slice(i * n, i * n + n));
-    }
-    return chunks;
-}
 api.makeRequest("GetMyMessages", {
     DetailLevel: "ReturnHeaders",
     StartTime: "2012-10-08T00:00:01Z",
@@ -20,6 +15,9 @@ api.makeRequest("GetMyMessages", {
     console.log(err, response);
     retrieveMessages(response.Messages.Message);
 });
+
+// Takes an array of messageIDs and then requests 10 messages at a time
+// from the eBay API
 
 function retrieveMessages(messages) {
     var messageIDs = _.pluck(messages, "MessageID");
@@ -36,14 +34,18 @@ function retrieveMessages(messages) {
 }
 
 function saveToDatabase(err, messages) {
+    // Get an array of messages out of the response and loop through 
     var results = _.chain(messages).pluck("Messages").pluck("Message").flatten().map(function(message) {
         message._id = message.MessageID;
         if (!message.Content) {
             message.Content =  message.Text  
         }
+        // replace all instances of "re:" and trim whitespace
         var subject_sanitised = message.Subject.replace(/re:/ig, "").trim();
+        
+        // Create a hash of the sanitised subject line that we can use to cross-reference
+        // related messages into one conversation
         var subject_hashed = crypto.createHash('sha1').update(message.Sender + subject_sanitised, 'utf-8').digest("hex");
-
         message.conversation_id = subject_hashed;
 
         return message
@@ -65,4 +67,15 @@ function saveToDatabase(err, messages) {
             }
         });
     });
+}
+
+
+// Takes an array and a number n, and returns an array of arrays, with each array having n number of elements
+_.chunk = function(array, n) {
+    var chunks = [];
+    var numChunks = Math.ceil(array.length / n); // Round a number upwards to its nearest integer
+    for (var i = 0; i < numChunks; i++) {
+        chunks.push(array.slice(i * n, i * n + n));
+    }
+    return chunks;
 }

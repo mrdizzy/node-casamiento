@@ -5,18 +5,13 @@
     var hz = ".com";
     var ht = ".c9.io";
     var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
-    var fz1 = "project-livec9030d54fb72.rhcloud" + hz + "/javascripts/jquery.slides.min.js";
     document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
-    document.write("</" + az + bz + cz + ">");
-    document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz1 + ">");
     document.write("</" + az + bz + cz + ">");
 </script>
 
 <script type="text/javascript" src="/javascripts/swipe.js"></script>
 
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Playfair+Display+SC:400,700,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
+
 <link href="/stylesheets/ebay.css" type="text/css" rel="stylesheet">
 
 <style>
@@ -39,8 +34,8 @@ a.casamiento:hover { color:black; }
     
     #colours-shown { display:block;float:none; width:100%; }
     #specifications p { text-align:center; text-indent:0; }
-    #specifications { display:block;padding:0;margin:0;}
-    .table-cell { display:block; border-left:0; border-right:0; border-top:0; padding:1.em;padding:text-align:center;}
+    #specifications { display:block;padding:0;margin:0; }
+    .table-cell { display:block; border-left:0; border-right:0; border-top:0; padding:1em;padding:text-align:center; }
     body { padding:0; margin:0; }
     #page_container_casamiento {  width:95%;margin:auto;}
     #main_logo_casamiento { float:none; text-align:center; width:100%;padding:0;margin:0; }
@@ -53,7 +48,7 @@ a.casamiento:hover { color:black; }
     #actual_side_images { display:none; }
     #show_small { display:block; }
     #slides_container { width:100%; }
-    h1.casamiento  { font-size:2.5em; line-height:1.25em;  }
+    h1.casamiento  { font-size:2.5em; line-height:1.25em; }
     h2.casamiento { padding-top:0.75em;padding-bottom:0.75em;font-size:2em;margin:0; } 
     h3.casamiento { font-size:1.4em; margin-bottom:0;padding-bottom:0;}
     #monogram_icon { float:none; border-bottom:1px solid black; }
@@ -62,7 +57,7 @@ a.casamiento:hover { color:black; }
     #monogram_frame, #monogram_icon, #monogram_holder,#monogram_description { display:block; width:100%; float:none; }
     #monogram_holder { border:0;width:100%; padding:0;margin:0;}
     #left_arrow_container, #right_arrow_container { display:none; }
-    #section2_casamiento { float:none; padding:0; margin:0; width:100%;}
+    #section2_casamiento { float:none; padding:0; margin:auto; width:95%;}
     #section3_casamiento { clear:both;float:none; width:100%; padding:0;margin:0;}
     .quote {  border-left:0; border-right:0; border:0;margin:0;}
      
@@ -112,9 +107,9 @@ a.casamiento:hover { color:black; }
                              
         <div id="slides" class="swipe">
             <div class="swipe-wrap">
-                <div><img class="casamiento expand"  src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[1] %>.jpg"  /></div>
-                <div><img class="casamiento expand"   src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[0] %>.jpg"  /></div>
-                <div><img class="casamiento expand"   src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[2] %>.jpg"  /></div>
+                <div><img class="casamiento expand"  src="/products/<%= _id %>/attachments/large-<%= attachments_order[1] %>.jpg"  /></div>
+                <div><img class="casamiento expand"   src="/products/<%= _id %>/attachments/large-<%= attachments_order[0] %>.jpg"  /></div>
+                <div><img class="casamiento expand"   src="/products/<%= _id %>/attachments/large-<%= attachments_order[2] %>.jpg"  /></div>
             </div>
         </div>
                 
@@ -167,7 +162,7 @@ a.casamiento:hover { color:black; }
 <!-- SPECIFICATIONS -->
 
     <div id="specifications" class="casamiento">
-    <div style="display:table-row">
+   
         <% if (product_type == "sample") { %>
             <tr>
                 <td><img src="http://www.casamiento.co.uk/images/product_types/small/<%= product_type %>_small.png" /></td>
@@ -186,14 +181,16 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
                   
                  <h1>Card Texture</h1>
                  <div style="float:left;"><p><img src="/images/icons/linen.png" style="width:2.5em"/><br/>Linen &middot;</p></div>  <div style="float:left;"><p><img src="/images/icons/hammer.png" style="width:2.5em"/><br/> Hammered</p></div>
-                
+                <div style="clear:both"></div>
             </div>
             <div id="paper" class="table-cell">
             <h1>Thickness</h1>
+            <div style="width:60%;margin:auto">
              <div style="margin-top:0.5em;margin-bottom:0.2em;width:2em;border-top:2px solid #666;"></div>
              <p>300gsm</p>
              <div style="margin-top:0.5em;width:2em;margin-bottom:0.2em;border-top:4px solid #666;"></div>
              <p>250gsm</p>
+            </div>
             </div>
             <div id="product_format"  class="table-cell">
                 <h1>Product format</h1> 
@@ -203,7 +200,6 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
             <div id="quantity" class="table-cell quantity_sold casamiento"><h1>Quantity</h1><p>25</p></div>
                        
         <% } %>
-        </div>
     </div>
 
         
@@ -214,8 +210,8 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
           
         <div id="monogram_icon"><img src="http://www.casamiento.co.uk/images/product_types/monogram.png"/></div>
             
-        <div id="monogram_holder" style="width:inherit;">  
-            <div id="monogram_slideshow" class="swipe" style="width:100%;">
+        <div id="monogram_holder">  
+            <div id="monogram_slideshow" class="swipe" style="margin:auto;width:100%;">
                 <div class="swipe-wrap" style="width:100%;">
                     <div class="mono"><img id="mono_2" class="casamiento mono" src="/images/monograms/2_mono.png"    /></div>
                     <div class="mono"><img id="mono_3"  class="casamiento mono"  src="/images/monograms/3_mono.png" /></div>

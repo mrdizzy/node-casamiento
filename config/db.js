@@ -9,7 +9,7 @@ var cradle = require('cradle'),
     databases = {}
 
 databases.ebay_messages = connection.database("ebay_messages");
-databases.test_ebay = connection.database("test_ebay");
+databases.test_ebay = connection.database("david_pettifer");
 
 databases.test_ebay.documents = [
 // Design documents
