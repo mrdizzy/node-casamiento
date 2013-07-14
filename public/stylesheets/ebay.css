@@ -27,7 +27,7 @@ body { background-image:url("http://project-livec9030d54fb72.rhcloud.com/images/
 
 img.expand { width:100% }
 
-h1.casamiento { color:#444; font:3em "Playfair Display SC";  line-height:1.5em; margin-bottom:1.5em;padding-left:10px; padding-right:10px;letter-spacing:0em;line-height:1.25em;padding-right:5%;}
+h1.casamiento { color:#444; font:3em "Playfair Display SC";  margin-top:0;line-height:1.5em; margin-bottom:1.5em;padding-left:10px; padding-right:10px;letter-spacing:0em;line-height:1.25em;padding-right:5%;}
 
 h2.casamiento  { color:black; text-align:center; font: normal 2.5em "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;margin-top:0.75em;margin-bottom:0.75em;  }
 
