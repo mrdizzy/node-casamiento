@@ -1,9 +1,10 @@
-@font-face {  font-family:"TrajanPro"; src: url('http://www.casamiento.co.uk/fonts/t.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/trajan.woff') format('woff'); }
-@font-face { font-family:"Gara"; src: url('http://www.casamiento.co.uk/fonts/GARA.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/GARA.woff') format('woff'); }
-@font-face { font-family:"GaraItalic"; src: url('http://www.casamiento.co.uk/fonts/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/GARAIT.woff') format('woff'); }
+@font-face {  font-family:"TrajanPro"; src: url('/fonts/t.eot?') format('eot'), url('/fonts/trajan.woff') format('woff'); }
+@font-face { font-family:"Gara"; src: url('/fonts/GARA.eot?') format('eot'), url('/fonts/GARA.woff') format('woff'); }
+@font-face { font-family:"GaraItalic"; src: url('/fonts/GARAIT.eot?') format('eot'), url('/fonts/GARAIT.woff') format('woff'); }
 @font-face { font-family:"PlayFair Display SC"; src: url('/fonts/playfairdisplaysc.eot?') format('eot'), url('/fonts/playfairdisplaysc.woff') format('woff'); }
 @font-face { font-family:"Open Sans"; src: url('/fonts/OpenSans-Regular-webfont.eot?') format('eot'), url('/fonts/OpenSans-Light-webfont.woff') format('woff'); }
 @font-face { font-family:"Open Sans Light"; src: url('/fonts/OpenSans-Light-webfont.eot?') format('eot'), url('/fonts/OpenSans-Light-webfont.woff') format('woff'); }
+@font-face { font-family:"Open Sans Italic Light"; src: url('/fonts/OpenSans-LightItalic-webfont.eot?') format('eot'), url('/fonts/OpenSans-LightItalic-webfont.woff') format('woff'); }
 @font-face { font-family:"Open Sans Condensed"; src: url('/fonts/OpenSans-CondBold-webfont.eot?') format('eot'), url('/fonts/OpenSans-CondBold-webfont.woff') format('woff'); }
 .casamiento { padding:0; margin:0; }
 .clearboth {  clear:both }
@@ -34,7 +35,7 @@ h3.casamiento { font:normal 1.375em "Gara"; text-align:justify; color:black; lin
 
 h4.casamiento { color:#444;font: 1.25em "Playfair Display SC";  margin:0; margin-bottom:0.75em; margin-top:0.75em; text-align:left; }
 
-h5.casamiento { font: italic 1em "Open Sans Light", serif;  color: #000;margin:0; text-indent:1em;text-align:left; border-bottom: 1px solid #333; padding-top:0.75em; padding-bottom:0.75em;line-height:1.5em; margin-bottom:1.5em;margin-top:1.5em; }
+h5.casamiento { font: normal 1em "Open Sans Italic Light", serif;  color: #000;margin:0; text-indent:1em;text-align:left; border-bottom: 1px solid #333; padding-top:0.75em; padding-bottom:0.75em;line-height:1.5em; margin-bottom:1.5em;margin-top:1.5em; }
 
 h6.casamiento { font: normal 1.375em "Open Sans Light", serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
 
@@ -77,6 +78,14 @@ p.casamiento { padding: 0 0.25em 1.5em 0.25em 0; color:#000;font: normal 1em "Op
 .related_product_row { display:table-row; width:100%;}
 .related_product { display:table-cell; text-align:center; width:33%; border:1px dotted black;vertical-align:middle;}
 .related_product img.thumb_related { width:100%; }
+
+/* product type icons responsive
+==================================== */
+.name_place_icon { width:130px; margin:auto; }
+.invitation_icon { width:103px; margin:auto; }
+.envelope_icon { width:83px; margin:auto; }
+.rsvp_icon { width:75px; margin:auto; }
+.monogram_design_icon { width:107px;margin:auto; }
 
 /* Sldieshow
 ============================== */

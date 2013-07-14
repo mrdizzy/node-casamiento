@@ -6,6 +6,12 @@ exports.index = function(req, res) {
     })
 }
 
+exports.destroy = function(req, res) {
+    db.remove(req.theme.id, req.theme.rev, function(error, docs) {
+        console.log(error)
+        res.end();
+    })
+}
 exports.create = function(req, res) {
     req.body.type = "theme"
     db.save(req.body, function(error, docs) {

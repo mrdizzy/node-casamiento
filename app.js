@@ -36,14 +36,13 @@ app.configure(function() {
 app.configure('development', function() {
     app.use(express.errorHandler());
 });
-app.resource("themes", require("./controllers/themes"))
+app.resource("themes", require("./controllers/themes"),  {
+    load: parseRevision
+})
 app.resource("product_types", require("./controllers/product_types"))
 
 var products = app.resource('products', require('./controllers/products'), {
-    load: function(req, id, callback) {
-        var id_split = id.split("--");
-        callback(null, { rev: id_split[1], id: id_split[0]})
-    }
+    load: parseRevision
 });
 var attachments = app.resource("attachments", require('./controllers/attachments'));
 
@@ -90,3 +89,8 @@ app.get("/", function(req, res) {
 http.createServer(app).listen(process.env.PORT, function() {
     console.log("Express server listening on port " + process.env.PORT);
 });
+
+function parseRevision(req, id, callback) {
+        var id_split = id.split("--");
+        callback(null, { rev: id_split[1], id: id_split[0]})
+    }

@@ -44,7 +44,7 @@ a.casamiento:hover { color:black; }
     #genesis_container { padding:0;margin:0;}
     #genesis_logo_top { width:90%; margin:0;padding-bottom:0.25em;padding-top:0.25em;;}
     #header_container_casamiento { width:100%; margin:0;padding:0;}
-    #product_type { text-align:center; width:100%; float:none; border-bottom:1px solid black; }
+    #product_type { text-align:center;  display:block; float:none; border-bottom:1px solid black; }
     #actual_side_images { display:none; }
     #show_small { display:block; }
     #slides_container { width:100%; }
@@ -74,8 +74,8 @@ a.casamiento:hover { color:black; }
 
     <div class="casamiento" id="inner_page_container_casamiento">
         <header class="casamiento" id="header_container_casamiento">
-            <div id="main_logo_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/casamiento_logo.png" style="width:202px;" id="logo" class="casamiento"></div>
-            <div id="main_slogan_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/big_dreamsonpaper.png" />
+            <div id="main_logo_casamiento" class="casamiento"><img src="/images/logo_branding/casamiento_logo.png" style="width:202px;" id="logo" class="casamiento"></div>
+            <div id="main_slogan_casamiento" class="casamiento"><img src="/images/logo_branding/big_dreamsonpaper.png" />
             </div>
             <div class="clearboth casamiento"></div>
         </header>
@@ -85,17 +85,17 @@ a.casamiento:hover { color:black; }
     <% if (auction) { %>
         <div id="genesis" class="casamiento">
             <h5 class="casamiento" style="text-align:center;border-bottom:0;padding:0;float:right;">
-            <img src="http://www.casamiento.co.uk/images/bullets/line_diamond.png" /> 
+            <img src="/images/bullets/line_diamond.png" /> 
             
             <a class="casamiento" href="">Can't wait? Click here for a buy-it-now listing for this item</a></h5>
        </div>  
         <% } %>
-            <img id="genesis_logo_top" class="casamiento" alt="Genesis_footer2" src="http://www.casamiento.co.uk/images/logo_branding/genesis_collection.png" /></div>
+            <img id="genesis_logo_top" class="casamiento" alt="Genesis_footer2" src="/images/logo_branding/genesis_collection.png" /></div>
   
     <!-- THREE SIDE IMAGES -->
     
     <div class="casamiento" id="actual_side_images" style="text-align:center">
-        <img class="casamiento expand"  src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>.jpg"/><br/>
+        <img class="casamiento expand"  src="/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>.jpg"/><br/>
         <img class="casamiento expand"  src="/products/<%= _id %>/attachments/display-<%= attachments_order[1] %>.jpg"/><br/>
         <img class="casamiento expand"  src="/products/<%= _id %>/attachments/display-<%= attachments_order[0] %>.jpg"> 
     </div>
@@ -103,7 +103,7 @@ a.casamiento:hover { color:black; }
     <!-- MAIN SLIDE -->
                               
     <div id="slides_container" class="casamiento">
-        <h2 class="casamiento">Simplicity</h2>
+        <h2 class="casamiento"><%= name %></h2>
                              
         <div id="slides" class="swipe">
             <div class="swipe-wrap">
@@ -165,7 +165,7 @@ a.casamiento:hover { color:black; }
    
         <% if (product_type == "sample") { %>
             <tr>
-                <td><img src="http://www.casamiento.co.uk/images/product_types/small/<%= product_type %>_small.png" /></td>
+                <td><img src="/images/product_types/small/<%= product_type %>_small.png" /></td>
                 <td class="casamiento_sample">Each sample package contains
 an invitation with envelope and wrapper, an RSVP card and a name place card.
                 </td>
@@ -174,7 +174,11 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
             </tr>
             <% } else { %>                        
             <div id="product_type"  class="table-cell">
-                <img src="http://www.casamiento.co.uk/images/product_types/small/<%= product_type %>_small.png" />
+            
+            <div class="<%= product_type %>_icon">
+                <img src="/images/product_types/small/<%= product_type %>_small.png" style="width:100%;"/>
+                </div>
+               
             </div>
                 
             <div id="paper" class="table-cell">
@@ -194,7 +198,7 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
             </div>
             <div id="product_format"  class="table-cell">
                 <h1>Product format</h1> 
-                <div style="margin:auto;text-align:center;"><img src="http://www.casamiento.co.uk/images/specs/tent.png" /></div>
+                <div style="margin:auto;text-align:center;"><img src="/images/specs/tent.png" /></div>
             </div>
             
             <div id="quantity" class="table-cell quantity_sold casamiento"><h1>Quantity</h1><p>25</p></div>
@@ -208,22 +212,22 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
     
     <div id="monogram_frame">
           
-        <div id="monogram_icon"><img src="http://www.casamiento.co.uk/images/product_types/monogram.png"/></div>
+        <div id="monogram_icon"><div class="monogram_design_icon"><img src="/images/product_types/monogram.png"/ style="width:100%;"></div></div>
             
         <div id="monogram_holder">  
-            <div id="monogram_slideshow" class="swipe" style="margin:auto;width:100%;">
-                <div class="swipe-wrap" style="width:100%;">
-                    <div class="mono"><img id="mono_2" class="casamiento mono" src="/images/monograms/2_mono.png"    /></div>
-                    <div class="mono"><img id="mono_3"  class="casamiento mono"  src="/images/monograms/3_mono.png" /></div>
-                    <div class="mono"><img id="mono_4"  class="casamiento mono"  src="/images/monograms/4_mono.png" /></div>
-                    <div class="mono"><img id="mono_5"  class="casamiento mono"  src="/images/monograms/5_mono.png" /></div>
-                    <div class="mono"><img id="mono_6"  class="casamiento mono"  src="/images/monograms/6_mono.png" /></div>
-                    <div class="mono"><img id="mono_7"  class="casamiento mono"  src="/images/monograms/7_mono.png" /></div>
-                    <div class="mono"><img id="mono_8"  class="casamiento mono"  src="/images/monograms/8_mono.png" /></div>
-                    <div class="mono"><img id="mono_9"  class="casamiento mono"  src="/images/monograms/9_mono.png" /></div>
-                    <div class="mono"><img id="mono_10" class="casamiento mono"   src="/images/monograms/10_mono.png" /></div>
-                    <div class="mono"><img id="mono_11" class="casamiento mono"   src="/images/monograms/11_mono.png"   /></div>
-                    <div class="mono"><img id="mono_1" class="casamiento mono" src="/images/monograms/1_mono.png"  /></div>
+            <div id="monogram_slideshow" class="swipe">
+                <div class="swipe-wrap">
+                    <div><div style="text-align:center"><img id="mono_2" class="casamiento mono" src="/images/monograms/2_mono.png"></div></div>
+                    <div><div style="text-align:center"><img id="mono_3"  class="casamiento mono"  src="/images/monograms/3_mono.png" /></div></div>
+                    <div><div style="text-align:center"><img id="mono_4"  class="casamiento mono"  src="/images/monograms/4_mono.png" /></div></div>
+                    <div><div style="text-align:center"><img id="mono_5"  class="casamiento mono"  src="/images/monograms/5_mono.png" /></div></div>
+                    <div><div style="text-align:center"><img id="mono_6"  class="casamiento mono"  src="/images/monograms/6_mono.png" /></div></div>
+                    <div><div style="text-align:center;"><img id="mono_7"  class="casamiento mono"  src="/images/monograms/7_mono.png" /></div></div>
+                    <div><div style="text-align:center;"><img id="mono_8"  class="casamiento mono"  src="/images/monograms/8_mono.png" /></div></div>
+                    <div><div style="text-align:center;"><img id="mono_9"  class="casamiento mono"  src="/images/monograms/9_mono.png" /></div></div>
+                    <div><div style="text-align:center;"><img id="mono_10" class="casamiento mono"   src="/images/monograms/10_mono.png" /></div></div>
+                    <div><div style="text-align:center;"><img id="mono_11" class="casamiento mono"   src="/images/monograms/11_mono.png"   /></div></div>
+                    <div><div style="text-align:center;"><img id="mono_1" class="casamiento mono" src="/images/monograms/1_mono.png"  /></div></div>
                 </div>
             </div>
         </div>
@@ -246,13 +250,14 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
                 
 <!-- related products -->
                
-    <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> You will also like:</h5>
+    <h5 class="casamiento"><img src="/images/bullets/small_dot_square.png" /> You will also like:</h5>
                                  
     <div class="casamiento related_product_holder">
         <div class="casamiento related_product_row">
         <% related.forEach(function(r) { %>
             <div class="related_product">
-                <div class="related_product_type_header"><img src="/images/product_types/small/<%= r.product_type %>_small.png" /><br/></div>
+                <div class="related_product_type_header">
+                <div class="<%= r.product_type %>_icon"><img src="/images/product_types/small/<%= r.product_type %>_small.png" style="width:100%" /><br/></div></div>
                    
                 <img class="thumb_related" src="/products/<%= r.theme_id %>-<%= r.product_type %>/attachments/medium-<%= r.attachments_order[0] %>.jpg"/><br/>
                                         
@@ -305,7 +310,7 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
         
             <p class="casamiento">And that's why, if you want wedding stationery that really stands out from the crowd, you deserve to know the subtle secrets that will set your stationery head and shoulders above the rest...</p>
             
-            <p class="casamiento_center"><img src="http://www.casamiento.co.uk/images/page_seperators/three_across.png"></p>  
+            <p class="casamiento_center"><img src="/images/page_seperators/three_across.png"></p>  
         
             <h4 class="casamiento">Has your stationery gone to Finishing School?</h4>
         
@@ -325,7 +330,7 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
        
             <p class="casamiento">We will individually print each item of stationery with the names of your guests: this includes reply cards, place cards and invitations. Just send us a list of names!</p>
     
-            <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/medium-<%= attachments_order[1] %>.jpg" style="width:100%;"/>
+            <img src="/products/<%= _id %>/attachments/medium-<%= attachments_order[1] %>.jpg" style="width:100%;"/>
             
             <h4 class="casamiento">Envelope addressing</h4>
             
@@ -339,29 +344,29 @@ an invitation with envelope and wrapper, an RSVP card and a name place card.
         
             <p class="casamiento">A monogram is a motif combining you and your partner's names, the perfect symbol of your marriage together: it makes an impact&mdash;much better than your names in boring plain text and  provides the ultimate touch of understated sophistication. We have many styles of monogram available, the only problem you'll have is deciding which one is for you!</p>
             
-            <p class="casamiento_center"><img src="http://www.casamiento.co.uk/images/page_seperators/three_across.png" /></p>
+            <p class="casamiento_center"><img src="/images/page_seperators/three_across.png" /></p>
         
         </div>
         
     <!-- quotes --> 
     
         <div id="section3_casamiento">
-            <h5 class="casamiento"><img src="http://www.casamiento.co.uk/images/bullets/small_dot_square.png" /> 
+            <h5 class="casamiento"><img src="/images/bullets/small_dot_square.png" /> 
             Don't take my word for it&hellip;</h5>
             
             <div class="quote">
-                <h6 class="casamiento" style="margin:auto;font:italic 22px 'Open Sans';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="http://www.casamiento.co.uk/images/QUOTE.png" /> David was so helpful everyone at wedding was talking about matching stationery&rdquo;</h6>
+                <h6 class="casamiento" style="margin:auto;font:italic 22px 'Open Sans Italic Light';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="/images/QUOTE.png" /> David was so helpful everyone at wedding was talking about matching stationery&rdquo;</h6>
                 <h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%">&mdash;<a class="casamiento" href="">dellajones65</a></h6>
                 
             </div>
         
             <div class="quote">
-                <h6 class="casamiento" style="margin:auto;font: italic 22px 'Open Sans';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="http://www.casamiento.co.uk/images/QUOTE.png" /> Absolutely amazing and beautiful, AAA+</h6>
+                <h6 class="casamiento" style="margin:auto;font: 22px 'Open Sans Italic Light';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="/images/QUOTE.png" /> Absolutely amazing and beautiful, AAA+</h6>
                 <h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%" href="">&mdash;<a class="casamiento" href="">normalbaby</a></h6>
             </div>
         
             <div class="quote">
-                <h6 class="casamiento" style="margin:auto;font:italic 22px 'Open Sans';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="http://www.casamiento.co.uk/images/QUOTE.png" /> Co-ordinated stationery was amazing, I was so impressed&rdquo;</h6>
+                <h6 class="casamiento" style="margin:auto;font:italic 22px 'Open Sans Italic Light';font-weight:300;text-align:center;letter-spacing:0;padding:0;"><img src="/images/QUOTE.png" /> Co-ordinated stationery was amazing, I was so impressed&rdquo;</h6>
                 <h6 class="casamiento" style="font:16px GaraItalic;text-align:right;margin-right:20%">&mdash;<a class="casamiento" href="">melanieblue</a></h6>
             </div>
         

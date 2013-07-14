@@ -12,6 +12,8 @@
     <script type="text/template" id="current_product_form">
         <form>
             <h1>{{ id }}</h1>        
+            <p><label for="price">Name:</label> 
+                <input type="text" name="name" value="{{name}}"></input></p>
             <p><label for="price">Price:</label> 
                 <input type="text" name="price" value="{{price}}"></input></p>
             <p><label for="price">Description:</label> 
@@ -37,10 +39,10 @@ $(function() {
     var Theme = Backbone.Model.CouchDB.extend({
         toJSON: function() {
             var json = Backbone.Model.CouchDB.prototype.toJSON.apply(this, arguments)
-            if(!json._id) {
-                var theme_name = this.get("name").replace(/\s+/g, '_').toLowerCase();
-                json._id = theme_name;
-            }
+            
+            // Set the id to the value of theme_name with spaces replaced by underscors and all in lower case
+            // e.g. Birds of Paradise -> birds_of_paradise
+            json._id = json._id || this.get("name").replace(/\s+/g, '_').toLowerCase();
             return json;
         }
     })
@@ -75,22 +77,47 @@ $(function() {
     var themes_view = new ThemesView({collection:themes}).render().el    
     var product_types_view = new ProductTypesView({collection:product_types}).render().el    
     
+    var ThemeView = Backbone.View.extend({
+        tagName: 'li',
+        events: {
+            'click .delete': 'destroy'
+        },
+        destroy: function(e) {
+            e.preventDefault();
+            this.model.destroy();
+            this.remove();  
+        },
+        render: function() {
+            this.$el.html(this.model.get("name") + "<span class='delete'>Delete</span>");
+            return this;
+        }
+    })
+    
    var ThemeAdminView = Backbone.View.extend({
        el: $('#themes_admin'),
+       initialize: function() {
+            this.collection.on("add", this.render, this);  
+       },
        events: {
-            'click input[type=submit]': 'addTheme'
+            'click input[type=submit]': 'addTheme',
+            
        },
        addTheme: function(e) {
          e.preventDefault();
-         var that = this;
+         console.log("DONE")
            var name = this.$('input[name=new_theme]').val();
            var description = this.$('textarea[name=description]').val();
-           themes.create({name: name, description: description}, { wait:true })
+           this.collection.create({name: name, description: description}, { wait:true })
       },
-       render: function() {
+      render: function() {
+           this.$('#theme_list').empty();
+           this.collection.forEach(function(theme) {
+               this.$('#theme_list').append(new ThemeView({model:theme}).render().el)
+           }, this)
+           return this;
        }
    })
-    new ThemeAdminView({collection:themes});
+    new ThemeAdminView({collection:themes}).render();
     
     // MODELS
     var Product = Backbone.Model.CouchDB.extend({
@@ -141,21 +168,22 @@ $(function() {
             'click #addnew': 'addNew'
         },
         addNew: function() {
-            console.log($('#new_product').val())
-            var product = new Product({name: $('#new_product').val()});
+            var product = new Product();
             this.collection.add(product);
+            
+            var cpv = new CurrentProductView({model:product, attachmentView: AttachView});
+            $('#cpv').html(cpv.render().el)
         },
         render: function() {
             console.log("rendering");
             this.$el.empty();
             this.collection.forEach(function(product) {
-                console.log(product.get("name"))
                 var productview = new ProductView({
                     model: product
                 }).render().el
             this.$el.append(productview);
             }, this) 
-            this.$el.append("<a id='addnew'>Add new</a> <input type='text' id='new_product'>")
+            this.$el.append("<a id='addnew'>Add new</a>")
             return this;
         }
     });
@@ -233,12 +261,19 @@ $(function() {
     .attachment { text-align:center;}
 </style>
 </head>
-<body><div id="themes_admin"><h2>Add new theme</h1>
-<form>
-    Theme name: <input name="new_theme"></input>
-    Theme description: <textarea name="description"></textarea>
-    <input type="submit"></input></form>
-</div>
+<body>
+
+
+    <div id="themes_admin">
+    <h1>Themes</h1>
+    <ul id="theme_list"></ul>
+    <h2>Add new theme</h2>
+        <form>
+            Theme name: <input name="new_theme"></input>
+            Theme description: <textarea name="description"></textarea>
+            <input type="submit"></input>
+        </form>
+    </div>
 <div id="products"></div>
 <div id="cpv"></div>
 </body>
