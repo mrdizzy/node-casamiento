@@ -1,11 +1,11 @@
-@font-face {  font-family:"TrajanPro"; src: url('/fonts/t.eot?') format('eot'), url('/fonts/trajan.woff') format('woff'); }
-@font-face { font-family:"Gara"; src: url('/fonts/GARA.eot?') format('eot'), url('/fonts/GARA.woff') format('woff'); }
-@font-face { font-family:"GaraItalic"; src: url('/fonts/GARAIT.eot?') format('eot'), url('/fonts/GARAIT.woff') format('woff'); }
-@font-face { font-family:"PlayFair Display SC"; src: url('/fonts/playfairdisplaysc.eot?') format('eot'), url('/fonts/playfairdisplaysc.woff') format('woff'); }
-@font-face { font-family:"Open Sans"; src: url('/fonts/OpenSans-Regular-webfont.eot?') format('eot'), url('/fonts/OpenSans-Light-webfont.woff') format('woff'); }
-@font-face { font-family:"Open Sans Light"; src: url('/fonts/OpenSans-Light-webfont.eot?') format('eot'), url('/fonts/OpenSans-Light-webfont.woff') format('woff'); }
-@font-face { font-family:"Open Sans Italic Light"; src: url('/fonts/OpenSans-LightItalic-webfont.eot?') format('eot'), url('/fonts/OpenSans-LightItalic-webfont.woff') format('woff'); }
-@font-face { font-family:"Open Sans Condensed"; src: url('/fonts/OpenSans-CondBold-webfont.eot?') format('eot'), url('/fonts/OpenSans-CondBold-webfont.woff') format('woff'); }
+@font-face {  font-family:"TrajanPro"; src: url('http://www.casamiento.co.ukhttp://www.casamiento.co.uk/fonts/t.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/trajan.woff') format('woff'); }
+@font-face { font-family:"Gara"; src: url('http://www.casamiento.co.uk/fonts/GARA.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/GARA.woff') format('woff'); }
+@font-face { font-family:"GaraItalic"; src: url('http://www.casamiento.co.uk/fonts/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/GARAIT.woff') format('woff'); }
+@font-face { font-family:"PlayFair Display SC"; src: url('http://www.casamiento.co.uk/fonts/playfairdisplaysc.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/playfairdisplaysc.woff') format('woff'); }
+@font-face { font-family:"Open Sans"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-Regular-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.woff') format('woff'); }
+@font-face { font-family:"Open Sans Light"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.woff') format('woff'); }
+@font-face { font-family:"Open Sans Italic Light"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-LightItalic-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-LightItalic-webfont.woff') format('woff'); }
+@font-face { font-family:"Open Sans Condensed"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-CondBold-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-CondBold-webfont.woff') format('woff'); }
 .casamiento { padding:0; margin:0; }
 .clearboth {  clear:both }
 
@@ -89,6 +89,3 @@ p.casamiento { padding: 0 0.25em 1.5em 0.25em 0; color:#000;font: normal 1em "Op
 
 /* Sldieshow
 ============================== */
-.swipe {overflow: hidden;     visibility: hidden;     position: relative;  width:100%; }
-.swipe-wrap {     overflow: hidden;  position: relative;}
-.swipe-wrap > div {    float:left;   position: relative;  }
