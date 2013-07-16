@@ -86,8 +86,8 @@ app.get("/", function(req, res) {
     })
 });
 
-http.createServer(app).listen(process.env.PORT, function() {
-    console.log("Express server listening on port " + process.env.PORT);
+http.createServer(app).listen((process.env.PORT || 3000), function() {
+    console.log("Express server listening on port " + (process.env.PORT || 3000));
 });
 
 function parseRevision(req, id, callback) {
