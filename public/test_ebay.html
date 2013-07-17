@@ -100,7 +100,7 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; color:#000;font: normal 0.9em 
 		
 <!-- MONOGRAMS -->
 
-<div id="monograms_template" style="display:none;">
+<div id="monograms_template" style="display:none;">&nbsp;
 	<div class="monogram"><img style="width:14em" src="http://www.casamiento.co.uk/images/monograms/5_mono.png" /></div>
 	<div class="monogram"><img style="width:14em" src="http://www.casamiento.co.uk/images/monograms/6_mono.png" /></div>
 	<div class="monogram"><img style="width:14em" src="http://www.casamiento.co.uk/images/monograms/7_mono.png" /></div>
@@ -183,18 +183,18 @@ For a limited time only, we will create a monogram for your place cards complete
 <!-- TABBED AREA -->
 <div class="tabbed_area"> 
 	<ul class="tabs"> 
-		<li><a href="" class="a_tab" id="tab_1">Colours shown:</a></li> 
-		<li><a href="" class="a_tab active" id="colours_2">All colours:</a></li> 
-		<li><a href="" class="a_tab" id="monograms_3">All monograms</a></li> 
+		<li><a href="" class="a_tab" id="1_tab_1">Colours shown:</a></li> 
+		<li><a href="" class="a_tab active" id="1_colours_2">All colours:</a></li> 
+		<li><a href="" class="a_tab" id="1_monograms_3">All monograms</a></li> 
 	</ul> 
 	
 	<!-- COLOURS SHOWN -->
-	<div id="content_1" class="content">
+	<div id="content_1" class="1_content content">
 		
 	</div>
 
 	<!-- COLOURS -->
-	<div id="content_2" class="content">&nbsp;
+	<div id="content_2" class="1_content content">&nbsp;
 		<!-- colour labels -->
 		<div style="width:20%;float:left;">
 			<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento">PINKS</p></div>
@@ -226,7 +226,7 @@ For a limited time only, we will create a monogram for your place cards complete
 
 
 	<!-- MONOGRAMS -->
-	<div id="content_3" class="content">&nbsp;
+	<div id="content_3" class="1_content content">&nbsp;
 		adsasd
 	</div> 
 </div> 
@@ -288,6 +288,61 @@ For a limited time only, we will create a monogram for your place cards complete
 </div>
 </div>
 <div style="clear:both;border-top:1px solid black;"></div>
+
+
+<div style="clear:both;border-top:1px solid black;"></div>
+<!-- TABBED AREA -->
+<div class="tabbed_area"> 
+	<ul class="tabs"> 
+		<li><a href="" class="a_tab" id="2_tab_4">Colours shown:</a></li> 
+		<li><a href="" class="a_tab active" id="2_colours_5">All colours:</a></li> 
+		<li><a href="" class="a_tab" id="2_monograms_6">All monograms</a></li> 
+	</ul> 
+	
+	<!-- COLOURS SHOWN -->
+	<div id="content_4" class="2_content content">
+		
+	</div>
+
+	<!-- COLOURS -->
+	<div id="content_5" class="2_content content">&nbsp;
+		<!-- colour labels -->
+		<div style="width:20%;float:left;">
+			<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento">PINKS</p></div>
+			<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento">GREENS</p></div>
+			<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento">BLUES</p></div>
+		</div>
+		
+		<!-- colour palette -->
+		<div style="width:75%">
+			<div class="a_colour" style="float:left;">
+				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FFC0CB;"><img src="/images/circle.png" style="width:100%;"/></div>
+				Pink
+			</div>
+			<div class="a_colour" style="float:left;">
+				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FFB6C1;"><img src="/images/circle.png" style="width:100%;"/></div>
+				MediumPink
+			</div>
+			<div class="a_colour" style="float:left;">
+				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FF69B4;"><img src="/images/circle.png" style="width:100%;"/></div>
+				HotPink
+			</div>
+			<div class="a_colour" style="float:left;">
+				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FF1493;"><img src="/images/circle.png" style="width:100%;"/></div>
+				SoftPink
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+	</div> 
+
+
+	<!-- MONOGRAMS -->
+	<div id="content_6" class="2_content content">&nbsp;
+		adsasd
+	</div> 
+</div> 
+
+
 </div></div>
 
 <!-- NAVIGATION -->
@@ -299,10 +354,10 @@ $(function() {$('.tabs li a').click(function(e) {
 	var id=$(this).attr('id');
 	var array = id.split('_');
 	$('.a_tab').attr('class', "a_tab")
-	$('#tab_' + array[1]).attr('class', 'a_tab active')
-	$('.content').hide();
-	$('#content_' + array[1]).html($("#" + array[0] + '_template').html());
-	$('#content_' + array[1]).show();
+	$('#tab_' + array[2]).attr('class', 'a_tab active')
+	$('.' + array[0] + '_content').hide();
+	$('#content_' + array[2]).html($("#" + array[1] + '_template').html());
+	$('#content_' + array[2]).show();
 	})
 })
 
