@@ -43,7 +43,7 @@ border:1px solid black;
 .colour_square { margin-top:0.5em;border-radius:0.5em; }
 .colour_container { float:left;width:12.4%; }
 .colour_label { font-family:'Open Sans Light';font-weight:300;font-size:0.8em;line-height:1em;margin-top:0.25em;}
-.monogram { float:left;width:24%;padding-top:0.5em;padding-bottom:0.5em; }
+.monogram { float:left;padding-top:0.5em;padding-bottom:0.5em; text-align:center;}
 a.casamiento:link, a.casamiento:active, a.casamiento:visited { color: black; font-style:underline; }
 a.casamiento:hover { color:black; }
 @font-face { font-family:"TrajanPro"; src: url('http://www.casamiento.co.uk/fonts/t.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/trajan.woff') format('woff'); }
@@ -54,6 +54,8 @@ a.casamiento:hover { color:black; }
 @font-face { font-family:"Open Sans Condensed"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-CondBold-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-CondBold-webfont.woff') format('woff'); }
 .casamiento { padding:0; margin:0; }
 .clearboth { clear:both }
+.a_colour { font: normal 1em GaraItalic; text-align:center; margin:1em;}
+
 #page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/images/backgrounds/grey_header.png'); width:100%; }
 #inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted black; border-right: 1px dotted black; background-color:white;width:95%;}
 #main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
@@ -83,6 +85,34 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; color:#000;font: normal 0.9em 
 ==================================== */
 .name_place_icon { width:130px; margin:auto; }
 </style>
+
+<!-- TEMPLATES -->
+
+<div id="colours_template" style="display:none;">
+<div id="colours-shown" style="margin-top:1em;float:left;">
+		<div style="float:left">
+			<div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:MediumVioletRed;border-radius:5px;"></div>
+			<p class="casamiento" style="margin-left:1em;text-indent:0;font-family:GaraItalic;padding:0; margin-top:5px;">VioletRed</p>
+		</div>
+	</div>
+	<div style="clear:both;"></div>
+</div>
+		
+<!-- MONOGRAMS -->
+
+<div id="monograms_template" style="display:none;">
+	<div class="monogram"><img style="width:14em" src="http://www.casamiento.co.uk/images/monograms/5_mono.png" /></div>
+	<div class="monogram"><img style="width:14em" src="http://www.casamiento.co.uk/images/monograms/6_mono.png" /></div>
+	<div class="monogram"><img style="width:14em" src="http://www.casamiento.co.uk/images/monograms/7_mono.png" /></div>
+	<div class="monogram"><img style="width:14em" src="http://www.casamiento.co.uk/images/monograms/8_mono.png" /></div>
+	<div class="monogram"><img style="width:14em" src="http://www.casamiento.co.uk/images/monograms/2_mono.png" /></div>
+	<div class="monogram"><img style="width:14em" src="http://www.casamiento.co.uk/images/monograms/1_mono.png" /></div>
+	<div class="monogram"><img style="width:14em" src="http://www.casamiento.co.uk/images/monograms/3_mono.png" /></div>
+	<div class="monogram"><img style="width:14em" src="http://www.casamiento.co.uk/images/monograms/4_mono.png" /></div>
+	<div style="clear:both;"></div>
+</div>
+
+
 <div id="page_container_casamiento">
 <div id="inner_page_container_casamiento">
 <div class="casamiento" id="header_container_casamiento" style="padding-top:0.5em;border-bottom:1px solid black;margin:0;padding-bottom:0.5em;">
@@ -152,69 +182,57 @@ For a limited time only, we will create a monogram for your place cards complete
 <div style="clear:both;border-top:1px solid black;"></div>
 <!-- TABBED AREA -->
 <div class="tabbed_area"> 
-<ul class="tabs"> 
-<li><a href="" class="a_tab" id="tab_1">Colours shown:</a></li> 
-<li><a href="" class="a_tab active" id="tab_2">All colours:</a></li> 
-<li><a href="" class="a_tab" id="tab_3">All monograms</a></li> 
-</ul> 
-<div id="content_1" class="content">
-<!-- COLOURS SHOWN -->
-<div id="colours-shown" style="margin-top:1em;float:left;">
-<div style="float:left">
-<div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:MediumVioletRed;border-radius:5px;"></div>
-<p class="casamiento" style="margin-left:1em;text-indent:0;font-family:GaraItalic;padding:0; margin-top:5px;">VioletRed</p>
-</div>
-</div>
-<div style="clear:both;"></div>
-</div>
-<div id="content_2" class="content">&nbsp;
-	<div style="width:20%;float:left;">
-		<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento">PINKS</p></div>
+	<ul class="tabs"> 
+		<li><a href="" class="a_tab" id="tab_1">Colours shown:</a></li> 
+		<li><a href="" class="a_tab active" id="colours_2">All colours:</a></li> 
+		<li><a href="" class="a_tab" id="monograms_3">All monograms</a></li> 
+	</ul> 
+	
+	<!-- COLOURS SHOWN -->
+	<div id="content_1" class="content">
 		
-		<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento">GREENS</p></div>
-		
-		<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento">BLUES</p></div>
-	</div>
-	<div style="width:75%">
-		<div style="float:left;margin:0;padding:0;width:3em;height:3em;background-color:#FFC0CB;"><img src="/images/circle.png" style="width:100%;"/></div>
-
-		<div style="float:left;margin:0;padding:0;width:3em;height:3em;background-color:#FFB6C1;"><img src="/images/circle.png" style="width:100%;"/></div>
-
-		<div style="float:left;margin:0;padding:0;width:3em;height:3em;background-color:#FF69B4;"><img src="/images/circle.png" style="width:100%;"/></div>
-
-		<div style="float:left;margin:0;padding:0;width:3em;height:3em;background-color:#FF1493;"><img src="/images/circle.png" style="width:100%;"/></div>
 	</div>
 
-<div style="clear:both;"></div>
-</div> <div id="content_3" class="content">&nbsp;
-<div class="monogram">
-<img style="width:100%;" src="http://www.casamiento.co.uk/images/monograms/5_mono.png" />
-</div>
-<div class="monogram">
-<img style="width:100%;" src="http://www.casamiento.co.uk/images/monograms/6_mono.png" />
-</div>
-<div class="monogram">
-<img style="width:100%;" src="http://www.casamiento.co.uk/images/monograms/7_mono.png" />
-</div>
-<div class="monogram">
-<img style="width:100%;" src="http://www.casamiento.co.uk/images/monograms/8_mono.png" />
-</div>
-<div class="monogram">
-<img style="width:100%;" src="http://www.casamiento.co.uk/images/monograms/2_mono.png" />
-</div>
-<div class="monogram">
-<img style="width:100%;" src="http://www.casamiento.co.uk/images/monograms/1_mono.png" />
-</div>
-<div class="monogram">
-<img style="width:100%;" src="http://www.casamiento.co.uk/images/monograms/3_mono.png" />
-</div>
-<div class="monogram">
-<img style="width:100%;" src="http://www.casamiento.co.uk/images/monograms/4_mono.png" />
-</div>
-<div style="clear:both;"></div>
+	<!-- COLOURS -->
+	<div id="content_2" class="content">&nbsp;
+		<!-- colour labels -->
+		<div style="width:20%;float:left;">
+			<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento">PINKS</p></div>
+			<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento">GREENS</p></div>
+			<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento">BLUES</p></div>
+		</div>
+		
+		<!-- colour palette -->
+		<div style="width:75%">
+			<div class="a_colour" style="float:left;">
+				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FFC0CB;"><img src="/images/circle.png" style="width:100%;"/></div>
+				Pink
+			</div>
+			<div class="a_colour" style="float:left;">
+				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FFB6C1;"><img src="/images/circle.png" style="width:100%;"/></div>
+				MediumPink
+			</div>
+			<div class="a_colour" style="float:left;">
+				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FF69B4;"><img src="/images/circle.png" style="width:100%;"/></div>
+				HotPink
+			</div>
+			<div class="a_colour" style="float:left;">
+				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FF1493;"><img src="/images/circle.png" style="width:100%;"/></div>
+				SoftPink
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+	</div> 
+
+
+	<!-- MONOGRAMS -->
+	<div id="content_3" class="content">&nbsp;
+		adsasd
+	</div> 
 </div> 
-</div> 
+
 <!--SECOND -->
+
 <!-- THREE SIDE IMAGES -->
 <div class="actual_side_images_2" style="clear:both;text-align:center">
 <!-- SPECIFICATIONS -->
@@ -271,15 +289,21 @@ For a limited time only, we will create a monogram for your place cards complete
 </div>
 <div style="clear:both;border-top:1px solid black;"></div>
 </div></div>
+
+<!-- NAVIGATION -->
+
 <script type="text/javascript">
+
 $(function() {$('.tabs li a').click(function(e) {
-e.preventDefault();
-var id=$(this).attr('id');
-var array = id.split('_');
-$('.a_tab').attr('class', "a_tab")
-$('#tab_' + array[1]).attr('class', 'a_tab active')
-$('.content').hide();
-$('#content_' + array[1]).show();
+	e.preventDefault();
+	var id=$(this).attr('id');
+	var array = id.split('_');
+	$('.a_tab').attr('class', "a_tab")
+	$('#tab_' + array[1]).attr('class', 'a_tab active')
+	$('.content').hide();
+	$('#content_' + array[1]).html($("#" + array[0] + '_template').html());
+	$('#content_' + array[1]).show();
+	})
 })
-})
+
 </script>
