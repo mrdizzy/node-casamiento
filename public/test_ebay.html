@@ -16,70 +16,78 @@ ul.tabs { margin:0px; padding:0px; margin-top:5px; margin-bottom:7px;}
 
 ul.tabs li { margin:0px;padding:0px; list-style:none; display:inline; } 
 
-ul.tabs li a { color:black; margin:0px; padding:0px; padding:7px 14px 7px 14px; font:normal 1.1em "Open Sans Italic Light"; text-decoration:none; border: 1px solid lightgrey; border-top-left-radius: 6px; border-bottom: 1px solid black; border-top-right-radius: 6px; }
+ul.tabs li a { color:#000; margin:0px; padding:0px; padding:7px 14px 7px 14px; font:normal 1.1em "OS IL"; text-decoration:none; border: 1px solid lightgrey; border-top-left-radius: 6px; border-bottom: 1px solid #000; border-top-right-radius: 6px; }
  
-ul.tabs li a:hover { border-color:black; } 
+ul.tabs li a:hover { border-color:#000; } 
 
-ul.tabs li a.active { border:1px solid black; font-weight:bold; border-bottom:1px dotted white; } 
+ul.tabs li a.active { border:1px solid #000; font-weight:bold; border-bottom:1px dotted #fff; } 
 
-.content { margin:0;padding:0;background-color:#fff; padding:10px;border:1px solid black; } 
+.content { margin:0;padding:0;background-color:#fff; padding:10px;border:1px solid #000; } 
 
 #content_1, #content_2 { display:none; } 
 
+/* COLOURS */
+.a_colour {  float:left;}
+.colsqr { width:3em;height:3em;}
+.colsqr img { width:100%;}
 .colour_square { margin-top:0.5em;border-radius:0.5em; }
 .colour_container { float:left;width:12.4%; }
-.colour_label { font-family:'Open Sans Light';font-weight:300;font-size:0.8em;line-height:1em;margin-top:0.25em;}
-.monogram { float:left;padding-top:0.5em;padding-bottom:0.5em; width:14em;}
-a.casamiento:link, a.casamiento:active, a.casamiento:visited { color: black; font-style:underline; }
-a.casamiento:hover { color:black; }
+.colour_label { font-family:'OS Light';font-weight:300;font-size:0.8em;line-height:1em;margin-top:0.25em;}
+.mon { float:left;padding:0.5em 0 0.5em 0; width:14em;}
 
-/* Fonts 
-==================================== */
-@font-face { font-family:"TrajanPro"; src: url('http://www.casamiento.co.uk/fonts/t.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/trajan.woff') format('woff'); }
-@font-face { font-family:"GaraItalic"; src: url('http://www.casamiento.co.uk/fonts/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/GARAIT.woff') format('woff'); }
-@font-face { font-family:"Open Sans"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-Regular-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.woff') format('woff'); }
-@font-face { font-family:"Open Sans Light"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.woff') format('woff'); }
-@font-face { font-family:"Open Sans Italic Light"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-LightItalic-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-LightItalic-webfont.woff') format('woff'); }
-@font-face { font-family:"Open Sans Condensed"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-CondBold-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-CondBold-webfont.woff') format('woff'); }
+a.casamiento:link, a.casamiento:active, a.casamiento:visited { font-style:underline; }
+a.casamiento:hover { color:#000; }
 
-h2.casamiento { color:black; text-align:center; font: normal 2.5em "TrajanPro", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
-h5.casamiento { font: normal 1em "Open Sans Italic Light", serif; color: #000;margin:0; text-indent:1em;text-align:left; border-bottom: 1px solid #333; padding-top:0.75em; padding-bottom:0.75em;line-height:1.5em; margin-bottom:1.5em;margin-top:1.5em; }
-h6.casamiento { font: normal 1.375em "Open Sans Light", serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
-p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; color:#000;font: normal 0.9em "Open Sans", serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
+/* FONTS */
 
+@font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/fonts/t.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/trajan.woff') format('woff'); }
+@font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/fonts/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/GARAIT.woff') format('woff'); }
+@font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-Regular-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.woff') format('woff'); }
+@font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.woff') format('woff'); }
+@font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-LightItalic-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-LightItalic-webfont.woff') format('woff'); }
+@font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-CondBold-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-CondBold-webfont.woff') format('woff'); }
 
+h2.casamiento { text-align:center; font: normal 2.5em "TP", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
+h5.casamiento { font: normal 1em "OS IL", serif; margin:0; text-indent:1em;text-align:left; border-bottom: 1px solid #333; padding-top:0.75em; padding-bottom:0.75em;line-height:1.5em; margin-bottom:1.5em;margin-top:1.5em; }
+h6.casamiento { font: normal 1.375em "OS Light", serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
+p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
 
 .casamiento { padding:0; margin:0; }
-.clearboth { clear:both }
-.a_colour { font: normal 1em GaraItalic; text-align:center; margin:1em;}
+.line { clear:both; border-top:1px solid #000;}
+.b1 { clear:both; }
+.a_colour { font: normal 1em "GaraI"; text-align:center; margin:1em;}
 
-/* Columns
-==================================== */ 
+/* COLUMNS */
+
 #page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/images/backgrounds/grey_header.png'); width:100%; }
-#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted black; border-right: 1px dotted black; background-color:white;width:95%;}
+#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff;width:95%;}
 #main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
 #main_slogan_casamiento { float:right; }
 #genesis { text-align:center; }
 #genesis_logo_top { width:22em; }
 #genesis_container { border-top:1px dotted grey; border-bottom:1px solid grey; width:100%; margin:auto; padding-top:0.25em;padding-bottom:0.25em;text-align:center;}
 
+/* IMAGES */
+
+.subimg { float:left;width:49.5%; }
+.subimg img { width:100%; }
 .actual_side_images { width:30%;float:left; }
 .slides_container { float:right;width:68%; }
 
 .actual_side_images_2 { width:30%;float:right; }
 .slides_container_2 { float:left;width:68%; }
-/* Specificatinos 
-==================================== */
-.specifications { clear:both; display:table; border-collapse:collapse; width:100%; }
-.table-cell { text-align:left; border-bottom:1px dotted grey; border-right:1px dotted grey; padding:0.5em; }
-.table-cell h1 {font: normal 0.75em "Open Sans Condensed";margin:0;margin-bottom:0.5em;}
-.table-cell p { font-family: "Open Sans"; font-size:0.8em; padding:0; margin:0em; line-height:1em; }
-.quantity_sold p { font-family:"Open Sans"; font-size:2em; text-align:center; }
-.product_type { text-align:center; border-top:0; }
 
-/* product type icons responsive
-==================================== */
+/* SPECIFICATIONS */
+
 .name_place_icon { width:130px; margin:auto; }
+.spc { border-bottom:1px dotted grey; border-right:1px dotted grey; padding:0.5em; }
+.spc h1 {font: normal 0.75em "OS Condensed"; margin:0;margin-bottom:0.5em; text-align:left}
+.spc p { font-family: "OS"; font-size:0.8em; padding:0; margin:0em; line-height:1em; }
+
+.weight { margin:0.5em 0 0.2em;width:2em;}
+
+.quantity_sold p { font: normal 2em "OS"; }
+.product_type {  border-top:0; }
 
 </style>
 
@@ -87,170 +95,181 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; color:#000;font: normal 0.9em 
 
 <div id="colours_template" style="display:none;">
 &nbsp;
-		<!-- colour labels -->
-		<div style="width:20%;float:left;">
-			<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento pinks">PINKS</p></div>
-			<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento greens">GREENS</p></div>
-			<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento blues">BLUES</p></div>
+	<!-- colour labels -->
+	<div style="width:20%;float:left;">
+		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento pinks">PINKS</p></div>
+		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento greens">GREENS</p></div>
+		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento blues">BLUES</p></div>
+	</div>
+	
+	<!-- colour palette -->
+	<div  class="palette palette_pinks">
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#FFC0CB;"><img src="/images/circle.png" /></div>
+			Pink
+		</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#FFB6C1;"><img src="/images/circle.png" /></div>
+			MediumPink
+		</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#FF69B4;"><img src="/images/circle.png" /></div>
+			HotPink
+		</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#FF1493;"><img src="/images/circle.png" /></div>
+			SoftPink
+		</div>
+	</div>
+	<!-- colour palette -->
+	<div style="display:none;" class="palette palette_blues">
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#98FB98;"><img src="/images/circle.png" /></div>
+			PaleGreen
+		</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#ADFF2F;"><img src="/images/circle.png" /></div>
+			GreenYellow
+		</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#7FFF00;"><img src="/images/circle.png" /></div>
+			Chartreuse
+		</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#7CFC00;"><img src="/images/circle.png" /></div>
+			LawnGreen
 		</div>
 		
-		<!-- colour palette -->
-		<div style="width:75%" class="palette palette_pinks">
-			<div class="a_colour" style="float:left;">
-				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FFC0CB;"><img src="/images/circle.png" style="width:100%;"/></div>
-				Pink
-			</div>
-			<div class="a_colour" style="float:left;">
-				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FFB6C1;"><img src="/images/circle.png" style="width:100%;"/></div>
-				MediumPink
-			</div>
-			<div class="a_colour" style="float:left;">
-				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FF69B4;"><img src="/images/circle.png" style="width:100%;"/></div>
-				HotPink
-			</div>
-			<div class="a_colour" style="float:left;">
-				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FF1493;"><img src="/images/circle.png" style="width:100%;"/></div>
-				SoftPink
-			</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#00FF00;"><img src="/images/circle.png" /></div>
+			Lime
 		</div>
-		<!-- colour palette -->
-		<div style="width:75%;display:none;" class="palette palette_blues">
-			<div class="a_colour" style="float:left;">
-				<div style="margin:0;padding:0;width:3em;height:3em;background-color:red;"><img src="/images/circle.png" style="width:100%;"/></div>
-				Pink
-			</div>
-			<div class="a_colour" style="float:left;">
-				<div style="margin:0;padding:0;width:3em;height:3em;background-color:orange;"><img src="/images/circle.png" style="width:100%;"/></div>
-				MediumPink
-			</div>
-			<div class="a_colour" style="float:left;">
-				<div style="margin:0;padding:0;width:3em;height:3em;background-color:yellow;"><img src="/images/circle.png" style="width:100%;"/></div>
-				HotPink
-			</div>
-			<div class="a_colour" style="float:left;">
-				<div style="margin:0;padding:0;width:3em;height:3em;background-color:green;"><img src="/images/circle.png" style="width:100%;"/></div>
-				SoftPink
-			</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#00FF7F;"><img src="/images/circle.png" /></div>
+			SpringGreen
 		</div>
-		<div style="clear:both;"></div>
+	</div>
+	<div class="b1"></div>
 </div>
 		
 <!-- MONOGRAMS -->
 
 <div id="monograms_template" style="display:none;">&nbsp;
-	<img class="monogram" src="http://www.casamiento.co.uk/images/monograms/5_mono.png" />
-	<img class="monogram" src="http://www.casamiento.co.uk/images/monograms/6_mono.png" />
-	<img class="monogram" src="http://www.casamiento.co.uk/images/monograms/7_mono.png" />
-	<img class="monogram" src="http://www.casamiento.co.uk/images/monograms/8_mono.png" />
-	<img class="monogram" src="http://www.casamiento.co.uk/images/monograms/2_mono.png" />
-	<img class="monogram" src="http://www.casamiento.co.uk/images/monograms/1_mono.png" />
-	<img class="monogram" src="http://www.casamiento.co.uk/images/monograms/3_mono.png" />
-	<img class="monogram" src="http://www.casamiento.co.uk/images/monograms/4_mono.png" />
-	<div style="clear:both;"></div>
+	<img class="mon" src="http://www.casamiento.co.uk/images/monograms/5_mono.png" />
+	<img class="mon" src="http://www.casamiento.co.uk/images/monograms/6_mono.png" />
+	<img class="mon" src="http://www.casamiento.co.uk/images/monograms/7_mono.png" />
+	<img class="mon" src="http://www.casamiento.co.uk/images/monograms/8_mono.png" />
+	<img class="mon" src="http://www.casamiento.co.uk/images/monograms/2_mono.png" />
+	<img class="mon" src="http://www.casamiento.co.uk/images/monograms/1_mono.png" />
+	<img class="mon" src="http://www.casamiento.co.uk/images/monograms/3_mono.png" />
+	<img class="mon" src="http://www.casamiento.co.uk/images/monograms/4_mono.png" />
+	<div class="b1"></div>
 </div>
-
 
 <div id="page_container_casamiento">
-<div id="inner_page_container_casamiento">
-<div class="casamiento" id="header_container_casamiento" style="padding-top:0.5em;border-bottom:1px solid black;margin:0;padding-bottom:0.5em;">
-<div id="main_logo_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/casamiento_logo.png" style="width:202px;" id="logo" class="casamiento"></div>
-<div id="main_slogan_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/big_dreamsonpaper.png"></div>
-<div class="clearboth casamiento"></div>
-</div>
+	<div id="inner_page_container_casamiento">
+		<div class="casamiento" id="header_container_casamiento" style="padding-top:0.5em;border-bottom:1px solid #000;margin:0;padding-bottom:0.5em;">
+			<div id="main_logo_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/casamiento_logo.png" style="width:202px;" id="logo" class="casamiento"></div>
+			<div id="main_slogan_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/images/logo_branding/big_dreamsonpaper.png"></div>
+			<div class="b1"></div>
+		</div>
+		
 <!-- INTRO -->
-<div style="width:30%;margin-top:1.2em;margin-left:2%;margin-right:2%;float:left"><p class="casamiento" style="font:normal 2.8em GaraItalic;padding-bottom:0.25em;margin-bottom:0;">Impress your guests with personalised place cards</p>
-<p class="casamiento">Your guests will love seeing their names individually printed on these elegant freestanding place cards. <img src="images/arrow.png" /> </p>
-</div>
 <div style="width:30%;margin-top:1.2em;margin-left:2%;margin-right:2%;float:left">
-<p class="casamiento">And because you choose the colours, card texture and theme, you can co-ordinate them completely with your event so everything matches perfectly.</p>
-<p style="font:normal 1.4em GaraItalic">Save time and stress</p>
-<p class="casamiento">
-They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a little parcel dropping through your letterbox&hellip; 
+	<p class="casamiento" style="font:normal 2.8em GaraI;padding-bottom:0.25em;margin-bottom:0;">Impress your guests with personalised place cards</p>
+	<p class="casamiento">Your guests will love seeing their names individually printed on these elegant freestanding place cards. <img src="images/arrow.png" /> </p>
+</div>
+
+<div style="width:30%;margin-top:1.2em;margin-left:2%;margin-right:2%;float:left">
+	<p class="casamiento">And because you choose the colours, card texture and theme, you can co-ordinate them completely with your event so everything matches perfectly.</p>
+	<p style="font:normal 1.4em GaraI">Save time and stress</p>
+	<p class="casamiento">
+	They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a little parcel dropping through your letterbox&hellip; 
 </p></div>
-<div style="width:31%;margin-top:1.2em;float:left;"><p class="casamiento">&hellip;no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables. </p><p style="font:normal 1.4em GaraItalic">Free monogram</p><p class="casamiento">
+
+<div style="width:31%;margin-top:1.2em;float:left;">
+	<p class="casamiento">&hellip;no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables. </p><p style="font:normal 1.4em GaraI">Free monogram</p><p class="casamiento">
 For a limited time only, we will create a monogram for your place cards completely free of charge&mdash;perfect for weddings or christenings&mdash;or alternatively we can print your company logo. 
-</p></div>
-<div id="genesis_container" style="clear:both; border-top:1px dotted black;margin-top:1em;" class="casamiento"><img id="genesis_logo_top" class="casamiento" alt="Genesis_footer2" src="http://www.casamiento.co.uk/images/logo_branding/genesis_collection.png"></div>
-<!-- THREE SIDE IMAGES -->
-<div class="actual_side_images" style="clear:both;text-align:center">
+</p>
+</div>
+
+<div id="genesis_container" style="clear:both; border-top:1px dotted #000;margin-top:1em;" class="casamiento"><img id="genesis_logo_top" class="casamiento" alt="Genesis_footer2" src="http://www.casamiento.co.uk/images/logo_branding/genesis_collection.png"></div>
+
 <!-- SPECIFICATIONS -->
-<div class="specifications casamiento">
-<div class="product_type table-cell">
-<div class="name_place_icon">
-<img src="http://www.casamiento.co.uk/images/product_types/small/name_place_small.png" style="width:100%;">
-</div>
-</div>
-<div class="paper table-cell">
-<h1>Card Texture</h1>
-<div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/images/icons/linen.png" style="width:2.5em"><br>Linen</p></div> 
-<div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/images/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
-<div style="clear:both"></div>
-</div>
-<div class="paper table-cell">
-<h1>Thickness</h1>
-<div style="width:60%;margin:auto">
-<div style="margin-top:0.5em;margin-bottom:0.2em;width:2em;border-top:2px solid #666;"></div>
-<p>300gsm</p>
-<div style="margin-top:0.5em;width:2em;margin-bottom:0.2em;border-top:4px solid #666;"></div>
-<p>250gsm</p>
-</div>
-</div>
-<div class="product_format table-cell">
-<h1>Product format</h1>
-<div style="margin:auto;text-align:center;"><img src="http://www.casamiento.co.uk/images/specs/tent.png"></div>
-</div>
-<div class="quantity table-cell quantity_sold casamiento"><h1>Quantity</h1><p>25</p></div>
-<div class="quantity table-cell quantity_sold casamiento"><h1>Monogram shown</h1><p><img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/images/monograms/2_mono.png"></p></div>
-<div class="quantity table-cell quantity_sold casamiento"><h1>Monogram shown</h1>
-<div id="colours-shown" style="margin-top:1em;float:left;">
-		<div style="float:left">
-			<div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:MediumVioletRed;border-radius:5px;"></div>
-			<p class="casamiento" style="margin-left:1em;text-indent:0;font-family:GaraItalic;padding:0; margin-top:5px;">VioletRed</p>
+<div class="actual_side_images" style="clear:both;text-align:center">
+
+<!-- SPECIFICATIONS -->
+	<div class="product_type spc">
+		<div class="name_place_icon"><img src="http://www.casamiento.co.uk/images/product_types/small/name_place_small.png" style="width:100%;"></div>
+	</div>
+
+	<div class="spc">
+		<h1>Card Texture</h1>
+
+		<div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/images/icons/linen.png" style="width:2.5em"><br>Linen</p></div> 
+		<div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/images/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
+		<div style="clear:both"></div>
+	</div>
+
+	<div class="spc">
+		<h1>Thickness</h1>
+		
+		<div style="width:60%;margin:auto">
+			<div class="weight" style="border-top:2px solid #666;"></div>
+			<p>300gsm</p>
+			<div class="weight" style="border-top:4px solid #666;"></div>
+			<p>250gsm</p>
 		</div>
 	</div>
-	<div style="clear:both"></div></div>
 
-
+	<div class="spc">
+		<h1>Product format</h1>
+		<div style="margin:auto;text-align:center;"><img src="http://www.casamiento.co.uk/images/specs/tent.png"></div>
+	</div>
 	
+	<div class="spc quantity_sold">
+		<h1>Quantity</h1>
+		<p>25</p>
+	</div>
 	
+	<div class="spc">
+		<h1>Monogram shown</h1>
+		<img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/images/monograms/2_mono.png">
+	</div>
+		
+	<div class="spc"><h1>Monogram shown</h1>
+		<div id="colours-shown" style="margin-top:1em;float:left;">
+			<div style="float:left">
+				<div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:MediumVioletRed;border-radius:5px;"></div>
+				<p class="casamiento" style="margin-left:1em;text-indent:0;font-family:GaraI;padding:0; margin-top:5px;">VioletRed</p>
+			</div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
 </div>
-</div>
+	
 <!-- MAIN SLIDE -->
 <div class="slides_container">
-<h2 class="casamiento">Chequers</h2>
-<div class="casslides">
-<img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/chess-name_place/attachments/display-1.jpg">
-<div style="float:left;width:49.5%;">
-<img class="casamiento" style="width:100%"src="http://www.casamiento.co.uk/products/chess-name_place/attachments/medium-4.jpg">
+	<h2 class="casamiento">Chequers</h2>
+	<img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/chess-name_place/attachments/display-1.jpg">
+	<div class="subimg">
+		<img class="casamiento" src="http://www.casamiento.co.uk/products/chess-name_place/attachments/medium-4.jpg">
+	</div>
+	<div class="subimg" style="float:right;">
+		<img class="casamiento" src="http://www.casamiento.co.uk/products/chess-name_place/attachments/medium-3.jpg">
+	</div>
 </div>
-<div style="float:right;width:49.5%;">
-<img class="casamiento" style="width:100%"src="http://www.casamiento.co.uk/products/chess-name_place/attachments/medium-3.jpg">
-</div>
-</div>
-</div>
-<div style="clear:both;border-top:1px solid black;"></div>
+
+<div class="line"></div>
 <!-- TABBED AREA -->
 <div class="tabbed_area"> 
 	<ul class="tabs"> 
-		<li><a href="" class="a_tab" id="1_tab_1">Colours shown:</a></li> 
-		<li><a href="" class="a_tab active" id="1_colours_2">All colours:</a></li> 
-		<li><a href="" class="a_tab" id="1_monograms_3">All monograms</a></li> 
+		<li><a href="" class="a_tab" id="1_colours_2">All colours</a></li> 
+		<li><a href="" class="a_tab active" id="1_monograms_3">All monograms</a></li> 
 	</ul> 
-	
-	<!-- COLOURS SHOWN -->
-	<div id="content_1" class="1_content content">
-		
-	</div>
 
-	<!-- COLOURS -->
-	<div id="content_2" class="1_content content">
-	</div> 
-
-
-	<!-- MONOGRAMS -->
-	<div id="content_3" class="1_content content">&nbsp;
-		adsasd
-	</div> 
+	<div id="content_2" class="1_content content"></div> 
+	<div id="content_3" class="1_content content monograms_content"></div> 
 </div> 
 
 <!--SECOND -->
@@ -259,17 +278,17 @@ For a limited time only, we will create a monogram for your place cards complete
 <div class="actual_side_images_2" style="clear:both;text-align:center">
 <!-- SPECIFICATIONS -->
 <div class="specifications casamiento">
-<div class="product_type table-cell">
+<div class="product_type spc">
 <div class="name_place_icon">
 <img src="http://www.casamiento.co.uk/images/product_types/small/name_place_small.png" style="width:100%;">
 </div>
 </div>
-<div class="paper table-cell">
+<div class="paper spc">
 <h1>Card Texture</h1>
 <div style="float:left;"><p><img src="http://www.casamiento.co.uk/images/icons/linen.png" style="width:2.5em"><br>Linen ·</p></div> <div style="float:left;"><p><img src="http://www.casamiento.co.uk/images/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
 <div style="clear:both"></div>
 </div>
-<div class="paper table-cell">
+<div class="paper spc">
 <h1>Thickness</h1>
 <div style="width:60%;margin:auto">
 <div style="margin-top:0.5em;margin-bottom:0.2em;width:2em;border-top:2px solid #666;"></div>
@@ -278,11 +297,11 @@ For a limited time only, we will create a monogram for your place cards complete
 <p>250gsm</p>
 </div>
 </div>
-<div class="product_format table-cell">
+<div class="product_format spc">
 <h1>Product format</h1>
 <div style="margin:auto;text-align:center;"><img src="http://www.casamiento.co.uk/images/specs/tent.png"></div>
 </div>
-<div class="quantity table-cell quantity_sold casamiento"><h1>Quantity</h1><p>25</p></div>
+<div class="quantity spc quantity_sold casamiento"><h1>Quantity</h1><p>25</p></div>
 </div>
 </div>
 <div class="slides_container_2">
@@ -297,84 +316,26 @@ For a limited time only, we will create a monogram for your place cards complete
 </div>
 </div>
 </div>
-<!-- COLOURS SHOWN -->
-<div id="colours-shown" style="float:left;">
-<h5 class="casamiento">Colours shown:</h5><div style="float:left">
-<div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:MidnightBlue;border-radius:5px;"></div>
-<p class="casamiento" style="margin-left:1em;text-indent:0;font-family:GaraItalic;padding:0; margin-top:5px;">MidnightBlue</p>
-</div><div id="show_small" class="show" style="float:right;margin-left:1.5em">
-<div id="more_colours" style="margin;auto;width:2em;height:1.6em;padding-top:0.4em;">
-<img src="http://www.casamiento.co.uk/images/icons/three_lines.png" style="width:1.6em;">
-</div>
-<p style="clear:both;font-size:0.8em;font-style:underline;" class="casamiento">See all</p>
-</div>
-</div>
-<div style="clear:both;border-top:1px solid black;"></div>
+<div class="line"></div>
 
-
-<div style="clear:both;border-top:1px solid black;"></div>
 <!-- TABBED AREA -->
 <div class="tabbed_area"> 
 	<ul class="tabs"> 
-		<li><a href="" class="a_tab" id="2_tab_4">Colours shown:</a></li> 
-		<li><a href="" class="a_tab active" id="2_colours_5">All colours:</a></li> 
-		<li><a href="" class="a_tab" id="2_monograms_6">All monograms</a></li> 
+		<li><a href="" class="a_tab" id="2_colours_5">All colours</a></li> 
+		<li><a href="" class="a_tab monograms active" id="2_monograms_6">All monograms</a></li> 
 	</ul> 
 	
-	<!-- COLOURS SHOWN -->
-	<div id="content_4" class="2_content content">
-		
-	</div>
-
-	<!-- COLOURS -->
-	<div id="content_5" class="2_content content">&nbsp;
-		<!-- colour labels -->
-		<div style="width:20%;float:left;">
-			<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento">PINKS</p></div>
-			<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento">GREENS</p></div>
-			<div style="border-bottom:1px dotted black;text-align:center;"><p class="casamiento">BLUES</p></div>
-		</div>
-		
-		<!-- colour palette -->
-		<div style="width:75%">
-			<div class="a_colour" style="float:left;">
-				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FFC0CB;"><img src="/images/circle.png" style="width:100%;"/></div>
-				Pink
-			</div>
-			<div class="a_colour" style="float:left;">
-				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FFB6C1;"><img src="/images/circle.png" style="width:100%;"/></div>
-				MediumPink
-			</div>
-			<div class="a_colour" style="float:left;">
-				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FF69B4;"><img src="/images/circle.png" style="width:100%;"/></div>
-				HotPink
-			</div>
-			<div class="a_colour" style="float:left;">
-				<div style="margin:0;padding:0;width:3em;height:3em;background-color:#FF1493;"><img src="/images/circle.png" style="width:100%;"/></div>
-				SoftPink
-			</div>
-		</div>
-		<div style="clear:both;"></div>
-	</div> 
-
-
-	<!-- MONOGRAMS -->
-	<div id="content_6" class="2_content content">&nbsp;
-		adsasd
-	</div> 
+	<div id="content_5" class="2_content content"></div> 
+	<div id="content_6" class="2_content content monograms_content"></div> 
 </div> 
-
-
 </div></div>
 
-<!-- NAVIGATION -->
-
 <script type="text/javascript">
-
+var templates = {};
+templates["monograms_template"] = $('#monograms_template').html();
+templates["colours_template"] = $('#colours_template').html();
+$('.monograms_content').html(templates["monograms_template"]);
 $(function() {
-
-
-
 	$('.tabs li a').click(function(e) {
 		e.preventDefault();
 		var id=$(this).attr('id');
@@ -383,7 +344,7 @@ $(function() {
 		$('#tab_' + array[2]).attr('class', 'a_tab active')
 		$('.' + array[0] + '_content').hide();
 		var current_tab = $('#content_' + array[2]);
-		current_tab.html($("#" + array[1] + '_template').html());
+		current_tab.html(templates[array[1] + '_template']);
 		current_tab.show();
 
 		if(array[1] == "colours") {
@@ -399,7 +360,5 @@ $(function() {
 			})
 		}	
 	})
-
 })
-
 </script>
