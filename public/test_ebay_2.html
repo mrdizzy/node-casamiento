@@ -20,8 +20,7 @@ ul.tabs li a.active { border:1px solid #000; font-weight:bold; border-bottom:1px
 
 .content { margin:0;padding:0;background-color:#fff; padding:10px;border:1px solid #000; } 
 
-.colours_content { display:none; }
-
+#monograms_template, #colours_template, .colours_content { display:none;}
 /* COLOURS */
 .a_colour {  float:left;}
 .colsqr { width:3em;height:3em;}
@@ -29,19 +28,19 @@ ul.tabs li a.active { border:1px solid #000; font-weight:bold; border-bottom:1px
 .colour_square { margin-top:0.5em;border-radius:0.5em; }
 .colour_container { float:left;width:12.4%; }
 .colour_label { font-family:'OS Light';font-weight:300;font-size:0.8em;line-height:1em;margin-top:0.25em;}
-.monograms_template img { float:left;padding:0.5em 0 0.5em 0; width:14em;}
+.monograms_content img { float:left;padding:0.5em 0 0.5em 0; width:14em;}
 
 a.casamiento:link, a.casamiento:active, a.casamiento:visited { font-style:underline; }
 a.casamiento:hover { color:#000; }
 
 /* FONTS */
 
-@font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/trajan.woff') format('woff'); }
+@font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
 @font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARAIT.woff') format('woff'); }
-@font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OpenSans-Regular-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OpenSans-Light-webfont.woff') format('woff'); }
-@font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OpenSans-Light-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OpenSans-Light-webfont.woff') format('woff'); }
-@font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OpenSans-LightItalic-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OpenSans-LightItalic-webfont.woff') format('woff'); }
-@font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OpenSans-CondBold-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OpenSans-CondBold-webfont.woff') format('woff'); }
+@font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
+@font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OSL.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
+@font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OSLI.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSLI.woff') format('woff'); }
+@font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
 
 h2.casamiento { text-align:center; font: normal 2.5em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
 h5.casamiento { font: normal 1em "OS IL", serif; text-indent:1em;text-align:left; border-bottom: 1px solid #333; padding-top:0.75em; padding-bottom:0.75em;line-height:1.5em; margin-bottom:1.5em;margin-top:1.5em; }
@@ -89,7 +88,7 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 
 <!-- TEMPLATES -->
 
-<div id="colours_template" style="display:none;">
+<div id="colours_template">
 &nbsp;
 	<!-- colour labels -->
 	<div style="width:20%;float:left;">
@@ -150,15 +149,15 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 		
 <!-- MONOGRAMS -->
 
-<div id="monograms_template" style="display:none;">&nbsp;
-	<img src="http:///www.casamiento.co.uk/gfx/mon/5.png" />
-	<img src="http:///www.casamiento.co.uk/gfx/mon/6.png" />
-	<img src="http:///www.casamiento.co.uk/gfx/mon/7.png" />
-	<img src="http:///www.casamiento.co.uk/gfx/mon/8.png" />
-	<img src="http:///www.casamiento.co.uk/gfx/mon/2.png" />
-	<img src="http:///www.casamiento.co.uk/gfx/mon/1.png" />
-	<img src="http:///www.casamiento.co.uk/gfx/mon/3.png" />
-	<img src="http:///www.casamiento.co.uk/gfx/mon/4.png" />
+<div id="monograms_template">&nbsp;
+	<img src="http://www.casamiento.co.uk/gfx/mon/5.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/6.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/7.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/8.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/2.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/1.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/3.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/4.png" />
 	<div class="b1"></div>
 </div>
 
@@ -232,7 +231,7 @@ For a limited time only, we will create a monogram for your place cards complete
 	
 	<div class="spc">
 		<h1>Monogram shown</h1>
-		<img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/monograms/2_mono.png">
+		<img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/mon/2.png">
 	</div>
 		
 	<div class="spc"><h1>Colours shown</h1>
