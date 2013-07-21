@@ -36,10 +36,10 @@ a.casamiento:hover { color:#000; }
 
 /* FONTS */
 
-@font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/trajan.woff') format('woff'); }
-@font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/GARAIT.woff') format('woff'); }
-@font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OpenSans-Regular-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.woff') format('woff'); }
-@font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OpenSans-Light-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.woff') format('woff'); }
+@font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/trajan.woff') format('woff'); }
+@font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARAIT.woff') format('woff'); }
+@font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OpenSans-Regular-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OpenSans-Light-webfont.woff') format('woff'); }
+@font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OpenSans-Light-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OpenSans-Light-webfont.woff') format('woff'); }
 @font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OpenSans-LightItalic-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OpenSans-LightItalic-webfont.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OpenSans-CondBold-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OpenSans-CondBold-webfont.woff') format('woff'); }
 
@@ -151,14 +151,14 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 <!-- MONOGRAMS -->
 
 <div id="monograms_template" style="display:none;">&nbsp;
-	<img src="http://www.casamiento.co.uk/gfx/mon/5.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/6.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/7.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/8.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/2.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/1.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/3.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/4.png" />
+	<img src="http:///www.casamiento.co.uk/gfx/mon/5.png" />
+	<img src="http:///www.casamiento.co.uk/gfx/mon/6.png" />
+	<img src="http:///www.casamiento.co.uk/gfx/mon/7.png" />
+	<img src="http:///www.casamiento.co.uk/gfx/mon/8.png" />
+	<img src="http:///www.casamiento.co.uk/gfx/mon/2.png" />
+	<img src="http:///www.casamiento.co.uk/gfx/mon/1.png" />
+	<img src="http:///www.casamiento.co.uk/gfx/mon/3.png" />
+	<img src="http:///www.casamiento.co.uk/gfx/mon/4.png" />
 	<div class="b1"></div>
 </div>
 
@@ -329,7 +329,10 @@ For a limited time only, we will create a monogram for your place cards complete
 </div></div>
 
 <script type="text/javascript">
+$('.monograms_content').html($('#monograms_template').html())
 
+$('.colours_content').html($('#colours_template').html())
+$(function() {
 $('.tabs li a').click(function(e) {
 	e.preventDefault();
 	var id= $(this).attr('id'), array = id.split('_');
@@ -359,5 +362,5 @@ $('.tabs li a').click(function(e) {
 			$('.palette_pinks', current_tab).show();
 		})
 	}	
-})
+})})
 </script>
