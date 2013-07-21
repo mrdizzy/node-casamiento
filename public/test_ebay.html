@@ -10,21 +10,18 @@ document.write("</" + az + bz + cz + ">");
 
 <style type="text/css">
 	
-.tabbed_area { margin:0px;padding:0px;padding:8px;}
-
-ul.tabs { margin:0px; padding:0px; margin-top:5px; margin-bottom:7px;}
-
+.tabbed_area { margin:0px;padding:0px;padding:8px; }
+ul.tabs { margin:0px; padding:0px; margin-top:5px; margin-bottom:7px; }
 ul.tabs li { margin:0px;padding:0px; list-style:none; display:inline; } 
-
 ul.tabs li a { color:#000; margin:0px; padding:0px; padding:7px 14px 7px 14px; font:normal 1.1em "OS IL"; text-decoration:none; border: 1px solid lightgrey; border-top-left-radius: 6px; border-bottom: 1px solid #000; border-top-right-radius: 6px; }
- 
 ul.tabs li a:hover { border-color:#000; } 
 
-ul.tabs li a.active { border:1px solid #000; font-weight:bold; border-bottom:1px dotted #fff; } 
+ul.tabs li a.active { border:1px solid #000; font-weight:bold; border-bottom:1px solid white; } 
 
 .content { margin:0;padding:0;background-color:#fff; padding:10px;border:1px solid #000; } 
 
-.colours_content { display:none;}
+.colours_content { display:none; }
+
 /* COLOURS */
 .a_colour {  float:left;}
 .colsqr { width:3em;height:3em;}
@@ -32,26 +29,26 @@ ul.tabs li a.active { border:1px solid #000; font-weight:bold; border-bottom:1px
 .colour_square { margin-top:0.5em;border-radius:0.5em; }
 .colour_container { float:left;width:12.4%; }
 .colour_label { font-family:'OS Light';font-weight:300;font-size:0.8em;line-height:1em;margin-top:0.25em;}
-.mon { float:left;padding:0.5em 0 0.5em 0; width:14em;}
+.monograms_template img { float:left;padding:0.5em 0 0.5em 0; width:14em;}
 
 a.casamiento:link, a.casamiento:active, a.casamiento:visited { font-style:underline; }
 a.casamiento:hover { color:#000; }
 
 /* FONTS */
 
-@font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/fonts/t.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/trajan.woff') format('woff'); }
-@font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/fonts/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/GARAIT.woff') format('woff'); }
-@font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-Regular-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.woff') format('woff'); }
-@font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.woff') format('woff'); }
-@font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-LightItalic-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-LightItalic-webfont.woff') format('woff'); }
-@font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/fonts/OpenSans-CondBold-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-CondBold-webfont.woff') format('woff'); }
+@font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/trajan.woff') format('woff'); }
+@font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/GARAIT.woff') format('woff'); }
+@font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OpenSans-Regular-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.woff') format('woff'); }
+@font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OpenSans-Light-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/fonts/OpenSans-Light-webfont.woff') format('woff'); }
+@font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OpenSans-LightItalic-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OpenSans-LightItalic-webfont.woff') format('woff'); }
+@font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OpenSans-CondBold-webfont.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OpenSans-CondBold-webfont.woff') format('woff'); }
 
-h2.casamiento { text-align:center; font: normal 2.5em "TP", sans-serif; letter-spacing:10px; margin:0; padding:0;padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
-h5.casamiento { font: normal 1em "OS IL", serif; margin:0; text-indent:1em;text-align:left; border-bottom: 1px solid #333; padding-top:0.75em; padding-bottom:0.75em;line-height:1.5em; margin-bottom:1.5em;margin-top:1.5em; }
+h2.casamiento { text-align:center; font: normal 2.5em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
+h5.casamiento { font: normal 1em "OS IL", serif; text-indent:1em;text-align:left; border-bottom: 1px solid #333; padding-top:0.75em; padding-bottom:0.75em;line-height:1.5em; margin-bottom:1.5em;margin-top:1.5em; }
 h6.casamiento { font: normal 1.375em "OS Light", serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
 p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
 
-.casamiento { padding:0; margin:0; }
+#page_container_casamiento {  padding:0; margin:0; }
 .line { clear:both; border-top:1px solid #000;}
 .b1 { clear:both; }
 .a_colour { font: normal 1em "GaraI"; text-align:center; margin:1em;}
@@ -59,7 +56,7 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 /* COLUMNS */
 
 #page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); width:100%; }
-#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff;width:95%;}
+#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:95%;}
 #main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
 #main_slogan_casamiento { float:right; }
 #genesis { text-align:center; }
@@ -102,9 +99,9 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 	</div>
 	
 	<!-- colour palette -->
-	<div  class="palette palette_pinks">
+	<div class="palette palette_pinks">
 		<div class="a_colour">
-			<div class="colsqr" style="background-color:#FFC0CB;"><img src="http://www.casamiento.co.ukhttp://www.casamiento.co.uk/gfx/c.png" /></div>
+			<div class="colsqr" style="background-color:#FFC0CB;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
 			Pink
 		</div>
 		<div class="a_colour">
@@ -154,14 +151,14 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 <!-- MONOGRAMS -->
 
 <div id="monograms_template" style="display:none;">&nbsp;
-	<img class="mon" src="http://www.casamiento.co.uk/gfx/monograms/5_mono.png" />
-	<img class="mon" src="http://www.casamiento.co.uk/gfx/monograms/6_mono.png" />
-	<img class="mon" src="http://www.casamiento.co.uk/gfx/monograms/7_mono.png" />
-	<img class="mon" src="http://www.casamiento.co.uk/gfx/monograms/8_mono.png" />
-	<img class="mon" src="http://www.casamiento.co.uk/gfx/monograms/2_mono.png" />
-	<img class="mon" src="http://www.casamiento.co.uk/gfx/monograms/1_mono.png" />
-	<img class="mon" src="http://www.casamiento.co.uk/gfx/monograms/3_mono.png" />
-	<img class="mon" src="http://www.casamiento.co.uk/gfx/monograms/4_mono.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/5.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/6.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/7.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/8.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/2.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/1.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/3.png" />
+	<img src="http://www.casamiento.co.uk/gfx/mon/4.png" />
 	<div class="b1"></div>
 </div>
 
@@ -332,42 +329,35 @@ For a limited time only, we will create a monogram for your place cards complete
 </div></div>
 
 <script type="text/javascript">
-var templates = {};
-templates["monograms_template"] = $('#monograms_template').html();
-templates["colours_template"] = $('#colours_template').html();
-$('.monograms_content').html(templates["monograms_template"]);
-$('.colours_content').html(templates["colours_template"]);
 
-$(function() {
-	$('.tabs li a').click(function(e) {
-		e.preventDefault();
-		var id= $(this).attr('id'), array = id.split('_');
-		var id = array[0], context = array[1]
-		var current_tab = $('#' + id + "_content_" + context)
-		
-		if(context == "monograms") {
-			$('#' + id + '_colours').attr('class', 'a_tab')
-			$('#' + id + '_monograms').attr('class', 'active')
-			$('#' + id + '_content_colours').hide();
-		} else {
-			$('#' + id + '_colours').attr('class', 'active')
-			$('#' + id + '_monograms').attr('class', 'a_tab')
-			$('#' + id + '_content_monograms').hide();
-		}
-		
-		current_tab.show();
+$('.tabs li a').click(function(e) {
+	e.preventDefault();
+	var id= $(this).attr('id'), array = id.split('_');
+	var id = array[0], context = array[1]
+	var current_tab = $('#' + id + "_content_" + context)
+	
+	if(context == "monograms") {
+		$('#' + id + '_colours').attr('class', 'a_tab')
+		$('#' + id + '_monograms').attr('class', 'active')
+		$('#' + id + '_content_colours').hide();
+	} else {
+		$('#' + id + '_colours').attr('class', 'active')
+		$('#' + id + '_monograms').attr('class', 'a_tab')
+		$('#' + id + '_content_monograms').hide();
+	}
+	
+	current_tab.show();
 
-		if(context == "colours") {
-			$('.blues', current_tab).click(function(e) {
-				$('.palette', current_tab).hide();
-				$('.palette_blues', current_tab).show();
-			})
-			$('.pinks', current_tab).click(function(e) {
+	if(context == "colours") {
+		$('.blues', current_tab).click(function(e) {
+			$('.palette', current_tab).hide();
+			$('.palette_blues', current_tab).show();
+		})
+		$('.pinks', current_tab).click(function(e) {
 
-				$('.palette', current_tab).hide();
-				$('.palette_pinks', current_tab).show();
-			})
-		}	
-	})
+			$('.palette', current_tab).hide();
+			$('.palette_pinks', current_tab).show();
+		})
+	}	
 })
 </script>
