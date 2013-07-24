@@ -18,7 +18,7 @@ ul.tabs li a:hover { border-color:#000; }
 
 ul.tabs li a.active { border:1px solid #000; font-weight:bold; border-bottom:1px solid white; } 
 
-.content { margin:0;padding:0;background-color:#fff; padding:10px;border:1px solid #000; } 
+.colours_content, .monograms_content { margin:0;padding:0;background-color:#fff; padding:10px;border:1px solid #000; } 
 
 #monograms_template, #colours_template, .colours_content { display:none;}
 /* COLOURS */
@@ -173,8 +173,8 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 		
 <!-- INTRO -->
 <div style="width:30%;margin-top:1.2em;margin-left:2%;margin-right:2%;float:left">
-	<p class="casamiento" style="font:normal 2.8em GaraI;padding-bottom:0.25em;margin-bottom:0;">Impress your guests with personalised place cards</p>
-	<p class="casamiento">Your guests will love seeing their names individually printed on these elegant freestanding place cards. <img src="images/arrow.png" /> </p>
+	<p class="casamiento" style="font:normal 2.8em GaraI;padding-bottom:0.25em;margin-top:0;margin-bottom:0;">Impress your guests with personalised place cards</p>
+	<p class="casamiento">Your guests will love seeing their names individually printed on these elegant freestanding place cards. <img src="/gfx/arrow.png" /> </p>
 </div>
 
 <div style="width:30%;margin-top:1.2em;margin-left:2%;margin-right:2%;float:left">
@@ -248,12 +248,12 @@ For a limited time only, we will create a monogram for your place cards complete
 <!-- MAIN SLIDE -->
 <div class="slides_container">
 	<h2 class="casamiento">Chequers</h2>
-	<img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/chess-name_place/attachments/display-1.jpg">
+	<img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/chess-name_place/attachments/medium-1.jpg">
 	<div class="subimg">
-		<img class="casamiento" src="http://www.casamiento.co.uk/products/chess-name_place/attachments/medium-4.jpg">
+		<img class="casamiento" src="http://www.casamiento.co.uk/products/chess-name_place/attachments/display-2.jpg">
 	</div>
 	<div class="subimg" style="float:right;">
-		<img class="casamiento" src="http://www.casamiento.co.uk/products/chess-name_place/attachments/medium-3.jpg">
+		<img class="casamiento" src="http://www.casamiento.co.uk/products/chess-name_place/attachments/display-3.jpg">
 	</div>
 </div>
 
@@ -261,12 +261,12 @@ For a limited time only, we will create a monogram for your place cards complete
 <!-- TABBED AREA -->
 <div class="tabbed_area"> 
 	<ul class="tabs"> 
-		<li><a href="" class="a_tab colours" id="1_colours">All colours</a></li> 
-		<li><a href="" class="a_tab active monograms" id="1_monograms">All monograms</a></li> 
+		<li><a href="" class="a_tab" id="1_colours">All colours</a></li> 
+		<li><a href="" class="a_tab active" id="1_monograms">All monograms</a></li> 
 	</ul> 
 
-	<div id="1_content_colours" class="1_content content colours_content"></div> 
-	<div id="1_content_monograms" class="1_content content monograms_content"></div> 
+	<div id="1_content_colours" class="colours_content"></div> 
+	<div id="1_content_monograms" class="monograms_content"></div> 
 </div> 
 
 <!--SECOND -->
@@ -304,12 +304,12 @@ For a limited time only, we will create a monogram for your place cards complete
 <div class="slides_container_2">
 <h2 class="casamiento">Magick</h2>
 <div class="casslides">
-<img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/rose-name_place/attachments/medium-4.jpg">
+<img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/rose-name_place/attachments/medium-1.jpg">
 <div style="float:left;width:49.5%;">
-<img class="casamiento" style="width:100%"src="http://www.casamiento.co.uk/products/rose-name_place/attachments/display-1.jpg">
+<img class="casamiento" style="width:100%"src="http://www.casamiento.co.uk/products/rose-name_place/attachments/display-4.jpg">
 </div>
 <div style="float:right;width:49.5%;">
-<img class="casamiento" style="width:100%"src="http://www.casamiento.co.uk/products/rose-name_place/attachments/display-3.jpg">
+<img class="casamiento" style="width:100%"src="http://www.casamiento.co.uk/products/rose-name_place/attachments/medium-2.jpg">
 </div>
 </div>
 </div>
@@ -322,16 +322,15 @@ For a limited time only, we will create a monogram for your place cards complete
 		<li><a href="" class="a_tab monograms active" id="2_monograms">All monograms</a></li> 
 	</ul> 
 	
-	<div id="2_content_colours" class="2_content content colours_content"></div> 
-	<div id="2_content_monograms" class="2_content content monograms_content"></div> 
+	<div id="2_content_colours" class="colours_content"></div> 
+	<div id="2_content_monograms" class="monograms_content"></div> 
 </div> 
 </div></div>
 
 <script type="text/javascript">
 $('.monograms_content').html($('#monograms_template').html())
-
 $('.colours_content').html($('#colours_template').html())
-$(function() {
+
 $('.tabs li a').click(function(e) {
 	e.preventDefault();
 	var id= $(this).attr('id'), array = id.split('_');
@@ -361,5 +360,5 @@ $('.tabs li a').click(function(e) {
 			$('.palette_pinks', current_tab).show();
 		})
 	}	
-})})
+})
 </script>
