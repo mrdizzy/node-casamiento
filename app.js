@@ -51,6 +51,7 @@ products.add(attachments);
 app.resource("conversations", require('./controllers/conversations'));
 app.resource("paypal", require('./controllers/paypal'));
 
+app.get('/ebayplaces', require('./controllers/ebay').places);
 var ebay = app.resource("ebay", require('./controllers/ebay'));
 
 ebay.get('/sample/:theme_id', require('./controllers/ebay').sample);

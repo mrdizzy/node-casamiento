@@ -16,6 +16,8 @@
                 <input type="text" name="name" value="{{name}}"></input></p>
             <p><label for="price">Price:</label> 
                 <input type="text" name="price" value="{{price}}"></input></p>
+                <p><label for="price">monogram:</label> 
+                <input type="text" name="monogram" value="{{monogram}}"></input></p>
             <p><label for="price">Description:</label> 
                 <textarea name="description">{{description}}</textarea></p>
             <p><label for="buy_it_now_id">Buy-it-now listing item number:</label> 
@@ -175,7 +177,6 @@ $(function() {
             $('#cpv').html(cpv.render().el)
         },
         render: function() {
-            console.log("rendering");
             this.$el.empty();
             this.collection.forEach(function(product) {
                 var productview = new ProductView({
@@ -210,7 +211,7 @@ $(function() {
             $('#cpv').html(cpv.render().el)
         },
         render: function() {
-            this.$el.html(this.model.get("name"));
+            this.$el.html(this.model.get("_id"));
             return this;
         }
     });

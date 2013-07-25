@@ -23,6 +23,16 @@ exports.show = function(req, res) {
     });
 }
 
+exports.places = function(req, res) {
+       db.view('products/name_place', function(err, docs) {
+       
+        res.render('ebay/name_places_old', {
+            layout: false,
+            documents: docs
+        });
+    });
+}
+
 exports.index = function(req, res) {
     db.view('products/all', function(err, docs) {
         res.render('ebay/index', {
