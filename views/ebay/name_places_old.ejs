@@ -86,90 +86,13 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 .product_type {  border-top:0; }
 
 </style>
-
-<!-- TEMPLATES -->
-
-<div id="colours_template">
-&nbsp;
-	<!-- colour labels -->
-	<div style="width:20%;float:left;">
-		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento pinks">PINKS</p></div>
-		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento greens">GREENS</p></div>
-		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento blues">BLUES</p></div>
-	</div>
-	
-	<!-- colour palette -->
-	<div class="palette palette_pinks">
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#FFC0CB;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			Pink
-		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#FFB6C1;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			MediumPink
-		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#FF69B4;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			HotPink
-		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#FF1493;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			SoftPink
-		</div>
-	</div>
-	<!-- colour palette -->
-	<div style="display:none;" class="palette palette_blues">
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#98FB98;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			PaleGreen
-		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#ADFF2F;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			GreenYellow
-		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#7FFF00;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			Chartreuse
-		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#7CFC00;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			LawnGreen
-		</div>
-		
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#00FF00;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			Lime
-		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#00FF7F;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			SpringGreen
-		</div>
-	</div>
-	<div class="b1"></div>
-</div>
-		
-<!-- MONOGRAMS -->
-
-<div id="monograms_template">&nbsp;
-	<img src="http://www.casamiento.co.uk/gfx/mon/5.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/6.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/7.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/8.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/2.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/1.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/3.png" />
-	<img src="http://www.casamiento.co.uk/gfx/mon/4.png" />
-	<div class="b1"></div>
-</div>
-
-
 <!-- MAIN PAGE -->
 
 <div id="page_container_casamiento">
 	<div id="inner_page_container_casamiento">
 		<div class="casamiento" id="header_container_casamiento" style="padding-top:0.5em;border-bottom:1px solid #000;margin:0;padding-bottom:0.5em;">
-			<div id="main_logo_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/gfx/logo_branding/casamiento_logo.png" style="width:202px;" id="logo" class="casamiento"></div>
-			<div id="main_slogan_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/gfx/logo_branding/big_dreamsonpaper.png"></div>
+			<div id="main_logo_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/gfx/logo/cas.png" style="width:202px;" id="logo" class="casamiento"></div>
+			<div id="main_slogan_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/gfx/logo/drms.png"></div>
 			<div class="b1"></div>
 		</div>
 		
@@ -239,7 +162,7 @@ For a limited time only, we will create a monogram for your place cards complete
 	
 	<div class="spc">
 		<h1>Monogram shown</h1>
-		<img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/mon/<%= place.monogram %>.png">
+		<img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= place.monogram %>.png">
 	</div>
 		
 	<div class="spc"><h1>Colours shown</h1>
@@ -281,15 +204,77 @@ For a limited time only, we will create a monogram for your place cards complete
 		<li><a href="" class="a_tab active" id="1_monograms">All monograms</a></li> 
 	</ul> 
 
-	<div id="1_content_colours" class="colours_content"></div> 
-	<div id="1_content_monograms" class="monograms_content"></div> 
+	<div id="1_content_colours" class="colours_content">&nbsp;
+	<!-- colour labels -->
+	<div style="width:20%;float:left;">
+		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento pinks">PINKS</p></div>
+		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento greens">GREENS</p></div>
+		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento blues">BLUES</p></div>
+	</div>
+	
+	<!-- colour palette -->
+	<div class="palette palette_pinks">
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#FFC0CB;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
+			Pink
+		</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#FFB6C1;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
+			MediumPink
+		</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#FF69B4;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
+			HotPink
+		</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#FF1493;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
+			SoftPink
+		</div>
+	</div>
+	<!-- colour palette -->
+	<div style="display:none;" class="palette palette_blues">
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#98FB98;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
+			PaleGreen
+		</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#ADFF2F;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
+			GreenYellow
+		</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#7FFF00;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
+			Chartreuse
+		</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#7CFC00;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
+			LawnGreen
+		</div>
+		
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#00FF00;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
+			Lime
+		</div>
+		<div class="a_colour">
+			<div class="colsqr" style="background-color:#00FF7F;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
+			SpringGreen
+		</div>
+	</div>
+	<div class="b1"></div></div> 
+	<div id="1_content_monograms" class="monograms_content">&nbsp;
+	<img src="http://www.casamiento.co.uk/gfx/m/5.png" />
+	<img src="http://www.casamiento.co.uk/gfx/m/6.png" />
+	<img src="http://www.casamiento.co.uk/gfx/m/7.png" />
+	<img src="http://www.casamiento.co.uk/gfx/m/8.png" />
+	<img src="http://www.casamiento.co.uk/gfx/m/2.png" />
+	<img src="http://www.casamiento.co.uk/gfx/m/1.png" />
+	<img src="http://www.casamiento.co.uk/gfx/m/3.png" />
+	<img src="http://www.casamiento.co.uk/gfx/m/4.png" />
+	<div class="b1"></div></div> 
 </div> 
 </div></div>
 
 <script type="text/javascript">
 
-$('.monograms_content').html($('#monograms_template').html())
-$('.colours_content').html($('#colours_template').html())
 $('.tabs li a').click(function(e) {
 	e.preventDefault();
 	var id= $(this).attr('id'), array = id.split('_');
