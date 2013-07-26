@@ -21,7 +21,7 @@ ul.tabs li a.active { border:1px solid #000; font-weight:bold; border-bottom:1px
 
 .colours_content, .monograms_content { margin:0;padding:0;background-color:#fff; padding:10px;border:1px solid #000; } 
 
-#monograms_template, #colours_template, .colours_content { display:none;}
+.colours_content { display:none;}
 /* COLOURS */
 .a_colour {  float:left;}
 .colsqr { width:3em;height:3em;}
@@ -117,8 +117,6 @@ For a limited time only, we will create a monogram for your place cards complete
 
 <div id="genesis_container" style="clear:both; border-top:1px dotted #000;margin-top:1em;" class="casamiento"><img id="genesis_logo_top" class="casamiento" alt="Genesis_footer2" src="http://www.casamiento.co.uk/gfx/logo_branding/genesis_collection.png"></div>
 
-
-
 <% documents.forEach(function(place) { %>
 <% counter++ %>
 <% if (counter == 3) { counter = 1; } %>
@@ -126,7 +124,6 @@ For a limited time only, we will create a monogram for your place cards complete
 <!-- SPECIFICATIONS -->
 <div class="actual_side_images_<%= counter %>" style="clear:both;text-align:center">
 
-<!-- SPECIFICATIONS -->
 	<div class="product_type spc">
 		<div class="name_place_icon"><img src="http://www.casamiento.co.uk/gfx/product_types/small/name_place_small.png" style="width:100%;"></div>
 	</div>
@@ -136,7 +133,7 @@ For a limited time only, we will create a monogram for your place cards complete
 
 		<div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/linen.png" style="width:2.5em"><br>Linen</p></div> 
 		<div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
-		<div style="clear:both"></div>
+		<div class="b1"></div>
 	</div>
 
 	<div class="spc">
@@ -176,7 +173,7 @@ For a limited time only, we will create a monogram for your place cards complete
 		<% }) %>  
 		
 		</div>
-		<div style="clear:both"></div>
+		<div class="b1"></div>
 	</div>
 </div>
 	
@@ -259,7 +256,8 @@ For a limited time only, we will create a monogram for your place cards complete
 			SpringGreen
 		</div>
 	</div>
-	<div class="b1"></div></div> 
+	<div class="b1"></div>
+	</div> 
 	<div id="1_content_monograms" class="monograms_content">&nbsp;
 	<img src="http://www.casamiento.co.uk/gfx/m/5.png" />
 	<img src="http://www.casamiento.co.uk/gfx/m/6.png" />
