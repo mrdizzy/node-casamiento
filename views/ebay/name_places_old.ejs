@@ -26,15 +26,15 @@ ul.tabs li a.active { border:1px solid #000; font-weight:bold; border-bottom:1px
 .a_colour {  float:left;}
 .colsqr { width:3em;height:3em;}
 .colsqr img { width:100%;}
-.colour_square { margin-top:0.5em;border-radius:0.5em; }
-.colour_container { float:left;width:12.4%; }
-.colour_label { font-family:'OS Light';font-weight:300;font-size:0.8em;line-height:1em;margin-top:0.25em;}
+
 .monograms_content { text-align:center; }
 .monograms_content img { padding:0.5em 0 0.5em 0; width:14em;}
 
 a.casamiento:link, a.casamiento:active, a.casamiento:visited { font-style:underline; }
 a.casamiento:hover { color:#000; }
-
+.palette { display:none; }
+.spec { display:inline-block; }
+.spec img { width:100%; }
 /* FONTS */
 
 @font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
@@ -102,9 +102,9 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 <!-- INTRO -->
 <div style="width:35%;margin-top:1.2em;margin-left:2%;margin-right:2%;float:left">
 	<p class="casamiento" style="text-align:right;font:normal 2.8em GaraI;margin-top:0;margin-bottom:0;padding-right:15px;">Impress your guests with personalised place cards</p>
-	<p class="casamiento" style="text-align:right;font: normal 1.3em 'OS Light'; padding-left:1em;padding-right:15px;">Your guests will love seeing their names individually printed on these elegant freestanding place cards&hellip;</div>
+	<p class="casamiento" style="text-align:right;font: normal 1.3em 'OS Light'; padding-right:15px;">Your guests will love seeing their names individually printed on these elegant freestanding place cards&hellip;</div>
 	<div style="width:55%;float:left">
-	<p class="casamiento" style="margin-top:1.25em;"></p><p class="casamiento" > And because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly from ornamental to abstract, traditional to contemporary, one of the designs below are bound to compliment your theme!</p>		<p class="casamiento">They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a little parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables. </p><p class="casamiento">For a limited time only, we will create a monogram for your place cards completely free of charge&mdash;perfect for weddings or christenings&mdash;or alternatively we can print your company logo. 
+	<p class="casamiento" style="margin-top:1.25em;"></p><p class="casamiento" >&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of the designs below are bound to compliment your theme&hellip;</p>		<p class="casamiento">They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables. </p><p class="casamiento">For a limited time only, we'll also create a monogram for your place cards completely free of charge&mdash;perfect for weddings or christenings&mdash;or alternatively for corporate events we can print your company logo. 
 </p>
 </div>
 
@@ -126,6 +126,7 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 
 		<div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/linen.png" style="width:2.5em"><br>Linen</p></div> 
 		<div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
+		<div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
 		<div class="b1"></div>
 	</div>
 
@@ -142,7 +143,8 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 
 	<div class="spc">
 		<h1>Product format</h1>
-		<div style="margin:auto;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/specs/tent.png"></div>
+		<div style="margin:auto;text-align:center;">
+		<div class="spec" style="width:90px"><img src="/gfx/specs/tent.png"></div></div>
 	</div>
 	
 	<div class="spc">
@@ -156,7 +158,7 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 		<% place.colours.forEach(function(colour) { %>
 			<div style="float:left">
 				<div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:<%= colour %>;border-radius:5px;"></div>
-				<p class="casamiento" style="margin-left:1em;text-indent:0;font-family:GaraI;padding:0; margin-top:5px;"><%= colour %></p>
+				<p class="casamiento" style="margin-left:1em;text-indent:0;font:normal 1em GaraI;padding:0; margin-top:5px;"><%= colour %></p>
 			</div>
 		<% }) %>  
 		
@@ -193,57 +195,33 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 	<!-- colour labels -->
 	<div style="width:20%;float:left;">
 		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento pinks">PINKS</p></div>
+		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento reds">REDS</p></div>
+				<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento purples">PURPLES</p></div>
+				<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento yellows">YELLOWS</p></div>
 		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento greens">GREENS</p></div>
+		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento browns">BROWNS</p></div>
 		<div style="border-bottom:1px dotted #000;text-align:center;"><p class="casamiento blues">BLUES</p></div>
 	</div>
 	
-	<!-- colour palette -->
-	<div class="palette palette_pinks">
+<% var colours =	[['#FFC0CB pink','#FFB6C1 lightpink','#FF69B4 hotpink','#FF1493 deeppink','#DB7093 palevioletred','#BC8F8F rosybrown','#C71585 mediumvioletred','#CD5C5C indianred','#F08080 lightcoral','#FFA07A lightsalmon','#FA8072 salmon','#E9967A darksalmon','#DC143C crimson'],['#CD853F peru','#D2691E chocolate','#A0522D sienna','#A52A2A brown','#B22222 firebrick','#8B4513 saddlebrown','#8B0000 darkred','#800000 maroon'],['#FAA460 sandybrown','#FF7F50 coral','#FF6347 tomato','#FF0000 red','#FF4500 orangered','#FF8C00 darkorange','#FFA500 orange'],['#FFD700 gold','#FFFF00 yellow'],['#E6E6FA lavender','#D8BFD8 thistle','#DDA0DD plum','#FF00FF magenta','#EE82EE violet','#DA70D6 orchid','#BA55D3 mediumorchid','#9370DB mediumpurple','#8A2BE2 blueviolet','#9400D3 darkviolet','#9932CC darkorchid','#8B008B darkmagenta','#800080 purple','#4B0082 indigo','#483D8B darkslateblue','#6A5ACD slateblue','#7B68EE mediumslateblue'],['#98FB98 palegreen','#ADFF2F greenyellow','#7FFF00 chartreuse','#7CFC00 lawngreen','#00FF00 lime','#00FF7F springgreen','#00FA9A mediumspringgreen','#90EE90 lightgreen','#32CD32 limegreen','#3CB371 mediumseagreen','#2E8B57 seagreen','#228B22 forestgreen','#008000 green','#006400 darkgreen','#9ACD32 yellowgreen','#6B8E23 olivedrab','#808000 olive','#556B2F darkolivegreen','#8FBC8F darkseagreen','#66CDAA mediumaquamarine','#20B2AA lightseagreen','#008B8B darkcyan','#008080 teal'],['#00FFFF cyan','#7FFFD4 aquamarine','#AFEEEE paleturquoise','#40E0D0 turquoise','#48D1CC mediumturquoise','#00CED1 darkturquoise','#5F9EA0 cadetblue','#4682B4 steelblue','#B0C4DE lightsteelblue','#B0E0E6 powderblue','#ADD8E6 lightblue','#87CEEB skyblue','#87CEFA lightskyblue','#00BFFF deepskyblue','#1E90FF dodgerblue','#6495ED cornflowerblue','#4169E1 royalblue','#0000FF blue','#0000CD mediumblue','#00008B darkblue','#000080 navy','#191970 midnightblue'],['#DCDCDC gainsboro','#D3D3D3 lightgrey','#C0C0C0 silver','#A9A9A9 darkgray','#778899 lightslategray','#708090 slategray','#808080 gray','#696969 dimgray','#2F4F4F darkslategray','#000000 black']] %>
+
+	
+	<% var counter = 0 %>
+	<% colours.forEach(function(palette) { %>
+	<% counter++ %>
+		<div class="palette" id="palette_<%= counter %>">
+		<% palette.forEach(function(colour) { %>
+		<% var ary = colour.split(" ") %>
+		<% var hex = ary[0] %>
+		<% var description = ary[1] %>
 		<div class="a_colour">
-			<div class="colsqr" style="background-color:#FFC0CB;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			Pink
+			<div class="colsqr" style="background-color:<%= hex %>;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
+			<%= description %>
 		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#FFB6C1;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			MediumPink
+		<% }) %>
 		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#FF69B4;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			HotPink
-		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#FF1493;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			SoftPink
-		</div>
-	</div>
-	<!-- colour palette -->
-	<div style="display:none;" class="palette palette_blues">
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#98FB98;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			PaleGreen
-		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#ADFF2F;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			GreenYellow
-		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#7FFF00;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			Chartreuse
-		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#7CFC00;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			LawnGreen
-		</div>
-		
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#00FF00;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			Lime
-		</div>
-		<div class="a_colour">
-			<div class="colsqr" style="background-color:#00FF7F;"><img src="http://www.casamiento.co.uk/gfx/c.png" /></div>
-			SpringGreen
-		</div>
-	</div>
+	<% }) %>
+	
 	<div class="b1"></div>
 	</div> 
 	<div id="1_content_monograms" class="monograms_content">&nbsp;
@@ -262,12 +240,13 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 	<img src="http://www.casamiento.co.uk/gfx/m/13.png" />
 	<img src="http://www.casamiento.co.uk/gfx/m/14.png" />
 	<img src="http://www.casamiento.co.uk/gfx/m/15.png" />
+	<img src="http://www.casamiento.co.uk/gfx/m/16.png" />
 	<div class="b1"></div></div> 
 </div> 
 </div></div>
 
 <script type="text/javascript">
-
+$('#palette_1').show();
 $('.tabs li a').click(function(e) {
 	e.preventDefault();
 	var id= $(this).attr('id'), array = id.split('_');
@@ -287,14 +266,34 @@ $('.tabs li a').click(function(e) {
 	current_tab.show();
 
 	if(context == "colours") {
+			$('.greens', current_tab).click(function(e) {
+			$('.palette', current_tab).hide();
+			$('#palette_6', current_tab).show();
+		})			
+		$('.browns', current_tab).click(function(e) {
+			$('.palette', current_tab).hide();
+			$('#palette_2', current_tab).show();
+		})		
+		$('.reds', current_tab).click(function(e) {
+			$('.palette', current_tab).hide();
+			$('#palette_3', current_tab).show();
+		})
+				$('.yellows', current_tab).click(function(e) {
+			$('.palette', current_tab).hide();
+			$('#palette_4', current_tab).show();
+		})
+				$('.purples', current_tab).click(function(e) {
+			$('.palette', current_tab).hide();
+			$('#palette_5', current_tab).show();
+		})
 		$('.blues', current_tab).click(function(e) {
 			$('.palette', current_tab).hide();
-			$('.palette_blues', current_tab).show();
+			$('#palette_7', current_tab).show();
 		})
 		$('.pinks', current_tab).click(function(e) {
 
 			$('.palette', current_tab).hide();
-			$('.palette_pinks', current_tab).show();
+			$('#palette_1', current_tab).show();
 		})
 	}	
 })
