@@ -11,7 +11,7 @@ var app = express();
 // FireFox is to support cross-domain downloading of them (e.g. from an eBay listing)
 app.configure(function(){
   app.use(function(req, res, next) {
-    var matchUrl = '/fonts';
+    var matchUrl = '/f';
     if(req.url.substring(0, matchUrl.length) === matchUrl) {
       res.setHeader("Access-Control-Allow-Origin", "*");
     }

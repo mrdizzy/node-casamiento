@@ -29,7 +29,7 @@ ul.tabs li a.active { border:1px solid #000; font-weight:bold; border-bottom:1px
 .monograms_content { text-align:center; }
 .monograms_content img { padding:0.5em 0 0.5em 0; width:14em;}
 
-a.casamiento:link, a.casamiento:active, a.casamiento:visited { font-style:underline; color:green;}
+a.casamiento:link, a.casamiento:active, a.casamiento:visited { font-style:underline; }
 a.casamiento:hover { color:#000; }
 .palette { display:none; }
 .spec { display:inline-block; }
@@ -65,7 +65,7 @@ div .clrb:first-child { border-top:1px dotted #000; }
 #main_slogan_casamiento { float:right; }
 #genesis { text-align:center; }
 #genesis_logo_top { width:22em; }
-#genesis_container { border-bottom:1px dotted grey; width:100%; margin:auto; padding-top:0.25em;padding-bottom:0.25em;text-align:center;}
+#genesis_container { border-top:1px dotted grey; border-bottom:1px solid grey; width:100%; margin:auto; padding-top:0.25em;padding-bottom:0.25em;text-align:center;}
 
 /* IMAGES */
 
@@ -110,12 +110,8 @@ div .clrb:first-child { border-top:1px dotted #000; }
 	<p class="casamiento" style="margin-top:1.25em;"></p><p class="casamiento" >&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of the designs below are bound to compliment your theme&hellip;</p>		<p class="casamiento">They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables. </p><p class="casamiento">For a limited time only, we'll also create a monogram for your place cards completely free of charge&mdash;perfect for weddings or christenings&mdash;or alternatively for corporate events we can print your company logo. 
 </p>
 </div>
-<div style="border-top:1px solid #000;clear:both">
-<p class="casamiento" style="text-align:center;"><a class="casamiento" style="font: 1em normal 'OS';" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=261257558704"><span style="font:normal 1.3em 'GaraI';">Want to buy an item on this page immediately?</span> Click here for a buy-it-now listing with different quantities and more options!</a></p>
-<div class="cb1"></div>
-</div>
 
-<div id="genesis_container" style="clear:both; border-top:1px solid #000;margin-top:1em;" class="casamiento"><img id="genesis_logo_top" class="casamiento" alt="Genesis_footer2" src="http://www.casamiento.co.uk/gfx/logo/genesis_collection.png"></div>
+<div id="genesis_container" style="clear:both; border-top:1px dotted #000;margin-top:1em;" class="casamiento"><img id="genesis_logo_top" class="casamiento" alt="Genesis_footer2" src="http://www.casamiento.co.uk/gfx/logo/genesis_collection.png"></div>
 
 <% documents.forEach(function(place) { %>
 <% counter++ %>
@@ -131,6 +127,7 @@ div .clrb:first-child { border-top:1px dotted #000; }
 	<div class="spc">
 		<h1>Card Texture</h1>
 
+		<div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
 		<div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
 		<div class="b1"></div>
 	</div>
@@ -139,6 +136,8 @@ div .clrb:first-child { border-top:1px dotted #000; }
 		<h1>Thickness</h1>
 		
 		<div style="width:60%;margin:auto">
+			<div class="weight" style="border-top:2px solid #666;"></div>
+			<p>300gsm</p>
 			<div class="weight" style="border-top:4px solid #666;"></div>
 			<p>250gsm</p>
 		</div>
