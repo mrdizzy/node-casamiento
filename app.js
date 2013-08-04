@@ -80,9 +80,10 @@ app.post('/ebay', function(req, res) {
     
 //Home page
 app.get("/", function(req, res) {
-    db.view('products/invitation', function(error, documents) {
+    db.view('products/name_place', function(error, documents) {
         res.render("welcome/index", {
-            documents: documents.toArray()
+            documents: documents.toArray(),
+            layout: false
         })
     })
 });

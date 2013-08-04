@@ -16,7 +16,7 @@ exports.show = function(req, res) {
         console.log(without);
         current.quantity = req.query.quantity || 1;
         current.auction = req.query.auction;
-        res.render('catalog/new_ebay.ejs', {
+        res.render('catalog/mobile.ejs', {
             layout: false,
             locals: current
         });
@@ -32,7 +32,15 @@ exports.places = function(req, res) {
         });
     });
 }
-
+exports.invitations = function(req, res) {
+       db.view('products/invitations', function(err, docs) {
+       
+        res.render('ebay/invitations', {
+            layout: false,
+            documents: docs
+        });
+    });
+}
 exports.index = function(req, res) {
     db.view('products/all', function(err, docs) {
         res.render('ebay/index', {
