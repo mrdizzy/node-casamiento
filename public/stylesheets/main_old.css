@@ -22,20 +22,25 @@
 /* Typography
 ==================================== */
 
-@font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
-@font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARAIT.woff') format('woff'); }
-@font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
-@font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OSL.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
-@font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
-  h1 { text-align:center;  font-family: TP; padding:0;margin:0;}
-    .theme_name { color:black;text-align:center; font-size: 4em; line-height:0.5em;letter-spacing:0.15em;}
-    .product_name { color:black; font-size:2.5em;  text-align:left; letter-spacing:0.2em;}
+@font-face {  font-family:"TrajanPro"; src: url('/fonts/t.eot?') format('eot'), url('/fonts/trajan.woff') format('woff');  
+}
+
+@font-face { font-family:"Gara"; src: url('/fonts/GARA.eot?') format('eot'), url('/fonts/GARA.woff') format('woff'); }
+
+@font-face { font-family:"GaraItalic"; src: url('fonts/GARAIT.eot?') format('eot'), url('/fonts/GARAIT.woff') format('woff'); }
+
+  b, strong, em { font-weight: bold; }  
+  i { font-style:italic; }  
+  
+  h1 { text-align:center;  font-family: TrajanPro}
+    .theme_name { color:black;text-align:center; font-size: 4em; line-height:1em;letter-spacing:0.15em;}
+    .product_name { color:black; font-size:2em;  text-align:left; letter-spacing:0.2em;}
     
   h3 { color:#690172; font-weight:bold; margin-bottom: 1em; font-size:1.5em; }
   h6 { font-size:20px; text-align:justify; letter-spacing:0.1em; line-height:150%; font-family: "Gara" }
   .small { font-size:0.85em;}
   
-  h5 { font: bold 0.85em "OS Light""", sans-serif; padding-bottom: 10px; border-bottom: 1px solid grey; }
+  h5 { font: bold 0.85em "Arial", "Helvetica", sans-serif; padding-bottom: 10px; border-bottom: 1px solid grey; }
 
     .number {  font-size:2.4em;  }
     .decimal {  font-size:1.6em; position:relative;top:-8px; }
@@ -49,6 +54,42 @@
 .colour_container { clear:both; margin:5px; margin-left:20px; }
 .swatch { width:20px;height:10px;border:1px solid grey;float:left;margin:5px; border-radius:4px;}
 
+/* QUANTITY SLIDER
+=================================== */
+/* The main bar. Give this class to whatever element you call .noUiSlider on. */
+.noUiSlider {
+    margin-top:20px;
+    width:256px;
+    margin-bottom:20px;
+	height:		    1px;
+    margin-right:0;
+    border:0;
+	background:		grey;
+}
+
+/* The visible handles for the slider.
+// ( .noUi-handle itself has 0 width, keep it that way. ) */
+.noUi-handle > div {
+	z-index: 		200;
+	width:			9px;
+	height:			17px;
+    background-color:white;
+	position:		absolute;
+	top:			-8px;
+	left:			-8px;
+	border:			1px solid grey;
+	background-image:		url('/images/sliderhandledots.png'); background-image:no-repeat;
+}
+
+/* The handles on hover. */
+.noUi-handle > div:hover,
+.noUi-activeHandle {
+	background:		light-gray !important;
+	border-color:		black !important;
+    cursor: pointer;
+    cursor: hand;
+}
+     
 /* cart page
 =================================== */
 table td { text-align:center; }
@@ -60,10 +101,7 @@ table td { text-align:center; }
 
 /* FURNITURE
 ==================================== */
-#page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); width:100%; }
-#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:90%;}
-
-  #top_container {margin:0 auto; padding-top:8px; height:50px; border-bottom: 1px dashed #939598; 
+  #top_container { width:974px; margin:0 auto; padding-top:8px; height:50px; border-bottom: 1px dashed #939598; 
   padding-bottom:5px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; background-color:white; }
     #logo {  margin-left:35px; float:left;}
     #cart { float:right; margin:0; padding:0; padding-top:10px; padding-right:10px;width:25%; }
@@ -74,15 +112,15 @@ table td { text-align:center; }
         padding-top:10px;
         float:left;   
         text-align:center;
-        width:24%;
+        width:242px;
         border-right:1px dotted grey;
         border-bottom: 1px dotted grey; 
     }
 
     .navbar img.dreams_on_paper { position:relative; top:-7px; }
-  #page_container {  margin: 0 auto; background-color: white;  border-left: 1px dotted #939598; border-right: 1px dotted #939598;}
+  #page_container { width:974px; margin: 0 auto; background-color: white;  border-left: 1px dotted #939598; border-right: 1px dotted #939598;}
 
-  #footer { margin: 0 auto; clear:both; padding-top:20px; height:75px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; border-top: 1px solid #939598;}
+  #footer { width:974px; margin: 0 auto; clear:both; padding-top:20px; height:75px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; border-top: 1px solid #939598;}
   
     .footer_seperator {  text-align:center; padding-top:1em;  float:left;  width:20%; }
     .collection { width:40%; float:left; text-align:center; }
@@ -95,31 +133,21 @@ form { display:inline; }
 input { padding:0; margin:0; border: 1px solid grey; font-size:1.2em;margin-bottom:0.25em; padding:0.25em;}
 input:focus { background-color: lightgrey; border:1px solid black;  outline:none;}
 
-#buy { width:63px; height:53px; z-index:100;  background-image:url('/gfx/buy.png'); position:fixed; top:50%;right:7%;}
+#buy { width:63px; height:53px;  background-image:url('/images/buy.png'); position:fixed; top:50%;right:2.5%;}
 #buy:hover { background-position: 0 -53px; }
 
 /* PRODUCT PAGE
 ================================================================================================ */
-.b1 { clear:both; }
-.spec { display:inline-block; }
-.spec img { width:100%; }
-.weight { margin:0.5em 0 0.2em;width:2em;}
     #product_page_genesis {margin auto; border-bottom:1px solid grey; text-align:center; padding-top:10px;}
-    #product_section0 { text-align:center; width:25%;float:left;}
-        #product_section0 #thumbs img { padding:5px; border: 1px solid white; width:65%;} 
+    #product_section0 { text-align:center; width:300px; margin-right:648px;}
+        #product_section0 img { padding:5px; border: 1px solid white; } 
         #product_section0 img:hover { border:1px solid grey; }
     
-    #product_section1 { text-align:left;  width:74%;float:left;}
- .product_pagination li { display:block;float:left;border:1px solid transparent; }
- .product_pagination li img { padding:0.5em; }
-.product_pagination li:hover { border:1px solid black; }
-.name_place_icon { width:130px; margin:auto; }
-.spc { padding:0.5em;border-bottom:1px dotted grey;   }
-.spc { border-right:1px dotted grey; }
-.spc { border-left:1px dotted grey; }
-.spc h1 {font: normal 0.9em "OS Condensed"; margin:0;margin-bottom:0.5em; text-align:left}
-.spc p { font-family: "OS"; font-size:1em; padding:0; margin:0em; line-height:1em; }
-
+    #product_section1 { text-align:left; padding-left:6px; width:648px; float:right;  margin-right:100px; }
+    #product_section2 { float:left; width:33%; }
+    #product_section3 { margin-left:33%;}
+    .product_slide { height:464px; }
+    
 /* WELCOME PAGE 
 ============================================== */
     #product_type { clear:both; width:25%; text-align:center; float:left; padding-top:20px; }

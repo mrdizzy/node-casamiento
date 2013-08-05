@@ -1,19 +1,18 @@
 <!doctype html>
 <html>
     <head>
-        <!-- MAIN image: 648 px wide, middle: 482px, smaller images 320px wide, thumb: 120px, margin middle 6px wide-->
 
-        <title>Casamiento</title>
-        
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="/stylesheets/main.css" />
-        
-        <!-- JQUERY -->
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="/javascripts/slides.min.jquery.js"></script>
-        <script src="/javascripts/jquery.nouislider.min.js"></script>
-        <script>
-        function casamientoCalculator(quantity) {
+    <title>Casamiento</title>
+    
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    
+    <!-- JQUERY -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.slides.min.js"></script>
+    <script src="/javascripts/jquery.nouislider.min.js"></script>
+    <script>
+    function casamientoCalculator(quantity) {
      
  var price = (299/8);
      var total = quantity * price;
@@ -43,34 +42,34 @@
     </head>
 
     <body>
+    <div id="page_container_casamiento">
+        <div id="inner_page_container_casamiento">
+            
+            <!-- HEADER -->
+            
+            <div id="top_container">
+              <div id="logo"><a href="/"><img src="/gfx/logo/casamiento.png" /></a></div>
+              <div id="cart"><div id="trolley">0 items in your trolley</div><img src="/gfx/viewcart.png" /></div>
+            </div>
+            
+            <div id="nav">
+                <div class="navbar"><img class="dreams_on_paper" src="/gfx/logo_branding/dreamsonpaper.png" /></div>
+                <div class="navbar"><img src="/gfx/bullets/line_diamond.png" /> ABOUT</div>
+                <div class="navbar"><img src="/gfx/bullets/line_diamond.png" /> CONTACT</div>
+                <div class="navbar"><img src="/gfx/bullets/line_diamond.png" /> LOGIN</div>
+            </div>
 
-    <!-- HEADER -->
+            <%- body %>
+           
+            <!-- FOOTER -->
+            
+            <div id="footer">
+              <div class="collection"><img src="/gfx/logo/genesis_footer.png" /></div>
+              <div class="footer_seperator"><img src="/gfx/page_seperators/three_across.png" /></div>
+              <div class="collection"><img src="/gfx/logo/castello.png" /></div>
+            </div>
     
-    <div id="top_container">
-      <div id="logo"><a href="/"><img src="/images/logo_branding/casamiento.png" /></a></div>
-      <div id="cart"><div id="trolley">0 items in your trolley</div><img src="/images/viewcart.png" /></div>
-    </div>
-    
-    <div id="page_container">   
-    
-        <div id="nav">
-            <div class="navbar"><img class="dreams_on_paper" src="/images/logo_branding/dreamsonpaper.png" /></div>
-            <div class="navbar"><img src="/images/bullets/line_diamond.png" /> ABOUT</div>
-            <div class="navbar"><img src="/images/bullets/line_diamond.png" /> CONTACT</div>
-            <div class="navbar"><img src="/images/bullets/line_diamond.png" /> LOGIN</div>
         </div>
-    
-        <%- body %>
-    </div>
-    
-    <!-- FOOTER -->
-    
-    <div id="footer">
-      <div class="collection"><img src="/images/logo_branding/genesis_footer.png" /></div>
-      <div class="footer_seperator"><img src="/images/page_seperators/three_across.png" /></div>
-      <div class="collection"><img src="/images/logo_branding/castello.png" /></div>
-    </div>
-    
-    </script>
-</body>
+   </div>
+    </body>
 </html>

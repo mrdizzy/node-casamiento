@@ -1,272 +1,96 @@
-<!-- MAIN image: 648 px wide, middle: 482px, smaller images 320px wide, thumb: 120px, margin middle 6px wide-->
-
- <script>
- 
-    $(function() {
-        $('#monogram_box').hover(function(){
-            $('#select_monogram_panel').fadeIn('medium');
-            }, function(){
-                 $('#select_monogram_panel').fadeOut('medium');
-                 });
-        $('#colors_box').hover(function(){
-            $('#select_colors_panel').fadeIn('medium');
-            }, function(){
-                 $('#select_colors_panel').fadeOut('medium');
-                 });
-         $('#buy').click(function() {
-            $('#pageslide').show().animate({right:"+=320"})
-            $('body').animate({'margin-left': "-=320"}, function() {
-            $('#maincontainer, #top_container, #nav, #footer').fadeTo("medium", 0.5);
-            })
-         });
-    
-        $('#select-monogram').click(function() {
-            $('#product').fadeOut(function() {
-            $('#monogram_selection').fadeIn()
-        });     
-    });
-        $('#slider').noUiSlider('init', {
-            knobs: 1,
-            scale: [1,128],
-            start: [16,0],
-            step: 1,
-            connect: "lower",
-            change: function(e, r) {
-                var number = $('#slider').noUiSlider('value')
-                var price = casamientoCalculator(number[1])
-               $('#quantity').html(number[1]);   
-               $('#price_main').html("£" + price[0]); 
-               $('#price_decimal').html("." + price[1]);
-            }
-        });
-        $('#maincontainer').slides({
-            effect:'fade,slide',
-            crossfade: true,
-            slideSpeed: 350,
-            play:5000,
-            fadeSpeed: 500,
-            preload: true,
-            preloadImage: "/images/spinner.gif",
-            generatePagination: false,
-            paginationClass: 'product_pagination'
-        });
-    })
-</script>
 <style type="text/css">
-#cover { width:100%; height:100%; background-color:white; }
-/*box-shadow: -5px 5px 5px lightgrey;*/
-#pageslide {
-    /* These styles MUST be included. Do not change. */
-    display: none;
-    left: 'auto';
-    right: -329px; 
-    position: absolute;
-    position: fixed;
-    top: 0;
-    height: 100%;
-    z-index: 999999;
-    border-left:1px solid grey;
-    /* Specify the width of your pageslide here */
-    width: 320px;
-    padding-left:10px;
-    box-shadow: -5px 5px 0 lightgrey;
-    /* These styles are optional, and describe how the pageslide will look */
-    background-color: white;
-}
+ul { text-align:center }
+ul li { padding:0.25em; }
+ul li {display:inline-block; border: 1px solid transparent; padding:0.25em; margin:0.25em;}
+ul li:hover { border: 1px solid black; }
+ul li a[data-slidesjs-item="0"] { background-image:url('/products/<%= id %>/attachments/thumb-1'); width:190px; height:0; padding-top:122px; display:inline-block; overflow:hidden; }
+ul li a[data-slidesjs-item="1"] { background-image:url('/products/<%= id %>/attachments/thumb-2'); width:190px; height:0; padding-top:122px; display:inline-block; overflow:hidden;}
+ul li a[data-slidesjs-item="2"] { background-image:url('/products/<%= id %>/attachments/thumb-3'); width:190px; height:0; padding-top:122px; display:inline-block; overflow:hidden;}
+ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/attachments/thumb-4'); width:190px; height:0; padding-top:122px; display:inline-block; overflow:hidden;}
 </style>
-<div id="select_colors_panel" style="border:1px solid black; background-color:white; width:60%;top:10%;left:5%;position:fixed;margin:auto;display:none;z-index:999999">
-<table class="casamiento" id="colour_table_casamiento"> 
-                <tr>
-                <th colspan="6">Reds &amp; Pinks</th>
-                </tr>
-                <tr>
-                 
-                </tr>
-              
-            <tr>
-                <td><div class="casamiento_colour" style="background-color:Red"></td>   <td>Red</td>
-                
-                <td><div class="casamiento_colour" style="background-color:MediumVioletRed"></td>   <td>VioletRed</td>
-                 <td><div class="casamiento_colour" style="background-color:Firebrick"></td><td>Firebrick</td>
-                </tr>
-                
-                <tr>
-                
-                 <td><div class="casamiento_colour" style="background-color:HotPink"></td>  <td>HotPink</td>
-                 <td><div class="casamiento_colour" style="background-color:DeepPink"></td> <td>DeepPink</td>
-                </tr>
-              
-                
-               <tr>
-                <th colspan="6">Oranges &amp; Yellows</th>
-                </tr>
-                <tr>
-                <td><div class="casamiento_colour" style="background-color:LightSalmon"></td> <td>LightSalmon</td>
-                <td><div class="casamiento_colour" style="background-color:OrangeRed"></td>   <td>OrangeRed</td>
-                 
-                 <td><div class="casamiento_colour" style="background-color:Orange"></td>  <td>Orange</td>
-                </tr>
-              
-                <tr>
-                 <td><div class="casamiento_colour" style="background-color:Yellow"></td>  <td>Yellow</td>
-                </tr>
-                             <tr>
-                <th colspan="6">Purples</th>
-                </tr>
-                <tr>
-                <td><div class="casamiento_colour" style="background-color:Violet"></td> <td>Violet</td>
-                 <td><div class="casamiento_colour" style="background-color:Fuchsia"></td>  <td>Fuchsia</td>
-                 <td><div class="casamiento_colour" style="background-color:MediumOrchid"></td> <td>MediumOrchid</td>
-                </tr>
-                        <tr>
-                 <td><div class="casamiento_colour" style="background-color:DarkViolet"></td>  <td>DarkViolet</td>
-                 <td><div class="casamiento_colour" style="background-color:Purple"></td> <td>Purple</td>
-                <td><div class="casamiento_colour" style="background-color:Indigo"></td> <td>Indigo</td>
-                          
-                </tr>
-                                         <tr>
-                <th colspan="6">Greens &amp; Blues</th>
-                </tr>
-                <tr>
-                <td><div class="casamiento_colour" style="background-color:GreenYellow"></td> <td>GreenYellow</td>          
-                 
-                 <td><div class="casamiento_colour" style="background-color:LightSeaGreen"></td>  <td>LightSeaGreen</td>
-                 
-                 <td><div class="casamiento_colour" style="background-color:CornflowerBlue"></td>  <td>CornflowerBlue</td>
-                </tr>
-                
-                <tr>            
-                 <td><div class="casamiento_colour" style="background-color:LimeGreen"></td>  <td>LimeGreen</td>  
-                 
-                    <td><div class="casamiento_colour" style="background-color:LightSkyBlue"></td>
-                    <td>LightSkyBlue</td>
-                    <td><div class="casamiento_colour" style="background-color:SteelBlue"></td>
-                    <td>SteelBlue</td>   
-                </tr>            
-                
-                
-                <tr>
-                <td><div class="casamiento_colour" style="background-color:ForestGreen"></td> <td>ForestGreen</td>
-                
-                 <td><div class="casamiento_colour" style="background-color:DeepSkyBlue"></td> <td>DeepSkyBlue</td>
-                 
-                 
-                 <td><div class="casamiento_colour" style="background-color:Blue"></td> <td>Blue</td>
-                </tr>
-                
-                <tr>                                
-                 <td><div class="casamiento_colour" style="background-color:DarkGreen"></td>
-                 <td>DarkGreen</td>             
-                 
-                <td><div class="casamiento_colour" style="background-color:DodgerBlue"></td> <td>DodgerBlue</td>
-                    <td><div class="casamiento_colour" style="background-color:Midnightblue"></td>
-                    <td>Midnightblue</td>
-                </tr>
-                <tr>
-                    <th colspan="6">Browns</th>
-                </tr>
-                <tr>
-                    <td><div class="casamiento_colour" style="background-color:SaddleBrown"></td>
-                    <td>SaddleBrown</td>
-                    <td><div class="casamiento_colour" style="background-color:Maroon"></td>
-                    <td>Maroon</td>
-                </tr>
-        </table>
-        </div>
-<div id="select_monogram_panel" style="border:1px solid black; background-color:white; width:60%;top:10%;left:5%;position:fixed;margin:auto;display:none;z-index:999999">
-    
-    <table id="monograms_casamiento">
-        <tr>
-            <td id="monogram_A"><img alt="A" src="http://s3.amazonaws.com/casamiento/monogram_2.png" /></td>
-            <td id="monogram_B"><img alt="B" src="http://s3.amazonaws.com/casamiento/monogram_3.png" /></td> 
-            <td id="monogram_C"><img alt="C" src="http://s3.amazonaws.com/casamiento/monogram_4.png" /></td>
-        </tr> 
-        <tr>        
-            <td id="monogram_D"><img alt="D" src="http://s3.amazonaws.com/casamiento/monogram_5.png" /></td>
-            <td id="monogram_E"><img alt="E" src="http://s3.amazonaws.com/casamiento/monogram_6.png" /></td>
-            <td id="monogram_F"><img alt="F" src="http://s3.amazonaws.com/casamiento/monogram_7.png" /></td>
-        </tr>
-        <tr>        
-            <td id="monogram_G"><img alt="G" src="http://s3.amazonaws.com/casamiento/monograms_big/1.png" /></td>
-            <td id="monogram_H"><img alt="H" src="http://s3.amazonaws.com/casamiento/monograms_big/2.png" /></td>
-            <td id="monogram_I"><img alt="I" src="http://s3.amazonaws.com/casamiento/monograms_big/3.png" /></td>
-        </tr> 
-        <tr>        
-            <td id="monogram_J"><img alt="J" src="http://s3.amazonaws.com/casamiento/monograms_big/4.png" /></td> 
-            <td id="monogram_K"><img alt="K" src="http://s3.amazonaws.com/casamiento/monograms_big/5.png" /></td>
-            <td id="monogram_L"><img alt="L" src="http://s3.amazonaws.com/casamiento/monograms_big/6.png" /></td>
-            </tr>
-        <tr>
-            <td id="monogram_M"><img alt="M" src="http://s3.amazonaws.com/casamiento/monograms_big/7.png" /></td>
-            <td id="monogram_N"><img alt="N" src="http://s3.amazonaws.com/casamiento/monograms_big/8.png" /></td>
-        </tr> 
-    </table>  
+<div id="product_page_genesis"><img src="/gfx/logo/genesis_footer.png" /></div>
+     
+<!-- T H U M B N A I L S -->
+<div id="product_section0">
+<div class="product_type spc">
+        <div class="name_place_icon"><img src="http://www.casamiento.co.uk/gfx/product_types/small/name_place_small.png" style="width:100%;"></div>
     </div>
-<div id="cover">
-<div id="maincontainer" style="clear:both;">
-    <div id="product_page_genesis"><img src="/images/logo_branding/genesis_footer.png" /></div>
-    
-    <div id="product" >        
-        <div id="product_section1">
-    
-            <h1 class="product_name" style="float:left"> <img src="/images/bullets/bullet_square_dots.png" />Simplicity</h1>
-            
-            <img src="/images/product_types/small/name_place_grey.png" style="float:right;" />
+
+    <div class="spc">
+        <h1>Card Texture</h1>
+
+        <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
+        <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
+        <div class="b1"></div>
+    </div>
+
+    <div class="spc">
+        <h1>Thickness</h1>
         
-            <div class="slides_container" style="clear:both">            
-                <div class="product_slide"><img src="/products/<%= _id %>/attachments/large-1" /></div>
-                <div class="product_slide"><img src="/products/<%= _id %>/attachments/large-2" /></div>
-                <div class="product_slide"><img src="/products/<%= _id %>/attachments/large-3" /></div>
-                <div class="product_slide"><img src="/products/<%= _id %>/attachments/large-4" /></div>
-            </div>
-            
-            <div id="product_section2">
-        
-                <h5><img src="/images/bullets/small_dot_square.png" /> Colours shown:</h5>
-               
-                <% colours.forEach(function(colour) { %>
-                     <div class="colour_container">
-                        <div class="swatch" style="background-color:<%= colour %>;"></div>
-            
-                        <span class="small"><%= colour %></span>
-                    </div>
-                <% }) %>
-            </div>
-            
-            <div id="product_section3">
-            
-                <div style="margin-right:63px;">
-                
-                    <h5><img src="/images/bullets/small_dot_square.png" /> Price per <span id="quantity">16</span>:</h5>
-                    <div id="slider" style="float:left;" class="noUiSlider"></div>
-                    <div id="price">
-                        <span class="number" id="price_main">£1</span><span id="price_decimal" class="decimal">.95</span>
-                    </div>
-                </div>
-                
-                
-            </div>
+        <div style="width:60%;margin:auto">
+            <div class="weight" style="border-top:2px solid #666;"></div>
+            <p>300gsm</p>
+            <div class="weight" style="border-top:4px solid #666;"></div>
+            <p>250gsm</p>
         </div>
     </div>
 
-    <!-- T H U M B N A I L S -->
-    <div id="product_section0">
-        <ul class="product_pagination">
-            <li><a href="#"><img src="/products/<%= _id %>/attachments/thumb-1" /></a></li>
-            <li><a href="#"><img src="/products/<%= _id %>/attachments/thumb-2" /></a></li>
-            <li><a href="#"><img src="/products/<%= _id %>/attachments/thumb-3" /></a></li>
-           <li><a href="#"> <img src="/products/<%= _id %>/attachments/thumb-4" /></a></li>
-       </ul>
-       
-        <img src="/images/shell.png" />
+    <div class="spc">
+        <h1>Product format</h1>
+        <div style="margin:auto;text-align:center;">
+        <div class="spec" style="width:90px"><img src="http://www.casamiento.co.uk/gfx/specs/tent.png"></div></div>
     </div>
-</div>
-    &nbsp;
-    <div style="clear: both;"></div>
-</div>
-                <div id="buy" style="float:right"></div>
-<div id="pageslide">
-  <% include cart_page %>
+    
+    <div class="spc">
+        <h1>Monogram shown</h1>
+        <img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
+    </div>
+    <div class="spc"><h1>Colours shown</h1>
+        <div id="colours-shown" style="margin-top:1em;float:left;">
         
+        <% colours.forEach(function(colour) { %>
+            <div style="float:left">
+                <div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:<%= colour %>;border-radius:5px;"></div>
+                <p class="casamiento" style="margin-left:1em;text-indent:0;font:normal 1em GaraI;padding:0; margin-top:5px;"><%= colour %></p>
+            </div>
+        <% }) %>  
+        
+        </div>
+        <div class="b1"></div>
+    </div>
+    <img src="/gfx/shell.png" />
 </div>
-</div>
+
+<div id="product_section1">
+
+    <h1 class="product_name" style="float:left"> <img src="/gfx/bullets/bullet_square_dots.png" /> <%= name %></h1>
+
+    <div id="slides" style="clear:both">            
+       <img src="/products/<%= _id %>/attachments/medium-1" />
+       <img src="/products/<%= _id %>/attachments/medium-2" />
+       <img src="/products/<%= _id %>/attachments/medium-3" />
+       <img src="/products/<%= _id %>/attachments/medium-4" />
+    </div>
+  
+</div>      
+<script>
+    $(function(){
+    
+      $("#slides").slidesjs({
+      pagination: { active: true },
+      navigation: { active: false },
+      play: { auto: true,
+      interval: 3500,
+      effect: "fade" },
+      effect: {
+      fade: {speed: 2000,
+      crossfade: true
+      }},
+        width: 750,
+        height: 479
+      });
+    });
+  </script>
+    
+    
+<div id="buy" style="float:right"></div>
