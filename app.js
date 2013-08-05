@@ -82,8 +82,7 @@ app.post('/ebay', function(req, res) {
 app.get("/", function(req, res) {
     db.view('products/name_place', function(error, documents) {
         res.render("welcome/index", {
-            documents: documents.toArray(),
-            layout: false
+            documents: documents.toArray()
         })
     })
 });

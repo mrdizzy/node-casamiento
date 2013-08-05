@@ -21,7 +21,7 @@
   
 /* Typography
 ==================================== */
-
+@font-face { font-family:"Gara"; src: url('http://www.casamiento.co.uk/f/GARA.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARA.woff') format('woff'); }
 @font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
 @font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARAIT.woff') format('woff'); }
 @font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
@@ -32,11 +32,11 @@
     .product_name { color:black; font-size:2.5em;  text-align:left; letter-spacing:0.2em;}
     
   h3 { color:#690172; font-weight:bold; margin-bottom: 1em; font-size:1.5em; }
-  h6 { font-size:20px; text-align:justify; letter-spacing:0.1em; line-height:150%; font-family: "Gara" }
+  h6 { font-size:20px; text-align:justify; letter-spacing:0.1em; line-height:150%; font-family: "Gara"; color:black; }
   .small { font-size:0.85em;}
   
-  h5 { font: bold 0.85em "OS Light""", sans-serif; padding-bottom: 10px; border-bottom: 1px solid grey; }
-
+  h5 { font: bold 0.85em "OS Light", sans-serif; padding-bottom: 10px; border-bottom: 1px solid grey; }
+p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
     .number {  font-size:2.4em;  }
     .decimal {  font-size:1.6em; position:relative;top:-8px; }
     
@@ -63,18 +63,16 @@ table td { text-align:center; }
 #page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); width:100%; }
 #inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:90%;}
 
-  #top_container {margin:0 auto; padding-top:8px; height:50px; border-bottom: 1px dashed #939598; 
-  padding-bottom:5px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; background-color:white; }
+  #top_container { z-index:5;border-bottom:1px solid #000;}
     #logo {  margin-left:35px; float:left;}
-    #cart { float:right; margin:0; padding:0; padding-top:10px; padding-right:10px;width:25%; }
-    #trolley { float:left; font-weight:bold;font-size:0.85em; color:grey; padding:8px; text-align:center;}
-
     .navbar {
         height:30px;
         padding-top:10px;
         float:left;   
+        background-color:white;
+        z-index:5;
         text-align:center;
-        width:24%;
+        width:24.5%;
         border-right:1px dotted grey;
         border-bottom: 1px dotted grey; 
     }
@@ -117,7 +115,7 @@ input:focus { background-color: lightgrey; border:1px solid black;  outline:none
 .spc { padding:0.5em;border-bottom:1px dotted grey;   }
 .spc { border-right:1px dotted grey; }
 .spc { border-left:1px dotted grey; }
-.spc h1 {font: normal 0.9em "OS Condensed"; margin:0;margin-bottom:0.5em; text-align:left}
+.spc h1 {font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em; text-align:left}
 .spc p { font-family: "OS"; font-size:1em; padding:0; margin:0em; line-height:1em; }
 
 /* WELCOME PAGE 
