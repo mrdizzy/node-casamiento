@@ -14,34 +14,36 @@
   input,textarea,select{*font-size:100%;}legend{color:#000;}del,ins{text-decoration:none;}
 
 /* YAHOO FONTS =========================================== */
-  body { font:13px/1.5 "Arial","Helvetica",sans-serif;*font-size:small;*font:x-small;color:#636667; background-image:url('/images/backgrounds/grey_header.png');}
+  body { font:13px/1.5 "Arial","Helvetica",sans-serif;*font-size:small;*font:x-small;color:#636667; }
   select, input, button, textarea { font:99% arial,helvetica,clean,sans-serif; }
   table { font-size:inherit;font:100%;width:100%; }
   pre, code, kbd, samp, tt { font-family:monospace;*font-size:108%;line-height:100%; }
   
 /* Typography
 ==================================== */
-@font-face { font-family:"Gara"; src: url('http://www.casamiento.co.uk/f/GARA.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARA.woff') format('woff'); }
-@font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
-@font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARAIT.woff') format('woff'); }
-@font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
-@font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OSL.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
-@font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
-  h1 { text-align:center;  font-family: TP; padding:0;margin:0;}
-    .theme_name { color:black;text-align:center; font-size: 4em; line-height:0.5em;letter-spacing:0.15em;}
-    .product_name { color:black; font-size:2.5em;  text-align:left; letter-spacing:0.2em;}
-    
-  h3 { color:#690172; font-weight:bold; margin-bottom: 1em; font-size:1.5em; }
-  h6 { font-size:20px; text-align:justify; letter-spacing:0.1em; line-height:150%; font-family: "Gara"; color:black; }
-  .small { font-size:0.85em;}
-  
-  h5 { font: bold 0.85em "OS Light", sans-serif; padding-bottom: 10px; border-bottom: 1px solid grey; }
+@font-face { font-family:"Gara"; src: url('/f/GARA.eot?') format('eot'), url('/f/GARA.woff') format('woff'); }
+@font-face { font-family:"TP"; src: url('/f/t.eot?') format('eot'), url('/f/t.woff') format('woff'); }
+@font-face { font-family:"GaraI"; src: url('/f/GARAIT.eot?') format('eot'), url('/f/GARAIT.woff') format('woff'); }
+@font-face { font-family:"OS"; src: url('/f/OSReg.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
+@font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
+@font-face { font-family:"OS Condensed"; src: url('/f/OSCB.eot?') format('eot'), url('/f/OSCB.woff') format('woff'); }
+
+h1 { text-align:center;  font-family: TP; padding:0;margin:0;}
+.theme_name { color:black;text-align:center; font-size: 4em; line-height:0.5em;letter-spacing:0.15em;}
+.product_name { color:black; font-size:2.5em;  text-align:left; letter-spacing:0.2em;}
+
+h3 { color:#690172; font-weight:bold; margin-bottom: 1em; font-size:1.5em; }
+h6 { font-size:20px; text-align:justify; letter-spacing:0.1em; line-height:150%; font-family: "Gara"; color:black; }
+.small { font-size:0.85em;}
+
+h5 { font: bold 0.85em "OS Light", sans-serif; padding-bottom: 10px; border-bottom: 1px solid grey; }
 p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
-    .number {  font-size:2.4em;  }
-    .decimal {  font-size:1.6em; position:relative;top:-8px; }
-    
-    a:link, a:hover, a:visited { color: #000; }
-    a:active { color: #29A4BD; }
+.number {  font-size:2.4em;  }
+.decimal {  font-size:1.6em; position:relative;top:-8px; }
+
+a:link, a:visited { text-decoration:none;color: #000; }
+ a:hover { text-decoration:underline;}
+a:active { color: #29A4BD; }
     
 /* COLOURS
 ================================== */
@@ -60,7 +62,7 @@ table td { text-align:center; }
 
 /* FURNITURE
 ==================================== */
-#page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); width:100%; }
+#page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); }
 #inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:90%;}
 
   #top_container { z-index:5;border-bottom:1px solid #000;}
@@ -85,7 +87,8 @@ table td { text-align:center; }
     .footer_seperator {  text-align:center; padding-top:1em;  float:left;  width:20%; }
     .collection { width:40%; float:left; text-align:center; }
     
-  .clear { clear:both; }
+    .img_100 { width:100% }
+    .center { text-align:center }
 
 /* FORMS
 ===================================== */  
@@ -97,7 +100,7 @@ input:focus { background-color: lightgrey; border:1px solid black;  outline:none
 #buy:hover { background-position: 0 -53px; }
 
 /* PRODUCT PAGE
-================================================================================================ */
+======================================================================================= */
 .b1 { clear:both; }
 .spec { display:inline-block; }
 .spec img { width:100%; }
@@ -120,23 +123,26 @@ input:focus { background-color: lightgrey; border:1px solid black;  outline:none
 
 /* WELCOME PAGE 
 ============================================== */
-    #product_type { clear:both; width:25%; text-align:center; float:left; padding-top:20px; }
-    #welcome_logo { width:75%; padding-top:10px; }
+
+#product_type { clear:both; width:25%; text-align:center; float:left; padding-top:20px; }
+#welcome_logo { width:75%; padding-top:10px; }
+
 .pagination { background:white; width:110px; height:20px; margin-top:6px; padding-left:7px; padding-top:8px; position:relative; top:-840px; left:800px; z-index:100; }
-    
-    .pagination li { float:left; margin:0 5px; }
+ 
+     ul.slidesjs-pagination { border-radius:8px;padding:7px;background-color:white;position:absolute; left:150px; top:160px; z-index:100;}
+    .slidesjs-pagination li { float:left; margin:0 5px; }
         
-        .pagination li a {
+       .slidesjs-pagination li a {
             display:block;     
             width:10px;
             height:0;
         	padding-top:10px;
-        	background-image:url('/images/pagination.png');
+        	background-image:url('/gfx/pagination.png');
         	background-position:0 0;
         	float:left;
         	overflow:hidden;
         }
         
-        .pagination li.current a {
+        .slidesjs-pagination li a.active {
         	background-position:0 -10px;
         }
