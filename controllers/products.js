@@ -48,16 +48,15 @@ exports.create = function(req, res) {
 exports.show = function(req, res) {
     var id = req.params.product;
     db.get(id, function(error, document) {
-        res.format({
-            json: function() {
-                console.log(document);
-                res.json(document)
-            },
-            html: function() {
+       // res.format({
+        //    json: function() {
+         //       res.json(document)
+         //   },
+          //  html: function() {
                 res.render('catalog/product.ejs', {
                     locals: document
                 });
-            }
-        })
+          //  }
+        //})
     });
 };

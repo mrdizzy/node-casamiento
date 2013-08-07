@@ -1,12 +1,16 @@
 <style type="text/css">
-		
+	
 	h2.casamiento { text-align:center; font: normal 2.2em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em;color:#000; }
 	p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 1.1em "OS", serif;line-height: 1.75em; padding:0; color:black;}
-
+#welcome_description { margin-left:3em;margin-right:3em; }
 	#welcome_column_1 { width:45%;float:left; }
 	#welcome_column_2 {width:30%;float:left; }
 	#welcome_column_3 { width:25%;float:left; }
 	
+		@media screen and (max-width:1024px) {
+		
+	#welcome_description { margin-left:1em;margin-right:1em; }
+}
 </style>
 
 <div style="text-align:center">
@@ -21,12 +25,16 @@
 		<div>
 			<div id="welcome_column_1">
 				<img src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/medium-<%= place.attachments_order[0] %>.jpg" class="img_100" />
-
-				<h2 class="casamiento b1" style="text-align:center;padding:0;margin:0;font-size:2.5em;margin-left:1%;"><a href="/products/<%= place._id %>"><%= place.name %></a></h2>
-
-				<h6 style="margin-left:3em;margin-right:3em;">A beautiful design inspired by chessboard and the chequered floors of Parisien galleries. </h6>
-
-				<p class="center"><img src="/gfx/shell.png" /></p>
+				<% if (place.name.length > 10) { %>
+				<h2 class="casamiento b1" style="text-align:center;padding:0;margin:0;font-size:2.2em;margin-left:1%;"><a href="/products/<%= place._id %>"><%= place.name %></a></h2>
+				
+				<h6 id="welcome_description" style="line-height:1.25em">A beautiful design inspired by chessboard and the chequered floors of Parisien galleries. </h6>
+<% } else { %>
+<h2 class="casamiento b1" style="text-align:center;padding:0;margin:0;font-size:2.5em;margin-left:1%;"><a href="/products/<%= place._id %>"><%= place.name %></a></h2>
+				
+				<h6 id="welcome_description">A beautiful design inspired by chessboard and the chequered floors of Parisien galleries. </h6>
+				<% } %>
+				<p class="center" style="margin-top:1em"><img src="/gfx/shell.png" /></p>
 				
 			</div>
 
@@ -77,7 +85,7 @@
 
 </div>
 
-<div style="border-top:1px solid black;width:95%;margin-top:0;"></div>
+<div style="border-top:1px solid black;width:95%;margin:auto;margin-top:0;"></div>
 
 	<div style="width:70%;margin:auto;">
 		<h6 style="text-align:center;letter-spacing:0; line-height:1em; font-size:3.5em"><span style="letter-spacing:0.15em; font-size:0.75em;font-variant:small-caps"> IMPRESS</span> your guests with<br/> beautiful unique place cards...</h6>
@@ -118,7 +126,7 @@
 	  crossfade: true
 	  }},
 		width: 750,
-		height: 350
+		height: 380
 	  });
 	});
 </script>

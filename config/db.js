@@ -7,7 +7,7 @@ var cradle = require('cradle'),
         cache: false
     }),
     databases = {}
-
+databases.connection = connection;
 databases.ebay_messages = connection.database("ebay_messages");
 databases.test_ebay = connection.database("david_pettifer");
 

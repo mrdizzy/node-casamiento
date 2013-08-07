@@ -39,6 +39,7 @@ app.configure('development', function() {
 app.resource("themes", require("./controllers/themes"),  {
     load: parseRevision
 })
+app.resource("cart", require("./controllers/cart"))
 app.resource("product_types", require("./controllers/product_types"))
 
 var products = app.resource('products', require('./controllers/products'), {
