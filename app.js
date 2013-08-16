@@ -25,6 +25,7 @@ app.configure(function() {
     app.set('view options', {
         layout: false
     });
+    app.use(express.cookieParser());
     app.use(express.favicon());
     app.use(partials());
     app.use(express.logger('dev'));

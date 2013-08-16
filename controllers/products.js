@@ -46,17 +46,32 @@ exports.create = function(req, res) {
     });
 }
 exports.show = function(req, res) {
-    var id = req.params.product;
+var id = req.params.product;
+    var cart_id = req.cookies.cart;
+    if (req.cookies.cart) {
+        db.get(req.cookies.cart, function(err, doc) {
+              getProduct(req, res,id,doc)
+        })
+    } else {
+        getProduct(req, res, id)
+    }
+    
+    
+};
+
+function getProduct(req, res,id,cart) {
     db.get(id, function(error, document) {
+    document.cart = cart;
        // res.format({
         //    json: function() {
          //       res.json(document)
          //   },
           //  html: function() {
+          
                 res.render('catalog/product.ejs', {
                     locals: document
                 });
           //  }
         //})
     });
-};
+}
