@@ -13,10 +13,12 @@ exports.create = function(req, res) {
 }
 exports.update = function(req, res) {
 	var attrs = req.body;
+	console.log(req.body)
 	db.save(attrs, function(err, doc) {
+	console.log(err, doc)
 	attrs._id = doc._id;
+	attrs._rev = doc._rev;
 		if(err) { console.log(err)} else {
-		
 			res.json(attrs)
 			}
 	})

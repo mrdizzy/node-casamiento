@@ -1,8 +1,7 @@
 <style type="text/css">
- td, th { border:1px dotted #000; border-bottom:1px solid #000;font: normal 0.9em "OS Condensed"; color:black; text-align:center; }
-table { border-radius: 10px; border-collapse:collapse; width:100%;}
-
-td { padding-top:1em;padding-bottom:1em;border-bottom: 1px solid white;font-family: "OS"; font-size:1em; }th { padding-top:1em;padding-bottom:1em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em; }
+ td, th { border:1px dotted #000; font: normal 0.9em "OS Condensed"; color:black; text-align:center; }
+table { border-radius: 10px; border-collapse:collapse; width:100%;border-bottom:0;}
+td { border-bottom: 1px solid white;}
 img.monogram { padding:1em;opacity:0.3; border:1px solid transparent;}
 img.monogram:hover { opacity:1; border:1px dotted black; cursor:pointer;}
   ul.slidesjs-pagination { position:static;  top:160px; z-index:100;}
@@ -25,66 +24,69 @@ ul li a[data-slidesjs-item="2"] { background-image:url('/products/<%= id %>/atta
 ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/attachments/thumb-4'); }
 </style>
 <script type="text/template" id="cart_header">
-    
+   
 </script>
        
 <script type="text/template" id="break">
-                <td colspan="6"><div style="width:95%;padding-bottom:3em;margin:auto;margin-top:2em;">
+               <div style="clear:both;width:95%;padding-bottom:3em;margin:auto;margin-top:2em;">
          <div style="width:46%;float:left;margin-top:5px;border-top:1px solid black;"></div>
                 <div style="width:8%;float:left;"><img src="/gfx/page_seperators/orna.png" style="width:50%;" /></div>
                 <div style="width:46%;float:left;margin-top:5px;border-top:1px solid black;"></div>
         </div>
-  </td>
+
   </script>
 
 <script type="text/template" id="cart_item">
-        <td style="width:35%;"><span style="font: normal 2em TP; letter-spacing:0.25em;color:#000">Birds of Paradise</span>
-           <img src="/products/%% id %%/attachments/display-2.jpg" style="width:95%"/><br/>
-           <img src="/gfx/product_types/small/name_place_small.png" style="width:120px">
-        </td>
-                <td style="width:65%;">
-        <table>
-        <tr>
-        <th>Card texture</th>
-        <th>Card thickness</th>
-        <th>Colours</th>
-  </tr>
-        <tr>
-        <td style="width:50%"><div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
-                <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p>
-                </div>
-                <div class="b1"></div>
-        </td>
-       <td style="width:25%"> <div style="width:60%;margin:auto">
-            <div class="weight" style="border-top:2px solid #666;"></div>
-                        <p>300gsm</p>
-                        <div class="weight" style="border-top:4px solid #666;"></div>
-                        <p>250gsm</p>
-                </div>
-        </td>
+
+<div style="clear:both;float:left;width:40%;text-align:left;">
+   <p style="font: normal 1.75em TP; letter-spacing:0.25em;color:#000">Birds of Paradise</p>
+   <img src="/products/%% id %%/attachments/display-2.jpg" style="width:100%;"/><br/>
+   <img src="/gfx/product_types/small/name_place_small.png" style="width:120px">
+ 
+   <p style="text-align:center;font: normal 2.5em 'OS Light';color:black">&pound;2.99</p>
+  
+</div>
+<div style="float:left;width:29%;">  
+  <div class="spc" style="border:0;padding:1em;">
+    <h1 style="border-bottom:1px solid black;padding-bottom:0.5em;margin-bottom:1em;">Card texture</h1>
+    <div style="float:left;margin-left:1em;">
+      <p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p>
+    </div>
+    <div style="float:left;margin-left:1em;">
+      <p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p>
+    </div>
+    <div class="b1"></div>
+  </div>
+  		<div class="spc" style="border:0;padding:1em;">
+    <h1 style="border-bottom:1px solid black;padding-bottom:0.5em;margin-bottom:1em;">Colours</h1>
+                %- colours.forEach(function(colour) { -%
         
-         <td style="text-align:center;width:25%">        
-                
-        %- colours.forEach(function(colour) { -%
-    
-            <div style="width:25%;float:left">
-                <div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:%% colour %%;border-radius:5px;"></div>
-                <p class="casamiento" style="margin-left:1em;text-indent:0;font:normal 1em GaraI;padding:0; margin-top:5px;">%% colour %%</p>
-            </div>
-        %- }) -%
-                <br/>
-                <div class="change" style="clear:both">CHANGE</div></td>
-        </tr>
-        <tr>
-        <th>Monogram style</th>
-        <th>Price</th>
-        </tr>
-        <tr><td><img src="/gfx/m/%%monogram%%.png" style="width:100%"/><br/><div class="change_monogram change">CHANGE</div></td>
+                        <div style="float:left">
+                                <div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:%% colour %%;border-radius:5px;"></div>
+                                <p class="casamiento" style="margin-left:1em;text-indent:0;font:normal 1em GaraI;padding:0; margin-top:5px;">%% colour %%</p>
+                        </div>
+                %- }) -%
+                                <br/>
+                                <div class="change" style="clear:both">CHANGE</div>
+  </div>
+  
+  <div class="spc" style="border:0;padding:1em;">
+    <h1 style="border-bottom:1px solid black;padding-bottom:0.5em;margin-bottom:1em;">Card weight</h1>
+    <div class="weight" style="border-top:2px solid #666;"></div>
+    <p>300gsm</p>
+    <div class="weight" style="border-top:4px solid #666;"></div>
+    <p>250gsm</p>
+  </div>
+</div>
+     <div style="float:left;width:29%;">
+     <div class="spc" style="border:0;padding:1em;text-align:center;">
+    <h1 style="border-bottom:1px solid black;padding-bottom:0.5em;margin-bottom:1em;">Monogram style</h1>
+  <img src="/gfx/m/%%monogram%%.png" style="width:225px"/> 
+  <div class="change_monogram change" style="display:inline-block;">CHANGE</div>
+  </div>
+</div>
         
-        <td colspan="2"><p style="text-align:center;font: normal 2.5em 'OS Light'">&pound;2.99</p></td>
-      </tr>
-        </table>
-         </td>
+         
        </script>
        
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
@@ -227,7 +229,6 @@ initialize: function() {
 var thisProduct = new Product({id: "<%= _id %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %> });
 
 var ItemView = Backbone.View.extend({
-        tagName: "tr",
         initialize: function() {
         _.bindAll(this, 'render');
                 this.model.on("change", this.render)      
@@ -253,8 +254,6 @@ var ItemView = Backbone.View.extend({
 });
 
 var ItemsView = Backbone.View.extend({
-        tagName: "table",
-        attributes: { style: "border-collapse:collapse;border:1px dotted grey" },
         initialize: function() {
                 this.listenTo(this.collection, "add", this.render)
         },
@@ -267,9 +266,9 @@ var ItemsView = Backbone.View.extend({
            
                  this.$el.append(new ItemView({model: item}).render().el)
                  
-                 this.$el.append("<tr>" + $('#break').html() + "</tr>")
+                 this.$el.append($('#break').html())
            }, this);
-            this.$el.append("</table>");
+            this.$el.append("<div style='clear:both'></div>");
 
            return this;
         }
