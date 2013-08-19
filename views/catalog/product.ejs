@@ -1,15 +1,28 @@
 <style type="text/css">
- td, th { border:1px dotted #000; border-bottom:1px solid #000;font: normal 0.9em "OS Condensed"; color:black; text-align:center; }
-table { border-radius: 10px; border-collapse:collapse; width:100%;}
 
-td { padding-top:1em;padding-bottom:1em;border-bottom: 1px solid white;font-family: "OS"; font-size:1em; }th { padding-top:1em;padding-bottom:1em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em; }
+/* QUANTITY SLIDER
+=================================== */
+/* The main bar. Give this class to whatever element you call .noUiSlider on. */
+
+
+ td, th { border:1px dotted #000; border-bottom:1px solid #000;font: normal 0.9em "OS Condensed"; color:black; text-align:center; border-top:0;}
+table {  border-collapse:collapse; width:100%; }
+input[type=text] { border:1px solid lightgrey; padding-left:0.1em;padding-right:0.1em;}
+input[type=text]:hover { background-color:#DDD; border:1px solid #000; }
+
+input[type=text]:focus { border:1px solid lightgrey; }
+td { padding-top:1em;padding-bottom:1em;border-bottom: 1px solid white;font-family: "OS"; font-size:1em; }
+
+th { padding-top:1em;padding-bottom:1em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em; }
+td:first-child, th:first-child { border-left:0;}
+td:last-child, th:last-child { border-right:0;}
 img.monogram { padding:1em;opacity:0.3; border:1px solid transparent;}
 img.monogram:hover { opacity:1; border:1px dotted black; cursor:pointer;}
   ul.slidesjs-pagination { position:static;  top:160px; z-index:100;}
    .slidesjs-pagination li a.active {
             background-position:0 0px;
         }
-        .change { width:4em;margin:0 auto;padding:0;border-radius:6px;background-color:lightgrey;color:white;padding-top:20px;padding-bottom:20px;}
+        .change { width:4em;margin:0 auto;padding:0.5em;border-radius:6px;background-color:#BBB;color:white;padding-top:15px;padding-bottom:15px;}
         .change:hover {cursor: pointer; background-color:black; }
  .product_pagination li { display:block;float:left;border:1px solid transparent; }
  .product_pagination li img { padding:0.5em; }
@@ -29,10 +42,10 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 </script>
        
 <script type="text/template" id="break">
-                <td colspan="6"><div style="width:95%;padding-bottom:3em;margin:auto;margin-top:2em;">
-         <div style="width:46%;float:left;margin-top:5px;border-top:1px solid black;"></div>
-                <div style="width:8%;float:left;"><img src="/gfx/page_seperators/orna.png" style="width:50%;" /></div>
-                <div style="width:46%;float:left;margin-top:5px;border-top:1px solid black;"></div>
+                <td colspan="2"><div style="width:98%;padding-bottom:3em;margin:auto;margin-top:2em;">
+         <div style="width:44%;float:left;margin-top:5px;border-top:1px solid black;"></div>
+                <div style="width:11%;float:left;"><img src="/gfx/page_seperators/orna.png" style="width:50%;" /></div>
+                <div style="width:44%;float:left;margin-top:5px;border-top:1px solid black;"></div>
         </div>
   </td>
   </script>
@@ -42,8 +55,12 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
            <img src="/products/%% id %%/attachments/display-2.jpg" style="width:95%"/><br/>
            <img src="/gfx/product_types/small/name_place_small.png" style="width:120px">
         </td>
-                <td style="width:65%;">
-        <table>
+                <td style="width:65%;padding:0;margin:0" class="second_col">
+         </td>
+       </script>
+       
+<script type="text/template" id="cart_item_table">
+<table style="padding-top:0;margin-top:0;">
         <tr>
         <th>Card texture</th>
         <th>Card thickness</th>
@@ -55,7 +72,7 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
                 </div>
                 <div class="b1"></div>
         </td>
-       <td style="width:25%"> <div style="width:60%;margin:auto">
+       <td style="width:20%"> <div style="width:60%;margin:auto">
             <div class="weight" style="border-top:2px solid #666;"></div>
                         <p>300gsm</p>
                         <div class="weight" style="border-top:4px solid #666;"></div>
@@ -63,7 +80,7 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
                 </div>
         </td>
         
-         <td style="text-align:center;width:25%">        
+         <td style="text-align:center;width:30%">        
                 
         %- colours.forEach(function(colour) { -%
     
@@ -77,15 +94,30 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
         </tr>
         <tr>
         <th>Monogram style</th>
-        <th>Price</th>
+        <th colspan="2">Price</th>
         </tr>
-        <tr><td><img src="/gfx/m/%%monogram%%.png" style="width:100%"/><br/><div class="change_monogram change">CHANGE</div></td>
+        <tr><td><div><img src="/gfx/m/%%monogram%%.png" style="width:95%"/><br/>
+        <div class="change_monogram change">CHANGE</div></div>
+        <div style="padding-top:1em;padding-bottom:1em;font: normal 0.9em 'OS Condensed'; color:#000; margin:0;margin-bottom:0.5em;border-bottom:1px solid black;">Monogram details</div>
         
-        <td colspan="2"><p style="text-align:center;font: normal 2.5em 'OS Light'">&pound;2.99</p></td>
+        <label style="font:normal 1.3em GaraI;text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em;">First name:</label>
+        <input type="text" style="text-align:center;font:normal 1.6em Gara;display:block;" value="Nicola" size="16"></input>
+        
+        <label style="font:normal 1.3em GaraI;text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em;">Second name:</label>
+        <input type="text" style="text-align:center;font:normal 1.6em Gara;display:block;" value="Michael" size="16"></input>
+        
+        <label style="font:normal 1.3em GaraI;text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em;">Date:</label>
+        <input type="text" style="text-align:center;font:normal 1.6em Gara;display:block;float:left;" value="22" size="2"></input> <input type="text" style="text-align:center;font:normal 1.6em Gara;display:block;margin-left:0.25em;float:left;" value="September" size="10"></input> <input type="text" style="text-align:center;font:normal 1.6em Gara;display:block;margin-left:0.25em;" value="2013" size="4"></input> 
+        </div>
+     </td>
+        
+        <td colspan="2"><p style="text-align:center;font: normal 4em 'OS Light'"><span style="font-size:0.65em;vertical-align:top;">&pound;</span>2<span style="font-size:0.65em;vertical-align:text-top;">.99</span></p>
+<div id="slider" class="noUiSlider" style="margin-left:1%;width:84%;float:left;"></div>
+<div style="quantity;font:normal 1.3em OS" id="qty">10</div>
+        </td>
       </tr>
         </table>
-         </td>
-       </script>
+</script>       
        
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
 <!-- T H U M B N A I L S -->
@@ -139,7 +171,6 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
     </div>
     <img src="/gfx/shell.png" />
 </div>
-
 <div id="product_section1">
 
     <h1 class="product_name" style="float:left"> <img src="/gfx/bullets/bullet_square_dots.png" /> <%= name %></h1>
@@ -166,7 +197,7 @@ ss
 <div id="monograms"  style="display:none;clear:both;text-align:center;padding:2em;padding-top:3em;">
 <% for(var i = 1; i < 17; i++) { %>
 
-<div style="display:inline-block;width:24%;padding:1%">
+<div style="display:inline-block;width:235px;padding:1%">
 <img src="/gfx/m/<%= i %>.png" class="monogram" id="monogram_<%= i %>" style="width:100%"/>
 </div>
 
@@ -181,6 +212,9 @@ _.templateSettings = {
   evaluate: /\%\-(.+?)\-\%/g
 };
     $(function(){
+    
+    
+    
       $("#slides").slidesjs({ pagination: { active: true }, navigation: { active: false },
       play: { auto: true, interval: 3500, effect: "fade" },
       effect: { fade: {speed: 2000, crossfade: true }},
@@ -205,8 +239,7 @@ initialize: function() {
         this.listenTo(this.get("items"), "change", this.updateCart)  
 },
         updateCart: function(event) {
-        console.log("event", event)
-                this.save(null, {error: function() { console.log("error") }, success: function() { console.log("success") }})
+                this.save(null, {error: function() {  }, success: function() {  }})
         },
         defaults: {
                 items: new Items()      
@@ -226,53 +259,79 @@ initialize: function() {
 
 var thisProduct = new Product({id: "<%= _id %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %> });
 
+var CartItemView = Backbone.View.extend({
+    initialize: function() {
+    _.bindAll(this, 'render');
+    this.model.on("change", this.render)      
+  },
+  render: function() {
+    
+    
+     var item_table_template = $('#cart_item_table').html();
+    var compiled = _.template(item_table_template);
+    var item_html = compiled(this.model.toJSON());
+    this.$el.html(item_html)
+    var that = this;
+    this.$('#slider').noUiSlider({
+    range: [10, 200]
+   ,start: 10
+   ,step: 10,
+   slide: function(input) {
+     that.$('#qty').html(that.$('#slider').val())
+   },
+   handles: 1
+});
+    return this;
+  }
+})
+
 var ItemView = Backbone.View.extend({
-        tagName: "tr",
-        initialize: function() {
-        _.bindAll(this, 'render');
-                this.model.on("change", this.render)      
-        },
-        events: {
-                "click": "changeMonogram"
-        },
-        changeMonogram: function() {
-                c.setContext(this.model)    
-                $('#cart').fadeOut(function() {
-            $('#monograms').fadeIn()
-         });
-        },
-        render: function() {
-                var template = $('#cart_item').html();
-                var compiled = _.template(template);
-                var html = compiled(this.model.toJSON());
-                
-                this.$el.html(html);
-                
-                return this;
-        }
+  tagName: "tr",
+
+  events: {
+    "click .change_monogram": "changeMonogram"
+  },
+  changeMonogram: function() {
+    c.setContext(this.model)    
+    $('#cart').fadeOut(function() {
+      $('#monograms').fadeIn()
+   });
+  },
+  render: function() {
+    var item_template = $('#cart_item').html();
+    var compiled = _.template(item_template);
+    var item_html = compiled(this.model.toJSON());
+    
+    this.$el.html(item_html);
+    var cart_item_view = new CartItemView({model: this.model}).render().el
+    
+    $(cart_item_view).appendTo(this.$('td.second_col'));
+    
+    return this;
+  }
 });
 
 var ItemsView = Backbone.View.extend({
-        tagName: "table",
-        attributes: { style: "border-collapse:collapse;border:1px dotted grey" },
-        initialize: function() {
-                this.listenTo(this.collection, "add", this.render)
-        },
-        render: function() {
-           this.$el.empty();    
-          
-           var header = $('#cart_header').html();
-           this.$el.html(header);
-           this.collection.forEach(function(item) {
+  tagName: "table",
+  attributes: { style: "border-collapse:collapse;border:1px dotted grey" },
+  initialize: function() {
+          this.listenTo(this.collection, "add", this.render)
+  },
+  render: function() {
+     this.$el.empty();    
+    
+     var header = $('#cart_header').html();
+     this.$el.html(header);
+     this.collection.forEach(function(item) {
+     
+           this.$el.append(new ItemView({model: item}).render().el)
            
-                 this.$el.append(new ItemView({model: item}).render().el)
-                 
-                 this.$el.append("<tr>" + $('#break').html() + "</tr>")
-           }, this);
-            this.$el.append("</table>");
+           this.$el.append("<tr>" + $('#break').html() + "</tr>")
+     }, this);
+      this.$el.append("</table>");
 
-           return this;
-        }
+     return this;
+  }
 });
 
 var iv = new ItemsView({collection: c.get("items")})
@@ -315,6 +374,7 @@ var BuyButtonView = Backbone.View.extend({
         "click": "addToCart"
         },
         addToCart: function() {
+        c.get("items").add(thisProduct)
         pv.showCart();
         }
 })
