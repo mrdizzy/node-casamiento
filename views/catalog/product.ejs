@@ -244,10 +244,14 @@ var Cart = Backbone.Model.extend({
     this.saving = 0;
   },
   updateCart: function(event) {
-  console.log("updatecart", this.saving)
+ 
         if (this.saving > 0) {
+         console.log("updatecart > 0", this.saving)
                 this.saving = this.saving + 1;
+
         } else {
+        
+         console.log("updatecart ", this.saving)
                 this.saving = this.saving + 1;
                 this.doSave();
         }
@@ -258,8 +262,9 @@ var Cart = Backbone.Model.extend({
       this.save(null, {
         error: function() {  }, 
         success: function() { 
+        console.log("success", that.saving)
         that.saving = that.saving - 1;
-               if(this.saving > 0) {
+               if(that.saving > 0) {
                        that.doSave();
                }
         }
