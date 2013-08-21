@@ -1,32 +1,35 @@
 <style type="text/css">
+label { font:normal 1.3em GaraI;text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em; }
+input[type=text] {text-align:center;font:normal 1.6em Gara;display:block; border:1px solid lightgrey; padding-left:0.1em;padding-right:0.1em;}
+  input[type=text]:hover { background-color:#DDD; border:1px solid #000; }
+  input[type=text]:focus { border:1px solid lightgrey; }
 
-/* QUANTITY SLIDER
-=================================== */
-/* The main bar. Give this class to whatever element you call .noUiSlider on. */
+table {  border-collapse:collapse; }
+  td, th { border:1px dotted #000; border-bottom:1px solid #000;font: normal 0.9em "OS Condensed"; color:black; text-align:center; border-top:0;}
 
+  td { border-bottom: 1px solid white;font-family: "OS"; font-size:1em; }
 
- td, th { border:1px dotted #000; border-bottom:1px solid #000;font: normal 0.9em "OS Condensed"; color:black; text-align:center; border-top:0;}
-table {  border-collapse:collapse; width:100%; }
-input[type=text] { border:1px solid lightgrey; padding-left:0.1em;padding-right:0.1em;}
-input[type=text]:hover { background-color:#DDD; border:1px solid #000; }
+  th { padding-top:1em;padding-bottom:1em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em; }
+  td:first-child, th:first-child { border-left:0;}
+  td:last-child, th:last-child { border-right:0;}
 
-input[type=text]:focus { border:1px solid lightgrey; }
-td { padding-top:1em;padding-bottom:1em;border-bottom: 1px solid white;font-family: "OS"; font-size:1em; }
+.change { width:4em;margin:0 auto;padding:0.5em;border-radius:6px;background-color:#BBB;color:white;padding-top:15px;padding-bottom:15px;}
+.change:hover {cursor: pointer; background-color:black; }
 
-th { padding-top:1em;padding-bottom:1em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em; }
-td:first-child, th:first-child { border-left:0;}
-td:last-child, th:last-child { border-right:0;}
-img.monogram { padding:1em;opacity:0.3; border:1px solid transparent;}
+img.monogram { padding:1em; opacity:0.3; border:1px solid transparent;}
 img.monogram:hover { opacity:1; border:1px dotted black; cursor:pointer;}
   ul.slidesjs-pagination { position:static;  top:160px; z-index:100;}
    .slidesjs-pagination li a.active {
             background-position:0 0px;
         }
-        .change { width:4em;margin:0 auto;padding:0.5em;border-radius:6px;background-color:#BBB;color:white;padding-top:15px;padding-bottom:15px;}
-        .change:hover {cursor: pointer; background-color:black; }
- .product_pagination li { display:block;float:left;border:1px solid transparent; }
- .product_pagination li img { padding:0.5em; }
+        
+.color_square { margin-left:1em;width:30px;height:30px;border-radius:5px;}
+.color_label { margin-left:1em;text-indent:0;font:normal 1.2em GaraI;padding:0; margin-top:5px;
+
+.product_pagination li { display:block;float:left;border:1px solid transparent; }
+ product_pagination li img { padding:0.5em; }
 .product_pagination li:hover { border:1px solid black; }
+
 ul { text-align:center }
 ul li { padding:0.25em; }
 ul li {display:inline-block; border: 1px solid transparent; padding:0.25em; margin:0.25em;}
@@ -37,9 +40,6 @@ ul li a[data-slidesjs-item="1"] { background-image:url('/products/<%= id %>/atta
 ul li a[data-slidesjs-item="2"] { background-image:url('/products/<%= id %>/attachments/thumb-3'); }
 ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/attachments/thumb-4'); }
 </style>
-<script type="text/template" id="cart_header">
-    
-</script>
        
 <script type="text/template" id="break">
                 <td colspan="2"><div style="width:98%;padding-bottom:3em;margin:auto;margin-top:2em;">
@@ -51,72 +51,80 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
   </script>
 
 <script type="text/template" id="cart_item">
-        <td style="width:35%;"><span style="font: normal 2em TP; letter-spacing:0.25em;color:#000">Birds of Paradise</span>
-           <img src="/products/%% id %%/attachments/display-2.jpg" style="width:95%"/><br/>
-           <img src="/gfx/product_types/small/name_place_small.png" style="width:120px">
-        </td>
-                <td style="width:65%;padding:0;margin:0" class="second_col">
-         </td>
-       </script>
+  <td style="width:35%;">
+    <span style="font: normal 2em TP; letter-spacing:0.25em;color:#000">Birds of Paradise</span>
+    <img src="/products/%% id %%/attachments/display-2.jpg" style="width:95%"/><br/>
+    <img src="/gfx/product_types/small/name_place_small.png" style="width:120px">
+  </td>
+  <td style="width:65%;padding:0;margin:0" class="second_col"></td>
+</script>
        
 <script type="text/template" id="cart_item_table">
-<table style="padding-top:0;margin-top:0;">
-        <tr>
-        <th>Card texture</th>
-        <th>Card thickness</th>
-        <th>Colours</th>
+<table>
+  <tr>
+    <th>Card texture</th>
+    <th>Card thickness</th>
+    <th>Colours</th>
   </tr>
-        <tr>
-        <td style="width:50%"><div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
-                <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p>
-                </div>
-                <div class="b1"></div>
-        </td>
-       <td style="width:20%"> <div style="width:60%;margin:auto">
-            <div class="weight" style="border-top:2px solid #666;"></div>
-                        <p>300gsm</p>
-                        <div class="weight" style="border-top:4px solid #666;"></div>
-                        <p>250gsm</p>
-                </div>
-        </td>
+  <tr>
+    <td style="width:50%"><div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
+          <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p>
+          </div>
+          <div class="b1"></div>
+    </td>
+    <td style="width:20%"> 
+      <div style="width:60%;margin:auto">
+        <div class="weight" style="border-top:2px solid #666;"></div>
+        <p>300gsm</p>
+        <div class="weight" style="border-top:4px solid #666;"></div>
+        <p>250gsm</p>
+      </div>
+    </td>
         
-         <td style="text-align:center;width:30%">        
-                
-        %- colours.forEach(function(colour) { -%
-    
-            <div style="width:25%;float:left">
-                <div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:%% colour %%;border-radius:5px;"></div>
-                <p class="casamiento" style="margin-left:1em;text-indent:0;font:normal 1em GaraI;padding:0; margin-top:5px;">%% colour %%</p>
-            </div>
-        %- }) -%
-                <br/>
-                <div class="change" style="clear:both">CHANGE</div></td>
-        </tr>
-        <tr>
-        <th>Monogram style</th>
-        <th colspan="2">Price</th>
-        </tr>
-        <tr><td><div><img src="/gfx/m/%%monogram%%.png" style="width:95%"/><br/>
-        <div class="change_monogram change">CHANGE</div></div>
-        <div style="padding-top:1em;padding-bottom:1em;font: normal 0.9em 'OS Condensed'; color:#000; margin:0;margin-bottom:0.5em;border-bottom:1px solid black;">Monogram details</div>
-        
-        <label style="font:normal 1.3em GaraI;text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em;">First name:</label>
-        <input type="text" style="text-align:center;font:normal 1.6em Gara;display:block;" value="Nicola" size="16"></input>
-        
-        <label style="font:normal 1.3em GaraI;text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em;">Second name:</label>
-        <input type="text" style="text-align:center;font:normal 1.6em Gara;display:block;" value="Michael" size="16"></input>
-        
-        <label style="font:normal 1.3em GaraI;text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em;">Date:</label>
-        <input type="text" style="text-align:center;font:normal 1.6em Gara;display:block;float:left;" value="22" size="2"></input> <input type="text" style="text-align:center;font:normal 1.6em Gara;display:block;margin-left:0.25em;float:left;" value="September" size="10"></input> <input type="text" style="text-align:center;font:normal 1.6em Gara;display:block;margin-left:0.25em;" value="2013" size="4"></input> 
+    <td style="text-align:center;width:30%">        
+          
+    %- colours.forEach(function(colour) { -%
+
+      <div style="width:25%;float:left">
+          <div class="color_square" style="background-color:%% colour %%;"></div>
+          <p class="color_label">%% colour %%</p>
+      </div>
+    %- }) -%
+          <br/>
+          <div class="change" style="clear:both">CHANGE</div></td>
+    </tr>
+    <tr>
+      <th>Monogram style</th>
+      <th colspan="2">Price</th>
+    </tr>
+    <tr>
+      <td>
+        <div>
+          <img src="/gfx/m/%%monogram%%.png" style="width:95%"/><br/>
+          <div class="change_monogram change">CHANGE</div>
         </div>
-     </td>
+        <div style="padding-top:1em;padding-bottom:1em;font: normal 0.9em 'OS Condensed'; color:#000; margin:0;margin-bottom:0.5em;border-bottom:1px solid black;">Monogram details
+        </div>
+    
+        <label>First name:</label>
+        <input type="text" value="Nicola" size="16"></input>
         
-        <td colspan="2"><p style="text-align:center;font: normal 4em 'OS Light'"><span style="font-size:0.65em;vertical-align:top;">&pound;</span>2<span style="font-size:0.65em;vertical-align:text-top;">.99</span></p>
-<div id="slider" class="noUiSlider" style="margin-left:1%;width:84%;float:left;"></div>
-<div style="quantity;font:normal 1.3em OS" id="qty">10</div>
-        </td>
-      </tr>
-        </table>
+        <label>Second name:</label>
+        <input type="text" value="Michael" size="16"></input>
+        
+        <label>Date:</label>
+        <input type="text" style="float:left;" value="22" size="2"></input> 
+        <input type="text" style="float:left;" value="September" size="10"></input> 
+        <input type="text" value="2013" size="4"></input> 
+        </div>
+      </td>
+        
+      <td colspan="2" class="quantity_selector"><p style="text-align:center;font: normal 4em 'OS Light'"><span style="font-size:0.65em;vertical-align:top;">&pound;</span>2<span style="font-size:0.65em;vertical-align:text-top;">.99</span></p>
+<div class="noUiSlider" style="margin-left:1%;width:84%;float:left;"></div>
+<div style="quantity;font:normal 1.3em OS" id="qty">%%quantity%%</div>
+      </td>
+    </tr>
+  </table>
 </script>       
        
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
@@ -191,7 +199,6 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 <div style="margin-left:2em;margin-right:2em;border:1px solid black;border-top:0;";>
 <div id="cart"  style="padding:2em;padding-top:3em;">
 
-ss
      <div class="b1"></div>
 </div>
 <div id="monograms"  style="display:none;clear:both;text-align:center;padding:2em;padding-top:3em;">
@@ -212,9 +219,6 @@ _.templateSettings = {
   evaluate: /\%\-(.+?)\-\%/g
 };
     $(function(){
-    
-    
-    
       $("#slides").slidesjs({ pagination: { active: true }, navigation: { active: false },
       play: { auto: true, interval: 3500, effect: "fade" },
       effect: { fade: {speed: 2000, crossfade: true }},
@@ -227,28 +231,48 @@ var Items = Backbone.Collection.extend({});
 var items_collection = new Items();
 
 var Cart = Backbone.Model.extend({
-idAttribute: "_id",
-setContext: function(current_item) {
-        this.context = current_item;
-},
-setMonogram: function(monogram) {
-        this.context.set("monogram", monogram)      
-},
-initialize: function() {
-        this.listenTo(this.get("items"), "add", this.updateCart)     
-        this.listenTo(this.get("items"), "change", this.updateCart)  
-},
-        updateCart: function(event) {
-                this.save(null, {error: function() {  }, success: function() {  }})
-        },
-        defaults: {
-                items: new Items()      
-        },
-        parse: function(response, options) {
-               response.items = new Items(response.items);
-                return response;
-        },
-        urlRoot: '/cart'
+  idAttribute: "_id",
+  setContext: function(current_item) {
+    this.context = current_item;
+  },
+  setMonogram: function(monogram) {
+    this.context.set("monogram", monogram)      
+  },
+  initialize: function() {
+    this.listenTo(this.get("items"), "add", this.updateCart)     
+    this.listenTo(this.get("items"), "change", this.updateCart)  
+    this.saving = 0;
+  },
+  updateCart: function(event) {
+  console.log("updatecart", this.saving)
+        if (this.saving > 0) {
+                this.saving = this.saving + 1;
+        } else {
+                this.saving = this.saving + 1;
+                this.doSave();
+        }
+  },
+  doSave: function() {
+   console.log("doSave", this.saving)
+        var that = this;
+      this.save(null, {
+        error: function() {  }, 
+        success: function() { 
+        that.saving = that.saving - 1;
+               if(this.saving > 0) {
+                       that.doSave();
+               }
+        }
+      })
+  },
+  defaults: {
+  items: new Items()      
+  },
+  parse: function(response, options) {
+    response.items = new Items(response.items);
+    return response;
+  },
+  urlRoot: '/cart'
 });
 
 <% if (cart) { %>
@@ -257,31 +281,38 @@ initialize: function() {
         var c = new Cart({ parse: true }) 
 <% }  %>
 
-var thisProduct = new Product({id: "<%= _id %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %> });
+var thisProduct = new Product({id: "<%= _id %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %>, quantity: 10 });
 
 var CartItemView = Backbone.View.extend({
     initialize: function() {
-    _.bindAll(this, 'render');
-    this.model.on("change", this.render)      
+    _.bindAll(this, 'render', 'updateQuantity');
+    this.model.on("change:quantity", this.updateQuantity)      
+  },
+  clickslider: function() {
+    alert("click")
   },
   render: function() {
-    
-    
-     var item_table_template = $('#cart_item_table').html();
+    var item_table_template = $('#cart_item_table').html();
     var compiled = _.template(item_table_template);
     var item_html = compiled(this.model.toJSON());
     this.$el.html(item_html)
     var that = this;
-    this.$('#slider').noUiSlider({
-    range: [10, 200]
-   ,start: 10
-   ,step: 10,
-   slide: function(input) {
-     that.$('#qty').html(that.$('#slider').val())
-   },
-   handles: 1
-});
+    this.$('.noUiSlider').noUiSlider({
+        range: [10, 200]
+       ,start: that.model.get("quantity")
+       ,step: 10,
+       slide: function(input) {
+        that.$('#qty').html(that.$('.noUiSlider').val())
+       },
+       handles: 1
+    });
+    this.$('.noUiSlider a div').click(function() {
+      that.model.set("quantity", that.$('.noUiSlider').val())
+    })
     return this;
+  },
+  updateQuantity: function() {
+    this.$('#qty').html(this.model.get("quantity"))
   }
 })
 

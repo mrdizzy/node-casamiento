@@ -13,14 +13,28 @@ exports.create = function(req, res) {
 }
 exports.update = function(req, res) {
 	var attrs = req.body;
-	console.log(req.body)
 	db.save(attrs, function(err, doc) {
-	console.log(err, doc)
-	attrs._id = doc._id;
-	attrs._rev = doc._rev;
-		if(err) { console.log(err)} else {
+		console.log("error", err, doc)
+		
+		if(err) { 
+		console.log("-------------------------------Conflict")
+			if(err.error == 'conflict') {
+		
+				db.get(attrs._id, function(error, response) {
+					attrs._rev = response._rev
+					db.save(attrs, function(new_err, new_doc) {
+					attrs._id = new_doc._id;
+			attrs._rev = new_doc._rev;
+						console.log("Saved after conflict", new_err, new_doc)
+						res.json(attrs)
+					})
+				})
+			}	
+		} else {
+			attrs._id = doc._id;
+			attrs._rev = doc._rev;
 			res.json(attrs)
-			}
+		}
 	})
 }
 
