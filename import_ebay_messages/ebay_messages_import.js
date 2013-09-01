@@ -9,8 +9,8 @@ var api = require('./../config/ebay_config')(),
 
 api.makeRequest("GetMyMessages", {
     DetailLevel: "ReturnHeaders",
-    StartTime: "2012-10-08T00:00:01Z",
-    EndTime: "2013-08-25T00:00:00Z"
+    StartTime: "2013-08-01T00:00:01Z",
+    EndTime: "2013-08-26T00:00:00Z"
 }, "json", null, function(err, response) {
     console.log(err, response);
     retrieveMessages(response.Messages.Message);
@@ -61,8 +61,8 @@ function saveToDatabase(err, messages) {
         }
         var threadAndMessage = [message, thread]
         db.save(threadAndMessage, function(error, response) {
-        console.log(response, error)
-            if(response[1].error == "conflict") {
+        console.log("----------------response:", threadAndMessage[0]._id,  threadAndMessage[1]._id, response, error)
+            if(response[1] && (response[1].error == "conflict")) {
                 db.save(message.conversation_id, thread, function(e, r) {
                 });
             }
