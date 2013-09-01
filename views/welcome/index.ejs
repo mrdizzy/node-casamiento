@@ -23,15 +23,8 @@
 	<% documents.forEach(function(place) { %>
 
 		<div>
-			<div id="welcome_column_1">
 				<a href="/products/<%= place._id %>"><img src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/medium-<%= place.attachments_order[0] %>.jpg" class="img_100" /></a>
-				
-			</div>
-
-			<div id="welcome_column_2">
-				<img src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/display-<%= place.attachments_order[1] %>.jpg" class="img_100" />
-				<img src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/display-<%= place.attachments_order[2] %>.jpg" class="img_100" />
-			</div>
+			
 		</div>
 
 	<% }) %>
