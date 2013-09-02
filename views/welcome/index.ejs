@@ -76,14 +76,14 @@
 	<% }) %>
 
 </div>
-<div style="width:75%;">
+<div style="width:75%;margin-top:1em; margin-bottom:1em;">
 <% var i = 0 %>
 	<% documents.forEach(function(place) { %>
   <% i = i+ 1; %>
 <div style="width:80%;margin:auto;text-align:center;display:none;" class="description" id="description_<%= i %>">
-<h2 class="casamiento" style="text-align:center;padding:0;margin:0;font-size:2.5em;margin-left:1%;"><a href="/products/<%= place.id %>"><%= place.name %></a></h2>
+<h2 class="casamiento" style="text-align:center;padding:0;margin:0;font-size:2.5em;margin-left:1%;"><a href="/products/<%= place._id %>"><%= place.name %></a></h2>
     
-    <h6 id="welcome_description">A beautiful design inspired by chessboard and the chequered floors of Parisien galleries. </h6>
+    <h6 id="welcome_description"><a href="/products/<%= place._id %>">A beautiful design inspired by chessboard and the chequered floors of Parisien galleries.</a></h6>
     
     <p class="center" style="margin-top:1em;margin-bottom:1em;"><img src="/gfx/shell.png" /></p>
     
