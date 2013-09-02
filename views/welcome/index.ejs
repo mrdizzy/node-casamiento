@@ -5,7 +5,7 @@
 #welcome_description { margin-left:3em;margin-right:3em; }
 	#welcome_column_1 { width:66.6%;float:left; }
 	#welcome_column_2 {width:33%;float:left; }
-	#welcome_column_3 { width:24.5%; float:right; }
+	#welcome_column_3 { width:25%; float:right; }
 		@media screen and (max-width:1024px) {
 		
 	#welcome_description { margin-left:1em;margin-right:1em; }
@@ -17,7 +17,11 @@
 </div>
 
       <div id="welcome_column_3">
-        <div class="product_type spc">
+      <% var sp = 0 %>
+      <% documents.forEach(function(place) { %> 
+      <% sp = sp + 1; %>
+      <div class="specs_holder" style="display:none;" id="specs_<%= sp %>">
+       <div class="product_type spc">
           <div class="name_place_icon">
             <img src="http://www.casamiento.co.uk/gfx/product_types/small/name_place_small.png" style="width:100%;">
           </div>
@@ -33,16 +37,24 @@
         
         <div class="spc">
           <h1>Monogram shown</h1>
-          <img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/1.png">
+          <img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= place.monogram %>.png">
         </div>
         
         <div class="spc"><h1>Colours shown</h1>
           <div id="colours-shown" style="margin-top:1em;float:left;">
-       
+          
+          <% place.colours.forEach(function(colour) { %>
+            <div style="float:left">
+              <div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:<%= colour %>;border-radius:5px;"></div>
+              <p class="casamiento" style="margin-left:1em;text-indent:0;font:normal 1.2em GaraI;padding:0; margin-top:5px;"><%= colour %></p>
+            </div>
+          <% }) %>  
           
           </div>
           <div class="b1"></div>
         </div>
+        </div>
+        <% }) %>
       </div>
 <!-- MAIN SLIDES -->
 
@@ -64,15 +76,20 @@
 	<% }) %>
 
 </div>
-
-		<% documents.forEach(function(place) { %>
-<h2 class="casamiento b1" style="text-align:center;padding:0;margin:0;font-size:2.5em;margin-left:1%;"><a href="/products/<%= place._id %>"><%= place.name %></a></h2>
+<div style="width:75%;">
+<% var i = 0 %>
+	<% documents.forEach(function(place) { %>
+  <% i = i+ 1; %>
+<div style="width:80%;margin:auto;text-align:center;display:none;" class="description" id="description_<%= i %>">
+<h2 class="casamiento" style="text-align:center;padding:0;margin:0;font-size:2.5em;margin-left:1%;"><a href="/products/<%= place.id %>"><%= place.name %></a></h2>
     
     <h6 id="welcome_description">A beautiful design inspired by chessboard and the chequered floors of Parisien galleries. </h6>
     
-    <p class="center" style="margin-top:1em"><img src="/gfx/shell.png" /></p>
+    <p class="center" style="margin-top:1em;margin-bottom:1em;"><img src="/gfx/shell.png" /></p>
     
-    <% }) %>
+</div>
+<% }) %>
+</div>
 <div style="border-top:1px solid black;width:95%;margin:auto;margin-top:0;"></div>
 
 	<div style="width:70%;margin:auto;">
@@ -104,6 +121,20 @@
 <script>
 	$(function(){	
 	  $("#slides2").slidesjs({
+    callback: {
+      loaded: function(number) {
+        $('#description_' + number).show()
+        $('#specs_' + number).show()
+      },
+      complete: function(number) {
+  
+        $('.specs_holder').hide()
+        $('.description').hide()
+        $('#description_' + number).show()
+        $('#specs_' + number).show()
+      }
+    },
+    
 	  pagination: { active: true },
 	  navigation: { active: false },
 	  play: { auto: true,
