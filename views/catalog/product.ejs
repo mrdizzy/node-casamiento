@@ -24,18 +24,20 @@ img.monogram:hover { opacity:1; border:1px dotted black; cursor:pointer;}
         }
         
 .color_square { margin-left:1em;width:30px;height:30px;border-radius:5px;}
-.color_label { margin-left:1em;text-indent:0;font:normal 1.2em GaraI;padding:0; margin-top:5px;
+.color_label { margin-left:1em;text-indent:0;font:normal 1.2em GaraI;padding:0; margin-top:5px; }
 
 .product_pagination li { display:block;float:left;border:1px solid transparent; }
- product_pagination li img { padding:0.5em; }
+.product_pagination li img { padding:0.5em; }
 .product_pagination li:hover { border:1px solid black; }
 
 ul { text-align:center }
 ul li { padding:0.25em; }
 ul li {display:inline-block; border: 1px solid transparent; padding:0.25em; margin:0.25em;}
 ul li:hover { border: 1px solid black; }
-ul li.slidesjs-pagination-item a { background-color:red; width:190px; height:0; padding-top:122px; display:inline-block; overflow:hidden; }
-ul li a[data-slidesjs-item="0"] { background-image:url('/products/<%= id %>/attachments/thumb-1'); }
+
+.slidesjs-pagination li a { width:190px; height:0; padding-top:122px; display:inline-block; overflow:hidden; }
+
+.slidesjs-pagination li a[data-slidesjs-item="0"] { background-image:url('/products/<%= id %>/attachments/thumb-1'); }
 ul li a[data-slidesjs-item="1"] { background-image:url('/products/<%= id %>/attachments/thumb-2'); }
 ul li a[data-slidesjs-item="2"] { background-image:url('/products/<%= id %>/attachments/thumb-3'); }
 ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/attachments/thumb-4'); }
@@ -230,8 +232,11 @@ var Product = Backbone.Model.extend({});
 var Items = Backbone.Collection.extend({});
 var items_collection = new Items();
 
+// Model representing a cart
+
 var Cart = Backbone.Model.extend({
   idAttribute: "_id",
+  // Sets a context so we know which item we are editing/changing
   setContext: function(current_item) {
     this.context = current_item;
   },
@@ -243,35 +248,35 @@ var Cart = Backbone.Model.extend({
     this.listenTo(this.get("items"), "change", this.updateCart)  
     this.saving = 0;
   },
+  // To update the cart we need to check if it is currently being 
+  // saved, if so we need to wait for saving to complete before trying
+  // to save it again
   updateCart: function(event) {
- 
-        if (this.saving > 0) {
-         console.log("updatecart > 0", this.saving)
-                this.saving = this.saving + 1;
-
-        } else {
-        
-         console.log("updatecart ", this.saving)
-                this.saving = this.saving + 1;
-                this.doSave();
-        }
+    if (this.saving > 0) {
+     console.log("updatecart > 0", this.saving)
+      this.saving = this.saving + 1;
+    } else {
+     console.log("updatecart ", this.saving)
+      this.saving = this.saving + 1;
+      this.doSave();
+    }
   },
   doSave: function() {
-   console.log("doSave", this.saving)
-        var that = this;
-      this.save(null, {
-        error: function() {  }, 
-        success: function() { 
-        console.log("success", that.saving)
-        that.saving = that.saving - 1;
-               if(that.saving > 0) {
-                       that.doSave();
-               }
+    console.log("doSave", this.saving)
+    var that = this;
+    this.save(null, {
+      error: function() {  }, 
+      success: function() { 
+      console.log("success", that.saving)
+      that.saving = that.saving - 1;
+        if(that.saving > 0) {
+          that.doSave();
         }
-      })
+      }
+    })
   },
   defaults: {
-  items: new Items()      
+    items: new Items()      
   },
   parse: function(response, options) {
     response.items = new Items(response.items);
@@ -280,10 +285,11 @@ var Cart = Backbone.Model.extend({
   urlRoot: '/cart'
 });
 
+// Create a new cart or initialize an existing one
 <% if (cart) { %>
-        var c = new Cart(<%- cart %>, { parse: true });
+  var c = new Cart(<%- cart %>, { parse: true });
 <% } else { %>
-        var c = new Cart({ parse: true }) 
+  var c = new Cart({ parse: true }) 
 <% }  %>
 
 var thisProduct = new Product({id: "<%= _id %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %>, quantity: 10 });
@@ -323,7 +329,6 @@ var CartItemView = Backbone.View.extend({
 
 var ItemView = Backbone.View.extend({
   tagName: "tr",
-
   events: {
     "click .change_monogram": "changeMonogram"
   },
@@ -347,11 +352,14 @@ var ItemView = Backbone.View.extend({
   }
 });
 
+// View listing the items in the cart, delegates to ItemView
+
 var ItemsView = Backbone.View.extend({
   tagName: "table",
   attributes: { style: "border-collapse:collapse;border:1px dotted grey" },
   initialize: function() {
           this.listenTo(this.collection, "add", this.render)
+          this.listenTo(this.collection, "change", this.render)
   },
   render: function() {
      this.$el.empty();    
@@ -359,13 +367,10 @@ var ItemsView = Backbone.View.extend({
      var header = $('#cart_header').html();
      this.$el.html(header);
      this.collection.forEach(function(item) {
-     
            this.$el.append(new ItemView({model: item}).render().el)
-           
            this.$el.append("<tr>" + $('#break').html() + "</tr>")
      }, this);
       this.$el.append("</table>");
-
      return this;
   }
 });
@@ -374,52 +379,52 @@ var iv = new ItemsView({collection: c.get("items")})
 $('#cart').html(iv.render().el);
 
 var PanelView = Backbone.View.extend({
-        el: $('#product_page'),
-        showCart: function() {
-                $('#product_page_genesis').fadeOut();
-                $('#buy').fadeOut();
-                $('#nav').fadeOut();
-                $('#product_page_genesis').fadeOut();
-                $('#product_page').fadeOut(function() {
-                        $('#cart_page').fadeIn();
-                })
-        }
+  el: $('#product_page'),
+  showCart: function() {
+    $('#product_page_genesis').fadeOut();
+    $('#buy').fadeOut();
+    $('#nav').fadeOut();
+    $('#product_page_genesis').fadeOut();
+    $('#product_page').fadeOut(function() {
+            $('#cart_page').fadeIn();
+    })
+  }
 })
 
 var MonogramView = Backbone.View.extend({
-el: $('#monograms'),
-        events: {
-                "click img": "selectMonogram"
-        },
-        selectMonogram: function(event) {
-                var monogram = $(event.target).attr('id');
-                var monogram_id = monogram.split("_")[1]
-                c.setMonogram(monogram_id)
-                $('#monograms').fadeOut(function() {
-            $('#cart').fadeIn()
-         });
-        }
+  el: $('#monograms'),
+  events: {
+          "click img": "selectMonogram"
+  },
+  selectMonogram: function(event) {
+    var monogram = $(event.target).attr('id');
+    var monogram_id = monogram.split("_")[1]
+    c.setMonogram(monogram_id)
+    $('#monograms').fadeOut(function() {
+      $('#cart').fadeIn()
+    });
+  }
 })
 var mv = new MonogramView();
 var pv = new PanelView({collection: c.get("items") });
 var BuyButtonView = Backbone.View.extend({
-        initialize: function() {
-                this.setElement($('#buy'))
-        },
-        events: { 
-        "click": "addToCart"
-        },
-        addToCart: function() {
-        c.get("items").add(thisProduct)
-        pv.showCart();
-        }
+  initialize: function() {
+    this.setElement($('#buy'))
+  },
+  events: { 
+    "click": "addToCart"
+  },
+  addToCart: function() {
+    c.get("items").add(thisProduct)
+    pv.showCart();
+  }
 })
 var bbv = new BuyButtonView();
 
 var ProductRouter = Backbone.Router.extend({
-    routes: {
-        "monograms": "chooseMonogram"
-    }
+  routes: {
+    "monograms": "chooseMonogram"
+  }
 });
 
 var prr = new ProductRouter();
