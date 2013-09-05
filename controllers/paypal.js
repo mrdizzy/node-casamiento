@@ -3,6 +3,8 @@ var db = require('couchdb-migrator').db,
 _ = require('underscore'),
     paypal = require('./../config/paypal_config')();
 
+// Downloads PayPal Transactions for immediate display -- it does not save them to Couch
+
 function parseTransactions(transactions, maincallback) {
     async.map(transactions, function(transaction, callback) {
         if (transaction.L_TYPE == 'Fee' || transaction.L_TYPE == 'Fee Reversal' || transaction.L_TYPE == 'Temporary Hold') {
@@ -34,8 +36,8 @@ module.exports.index = {
             }
         });
     }, {
-        startdate: "2013-08-17T00:00:00Z",
-        enddate: "2013-08-29T23:59:59Z",
+        startdate: "2013-08-31T00:00:00Z",
+        enddate: "2013-09-03T23:59:59Z",
         transactionclass: "BalanceAffecting"
     })
 },
