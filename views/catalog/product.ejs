@@ -102,7 +102,7 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
     <tr>
       <td>
         <div>
-          <img src="/gfx/m/%%monogram%%.png" style="width:95%"/><br/>
+          <img class="monogram_image" src="/gfx/m/%%monogram%%.png" style="width:95%"/><br/>
           <div class="change_monogram change">CHANGE</div>
         </div>
         <div style="padding-top:1em;padding-bottom:1em;font: normal 0.9em 'OS Condensed'; color:#000; margin:0;margin-bottom:0.5em;border-bottom:1px solid black;">Monogram details
@@ -302,7 +302,7 @@ var thisProduct = new Product({id: "<%= _id %>", monogram: <%= monogram %>, colo
 
 var CartItemView = Backbone.View.extend({
     initialize: function() {
-    _.bindAll(this, 'render', 'updateQuantity', 'updateTotal');
+    _.bindAll(this, 'render', 'updateQuantity', 'renderTotal', 'renderMonogram')
     this.model.on("change:quantity", this.updateQuantity)   
     this.model.on("change:total", this.renderTotal)  
     this.model.on("change:monogram", this.renderMonogram) 
@@ -331,7 +331,7 @@ var CartItemView = Backbone.View.extend({
     return this;
   },
   renderMonogram: function() {
-      
+      this.$('.monogram_image').attr("src", "/gfx/m/" + this.model.get("monogram") + ".png")
   },
   renderTotal: function() {
   var total = this.model.get("total");
