@@ -121,7 +121,7 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
         </div>
       </td>
         
-      <td colspan="2" class="quantity_selector"><p style="text-align:center;font: normal 4em 'OS Light'"><span style="font-size:0.65em;vertical-align:top;">&pound;</span>2<span style="font-size:0.65em;vertical-align:text-top;">.99</span></p>
+      <td colspan="2" class="quantity_selector"><p style="text-align:center;font: normal 4em 'OS Light'"><span style="font-size:0.65em;vertical-align:top;">&pound;</span><span class="pound">2</span><span style="font-size:0.65em;vertical-align:text-top;" class="dec">.99</span></p>
 <div class="noUiSlider" style="margin-left:1%;width:84%;float:left;"></div>
 <div style="quantity;font:normal 1.3em OS" id="qty">%%quantity%%</div>
       </td>
@@ -227,6 +227,9 @@ _.templateSettings = {
         width: 750, height: 479
       });
     });
+    
+  
+    
 var Product = Backbone.Model.extend({});
 
 var Items = Backbone.Collection.extend({});
@@ -261,6 +264,9 @@ var Cart = Backbone.Model.extend({
       this.doSave();
     }
   },
+  calculatePrice: function() {
+     this.context.set("total",this.context.get("price") * this.context.get("quantity"))
+  },
   doSave: function() {
     console.log("doSave", this.saving)
     var that = this;
@@ -292,12 +298,14 @@ var Cart = Backbone.Model.extend({
   var c = new Cart({ parse: true }) 
 <% }  %>
 
-var thisProduct = new Product({id: "<%= _id %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %>, quantity: 10 });
+var thisProduct = new Product({id: "<%= _id %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %>, quantity: 10, price: <%= price %> });
 
 var CartItemView = Backbone.View.extend({
     initialize: function() {
-    _.bindAll(this, 'render', 'updateQuantity');
-    this.model.on("change:quantity", this.updateQuantity)      
+    _.bindAll(this, 'render', 'updateQuantity', 'updateTotal');
+    this.model.on("change:quantity", this.updateQuantity)   
+    this.model.on("change:total", this.renderTotal)  
+    this.model.on("change:monogram", this.renderMonogram) 
   },
   clickslider: function() {
     alert("click")
@@ -322,8 +330,21 @@ var CartItemView = Backbone.View.extend({
     })
     return this;
   },
+  renderMonogram: function() {
+      
+  },
+  renderTotal: function() {
+  var total = this.model.get("total");
+  var ary = total.toString().split(".");
+  var pounds = ary[0];
+  var dec = ary[1]
+      this.$('span.pound').text(pounds);
+      this.$('span.dec').text("." + dec);
+  },
   updateQuantity: function() {
     this.$('#qty').html(this.model.get("quantity"))
+    c.setContext(this.model)  
+    c.calculatePrice();
   }
 })
 
@@ -359,7 +380,7 @@ var ItemsView = Backbone.View.extend({
   attributes: { style: "border-collapse:collapse;border:1px dotted grey" },
   initialize: function() {
           this.listenTo(this.collection, "add", this.render)
-          this.listenTo(this.collection, "change", this.render)
+          //this.listenTo(this.collection, "change", this.render)
   },
   render: function() {
      this.$el.empty();    

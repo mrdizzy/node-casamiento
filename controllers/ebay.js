@@ -23,6 +23,18 @@ exports.show = function(req, res) {
     });
 }
 
+exports.name_place_single = function(req, res) {
+console.log(req.params.id)
+        db.get(req.params.id, function(err, docs) {
+        console.log(err,docs)
+                res.render('ebay/name_place_single', {
+                        layout:false,
+                        locals: docs
+                })      
+        })
+        
+}
+
 exports.places = function(req, res) {
        db.view('products/name_place', function(err, docs) {
        
