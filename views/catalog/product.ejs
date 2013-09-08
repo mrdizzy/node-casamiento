@@ -9,11 +9,11 @@ table {  border-collapse:collapse; }
 
   td { border-bottom: 1px solid white;font-family: "OS"; font-size:1em; }
 
-  th { padding-top:1em;padding-bottom:1em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em; }
+  th { padding-top:1em;padding-bottom:1em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em;}
   td:first-child, th:first-child { border-left:0;}
   td:last-child, th:last-child { border-right:0;}
 
-.change { width:4em;margin:0 auto;padding:0.5em;border-radius:6px;background-color:#BBB;color:white;padding-top:15px;padding-bottom:15px;}
+.change { width:4em;margin:0 auto;padding:0.5em;border-radius:6px;background-color:#BBB;color:white;padding-top:15px;padding-bottom:15px; margin-bottom:1em;}
 .change:hover {cursor: pointer; background-color:black; }
 
 img.monogram { padding:1em; opacity:0.3; border:1px solid transparent;}
@@ -22,7 +22,11 @@ img.monogram:hover { opacity:1; border:1px dotted black; cursor:pointer;}
    .slidesjs-pagination li a.active {
             background-position:0 0px;
         }
+    
+        .texture {  opacity: 0.3 }
+        .texture:hover { opacity: 1;}
         
+        .selected {opacity:1; }
 .color_square { margin-left:1em;width:30px;height:30px;border-radius:5px;}
 .color_label { margin-left:1em;text-indent:0;font:normal 1.2em GaraI;padding:0; margin-top:5px; }
 
@@ -54,7 +58,7 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 
 <script type="text/template" id="cart_item">
   <td style="width:35%;">
-    <span style="font: normal 2em TP; letter-spacing:0.25em;color:#000">Birds of Paradise</span>
+    <span style="font: normal 2em TP; letter-spacing:0.25em;color:#000">%% name %%</span>
     <img src="/products/%% id %%/attachments/display-2.jpg" style="width:95%"/><br/>
     <img src="/gfx/product_types/small/name_place_small.png" style="width:120px">
   </td>
@@ -69,9 +73,9 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
     <th>Colours</th>
   </tr>
   <tr>
-    <td style="width:50%"><div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
-          <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p>
-          </div>
+    <td style="width:50%"><div class="texture" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
+          <div class="texture" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
+          <div class="texture" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
           <div class="b1"></div>
     </td>
     <td style="width:20%"> 
@@ -87,7 +91,7 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
           
     %- colours.forEach(function(colour) { -%
 
-      <div style="width:25%;float:left">
+      <div style="width:25%;float:left;margin-top:1em;">
           <div class="color_square" style="background-color:%% colour %%;"></div>
           <p class="color_label">%% colour %%</p>
       </div>
@@ -130,18 +134,23 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 </script>       
        
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
-<!-- T H U M B N A I L S -->
+
+
 <div id="product_page">
 <div id="product_section0">
+
+<!-- SPECIFICATIONS -->
+
 <div class="product_type spc">
-        <div class="name_place_icon"><img src="http://www.casamiento.co.uk/gfx/product_types/small/name_place_small.png" style="width:100%;"></div>
+        <div class="name_place_icon"><img src="/gfx/product_types/small/name_place_small.png" style="width:100%;"></div>
     </div>
 
     <div class="spc">
         <h1>Card Texture</h1>
 
-        <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
-        <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
+        <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
+        <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
+         <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
         <div class="b1"></div>
     </div>
 
@@ -159,7 +168,7 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
     <div class="spc">
         <h1>Product format</h1>
         <div style="margin:auto;text-align:center;">
-        <div class="spec" style="width:90px"><img src="http://www.casamiento.co.uk/gfx/specs/tent.png"></div></div>
+        <div class="spec" style="width:90px"><img src="/gfx/specs/tent.png"></div></div>
     </div>
     
     <div class="spc">
@@ -222,8 +231,8 @@ _.templateSettings = {
 };
     $(function(){
       $("#slides").slidesjs({ pagination: { active: true }, navigation: { active: false },
-      play: { auto: true, interval: 3500, effect: "fade" },
-      effect: { fade: {speed: 2000, crossfade: true }},
+      play: { auto: true, interval: 3500, effect: "swap" },
+      effect: { swap: {speed: 5000 }},
         width: 750, height: 479
       });
     });
@@ -265,7 +274,9 @@ var Cart = Backbone.Model.extend({
     }
   },
   calculatePrice: function() {
-     this.context.set("total",this.context.get("price") * this.context.get("quantity"))
+  var price = this.context.get("price") * this.context.get("quantity")
+  var price = (price).toFixed(2)
+     this.context.set("total", price)
   },
   doSave: function() {
     console.log("doSave", this.saving)
@@ -298,7 +309,7 @@ var Cart = Backbone.Model.extend({
   var c = new Cart({ parse: true }) 
 <% }  %>
 
-var thisProduct = new Product({id: "<%= _id %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %>, quantity: 10, price: <%= price %> });
+var thisProduct = new Product({id: "<%= _id %>", name: "<%= name %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %>, quantity: 10, price: <%= price %> });
 
 var CartItemView = Backbone.View.extend({
     initialize: function() {
@@ -351,7 +362,12 @@ var CartItemView = Backbone.View.extend({
 var ItemView = Backbone.View.extend({
   tagName: "tr",
   events: {
-    "click .change_monogram": "changeMonogram"
+    "click .change_monogram": "changeMonogram",
+    "click .texture": "changeTexture"
+  },
+  changeTexture: function(e) {
+    $('.texture').removeClass("selected")
+    $(e.currentTarget).toggleClass("selected");  
   },
   changeMonogram: function() {
     c.setContext(this.model)    
