@@ -1,4 +1,37 @@
 <style type="text/css">
+.chat-bubble {
+  background-color:#fff;
+  border:1px solid #000;
+  font: normal 1em "OS Light Italic";
+  margin:10px auto;
+  padding:10px;
+  position:absolute;
+  text-align:center;
+  width:300px;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+}
+.chat-bubble-arrow-border {
+  border-color:  transparent transparent #000 transparent;
+  border-style: solid;
+  border-width: 15px;
+  height:0;
+  width:0;
+  position:absolute;
+  top:-31px;
+  left:30px;
+}
+.chat-bubble-arrow {
+  border-color: transparent transparent white transparent;
+  border-style: solid;
+  border-width: 15px;
+  height:0;
+  width:0;
+  position:absolute;
+  top:-30px;
+  left:30px;
+}
+
 .item_image { vertical-align:top; padding-top:7em;}
 label { font:normal 1.3em GaraI;text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em; }
 input[type=text] {text-align:center;font:normal 1.6em Gara;font-variant:small-caps;display:block; border:1px solid lightgrey;}
@@ -76,11 +109,15 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
   
   
   <tr>
-    <td style="width:50%">
+    <td style="width:50%" class="texture-select">
           <div class="texture %% (texture == "plain") ? "selected" : "" %%" data-texture="plain" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
           <div class="texture %% (texture == "hammer") ? "selected" : "" %%" data-texture="hammer" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
           <div class="texture %% (texture == "pearl") ? "selected" : "" %%" data-texture="pearl" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
-          <div class="b1"></div>
+          <div class="b1" style="position:relative;"><div class="chat-bubble  tooltip-texture"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
+  <div class="chat-bubble-arrow"></div>
+  Buongiorno!
+</div></div>
+         
     </td>
     <td style="width:20%"> 
       <div style="width:60%;margin:auto">
@@ -388,9 +425,19 @@ var CartItemView = Backbone.View.extend({
 var ItemView = Backbone.View.extend({
   tagName: "tr",
   events: {
+    "mouseenter .texture-select": "showTooltip",
+    "mouseleave .texture-select": "closeTooltip",
     "click .change_monogram": "changeMonogram",
     "click .texture": "changeTexture",
     "blur .guest_name": "updateGuestName"
+  },
+  showTooltip: function(e) {
+      
+          $('.tooltip-texture').fadeIn()
+  },
+  closeTooltip: function(e) {
+      
+          $('.tooltip-texture').fadeOut()
   },
   updateGuestName: function(e) {
     var currentTarget = $(e.currentTarget);
