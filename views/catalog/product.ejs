@@ -2,14 +2,15 @@
 .chat-bubble {
   background-color:#fff;
   border:1px solid #000;
-  font: normal 1em "OS Light Italic";
+  font: normal 1.1em "OS Light Italic";
   margin:10px auto;
   padding:10px;
   position:absolute;
   text-align:center;
-  width:300px;
+  width:350px;
   -moz-border-radius:10px;
   -webkit-border-radius:10px;
+  box-shadow:5px 5px 0 0 lightgrey;
 }
 .chat-bubble-arrow-border {
   border-color:  transparent transparent #000 transparent;
@@ -19,7 +20,7 @@
   width:0;
   position:absolute;
   top:-31px;
-  left:30px;
+  left:120px;
 }
 .chat-bubble-arrow {
   border-color: transparent transparent white transparent;
@@ -29,20 +30,20 @@
   width:0;
   position:absolute;
   top:-30px;
-  left:30px;
+  left:120px;
 }
 
 .item_image { vertical-align:top; padding-top:7em;}
 label { font:normal 1.3em GaraI;text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em; }
-input[type=text] {text-align:center;font:normal 1.6em Gara;font-variant:small-caps;display:block; border:1px solid lightgrey;}
-  input[type=text]:hover { background-color:#DDD; border:1px solid #000; }
+input[type=text] {text-align:center;font:normal 1.4em OS;display:block; border:1px solid #000;}
+  input[type=text]:hover { background-color:#DDD; border:1px solid lightgrey; }
   input[type=text]:focus { border:1px solid lightgrey; }
   input[type=text]:hover.guest_name { border:1px solid lightgrey;}
 table {  border-collapse:collapse; }
   tr:first-child th { border-top:0;}
   td { border:1px dotted #000;font-family: "OS"; font-size:1em; color:#000; }
 
-  th { border:1px dotted #000;text-align:center; border-bottom:1px solid #000; padding-top:1.5em;padding-bottom:1.5em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em;}
+  th { border:1px dotted #000;text-align:center; border-bottom:1px solid #000; padding-top:1em;padding-bottom:1em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em;}
   td:first-child, th:first-child { border-left:0;}
   td:last-child, th:last-child { border-right:0;}
 
@@ -109,13 +110,12 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
   
   
   <tr>
-    <td style="width:50%" class="texture-select">
+    <td style="width:50%" class="tooltip-select" data-tooltip="tooltip-texture">
           <div class="texture %% (texture == "plain") ? "selected" : "" %%" data-texture="plain" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
           <div class="texture %% (texture == "hammer") ? "selected" : "" %%" data-texture="hammer" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
           <div class="texture %% (texture == "pearl") ? "selected" : "" %%" data-texture="pearl" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
-          <div class="b1" style="position:relative;"><div class="chat-bubble  tooltip-texture"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
-  <div class="chat-bubble-arrow"></div>
-  Buongiorno!
+          <div class="b1" style="position:relative;"></div><div class="chat-bubble tooltip-texture"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
+  <div class="chat-bubble-arrow"></div>Select the texture of the card by clicking on it so it is highlighted. The price will automatically update.
 </div></div>
          
     </td>
@@ -144,20 +144,20 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
     
     <tr>
       <th>Monogram style</th>
-      <th colspan="2">Price</th>
+      <th colspan="2">Monogram details</th>
     </tr>
     
     
     <tr>
       <td>
-        <div>
           <img class="monogram_image" src="/gfx/m/%%monogram%%.png" style="width:95%"/><br/>
           <div class="change_monogram change">CHANGE</div>
-        </div>
-        <div style="padding-top:1em;padding-bottom:1em;font: normal 0.9em 'OS Condensed'; color:#000; margin:0;margin-bottom:0.5em;border-bottom:1px solid black;border-top:1px dotted black;">Monogram details
-        </div>
+        
     
-        <label>First name:</label>
+       
+      </td>
+        <td colspan="2" class="tooltip-select" data-tooltip="tooltip-monodetails">
+         <label>First name:</label>
         <input type="text" value="Nicola" size="16"></input>
         
         <label>Second name:</label>
@@ -167,22 +167,35 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
         <input type="text" style="float:left;" value="22" size="2"></input> 
         <input type="text" style="float:left;" value="September" size="10"></input> 
         <input type="text" value="2013" size="4"></input> 
-        </div>
-      </td>
-        
-      <td colspan="2" class="quantity_selector">
+         <div style="position:relative;"></div><div class="chat-bubble tooltip-monodetails"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
+  <div class="chat-bubble-arrow"></div>A monogram is a motif featuring a name and initials. You can have one created for you and your partner, your baby or your loved on. A monogram will be created specially for you by a designer, so when you enter the details here it won't be reflected in the picture.
+</div></div>
+        </td>
+        </tr>
+        <tr>
+        <th colspan="3">Price &amp; Quantity</th>
+        </tr><tr>
+      <td colspan="3" class="quantity_selector tooltip-select" data-tooltip="tooltip-quantity" style="padding-top:2em;padding-bottom:2em;">
         <p style="text-align:center;font: normal 4em 'OS Light'"><span style="font-size:0.65em;vertical-align:top;">&pound;</span><span class="pound">2</span><span style="font-size:0.65em;vertical-align:text-top;" class="dec">.99</span></p>
 
-        <div class="noUiSlider" style="margin-left:1%;width:84%;float:left;"></div>
+        <div class="noUiSlider" style="margin-left:4%;width:84%;float:left;margin-bottom:2em;"></div>
         <div style="quantity;font:normal 1.3em OS" id="qty">%%quantity%%</div>
+        <div style="position:relative;"></div><div class="chat-bubble tooltip-quantity"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
+  <div class="chat-bubble-arrow"></div>Change the quantity by dragging the above slider left and right with your mouse or finger. You will see the price and quantity update
+</div></div>
       </td>
     </tr>
     <tr>
     <th colspan="3"><img src="/gfx/guests.png" style="width:3em"/> Guests
+   
     </th>
-    <tr>
-    <td colspan="3" class="guests">
-    
+    <tr  class="tooltip-select" data-tooltip="tooltip-guests">
+    <td colspan="3">
+   
+     <div style="position:relative;"></div><div class="chat-bubble tooltip-guests"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
+  <div class="chat-bubble-arrow"></div>Each place card will come individually printed with the name of each guest. Here you can add each guest name. Your names will be printed exactly as you type them, so make sure you use capital letters in the right places
+</div></div>
+<div class="guests"></div>
    
     </td>
     </tr>
@@ -228,6 +241,8 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
     </div>
     
     <div class="spc">
+<div id="buy"></div></div>
+    <div class="spc">
         <h1>Monogram shown</h1>
         <img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
     </div>
@@ -260,7 +275,6 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 </div>      
 </div>
     
-<div id="buy" style="float:right"></div>
 
 <div id="cart_page" style="display:none">
 <div style="margin-left:2em;margin-right:2em;border:1px solid black;border-top:0;";>
@@ -402,7 +416,7 @@ var CartItemView = Backbone.View.extend({
       console.log(quantity)
       for(var i=0; i < quantity;i++) {
       var g = this.model.get("guests")[i]  ? this.model.get("guests")[i] : "Guest name&hellip;" 
-      html = html + '<div style="width:25%;float:left;margin:0;padding:0;"><input data-name="' + i + '" class="guest_name" type="text" style="display:block;font:normal 1.6em GaraI;text-align:left;margin:0;border-bottom:0;border-left:0;" value="' + g + '"></input></div>'
+      html = html + '<div style="width:25%;float:left;margin:0;padding:0;"><input data-name="' + i + '" class="guest_name" type="text" style="display:block;font:normal 1.2em \'OS Light Italic\';text-align:left;margin:0;border-bottom:0;border-left:0;" value="' + g + '"></input></div>'
      } 
       this.$('.guests').html(html)
   },
@@ -425,19 +439,19 @@ var CartItemView = Backbone.View.extend({
 var ItemView = Backbone.View.extend({
   tagName: "tr",
   events: {
-    "mouseenter .texture-select": "showTooltip",
-    "mouseleave .texture-select": "closeTooltip",
+    "mouseenter .tooltip-select": "showTooltip",
+    "mouseleave .tooltip-select": "closeTooltip",
     "click .change_monogram": "changeMonogram",
     "click .texture": "changeTexture",
     "blur .guest_name": "updateGuestName"
   },
   showTooltip: function(e) {
-      
-          $('.tooltip-texture').fadeIn()
+    var which = $(e.currentTarget).data("tooltip")
+          $('.' + which).fadeIn()
   },
   closeTooltip: function(e) {
-      
-          $('.tooltip-texture').fadeOut()
+       var which = $(e.currentTarget).data("tooltip")
+          $('.' + which).fadeOut();
   },
   updateGuestName: function(e) {
     var currentTarget = $(e.currentTarget);

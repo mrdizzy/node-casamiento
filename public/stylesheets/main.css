@@ -97,7 +97,7 @@ form { display:inline; }
 input { padding:0; margin:0; border: 1px solid grey; font-size:1.2em;margin-bottom:0.25em; padding:0.25em;}
 input:focus { background-color: lightgrey; border:1px solid black;  outline:none;}
 
-#buy { width:63px; height:53px; z-index:100;  background-image:url('/gfx/buy.png'); position:fixed; top:50%;right:7%;}
+#buy { width:63px; height:53px; z-index:100;  background-image:url('/gfx/buy.png'); margin:0 auto; }
 #buy:hover { background-position: 0 -53px; }
 
 /* PRODUCT PAGE
