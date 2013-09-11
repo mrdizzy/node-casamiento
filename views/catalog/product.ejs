@@ -1,15 +1,15 @@
 <style type="text/css">
+.item_image { vertical-align:top; padding-top:7em;}
 label { font:normal 1.3em GaraI;text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em; }
-input[type=text] {text-align:center;font:normal 1.6em Gara;display:block; border:1px solid lightgrey; padding-left:0.1em;padding-right:0.1em;}
+input[type=text] {text-align:center;font:normal 1.6em Gara;font-variant:small-caps;display:block; border:1px solid lightgrey;}
   input[type=text]:hover { background-color:#DDD; border:1px solid #000; }
   input[type=text]:focus { border:1px solid lightgrey; }
-
+  input[type=text]:hover.guest_name { border:1px solid lightgrey;}
 table {  border-collapse:collapse; }
-  td, th { border:1px dotted #000; border-bottom:1px solid #000;font: normal 0.9em "OS Condensed"; color:black; text-align:center; border-top:0;}
+  tr:first-child th { border-top:0;}
+  td { border:1px dotted #000;font-family: "OS"; font-size:1em; color:#000; }
 
-  td { border-bottom: 1px solid white;font-family: "OS"; font-size:1em; }
-
-  th { padding-top:1em;padding-bottom:1em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em;}
+  th { border:1px dotted #000;text-align:center; border-bottom:1px solid #000; padding-top:1.5em;padding-bottom:1.5em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em;}
   td:first-child, th:first-child { border-left:0;}
   td:last-child, th:last-child { border-right:0;}
 
@@ -18,15 +18,15 @@ table {  border-collapse:collapse; }
 
 img.monogram { padding:1em; opacity:0.3; border:1px solid transparent;}
 img.monogram:hover { opacity:1; border:1px dotted black; cursor:pointer;}
-  ul.slidesjs-pagination { position:static;  top:160px; z-index:100;}
-   .slidesjs-pagination li a.active {
-            background-position:0 0px;
-        }
-    
-        .texture {  opacity: 0.3 }
-        .texture:hover { opacity: 1;}
-        
-        .selected {opacity:1; }
+
+.texture {  opacity: 0.3 }
+.texture:hover { opacity: 1;}
+.selected {opacity:1; }
+
+ul.slidesjs-pagination { position:static;  top:160px; z-index:100;}
+ .slidesjs-pagination li a.active {
+          background-position:0 0px;
+      }
 .color_square { margin-left:1em;width:30px;height:30px;border-radius:5px;}
 .color_label { margin-left:1em;text-indent:0;font:normal 1.2em GaraI;padding:0; margin-top:5px; }
 
@@ -48,16 +48,17 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 </style>
        
 <script type="text/template" id="break">
-                <td colspan="2"><div style="width:98%;padding-bottom:3em;margin:auto;margin-top:2em;">
-         <div style="width:44%;float:left;margin-top:5px;border-top:1px solid black;"></div>
-                <div style="width:11%;float:left;"><img src="/gfx/page_seperators/orna.png" style="width:50%;" /></div>
-                <div style="width:44%;float:left;margin-top:5px;border-top:1px solid black;"></div>
-        </div>
+  <td colspan="2">
+    <div style="width:98%;padding-bottom:3em;margin:auto;margin-top:2em;">
+      <div style="width:44%;float:left;margin-top:5px;border-top:1px solid black;"></div>
+      <div style="width:11%;float:left;"><img src="/gfx/page_seperators/orna.png" style="width:50%;" /></div>
+      <div style="width:44%;float:left;margin-top:5px;border-top:1px solid black;"></div>
+    </div>
   </td>
-  </script>
+</script>
 
 <script type="text/template" id="cart_item">
-  <td style="width:35%;">
+  <td style="width:35%;" class="item_image">
     <span style="font: normal 2em TP; letter-spacing:0.25em;color:#000">%% name %%</span>
     <img src="/products/%% id %%/attachments/display-2.jpg" style="width:95%"/><br/>
     <img src="/gfx/product_types/small/name_place_small.png" style="width:120px">
@@ -72,10 +73,13 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
     <th>Card thickness</th>
     <th>Colours</th>
   </tr>
+  
+  
   <tr>
-    <td style="width:50%"><div class="texture" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
-          <div class="texture" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
-          <div class="texture" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
+    <td style="width:50%">
+          <div class="texture %% (texture == "plain") ? "selected" : "" %%" data-texture="plain" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
+          <div class="texture %% (texture == "hammer") ? "selected" : "" %%" data-texture="hammer" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
+          <div class="texture %% (texture == "pearl") ? "selected" : "" %%" data-texture="pearl" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
           <div class="b1"></div>
     </td>
     <td style="width:20%"> 
@@ -99,17 +103,21 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
           <br/>
           <div class="change" style="clear:both">CHANGE</div></td>
     </tr>
+    
+    
     <tr>
       <th>Monogram style</th>
       <th colspan="2">Price</th>
     </tr>
+    
+    
     <tr>
       <td>
         <div>
           <img class="monogram_image" src="/gfx/m/%%monogram%%.png" style="width:95%"/><br/>
           <div class="change_monogram change">CHANGE</div>
         </div>
-        <div style="padding-top:1em;padding-bottom:1em;font: normal 0.9em 'OS Condensed'; color:#000; margin:0;margin-bottom:0.5em;border-bottom:1px solid black;">Monogram details
+        <div style="padding-top:1em;padding-bottom:1em;font: normal 0.9em 'OS Condensed'; color:#000; margin:0;margin-bottom:0.5em;border-bottom:1px solid black;border-top:1px dotted black;">Monogram details
         </div>
     
         <label>First name:</label>
@@ -125,10 +133,21 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
         </div>
       </td>
         
-      <td colspan="2" class="quantity_selector"><p style="text-align:center;font: normal 4em 'OS Light'"><span style="font-size:0.65em;vertical-align:top;">&pound;</span><span class="pound">2</span><span style="font-size:0.65em;vertical-align:text-top;" class="dec">.99</span></p>
-<div class="noUiSlider" style="margin-left:1%;width:84%;float:left;"></div>
-<div style="quantity;font:normal 1.3em OS" id="qty">%%quantity%%</div>
+      <td colspan="2" class="quantity_selector">
+        <p style="text-align:center;font: normal 4em 'OS Light'"><span style="font-size:0.65em;vertical-align:top;">&pound;</span><span class="pound">2</span><span style="font-size:0.65em;vertical-align:text-top;" class="dec">.99</span></p>
+
+        <div class="noUiSlider" style="margin-left:1%;width:84%;float:left;"></div>
+        <div style="quantity;font:normal 1.3em OS" id="qty">%%quantity%%</div>
       </td>
+    </tr>
+    <tr>
+    <th colspan="3"><img src="/gfx/guests.png" style="width:3em"/> Guests
+    </th>
+    <tr>
+    <td colspan="3" class="guests">
+    
+   
+    </td>
     </tr>
   </table>
 </script>       
@@ -225,24 +244,22 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 </div>
 </div>
 <script>
+// Prevent the JavaScript template delimiters interfering with the node express delimiters
 _.templateSettings = {
   interpolate : /\%\%(.+?)\%\%/g,
   evaluate: /\%\-(.+?)\-\%/g
 };
-    $(function(){
-      $("#slides").slidesjs({ pagination: { active: true }, navigation: { active: false },
-      play: { auto: true, interval: 3500, effect: "swap" },
-      effect: { swap: {speed: 5000 }},
-        width: 750, height: 479
-      });
-    });
-    
-  
-    
-var Product = Backbone.Model.extend({});
 
+$(function(){
+  $("#slides").slidesjs({ pagination: { active: true }, navigation: { active: false },
+  play: { auto: true, interval: 3500, effect: "swap" },
+  effect: { swap: {speed: 5000 }},
+    width: 750, height: 479
+  });
+});
+
+var Product = Backbone.Model.extend({});
 var Items = Backbone.Collection.extend({});
-var items_collection = new Items();
 
 // Model representing a cart
 
@@ -264,27 +281,20 @@ var Cart = Backbone.Model.extend({
   // saved, if so we need to wait for saving to complete before trying
   // to save it again
   updateCart: function(event) {
+  console.log("sving")
     if (this.saving > 0) {
-     console.log("updatecart > 0", this.saving)
       this.saving = this.saving + 1;
     } else {
-     console.log("updatecart ", this.saving)
       this.saving = this.saving + 1;
       this.doSave();
     }
   },
-  calculatePrice: function() {
-  var price = this.context.get("price") * this.context.get("quantity")
-  var price = (price).toFixed(2)
-     this.context.set("total", price)
-  },
   doSave: function() {
-    console.log("doSave", this.saving)
     var that = this;
     this.save(null, {
       error: function() {  }, 
       success: function() { 
-      console.log("success", that.saving)
+      
       that.saving = that.saving - 1;
         if(that.saving > 0) {
           that.doSave();
@@ -302,20 +312,14 @@ var Cart = Backbone.Model.extend({
   urlRoot: '/cart'
 });
 
-// Create a new cart or initialize an existing one
-<% if (cart) { %>
-  var c = new Cart(<%- cart %>, { parse: true });
-<% } else { %>
-  var c = new Cart({ parse: true }) 
-<% }  %>
-
-var thisProduct = new Product({id: "<%= _id %>", name: "<%= name %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %>, quantity: 10, price: <%= price %> });
-
 var CartItemView = Backbone.View.extend({
     initialize: function() {
-    _.bindAll(this, 'render', 'updateQuantity', 'renderTotal', 'renderMonogram')
-    this.model.on("change:quantity", this.updateQuantity)   
+    _.bindAll(this, 'render', 'renderQuantity', 'renderTotal', 'renderMonogram', 'calculatePrice', 'renderGuests')
+    this.model.on("change:quantity", this.renderQuantity)  
+    this.model.on("change:quantity", this.calculatePrice) 
+    this.model.on("change:quantity", this.renderGuests)  
     this.model.on("change:total", this.renderTotal)  
+    this.model.on("change:texture", this.calculatePrice)
     this.model.on("change:monogram", this.renderMonogram) 
   },
   clickslider: function() {
@@ -330,7 +334,7 @@ var CartItemView = Backbone.View.extend({
     this.$('.noUiSlider').noUiSlider({
         range: [10, 200]
        ,start: that.model.get("quantity")
-       ,step: 10,
+       ,step: 5,
        slide: function(input) {
         that.$('#qty').html(that.$('.noUiSlider').val())
        },
@@ -339,6 +343,9 @@ var CartItemView = Backbone.View.extend({
     this.$('.noUiSlider a div').click(function() {
       that.model.set("quantity", that.$('.noUiSlider').val())
     })
+    this.calculatePrice()
+    this.renderTotal();
+    this.renderGuests();
     return this;
   },
   renderMonogram: function() {
@@ -352,25 +359,58 @@ var CartItemView = Backbone.View.extend({
       this.$('span.pound').text(pounds);
       this.$('span.dec').text("." + dec);
   },
-  updateQuantity: function() {
+  renderGuests: function() {
+      var html = "";
+      var quantity = this.model.get("quantity")
+      console.log(quantity)
+      for(var i=0; i < quantity;i++) {
+      var g = this.model.get("guests")[i]  ? this.model.get("guests")[i] : "Guest name&hellip;" 
+      html = html + '<div style="width:25%;float:left;margin:0;padding:0;"><input data-name="' + i + '" class="guest_name" type="text" style="display:block;font:normal 1.6em GaraI;text-align:left;margin:0;border-bottom:0;border-left:0;" value="' + g + '"></input></div>'
+     } 
+      this.$('.guests').html(html)
+  },
+  renderQuantity: function() {
     this.$('#qty').html(this.model.get("quantity"))
-    c.setContext(this.model)  
-    c.calculatePrice();
-  }
+  },
+  calculatePrice: function() {
+    var price = this.model.get("price") * this.model.get("quantity")
+    var texture = this.model.get("texture");
+    if(texture == "hammer") {
+      price = ((10/100) * price) + price
+    } else if (texture == "pearl") {
+      price = ((15/100) * price) + price
+    }
+    var price = (price).toFixed(2)
+    this.model.set("total", price)
+  },
 })
 
 var ItemView = Backbone.View.extend({
   tagName: "tr",
   events: {
     "click .change_monogram": "changeMonogram",
-    "click .texture": "changeTexture"
+    "click .texture": "changeTexture",
+    "blur .guest_name": "updateGuestName"
+  },
+  updateGuestName: function(e) {
+    var currentTarget = $(e.currentTarget);
+    var id = currentTarget.data("name");
+    var name = $(e.currentTarget).val();
+    var guests = this.model.get("guests");
+    guests[id] = name;
+    this.model.set("guests", guests)
+    
+    this.model.trigger("change")
+    console.log(this.model.get("guests"))
   },
   changeTexture: function(e) {
+    var currentTarget = $(e.currentTarget);
     $('.texture').removeClass("selected")
-    $(e.currentTarget).toggleClass("selected");  
+    currentTarget.toggleClass("selected");  
+    this.model.set("texture", currentTarget.data("texture"))
   },
   changeMonogram: function() {
-    c.setContext(this.model)    
+    cart.setContext(this.model)    
     $('#cart').fadeOut(function() {
       $('#monograms').fadeIn()
    });
@@ -412,9 +452,6 @@ var ItemsView = Backbone.View.extend({
   }
 });
 
-var iv = new ItemsView({collection: c.get("items")})
-$('#cart').html(iv.render().el);
-
 var PanelView = Backbone.View.extend({
   el: $('#product_page'),
   showCart: function() {
@@ -423,7 +460,7 @@ var PanelView = Backbone.View.extend({
     $('#nav').fadeOut();
     $('#product_page_genesis').fadeOut();
     $('#product_page').fadeOut(function() {
-            $('#cart_page').fadeIn();
+      $('#cart_page').fadeIn();
     })
   }
 })
@@ -436,14 +473,13 @@ var MonogramView = Backbone.View.extend({
   selectMonogram: function(event) {
     var monogram = $(event.target).attr('id');
     var monogram_id = monogram.split("_")[1]
-    c.setMonogram(monogram_id)
+    cart.setMonogram(monogram_id)
     $('#monograms').fadeOut(function() {
       $('#cart').fadeIn()
     });
   }
 })
-var mv = new MonogramView();
-var pv = new PanelView({collection: c.get("items") });
+
 var BuyButtonView = Backbone.View.extend({
   initialize: function() {
     this.setElement($('#buy'))
@@ -452,17 +488,33 @@ var BuyButtonView = Backbone.View.extend({
     "click": "addToCart"
   },
   addToCart: function() {
-    c.get("items").add(thisProduct)
+    cart.get("items").add(thisProduct)
     pv.showCart();
   }
 })
-var bbv = new BuyButtonView();
 
 var ProductRouter = Backbone.Router.extend({
   routes: {
     "monograms": "chooseMonogram"
   }
 });
+
+// Setup and initialization
+
+// Create a new cart or initialize an existing one
+<% if (cart) { %>
+  var cart = new Cart(<%- cart %>, { parse: true });
+<% } else { %>
+  var cart = new Cart({ parse: true }) 
+<% }  %>
+
+var thisProduct = new Product({id: "<%= _id %>", name: "<%= name %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %>, quantity: 10, price: <%= price %>, guests: [], texture: "plain" });
+
+var iv = new ItemsView({collection: cart.get("items")})
+$('#cart').html(iv.render().el);
+var mv = new MonogramView();
+var pv = new PanelView({collection: cart.get("items") });
+var bbv = new BuyButtonView();
 
 var prr = new ProductRouter();
 Backbone.history.start();

@@ -37,7 +37,7 @@ module.exports.index = {
         });
     }, {
         startdate: "2013-08-31T00:00:00Z",
-        enddate: "2013-09-03T23:59:59Z",
+        enddate: "2013-09-10T23:59:59Z",
         transactionclass: "BalanceAffecting"
     })
 },

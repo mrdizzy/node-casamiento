@@ -16,33 +16,7 @@
     
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
-    <script>
-    function casamientoCalculator(quantity) {
-     
- var price = (299/8);
-     var total = quantity * price;
-     if ((price > 20) && (price <= 30)) {
-        total = total - (10/100 * total);   
-     }
-     else if ((price > 30) && (price <= 40)) {
-        total = total - (15/100 * total);   
-     }
-     else if ((price > 40) && (price <= 50)) {
-        total = total - (20/100 * total);   
-     }     else if ((price > 50) && (price <= 60)) {
-        total = total - (25/100 * total);   
-     }     
-     else if ((price > 60) && (price <= 70)) {
-        total = total - (30/100 * total);   
-     }     else if ((price > 70) && (price <= 80)) {
-        total = total - (40/100 * total);   
-     }
-     total = Math.round(total,2)
-     total = total / 100;
-     var result = total.toString().split(".")
-     return result;
- }
-    </script>
+   
        
     </head>
 
