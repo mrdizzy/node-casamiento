@@ -1,4 +1,12 @@
-<style type="text/css">
+<style type="text/css">/* COLOURS */
+.a_colour { opacity:0.8;}
+.a_colour:hover { opacity:1}
+.colsqr { width:2.9em;height:2.9em;}
+.colsqr img { width:100%; padding:0;border:0;}
+.clrb { border:1px dotted black; width:32%;float:left;border-top:0;border-left:0;}
+.clrb p:hover { font-weight:bold; }
+.palette { display:none; clear:both; }
+.palette_1 { display:block;}
 .chat-bubble {
   background-color:#fff;
   border:1px solid #000;
@@ -12,6 +20,8 @@
   -webkit-border-radius:10px;
   box-shadow:5px 5px 0 0 lightgrey;
 }
+
+tr:first-child td { border-top:0;}
 .chat-bubble-arrow-border {
   border-color:  transparent transparent #000 transparent;
   border-style: solid;
@@ -34,12 +44,14 @@
 }
 
 .item_image { vertical-align:top; padding-top:7em;}
-label { font:normal 1.3em GaraI;text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em; }
+label { font:normal 1em "OS Light Italic";text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em; }
 input[type=text] {text-align:center;font:normal 1.4em OS;display:block; border:1px solid #000;}
-  input[type=text]:hover { background-color:#DDD; border:1px solid lightgrey; }
-  input[type=text]:focus { border:1px solid lightgrey; }
-  input[type=text]:hover.guest_name { border:1px solid lightgrey;}
+input[type=text]:hover { background-color:#DDD; border:1px solid lightgrey; }
+input[type=text]:focus { border:1px solid lightgrey; }
+input[type=text]:hover.guest_name { border:1px solid lightgrey;}
+
 table {  border-collapse:collapse; }
+
   tr:first-child th { border-top:0;}
   td { border:1px dotted #000;font-family: "OS"; font-size:1em; color:#000; }
 
@@ -47,7 +59,7 @@ table {  border-collapse:collapse; }
   td:first-child, th:first-child { border-left:0;}
   td:last-child, th:last-child { border-right:0;}
 
-.change { width:4em;margin:0 auto;padding:0.5em;border-radius:6px;background-color:#BBB;color:white;padding-top:15px;padding-bottom:15px; margin-bottom:1em;}
+.change { padding:0.5em;border-radius:6px;background-color:#BBB;color:white;padding-top:15px;padding-bottom:15px; font-size:0.8em; float:left; margin-left:0.5em;}
 .change:hover {cursor: pointer; background-color:black; }
 
 img.monogram { padding:1em; opacity:0.3; border:1px solid transparent;}
@@ -58,11 +70,10 @@ img.monogram:hover { opacity:1; border:1px dotted black; cursor:pointer;}
 .selected {opacity:1; }
 
 ul.slidesjs-pagination { position:static;  top:160px; z-index:100;}
- .slidesjs-pagination li a.active {
-          background-position:0 0px;
-      }
-.color_square { margin-left:1em;width:30px;height:30px;border-radius:5px;}
-.color_label { margin-left:1em;text-indent:0;font:normal 1.2em GaraI;padding:0; margin-top:5px; }
+    .slidesjs-pagination li a.active { background-position:0 0px; }
+    
+.color_square { width:30px;height:30px;border-radius:5px;}
+.color_label { text-indent:0;font:normal 1.2em GaraI;padding:0; margin-top:5px; }
 
 .product_pagination li { display:block;float:left;border:1px solid transparent; }
 .product_pagination li img { padding:0.5em; }
@@ -94,14 +105,49 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 <script type="text/template" id="cart_item">
   <td style="width:35%;" class="item_image">
     <span style="font: normal 2em TP; letter-spacing:0.25em;color:#000">%% name %%</span>
-    <img src="/products/%% id %%/attachments/display-2.jpg" style="width:95%"/><br/>
+    <img class="product_image" style="background-color:purple" src="/products/%% id %%/attachments/display-2.jpg" style="width:95%"/><br/>
     <img src="/gfx/product_types/small/name_place_small.png" style="width:120px">
   </td>
-  <td style="width:65%;padding:0;margin:0" class="second_col"></td>
+  <td style="width:65%;padding:0;margin:0;vertical-align:top;" class="second_col"></td>
 </script>
        
 <script type="text/template" id="cart_item_table">
-<table>
+
+<div class="colour_selector" style="display:none">
+
+<!-- colour labels -->
+    <div>
+        <div class="clrb"><p class="colour_label pinks selected" data-colour="1">PINKS</p></div>
+        <div class="clrb"><p class="colour_label reds" data-colour="2">REDS</p></div>
+        <div class="clrb"><p class="colour_label purples" data-colour="3">PURPLES</p></div>
+        <div class="clrb"><p class="colour_label yellows" data-colour="4">YELLOWS</p></div>
+        <div class="clrb"><p class="colour_label greens" data-colour="5">GREENS</p></div>
+        <div class="clrb"><p class="colour_label browns" data-colour="6">BROWNS</p></div>
+        <div class="clrb"><p class="colour_label blues" data-colour="7">BLUES</p></div>
+    </div>
+    
+<% var colours =	[['#FFC0CB pink','#FFB6C1 lightpink','#FF69B4 hotpink','#FF1493 deeppink','#DB7093 palevioletred','#BC8F8F rosybrown','#C71585 mediumvioletred','#CD5C5C indianred','#F08080 lightcoral','#FFA07A lightsalmon','#FA8072 salmon','#E9967A darksalmon','#DC143C crimson'],['#CD853F peru','#D2691E chocolate','#A0522D sienna','#A52A2A brown','#B22222 firebrick','#8B4513 saddlebrown','#8B0000 darkred','#800000 maroon'],['#FAA460 sandybrown','#FF7F50 coral','#FF6347 tomato','#FF0000 red','#FF4500 orangered','#FF8C00 darkorange','#FFA500 orange'],['#FFD700 gold','#FFFF00 yellow'],['#E6E6FA lavender','#D8BFD8 thistle','#DDA0DD plum','#FF00FF magenta','#EE82EE violet','#DA70D6 orchid','#BA55D3 mediumorchid','#9370DB mediumpurple','#8A2BE2 blueviolet','#9400D3 darkviolet','#9932CC darkorchid','#8B008B darkmagenta','#800080 purple','#4B0082 indigo','#483D8B darkslateblue','#6A5ACD slateblue','#7B68EE mediumslateblue'],['#98FB98 palegreen','#ADFF2F greenyellow','#7FFF00 chartreuse','#7CFC00 lawngreen','#00FF00 lime','#00FF7F springgreen','#00FA9A mediumspringgreen','#90EE90 lightgreen','#32CD32 limegreen','#3CB371 mediumseagreen','#2E8B57 seagreen','#228B22 forestgreen','#008000 green','#006400 darkgreen','#9ACD32 yellowgreen','#6B8E23 olivedrab','#808000 olive','#556B2F darkolivegreen','#8FBC8F darkseagreen','#66CDAA mediumaquamarine','#20B2AA lightseagreen','#008B8B darkcyan','#008080 teal'],['#00FFFF cyan','#7FFFD4 aquamarine','#AFEEEE paleturquoise','#40E0D0 turquoise','#48D1CC mediumturquoise','#00CED1 darkturquoise','#5F9EA0 cadetblue','#4682B4 steelblue','#B0C4DE lightsteelblue','#B0E0E6 powderblue','#ADD8E6 lightblue','#87CEEB skyblue','#87CEFA lightskyblue','#00BFFF deepskyblue','#1E90FF dodgerblue','#6495ED cornflowerblue','#4169E1 royalblue','#0000FF blue','#0000CD mediumblue','#00008B darkblue','#000080 navy','#191970 midnightblue'],['#DCDCDC gainsboro','#D3D3D3 lightgrey','#C0C0C0 silver','#A9A9A9 darkgray','#778899 lightslategray','#708090 slategray','#808080 gray','#696969 dimgray','#2F4F4F darkslategray','#000000 black']] %>
+
+    
+    <% var counter = 0 %>
+    <% colours.forEach(function(palette) { %>
+    <% counter++ %>
+        <div class="palette palette_<%= counter %>">
+        <% palette.forEach(function(colour) { %>
+        <% var ary = colour.split(" ") %>
+        <% var hex = ary[0] %>
+        <% var description = ary[1] %>
+       <div class="a_colour" data-colour="<%= hex %>" style="width:25%;text-align:left;display:inline-block;padding-right:1em;padding-top:1em;">
+       <div style="background-color:<%= hex %>;border-radius:4px;width:5em;height:4em;margin-bottom:0;padding-bottom:0;"></div><span style="margin-top:0;padding-top:0;color:black;font:1.4em normal 'Open Sans Light';"><%= description.toUpperCase() %></span>
+       </div>
+        <% }) %>
+        </div>
+    <% }) %>
+
+
+</div>
+
+<table class="customise">
   <tr>
     <th>Card texture</th>
     <th>Card thickness</th>
@@ -132,16 +178,15 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
           
     %- colours.forEach(function(colour) { -%
 
-      <div style="width:25%;float:left;margin-top:1em;">
+      <div style="float:left;">
           <div class="color_square" style="background-color:%% colour %%;"></div>
           <p class="color_label">%% colour %%</p>
       </div>
     %- }) -%
-          <br/>
-          <div class="change" style="clear:both">CHANGE</div></td>
+          <div class="change colour_change">CHANGE</div>
+        
+          </td>
     </tr>
-    
-    
     <tr>
       <th>Monogram style</th>
       <th colspan="2">Monogram details</th>
@@ -168,7 +213,7 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
         <input type="text" style="float:left;" value="September" size="10"></input> 
         <input type="text" value="2013" size="4"></input> 
          <div style="position:relative;"></div><div class="chat-bubble tooltip-monodetails"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
-  <div class="chat-bubble-arrow"></div>A monogram is a motif featuring a name and initials. You can have one created for you and your partner, your baby or your loved on. A monogram will be created specially for you by a designer, so when you enter the details here it won't be reflected in the picture.
+  <div class="chat-bubble-arrow"></div>A monogram is a motif featuring a name and initials. You can have one created for you and your partner, your baby or your loved on. A monogram will be created specially for you by a designer, so when you enter the details here it will not be reflected in the picture.
 </div></div>
         </td>
         </tr>
@@ -179,7 +224,7 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
         <p style="text-align:center;font: normal 4em 'OS Light'"><span style="font-size:0.65em;vertical-align:top;">&pound;</span><span class="pound">2</span><span style="font-size:0.65em;vertical-align:text-top;" class="dec">.99</span></p>
 
         <div class="noUiSlider" style="margin-left:4%;width:84%;float:left;margin-bottom:2em;"></div>
-        <div style="quantity;font:normal 1.3em OS" id="qty">%%quantity%%</div>
+        <div style="quantity;font:normal 1.4em 'OS Light Italic'" id="qty">%%quantity%%</div>
         <div style="position:relative;"></div><div class="chat-bubble tooltip-quantity"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
   <div class="chat-bubble-arrow"></div>Change the quantity by dragging the above slider left and right with your mouse or finger. You will see the price and quantity update
 </div></div>
@@ -206,6 +251,20 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 
 
 <div id="product_page">
+
+<div id="product_section1">
+
+    <h1 class="product_name" style="float:left"> <img src="/gfx/bullets/bullet_square_dots.png" /> <%= name %></h1>
+
+    <div id="slides" style="clear:both">            
+       <img src="/products/<%= _id %>/attachments/medium-1" />
+       <img src="/products/<%= _id %>/attachments/medium-2" />
+       <img src="/products/<%= _id %>/attachments/medium-3" />
+       <img src="/products/<%= _id %>/attachments/medium-4" />
+    </div>
+  
+</div>    
+
 <div id="product_section0">
 
 <!-- SPECIFICATIONS -->
@@ -260,19 +319,7 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
         <div class="b1"></div>
     </div>
     <img src="/gfx/shell.png" />
-</div>
-<div id="product_section1">
-
-    <h1 class="product_name" style="float:left"> <img src="/gfx/bullets/bullet_square_dots.png" /> <%= name %></h1>
-
-    <div id="slides" style="clear:both">            
-       <img src="/products/<%= _id %>/attachments/medium-1" />
-       <img src="/products/<%= _id %>/attachments/medium-2" />
-       <img src="/products/<%= _id %>/attachments/medium-3" />
-       <img src="/products/<%= _id %>/attachments/medium-4" />
-    </div>
-  
-</div>      
+</div>  
 </div>
     
 
@@ -411,13 +458,24 @@ var CartItemView = Backbone.View.extend({
       this.$('span.dec').text("." + dec);
   },
   renderGuests: function() {
-      var html = "";
-      var quantity = this.model.get("quantity")
-      console.log(quantity)
-      for(var i=0; i < quantity;i++) {
-      var g = this.model.get("guests")[i]  ? this.model.get("guests")[i] : "Guest name&hellip;" 
-      html = html + '<div style="width:25%;float:left;margin:0;padding:0;"><input data-name="' + i + '" class="guest_name" type="text" style="display:block;font:normal 1.2em \'OS Light Italic\';text-align:left;margin:0;border-bottom:0;border-left:0;" value="' + g + '"></input></div>'
-     } 
+      var html = "<table>";
+      var lists = _.groupBy(this.model.get("guests"), function(a, b){
+        return Math.floor(b/3);
+});
+    lists = _.toArray(lists); //Added this to convert the returned object to an array.
+      var i = 0;
+      lists.forEach(function(row) {
+        
+        html = html + "<tr>"
+        row.forEach(function(guest) {
+          html = html + '<td><input data-name="' + i + '" class="guest_name" type="text" style="display:block;font:normal 1.2em \'OS Light Italic\';text-align:left;margin:0;border:0;width:100%;" value="' + (guest ? guest : "&hellip;") + '"></input></td>'
+          i++;
+        })
+    html = html + "</tr>"
+      
+   
+     })
+     html = html + "</table>"
       this.$('.guests').html(html)
   },
   renderQuantity: function() {
@@ -441,9 +499,17 @@ var ItemView = Backbone.View.extend({
   events: {
     "mouseenter .tooltip-select": "showTooltip",
     "mouseleave .tooltip-select": "closeTooltip",
+    "click .a_colour": "updateColour",
+    "click .colour_label": "updatePalette",
     "click .change_monogram": "changeMonogram",
+    "click .colour_change": "changeColour",
     "click .texture": "changeTexture",
     "blur .guest_name": "updateGuestName"
+  },
+  updatePalette: function(e) {
+      var which = $(e.currentTarget).data("colour")
+      this.$('.palette').hide();
+     this.$('.palette_'+which).show();
   },
   showTooltip: function(e) {
     var which = $(e.currentTarget).data("tooltip")
@@ -452,6 +518,11 @@ var ItemView = Backbone.View.extend({
   closeTooltip: function(e) {
        var which = $(e.currentTarget).data("tooltip")
           $('.' + which).fadeOut();
+  },
+  updateColour: function(e) {
+       var currentTarget = $(e.currentTarget);
+    var hex = currentTarget.data("colour");
+      this.$('.product_image').css("background-color", hex)
   },
   updateGuestName: function(e) {
     var currentTarget = $(e.currentTarget);
@@ -469,6 +540,13 @@ var ItemView = Backbone.View.extend({
     $('.texture').removeClass("selected")
     currentTarget.toggleClass("selected");  
     this.model.set("texture", currentTarget.data("texture"))
+  },
+  changeColour: function() {
+  var that = this;
+  this.$('.customise').fadeOut(function() {
+      
+that.$('.colour_selector').fadeIn();  
+  });
   },
   changeMonogram: function() {
     cart.setContext(this.model)    
@@ -569,7 +647,7 @@ var ProductRouter = Backbone.Router.extend({
   var cart = new Cart({ parse: true }) 
 <% }  %>
 
-var thisProduct = new Product({id: "<%= _id %>", name: "<%= name %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %>, quantity: 10, price: <%= price %>, guests: [], texture: "plain" });
+var thisProduct = new Product({id: "<%= _id %>", name: "<%= name %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %>, quantity: 10, price: <%= price %>, guests: ["&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;"], texture: "plain" });
 
 var iv = new ItemsView({collection: cart.get("items")})
 $('#cart').html(iv.render().el);
