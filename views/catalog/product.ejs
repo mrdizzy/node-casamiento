@@ -1,11 +1,20 @@
-<style type="text/css">/* COLOURS */
+<style type="text/css">
+
+.tabbed_area { margin:0px;padding:0px;padding:8px; z-index:-5;}
+ul.tabs { margin:0px; padding:0px; margin-top:5px; margin-bottom:6px; z-index:0}
+ul.tabs li { margin:0px;padding:0px; list-style:none; display:inline; z-index:0;} 
+ul.tabs li a { color:#000; margin:0px; padding:0px; padding:7px 14px 7px 14px; font:normal 1.1em "OS Light Italic"; text-decoration:none; border: 1px solid lightgrey; border-top-left-radius: 6px; border-bottom: 1px solid #000; border-top-right-radius: 6px; box-shadow:3px 3px 0 0 lightgrey;z-index:0}
+ul.tabs li a:hover { border-color:#000; z-index:0;} 
+
+ul.tabs li a.active { border:1px solid #000; font-weight:bold; border-bottom:1px solid white; position:relative;z-index:500; box-shadow:0 0 0 0;} 
+/* COLOURS */
 .a_colour { opacity:0.8;}
 .a_colour:hover { opacity:1}
 .colsqr { width:2.9em;height:2.9em;}
 .colsqr img { width:100%; padding:0;border:0;}
-.clrb { border:1px dotted black; width:32%;float:left;border-top:0;border-left:0;}
+.clrb { width:49%; float:left;border:1px dotted black; border-top:0;border-left:0;}
 .clrb p:hover { font-weight:bold; }
-.palette { display:none; clear:both; }
+.palette { display:none; clear:both; position:relative; border-radius:5px; box-shadow:5px 5px 0 0 lightgrey;}
 .palette_1 { display:block;}
 .chat-bubble {
   background-color:#fff;
@@ -43,7 +52,6 @@ tr:first-child td { border-top:0;}
   left:120px;
 }
 
-.item_image { vertical-align:top; padding-top:7em;}
 label { font:normal 1em "OS Light Italic";text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em; }
 input[type=text] {text-align:center;font:normal 1.4em OS;display:block; border:1px solid #000;}
 input[type=text]:hover { background-color:#DDD; border:1px solid lightgrey; }
@@ -52,6 +60,7 @@ input[type=text]:hover.guest_name { border:1px solid lightgrey;}
 
 table {  border-collapse:collapse; }
 
+    .item_image { vertical-align:top; padding-top:7em;}
   tr:first-child th { border-top:0;}
   td { border:1px dotted #000;font-family: "OS"; font-size:1em; color:#000; }
 
@@ -114,36 +123,34 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 <script type="text/template" id="cart_item_table">
 
 <div class="colour_selector" style="display:none">
-
-<!-- colour labels -->
-    <div>
-        <div class="clrb"><p class="colour_label pinks selected" data-colour="1">PINKS</p></div>
-        <div class="clrb"><p class="colour_label reds" data-colour="2">REDS</p></div>
-        <div class="clrb"><p class="colour_label purples" data-colour="3">PURPLES</p></div>
-        <div class="clrb"><p class="colour_label yellows" data-colour="4">YELLOWS</p></div>
-        <div class="clrb"><p class="colour_label greens" data-colour="5">GREENS</p></div>
-        <div class="clrb"><p class="colour_label browns" data-colour="6">BROWNS</p></div>
-        <div class="clrb"><p class="colour_label blues" data-colour="7">BLUES</p></div>
-    </div>
-    
-<% var cols =	[['#FFC0CB pink','#FFB6C1 lightpink','#FF69B4 hotpink','#FF1493 deeppink','#DB7093 palevioletred','#BC8F8F rosybrown','#C71585 mediumvioletred','#CD5C5C indianred','#F08080 lightcoral','#FFA07A lightsalmon','#FA8072 salmon','#E9967A darksalmon','#DC143C crimson'],['#CD853F peru','#D2691E chocolate','#A0522D sienna','#A52A2A brown','#B22222 firebrick','#8B4513 saddlebrown','#8B0000 darkred','#800000 maroon'],['#FAA460 sandybrown','#FF7F50 coral','#FF6347 tomato','#FF0000 red','#FF4500 orangered','#FF8C00 darkorange','#FFA500 orange'],['#FFD700 gold','#FFFF00 yellow'],['#E6E6FA lavender','#D8BFD8 thistle','#DDA0DD plum','#FF00FF magenta','#EE82EE violet','#DA70D6 orchid','#BA55D3 mediumorchid','#9370DB mediumpurple','#8A2BE2 blueviolet','#9400D3 darkviolet','#9932CC darkorchid','#8B008B darkmagenta','#800080 purple','#4B0082 indigo','#483D8B darkslateblue','#6A5ACD slateblue','#7B68EE mediumslateblue'],['#98FB98 palegreen','#ADFF2F greenyellow','#7FFF00 chartreuse','#7CFC00 lawngreen','#00FF00 lime','#00FF7F springgreen','#00FA9A mediumspringgreen','#90EE90 lightgreen','#32CD32 limegreen','#3CB371 mediumseagreen','#2E8B57 seagreen','#228B22 forestgreen','#008000 green','#006400 darkgreen','#9ACD32 yellowgreen','#6B8E23 olivedrab','#808000 olive','#556B2F darkolivegreen','#8FBC8F darkseagreen','#66CDAA mediumaquamarine','#20B2AA lightseagreen','#008B8B darkcyan','#008080 teal'],['#00FFFF cyan','#7FFFD4 aquamarine','#AFEEEE paleturquoise','#40E0D0 turquoise','#48D1CC mediumturquoise','#00CED1 darkturquoise','#5F9EA0 cadetblue','#4682B4 steelblue','#B0C4DE lightsteelblue','#B0E0E6 powderblue','#ADD8E6 lightblue','#87CEEB skyblue','#87CEFA lightskyblue','#00BFFF deepskyblue','#1E90FF dodgerblue','#6495ED cornflowerblue','#4169E1 royalblue','#0000FF blue','#0000CD mediumblue','#00008B darkblue','#000080 navy','#191970 midnightblue'],['#DCDCDC gainsboro','#D3D3D3 lightgrey','#C0C0C0 silver','#A9A9A9 darkgray','#778899 lightslategray','#708090 slategray','#808080 gray','#696969 dimgray','#2F4F4F darkslategray','#000000 black']] %>
-
+<div class="tabbed_area"> 
+    <ul class="tabs"> 
+        <li><a class="a_tab colour_label" data-colour="1" id="1_colours">Pinks</a></li> 
+        <li><a class="a_tab colour_label active" data-colour="2" id="1_monograms">Reds</a></li> 
+        <li><a class="a_tab colour_label" data-colour="3"  id="1_monograms">Purples</a></li> 
+        <li><a class="a_tab colour_label" data-colour="4" id="1_monograms">Yellows</a></li> 
+        
+        <li><a class="a_tab colour_label" data-colour="5" id="1_monograms">Blues</a></li> 
+        <li><a class="a_tab colour_label" data-colour="6" id="1_monograms">Greens</a></li> 
+    </ul> 
     
     <% var counter = 0 %>
     <% cols.forEach(function(palette) { %>
     <% counter++ %>
-        <div class="palette palette_<%= counter %>">
+        <div class="palette palette_<%= counter %>" style="z-index:100;background-color:white;border:1px dotted black;margin-top:0;padding-top:0;">
         <% palette.forEach(function(colour) { %>
         <% var ary = colour.split(" ") %>
         <% var hex = ary[0] %>
         <% var description = ary[1] %>
-       <div class="a_colour" data-colour="<%= hex %>" style="width:25%;text-align:left;display:inline-block;padding-right:1em;padding-top:1em;">
-       <div style="background-color:<%= hex %>;border-radius:4px;width:5em;height:4em;margin-bottom:0;padding-bottom:0;"></div><span style="margin-top:0;padding-top:0;color:black;font:1.4em normal 'Open Sans Light';"><%= description.toUpperCase() %></span>
+       <div class="a_colour" data-colour="<%= hex %>" style="width:30%;text-align:center;display:inline-block;padding-right:1em;padding-top:1em;">
+       <div style="background-color:<%= hex %>;border-radius:4px;width:5em;height:4em;margin-bottom:0;padding-bottom:0;margin:0 auto;"></div><span style="margin-top:0;padding-top:0;color:black;font:1.2em normal 'Open Sans Light';"><%= description.toUpperCase() %></span>
        </div>
         <% }) %>
         </div>
     <% }) %>
-
+    
+ </div>
+    
 
 </div>
 
@@ -174,19 +181,7 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
       </div>
     </td>
         
-    <td class="selected_colours" style="text-align:center;width:30%">        
-        
-    %- colours.forEach(function(colour) { -%
-
-      <div style="float:left;clear:both;">
-          <div class="color_square" style="background-color:%% colour %%;"></div>
-          <p class="color_label">%% colour %%</p>
-      </div>
-      <div class="change colour_change">CHANGE</div>
-    %- }) -%
-          
-        
-          </td>
+    <td class="selected_colours" style="text-align:center;width:30%"></td>
     </tr>
     <tr>
       <th>Monogram style</th>
@@ -198,9 +193,6 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
       <td>
           <img class="monogram_image" src="/gfx/m/%%monogram%%.png" style="width:95%"/><br/>
           <div class="change_monogram change">CHANGE</div>
-        
-    
-       
       </td>
         <td colspan="2" class="tooltip-select" data-tooltip="tooltip-monodetails">
          <label>First name:</label>
@@ -249,8 +241,6 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 </script>       
        
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
-
-
 <div id="product_page">
 
 <div id="product_section1">
@@ -342,6 +332,8 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 
 </div>
 </div>
+
+
 <script>
 // Prevent the JavaScript template delimiters interfering with the node express delimiters
 _.templateSettings = {
@@ -443,6 +435,7 @@ var CartItemView = Backbone.View.extend({
     this.$('.noUiSlider a div').click(function() {
       that.model.set("quantity", that.$('.noUiSlider').val())
     })
+    this.renderColour();
     this.calculatePrice()
     this.renderTotal();
     this.renderGuests();
@@ -533,6 +526,9 @@ var ItemView = Backbone.View.extend({
   },
   updatePalette: function(e) {
       var which = $(e.currentTarget).data("colour")
+      $('.colour_label').removeClass("active");
+      
+      $(e.currentTarget).addClass("active")
       this.$('.palette').hide();
      this.$('.palette_'+which).show();
   },
