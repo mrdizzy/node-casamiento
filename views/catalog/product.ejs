@@ -105,7 +105,7 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 <script type="text/template" id="cart_item">
   <td style="width:35%;" class="item_image">
     <span style="font: normal 2em TP; letter-spacing:0.25em;color:#000">%% name %%</span>
-    <img class="product_image" style="background-color:purple" src="/products/%% id %%/attachments/display-2.jpg" style="width:95%"/><br/>
+    <img class="product_image" style="background-color:%% colours[0] %%" src="/products/%% id %%/attachments/display-2.jpg" style="width:95%"/><br/>
     <img src="/gfx/product_types/small/name_place_small.png" style="width:120px">
   </td>
   <td style="width:65%;padding:0;margin:0;vertical-align:top;" class="second_col"></td>
@@ -174,16 +174,17 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
       </div>
     </td>
         
-    <td style="text-align:center;width:30%">        
-          
+    <td class="selected_colours" style="text-align:center;width:30%">        
+        
     %- colours.forEach(function(colour) { -%
 
-      <div style="float:left;">
+      <div style="float:left;clear:both;">
           <div class="color_square" style="background-color:%% colour %%;"></div>
           <p class="color_label">%% colour %%</p>
       </div>
+      <div class="change colour_change">CHANGE</div>
     %- }) -%
-          <div class="change colour_change">CHANGE</div>
+          
         
           </td>
     </tr>
@@ -412,10 +413,11 @@ var Cart = Backbone.Model.extend({
 
 var CartItemView = Backbone.View.extend({
     initialize: function() {
-    _.bindAll(this, 'render', 'renderQuantity', 'renderTotal', 'renderMonogram', 'calculatePrice', 'renderGuests')
+    _.bindAll(this, 'render', 'renderQuantity', 'renderTotal', 'renderMonogram', 'calculatePrice', 'renderGuests', 'renderColour')
     this.model.on("change:quantity", this.renderQuantity)  
     this.model.on("change:quantity", this.calculatePrice) 
     this.model.on("change:quantity", this.renderGuests)  
+    this.model.on("change:colour", this.renderColour)
     this.model.on("change:total", this.renderTotal)  
     this.model.on("change:texture", this.calculatePrice)
     this.model.on("change:monogram", this.renderMonogram) 
@@ -445,6 +447,16 @@ var CartItemView = Backbone.View.extend({
     this.renderTotal();
     this.renderGuests();
     return this;
+  },
+  renderColour: function() {
+            var html = "";
+   this.model.get("colours").forEach(function(colour) {
+        html = html + '<div style="float:left;clear:both;">'
+            html = html +'<div class="color_square" style="background-color:' + colour + ';"></div>'
+            html = html + '<p class="color_label">' +  colour + '</p>';
+      html = html + '</div><div class="change colour_change">CHANGE</div>';
+   }) 
+          this.$('.selected_colours').html(html);
   },
   renderMonogram: function() {
       this.$('.monogram_image').attr("src", "/gfx/m/" + this.model.get("monogram") + ".png")
@@ -499,12 +511,25 @@ var ItemView = Backbone.View.extend({
   events: {
     "mouseenter .tooltip-select": "showTooltip",
     "mouseleave .tooltip-select": "closeTooltip",
-    "click .a_colour": "updateColour",
+    "mouseenter .a_colour": "updateColour",
+    "click .a_colour": "saveColour",
     "click .colour_label": "updatePalette",
     "click .change_monogram": "changeMonogram",
     "click .colour_change": "changeColour",
     "click .texture": "changeTexture",
     "blur .guest_name": "updateGuestName"
+  },
+  saveColour: function(e) {
+  var that = this;
+        var colours = this.model.get("colours");
+        colours[0] = $(e.currentTarget).data("colour");
+        this.model.set("colours", colours);
+        this.model.trigger("change:colour");
+       this.$('.colour_selector').fadeOut(function() {
+      
+    that.$('.customise').fadeIn();  
+  });
+      
   },
   updatePalette: function(e) {
       var which = $(e.currentTarget).data("colour")
@@ -520,6 +545,7 @@ var ItemView = Backbone.View.extend({
           $('.' + which).fadeOut();
   },
   updateColour: function(e) {
+  console.log("hover")
        var currentTarget = $(e.currentTarget);
     var hex = currentTarget.data("colour");
       this.$('.product_image').css("background-color", hex)
