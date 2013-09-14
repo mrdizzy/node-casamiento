@@ -58,60 +58,93 @@
 
 <table class="customise">
   <tr>
-  <th class="step-1" style="border-bottom:1px solid black;width:25%;background-color:%% colours[0] %%;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 1</th><th style="width:85%;text-align:left;padding-left:1em;">Card texture</th>
-   
+    <th class="step-1" style="border-bottom:1px solid black;width:25%;background-color:%% colours[0] %%;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 1</th><th style="width:85%;text-align:left;padding-left:1em;">Card texture</th>
   </tr>
-  
   
   <tr>
     <td colspan="2"style="width:50%;" class="step-1 tooltip-select" data-tooltip="tooltip-texture">
+      <div class="chat-bubble tooltip-texture"><div class="chat-bubble-arrow-border"></div>
+  <div class="chat-bubble-arrow"></div>Select the texture of the card by clicking on it so it is highlighted. The price will automatically update.
+</div>
           <div class="texture %% (texture == "plain") ? "selected" : "" %%" data-texture="plain" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
           <div class="texture %% (texture == "hammer") ? "selected" : "" %%" data-texture="hammer" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
           <div class="texture %% (texture == "pearl") ? "selected" : "" %%" data-texture="pearl" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
-          <div class="b1" style="position:relative;"></div>
-          <div class="chat-bubble tooltip-texture"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
-  <div class="chat-bubble-arrow"></div>Select the texture of the card by clicking on it so it is highlighted. The price will automatically update.
-</div></div>
          
-    </td> <tr>
-  <th class="step-1" style="border-bottom:1px solid black;width:25%;background-color:grey;font:1em normal 'Open Sans Light';color:white;">STEP 2</th><th style="text-align:left;padding-left:1em;width:85%;">Card thickness</th>
+    </td> 
+
+<!-- THICKNESS -->
+
+<tr>
+  <th class="step-2" style="border-bottom:1px solid black;width:25%;background-color:grey;font:1em normal 'Open Sans Light';color:white;">STEP 2</th><th style="text-align:left;padding-left:1em;width:85%;">Card thickness</th>
    
   </tr>
     <tr>
-    <td colspan="2"> 
+    <td colspan="2" class="step-2 tooltip-select" data-tooltip="tooltip-thickness"> 
+      <div class="chat-bubble tooltip-thickness">
+        <div class="chat-bubble-arrow-border"></div>
+        <div class="chat-bubble-arrow"></div>Select the thickness of your card by clicking an icon. The higher the GSM the thicker the card and the more expensive it is. GSM stands for grams per square meter and measures the weight of the card.
+      </div>
       <div style="width:60%;margin:auto">
-        <div class="weight" style="border-top:2px solid #666;"></div>
-        <p>300gsm</p>
-        <div class="weight" style="border-top:4px solid #666;"></div>
-        <p>250gsm</p>
+      <div style="display:inline-block;padding:0.5em;">
+        <div class="weight" style="display:inline-block;width:5em;border-top:3px solid #666;"></div> 300gsm</div><br/>
+        <div style="display:inline-block;padding:0.5em;">
+        <div class="weight" style="display:inline-block;width:5em;border-top:7px solid #666;"></div>
+        250gsm</div>
       </div>
     </td>
         </tr>
-          <tr>
-  <th class="step-3" style="border-bottom:1px solid black;width:25%;background-color:grey;  %>;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 3</th><th style="width:85%;text-align:left;padding-left:1em;">Colours</th>
-   
-  </tr>
+        
+<!-- COLOURS -->
+
+<tr>
+  <th class="step-3 tooltip-select" data-tooltip="tooltip-colours" style="border-bottom:1px solid black;width:25%;background-color:grey;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 3</th>
+    <th style="width:85%;text-align:left;padding-left:1em;">Colours</th>
+</tr>
   
-    <tr>
-    <td colspan="2" class="selected_colours" style="text-align:center;width:30%"></td>
-    </tr>
-       <tr>
-  <th class="step-4" style="border-bottom:1px solid black;width:25%;background-color:grey;  %>;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 4</th><th style="width:85%;text-align:left;padding-left:1em;">Monogram style</th>
+<tr>
+  <td colspan="2" class="selected_colours" style="text-align:center;width:30%"></td>
+</tr>
+
+<!-- MONOGRAM STYLE -->
+
+<tr>
+  <th class="step-4" class="step-4 tooltip-select" data-tooltip="tooltip-monogram-style" style="border-bottom:1px solid black;width:25%;background-color:grey;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 4</th>
+  <th style="width:85%;text-align:left;padding-left:1em;">Monogram style</th>
    
-  </tr>
-    
+</tr>
     
     <tr>
-      <td colspan="2">
-          <img class="monogram_image" src="/gfx/m/%%monogram%%.png" style="width:95%;max-width:300px;"/><br/>
-          <div class="change_monogram change">CHANGE</div>
+      <td colspan="2" data-tooltip="tooltip-monogram-style" class="tooltip-select">
+            <div class="chat-bubble tooltip-monogram-style"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
+  <div class="chat-bubble-arrow"></div>A monogram is a motif featuring a name and initials. You can have one created for you and your partner, your baby or your loved on. A monogram will be created specially for you by a designer, so when you enter the details here it will not be reflected in the picture.
+</div>
+<div style="display:inline-block;padding-right:5em;font:1.2em normal 'Open Sans Light'">
+<input type="radio" name="monogram" value="monogram" checked></input> Monogram</div>
+
+<div style="display:inline-block;padding:0.5em;font:1.2em normal 'Open Sans Light'">
+<input type="radio" name="monogram" value="logo" ></input>  Upload logo</div>
+<br/>
+<div class="monogram_image"  style="border-top:1px dotted black;padding:0;margin:0;">
+          <img src="/gfx/m/%%monogram%%.png" style="width:95%;max-width:300px;"/></div>
+         
+          <form id="upload">
+          <input type="file" class="selectedFile" style="display: none;" />
+      
+          </form>
       </td>
       </tr>
+      
+      
+<!-- MONOGRAM DETAILS -->      
+      
           <tr>
-  <th class="step-3" style="border-bottom:1px solid black;width:15%;background-color:grey; %>;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 3</th><th style="width:85%;text-align:left;padding-left:1em;">Monogram details</th>
+  <th class="step-3" style="border-bottom:1px solid black;width:15%;background-color:grey;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 3</th><th style="width:85%;text-align:left;padding-left:1em;">Monogram details</th>
    
   </tr>
-      <td colspan="2"class="tooltip-select" data-tooltip="tooltip-monodetails">
+      <td colspan="2" class="tooltip-select" data-tooltip="tooltip-monodetails">
+       <div class="chat-bubble tooltip-monodetails"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
+  <div class="chat-bubble-arrow"></div>A monogram is a motif featuring a name and initials. You can have one created for you and your partner, your baby or your loved on. A monogram will be created specially for you by a designer, so when you enter the details here it will not be reflected in the picture.
+</div>
          <label>First name:</label>
         <input type="text" value="Nicola" size="16"></input>
         
@@ -122,22 +155,23 @@
         <input type="text" style="float:left;" value="22" size="2"></input> 
         <input type="text" style="float:left;" value="September" size="10"></input> 
         <input type="text" value="2013" size="4"></input> 
-         <div style="position:relative;"></div><div class="chat-bubble tooltip-monodetails"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
-  <div class="chat-bubble-arrow"></div>A monogram is a motif featuring a name and initials. You can have one created for you and your partner, your baby or your loved on. A monogram will be created specially for you by a designer, so when you enter the details here it will not be reflected in the picture.
-</div></div>
+        
         </td>
         </tr>
+        
+<!-- PRICE AND QUANTITY -->        
+        
         <tr>
         <th colspan="3">Price &amp; Quantity</th>
         </tr><tr>
-      <td colspan="3" class="quantity_selector tooltip-select" data-tooltip="tooltip-quantity" style="padding-top:2em;padding-bottom:2em;">
+      <td colspan="3" class="quantity_selector tooltip-select" data-tooltip="tooltip-quantity" style="padding-top:2em;padding-bottom:2em;"><div class="chat-bubble tooltip-quantity"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
+  <div class="chat-bubble-arrow"></div>Change the quantity by dragging the above slider left and right with your mouse or finger. You will see the price and quantity update
+</div>
         <p style="text-align:center;font: normal 4em 'OS Light'"><span style="font-size:0.65em;vertical-align:top;">&pound;</span><span class="pound">2</span><span style="font-size:0.65em;vertical-align:text-top;" class="dec">.99</span></p>
 
         <div class="noUiSlider" style="margin-left:4%;width:84%;float:left;margin-bottom:2em;"></div>
         <div style="quantity;font:normal 1.4em 'OS Light Italic'" id="qty">%%quantity%%</div>
-        <div style="position:relative;"></div><div class="chat-bubble tooltip-quantity"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
-  <div class="chat-bubble-arrow"></div>Change the quantity by dragging the above slider left and right with your mouse or finger. You will see the price and quantity update
-</div></div>
+       
       </td>
     </tr>
     <tr>
@@ -145,11 +179,11 @@
    
     </th>
     <tr  class="tooltip-select" data-tooltip="tooltip-guests">
-    <td colspan="3">
-   
-     <div style="position:relative;"></div><div class="chat-bubble tooltip-guests"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
+    <td colspan="3">     <div class="chat-bubble tooltip-guests"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
   <div class="chat-bubble-arrow"></div>Each place card will come individually printed with the name of each guest. Here you can add each guest name. Your names will be printed exactly as you type them, so make sure you use capital letters in the right places
-</div></div>
+</div>
+   
+
 <div class="guests"></div>
    
     </td>

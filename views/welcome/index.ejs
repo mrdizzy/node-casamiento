@@ -3,7 +3,7 @@
 	h2.casamiento { text-align:center; font: normal 2.2em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em;color:#000; }
 	p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 1.1em "OS", serif;line-height: 1.75em; padding:0; color:black;}
 #welcome_description { margin-left:3em;margin-right:3em; }
-	#welcome_column_1 { width:66.6%;float:left; }
+	.welcome_column_1 { width:66.6%;float:left; }
 	#welcome_column_2 {width:33%;float:left; }
 	#welcome_column_3 { width:25%; float:right; }
 		@media screen and (max-width:1024px) {
@@ -15,7 +15,7 @@
 <div style="text-align:center">
 	<img src="/gfx/logo/genesis_collection.png" style="width:280px;margin-top:3px;" >
 </div>
-
+<div id="view" style="display:none;position:absolute;width:175px;text-align:center;padding:0.5em;left:24em;top:12em;margin:auto;border-radius:5px;background-color:grey;color:white;opacity:0.75;z-index:100;font:1.2em normal 'Open Sans Light'">VIEW THIS DESIGN</div>
       <div id="welcome_column_3">
       <% var sp = 0 %>
       <% documents.forEach(function(place) { %> 
@@ -57,12 +57,13 @@
         <% }) %>
       </div>
 <!-- MAIN SLIDES -->
-
+<div id="slides_c">
 <div id="slides2" style="width:75%;">
 	<% documents.forEach(function(place) { %>
 
 		<div>
-			<div id="welcome_column_1">
+			<div class="welcome_column_1">
+		
 				<a href="/products/<%= place._id %>"><img src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/medium-<%= place.attachments_order[0] %>.jpg" class="img_100" /></a>
 			
 			</div>
@@ -76,6 +77,16 @@
 	<% }) %>
 
 </div>
+
+<script type="text/javascript">
+$('#slides_c').mouseenter(function() {
+	$('#view').fadeIn()
+})
+$('#slides_c').mouseleave(function() {
+	$('#view').fadeOut()
+})
+
+</script>
 <div style="width:75%;margin-top:1em; margin-bottom:1em;">
 <% var i = 0 %>
 	<% documents.forEach(function(place) { %>
@@ -89,6 +100,9 @@
     
 </div>
 <% }) %>
+</div>
+
+<div style="clear:both;"></div>
 </div>
 <div style="border-top:1px solid black;width:95%;margin:auto;margin-top:0;"></div>
 

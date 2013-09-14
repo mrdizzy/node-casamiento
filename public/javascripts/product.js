@@ -165,8 +165,14 @@ var ItemView = Backbone.View.extend({
     "click .change_monogram": "changeMonogram",
     "click .colour_change": "changeColour",
     "click .texture": "changeTexture",
-    "blur .guest_name": "updateGuestName"
+    "click input[type=radio]": "selectMonogram",
+    "blur .guest_name": "updateGuestName",
+    "change .selectedFile": "selectFile"
   },
+  selectFile: function(e) {
+      alert('change')
+  },
+  
   saveColour: function(e) {
   var that = this;
         var colours = this.model.get("colours");
@@ -178,6 +184,14 @@ var ItemView = Backbone.View.extend({
     that.$('.customise').fadeIn();  
   });
   },
+  selectMonogram: function(e) {
+      if($(e.currentTarget).val() == "logo") {
+      $('.monogram_image').slideUp();
+     this.$('.selectedFile').click();
+     } else {
+       $('.monogram_image').slideDown();
+     }
+  },
   updatePalette: function(e) {
       var which = $(e.currentTarget).data("colour")
       $('.colour_label').removeClass("active");
@@ -188,11 +202,11 @@ var ItemView = Backbone.View.extend({
   },
   showTooltip: function(e) {
     var which = $(e.currentTarget).data("tooltip")
-          $('.' + which).fadeIn()
+          $('.' + which).show()
   },
   closeTooltip: function(e) {
        var which = $(e.currentTarget).data("tooltip")
-          $('.' + which).fadeOut();
+          $('.' + which).hide();
   },
   updateColour: function(e) {
        var currentTarget = $(e.currentTarget);
