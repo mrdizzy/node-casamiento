@@ -1,6 +1,7 @@
-
 <link rel="stylesheet" type="text/css" href="/stylesheets/product.css">
+
 <script type="text/template" id="break">
+
   <td colspan="2">
     <div style="width:98%;padding-bottom:3em;margin:auto;margin-top:2em;">
       <div style="width:44%;float:left;margin-top:5px;border-top:1px solid black;"></div>
@@ -8,15 +9,18 @@
       <div style="width:44%;float:left;margin-top:5px;border-top:1px solid black;"></div>
     </div>
   </td>
+  
 </script>
 
 <script type="text/template" id="cart_item">
+
   <td style="width:35%;" class="item_image">
     <span style="font: normal 2em TP; letter-spacing:0.25em;color:#000">%% name %%</span>
     <img class="product_image" style="background-color:%% colours[0] %%" src="/products/%% id %%/attachments/display-2.jpg" style="width:95%"/><br/>
     <img src="/gfx/product_types/small/name_place_small.png" style="width:120px">
   </td>
   <td style="width:65%;padding:0;margin:0;vertical-align:top;" class="second_col"></td>
+  
 </script>
        
 <script type="text/template" id="cart_item_table">
@@ -27,8 +31,7 @@
         <li><a class="a_tab colour_label" data-colour="1" id="1_colours">Pinks</a></li> 
         <li><a class="a_tab colour_label active" data-colour="2" id="1_monograms">Reds</a></li> 
         <li><a class="a_tab colour_label" data-colour="3"  id="1_monograms">Purples</a></li> 
-        <li><a class="a_tab colour_label" data-colour="4" id="1_monograms">Yellows</a></li> 
-        
+        <li><a class="a_tab colour_label" data-colour="4" id="1_monograms">Yellows</a></li>         
         <li><a class="a_tab colour_label" data-colour="5" id="1_monograms">Blues</a></li> 
         <li><a class="a_tab colour_label" data-colour="6" id="1_monograms">Greens</a></li> 
     </ul> 
@@ -55,23 +58,27 @@
 
 <table class="customise">
   <tr>
-    <th>Card texture</th>
-    <th>Card thickness</th>
-    <th>Colours</th>
+  <th class="step-1" style="border-bottom:1px solid black;width:25%;background-color:%% colours[0] %%;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 1</th><th style="width:85%;text-align:left;padding-left:1em;">Card texture</th>
+   
   </tr>
   
   
   <tr>
-    <td style="width:50%" class="tooltip-select" data-tooltip="tooltip-texture">
+    <td colspan="2"style="width:50%;" class="step-1 tooltip-select" data-tooltip="tooltip-texture">
           <div class="texture %% (texture == "plain") ? "selected" : "" %%" data-texture="plain" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
           <div class="texture %% (texture == "hammer") ? "selected" : "" %%" data-texture="hammer" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
           <div class="texture %% (texture == "pearl") ? "selected" : "" %%" data-texture="pearl" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
-          <div class="b1" style="position:relative;"></div><div class="chat-bubble tooltip-texture"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
+          <div class="b1" style="position:relative;"></div>
+          <div class="chat-bubble tooltip-texture"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
   <div class="chat-bubble-arrow"></div>Select the texture of the card by clicking on it so it is highlighted. The price will automatically update.
 </div></div>
          
-    </td>
-    <td style="width:20%"> 
+    </td> <tr>
+  <th class="step-1" style="border-bottom:1px solid black;width:25%;background-color:grey;font:1em normal 'Open Sans Light';color:white;">STEP 2</th><th style="text-align:left;padding-left:1em;width:85%;">Card thickness</th>
+   
+  </tr>
+    <tr>
+    <td colspan="2"> 
       <div style="width:60%;margin:auto">
         <div class="weight" style="border-top:2px solid #666;"></div>
         <p>300gsm</p>
@@ -79,21 +86,32 @@
         <p>250gsm</p>
       </div>
     </td>
-        
-    <td class="selected_colours" style="text-align:center;width:30%"></td>
-    </tr>
+        </tr>
+          <tr>
+  <th class="step-3" style="border-bottom:1px solid black;width:25%;background-color:grey;  %>;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 3</th><th style="width:85%;text-align:left;padding-left:1em;">Colours</th>
+   
+  </tr>
+  
     <tr>
-      <th>Monogram style</th>
-      <th colspan="2">Monogram details</th>
+    <td colspan="2" class="selected_colours" style="text-align:center;width:30%"></td>
     </tr>
+       <tr>
+  <th class="step-4" style="border-bottom:1px solid black;width:25%;background-color:grey;  %>;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 4</th><th style="width:85%;text-align:left;padding-left:1em;">Monogram style</th>
+   
+  </tr>
     
     
     <tr>
-      <td>
-          <img class="monogram_image" src="/gfx/m/%%monogram%%.png" style="width:95%"/><br/>
+      <td colspan="2">
+          <img class="monogram_image" src="/gfx/m/%%monogram%%.png" style="width:95%;max-width:300px;"/><br/>
           <div class="change_monogram change">CHANGE</div>
       </td>
-        <td colspan="2" class="tooltip-select" data-tooltip="tooltip-monodetails">
+      </tr>
+          <tr>
+  <th class="step-3" style="border-bottom:1px solid black;width:15%;background-color:grey; %>;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 3</th><th style="width:85%;text-align:left;padding-left:1em;">Monogram details</th>
+   
+  </tr>
+      <td colspan="2"class="tooltip-select" data-tooltip="tooltip-monodetails">
          <label>First name:</label>
         <input type="text" value="Nicola" size="16"></input>
         
@@ -142,18 +160,18 @@
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
 <div id="product_page">
 
-<div id="product_section1">
+    <div id="product_section1">
 
-    <h1 class="product_name" style="float:left"> <img src="/gfx/bullets/bullet_square_dots.png" /> <%= name %></h1>
+        <h1 class="product_name" style="float:left"> <img src="/gfx/bullets/bullet_square_dots.png" /> <%= name %></h1>
 
-    <div id="slides" style="clear:both">            
-       <img src="/products/<%= _id %>/attachments/medium-1" />
-       <img src="/products/<%= _id %>/attachments/medium-2" />
-       <img src="/products/<%= _id %>/attachments/medium-3" />
-       <img src="/products/<%= _id %>/attachments/medium-4" />
-    </div>
-  
-</div>    
+        <div id="slides" style="clear:both">            
+           <img src="/products/<%= _id %>/attachments/medium-1" />
+           <img src="/products/<%= _id %>/attachments/medium-2" />
+           <img src="/products/<%= _id %>/attachments/medium-3" />
+           <img src="/products/<%= _id %>/attachments/medium-4" />
+        </div>
+      
+    </div>    
 
 <div id="product_section0">
 
@@ -212,7 +230,6 @@
 </div>  
 </div>
     
-
 <div id="cart_page" style="display:none">
 <div style="margin-left:2em;margin-right:2em;border:1px solid black;border-top:0;";>
 <div id="cart"  style="padding:2em;padding-top:3em;">

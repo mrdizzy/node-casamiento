@@ -1,3 +1,5 @@
+table.customise td { padding: 1em;}
+
 .tabbed_area { margin:0px;padding:0px;padding:8px; z-index:-5;}
 ul.tabs { margin:0px; padding:0px; margin-top:5px; margin-bottom:6px; z-index:0}
 ul.tabs li { margin:0px;padding:0px; list-style:none; display:inline; z-index:0;} 
@@ -60,9 +62,9 @@ table {  border-collapse:collapse; }
 
     .item_image { vertical-align:top; padding-top:7em;}
   tr:first-child th { border-top:0;}
-  td { border:1px dotted #000;font-family: "OS"; font-size:1em; color:#000; }
+  td { border:1px solid #000;font-family: "OS"; font-size:1em; color:#000; }
 
-  th { border:1px dotted #000;text-align:center; border-bottom:1px solid #000; padding-top:1em;padding-bottom:1em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em;}
+  th { border:1px solid #000;text-align:center; border-bottom:1px dotted #000; padding-top:1em;padding-bottom:1em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em;}
   td:first-child, th:first-child { border-left:0;}
   td:last-child, th:last-child { border-right:0;}
 
