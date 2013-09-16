@@ -7,7 +7,7 @@ _ = require('underscore'),
 
 function parseTransactions(transactions, maincallback) {
     async.map(transactions, function(transaction, callback) {
-        if (transaction.L_TYPE == 'Fee' || transaction.L_TYPE == 'Fee Reversal' || transaction.L_TYPE == 'Temporary Hold') {
+        if (transaction.L_TYPE == 'Fee' || transaction.L_TYPE == 'Fee Reversal' || transaction.L_TYPE == 'Temporary Hold' || transaction.L_TYPE == 'Transfer') {
             callback(null, null)
         }
         else {
@@ -36,8 +36,8 @@ module.exports.index = {
             }
         });
     }, {
-        startdate: "2013-08-31T00:00:00Z",
-        enddate: "2013-09-10T23:59:59Z",
+        startdate: "2013-04-01T00:00:00Z",
+        enddate: "2013-09-16T23:59:59Z",
         transactionclass: "BalanceAffecting"
     })
 },

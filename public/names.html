@@ -111,7 +111,7 @@ var doNames = function() {
       names[i] = names[i].trim();
   }
   names = _.chunk(names, 8);
-  var template = $('#table_template').html();
+  var template = $('#template').html();
   var r = _.template(template, {
       names: names
   });
