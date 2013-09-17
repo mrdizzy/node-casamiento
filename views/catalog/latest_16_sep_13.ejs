@@ -10,7 +10,8 @@ document.write("</" + az + bz + cz + ">");
 
 <% var counter  = 0 %>
 <style type="text/css">
-  
+  .intro p:first-letter { font-size:5.5em;padding-right:0.1em;float:left;line-height:0.8em;}
+  .intro p { text-align:left;}
 .tabbed_area { margin:0px;padding:0px;padding:8px; }
 ul.tabs { margin:0px; padding:0px; margin-top:5px; margin-bottom:7px; }
 ul.tabs li { margin:0px;padding:0px; list-style:none; display:inline; } 
@@ -142,25 +143,22 @@ tr:first-child td { border-top:0;}
 
 <div id="page_container_casamiento">
   <div id="inner_page_container_casamiento">
-    <div class="casamiento" id="header_container_casamiento" style="padding-top:0.5em;border-bottom:1px solid #000;margin:0;padding-bottom:0.5em;text-align:center;">
-<img id="genesis_logo_top" class="casamiento" alt="Genesis_footer2" src="http://www.casamiento.co.uk/gfx/logo/genesis_collection.png">
-      <div id="main_logo_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/gfx/logo/cas.png" style="width:202px;" id="logo" class="casamiento"></div>
-      
-      <div id="main_slogan_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/gfx/logo/drms.png"></div>
-      <div class="b1"></div>
-    </div>
+   
     
 
 <!-- SPECIFICATIONS -->
 <div class="actual_side_images_1" style="clear:both;text-align:center">
+<div class="spc intro">
+<h6 style="padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:normal 3em Gara"><span style="letter-spacing:0.15em; font-size:0.75em;font-variant:small-caps"> IMPRESS</span> your guests with beautiful unique place cards...</h6>
+<img src="/gfx/me2.jpg" style="padding:0.25em;margin-top:1em;float:left;">
+<p class="casamiento">A<span style="font-variant:small-caps">T CASAMIENTO</span>, we want to help make your day a very memorable one. Our carefully crafted collection of highly personalised wedding stationery stands out from the crowd of boring, mass-produced cards.</p>
 
+    <p class="casamiento">Not only will we customise our exclusive contemporary designs especially for you, but each card <b>comes complete with your own uniquely-designed monogram.</b> Your guests will be impressed, and you'll have something to look back on and treasure for years to come. Your marriage and relationship is unique and special, so don't do an injustice by buying cheap, factory-made items that will be used by thousands of other people.</p>
+</div>
   <div class="product_type spc">
     <div class="name_place_icon"><img src="http://www.casamiento.co.uk/gfx/product_types/small/name_place_small.png" style="width:100%;"></div>
   </div>
-  <div class="spc">
-    <h6 class="casamiento">This auction is for&hellip;</h3>
-
-  </div>
+ 
 
   <div class="spc">
     <h1>Card Texture</h1>
@@ -185,7 +183,7 @@ tr:first-child td { border-top:0;}
   </div>
   <div class="spc tooltip" id="monogram-shown" >
         <div class="chat-bubble" id="monogram-shown-tooltip"><div class="chat-bubble-arrow-border"></div>
-  <div class="chat-bubble-arrow"></div>Each design comes with your own unique monogram. Bearing the name of you and your partner, and underscored with the date or location of your ceremony, it provides the ultimate touch of understated sophistication.<br/><br/>We have many styles of monogram available, the only problem you'll have is deciding which one is for you.  Scroll down to see all the styles available.
+  <div class="chat-bubble-arrow"></div>
 </div>
 <script>
 $('.tooltip').hover(function(e) {
@@ -198,9 +196,7 @@ var id = ($(e.currentTarget).attr('id'));
 </script>
     <h1>Monogram shown</h1>
     <img id="mono_2" style="width:100%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
-    <p class="casamiento">A monogram is a motif combining you and your partner's names, the perfect symbol
-of your marriage together: it makes an impact &mdash;much better than your names in boring plain text</p><p class="casamiento">You'll also get your monogram as a PDF file for you
-to keep and use in the future on things like engravings or calling cards.</p>
+    <p class="casamiento">Each design comes with your own unique monogram. Bearing the name of you and your partner, and underscored with the date or location of your ceremony, it provides the ultimate touch of understated sophistication.</p><p class="casamiento">We have many styles of monogram available, the only problem you'll have is deciding which one is for you.  Scroll down to see all the styles available.</p>
   </div>
     
   <div class="spc"><h1>Colours shown</h1>
@@ -244,6 +240,13 @@ to keep and use in the future on things like engravings or calling cards.</p>
   
 <!-- MAIN SLIDE -->
 <div class="slides_container_1" style="margin-bottom:1em;">
+ <div class="casamiento" id="header_container_casamiento" style="padding-top:0.5em;border-bottom:1px solid #000;margin:0;padding-bottom:0.5em;text-align:center;">
+
+      <div id="main_logo_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/gfx/logo/cas.png" style="width:202px;" id="logo" class="casamiento"></div>
+      
+      <div id="main_slogan_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/gfx/logo/drms.png"></div>
+      <div class="b1"></div>
+    </div>
   <h2 class="casamiento"><%= name %></h2>
    <div style="text-align:center;margin:0;margin-right:2%;"><p class="ornamental_line"><img src="/gfx/ornamentalline.png" /></p>
                      <h3 class="casamiento" style="margin-left:0;padding-left:0;;padding-bottom:1em;"> <%= description %></h3>
