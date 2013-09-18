@@ -10,7 +10,7 @@ document.write("</" + az + bz + cz + ">");
 
 <% var counter  = 0 %>
 <style type="text/css">
-  .intro p:first-letter { font-size:5.5em;padding-right:0.1em;float:left;line-height:0.8em;}
+  .intro p.first:first-letter { font:normal 5.5em TP;padding-right:0.05em;float:left;line-height:0.8em;}
   .intro p { text-align:left;}
 .tabbed_area { margin:0px;padding:0px;padding:8px; }
 ul.tabs { margin:0px; padding:0px; margin-top:5px; margin-bottom:7px; }
@@ -44,6 +44,7 @@ a.casamiento:hover { color:#000; }
 @font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARAIT.woff') format('woff'); }
 @font-face { font-family:"Gara"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARA.woff') format('woff'); }
 @font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
+@font-face { font-family:"OSReg"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSReg.woff') format('woff'); }
 @font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OSL.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OSLI.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
@@ -53,8 +54,10 @@ h3.casamiento { font:normal 1.4em "Gara"; text-align:justify; color:black; line-
 h2.casamiento { text-align:center; font: normal 2.2em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
 h5.casamiento { font: normal 1em "OS IL", sans-serif; text-indent:1em;text-align:left; border-bottom: 1px solid #333; padding-top:0.75em; padding-bottom:0.75em;line-height:1.5em; margin-bottom:1.5em;margin-top:1.5em; }
 h6.casamiento { font: normal 1.375em "OS Light", sans-serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
-p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
+p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;line-height: 1.5em; padding:0; margin-bottom:1em;}
 
+ul { font: normal 0.9em "OS", sans-serif;line-height: 1.5em; text-align:left; }
+li {margin-bottom:0.5em;}
 
 #page_container_casamiento {  padding:0; margin:0; }
 .line { clear:both; border-top:1px solid #000;}
@@ -149,17 +152,38 @@ tr:first-child td { border-top:0;}
 <!-- SPECIFICATIONS -->
 <div class="actual_side_images_1" style="clear:both;text-align:center">
 <div class="spc intro">
-<h6 style="padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:normal 3em Gara"><span style="letter-spacing:0.15em; font-size:0.75em;font-variant:small-caps"> IMPRESS</span> your guests with beautiful unique place cards...</h6>
-<img src="/gfx/me2.jpg" style="padding:0.25em;margin-top:1em;float:left;">
-<p class="casamiento">A<span style="font-variant:small-caps">T CASAMIENTO</span>, we want to help make your day a very memorable one. Our carefully crafted collection of highly personalised wedding stationery stands out from the crowd of boring, mass-produced cards.</p>
-
-    <p class="casamiento">Not only will we customise our exclusive contemporary designs especially for you, but each card <b>comes complete with your own uniquely-designed monogram.</b> Your guests will be impressed, and you'll have something to look back on and treasure for years to come. Your marriage and relationship is unique and special, so don't do an injustice by buying cheap, factory-made items that will be used by thousands of other people.</p>
+<h6 style="padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:normal 3em Gara"><span style="letter-spacing:0.15em; font-size:0.75em;font-variant:small-caps"> IMPRESS</span> your guests with individually printed invitations&hellip;</h6>
+	
+  <div style="margin-top:1em;">  
+    <div style="width:45%;float:left;margin-top:5px;border-top:1px solid black;"></div>
+    <div style="width:10%;float:left;"><img src="/gfx/page_seperators/orna.png" style="width:100%;" /></div>
+    <div style="width:45%;float:left;margin-top:5px;border-top:1px solid black;"></div>
+    </div>
+    <div style="clear:both"></div>
+<img src="/gfx/me2.jpg" style="padding:0.25em;margin-top:0.7em;float:left;padding-right:0.4em;">
+<p class="first casamiento">Y<span style="letter-spacing:0.2em; font-size:1em;font-family:Gara';font-variant:small-caps">OUR GUESTS</span>, will love seeing their names individually printed on our range of elegant personalised stationery. And because you get to choose the colours and theme, you can co-ordinate them completely with your wedding so everything matches perfectly.</p>
+<p style="font:normal 1.6em GaraI;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;">Save time and hassle...</p>
+<p class="casamiento">Take the pain out of preparing your invitations by letting me individually address each envelope and invitation with the name and address of each guest. Not only will it look <span style="letter-spacing:0.2em; font-size:1em;font-family:'Gara';font-variant:small-caps">PROFESSIONAL</span>, but it'll save you a lot of hassle&mdash;you'd be surprised how time-consuming and frustrating it is addressing just 25 invitations without making a mistake or missing a guest. All you have to do is a send a list of names and addresses.
+<p style="font:normal 1.6em GaraI;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;">Stand out from the crowd...</p>
+<p class="casamiento">Each invitation is truly unique as it comes with your own carefully styled monogram bearing the name of you and your partner and the date of your ceremony: a unique and special symbol to represent a unique and special relationship. 
+<p style="font:normal 1.6em GaraI;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;">Stand out from the crowd...</p>
+<p class="casamiento" style="margin-bottom:0.2em;padding-bottom:0;">Each invitation is truly unique as it comes with your own carefully styled monogram bearing the name of you and your partner and the date of your ceremony: a unique and special symbol to represent a unique and special relationship. </p>
+<p class="casamiento" style="margin:0;padding:0;"><img src="/gfx/davidsign.png" style="width:100px"/></p>
+<p class="casamiento" style="margin-top:0em;padding-top:0">&mdash;David Pettifer<br/>
+<span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
 </div>
+<h5 class="casamiento"><img src="/gfx/bullets/small_dot_square.png" /> This auction is for:</h5>
   <div class="product_type spc">
-    <div class="name_place_icon"><img src="http://www.casamiento.co.uk/gfx/product_types/small/name_place_small.png" style="width:100%;"></div>
+    <div class="name_place_icon"><img src="/gfx/product_types/sample.png" style="width:150px;"></div>
   </div>
- 
-
+  
+  <div class="spc">
+ <ul style="font:normal  0.8em 'OSReg';line-height:1em;"><li>1 &times; sample invitation</li>
+ <li>1 &times; matching envelope</li>
+ <li>1 &times; matching reply card</li>
+ <li>1 &times; matching name place card</li>
+ </ul>
+</div>
   <div class="spc">
     <h1>Card Texture</h1>
 
@@ -255,11 +279,20 @@ var id = ($(e.currentTarget).attr('id'));
   <img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[0] %>.jpg">
 
   <img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[1] %>.jpg">
+  
+  <img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[2] %>.jpg">
   <div class="subimg">
     <img class="casamiento" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/medium-<%= attachments_order[2] %>.jpg">
   </div>
   <div class="subimg" style="float:right;">
-    <img class="casamiento" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/medium-<%= attachments_order[3] %>.jpg">
+    <img class="casamiento" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/medium-<%= attachments_order[1] %>.jpg">
+  </div>
+  
+<div class="line"></div>
+  <div style="">
+  <h5 class="casamiento"><img src="/gfx/bullets/small_dot_square.png" />  You may also like&hellip;</h3>
+  <div style="display:inline-block;width:49%;"><img class="casamiento" src="http://www.casamiento.co.uk/products/e87cea260c13c66b90d544c550000f70-name_place/attachments/medium-<%= attachments_order[0] %>.jpg" style="width:100%";></div>
+  <div style="display:inline-block;width:49%;"><img class="casamiento" src="http://www.casamiento.co.uk/products/e87cea260c13c66b90d544c550000f70-name_place/attachments/medium-<%= attachments_order[1] %>.jpg" style="width:100%";></div>
   </div>
 </div>
 

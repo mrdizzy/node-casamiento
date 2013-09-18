@@ -13,6 +13,7 @@ exports.show = function(req, res) {
         })
         var without = _.without(documents, current);
         current.related = without;
+        current.theme = theme
         console.log(without);
         current.quantity = req.query.quantity || 1;
         current.auction = req.query.auction;
