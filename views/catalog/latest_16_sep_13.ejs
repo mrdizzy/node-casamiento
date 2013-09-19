@@ -197,17 +197,18 @@ tr:first-child td { border-top:0;}
 
   <div class="spc">
     <h1>Thickness</h1>
-    
-    <div style="width:60%;margin:auto">
-      <div class="weight" style="border-top:4px solid #666;"></div>
-      <p>250gsm</p>
-    </div>
+    <div>
+     <div class="weight" style="display:inline-block;width:75px;border-top:8px solid #666;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span>
+  </div>
+  <div style="margin-top:1em;">
+        <div class="weight" style="display:inline-block;width:75px;border-top:4px solid #666;"></div> <span style="font:normal 0.8em OS;margin-bottom:0em;">250gsm</span>
+      </div>
   </div>
 
   <div class="spc">
-    <h1>Product format</h1>
-    <div style="margin:auto;text-align:center;">
-    <div class="spec" style="width:90px"><img src="http://www.casamiento.co.uk/gfx/specs/tent.png"></div></div>
+    <h1 style="margin-bottom:0">Product format</h1>
+   <div style="display:inline-block;margin-left:1em;margin-right:1em;"><img src="/gfx/specs/single_a6_card.png" style="width:40px" /><p style="margin-top:0.2em;font:normal 0.8em OS;font-variant:small-caps">FLAT</p></div>
+   <div style="display:inline-block;margin-top:10px;margin-left:1em;margin-right:1em;"><img src="/gfx/specs/foldout_a6_card.png"  style="width:45px" /><p style="margin-top:0.2em;font:normal 0.8em OS;font-variant:small-caps">FOLDOUT</p></div>
   </div>
   <div class="spc tooltip" id="monogram-shown" >
         <div class="chat-bubble" id="monogram-shown-tooltip"><div class="chat-bubble-arrow-border"></div>
@@ -281,19 +282,25 @@ var id = ($(e.currentTarget).attr('id'));
 
   <img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[1] %>.jpg">
   
+  <img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[3] %>.jpg">
   <img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[2] %>.jpg">
+  
+  <img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[4] %>.jpg">
+  <img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[5] %>.jpg">
+   <!-- 
   <div class="subimg">
     <img class="casamiento" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/medium-<%= attachments_order[2] %>.jpg">
   </div>
-  <div class="subimg" style="float:right;">
+<div class="subimg" style="float:right;">
     <img class="casamiento" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/medium-<%= attachments_order[1] %>.jpg">
+   
   </div>
-  
+   -->
 <div class="line"></div>
   <div style="">
   <h5 class="casamiento"><img src="/gfx/bullets/small_dot_square.png" />  You may also like&hellip;</h3>
-  <div style="display:inline-block;width:49%;"><img class="casamiento" src="http://www.casamiento.co.uk/products/e87cea260c13c66b90d544c550000f70-name_place/attachments/medium-<%= attachments_order[0] %>.jpg" style="width:100%";></div>
-  <div style="display:inline-block;width:49%;"><img class="casamiento" src="http://www.casamiento.co.uk/products/e87cea260c13c66b90d544c550000f70-name_place/attachments/medium-<%= attachments_order[1] %>.jpg" style="width:100%";></div>
+  <div style="display:inline-block;width:49%;"><img class="casamiento" src="http://www.casamiento.co.uk/products/00ec75d5ce64f8a7dc839706ad003094-name_place/attachments/medium-<%= attachments_order[0] %>.jpg" style="width:100%";></div>
+  <div style="display:inline-block;width:49%;"><img class="casamiento" src="http://www.casamiento.co.uk/products/00ec75d5ce64f8a7dc839706ad003094-name_place/attachments/medium-<%= attachments_order[1] %>.jpg" style="width:100%";></div>
   </div>
 </div>
 
