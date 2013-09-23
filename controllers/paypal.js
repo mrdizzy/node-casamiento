@@ -3,6 +3,9 @@ var db = require('couchdb-migrator').db,
 _ = require('underscore'),
     paypal = require('./../config/paypal_config')();
 
+var timeNow = new Date();
+var timeAgo = new Date(timeNow - 2629740000);
+
 // Downloads PayPal Transactions for immediate display -- it does not save them to Couch
 
 function parseTransactions(transactions, maincallback) {
@@ -36,8 +39,8 @@ module.exports.index = {
             }
         });
     }, {
-        startdate: "2013-04-01T00:00:00Z",
-        enddate: "2013-09-16T23:59:59Z",
+        startdate: timeAgo.toISOString(),
+        enddate: timeNow.toISOString(),
         transactionclass: "BalanceAffecting"
     })
 },
