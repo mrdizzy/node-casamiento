@@ -55,8 +55,6 @@ var id = req.params.product;
     } else {
         getProduct(req, res, id)
     }
-    
-    
 };
 
 function getProduct(req, res,id,cart) {

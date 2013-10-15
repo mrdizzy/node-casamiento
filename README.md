@@ -1,5 +1,5 @@
 /admin
-    - Static page linking to:
+    - Static page linking to the following pages:
     
     /ebay
     

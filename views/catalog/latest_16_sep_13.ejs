@@ -34,8 +34,8 @@ a.casamiento:hover { color:#000; }
 .spec { display:inline-block; }
 .spec img { width:100%; }
 
-.buy_it_now { width:80%;padding:0.75em;color:white;border-radius:10px;background-color:lightgrey;font:normal 1.2em 'OS Light';text-align:center;margin:0 auto;margin-top:0.5em;margin-bottom:0.5em;line-height:1.2em; }
-.buy_it_now:hover { background-color: <%= colours[0] %>}
+.buy_it_now { width:80%;padding:0.75em;color:white;border-radius:10px;background-color:<%= colours[0] %>;font:normal 1.2em 'OS Light';text-align:center;margin:0 auto;margin-top:0.5em;margin-bottom:0.5em;line-height:1.2em; }
+.buy_it_now:hover { text-decoration:underline;}
 
 /* FONTS */
 @font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
@@ -156,54 +156,74 @@ tr:first-child td { border-top:0;}
     </div>
     <div style="clear:both"></div>
 <img src="http://www.casamiento.co.uk/gfx/me2.jpg" style="padding:0.25em;margin-top:0.7em;float:left;padding-right:0.4em;">
-<p class="first casamiento">Y<span style="letter-spacing:0.2em; font-size:1em;font-family:Gara';font-variant:small-caps">OUR GUESTS</span>, will love seeing their names individually printed on our range of elegant personalised stationery. And because you get to choose the colours and theme, you can co-ordinate them completely with your wedding so everything matches perfectly.</p>
+<p class="first casamiento">Y<span style="letter-spacing:0.2em; font-size:1em;font-family:Gara';font-variant:small-caps">OUR GUESTS</span>, will love seeing their names individually printed on your wedding invitations. It'll make them feel special and give them a keepsake to treasure for years to come&hellip; </p>
 <p style="font:normal 1.6em GaraI;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;">Save time and hassle...</p>
-<p class="casamiento">Take the pain out of preparing your invitations by letting me individually address each envelope and invitation with the name and address of each guest. Not only will it look <span style="letter-spacing:0.2em; font-size:1em;font-family:'Gara';font-variant:small-caps">PROFESSIONAL</span>, but it'll save you a lot of hassle&mdash;you'd be surprised how time-consuming and frustrating it is addressing just 25 invitations without making a mistake or missing a guest. All you have to do is a send a list of names and addresses.
+<p class="casamiento">&hellip; and it doesn't stop at just names! Take the pain out of preparing your invitations by letting me individually address each envelope and invitation with the name and address of each of your guests. Not only will it look <span style="letter-spacing:0.2em; font-size:1em;font-family:'Gara';font-variant:small-caps">PROFESSIONAL</span>, but it'll save you a lot of hassle&mdash;you'd be surprised how time-consuming and frustrating it is addressing just 25 invitations without making a mistake or missing a guest. All you have to do is a send a list of names and addresses&hellip;
 <p style="font:normal 1.6em GaraI;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;">Stand out from the crowd...</p>
 <p class="casamiento">Each invitation is truly unique as it comes with your own carefully styled monogram bearing the name of you and your partner and the date of your ceremony: a unique and special symbol to represent a unique and special relationship. 
-<p style="font:normal 1.6em GaraI;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;">Stand out from the crowd...</p>
-<p class="casamiento" style="margin-bottom:0.2em;padding-bottom:0;">Each invitation is truly unique as it comes with your own carefully styled monogram bearing the name of you and your partner and the date of your ceremony: a unique and special symbol to represent a unique and special relationship. </p>
+<p style="font:normal 1.6em GaraI;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;">Are you worried about your invitations...?</p>
+<p class="casamiento" style="margin-bottom:0.2em;padding-bottom:0;">I know how much you can worry about each aspect of your wedding: will the invitations arrive on time? What if there are mistakes? Will I like the card texture?</p>
+<p class="casamiento"> That's why I will make sure that all your questions are answered at each step of the way and give you honest answers as to what we can and can't do, and exactly when to expect your invitations to arrive. And if there are mistakes, I'll reprint for you&mdash;free of charge. Order a sample pack today&hellip;</p>
 <p class="casamiento" style="margin:0;padding:0;"><img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/></p>
 <p class="casamiento" style="margin-top:0em;padding-top:0">&mdash;David Pettifer<br/>
 <span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
 </div>
-<h5 class="casamiento"><img src="/gfx/bullets/small_dot_square.png" /> This auction is for:</h5>
+<h5 class="casamiento"><img src="/gfx/bullets/small_dot_square.png" /> This <%= sample ?  "auction": "buy-it-now listing" %> is for:</h5>
   <div class="product_type spc">
+   <% if(sample == true) { %>
     <div class="name_place_icon"><img src="/gfx/product_types/sample.png" style="width:150px;"></div>
+    <% } else { %>
+    
+    <% } %>
   </div>
   
   <div class="spc">
+   <% if(sample == true) { %>
  <ul style="font:normal  0.8em 'OSReg';line-height:1em;"><li>1 &times; sample invitation</li>
     <li>1 &times; matching envelope</li>
    <li>1 &times; matching reply card</li>
    <li>1 &times; matching name place card</li>
  </ul>
+ <% } %>
 </div>
-
+ <% if(sample == true) { %>
   <div class="spc">
-<div class="buy_it_now">TO SEE MANY MORE OPTIONS FOR THIS DESIGN PLEASE CLICK HERE TO SEE OUR BUY-IT-NOW LISTING</div>
+ 
+<div class="buy_it_now">CLICK HERE FOR A BUY-IT-NOW LISTING OF THIS PRODUCT WITH MANY MORE OPTIONS</div>
 </div>
+<% } %>
   <div class="spc">
     <h1>Card Texture</h1>
 
     <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
+    <% if (!sample) { %>
+     <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/linen.png" style="width:2.5em"><br> Plain</p></div> <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Plain</p></div>
+    <% } %>
     <div class="b1"></div>
+    
   </div>
 
   <div class="spc">
     <h1>Thickness</h1>
     <div>
-     <div class="weight" style="display:inline-block;width:75px;border-top:8px solid #666;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span>
   </div>
-  <div style="margin-top:1em;">
+  
+  <div>
         <div class="weight" style="display:inline-block;width:75px;border-top:4px solid #666;"></div> <span style="font:normal 0.8em OS;margin-bottom:0em;">250gsm</span>
       </div>
+  <% if(!sample) { %>
+  <div  style="margin-top:1em;">
+     <div class="weight" style="display:inline-block;width:75px;border-top:8px solid #666;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span>
+     </div>
+      <% } %>
   </div>
 
   <div class="spc">
     <h1 style="margin-bottom:0">Product format</h1>
    <div style="display:inline-block;margin-left:1em;margin-right:1em;"><img src="http://www.casamiento.co.uk/gfx/specs/single_a6_card.png" style="width:40px" /><p style="margin-top:0.2em;font:normal 0.8em OS;font-variant:small-caps">FLAT</p></div>
+   <% if(!sample) { %>
    <div style="display:inline-block;margin-top:10px;margin-left:1em;margin-right:1em;"><img src="http://www.casamiento.co.uk/gfx/specs/foldout_a6_card.png"  style="width:45px" /><p style="margin-top:0.2em;font:normal 0.8em OS;font-variant:small-caps">FOLDOUT</p></div>
+   <% } %>
   </div>
   <div class="spc tooltip" id="monogram-shown" >
         <div class="chat-bubble" id="monogram-shown-tooltip"><div class="chat-bubble-arrow-border"></div>

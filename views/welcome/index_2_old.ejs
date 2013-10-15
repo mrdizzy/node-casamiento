@@ -30,13 +30,6 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS Light",
 
 /* IMAGES */
 
-.subimg { width:100%; }
-.subimg img { width:100%; }
-.actual_side_images_1 { width:32.5%;float:left; }
-.slides_container_1 { float:right;width:66%; }
-
-.actual_side_images_2 { width:32.5%;float:right; }
-.slides_container_2 { float:left;width:66%; }
 .place_square { border:1px solid white;padding-bottom:1em; margin-bottom:1em;}
 .place_square_0, .place_square_1, .place_square_6 { float:left; border-bottom:1px solid grey; padding-bottom:4em;}
 
@@ -52,33 +45,6 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS Light",
 .inner_place_square img, .inner_place_square_hidden img { width:100%; }
 </style>
 
-<!-- MAIN SLIDES -->
-
-<div id="slides">
-<% documents.forEach(function(place) { %>
-<% counter++ %>
-<% if (counter == 3) { counter = 1; } %>
-<div>
-
-<div class="actual_side_images_<%= counter %>" style="clear:both;text-align:center">
-	<div class="subimg">
-		<img class="casamiento" src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/display-<%= place.attachments_order[1] %>.jpg">
-	</div>
-	<div class="subimg">
-		<img class="casamiento" src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/display-<%= place.attachments_order[2] %>.jpg">
-	</div>
-		<div class="b1"></div>
-	</div>
-
-<!-- MAIN SLIDE -->
-<div class="slides_container_<%= counter %>">
-	<img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/medium-<%= place.attachments_order[0] %>.jpg">
-</div>
-<h2 class="casamiento b1" style="text-align:left;padding:0;margin:0;font-size:3em;margin-left:1%;"><%= place.name %></h2>
-</div>
-
-<% }) %>
-</div>
 
 <% var counter = 0 %>
 

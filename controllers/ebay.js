@@ -1,19 +1,32 @@
 var db = require('./../config/db').test_ebay,
     _ = require('underscore');
 
+// Route: /ebay/id
+// Renders the view found in catalog/
 exports.show = function(req, res) {
+console.log(req.params)
+if(req.params.ebay) {
     var theme = req.params.ebay.split("-")[0]
+        var id = req.params.ebay;
+    }
+    else {
+            var theme = req.params.theme_id.split("-")[0]
+ var id = req.params.theme_id;
+ var sample = true;
+    }
+    console.log(sample)
     db.view('products/all', {
         startkey: theme,
         endkey: theme + "z"
     }, function(err, docs) {
         var documents = docs.toArray();
         var current = _.find(documents, function(doc) {
-            return doc._id == req.params.ebay;
+            return doc._id == id;
         })
         var without = _.without(documents, current);
         current.related = without;
         current.theme = theme
+        current.sample = sample;
         console.log(without);
         current.quantity = req.query.quantity || 1;
         current.auction = req.query.auction;
@@ -59,26 +72,6 @@ exports.index = function(req, res) {
         res.render('ebay/index', {
             layout: false,
             documents: docs
-        });
-    });
-}
-
-exports.sample = function(req, res) {
-    var results = req.params.theme_id.split("-"),
-        theme_name = results[0];
-    db.view('products/all', {
-        startkey: theme_name,
-        endkey: theme_name + "z"
-    }, function(err, docs) {
-        var documents = docs.toArray(),
-            current = _.clone(documents[0]);
-        current.product_type = "sample";
-        current.related = documents;
-        current.auction = req.query.auction;
-        current.quantity = req.query.quantity || 1;
-        res.render('catalog/new_ebay', {
-            layout: false,
-            locals: current
         });
     });
 }
