@@ -131,6 +131,7 @@ var CartItemView = Backbone.View.extend({
   renderQuantity: function() {
     this.$('#qty').html(this.model.get("quantity"))
   },
+ 
   calculatePrice: function() {
     var price = this.model.get("price") * this.model.get("quantity")
     var texture = this.model.get("texture");
@@ -172,10 +173,7 @@ var ItemView = Backbone.View.extend({
         colours[0] = $(e.currentTarget).data("colour");
         this.model.set("colours", colours);
         this.model.trigger("change:colour");
-       this.$('.colour_selector').fadeOut(function() {
-      
-    that.$('.customise').fadeIn();  
-  });
+       this.$('.colour_selector').slideUp();
   },
   selectMonogram: function(e) {
       if($(e.currentTarget).val() == "logo") {
@@ -227,7 +225,7 @@ var ItemView = Backbone.View.extend({
   changeColour: function() {
   var that = this;
       
-that.$('.colour_selector').fadeIn();  
+that.$('.colour_selector').slideDown();  
   
   },
   changeMonogram: function() {
