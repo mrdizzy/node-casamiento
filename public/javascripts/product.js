@@ -97,14 +97,7 @@ var CartItemView = Backbone.View.extend({
     return this;
   },
   renderColour: function() {
-            var html = "";
-   _.forEach(this.model.get("colours"), function(colour) {
-        html = html + '<div style="float:left;clear:both;">'
-        html = html +'<div class="color_square" style="background-color:' + colour + ';"></div>'
-        html = html + '<p class="color_label">' +  colour + '</p>';
-        html = html + '</div><div class="change colour_change">CHANGE</div>';
-   }) 
-    this.$('.selected_colours').html(html);
+  this.$('.colour_0').css("background-color", this.model.get("colours")[0])
   },
   renderMonogram: function() {
       this.$('.monogram_image').attr("src", "/gfx/m/" + this.model.get("monogram") + ".png")
@@ -211,6 +204,8 @@ var ItemView = Backbone.View.extend({
   updateColour: function(e) {
        var currentTarget = $(e.currentTarget);
     var hex = currentTarget.data("colour");
+    
+  this.$('.colour_0').css("background-color", hex)
       this.$('.product_image').css("background-color", hex)
   },
   updateGuestName: function(e) {
@@ -231,10 +226,9 @@ var ItemView = Backbone.View.extend({
   },
   changeColour: function() {
   var that = this;
-  this.$('.customise').fadeOut(function() {
       
 that.$('.colour_selector').fadeIn();  
-  });
+  
   },
   changeMonogram: function() {
     cart.setContext(this.model)    
