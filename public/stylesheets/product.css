@@ -1,12 +1,6 @@
 table.customise td { padding: 1em;}
 
-.tabbed_area { margin:0px;padding:0px;padding:8px; z-index:-5;}
-ul.tabs { margin:0px; padding:0px; margin-top:5px; margin-bottom:6px; z-index:0}
-ul.tabs li { margin:0px;padding:0px; list-style:none; display:inline; z-index:0;} 
-ul.tabs li a { color:#000; margin:0px; padding:0px; padding:7px 14px 7px 14px; font:normal 1.1em "OS Light Italic"; text-decoration:none; border: 1px solid lightgrey; border-top-left-radius: 6px; border-bottom: 1px solid #000; border-top-right-radius: 6px; box-shadow:3px 3px 0 0 lightgrey;z-index:0}
-ul.tabs li a:hover { border-color:#000; z-index:0;} 
 
-ul.tabs li a.active { border:1px solid #000; font-weight:bold; border-bottom:1px solid white; position:relative;z-index:500; box-shadow:0 0 0 0;} 
 /* COLOURS */
 .a_colour { opacity:0.8;}
 .a_colour:hover { opacity:1}
@@ -15,7 +9,7 @@ ul.tabs li a.active { border:1px solid #000; font-weight:bold; border-bottom:1px
 .clrb { width:49%; float:left;border:1px dotted black; border-top:0;border-left:0;}
 .clrb p:hover { font-weight:bold; }
 .palette { display:none; clear:both; position:relative; border-radius:5px; box-shadow:5px 5px 0 0 lightgrey;}
-.palette_1 { display:block;}
+.palette_6 { display:block;}
 .chat-bubble {
 display:none;
   background-color:#fff;
@@ -24,7 +18,7 @@ display:none;
   margin:10px auto;
   padding:10px;
   position:absolute;
- top:-30px;
+  left:14em;
   text-align:center;
   width:350px;
   -moz-border-radius:10px;
@@ -81,16 +75,24 @@ img.monogram:hover { opacity:1; border:1px dotted black; cursor:pointer;}
 .texture:hover { opacity: 1;}
 .selected {opacity:1; }
 
-ul.slidesjs-pagination { display:none; border-radius:0px;padding:0;background-color:white;float:right;position:static; right:30px; left:0px; top:0px; z-index:100;}
+ul.slidesjs-pagination { position:static;  top:160px; z-index:100;}
     .slidesjs-pagination li a.active { background-position:0 0px; }
     
 .color_square { width:30px;height:30px;border-radius:5px;}
 .color_label { text-indent:0;font:normal 1.2em GaraI;padding:0; margin-top:5px; }
 
+.product_pagination li { display:block;float:left;border:1px solid transparent; }
+.product_pagination li img { padding:0.5em; }
+.product_pagination li:hover { border:1px solid black; }
 
-ul.slidesjs-pagination { text-align:center }
-ul.slidesjs-pagination li { padding:0.25em; clear:both; display:block;}
-ul.slidesjs-pagination li { border: 1px solid transparent; padding:0.25em; margin:0.25em;}
-ul.slidesjs-pagination li:hover { border: 1px solid black; }
+ul { text-align:center }
+ul li { padding:0.25em; }
+ul li {display:inline-block; border: 1px solid transparent; padding:0.25em; margin:0.25em;}
+ul li:hover { border: 1px solid black; }
 
-.slidesjs-pagination li a { width:190px; height:0; padding-top:122px;clear:both;overflow:hidden; }
+.slidesjs-pagination li a { width:190px; height:0; padding-top:122px; display:inline-block; overflow:hidden; }
+
+.slidesjs-pagination li a[data-slidesjs-item="0"] { background-image:url('/products/<%= id %>/attachments/thumb-1'); }
+ul li a[data-slidesjs-item="1"] { background-image:url('/products/<%= id %>/attachments/thumb-2'); }
+ul li a[data-slidesjs-item="2"] { background-image:url('/products/<%= id %>/attachments/thumb-3'); }
+ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/attachments/thumb-4'); }
