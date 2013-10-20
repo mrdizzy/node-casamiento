@@ -1,0 +1,330 @@
+<style type="text/css">
+ td, th { border:1px dotted #000; font: normal 0.9em "OS Condensed"; color:black; text-align:center; }
+table { border-radius: 10px; border-collapse:collapse; width:100%;border-bottom:0;}
+td { border-bottom: 1px solid white;}
+img.monogram { padding:1em;opacity:0.3; border:1px solid transparent;}
+img.monogram:hover { opacity:1; border:1px dotted black; cursor:pointer;}
+  ul.slidesjs-pagination { position:static;  top:160px; z-index:100;}
+   .slidesjs-pagination li a.active {
+            background-position:0 0px;
+        }
+        .change { width:4em;margin:0 auto;padding:0;border-radius:6px;background-color:lightgrey;color:white;padding-top:20px;padding-bottom:20px;}
+        .change:hover {cursor: pointer; background-color:black; }
+ .product_pagination li { display:block;float:left;border:1px solid transparent; }
+ .product_pagination li img { padding:0.5em; }
+.product_pagination li:hover { border:1px solid black; }
+ul { text-align:center }
+ul li { padding:0.25em; }
+ul li {display:inline-block; border: 1px solid transparent; padding:0.25em; margin:0.25em;}
+ul li:hover { border: 1px solid black; }
+ul li.slidesjs-pagination-item a { width:190px; height:0; padding-top:122px; display:inline-block; overflow:hidden; }
+ul li a[data-slidesjs-item="0"] { background-image:url('/products/<%= id %>/attachments/thumb-1'); }
+ul li a[data-slidesjs-item="1"] { background-image:url('/products/<%= id %>/attachments/thumb-2'); }
+ul li a[data-slidesjs-item="2"] { background-image:url('/products/<%= id %>/attachments/thumb-3'); }
+ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/attachments/thumb-4'); }
+</style>
+<script type="text/template" id="cart_header">
+   
+</script>
+       
+<script type="text/template" id="break">
+               <div style="clear:both;width:95%;padding-bottom:3em;margin:auto;margin-top:2em;">
+         <div style="width:46%;float:left;margin-top:5px;border-top:1px solid black;"></div>
+                <div style="width:8%;float:left;"><img src="/gfx/page_seperators/orna.png" style="width:50%;" /></div>
+                <div style="width:46%;float:left;margin-top:5px;border-top:1px solid black;"></div>
+        </div>
+
+  </script>
+
+<script type="text/template" id="cart_item">
+
+<div style="clear:both;float:left;width:40%;text-align:left;">
+   <p style="font: normal 1.75em TP; letter-spacing:0.25em;color:#000">Birds of Paradise</p>
+   <img src="/products/%% id %%/attachments/display-2.jpg" style="width:100%;"/><br/>
+   <img src="/gfx/product_types/small/name_place_small.png" style="width:120px">
+ 
+   <p style="text-align:center;font: normal 2.5em 'OS Light';color:black">&pound;2.99</p>
+  
+</div>
+<div style="float:left;width:29%;">  
+  <div class="spc" style="border:0;padding:1em;">
+    <h1 style="border-bottom:1px solid black;padding-bottom:0.5em;margin-bottom:1em;">Card texture</h1>
+    <div style="float:left;margin-left:1em;">
+      <p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p>
+    </div>
+    <div style="float:left;margin-left:1em;">
+      <p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p>
+    </div>
+    <div class="b1"></div>
+  </div>
+  		<div class="spc" style="border:0;padding:1em;">
+    <h1 style="border-bottom:1px solid black;padding-bottom:0.5em;margin-bottom:1em;">Colours</h1>
+                %- colours.forEach(function(colour) { -%
+        
+                        <div style="float:left">
+                                <div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:%% colour %%;border-radius:5px;"></div>
+                                <p class="casamiento" style="margin-left:1em;text-indent:0;font:normal 1em GaraI;padding:0; margin-top:5px;">%% colour %%</p>
+                        </div>
+                %- }) -%
+                                <br/>
+                                <div class="change" style="clear:both">CHANGE</div>
+  </div>
+  
+  <div class="spc" style="border:0;padding:1em;">
+    <h1 style="border-bottom:1px solid black;padding-bottom:0.5em;margin-bottom:1em;">Card weight</h1>
+    <div class="weight" style="border-top:2px solid #666;"></div>
+    <p>300gsm</p>
+    <div class="weight" style="border-top:4px solid #666;"></div>
+    <p>250gsm</p>
+  </div>
+</div>
+     <div style="float:left;width:29%;">
+     <div class="spc" style="border:0;padding:1em;text-align:center;">
+    <h1 style="border-bottom:1px solid black;padding-bottom:0.5em;margin-bottom:1em;">Monogram style</h1>
+  <img src="/gfx/m/%%monogram%%.png" style="width:225px"/> 
+  <div class="change_monogram change" style="display:inline-block;">CHANGE</div>
+  </div>
+</div>
+        
+         
+       </script>
+       
+<div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
+<!-- T H U M B N A I L S -->
+<div id="product_page">
+<div id="product_section0">
+<div class="product_type spc">
+        <div class="name_place_icon"><img src="http://www.casamiento.co.uk/gfx/product_types/small/name_place_small.png" style="width:100%;"></div>
+    </div>
+
+    <div class="spc">
+        <h1>Card Texture</h1>
+
+        <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
+        <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
+        <div class="b1"></div>
+    </div>
+
+    <div class="spc">
+        <h1>Thickness</h1>
+        
+        <div style="width:60%;margin:auto">
+            <div class="weight" style="border-top:2px solid #666;"></div>
+            <p>300gsm</p>
+            <div class="weight" style="border-top:4px solid #666;"></div>
+            <p>250gsm</p>
+        </div>
+    </div>
+
+    <div class="spc">
+        <h1>Product format</h1>
+        <div style="margin:auto;text-align:center;">
+        <div class="spec" style="width:90px"><img src="http://www.casamiento.co.uk/gfx/specs/tent.png"></div></div>
+    </div>
+    
+    <div class="spc">
+        <h1>Monogram shown</h1>
+        <img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
+    </div>
+    <div class="spc"><h1>Colours shown</h1>
+        <div id="colours-shown" style="margin-top:1em;float:left;">
+        
+        <% colours.forEach(function(colour) { %>
+            <div style="float:left">
+                <div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:<%= colour %>;border-radius:5px;"></div>
+                <p class="casamiento" style="margin-left:1em;text-indent:0;font:normal 1em GaraI;padding:0; margin-top:5px;"><%= colour %></p>
+            </div>
+        <% }) %>  
+        
+        </div>
+        <div class="b1"></div>
+    </div>
+    <img src="/gfx/shell.png" />
+</div>
+
+<div id="product_section1">
+
+    <h1 class="product_name" style="float:left"> <img src="/gfx/bullets/bullet_square_dots.png" /> <%= name %></h1>
+
+    <div id="slides" style="clear:both">            
+       <img src="/products/<%= _id %>/attachments/medium-1" />
+       <img src="/products/<%= _id %>/attachments/medium-2" />
+       <img src="/products/<%= _id %>/attachments/medium-3" />
+       <img src="/products/<%= _id %>/attachments/medium-4" />
+    </div>
+  
+</div>      
+</div>
+    
+<div id="buy" style="float:right"></div>
+
+<div id="cart_page" style="display:none">
+<div style="margin-left:2em;margin-right:2em;border:1px solid black;border-top:0;";>
+<div id="cart"  style="padding:2em;padding-top:3em;">
+
+ss
+     <div class="b1"></div>
+</div>
+<div id="monograms"  style="display:none;clear:both;text-align:center;padding:2em;padding-top:3em;">
+<% for(var i = 1; i < 17; i++) { %>
+
+<div style="display:inline-block;width:24%;padding:1%">
+<img src="/gfx/m/<%= i %>.png" class="monogram" id="monogram_<%= i %>" style="width:100%"/>
+</div>
+
+<% } %>
+ </div>
+
+</div>
+</div>
+<script>
+_.templateSettings = {
+  interpolate : /\%\%(.+?)\%\%/g,
+  evaluate: /\%\-(.+?)\-\%/g
+};
+    $(function(){
+      $("#slides").slidesjs({ pagination: { active: true }, navigation: { active: false },
+      play: { auto: true, interval: 3500, effect: "fade" },
+      effect: { fade: {speed: 2000, crossfade: true }},
+        width: 750, height: 479
+      });
+    });
+var Product = Backbone.Model.extend({});
+
+var Items = Backbone.Collection.extend({});
+var items_collection = new Items();
+
+var Cart = Backbone.Model.extend({
+idAttribute: "_id",
+setContext: function(current_item) {
+        this.context = current_item;
+},
+setMonogram: function(monogram) {
+        this.context.set("monogram", monogram)      
+},
+initialize: function() {
+        this.listenTo(this.get("items"), "add", this.updateCart)     
+        this.listenTo(this.get("items"), "change", this.updateCart)  
+},
+        updateCart: function(event) {
+        console.log("event", event)
+                this.save(null, {error: function() { console.log("error") }, success: function() { console.log("success") }})
+        },
+        defaults: {
+                items: new Items()      
+        },
+        parse: function(response, options) {
+               response.items = new Items(response.items);
+                return response;
+        },
+        urlRoot: '/cart'
+});
+
+<% if (cart) { %>
+        var c = new Cart(<%- cart %>, { parse: true });
+<% } else { %>
+        var c = new Cart({ parse: true }) 
+<% }  %>
+
+var thisProduct = new Product({id: "<%= _id %>", monogram: <%= monogram %>, colours: <%- JSON.stringify(colours) %> });
+
+var ItemView = Backbone.View.extend({
+        initialize: function() {
+        _.bindAll(this, 'render');
+                this.model.on("change", this.render)      
+        },
+        events: {
+                "click": "changeMonogram"
+        },
+        changeMonogram: function() {
+                c.setContext(this.model)    
+                $('#cart').fadeOut(function() {
+            $('#monograms').fadeIn()
+         });
+        },
+        render: function() {
+                var template = $('#cart_item').html();
+                var compiled = _.template(template);
+                var html = compiled(this.model.toJSON());
+                
+                this.$el.html(html);
+                
+                return this;
+        }
+});
+
+var ItemsView = Backbone.View.extend({
+        initialize: function() {
+                this.listenTo(this.collection, "add", this.render)
+        },
+        render: function() {
+           this.$el.empty();    
+          
+           var header = $('#cart_header').html();
+           this.$el.html(header);
+           this.collection.forEach(function(item) {
+           
+                 this.$el.append(new ItemView({model: item}).render().el)
+                 
+                 this.$el.append($('#break').html())
+           }, this);
+            this.$el.append("<div style='clear:both'></div>");
+
+           return this;
+        }
+});
+
+var iv = new ItemsView({collection: c.get("items")})
+$('#cart').html(iv.render().el);
+
+var PanelView = Backbone.View.extend({
+        el: $('#product_page'),
+        showCart: function() {
+                $('#product_page_genesis').fadeOut();
+                $('#buy').fadeOut();
+                $('#nav').fadeOut();
+                $('#product_page_genesis').fadeOut();
+                $('#product_page').fadeOut(function() {
+                        $('#cart_page').fadeIn();
+                })
+        }
+})
+
+var MonogramView = Backbone.View.extend({
+el: $('#monograms'),
+        events: {
+                "click img": "selectMonogram"
+        },
+        selectMonogram: function(event) {
+                var monogram = $(event.target).attr('id');
+                var monogram_id = monogram.split("_")[1]
+                c.setMonogram(monogram_id)
+                $('#monograms').fadeOut(function() {
+            $('#cart').fadeIn()
+         });
+        }
+})
+var mv = new MonogramView();
+var pv = new PanelView({collection: c.get("items") });
+var BuyButtonView = Backbone.View.extend({
+        initialize: function() {
+                this.setElement($('#buy'))
+        },
+        events: { 
+        "click": "addToCart"
+        },
+        addToCart: function() {
+        pv.showCart();
+        }
+})
+var bbv = new BuyButtonView();
+
+var ProductRouter = Backbone.Router.extend({
+    routes: {
+        "monograms": "chooseMonogram"
+    }
+});
+
+var prr = new ProductRouter();
+Backbone.history.start();
+  </script>
