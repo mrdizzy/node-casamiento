@@ -1,5 +1,12 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/product.css">
+<style type="text/css">
+.step { background-color:<%= colours[0] %>}
 
+.slidesjs-pagination li a[data-slidesjs-item="0"] { background-image:url('/products/<%= id %>/attachments/thumb-1'); }
+ul li a[data-slidesjs-item="1"] { background-image:url('/products/<%= id %>/attachments/thumb-2'); }
+ul li a[data-slidesjs-item="2"] { background-image:url('/products/<%= id %>/attachments/thumb-3'); }
+ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/attachments/thumb-4'); }
+</style>
 <script type="text/template" id="break">
   <td colspan="2">
     <div style="width:98%;padding-bottom:3em;margin:auto;margin-top:2em;">
@@ -84,33 +91,6 @@
     <th style="width:85%;text-align:left;padding-left:1em;">Colours</th>
 </tr>
   
-<tr>
-  <td colspan="2" class="selected_colours" style="text-align:center;width:30%">
-  %- var counter = 0 -%
-  %- _.forEach(colours, function(colour) { -%
-       <div style="float:left;clear:both;">
-       <div class="colour_%% counter %% color_square" style="background-color:%% colour %%;"></div><p class="color_label">%% colour %%</p></div><div class="change colour_change">CHANGE</div>
-       %- counter++ -%
-  %- }) -%
-  <div class="colour_selector" style="clear:both;display:none">
-<div class="tabbed_area"> 
-    
-    <% var counter = 0 %>
-    <% cols.forEach(function(palette) { %>
-    <% counter++ %>
-        <div class="palette palette_<%= counter %>" style="z-index:100;background-color:white;border:1px dotted black;margin-top:0;padding-top:0;">
-        <% palette.forEach(function(colour) { %>
-        <% var ary = colour.split(" ") %>
-        <% var hex = ary[0] %>
-        <% var description = ary[1] %>
-       <div class="a_colour" data-colour="<%= hex %>" style="text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-right:10px;margin-top:10px;">
-       <div style="background-color:<%= hex %>;width:5em;height:4em;margin-bottom:0;padding-bottom:0;margin:0 auto;width:18px;height:18px;"></div>
-       </div>
-        <% }) %>
-        </div>
-    <% }) %>
-    
- </div>
     
 
 </div></td>
@@ -201,7 +181,7 @@
            <img src="/products/<%= _id %>/attachments/medium-3" />
            <img src="/products/<%= _id %>/attachments/medium-4" />
         </div>
-      
+      <h6 id="welcome_description"><a href="/products">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</a></h6>
     </div>    
 
 <div id="product_section0">
@@ -212,22 +192,53 @@
     <div class="name_place_icon"><img src="/gfx/product_types/small/name_place_small.png" style="width:100%;"></div>
     </div>
 
-    <div class="spc" id="texture" style="padding:0;margin:0">
-    <div style="margin-bottom:0.5em;height:2em;">
-    <div style="float:left"><h1>Card Texture</h1></div>
-    <div id="select_texture" style="display:none;width:50%;margin:0 auto;background-color:<%= colours[0] %>;padding:0.25em;color:white;font:1em normal 'Open Sans Light';">
-    STEP 1
-    </div>
-    </div>
-        
+    <div class="spc" id="texture">
+      <div style="margin-bottom:0.5em;height:2em;">
+        <div style="float:left"><h1>Card Texture</h1></div>
+        <div class="step">STEP 1</div>
+      </div> 
 
         <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
         <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
          <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
         <div class="b1"></div>
     </div>
-
-    <div class="spc">
+<div class="spc" id="colours_select">
+<div style="margin-bottom:0.5em;height:2em;">
+    <div style="float:left"><h1>Colours</h1></div>
+    <div class="step">
+    STEP 2
+    </div>
+    </div>
+<% var counter = 0 %>
+  <% colours.forEach(function(colour) { %>
+       <div style="display:inline-block;width:75px;">
+          <div class="colour_<%= counter %> color_square" style="background-color:<%= colour %>;"></div><span class="color_label"><%= colour %></span>
+          <div class="change colour_change">CHANGE</div>
+       </div>
+       <% counter++ %>
+  <% }) %>
+  <div class="colour_selector" style="clear:both;display:none">
+<div class="tabbed_area"> 
+    
+    <% var counter = 0 %>
+    <% cols.forEach(function(palette) { %>
+    <% counter++ %>
+        <div class="palette palette_<%= counter %>" style="z-index:100;background-color:white;border:1px dotted black;margin-top:0;padding-top:0;">
+        <% palette.forEach(function(colour) { %>
+        <% var ary = colour.split(" ") %>
+        <% var hex = ary[0] %>
+        <% var description = ary[1] %>
+       <div class="a_colour" data-colour="<%= hex %>" style="text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-right:10px;margin-top:10px;">
+       <div style="background-color:<%= hex %>;width:5em;height:4em;margin-bottom:0;padding-bottom:0;margin:0 auto;width:18px;height:18px;"></div>
+       </div>
+        <% }) %>
+        </div>
+    <% }) %>
+    </div>
+</div>  
+</div>
+<div class="spc" style="clear:both">
         <h1>Thickness</h1>
         
         <div style="width:60%;margin:auto">
@@ -245,23 +256,8 @@
     </div>
     
     <div class="spc">
-<div id="buy"></div></div>
-    <div class="spc">
         <h1>Monogram shown</h1>
         <img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
-    </div>
-    <div class="spc"><h1>Colours shown</h1>
-        <div id="colours-shown" style="margin-top:1em;float:left;">
-        
-        <% colours.forEach(function(colour) { %>
-            <div style="float:left">
-                <div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:<%= colour %>;border-radius:5px;"></div>
-                <p class="casamiento" style="margin-left:1em;text-indent:0;font:normal 1.2em GaraI;padding:0; margin-top:5px;"><%= colour %></p>
-            </div>
-        <% }) %>  
-        
-        </div>
-        <div class="b1"></div>
     </div>
     <img src="/gfx/shell.png" />
 </div>  
@@ -313,19 +309,51 @@ $(function(){
  var ProductPageView = Backbone.View.extend({
      el: $('#product_section0'),
      events: {
-         'mouseenter #texture': 'texture',
-         'mouseleave #texture': 'textureoff'
+         'mouseenter .spc': 'fade_step_in',
+         'mouseleave .spc': 'fade_step_out',
+          "click .a_colour": "saveColour",
+    "click .colour_label": "updatePalette",
+    "click .change_monogram": "changeMonogram",
+    "click .texture": "changeTexture",
+    "click input[type=radio]": "selectMonogram",
+    "blur .guest_name": "updateGuestName",
+    "change .selectedFile": "selectFile" ,
+    "click .colour_change": "changeColour"
      },
-     texture: function() {
-         $('#select_texture').fadeIn();
-         
-     },
-     
-     textureoff: function() {
-         $('#select_texture').fadeOut();
-         
-     }
-     
+      saveColour: function(e) {
+  var that = this;
+        var colours = this.model.get("colours");
+        colours[0] = $(e.currentTarget).data("colour");
+        this.model.set("colours", colours);
+        this.model.trigger("change:colour");
+       this.$('.colour_selector').slideUp();
+  },
+  updatePalette: function(e) {
+      var which = $(e.currentTarget).data("colour")
+      $('.colour_label').removeClass("active");
+      
+      $(e.currentTarget).addClass("active")
+      this.$('.palette').hide();
+     this.$('.palette_'+which).show();
+  },  updateColour: function(e) {
+       var currentTarget = $(e.currentTarget);
+    var hex = currentTarget.data("colour");
+    
+  this.$('.colour_0').css("background-color", hex)
+      this.$('.product_image').css("background-color", hex)
+  },
+  fade_step_in: function(e) {
+    $(e.currentTarget).find('.step').fadeIn()
+  },
+    fade_step_out: function(e) {
+    $(e.currentTarget).find('.step').fadeOut()
+  },
+  changeColour: function() {
+  var that = this;
+      
+that.$('.colour_selector').slideDown();  
+  
+  },
  })
 var ppv= new ProductPageView()
 
