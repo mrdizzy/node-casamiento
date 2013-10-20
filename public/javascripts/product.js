@@ -306,7 +306,7 @@ var MonogramView = Backbone.View.extend({
   }
 })
 
-var BuyButtonView = Backbone.View.extend({
+/*var BuyButtonView = Backbone.View.extend({
   initialize: function() {
     this.setElement($('#buy'))
   },
@@ -317,7 +317,7 @@ var BuyButtonView = Backbone.View.extend({
     cart.get("items").add(thisProduct)
     pv.showCart();
   }
-})
+})*/
 
 var ProductRouter = Backbone.Router.extend({
   routes: {

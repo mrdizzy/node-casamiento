@@ -212,8 +212,14 @@
     <div class="name_place_icon"><img src="/gfx/product_types/small/name_place_small.png" style="width:100%;"></div>
     </div>
 
-    <div class="spc">
-        <h1>Card Texture</h1>
+    <div class="spc" id="texture" style="padding:0;margin:0">
+    <div style="margin-bottom:0.5em;height:2em;">
+    <div style="float:left"><h1>Card Texture</h1></div>
+    <div id="select_texture" style="display:none;width:50%;margin:0 auto;background-color:<%= colours[0] %>;padding:0.25em;color:white;font:1em normal 'Open Sans Light';">
+    STEP 1
+    </div>
+    </div>
+        
 
         <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
         <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
@@ -296,7 +302,6 @@ var iv = new ItemsView({collection: cart.get("items")})
 $('#cart').html(iv.render().el);
 var mv = new MonogramView();
 var pv = new PanelView({collection: cart.get("items") });
-var bbv = new BuyButtonView();
 
 var prr = new ProductRouter();
 Backbone.history.start();
@@ -304,6 +309,27 @@ Backbone.history.start();
 
 // Slideshow
 $(function(){
+
+ var ProductPageView = Backbone.View.extend({
+     el: $('#product_section0'),
+     events: {
+         'mouseenter #texture': 'texture',
+         'mouseleave #texture': 'textureoff'
+     },
+     texture: function() {
+         $('#select_texture').fadeIn();
+         
+     },
+     
+     textureoff: function() {
+         $('#select_texture').fadeOut();
+         
+     }
+     
+ })
+var ppv= new ProductPageView()
+
+
   $("#slides").slidesjs({ pagination: { active: true }, navigation: { active: false },
   play: { auto: true, interval: 3500, effect: "swap" },
   effect: { swap: {speed: 5000 }},
