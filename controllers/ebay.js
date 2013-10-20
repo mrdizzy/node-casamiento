@@ -30,7 +30,7 @@ if(req.params.ebay) {
         console.log(without);
         current.quantity = req.query.quantity || 1;
         current.auction = req.query.auction;
-        res.render('catalog/latest_16_sep_13.ejs', {
+        res.render('ebay/new_ebay.ejs', {
             layout: false,
             locals: current
         });
@@ -45,8 +45,7 @@ console.log(req.params.id)
                         layout:false,
                         locals: docs
                 })      
-        })
-        
+        })     
 }
 
 exports.places = function(req, res) {
