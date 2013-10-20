@@ -67,7 +67,7 @@ function getProduct(req, res,id,cart) {
          //   },
           //  html: function() {
           
-                res.render('products/main.ejs', {
+                res.render('products/product_17_oct_2013.ejs', {
                     locals: document
                 });
           //  }
