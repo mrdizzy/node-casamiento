@@ -1,6 +1,6 @@
 table.customise td { padding: 1em;}
 
-
+.step { display:none;width:50%;margin:0 auto;padding:0.25em;color:white;font:1em normal 'Open Sans Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;"}
 /* COLOURS */
 .a_colour { opacity:0.8;}
 .a_colour:hover { opacity:1}
@@ -91,8 +91,3 @@ ul li {display:inline-block; border: 1px solid transparent; padding:0.25em; marg
 ul li:hover { border: 1px solid black; }
 
 .slidesjs-pagination li a { width:190px; height:0; padding-top:122px; display:inline-block; overflow:hidden; }
-
-.slidesjs-pagination li a[data-slidesjs-item="0"] { background-image:url('/products/<%= id %>/attachments/thumb-1'); }
-ul li a[data-slidesjs-item="1"] { background-image:url('/products/<%= id %>/attachments/thumb-2'); }
-ul li a[data-slidesjs-item="2"] { background-image:url('/products/<%= id %>/attachments/thumb-3'); }
-ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/attachments/thumb-4'); }

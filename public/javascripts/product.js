@@ -97,14 +97,7 @@ var CartItemView = Backbone.View.extend({
     return this;
   },
   renderColour: function() {
-            var html = "";
-   _.forEach(this.model.get("colours"), function(colour) {
-        html = html + '<div style="float:left;clear:both;">'
-        html = html +'<div class="color_square" style="background-color:' + colour + ';"></div>'
-        html = html + '<p class="color_label">' +  colour + '</p>';
-        html = html + '</div><div class="change colour_change">CHANGE</div>';
-   }) 
-    this.$('.selected_colours').html(html);
+  this.$('.colour_0').css("background-color", this.model.get("colours")[0])
   },
   renderMonogram: function() {
       this.$('.monogram_image').attr("src", "/gfx/m/" + this.model.get("monogram") + ".png")
@@ -138,6 +131,7 @@ var CartItemView = Backbone.View.extend({
   renderQuantity: function() {
     this.$('#qty').html(this.model.get("quantity"))
   },
+ 
   calculatePrice: function() {
     var price = this.model.get("price") * this.model.get("quantity")
     var texture = this.model.get("texture");
@@ -160,30 +154,13 @@ var ItemView = Backbone.View.extend({
     "mouseenter .tooltip-select": "showTooltip",
     "mouseleave .tooltip-select": "closeTooltip",
     "mouseenter .a_colour": "updateColour",
-    "click .a_colour": "saveColour",
-    "click .colour_label": "updatePalette",
-    "click .change_monogram": "changeMonogram",
-    "click .colour_change": "changeColour",
-    "click .texture": "changeTexture",
-    "click input[type=radio]": "selectMonogram",
-    "blur .guest_name": "updateGuestName",
-    "change .selectedFile": "selectFile"
+   
   },
   selectFile: function(e) {
       alert('change')
   },
   
-  saveColour: function(e) {
-  var that = this;
-        var colours = this.model.get("colours");
-        colours[0] = $(e.currentTarget).data("colour");
-        this.model.set("colours", colours);
-        this.model.trigger("change:colour");
-       this.$('.colour_selector').fadeOut(function() {
-      
-    that.$('.customise').fadeIn();  
-  });
-  },
+ 
   selectMonogram: function(e) {
       if($(e.currentTarget).val() == "logo") {
       $('.monogram_image').slideUp();
@@ -191,14 +168,6 @@ var ItemView = Backbone.View.extend({
      } else {
        $('.monogram_image').slideDown();
      }
-  },
-  updatePalette: function(e) {
-      var which = $(e.currentTarget).data("colour")
-      $('.colour_label').removeClass("active");
-      
-      $(e.currentTarget).addClass("active")
-      this.$('.palette').hide();
-     this.$('.palette_'+which).show();
   },
   showTooltip: function(e) {
     var which = $(e.currentTarget).data("tooltip")
@@ -208,11 +177,7 @@ var ItemView = Backbone.View.extend({
        var which = $(e.currentTarget).data("tooltip")
           $('.' + which).hide();
   },
-  updateColour: function(e) {
-       var currentTarget = $(e.currentTarget);
-    var hex = currentTarget.data("colour");
-      this.$('.product_image').css("background-color", hex)
-  },
+
   updateGuestName: function(e) {
     var currentTarget = $(e.currentTarget);
     var id = currentTarget.data("name");
@@ -228,13 +193,6 @@ var ItemView = Backbone.View.extend({
     $('.texture').removeClass("selected")
     currentTarget.toggleClass("selected");  
     this.model.set("texture", currentTarget.data("texture"))
-  },
-  changeColour: function() {
-  var that = this;
-  this.$('.customise').fadeOut(function() {
-      
-that.$('.colour_selector').fadeIn();  
-  });
   },
   changeMonogram: function() {
     cart.setContext(this.model)    
@@ -314,7 +272,7 @@ var MonogramView = Backbone.View.extend({
   }
 })
 
-var BuyButtonView = Backbone.View.extend({
+/*var BuyButtonView = Backbone.View.extend({
   initialize: function() {
     this.setElement($('#buy'))
   },
@@ -325,7 +283,7 @@ var BuyButtonView = Backbone.View.extend({
     cart.get("items").add(thisProduct)
     pv.showCart();
   }
-})
+})*/
 
 var ProductRouter = Backbone.Router.extend({
   routes: {

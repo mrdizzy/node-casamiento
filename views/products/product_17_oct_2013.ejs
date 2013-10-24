@@ -1,7 +1,13 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/product.css">
+<style type="text/css">
+.step { background-color:<%= colours[0] %>}
 
+.slidesjs-pagination li a[data-slidesjs-item="0"] { background-image:url('/products/<%= id %>/attachments/thumb-1'); }
+ul li a[data-slidesjs-item="1"] { background-image:url('/products/<%= id %>/attachments/thumb-2'); }
+ul li a[data-slidesjs-item="2"] { background-image:url('/products/<%= id %>/attachments/thumb-3'); }
+ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/attachments/thumb-4'); }
+</style>
 <script type="text/template" id="break">
-
   <td colspan="2">
     <div style="width:98%;padding-bottom:3em;margin:auto;margin-top:2em;">
       <div style="width:44%;float:left;margin-top:5px;border-top:1px solid black;"></div>
@@ -9,52 +15,37 @@
       <div style="width:44%;float:left;margin-top:5px;border-top:1px solid black;"></div>
     </div>
   </td>
-  
 </script>
 
 <script type="text/template" id="cart_item">
 
-  <td style="width:35%;" class="item_image">
+  <td style="width:20%;" class="item_image">
     <span style="font: normal 2em TP; letter-spacing:0.25em;color:#000">%% name %%</span>
-    <img class="product_image" style="background-color:%% colours[0] %%" src="/products/%% id %%/attachments/display-2.jpg" style="width:95%"/><br/>
+    <img class="product_image" style="background-color:%% colours[0] %%" src="/products/%% id %%/attachments/display-2.jpg" style="width:35%"/><br/>
     <img src="/gfx/product_types/small/name_place_small.png" style="width:120px">
+    
+    <table>
+    <tr>
+    <th colspan="3"><img src="/gfx/guests.png" style="width:3em"/> Guests
+   
+    </th>
+    <tr  class="tooltip-select" data-tooltip="tooltip-guests">
+    <td colspan="3">     <div class="chat-bubble tooltip-guests"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
+  <div class="chat-bubble-arrow"></div>Each place card will come individually printed with the name of each guest. Here you can add each guest name. Your names will be printed exactly as you type them, so make sure you use capital letters in the right places
+</div>
+   
+
+<div class="guests"></div>
+   
+    </td>
+    </tr>
+    </table>
   </td>
-  <td style="width:65%;padding:0;margin:0;vertical-align:top;" class="second_col"></td>
+  <td style="width:45%;padding:0;margin:0;vertical-align:top;" class="second_col"></td>
   
 </script>
        
 <script type="text/template" id="cart_item_table">
-
-<div class="colour_selector" style="display:none">
-<div class="tabbed_area"> 
-    <ul class="tabs"> 
-        <li><a class="a_tab colour_label" data-colour="1" id="1_colours">Pinks</a></li> 
-        <li><a class="a_tab colour_label active" data-colour="2" id="1_monograms">Reds</a></li> 
-        <li><a class="a_tab colour_label" data-colour="3"  id="1_monograms">Purples</a></li> 
-        <li><a class="a_tab colour_label" data-colour="4" id="1_monograms">Yellows</a></li>         
-        <li><a class="a_tab colour_label" data-colour="5" id="1_monograms">Blues</a></li> 
-        <li><a class="a_tab colour_label" data-colour="6" id="1_monograms">Greens</a></li> 
-    </ul> 
-    
-    <% var counter = 0 %>
-    <% cols.forEach(function(palette) { %>
-    <% counter++ %>
-        <div class="palette palette_<%= counter %>" style="z-index:100;background-color:white;border:1px dotted black;margin-top:0;padding-top:0;">
-        <% palette.forEach(function(colour) { %>
-        <% var ary = colour.split(" ") %>
-        <% var hex = ary[0] %>
-        <% var description = ary[1] %>
-       <div class="a_colour" data-colour="<%= hex %>" style="width:30%;text-align:center;display:inline-block;padding-right:1em;padding-top:1em;">
-       <div style="background-color:<%= hex %>;border-radius:4px;width:5em;height:4em;margin-bottom:0;padding-bottom:0;margin:0 auto;"></div><span style="margin-top:0;padding-top:0;color:black;font:1.2em normal 'Open Sans Light';"><%= description.toUpperCase() %></span>
-       </div>
-        <% }) %>
-        </div>
-    <% }) %>
-    
- </div>
-    
-
-</div>
 
 <table class="customise">
   <tr>
@@ -64,21 +55,20 @@
   <tr>
     <td colspan="2"style="width:50%;" class="step-1 tooltip-select" data-tooltip="tooltip-texture">
       <div class="chat-bubble tooltip-texture"><div class="chat-bubble-arrow-border"></div>
-  <div class="chat-bubble-arrow"></div>Select the texture of the card by clicking on it so it is highlighted. The price will automatically update.
-</div>
-          <div class="texture %% (texture == "plain") ? "selected" : "" %%" data-texture="plain" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
-          <div class="texture %% (texture == "hammer") ? "selected" : "" %%" data-texture="hammer" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
-          <div class="texture %% (texture == "pearl") ? "selected" : "" %%" data-texture="pearl" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
-         
+      <div class="chat-bubble-arrow"></div>Select the texture of the card by clicking on it so it is highlighted. The price will automatically update.
+      </div>
+      <div class="texture %% (texture == "plain") ? "selected" : "" %%" data-texture="plain" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
+      <div class="texture %% (texture == "hammer") ? "selected" : "" %%" data-texture="hammer" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
+      <div class="texture %% (texture == "pearl") ? "selected" : "" %%" data-texture="pearl" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
     </td> 
+  </tr>
 
 <!-- THICKNESS -->
 
-<tr>
-  <th class="step-2" style="border-bottom:1px solid black;width:25%;background-color:grey;font:1em normal 'Open Sans Light';color:white;">STEP 2</th><th style="text-align:left;padding-left:1em;width:85%;">Card thickness</th>
-   
+  <tr>
+    <th class="step-2" style="border-bottom:1px solid black;width:25%;background-color:grey;font:1em normal 'Open Sans Light';color:white;">STEP 2</th><th style="text-align:left;padding-left:1em;width:85%;">Card thickness</th>
   </tr>
-    <tr>
+  <tr>
     <td colspan="2" class="step-2 tooltip-select" data-tooltip="tooltip-thickness"> 
       <div class="chat-bubble tooltip-thickness">
         <div class="chat-bubble-arrow-border"></div>
@@ -92,7 +82,7 @@
         250gsm</div>
       </div>
     </td>
-        </tr>
+  </tr>
         
 <!-- COLOURS -->
 
@@ -101,24 +91,24 @@
     <th style="width:85%;text-align:left;padding-left:1em;">Colours</th>
 </tr>
   
-<tr>
-  <td colspan="2" class="selected_colours" style="text-align:center;width:30%"></td>
+    
+
+</div></td>
 </tr>
 
 <!-- MONOGRAM STYLE -->
 
-<tr>
-  <th class="step-4" class="step-4 tooltip-select" data-tooltip="tooltip-monogram-style" style="border-bottom:1px solid black;width:25%;background-color:grey;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 4</th>
-  <th style="width:85%;text-align:left;padding-left:1em;">Monogram style</th>
-   
-</tr>
+  <tr>
+    <th class="step-4" class="step-4 tooltip-select" data-tooltip="tooltip-monogram-style" style="border-bottom:1px solid black;width:25%;background-color:grey;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 4</th>
+    <th style="width:85%;text-align:left;padding-left:1em;">Monogram style</th>
+  </tr>
     
-    <tr>
-      <td colspan="2" data-tooltip="tooltip-monogram-style" class="tooltip-select">
-            <div class="chat-bubble tooltip-monogram-style"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
-  <div class="chat-bubble-arrow"></div>A monogram is a motif featuring a name and initials. You can have one created for you and your partner, your baby or your loved on. A monogram will be created specially for you by a designer, so when you enter the details here it will not be reflected in the picture.
-</div>
-<div style="display:inline-block;padding-right:5em;font:1.2em normal 'Open Sans Light'">
+  <tr>
+    <td colspan="2" data-tooltip="tooltip-monogram-style" class="tooltip-select">
+      <div class="chat-bubble tooltip-monogram-style"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
+      <div class="chat-bubble-arrow"></div>A monogram is a motif featuring a name and initials. You can have one created for you and your partner, your baby or your loved on. A monogram will be created specially for you by a designer, so when you enter the details here it will not be reflected in the picture.
+      </div>
+      <div style="display:inline-block;padding-right:5em;font:1.2em normal 'Open Sans Light'">
 <input type="radio" name="monogram" value="monogram" checked></input> Monogram</div>
 
 <div style="display:inline-block;padding:0.5em;font:1.2em normal 'Open Sans Light'">
@@ -174,24 +164,11 @@
        
       </td>
     </tr>
-    <tr>
-    <th colspan="3"><img src="/gfx/guests.png" style="width:3em"/> Guests
-   
-    </th>
-    <tr  class="tooltip-select" data-tooltip="tooltip-guests">
-    <td colspan="3">     <div class="chat-bubble tooltip-guests"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
-  <div class="chat-bubble-arrow"></div>Each place card will come individually printed with the name of each guest. Here you can add each guest name. Your names will be printed exactly as you type them, so make sure you use capital letters in the right places
-</div>
-   
-
-<div class="guests"></div>
-   
-    </td>
-    </tr>
   </table>
 </script>       
        
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
+
 <div id="product_page">
 
     <div id="product_section1">
@@ -204,7 +181,7 @@
            <img src="/products/<%= _id %>/attachments/medium-3" />
            <img src="/products/<%= _id %>/attachments/medium-4" />
         </div>
-      
+      <h6 id="welcome_description"><a href="/products">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</a></h6>
     </div>    
 
 <div id="product_section0">
@@ -212,19 +189,56 @@
 <!-- SPECIFICATIONS -->
 
 <div class="product_type spc">
-        <div class="name_place_icon"><img src="/gfx/product_types/small/name_place_small.png" style="width:100%;"></div>
+    <div class="name_place_icon"><img src="/gfx/product_types/small/name_place_small.png" style="width:100%;"></div>
     </div>
 
-    <div class="spc">
-        <h1>Card Texture</h1>
+    <div class="spc" id="texture">
+      <div style="margin-bottom:0.5em;height:2em;">
+        <div style="float:left"><h1>Card Texture</h1></div>
+        <div class="step">STEP 1</div>
+      </div> 
 
         <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
         <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
          <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
         <div class="b1"></div>
     </div>
-
-    <div class="spc">
+<div class="spc" id="colours_select">
+<div style="margin-bottom:0.5em;height:2em;">
+    <div style="float:left"><h1>Colours</h1></div>
+    <div class="step">
+    STEP 2
+    </div>
+    </div>
+<% var counter = 0 %>
+  <% colours.forEach(function(colour) { %>
+       <div style="display:inline-block;width:75px;">
+          <div class="colour_<%= counter %> color_square" style="background-color:<%= colour %>;"></div><span class="color_label"><%= colour %></span>
+          <div class="change colour_change">CHANGE</div>
+       </div>
+       <% counter++ %>
+  <% }) %>
+  <div class="colour_selector" style="clear:both;display:none">
+<div class="tabbed_area"> 
+    
+    <% var counter = 0 %>
+    <% cols.forEach(function(palette) { %>
+    <% counter++ %>
+        <div class="palette palette_<%= counter %>" style="z-index:100;background-color:white;border:1px dotted black;margin-top:0;padding-top:0;">
+        <% palette.forEach(function(colour) { %>
+        <% var ary = colour.split(" ") %>
+        <% var hex = ary[0] %>
+        <% var description = ary[1] %>
+       <div class="a_colour" data-colour="<%= hex %>" style="text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-right:10px;margin-top:10px;">
+       <div style="background-color:<%= hex %>;width:5em;height:4em;margin-bottom:0;padding-bottom:0;margin:0 auto;width:18px;height:18px;"></div>
+       </div>
+        <% }) %>
+        </div>
+    <% }) %>
+    </div>
+</div>  
+</div>
+<div class="spc" style="clear:both">
         <h1>Thickness</h1>
         
         <div style="width:60%;margin:auto">
@@ -242,23 +256,8 @@
     </div>
     
     <div class="spc">
-<div id="buy"></div></div>
-    <div class="spc">
         <h1>Monogram shown</h1>
         <img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
-    </div>
-    <div class="spc"><h1>Colours shown</h1>
-        <div id="colours-shown" style="margin-top:1em;float:left;">
-        
-        <% colours.forEach(function(colour) { %>
-            <div style="float:left">
-                <div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:<%= colour %>;border-radius:5px;"></div>
-                <p class="casamiento" style="margin-left:1em;text-indent:0;font:normal 1em GaraI;padding:0; margin-top:5px;"><%= colour %></p>
-            </div>
-        <% }) %>  
-        
-        </div>
-        <div class="b1"></div>
     </div>
     <img src="/gfx/shell.png" />
 </div>  
@@ -266,19 +265,10 @@
     
 <div id="cart_page" style="display:none">
 <div style="margin-left:2em;margin-right:2em;border:1px solid black;border-top:0;";>
-<div id="cart"  style="padding:2em;padding-top:3em;">
+<div id="cart"  style="padding:0em;padding-top:3em;">
 
      <div class="b1"></div>
 </div>
-<div id="monograms"  style="display:none;clear:both;text-align:center;padding:2em;padding-top:3em;">
-<% for(var i = 1; i < 17; i++) { %>
-
-<div style="display:inline-block;width:235px;padding:1%">
-<img src="/gfx/m/<%= i %>.png" class="monogram" id="monogram_<%= i %>" style="width:100%"/>
-</div>
-
-<% } %>
- </div>
 
 </div>
 </div>
@@ -308,7 +298,6 @@ var iv = new ItemsView({collection: cart.get("items")})
 $('#cart').html(iv.render().el);
 var mv = new MonogramView();
 var pv = new PanelView({collection: cart.get("items") });
-var bbv = new BuyButtonView();
 
 var prr = new ProductRouter();
 Backbone.history.start();
@@ -316,6 +305,59 @@ Backbone.history.start();
 
 // Slideshow
 $(function(){
+
+ var ProductPageView = Backbone.View.extend({
+     el: $('#product_section0'),
+     events: {
+         'mouseenter .spc': 'fade_step_in',
+         'mouseleave .spc': 'fade_step_out',
+          "click .a_colour": "saveColour",
+    "click .colour_label": "updatePalette",
+    "click .change_monogram": "changeMonogram",
+    "click .texture": "changeTexture",
+    "click input[type=radio]": "selectMonogram",
+    "blur .guest_name": "updateGuestName",
+    "change .selectedFile": "selectFile" ,
+    "click .colour_change": "changeColour"
+     },
+      saveColour: function(e) {
+  var that = this;
+        var colours = this.model.get("colours");
+        colours[0] = $(e.currentTarget).data("colour");
+        this.model.set("colours", colours);
+        this.model.trigger("change:colour");
+       this.$('.colour_selector').slideUp();
+  },
+  updatePalette: function(e) {
+      var which = $(e.currentTarget).data("colour")
+      $('.colour_label').removeClass("active");
+      
+      $(e.currentTarget).addClass("active")
+      this.$('.palette').hide();
+     this.$('.palette_'+which).show();
+  },  updateColour: function(e) {
+       var currentTarget = $(e.currentTarget);
+    var hex = currentTarget.data("colour");
+    
+  this.$('.colour_0').css("background-color", hex)
+      this.$('.product_image').css("background-color", hex)
+  },
+  fade_step_in: function(e) {
+    $(e.currentTarget).find('.step').fadeIn()
+  },
+    fade_step_out: function(e) {
+    $(e.currentTarget).find('.step').fadeOut()
+  },
+  changeColour: function() {
+  var that = this;
+      
+that.$('.colour_selector').slideDown();  
+  
+  },
+ })
+var ppv= new ProductPageView()
+
+
   $("#slides").slidesjs({ pagination: { active: true }, navigation: { active: false },
   play: { auto: true, interval: 3500, effect: "swap" },
   effect: { swap: {speed: 5000 }},
