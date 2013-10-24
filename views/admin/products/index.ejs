@@ -222,7 +222,12 @@ $(function() {
         events: { 
             'click input[type=submit]': 'sendForm',
             'click .addmore': 'addMore',
-            'click .delete': 'destroy'
+            'click .delete': 'destroy',
+            'blur .change_background': 'changeBackground'
+            
+        },
+        changeBackground: function() {
+            alert("Chagned")
         },
         destroy: function() {
           this.model.destroy();  
@@ -242,7 +247,12 @@ $(function() {
             this.$('form').append(product_types_view)
           this.$el.append("<table>")
             this.$el.append(this.buildAttachments({groupEl: 'tr'}))
+          
             this.$el.append("</table>")
+            // TODO: CHANGE BACKGROUND COLOURS
+              this.model.attachments_order.forEach(function(attachment) {
+                this.$el.append("<textarea class='change_background' id='" + this.model.id + "-" + attachment + "'></textarea>")
+            }, this)
             this.$el.append("<a class='addmore'>Add more</a>")
             this.$el.append("<a class='delete'>Delete</a>" )
             return this;
