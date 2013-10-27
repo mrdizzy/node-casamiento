@@ -271,7 +271,7 @@ $(function() {
               this.model.attachments_order.forEach(function(attachment) {
               var html= "<div style='clear:both;width:648px;height:486px;background-color:purple;background-image:url('new.png');' id='background_" + this.model.id + "_" + attachment + "'>" + "<img style='width:648px;position:absolute;' src='/products/" + this.model.id + "/attachments/medium-" + attachment + "'>" + ((this.model.get("background-" + attachment) == undefined) ? "" : this.model.get("background-" + attachment) ) + "</div>";
               this.$el.append(html);
-                this.$el.append("<textarea class='change_background' id='" + this.model.id + "-" + attachment + "'></textarea>")
+                this.$el.append("<textarea class='change_background' id='" + this.model.id + "-" + attachment + "'>" + this.model.get("background-" + attachment) + "</textarea>")
             }, this)
             this.$el.append("<a class='addmore'>Add more</a>")
             this.$el.append("<a class='delete'>Delete</a>" )
