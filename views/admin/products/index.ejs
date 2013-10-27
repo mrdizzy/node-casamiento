@@ -229,9 +229,9 @@ $(function() {
         for(att in e.changed) {
         var attach_number = att.split("-")[1]
         var element = "background_" + this.model.id + "_" + attach_number;
-        this.$('#' +element).html("<img style='width:648px;position:absolute;' src='/products/" + this.model.id + "/attachments/medium-" + attach_number + "'>" + this.model.get("background-" + attach_number))
-       //this.$('.background_div').remove();
-        //this.$('#' + element + ' img').after(this.model.get("background-" + attach_number))
+        this.$('#' + element + ' div').remove();
+         this.$('#' +element).append(this.model.get("background-" + attach_number))
+       
         }
         },
         events: { 
@@ -269,7 +269,8 @@ $(function() {
             this.$el.append("</table>")
             // TODO: CHANGE BACKGROUND COLOURS
               this.model.attachments_order.forEach(function(attachment) {
-              this.$el.append("<div style='width:648px;height:486px;background-color:purple;background-image:url('new.png');background-size:contain;display:inline-block;' id='background_" + this.model.id + "_" + attachment + "'>" + "<img style='width:648px;position:absolute;' src='/products/" + this.model.id + "/attachments/medium-" + attachment + "'>" + this.model.get("background-" + attachment));
+              var html= "<div style='clear:both;width:648px;height:486px;background-color:purple;background-image:url('new.png');' id='background_" + this.model.id + "_" + attachment + "'>" + "<img style='width:648px;position:absolute;' src='/products/" + this.model.id + "/attachments/medium-" + attachment + "'>" + ((this.model.get("background-" + attachment) == undefined) ? "" : this.model.get("background-" + attachment) ) + "</div>";
+              this.$el.append(html);
                 this.$el.append("<textarea class='change_background' id='" + this.model.id + "-" + attachment + "'></textarea>")
             }, this)
             this.$el.append("<a class='addmore'>Add more</a>")
