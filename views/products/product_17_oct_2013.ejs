@@ -1,171 +1,15 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/product.css">
 <style type="text/css">
 .step { background-color:<%= colours[0] %>}
-
-.slidesjs-pagination li a[data-slidesjs-item="0"] { background-image:url('/products/<%= id %>/attachments/thumb-1'); }
-ul li a[data-slidesjs-item="1"] { background-image:url('/products/<%= id %>/attachments/thumb-2'); }
-ul li a[data-slidesjs-item="2"] { background-image:url('/products/<%= id %>/attachments/thumb-3'); }
-ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/attachments/thumb-4'); }
 </style>
-<script type="text/template" id="break">
-  <td colspan="2">
-    <div style="width:98%;padding-bottom:3em;margin:auto;margin-top:2em;">
-      <div style="width:44%;float:left;margin-top:5px;border-top:1px solid black;"></div>
-      <div style="width:11%;float:left;"><img src="/gfx/page_seperators/orna.png" style="width:50%;" /></div>
-      <div style="width:44%;float:left;margin-top:5px;border-top:1px solid black;"></div>
-    </div>
-  </td>
-</script>
-
 <script type="text/template" id="cart_item">
-
-  <td style="width:20%;" class="item_image">
-    <span style="font: normal 2em TP; letter-spacing:0.25em;color:#000">%% name %%</span>
-    <img class="product_image" style="background-color:%% colours[0] %%" src="/products/%% id %%/attachments/display-2.jpg" style="width:35%"/><br/>
-    <img src="/gfx/product_types/small/name_place_small.png" style="width:120px">
-    
-    <table>
-    <tr>
-    <th colspan="3"><img src="/gfx/guests.png" style="width:3em"/> Guests
-   
-    </th>
     <tr  class="tooltip-select" data-tooltip="tooltip-guests">
     <td colspan="3">     <div class="chat-bubble tooltip-guests"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
   <div class="chat-bubble-arrow"></div>Each place card will come individually printed with the name of each guest. Here you can add each guest name. Your names will be printed exactly as you type them, so make sure you use capital letters in the right places
 </div>
-   
-
-<div class="guests"></div>
-   
-    </td>
-    </tr>
-    </table>
-  </td>
-  <td style="width:45%;padding:0;margin:0;vertical-align:top;" class="second_col"></td>
-  
 </script>
-       
-<script type="text/template" id="cart_item_table">
 
-<table class="customise">
-  <tr>
-    <th class="step-1" style="border-bottom:1px solid black;width:25%;background-color:%% colours[0] %%;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 1</th><th style="width:85%;text-align:left;padding-left:1em;">Card texture</th>
-  </tr>
-  
-  <tr>
-    <td colspan="2"style="width:50%;" class="step-1 tooltip-select" data-tooltip="tooltip-texture">
-      <div class="chat-bubble tooltip-texture"><div class="chat-bubble-arrow-border"></div>
-      <div class="chat-bubble-arrow"></div>Select the texture of the card by clicking on it so it is highlighted. The price will automatically update.
-      </div>
-      <div class="texture %% (texture == "plain") ? "selected" : "" %%" data-texture="plain" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
-      <div class="texture %% (texture == "hammer") ? "selected" : "" %%" data-texture="hammer" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
-      <div class="texture %% (texture == "pearl") ? "selected" : "" %%" data-texture="pearl" style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
-    </td> 
-  </tr>
-
-<!-- THICKNESS -->
-
-  <tr>
-    <th class="step-2" style="border-bottom:1px solid black;width:25%;background-color:grey;font:1em normal 'Open Sans Light';color:white;">STEP 2</th><th style="text-align:left;padding-left:1em;width:85%;">Card thickness</th>
-  </tr>
-  <tr>
-    <td colspan="2" class="step-2 tooltip-select" data-tooltip="tooltip-thickness"> 
-      <div class="chat-bubble tooltip-thickness">
-        <div class="chat-bubble-arrow-border"></div>
-        <div class="chat-bubble-arrow"></div>Select the thickness of your card by clicking an icon. The higher the GSM the thicker the card and the more expensive it is. GSM stands for grams per square meter and measures the weight of the card.
-      </div>
-      <div style="width:60%;margin:auto">
-      <div style="display:inline-block;padding:0.5em;">
-        <div class="weight" style="display:inline-block;width:5em;border-top:3px solid #666;"></div> 300gsm</div><br/>
-        <div style="display:inline-block;padding:0.5em;">
-        <div class="weight" style="display:inline-block;width:5em;border-top:7px solid #666;"></div>
-        250gsm</div>
-      </div>
-    </td>
-  </tr>
-        
-<!-- COLOURS -->
-
-<tr>
-  <th class="step-3 tooltip-select" data-tooltip="tooltip-colours" style="border-bottom:1px solid black;width:25%;background-color:grey;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 3</th>
-    <th style="width:85%;text-align:left;padding-left:1em;">Colours</th>
-</tr>
-  
-    
-
-</div></td>
-</tr>
-
-<!-- MONOGRAM STYLE -->
-
-  <tr>
-    <th class="step-4" class="step-4 tooltip-select" data-tooltip="tooltip-monogram-style" style="border-bottom:1px solid black;width:25%;background-color:grey;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 4</th>
-    <th style="width:85%;text-align:left;padding-left:1em;">Monogram style</th>
-  </tr>
-    
-  <tr>
-    <td colspan="2" data-tooltip="tooltip-monogram-style" class="tooltip-select">
-      <div class="chat-bubble tooltip-monogram-style"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
-      <div class="chat-bubble-arrow"></div>A monogram is a motif featuring a name and initials. You can have one created for you and your partner, your baby or your loved on. A monogram will be created specially for you by a designer, so when you enter the details here it will not be reflected in the picture.
-      </div>
-      <div style="display:inline-block;padding-right:5em;font:1.2em normal 'Open Sans Light'">
-<input type="radio" name="monogram" value="monogram" checked></input> Monogram</div>
-
-<div style="display:inline-block;padding:0.5em;font:1.2em normal 'Open Sans Light'">
-<input type="radio" name="monogram" value="logo" ></input>  Upload logo</div>
-<br/>
-<div class="monogram_image"  style="border-top:1px dotted black;padding:0;margin:0;">
-          <img src="/gfx/m/%%monogram%%.png" style="width:95%;max-width:300px;"/></div>
-         
-          <form id="upload">
-          <input type="file" class="selectedFile" style="display: none;" />
       
-          </form>
-      </td>
-      </tr>
-      
-      
-<!-- MONOGRAM DETAILS -->      
-      
-          <tr>
-  <th class="step-3" style="border-bottom:1px solid black;width:15%;background-color:grey;font:1em normal 'Open Sans Light';color:white;opacity:0.8;">STEP 3</th><th style="width:85%;text-align:left;padding-left:1em;">Monogram details</th>
-   
-  </tr>
-      <td colspan="2" class="tooltip-select" data-tooltip="tooltip-monodetails">
-       <div class="chat-bubble tooltip-monodetails"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
-  <div class="chat-bubble-arrow"></div>A monogram is a motif featuring a name and initials. You can have one created for you and your partner, your baby or your loved on. A monogram will be created specially for you by a designer, so when you enter the details here it will not be reflected in the picture.
-</div>
-         <label>First name:</label>
-        <input type="text" value="Nicola" size="16"></input>
-        
-        <label>Second name:</label>
-        <input type="text" value="Michael" size="16"></input>
-        
-        <label>Date:</label>
-        <input type="text" style="float:left;" value="22" size="2"></input> 
-        <input type="text" style="float:left;" value="September" size="10"></input> 
-        <input type="text" value="2013" size="4"></input> 
-        
-        </td>
-        </tr>
-        
-<!-- PRICE AND QUANTITY -->        
-        
-        <tr>
-        <th colspan="3">Price &amp; Quantity</th>
-        </tr><tr>
-      <td colspan="3" class="quantity_selector tooltip-select" data-tooltip="tooltip-quantity" style="padding-top:2em;padding-bottom:2em;"><div class="chat-bubble tooltip-quantity"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
-  <div class="chat-bubble-arrow"></div>Change the quantity by dragging the above slider left and right with your mouse or finger. You will see the price and quantity update
-</div>
-        <p style="text-align:center;font: normal 4em 'OS Light'"><span style="font-size:0.65em;vertical-align:top;">&pound;</span><span class="pound">2</span><span style="font-size:0.65em;vertical-align:text-top;" class="dec">.99</span></p>
-
-        <div class="noUiSlider" style="margin-left:4%;width:84%;float:left;margin-bottom:2em;"></div>
-        <div style="quantity;font:normal 1.4em 'OS Light Italic'" id="qty">%%quantity%%</div>
-       
-      </td>
-    </tr>
-  </table>
-</script>       
        
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
 
@@ -173,53 +17,54 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 
     <div id="product_section1">
 
-        <h1 class="product_name" style="float:left"> <img src="/gfx/bullets/bullet_square_dots.png" /> <%= name %></h1>
 
         <div id="slides" style="clear:both">            
-           <img src="/products/<%= _id %>/attachments/medium-1" />
-           <img src="/products/<%= _id %>/attachments/medium-2" />
-           <img src="/products/<%= _id %>/attachments/medium-3" />
-           <img src="/products/<%= _id %>/attachments/medium-4" />
+           <div class="colour_0" style="width:750px;height:479px;display:none;"><img src="/products/<%= _id %>/attachments/medium-1" style="width:750px;height:479px;position:absolute;"/><%- background_1 %></div>
+           
+           <div class="colour_0" style="width:750px;height:479px;background-color:<%= colours[0] %>;display:none;"><img src="/products/<%= _id %>/attachments/medium-2" style="width:750px;height:479px;position:absolute;"/><%- background_2 %></div>
+           
+           <div class="colour_0"  style="width:750px;height:479px;background-color:<%= colours[0] %>;"><img src="/products/<%= _id %>/attachments/medium-3" style="width:750px;height:479px;position:absolute;"/><%- background_3 %></div>
+           
         </div>
-      <h6 id="welcome_description"><a href="/products">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</a></h6>
+        
+        <h1 class="product_name" style="text-align:center"> &mdash;<%= name %>&mdash;</h1>
+      <h6 style="width:75%;margin:0 auto;" id="welcome_description"><a href="/products">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</a></h6>
     </div>    
 
 <div id="product_section0">
 
-<!-- SPECIFICATIONS -->
-
-<div class="product_type spc">
-    <div class="name_place_icon"><img src="/gfx/product_types/small/name_place_small.png" style="width:100%;"></div>
+<div class="product_type spc"><img src="/gfx/product_types/small/name_place_small.png" style="width:130px;">
     </div>
 
     <div class="spc" id="texture">
       <div style="margin-bottom:0.5em;height:2em;">
         <div style="float:left"><h1>Card Texture</h1></div>
-        <div class="step">STEP 1</div>
+        <div class="step colour_0">STEP 1</div>
       </div> 
 
-        <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/hammer.png" style="width:2.5em"><br> Hammered</p></div>
-        <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
-         <div style="float:left;margin-left:1em;"><p><img src="/gfx/icons/linen.png" style="width:2.5em"><br> Pearlescent</p></div>
-        <div class="b1"></div>
+        <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/hammer.png" style="width:2.5em"><p style="text-align:center">Hammered</p></div>
+        <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/plaine.png" style="width:2.5em"><p style="text-align:center">Plain</p></div>
+        <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/linen.png" style="width:2.5em"><p style="text-align:center">Linen</p></div>
     </div>
+    
+    
+<!-- COLOUR LABELS -->
+
 <div class="spc" id="colours_select">
-<div style="margin-bottom:0.5em;height:2em;">
-    <div style="float:left"><h1>Colours</h1></div>
-    <div class="step">
-    STEP 2
-    </div>
-    </div>
-<% var counter = 0 %>
-  <% colours.forEach(function(colour) { %>
-       <div style="display:inline-block;width:75px;">
-          <div class="colour_<%= counter %> color_square" style="background-color:<%= colour %>;"></div><span class="color_label"><%= colour %></span>
-          <div class="change colour_change">CHANGE</div>
-       </div>
-       <% counter++ %>
+  <div style="margin-bottom:0.5em;height:2em;">
+    <div style="float:left;"><h1>Colours</h1></div>
+    <div class="step colour_0">STEP 2</div>
+  </div>
+  <% var counter = 0 %>
+    <% colours.forEach(function(colour) { %>
+      <div id="colour_selector_<%= counter %>" style="display:inline-block;text-align:left;margin:0;padding:0;margin-right:1em;">
+      <div class="colour_frame" style="display:inline-block;border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0;"><div class="colour_<%= counter %> color_square" style="background-color:<%= colour %>;"></div></div> <div class="change colour_change" style="margin:0" data-colour="<%= counter %>">CHANGE</div><br/><span class="color_label"><%= colour.toUpperCase() %></span>
+      </div>
+    <% counter++ %>
   <% }) %>
-  <div class="colour_selector" style="clear:both;display:none">
-<div class="tabbed_area"> 
+  
+  <div class="colour_selector" style="display:none">
+    <div class="tabbed_area"> 
     
     <% var counter = 0 %>
     <% cols.forEach(function(palette) { %>
@@ -233,15 +78,20 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
        <div style="background-color:<%= hex %>;width:5em;height:4em;margin-bottom:0;padding-bottom:0;margin:0 auto;width:18px;height:18px;"></div>
        </div>
         <% }) %>
+        <div style="width:75%;margin:0 auto;padding:0.5em;text-align:center"><p>
+        <% ["pinks", "browns", "reds", "yellows", "purples", "greens", "blues", "greys"].forEach(function(label) { %>
+        <%= label %> |
+         <% }) %>
+         </p></div>
         </div>
     <% }) %>
     </div>
 </div>  
 </div>
-<div class="spc" style="clear:both">
-        <h1>Thickness</h1>
+<div class="spc">
+    <h1>Thickness</h1>
         
-        <div style="width:60%;margin:auto">
+        <div style="margin:auto">
             <div class="weight" style="border-top:2px solid #666;"></div>
             <p>300gsm</p>
             <div class="weight" style="border-top:4px solid #666;"></div>
@@ -263,15 +113,7 @@ ul li a[data-slidesjs-item="3"] { background-image:url('/products/<%= id %>/atta
 </div>  
 </div>
     
-<div id="cart_page" style="display:none">
-<div style="margin-left:2em;margin-right:2em;border:1px solid black;border-top:0;";>
-<div id="cart"  style="padding:0em;padding-top:3em;">
 
-     <div class="b1"></div>
-</div>
-
-</div>
-</div>
 <script type="text/javascript">
 
 // Setup and initialization
@@ -299,15 +141,11 @@ $('#cart').html(iv.render().el);
 var mv = new MonogramView();
 var pv = new PanelView({collection: cart.get("items") });
 
-var prr = new ProductRouter();
-Backbone.history.start();
 
-
-// Slideshow
 $(function(){
 
  var ProductPageView = Backbone.View.extend({
-     el: $('#product_section0'),
+     el: $('#product_page'),
      events: {
          'mouseenter .spc': 'fade_step_in',
          'mouseleave .spc': 'fade_step_out',
@@ -318,7 +156,8 @@ $(function(){
     "click input[type=radio]": "selectMonogram",
     "blur .guest_name": "updateGuestName",
     "change .selectedFile": "selectFile" ,
-    "click .colour_change": "changeColour"
+    "click .colour_change": "changeColour",
+    "mouseover .a_colour": "updateColour"
      },
       saveColour: function(e) {
   var that = this;
@@ -335,12 +174,17 @@ $(function(){
       $(e.currentTarget).addClass("active")
       this.$('.palette').hide();
      this.$('.palette_'+which).show();
-  },  updateColour: function(e) {
+  },  
+  updateColour: function(e) {
        var currentTarget = $(e.currentTarget);
     var hex = currentTarget.data("colour");
-    
+    console.log("yupdating")
+    if(this.colourContext == 0) {
   this.$('.colour_0').css("background-color", hex)
-      this.$('.product_image').css("background-color", hex)
+  } else { 
+  this.$('.colour_0 div').css("background-color", hex)
+  this.$('.colour_1').css("background-color", hex)
+  }
   },
   fade_step_in: function(e) {
     $(e.currentTarget).find('.step').fadeIn()
@@ -348,21 +192,15 @@ $(function(){
     fade_step_out: function(e) {
     $(e.currentTarget).find('.step').fadeOut()
   },
-  changeColour: function() {
-  var that = this;
-      
-that.$('.colour_selector').slideDown();  
+  changeColour: function(e) {
   
+      var which = $(e.currentTarget).data("colour")
+      this.colourContext = which;
+      this.$('#colour_selector_' + which).fadeTo(0.2)
+this.$('.colour_selector').slideDown();   
   },
  })
-var ppv= new ProductPageView()
-
-
-  $("#slides").slidesjs({ pagination: { active: true }, navigation: { active: false },
-  play: { auto: true, interval: 3500, effect: "swap" },
-  effect: { swap: {speed: 5000 }},
-    width: 750, height: 479
-  });
+var ppv= new ProductPageView({model: thisProduct})
 });
 
 </script>

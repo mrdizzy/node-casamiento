@@ -100,27 +100,6 @@ input:focus { background-color: lightgrey; border:1px solid black;  outline:none
 #buy { width:63px; height:53px; z-index:100;  background-image:url('/gfx/buy.png'); margin:0 auto; }
 #buy:hover { background-position: 0 -53px; }
 
-/* PRODUCT PAGE
-======================================================================================= */
-.b1 { clear:both; }
-.spec { display:inline-block; }
-.spec img { width:100%; }
-.weight { margin:0.5em 0 0.2em;width:2em;}
-    #product_page_genesis {margin auto; border-bottom:1px solid grey; text-align:center; padding-top:10px;}
-    #product_section0 { text-align:center; width:40%;float:left;}
-        #product_section0 #thumbs img { padding:5px; border: 1px solid white; width:65%;} 
-      
-    
-    #product_section1 { text-align:left;  width:59%;float:left;}
- .product_pagination li { display:block;float:left;border:1px solid transparent; }
- .product_pagination li img { padding:0.5em; }
-.product_pagination li:hover { border:1px solid black; }
-.name_place_icon { width:130px; margin:auto; }
-.spc { padding:0.5em;border-bottom:1px dotted grey; padding-top:0  }
-.spc { border-right:1px dotted grey; }
-.spc { border-left:1px dotted grey; }
-.spc h1 {font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em; text-align:left}
-.spc p {color:black;font-family: "OS"; font-size:1em; padding:0; margin:0em; line-height:1em; }
 
 /* WELCOME PAGE 
 ============================================== */
