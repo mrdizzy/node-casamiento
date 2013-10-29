@@ -45,22 +45,7 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif
 a:link, a:visited { text-decoration:none;color: #000; }
  a:hover { text-decoration:underline;}
 a:active { color: #29A4BD; }
-    
-/* COLOURS
-================================== */
-.colour_shown { margin-left:20px; padding-top:10px; text-align:left; }
-.colour_container { clear:both; margin:5px; margin-left:20px; }
-.swatch { width:20px;height:10px;border:1px solid grey;float:left;margin:5px; border-radius:4px;}
-
-/* cart page
-=================================== */
-table td { text-align:center; }
-.cart_box { border:1px solid transparent; width:90%; padding:0.5em;margin-bottom:1em; }
-
-.casamiento_colour { border-radius:5px;width:20px;height:10px;margin:auto;border:1px solid grey; }
-#select_monogram:hover { border:2px dashed black; color:black }
-.cart_box:hover { border:1px solid grey; }
-
+.b1 { clear:both; }
 /* FURNITURE
 ==================================== */
 #page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); }
@@ -96,10 +81,6 @@ table td { text-align:center; }
 form { display:inline; }
 input { padding:0; margin:0; border: 1px solid grey; font-size:1.2em;margin-bottom:0.25em; padding:0.25em;}
 input:focus { background-color: lightgrey; border:1px solid black;  outline:none;}
-
-#buy { width:63px; height:53px; z-index:100;  background-image:url('/gfx/buy.png'); margin:0 auto; }
-#buy:hover { background-position: 0 -53px; }
-
 
 /* WELCOME PAGE 
 ============================================== */

@@ -1,34 +1,28 @@
+#product_page_genesis {margin auto; border-bottom:1px solid grey; text-align:center; padding-top:10px;}
+#product_section0 { text-align:center;margin-left:755px; }
 
-/* PRODUCT PAGE
-======================================================================================= */
-.b1 { clear:both; }
+#product_section1 { text-align:left; clear:both; width:750px; padding:0;margin:0;float:left;}
+
 .spec { display:inline-block; }
 .spec img { width:100%; }
 .weight { margin:0.5em 0 0.2em;width:2em;}
-    #product_page_genesis {margin auto; border-bottom:1px solid grey; text-align:center; padding-top:10px;}
-    #product_section0 { text-align:center;margin-left:755px; }
-    
-    #product_section1 { text-align:left; clear:both; width:750px; padding:0;margin:0;float:left;}
 
 .name_place_icon { width:130px; margin:auto; }
-.spc { padding:0.5em;border-bottom:1px dotted grey; padding-top:0  }
-.spc { border-right:1px dotted grey; }
-.spc { border-left:1px dotted grey; }
-.spc h1 {font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em; text-align:left}
+
+.spc { padding:0.5em;border-bottom:1px dotted grey; padding-top:0; border-right:1px dotted grey; border-left:1px dotted grey; }
+.spc h1 { font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em; text-align:left }
 .spc p {color:black;font-family: "OS"; font-size:1em; padding:0; margin:0em; line-height:1em; }
 
-table.customise td { padding: 1em;}
+.step { display:none;width:50%;margin:0 auto;padding:0.25em;color:white;font:1em normal 'OS Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;"}
 
-.step { display:none;width:50%;margin:0 auto;padding:0.25em;color:white;font:1em normal 'Open Sans Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;"}
 /* COLOURS */
 .a_colour { opacity:0.8;text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-right:10px;margin-top:10px;}
 .a_colour:hover { opacity:1; border:1px dotted black;}
-.colsqr { width:2.9em;height:2.9em;}
-.colsqr img { width:100%; padding:0;border:0;}
-.clrb { width:49%; float:left;border:1px dotted black; border-top:0;border-left:0;}
-.clrb p:hover { font-weight:bold; }
+
 .palette { display:none; position:relative; border-radius:5px; box-shadow:5px 5px 0 0 lightgrey;}
 .palette_6 { display:block;}
+
+/* TOOLTIPS */
 .chat-bubble {
 display:none;
   background-color:#fff;
@@ -44,7 +38,7 @@ display:none;
   -webkit-border-radius:10px;
   box-shadow:5px 5px 0 0 lightgrey;
 }
-.active { display:block;}
+
 tr:first-child td { border-top:0;}
 .chat-bubble-arrow-border {
   border-color:  transparent transparent transparent #000;
@@ -67,28 +61,6 @@ tr:first-child td { border-top:0;}
   left:370px;
 }
 .slide_image { width:750px;height:479px;position:absolute; }
-label { font:normal 1em "OS Light Italic";text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em; }
-input[type=text] {text-align:center;font:normal 1.4em OS;display:block; border:1px solid #000;}
-input[type=text]:hover { background-color:#DDD; border:1px solid lightgrey; }
-input[type=text]:focus { border:1px solid lightgrey; }
-input[type=text]:hover.guest_name { border:1px solid lightgrey;}
-
-table {  border-collapse:collapse; }
-
-    .item_image { vertical-align:top; padding:2em;padding-top:7em;}
-  tr:first-child th { border-top:0;}
-  td { border:1px solid #000;font-family: "OS"; font-size:1em; color:#000; }
-
-  th { border:1px solid #000;text-align:center; border-bottom:1px dotted #000; padding-top:1em;padding-bottom:1em;font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em;}
-  td:first-child, th:first-child { border-left:0;}
-  td:last-child, th:last-child { border-right:0;}
-
-.upload_logo { margin-top:1em;padding:1em;border-radius:6px;border:2px dashed lightgrey; color:lightgrey;padding-top:15px;padding-bottom:15px; font-size:1.4em; display:inline-block;}
-.change { padding:0.2em;border-radius:3px;background-color:#BBB;color:white;padding-top:10px;padding-bottom:10px; font-size:0.8em; display:inline-block; margin-left:0.5em;}
-.change:hover {cursor: pointer; background-color:black; }
-.upload_logo:hover {cursor: pointer; border-color:black; color:black; }
-img.monogram { padding:1em; opacity:0.3; border:1px solid transparent;}
-img.monogram:hover { opacity:1; border:1px dotted black; cursor:pointer;}
 
 .texture {  opacity: 0.3 }
 .texture:hover { opacity: 1;}
