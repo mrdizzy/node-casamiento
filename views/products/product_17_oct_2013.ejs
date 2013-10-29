@@ -1,52 +1,71 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/product.css">
+<script type="text/javascript" src="/javascripts/old.slides.min.jquery.js"></script>
 <style type="text/css">
+.slide_background {width:750px;height:479px;display:none;background-color:<%= colours[0] %> }
+@media all and (max-width: 768px) and (min-width: 320px) {
+#inner_page_container_casamiento { width:96%; }
+.slide_background { width:500px; height:319px;}
+.slide_image { width:500px; height:319px;}
+#product_section0 { margin-left:500px;}
+#product_section1 { width:500px;}
+}
 .step { background-color:<%= colours[0] %>}
 </style>
+
 <script type="text/template" id="cart_item">
     <tr  class="tooltip-select" data-tooltip="tooltip-guests">
     <td colspan="3">     <div class="chat-bubble tooltip-guests"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
   <div class="chat-bubble-arrow"></div>Each place card will come individually printed with the name of each guest. Here you can add each guest name. Your names will be printed exactly as you type them, so make sure you use capital letters in the right places
 </div>
 </script>
-
-      
        
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
 
 <div id="product_page">
 
-    <div id="product_section1">
+  <div id="product_section1">
 
-
-        <div id="slides" style="clear:both">            
-           <div class="colour_0" style="width:750px;height:479px;display:none;"><img src="/products/<%= _id %>/attachments/medium-1" style="width:750px;height:479px;position:absolute;"/><%- background_1 %></div>
-           
-           <div class="colour_0" style="width:750px;height:479px;background-color:<%= colours[0] %>;display:none;"><img src="/products/<%= _id %>/attachments/medium-2" style="width:750px;height:479px;position:absolute;"/><%- background_2 %></div>
-           
-           <div class="colour_0"  style="width:750px;height:479px;background-color:<%= colours[0] %>;"><img src="/products/<%= _id %>/attachments/medium-3" style="width:750px;height:479px;position:absolute;"/><%- background_3 %></div>
-           
-        </div>
-        <h1 class="product_name" style="text-align:center"><%= name %></h1>
-        
-        <div style="text-align:center;margin-bottom:1em"><img src="/gfx/ornamentalline.png" /></div>
-      <h6 style="width:75%;margin:0 auto;" id="welcome_description"><a href="/products">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</a></h6>
-    </div>    
+    <div id="slides" style="clear:both">     
+    <div class="slides_container">       
+      <div class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-1" class="slide_image" /><%- background_1 %></div>           
+         
+      <div class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-2" class="slide_image" /><%- background_2 %></div>
+         
+      <div class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-3" class="slide_image" /><%- background_3 %></div>
+         </div>
+      </div>
+      <script>
+       $(function(){
+                $("#slides").slides({
+                  play:3000,
+                  crossfade:true,
+                  effect: "fade",
+                  preload:true,
+                   preloadImage: '/gfx/spinner.gif'
+                });
+            });
+            </script>
+      <h1 class="product_name" style="text-align:center"><%= name %></h1>
+      
+      <div style="text-align:center;margin-bottom:1em"><img src="/gfx/ornamentalline.png" /></div>
+    
+    <h6 style="width:75%;margin:0 auto;" id="welcome_description"><a href="/products">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</a></h6>
+  </div>    
 
 <div id="product_section0">
 
-<div class="product_type spc"><img src="/gfx/product_types/small/name_place_small.png" style="width:130px;">
-    </div>
+  <div class="product_type spc"><img src="/gfx/product_types/small/name_place_small.png" style="width:130px;"></div>
 
-    <div class="spc" id="texture">
-      <div style="margin-bottom:0.5em;height:2em;">
-        <div style="float:left"><h1>Card Texture</h1></div>
-        <div class="step colour_0">STEP 1</div>
-      </div> 
+  <div class="spc" id="texture">
+    <div style="margin-bottom:0.5em;height:2em;">
+    <div style="float:left"><h1>Card Texture</h1></div>
+    <div class="step colour_0">STEP 1</div>
+  </div> 
 
-        <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/hammer.png" style="width:2.5em"><p style="text-align:center">Hammered</p></div>
-        <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/plaine.png" style="width:2.5em"><p style="text-align:center">Plain</p></div>
-        <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/linen.png" style="width:2.5em"><p style="text-align:center">Linen</p></div>
-    </div>
+  <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/hammer.png" style="width:2.5em"><p style="text-align:center">Hammered</p></div>
+  <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/plaine.png" style="width:2.5em"><p style="text-align:center">Plain</p></div>
+  <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/linen.png" style="width:2.5em"><p style="text-align:center">Linen</p></div>
+</div>
     
     
 <!-- COLOUR LABELS -->
@@ -59,7 +78,7 @@
   <% var counter = 0 %>
     <% colours.forEach(function(colour) { %>
       <div id="colour_selector_<%= counter %>" style="display:inline-block;text-align:left;margin:0;padding:0;margin-right:1em;">
-      <div class="colour_frame_<%= counter %>" style="display:inline-block;border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0;"><div class="colour_<%= counter %> color_square" style="background-color:<%= colour %>;"></div></div> <div class="change colour_change" style="margin:0" data-colour="<%= counter %>">CHANGE</div><br/><span class="color_label"><%= colour.toUpperCase() %></span>
+      <div class="colour_frame_<%= counter %> colour_change" data-colour="<%= counter %>"><div class="colour_<%= counter %> color_square" style="background-color:<%= colour %>;"></div></div><br/><span class="color_label"><%= colour.toUpperCase() %></span>
       </div>
     <% counter++ %>
   <% }) %>

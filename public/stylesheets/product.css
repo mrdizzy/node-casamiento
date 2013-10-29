@@ -66,7 +66,7 @@ tr:first-child td { border-top:0;}
   top:15px;
   left:370px;
 }
-
+.slide_image { width:750px;height:479px;position:absolute; }
 label { font:normal 1em "OS Light Italic";text-align:right;display:block;width:27%;float:left;padding-right:2%;padding-top:0.4em; }
 input[type=text] {text-align:center;font:normal 1.4em OS;display:block; border:1px solid #000;}
 input[type=text]:hover { background-color:#DDD; border:1px solid lightgrey; }
@@ -95,4 +95,6 @@ img.monogram:hover { opacity:1; border:1px dotted black; cursor:pointer;}
 .selected {opacity:1; }
     
 .color_square { width:30px;height:30px; }
-.color_label { font:normal 1.2em "OS";padding:0; margin-top:5px; }
+.color_label { font:normal 1.2em "OS";padding:0; margin-top:5px; color:#000}
+.colour_change{ display:inline-block;border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0; }
+.colour_change:hover { border:1px dotted black;}
