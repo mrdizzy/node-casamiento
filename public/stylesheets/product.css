@@ -21,8 +21,8 @@ table.customise td { padding: 1em;}
 
 .step { display:none;width:50%;margin:0 auto;padding:0.25em;color:white;font:1em normal 'Open Sans Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;"}
 /* COLOURS */
-.a_colour { opacity:0.8;}
-.a_colour:hover { opacity:1}
+.a_colour { opacity:0.8;text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-right:10px;margin-top:10px;}
+.a_colour:hover { opacity:1; border:1px dotted black;}
 .colsqr { width:2.9em;height:2.9em;}
 .colsqr img { width:100%; padding:0;border:0;}
 .clrb { width:49%; float:left;border:1px dotted black; border-top:0;border-left:0;}
@@ -44,7 +44,7 @@ display:none;
   -webkit-border-radius:10px;
   box-shadow:5px 5px 0 0 lightgrey;
 }
-
+.active { display:block;}
 tr:first-child td { border-top:0;}
 .chat-bubble-arrow-border {
   border-color:  transparent transparent transparent #000;

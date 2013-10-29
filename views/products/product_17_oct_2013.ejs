@@ -58,13 +58,12 @@
   <% var counter = 0 %>
     <% colours.forEach(function(colour) { %>
       <div id="colour_selector_<%= counter %>" style="display:inline-block;text-align:left;margin:0;padding:0;margin-right:1em;">
-      <div class="colour_frame" style="display:inline-block;border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0;"><div class="colour_<%= counter %> color_square" style="background-color:<%= colour %>;"></div></div> <div class="change colour_change" style="margin:0" data-colour="<%= counter %>">CHANGE</div><br/><span class="color_label"><%= colour.toUpperCase() %></span>
+      <div class="colour_frame_<%= counter %>" style="display:inline-block;border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0;"><div class="colour_<%= counter %> color_square" style="background-color:<%= colour %>;"></div></div> <div class="change colour_change" style="margin:0" data-colour="<%= counter %>">CHANGE</div><br/><span class="color_label"><%= colour.toUpperCase() %></span>
       </div>
     <% counter++ %>
   <% }) %>
-  
+  <% var p = ["pinks", "browns", "reds", "yellows", "purples", "greens", "blues", "greys"] %>
   <div class="colour_selector" style="display:none">
-    <div class="tabbed_area"> 
     
     <% var counter = 0 %>
     <% cols.forEach(function(palette) { %>
@@ -74,19 +73,18 @@
         <% var ary = colour.split(" ") %>
         <% var hex = ary[0] %>
         <% var description = ary[1] %>
-       <div class="a_colour" data-colour="<%= hex %>" style="text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-right:10px;margin-top:10px;">
+       <div class="a_colour" data-colour="<%= hex %>" style="">
        <div style="background-color:<%= hex %>;width:5em;height:4em;margin-bottom:0;padding-bottom:0;margin:0 auto;width:18px;height:18px;"></div>
        </div>
-        <% }) %>
-        <div style="width:75%;margin:0 auto;padding:0.5em;text-align:center"><p>
-        <% ["pinks", "browns", "reds", "yellows", "purples", "greens", "blues", "greys"].forEach(function(label) { %>
-        <%= label %> |
-         <% }) %>
-         </p></div>
+        <% }) %><br/>
+        
+<div style="display:inline-block" class="colour_index" data-colour="palette_<%= 
+counter -1 %>"><p>&lt;&lt; <%= p[counter -2] %></p></div>
+<div style="display:inline-block" class="colour_index" data-colour="palette_<%= 
+counter + 1%>"><p><%= p[counter] %> &gt;&gt;</p></div>
         </div>
     <% }) %>
     </div>
-</div>  
 </div>
 <div class="spc">
     <h1>Thickness</h1>
@@ -144,63 +142,56 @@ var pv = new PanelView({collection: cart.get("items") });
 
 $(function(){
 
- var ProductPageView = Backbone.View.extend({
-     el: $('#product_page'),
-     events: {
-         'mouseenter .spc': 'fade_step_in',
-         'mouseleave .spc': 'fade_step_out',
-          "click .a_colour": "saveColour",
-    "click .colour_label": "updatePalette",
-    "click .change_monogram": "changeMonogram",
-    "click .texture": "changeTexture",
-    "click input[type=radio]": "selectMonogram",
-    "blur .guest_name": "updateGuestName",
-    "change .selectedFile": "selectFile" ,
-    "click .colour_change": "changeColour",
-    "mouseover .a_colour": "updateColour"
-     },
-      saveColour: function(e) {
-  var that = this;
-        var colours = this.model.get("colours");
-        colours[0] = $(e.currentTarget).data("colour");
-        this.model.set("colours", colours);
-        this.model.trigger("change:colour");
-       this.$('.colour_selector').slideUp();
-  },
-  updatePalette: function(e) {
+  var ProductPageView = Backbone.View.extend({
+    el: $('#product_page'),
+    events: {
+     'mouseenter .spc': 'fade_step_in',
+     'mouseleave .spc': 'fade_step_out',
+     
+      "click .a_colour": "saveColour",
+      "click .colour_index": "updatePalette",
+    
+      "click .colour_change": "changeColour",
+      "mouseover .a_colour": "updateColour",
+      "click .texture": "changeTexture"
+    },
+    saveColour: function(e) {
+      var colours = this.model.get("colours");
+      colours[0] = $(e.currentTarget).data("colour");
+      this.model.set("colours", colours);
+      this.model.trigger("change:colour");
+      this.$('.colour_selector').slideUp();
+    },
+    updatePalette: function(e) {
       var which = $(e.currentTarget).data("colour")
-      $('.colour_label').removeClass("active");
-      
-      $(e.currentTarget).addClass("active")
-      this.$('.palette').hide();
-     this.$('.palette_'+which).show();
-  },  
-  updateColour: function(e) {
-       var currentTarget = $(e.currentTarget);
-    var hex = currentTarget.data("colour");
-    console.log("yupdating")
-    if(this.colourContext == 0) {
-  this.$('.colour_0').css("background-color", hex)
-  } else { 
-  this.$('.colour_0 div').css("background-color", hex)
-  this.$('.colour_1').css("background-color", hex)
-  }
-  },
-  fade_step_in: function(e) {
-    $(e.currentTarget).find('.step').fadeIn()
-  },
+      this.$('.palette').hide();          
+      this.$('.' + which).show();
+    },  
+    updateColour: function(e) {
+      var currentTarget = $(e.currentTarget);
+      var hex = currentTarget.data("colour");
+      if(this.colourContext == 0) {
+        this.$('.colour_0').css("background-color", hex)
+      } else { 
+        this.$('.colour_0 div').css("background-color", hex)
+        this.$('.colour_1').css("background-color", hex)
+      }
+    },
+    fade_step_in: function(e) {
+      $(e.currentTarget).find('.step').fadeIn()
+    },
     fade_step_out: function(e) {
-    $(e.currentTarget).find('.step').fadeOut()
-  },
-  changeColour: function(e) {
-  
+      $(e.currentTarget).find('.step').fadeOut()
+    },
+    changeColour: function(e) {
       var which = $(e.currentTarget).data("colour")
       this.colourContext = which;
-      this.$('#colour_selector_' + which).fadeTo(0.2)
-this.$('.colour_selector').slideDown();   
-  },
- })
-var ppv= new ProductPageView({model: thisProduct})
+      console.log(which)
+      this.$('#colour_frame_' + which).fadeTo(0.2)
+      this.$('.colour_selector').slideDown();   
+    },
+  })
+  var ppv= new ProductPageView({model: thisProduct})
 });
 
 </script>

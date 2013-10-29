@@ -30,7 +30,7 @@ if(req.params.ebay) {
         console.log(without);
         current.quantity = req.query.quantity || 1;
         current.auction = req.query.auction;
-        res.render('ebay/new_ebay.ejs', {
+        res.render('ebay/latest_16_sep_13.ejs', {
             layout: false,
             locals: current
         });
