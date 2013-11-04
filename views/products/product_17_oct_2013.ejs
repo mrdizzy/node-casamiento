@@ -155,11 +155,11 @@ var thisProduct = new Product({
     guests: ["&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;"], 
     texture: "plain" 
 });
-
-var iv = new ItemsView({collection: cart.get("items")})
-$('#cart').html(iv.render().el);
-var mv = new MonogramView();
-var pv = new PanelView({collection: cart.get("items") });
+console.log(thisProduct)
+//var iv = new ItemsView({collection: cart.get("items")})
+//$('#cart').html(iv.render().el);
+//var mv = new MonogramView();
+//var pv = new PanelView({collection: cart.get("items") });
 
 $(function(){
 

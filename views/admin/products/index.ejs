@@ -135,6 +135,7 @@ $(function() {
         attachment_types: ["thumb","display","medium","large"],
         initialize: function() {
             var selectedColours = this.get("colours");
+            
             var colours = _.map(colourList, function(colour) {
                    var matchingColour = _.any(selectedColours, function(selectedColour) {
                     return selectedColour == colour;
@@ -152,6 +153,7 @@ $(function() {
                     }
                 }
             });
+            this.set("rawcolours", selectedColours)
             this.set("colours", colours);
         }
     });
@@ -228,7 +230,7 @@ $(function() {
         updateBackground: function(e, f,g) {
         for(att in e.changed) {
         var attach_number = att.split("-")[1]
-        var element = "background_" + this.model.id + "_" + attach_number;
+        var element = "background-" + this.model.id + "_" + attach_number;
         this.$('#' + element + ' div').remove();
          this.$('#' +element).append(this.model.get("background-" + attach_number))
        
@@ -269,7 +271,11 @@ $(function() {
             this.$el.append("</table>")
             // TODO: CHANGE BACKGROUND COLOURS
               this.model.attachments_order.forEach(function(attachment) {
-              var html= "<div style='clear:both;width:500px;height:319px;background-color:purple;background-image:url('new.png');' id='background_" + this.model.id + "_" + attachment + "'>" + "<img style='width:500px;position:absolute;' src='/products/" + this.model.id + "/attachments/medium-" + attachment + "'>" + ((this.model.get("background-" + attachment) == undefined) ? "" : this.model.get("background-" + attachment) ) + "</div>";
+              
+              var divs = this.model.get("background-" + attachment);
+              var compiled = _.template(divs);
+    var divs = compiled({colour: this.model.get("rawcolours")[1]});
+              var html= "<div style='clear:both;width:500px;height:319px;background-color:" + (this.model.get("rawcolours")[0]) + ";background-image:url('new.png');' id='background_" + this.model.id + "_" + attachment + "'>" + "<img style='width:500px;position:absolute;' src='/products/" + this.model.id + "/attachments/medium-" + attachment + "'>"+ divs + "</div>";
               this.$el.append(html);
                 this.$el.append("<textarea class='change_background' id='" + this.model.id + "-" + attachment + "'>" + this.model.get("background-" + attachment) + "</textarea>")
             }, this)

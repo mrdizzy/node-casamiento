@@ -218,7 +218,7 @@ var ItemView = Backbone.View.extend({
 //// ITEMS VIEW
 //////////////////
 
-// View listing the items in the cart, delegates to ItemView
+/* View listing the items in the cart, delegates to ItemView
 var ItemsView = Backbone.View.extend({
   tagName: "table",
   attributes: { style: "border-collapse:collapse;border:1px dotted grey" },
@@ -252,7 +252,7 @@ var PanelView = Backbone.View.extend({
     })
   }
 })
-
+*/
 /////////////////////
 //// MONOGRAM VIEW
 ////////////////////
