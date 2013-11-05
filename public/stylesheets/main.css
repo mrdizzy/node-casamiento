@@ -79,7 +79,7 @@ a:active { color: #29A4BD; }
 /* FORMS
 ===================================== */  
 form { display:inline; }
-input { padding:0; margin:0; border: 1px solid grey; font-size:1.2em;margin-bottom:0.25em; padding:0.25em;}
+input { padding:0; margin:0; width:45%;border: 1px solid grey; font-size:1.2em;padding:0.25em;}
 input:focus { background-color: lightgrey; border:1px solid black;  outline:none;}
 
 /* WELCOME PAGE 

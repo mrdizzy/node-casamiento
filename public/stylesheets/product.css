@@ -3,6 +3,11 @@
 
 #product_section1 { text-align:left; clear:both; width:750px; padding:0;margin:0;float:left;}
 
+#slide1, #slide3, #slide5 {  float:left; }
+#slide2, #slide4, #slide6   { float:right; }
+#slide4 { width: 374px; height:239px;}
+.a_slide { width:750px;height:479px;}
+.slide_background img { width:374px;margin-right:1px; margin-bottom:1px;height:239px;}
 .spec { display:inline-block; }
 .spec img { width:100%; }
 .weight { margin:0.5em 0 0.2em;width:5em;}
@@ -22,7 +27,7 @@
 .palette { display:none; position:relative; border-radius:5px; box-shadow:5px 5px 0 0 lightgrey;}
 .palette_6 { display:block;}
 
-#buy { width:63px; height:53px; z-index:100;  background-image:url('/gfx/buy.png');  top:50%;right:7%;}
+#buy { width:63px; height:53px; z-index:100;  background-image:url('/gfx/buy.png'); }
 #buy:hover { background-position: 0 -53px; }
 
 /* TOOLTIPS */

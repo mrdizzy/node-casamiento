@@ -1,24 +1,32 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/product.css">
-<style type="text/css">
-#slide1, #slide3, #slide5 {  float:left; }
-#slide2, #slide4, #slide6   { float:right; }
-.a_slide { width:750px;height:479px;}
-.slide_background {width:374px;height:239px;margin-bottom:1px;margin-right:1px;background-color:<%= colours[0] %> }
-.slide_background img { width:374px;margin-right:1px; margin-bottom:1px;height:239px;}
 
-@media all and (max-width: 768px) and (min-width: 320px) {
+<style type="text/css">
+
+.step { background-color:<%= colours[0] %>}
+.slide_background {width:374px;height:239px;margin-bottom:1px;margin-right:1px;background-color:<%= colours[0] %> }
+@media all and (max-width: 1024px) and (min-width: 768px) {
+ #inner_page_container_casamiento { width:97%;}
+}
+@media all and (max-width: 767px) and (min-width: 320px) {
   #inner_page_container_casamiento { width:97%;}
- 
+  .chat-bubble { left:3em;}
+ #total_price { display:none;}
+  #product_section1 { width:374px; }
+  #product_section0 { margin-left:374px;}
+  #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 { float:none;clear:both;}
+  #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { float:none;clear:both;}
+}
+
+@media all and (max-width: 319px) and (min-width: 319px) {
+  #inner_page_container_casamiento { width:97%;}
+ #total_price { display:none;}
   #product_section1 { float:none; width:100%;clear:both; }
   #product_section0 { float:none; width:100%; clear:both;margin:0;}
   #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 { margin:0 auto;float:none;clear:both;}
   #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { margin:0 auto;float:none;clear:both;}
 }
-.step { background-color:<%= colours[0] %>}
-
 </style>
 
-     
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
 
 <div id="product_page">
@@ -122,11 +130,15 @@ counter + 1%>"><p style="text-decoration:underline;"><%= p[counter] %> &gt;&gt;<
   </div> 
   <div class="chat-bubble tooltip-3"><div class="chat-bubble-arrow-border"></div>
   <div class="chat-bubble-arrow"></div>Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm). A normal sheet of A4 copy paper is usually about 80gsm.
-</div>
+</div><br/>
         <div style="margin:auto">
-            <p style="margin-bottom:2em;"><div class="weight" style="display:inline-block;border-top:3px solid #666;"></div> 300gsm</p>
-            <p><div class="weight" style="display:inline-block;border-top:8px solid #666;"></div>
-            250gsm</p>
+        <div style="margin-bottom:1em">
+           <div class="weight" style="display:inline-block;border-top:3px solid #666;"></div> <p  class="casamiento">300gsm</p>
+            </div>
+            <div style="margin-bottom:1em">
+            <div class="weight" style="display:inline-block;border-top:8px solid #666;"></div>
+            <p  class="casamiento">250gsm</p>
+            </div>
         </div>
     </div>
 
@@ -147,17 +159,6 @@ counter + 1%>"><p style="text-decoration:underline;"><%= p[counter] %> &gt;&gt;<
         
         <img id="mono_2" style="width:100%;max-width:300px;min-width:200px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
     </div>
-    <div class="spc">
-       <div style="margin-bottom:0.5em;height:2.5em;">
-    <div style="float:left"><h1>Quantity</h1></div>
-    <div class="step colour_0">STEP 5</div>
-  </div> 
-        <p style="text-align:center;font: normal 4em 'OS Light'"><span style="font-size:0.65em;vertical-align:top;">5</span>
-<div class="noUiSlider" style="margin:0 auto;width:90%;"></div>
-<div style="quantity;font:normal 1.3em OS" id="qty"></div>
-    &nbsp;
-    </div>
-    
     
     
        <div class="spc">
@@ -165,16 +166,11 @@ counter + 1%>"><p style="text-decoration:underline;"><%= p[counter] %> &gt;&gt;<
     <div style="float:left"><h1><img src="/gfx/guests.png" style="width:30px"/> Guest names</h1></div>
     <div class="step colour_0">STEP 6</div>
   </div> 
-  <input type="text"></input>
-  
-  <input type="text"></input>
-  
-  <input type="text"></input>
-  
-  <input type="text"></input>
-  
-  <input type="text"></input>
-  
+  <input type="text"></input>  
+  <input type="text"></input>  
+  <input type="text"></input>  
+  <input type="text"></input>  
+  <input type="text"></input>  
   <input type="text"></input>
         </div>
     </div>
@@ -197,21 +193,26 @@ var thisProduct = new Product({
 });
 
 $(function(){
-
-            var top = Math.max($(window).height() / 2 - $("#total_price")[0].offsetHeight / 2, 0);
+// Positioning of fixed price/alert boxes
+var top = Math.max($(window).height() / 2 - $("#total_price")[0].offsetHeight / 2, 0);
             var left = Math.max($(window).width() / 2 - $("#total_price")[0].offsetWidth / 2, 0);
             $("#total_price").css('top', top + "px");
             $("#total_price").css('position', 'fixed');
         
-$('.noUiSlider').noUiSlider({
-        range: [10, 200]
-       ,start: 10
-       ,step: 10,
-       slide: function(input) {
-       },
-       handles: 1
-    });
+        
+  // PriceCalculator 
+     
+// Slider 
+    
   var ProductPageView = Backbone.View.extend({
+  initialize: function() {
+  _.bindAll(this, 'renderQuantity')
+    this.model.on("change:quantity", this.renderQuantity)  
+    
+    this.model.on("change:quantity", this.calculatePricey)  
+
+     
+  },
     el: $('#product_page'),
     events: {
      'mouseenter .spc': 'fade_step_in',
@@ -234,6 +235,12 @@ $('.noUiSlider').noUiSlider({
   closeTooltip: function(e) {
        var which = $(e.currentTarget).data("tooltip")
           $('.' + which).hide();
+  },
+   renderQuantity: function() {
+    $('#qty').html(this.model.get("quantity"))
+  },
+  calculatePrice: function(e) {
+      
   },
     saveColour: function(e) {
       var colours = this.model.get("colours");
@@ -272,6 +279,19 @@ $('.noUiSlider').noUiSlider({
     },
   })
   var ppv= new ProductPageView({model: thisProduct})
+  
+  $('#plus_qty').click(function(e) {
+  var qty = thisProduct.get("quantity")
+ 
+      thisProduct.set("quantity", qty + 5)
+  })
+    
+  $('#minus_qty').click(function(e) {
+  var qty = thisProduct.get("quantity")
+   if(qty > 5) {
+        thisProduct.set("quantity", qty - 5)
+        }
+  })
 });
 
 </script>
