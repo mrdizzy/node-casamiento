@@ -313,8 +313,13 @@ $(function(){
       this.model.set("colours", colours);
       this.model.trigger("change:colour");
       this.$('.colour_selector').slideUp();
-      
-      this.step = this.step + 1;
+      if(this.step == 1) {
+        this.step = 2;
+        this.$('#step_1 .chat-bubble').slideUp();
+        
+      this.$('#step_2 .step').fadeIn()
+        this.$('#step_2 .chat-bubble').slideDown();
+      }
     },
     updatePalette: function(e) {
       var which = $(e.currentTarget).data("colour")
@@ -335,7 +340,6 @@ $(function(){
     changeColour: function(e) {
       var which = $(e.currentTarget).data("colour")
       this.colourContext = which;
-      console.log(which)
       this.$('#colour_frame_' + which).fadeTo(0.2)
       this.$('.colour_selector').slideDown();   
       
