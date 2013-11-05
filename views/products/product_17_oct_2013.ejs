@@ -77,7 +77,7 @@
   
  -->
 
-<div class="spc tooltip-select" data-tooltip="tooltip-1" id="colours_select">
+<div class="spc" id="step_1">
   <div style="margin-bottom:0.5em;height:2em;">
     <div style="float:left;"><h1>Colours</h1></div>
     <div class="step colour_0">STEP 1</div>
@@ -98,7 +98,7 @@
     <% var counter = 0 %>
     <% cols.forEach(function(palette) { %>
     <% counter++ %>
-        <div class="palette palette_<%= counter %>" style="z-index:100;background-color:white;border:1px dotted black;margin-top:0;padding-top:0;">
+        <div class="palette palette_<%= counter %>" style="z-index:100;background-color:white;margin-top:0;padding-top:0;">
 <div style="padding:5px;margin:10px;" class="colour_index" data-colour="palette_<%= 
 counter -1 %>"><p style="text-decoration:underline;">&lt;&lt; <%= p[counter -2] %></p></div>
         <% palette.forEach(function(colour) { %>
@@ -123,7 +123,7 @@ counter + 1%>"><p style="text-decoration:underline;"><%= p[counter] %> &gt;&gt;<
   
 -->
 
-  <div class="spc" id="texture">
+  <div class="spc" id="step_2">
     <div style="margin-bottom:0.5em;height:3em;">
       <div style="float:left"><h1>Card Texture</h1></div>
       <div class="step colour_0">STEP 2</div>
@@ -142,7 +142,7 @@ counter + 1%>"><p style="text-decoration:underline;"><%= p[counter] %> &gt;&gt;<
   
 -->
     
-  <div class="spc">
+  <div class="spc"  id="step_3">
     <div style="margin-bottom:0.5em;height:2em;">
       <div style="float:left"><h1>Card Thickness</h1></div>
       <div class="step colour_0">STEP 3</div>
@@ -167,7 +167,7 @@ counter + 1%>"><p style="text-decoration:underline;"><%= p[counter] %> &gt;&gt;<
   
 -->
 
-  <div class="spc">
+  <div class="spc"  id="step_4">
     <div style="margin-bottom:0.5em;height:2.5em;">
       <div style="float:left"><h1>Product Format</h1></div>
       <div class="step colour_0">STEP 4</div>
@@ -184,7 +184,7 @@ counter + 1%>"><p style="text-decoration:underline;"><%= p[counter] %> &gt;&gt;<
   
 -->
 
-    <div class="spc">
+    <div class="spc"  id="step_5">
         <h1>Monogram shown</h1>
         
         <img id="mono_2" style="width:100%;max-width:300px;min-width:200px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
@@ -196,7 +196,7 @@ counter + 1%>"><p style="text-decoration:underline;"><%= p[counter] %> &gt;&gt;<
   
  -->
     
-    <div class="spc">
+    <div class="spc"  id="step_6">
       <div style="margin-bottom:0.5em;height:2.5em;">
         <div style="float:left">
           <h1><img src="/gfx/guests.png" style="width:30px"/> Guest names</h1>
@@ -243,9 +243,12 @@ $(function(){
         
   var ProductPageView = Backbone.View.extend({
     initialize: function() {
-    _.bindAll(this, 'renderQuantity')
+    this.step = 1;
+    _.bindAll(this, 'renderQuantity','renderTotal', 'calculatePrice')
       this.model.on("change:quantity", this.renderQuantity)      
-      this.model.on("change:quantity", this.calculatePricey)       
+      this.model.on("change:quantity", this.calculatePrice)
+          
+      this.model.on("change:total", this.renderTotal)         
     },
     el: $('#product_page'),
     events: {     
@@ -260,17 +263,40 @@ $(function(){
       "click .texture": "changeTexture"
     },
     showTooltip: function(e) {
+      
       $(e.currentTarget).find('.step').fadeIn()
       $(e.currentTarget).find('.chat-bubble').slideDown()
     },
     closeTooltip: function(e) {  
+    var step_container = $(e.currentTarget),
+      id = step_container.attr('id').split("_")[1];
+      if (id != this.step) {
       $(e.currentTarget).find('.step').fadeOut()
       $(e.currentTarget).find('.chat-bubble').slideUp()
+      }
     },
     renderQuantity: function() {
       $('#qty').html(this.model.get("quantity"))
     },
-    calculatePrice: function(e) {      
+    renderTotal: function() {
+  var total = this.model.get("total");
+  var ary = total.toString().split(".");
+  var pounds = ary[0];
+  var dec = ary[1]
+      $('span#pound').text(pounds);
+      $('span#decimal').text("." + dec);
+  },
+    calculatePrice: function(e) {    
+    var price = this.model.get("price") * this.model.get("quantity")
+    var texture = this.model.get("texture");
+
+    if(texture == "hammer") {
+      price = ((10/100) * price) + price
+    } else if (texture == "pearl") {
+      price = ((15/100) * price) + price
+    }
+    var price = (price).toFixed(2)
+    this.model.set("total", price)
     },
     saveColour: function(e) {
       var colours = this.model.get("colours");
@@ -278,6 +304,8 @@ $(function(){
       this.model.set("colours", colours);
       this.model.trigger("change:colour");
       this.$('.colour_selector').slideUp();
+      
+      this.step = this.step + 1;
     },
     updatePalette: function(e) {
       var which = $(e.currentTarget).data("colour")
@@ -292,6 +320,7 @@ $(function(){
       } else { 
         this.$('.colour_0 div').css("background-color", hex)
         this.$('.colour_1').css("background-color", hex)
+        
       }
     },
     changeColour: function(e) {
@@ -300,6 +329,7 @@ $(function(){
       console.log(which)
       this.$('#colour_frame_' + which).fadeTo(0.2)
       this.$('.colour_selector').slideDown();   
+      
     },
   })
   var ppv= new ProductPageView({model: thisProduct})
