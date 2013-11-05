@@ -191,7 +191,6 @@ $(function() {
         }
     });
     
-    
     var AttachView = Backbone.View.Attachment.extend({
         initialize: function() {
             this.model.on("change", this.render, this)
@@ -221,19 +220,22 @@ $(function() {
         initialize: function() {
             this.model.on("destroy", this.remove, this) 
             this.model.on("change:background-1", this.updateBackground, this) 
-            
-            this.model.on("change:background-2", this.updateBackground, this) 
-            
+            this.model.on("change:background-2", this.updateBackground, this)             
             this.model.on("change:background-3", this.updateBackground, this) 
             this.model.on("change:background-4", this.updateBackground, this) 
         },
         updateBackground: function(e, f,g) {
         for(att in e.changed) {
         var attach_number = att.split("-")[1]
-        var element = "background-" + this.model.id + "_" + attach_number;
+        var element = "background_" + this.model.id + "_" + attach_number;
         this.$('#' + element + ' div').remove();
-         this.$('#' +element).append(this.model.get("background-" + attach_number))
-       
+        
+              var divs = this.model.get("background-" + attach_number);
+              var compiled = _.template(divs);
+    var divs = compiled({colour: this.model.get("rawcolours")[1]});
+    console.log(divs)
+    console.log(element)
+         this.$('#' +element).append(divs)       
         }
         },
         events: { 
@@ -241,7 +243,6 @@ $(function() {
             'click .addmore': 'addMore',
             'click .delete': 'destroy',
             'blur .change_background': 'changeBackground'
-            
         },
         changeBackground: function(e) {
             var id = $(e.currentTarget).attr('id');
