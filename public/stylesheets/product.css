@@ -17,7 +17,7 @@
 .spc { border-bottom:1px dotted grey; padding-top:0; border-right:1px dotted grey; border-left:1px dotted grey; }
 .spc h1 { font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em; text-align:left;padding:0.5em;letter-spacing:0.01em; }
 .spc p {color:black;font-family: "OS"; font-size:1em; padding:0; margin:0em; line-height:1em; }
-.chat_bubble { display:none;}
+.chat_bubble { display:none; color:black;}
 .step { display:none;width:50%;float:right;padding:0.25em;color:white;font:1em normal 'OS Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;border-top-right-radius:0;border-bottom-right-radius:0;border-top-left-radius:0;}
 
 /* COLOURS */
@@ -29,46 +29,14 @@
 
 #buy { width:63px; height:53px; z-index:100;  background-image:url('/gfx/buy.png'); }
 #buy:hover { background-position: 0 -53px; }
-
-/* TOOLTIPS */
 .chat-bubble {
 display:none;
   background-color:#fff;
-  border:1px solid #000;
   font: normal 1.1em "OS Light Italic";
   margin:10px auto;
-  padding:10px;
-  position:absolute;
-  
-  left:32em;
-  text-align:center;
-  width:350px;
-  -moz-border-radius:10px;
-  -webkit-border-radius:10px;
-  box-shadow:5px 5px 0 0 lightgrey;
-}
-
-tr:first-child td { border-top:0;}
-.chat-bubble-arrow-border {
-  border-color:  transparent transparent transparent #000;
-  border-style: solid;
-  border-width: 16px;
-  height:0;
-  width:0;
-  position:absolute;
-  top:14px;
-  left:370px;
-}
-.chat-bubble-arrow {
-  border-color: transparent transparent transparent white ;
-  border-style: solid;
-  border-width: 15px;
-  height:0;
-  width:0;
-  position:absolute;
-  top:15px;
-  left:370px;
-}
+  color:black;
+  width:100%;
+  }
 .slide_image { width:374px;height:239px;position:absolute; }
 
 .texture {  opacity: 0.3 }
