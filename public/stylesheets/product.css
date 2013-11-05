@@ -64,7 +64,7 @@ tr:first-child td { border-top:0;}
   top:15px;
   left:370px;
 }
-.slide_image { width:750px;height:479px;position:absolute; }
+.slide_image { width:374px;height:239px;position:absolute; }
 
 .texture {  opacity: 0.3 }
 .texture:hover { opacity: 1;}
