@@ -68,7 +68,7 @@ a:active { color: #29A4BD; }
     .navbar img.dreams_on_paper { position:relative; top:-7px; }
   #page_container {  margin: 0 auto; background-color: white;  border-left: 1px dotted #939598; border-right: 1px dotted #939598;}
 
-  #footer { margin: 0 auto; clear:both; padding-top:20px; height:75px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; border-top: 1px solid #939598;}
+  #footer { margin: 0 auto; clear:both; padding-top:10px; height:65px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; border-top: 1px solid #939598;}
   
     .footer_seperator {  text-align:center; padding-top:1em;  float:left;  width:20%; }
     .collection { width:40%; float:left; text-align:center; }
@@ -79,8 +79,8 @@ a:active { color: #29A4BD; }
 /* FORMS
 ===================================== */  
 form { display:inline; }
-input { padding:0; margin:0; width:45%;border: 1px solid grey; font-size:1.2em;padding:0.25em;}
-input:focus { background-color: lightgrey; border:1px solid black;  outline:none;}
+input { display:inline;padding:0;outline:none;margin:0;border:1px solid darkgrey; font: normal 1.2em "OS";padding:0.25em; width:30%;}
+input:focus { background-color: lightgrey;outline:none;}
 
 /* WELCOME PAGE 
 ============================================== */

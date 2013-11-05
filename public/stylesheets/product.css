@@ -8,17 +8,34 @@
 #slide4 { width: 374px; height:239px;}
 .a_slide { width:750px;height:479px;}
 .slide_background img { width:374px;margin-right:1px; margin-bottom:1px;height:239px;}
+
+.slide_image { width:374px;height:239px;position:absolute; }
+
 .spec { display:inline-block; }
 .spec img { width:100%; }
-.weight { margin:0.5em 0 0.2em;width:5em;}
 
 .name_place_icon { width:130px; margin:auto; }
 
 .spc { border-bottom:1px dotted grey; padding-top:0; border-right:1px dotted grey; border-left:1px dotted grey; }
 .spc h1 { font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em; text-align:left;padding:0.5em;letter-spacing:0.01em; }
-.spc p {color:black;font-family: "OS"; font-size:1em; padding:0; margin:0em; line-height:1em; }
-.chat_bubble { display:none; color:black;}
+.spc p { color:black;font-family: "OS"; font-size:1em; padding:0; margin:0em; line-height:1em; }
+
 .step { display:none;width:50%;float:right;padding:0.25em;color:white;font:1em normal 'OS Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;border-top-right-radius:0;border-bottom-right-radius:0;border-top-left-radius:0;}
+
+.chat-bubble { display:none; font: normal 1.1em "OS Light Italic"; margin:10px auto;color:black; width:100%; }
+
+.texture {  display:inline-block;margin:0.5em;text-align:center;opacity:0.3;}
+.texture img { width:3.5em; }
+.texture:hover, .weight:hover  { opacity: 1;}
+
+.weight {  margin:0.5em 0 0.2em;width:5em;opacity: 0.3; margin:0 auto; margin-bottom:1em; }
+.weight_line { width:100px; display:inline-block;border-top:3px solid black; }
+
+.selected {opacity:1; }
+   
+
+#buy { width:63px; height:53px; z-index:100;  background-image:url('/gfx/buy.png'); }
+#buy:hover { background-position: 0 -53px; }
 
 /* COLOURS */
 .a_colour { opacity:0.8;text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-right:10px;margin-top:10px;}
@@ -27,22 +44,6 @@
 .palette { display:none; position:relative; border-radius:5px; box-shadow:5px 5px 0 0 lightgrey;}
 .palette_6 { display:block;}
 
-#buy { width:63px; height:53px; z-index:100;  background-image:url('/gfx/buy.png'); }
-#buy:hover { background-position: 0 -53px; }
-.chat-bubble {
-display:none;
-  background-color:#fff;
-  font: normal 1.1em "OS Light Italic";
-  margin:10px auto;
-  color:black;
-  width:100%;
-  }
-.slide_image { width:374px;height:239px;position:absolute; }
-
-.texture {  opacity: 0.3 }
-.texture:hover { opacity: 1;}
-.selected {opacity:1; }
-    
 .color_square { width:30px;height:30px; }
 .color_label { font:normal 1.2em "OS";padding:0; margin-top:5px; color:#000}
 .colour_change{ display:inline-block;border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0; }

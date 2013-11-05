@@ -2,29 +2,30 @@
 
 <style type="text/css">
 
-.step { background-color:<%= colours[0] %>}
-.slide_background {width:374px;height:239px;margin-bottom:1px;margin-right:1px;background-color:<%= colours[0] %> }
-@media all and (max-width: 1024px) and (min-width: 768px) {
- #inner_page_container_casamiento { width:97%;}
-}
-@media all and (max-width: 767px) and (min-width: 320px) {
-  #inner_page_container_casamiento { width:97%;}
-  .chat-bubble { left:3em;}
- #total_price { display:none;}
-  #product_section1 { width:374px; }
-  #product_section0 { margin-left:374px;}
-  #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 { float:none;clear:both;}
-  #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { float:none;clear:both;}
-}
+  .step { background-color:<%= colours[0] %>}
+  .slide_background {width:374px;height:239px;margin-bottom:1px;margin-right:1px;background-color:<%= colours[0] %> }
+  @media all and (max-width: 1024px) and (min-width: 768px) {
+   #inner_page_container_casamiento { width:97%;}
+  }
+  
+  @media all and (max-width: 767px) and (min-width: 320px) {
+    #inner_page_container_casamiento { width:97%;}
+    .chat-bubble { left:3em;}
+    #total_price { display:none;}
+    #product_section1 { width:374px; }
+    #product_section0 { margin-left:374px;}
+    #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 { float:none;clear:both;}
+    #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { float:none;clear:both;}
+  }
 
-@media all and (max-width: 319px) and (min-width: 319px) {
-  #inner_page_container_casamiento { width:97%;}
- #total_price { display:none;}
-  #product_section1 { float:none; width:100%;clear:both; }
-  #product_section0 { float:none; width:100%; clear:both;margin:0;}
-  #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 { margin:0 auto;float:none;clear:both;}
-  #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { margin:0 auto;float:none;clear:both;}
-}
+  @media all and (max-width: 319px) and (min-width: 319px) {
+    #inner_page_container_casamiento { width:97%;}
+   #total_price { display:none;}
+    #product_section1 { float:none; width:100%;clear:both; }
+    #product_section0 { float:none; width:100%; clear:both;margin:0;}
+    #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 { margin:0 auto;float:none;clear:both;}
+    #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { margin:0 auto;float:none;clear:both;}
+  }
 </style>
 
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
@@ -53,25 +54,35 @@
       <div id="slide5", style="width:374px;clear:both;">
       <p style="text-align:center;margin-top:1em;">
     <img src="/gfx/shell.png" /></p>
-    <h6 style="width:95%;margin:0 auto;" id="welcome_description"><a href="/products">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</a></h6></div>
+    <h6 style="width:95%;margin:0 auto;" id="welcome_description">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h6></div>
       <div id="slide6" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-4" class="slide_image" /><% if ((typeof background_4) !== "undefined") {%>
       <%- background_4  %>
       <% } %></div>           
    </div>
       
+<!-- 
+
+  SPECIFICATIONS 
+
+-->
+
 
 <div id="product_section0">
 
   <div class="product_type spc"><img src="/gfx/product_types/small/name_place_small.png" style="width:130px;"></div>
 
-<!-- COLOUR LABELS -->
+<!-- 
+
+  COLOUR LABELS 
+  
+ -->
 
 <div class="spc tooltip-select" data-tooltip="tooltip-1" id="colours_select">
   <div style="margin-bottom:0.5em;height:2em;">
- 
     <div style="float:left;"><h1>Colours</h1></div>
     <div class="step colour_0">STEP 1</div>
   </div>
+  
    <div class="chat-bubble tooltip-1">Click on a colour to change it! Navigate through the different palettes by clicking the labels at the top and bottom of each palette to move backwards and forwards.
 </div>
   <% var counter = 0 %>
@@ -106,74 +117,108 @@ counter + 1%>"><p style="text-decoration:underline;"><%= p[counter] %> &gt;&gt;<
     </div>
 </div>
 
-<!-- TEXTURE -->
+<!-- 
 
-  <div class="spc tooltip-select" data-tooltip="tooltip-2" id="texture">
+  TEXTURE 
+  
+-->
+
+  <div class="spc" id="texture">
     <div style="margin-bottom:0.5em;height:3em;">
-    <div style="float:left"><h1>Card Texture</h1></div>
-    <div class="step colour_0">STEP 2</div>
-  </div> 
-<div class="chat-bubble tooltip-2">Click and highlight an icon to select the texture of your choice. Plain is the cheapest with its smooth plain finish, but hammered and linen both make your cards feel more luxurious. 
-</div>
-  <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/hammer.png" style="width:2.5em"><p style="text-align:center">Hammered</p></div>
-  <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/plaine.png" style="width:2.5em"><p style="text-align:center">Plain</p></div>
-  <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/linen.png" style="width:2.5em"><p style="text-align:center">Linen</p></div>
-</div>
-
-<!-- THICKNESS -->
-    
-<div class="spc tooltip-select" data-tooltip="tooltip-3"><div style="margin-bottom:0.5em;height:2em;">
-    <div style="float:left"><h1>Card Thickness</h1></div>
-    <div class="step colour_0">STEP 3</div>
-  </div> 
-  <div class="chat-bubble tooltip-3">Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm). A normal sheet of A4 copy paper is usually about 80gsm.
-</div><br/>
-        <div style="margin:auto">
-        <div style="margin-bottom:1em">
-           <div class="weight" style="display:inline-block;border-top:3px solid #666;"></div> <p  class="casamiento">300gsm</p>
-            </div>
-            <div style="margin-bottom:1em">
-            <div class="weight" style="display:inline-block;border-top:8px solid #666;"></div>
-            <p  class="casamiento">250gsm</p>
-            </div>
-        </div>
+      <div style="float:left"><h1>Card Texture</h1></div>
+      <div class="step colour_0">STEP 2</div>
+    </div> 
+  
+    <div class="chat-bubble">Click and highlight an icon to select the texture of your choice. Plain is the cheapest with its smooth plain finish, but hammered and linen both make your cards feel more luxurious. 
     </div>
+    <div class="texture"><img src="/gfx/icons/plaine.png"><p>Plain</p></div>
+    <div class="texture"><img src="/gfx/icons/hammer.png"><p>Hammered</p></div>
+    <div class="texture"><img src="/gfx/icons/linen.png"><p>Linen</p></div>
+  </div>
 
-<!-- FORMAT -->
+<!-- 
 
-    <div class="spc">
-        <div style="margin-bottom:0.5em;height:2.5em;">
-    <div style="float:left"><h1>Product Format</h1></div>
-    <div class="step colour_0">STEP 4</div>
-  </div> 
+  WEIGHT 
+  
+-->
+    
+  <div class="spc">
+    <div style="margin-bottom:0.5em;height:2em;">
+      <div style="float:left"><h1>Card Thickness</h1></div>
+      <div class="step colour_0">STEP 3</div>
+    </div> 
+    <div class="chat-bubble">Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm). A normal sheet of A4 copy paper is usually about 80gsm.
+    </div>
+    <br/>
+    <div class="weight">
+       <div class="weight_line"></div>
+       <p class="casamiento">300gsm</p>
+    </div>
         
-        <div style="margin:auto;text-align:center;">
-        <div class="spec" style="width:90px"><img src="/gfx/specs/tent.png"></div></div>
+    <div class="weight">
+      <div class="weight_line" style="border-top:8px solid black;"></div>
+      <p class="casamiento">250gsm</p>
     </div>
-    
+  </div>
+
+<!-- 
+
+  FORMAT 
+  
+-->
+
+  <div class="spc">
+    <div style="margin-bottom:0.5em;height:2.5em;">
+      <div style="float:left"><h1>Product Format</h1></div>
+      <div class="step colour_0">STEP 4</div>
+    </div> 
+        
+    <div style="margin:auto;text-align:center;">
+      <div class="spec" style="width:90px"><img src="/gfx/specs/tent.png"></div>
+    </div>
+  </div>
+  
+<!-- 
+
+  MONOGRAM 
+  
+-->
+
     <div class="spc">
         <h1>Monogram shown</h1>
         
         <img id="mono_2" style="width:100%;max-width:300px;min-width:200px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
     </div>
+
+<!-- 
+
+  GUESTS 
+  
+ -->
     
-    
-       <div class="spc">
-        <div style="margin-bottom:0.5em;height:2.5em;">
-    <div style="float:left"><h1><img src="/gfx/guests.png" style="width:30px"/> Guest names</h1></div>
-    <div class="step colour_0">STEP 6</div>
-  </div> 
-  <input type="text"></input>  
-  <input type="text"></input>  
-  <input type="text"></input>  
-  <input type="text"></input>  
-  <input type="text"></input>  
-  <input type="text"></input>
+    <div class="spc">
+      <div style="margin-bottom:0.5em;height:2.5em;">
+        <div style="float:left">
+          <h1><img src="/gfx/guests.png" style="width:30px"/> Guest names</h1>
         </div>
+        <div class="step colour_0">STEP 6</div>
+      </div> 
+      <div class="chat-bubble">Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm). A normal sheet of A4 copy paper is usually about 80gsm.
+      </div>
+      <input type="text"></input>
+      <input type="text"></input>
+      <input type="text"></input>
+      <input type="text"></input>
+      <input type="text"></input>
+      <input type="text"></input>
+      <input type="text"></input>
+      <input type="text"></input>
+      <input type="text"></input>
+      <input type="text"></input>
     </div>
-    
+  </div>
+   
 </div>  
-</div>
     
 <script type="text/javascript">
 
@@ -190,33 +235,22 @@ var thisProduct = new Product({
 });
 
 $(function(){
-// Positioning of fixed price/alert boxes
-var top = Math.max($(window).height() / 2 - $("#total_price")[0].offsetHeight / 2, 0);
-            var left = Math.max($(window).width() / 2 - $("#total_price")[0].offsetWidth / 2, 0);
-            $("#total_price").css('top', top + "px");
-            $("#total_price").css('position', 'fixed');
+  // Positioning of fixed price/alert boxes
+  var top = Math.max($(window).height() / 2 - $("#total_price")[0].offsetHeight / 2, 0);
+  var left = Math.max($(window).width() / 2 - $("#total_price")[0].offsetWidth / 2, 0);
+  $("#total_price").css('top', top + "px");
+  $("#total_price").css('position', 'fixed');
         
-        
-  // PriceCalculator 
-     
-// Slider 
-    
   var ProductPageView = Backbone.View.extend({
-  initialize: function() {
-  _.bindAll(this, 'renderQuantity')
-    this.model.on("change:quantity", this.renderQuantity)  
-    
-    this.model.on("change:quantity", this.calculatePricey)  
-
-     
-  },
+    initialize: function() {
+    _.bindAll(this, 'renderQuantity')
+      this.model.on("change:quantity", this.renderQuantity)      
+      this.model.on("change:quantity", this.calculatePricey)       
+    },
     el: $('#product_page'),
-    events: {
-     'mouseenter .spc': 'fade_step_in',
-     'mouseleave .spc': 'fade_step_out',
-     
-      "mouseenter .tooltip-select": "showTooltip",
-    "mouseleave .tooltip-select": "closeTooltip",
+    events: {     
+      "mouseenter .spc": "showTooltip",
+      "mouseleave .spc": "closeTooltip",
      
       "click .a_colour": "saveColour",
       "click .colour_index": "updatePalette",
@@ -226,19 +260,18 @@ var top = Math.max($(window).height() / 2 - $("#total_price")[0].offsetHeight / 
       "click .texture": "changeTexture"
     },
     showTooltip: function(e) {
-    var which = $(e.currentTarget).data("tooltip")
-          $('.' + which).slideDown()
-  },
-  closeTooltip: function(e) {
-       var which = $(e.currentTarget).data("tooltip")
-          $('.' + which).slideUp();
-  },
-   renderQuantity: function() {
-    $('#qty').html(this.model.get("quantity"))
-  },
-  calculatePrice: function(e) {
-      
-  },
+      $(e.currentTarget).find('.step').fadeIn()
+      $(e.currentTarget).find('.chat-bubble').slideDown()
+    },
+    closeTooltip: function(e) {  
+      $(e.currentTarget).find('.step').fadeOut()
+      $(e.currentTarget).find('.chat-bubble').slideUp()
+    },
+    renderQuantity: function() {
+      $('#qty').html(this.model.get("quantity"))
+    },
+    calculatePrice: function(e) {      
+    },
     saveColour: function(e) {
       var colours = this.model.get("colours");
       colours[0] = $(e.currentTarget).data("colour");
@@ -261,12 +294,6 @@ var top = Math.max($(window).height() / 2 - $("#total_price")[0].offsetHeight / 
         this.$('.colour_1').css("background-color", hex)
       }
     },
-    fade_step_in: function(e) {
-      $(e.currentTarget).find('.step').fadeIn()
-    },
-    fade_step_out: function(e) {
-      $(e.currentTarget).find('.step').fadeOut()
-    },
     changeColour: function(e) {
       var which = $(e.currentTarget).data("colour")
       this.colourContext = which;
@@ -277,17 +304,17 @@ var top = Math.max($(window).height() / 2 - $("#total_price")[0].offsetHeight / 
   })
   var ppv= new ProductPageView({model: thisProduct})
   
+// Calculate quantity
   $('#plus_qty').click(function(e) {
-  var qty = thisProduct.get("quantity")
- 
+    var qty = thisProduct.get("quantity")
       thisProduct.set("quantity", qty + 5)
   })
     
   $('#minus_qty').click(function(e) {
-  var qty = thisProduct.get("quantity")
-   if(qty > 5) {
+    var qty = thisProduct.get("quantity")
+    if(qty > 5) {
         thisProduct.set("quantity", qty - 5)
-        }
+    }
   })
 });
 
