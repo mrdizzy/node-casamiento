@@ -99,8 +99,12 @@
     <% cols.forEach(function(palette) { %>
     <% counter++ %>
         <div class="palette palette_<%= counter %>" style="z-index:100;background-color:white;margin-top:0;padding-top:0;">
-<div style="padding:5px;margin:10px;" class="colour_index" data-colour="palette_<%= 
-counter -1 %>"><p style="text-decoration:underline;">&lt;&lt; <%= p[counter -2] %></p></div>
+<table><tr><td>
+<div style="width:46px;" class="colour_index colour_index_left" data-colour="palette_<%= 
+counter -1 %>"></div>
+</td>
+<td>
+<div style="">
         <% palette.forEach(function(colour) { %>
         <% var ary = colour.split(" ") %>
         <% var hex = ary[0] %>
@@ -108,10 +112,15 @@ counter -1 %>"><p style="text-decoration:underline;">&lt;&lt; <%= p[counter -2] 
        <div class="a_colour" data-colour="<%= hex %>" style="">
        <div style="background-color:<%= hex %>;width:5em;height:4em;margin-bottom:0;padding-bottom:0;margin:0 auto;width:18px;height:18px;"></div>
        </div>
-        <% }) %><br/>
-        
-<div style="display:inline-block;padding:5px;margin:10px;" class="colour_index" data-colour="palette_<%= 
-counter + 1%>"><p style="text-decoration:underline;"><%= p[counter] %> &gt;&gt;</p></div>
+        <% }) %>
+</div>
+</td>
+<td>
+<div style="width:46px;" class="colour_index colour_index_right" data-colour="palette_<%= 
+counter + 1%>"></div></td>
+</tr>
+</table>
+
         </div>
     <% }) %>
     </div>
