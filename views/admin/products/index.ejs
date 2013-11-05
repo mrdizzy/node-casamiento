@@ -10,7 +10,7 @@
    <script src="/javascripts/attachments.js"></script>
     
     <script type="text/template" id="current_product_form">
-        <form>
+        <form><div style="width:50%;float:left">
             <h1>{{ id }}</h1>        
             <p><label for="price">Name:</label> 
                 <input type="text" name="name" value="{{name}}"></input></p>
@@ -24,18 +24,29 @@
                 <input type="text" name="buy_it_now_id" value="{{buy_it_now_id}}"></input></p>
             <p><label for="buy_it_now_price">Buy-it-now price:</label> 
                 <input type="text" name="buy_it_now_price" value="{{buy_it_now_price}}"></input></p>
-            <select name="colours" multiple="true">
+                </div>
+                <div style="float:right;width:50%;">
+            <select style="width:50%;font-size:1.5em;" size="7" name="colours" multiple="true">
             {{#colours}}
-            <option value="{{colour}}" {{selected}}>{{colour}}</option>
+            <option style="background-color:{{colour}}" value="{{colour}}" {{selected}}>{{colour}}</option>
             {{/colours}}
             </select>
-            <input type="submit">Submit</a>
+            </div>
+            <input type="submit" style="clear:both;">Submit</a>
             </form>
     </script>
     
 <script type="text/javascript">
 
-var colourList = ["Black", "Red", "VioletRed", "Firebrick", "HotPink", "DeepPink", "LightSalmon", "OrangeRed", "Orange", "Yellow", "Violet", "Fuschia", "MediumOrchid", "DarkViolet", "Purple", "Indigo", "GreenYellow", "LightSeaGreen","CornflowerBlue", "LimeGreen", "LightSkyBlue", "SteelBlue", "ForestGreen", "DeepSkyBlue", "Blue", "DarkGreen", "DodgerBlue", "MidnightBlue", "SaddleBrown", "Maroon"];
+var colourList = _.flatten([['#FFC0CB pink','#FFB6C1 lightpink','#FF69B4 hotpink','#FF1493 deeppink','#DB7093 palevioletred','#BC8F8F rosybrown','#C71585 mediumvioletred','#CD5C5C indianred','#F08080 lightcoral','#FFA07A lightsalmon','#FA8072 salmon','#E9967A darksalmon','#DC143C crimson'],['#CD853F peru','#D2691E chocolate','#A0522D sienna','#A52A2A brown','#B22222 firebrick','#8B4513 saddlebrown','#8B0000 darkred','#800000 maroon'],['#FAA460 sandybrown','#FF7F50 coral','#FF6347 tomato','#FF0000 red','#FF4500 orangered','#FF8C00 darkorange','#FFA500 orange'],['#FFD700 gold','#FFFF00 yellow'],['#E6E6FA lavender','#D8BFD8 thistle','#DDA0DD plum','#FF00FF magenta','#EE82EE violet','#DA70D6 orchid','#BA55D3 mediumorchid','#9370DB mediumpurple','#8A2BE2 blueviolet','#9400D3 darkviolet','#9932CC darkorchid','#8B008B darkmagenta','#800080 purple','#4B0082 indigo','#483D8B darkslateblue','#6A5ACD slateblue','#7B68EE mediumslateblue'],['#98FB98 palegreen','#ADFF2F greenyellow','#7FFF00 chartreuse','#7CFC00 lawngreen','#00FF00 lime','#00FF7F springgreen','#00FA9A mediumspringgreen','#90EE90 lightgreen','#32CD32 limegreen','#3CB371 mediumseagreen','#2E8B57 seagreen','#228B22 forestgreen','#008000 green','#006400 darkgreen','#9ACD32 yellowgreen','#6B8E23 olivedrab','#808000 olive','#556B2F darkolivegreen','#8FBC8F darkseagreen','#66CDAA mediumaquamarine','#20B2AA lightseagreen','#008B8B darkcyan','#008080 teal'],['#00FFFF cyan','#7FFFD4 aquamarine','#AFEEEE paleturquoise','#40E0D0 turquoise','#48D1CC mediumturquoise','#00CED1 darkturquoise','#5F9EA0 cadetblue','#4682B4 steelblue','#B0C4DE lightsteelblue','#B0E0E6 powderblue','#ADD8E6 lightblue','#87CEEB skyblue','#87CEFA lightskyblue','#00BFFF deepskyblue','#1E90FF dodgerblue','#6495ED cornflowerblue','#4169E1 royalblue','#0000FF blue','#0000CD mediumblue','#00008B darkblue','#000080 navy','#191970 midnightblue'],['#DCDCDC gainsboro','#D3D3D3 lightgrey','#C0C0C0 silver','#A9A9A9 darkgray','#778899 lightslategray','#708090 slategray','#808080 gray','#696969 dimgray','#2F4F4F darkslategray','#000000 black']]);
+var results = _.map(colourList, function(colour) {
+    var split = colour.split(" ");
+    var hex = split[0];
+    var label = split[1]
+    return hex
+})
+colourList = results
+console.log(colourList)
 
 $(function() {    
     var Theme = Backbone.Model.CouchDB.extend({
@@ -101,8 +112,7 @@ $(function() {
             this.collection.on("add", this.render, this);  
        },
        events: {
-            'click input[type=submit]': 'addTheme',
-            
+            'click input[type=submit]': 'addTheme'            
        },
        addTheme: function(e) {
          e.preventDefault();
@@ -278,7 +288,7 @@ $(function() {
     var divs = compiled({colour: this.model.get("rawcolours")[1]});
               var html= "<div style='clear:both;width:500px;height:319px;background-color:" + (this.model.get("rawcolours")[0]) + ";background-image:url('new.png');' id='background_" + this.model.id + "_" + attachment + "'>" + "<img style='width:500px;position:absolute;' src='/products/" + this.model.id + "/attachments/medium-" + attachment + "'>"+ divs + "</div>";
               this.$el.append(html);
-                this.$el.append("<textarea class='change_background' id='" + this.model.id + "-" + attachment + "'>" + this.model.get("background-" + attachment) + "</textarea>")
+                this.$el.append("<textarea rows='5' cols='100' class='change_background' id='" + this.model.id + "-" + attachment + "'>" + this.model.get("background-" + attachment) + "</textarea>")
             }, this)
             this.$el.append("<a class='addmore'>Add more</a>")
             this.$el.append("<a class='delete'>Delete</a>" )
@@ -304,15 +314,17 @@ $(function() {
 
     <div id="themes_admin">
     <h1>Themes</h1>
-    <ul id="theme_list"></ul>
     <h2>Add new theme</h2>
         <form>
             Theme name: <input name="new_theme"></input>
             Theme description: <textarea name="description"></textarea>
             <input type="submit"></input>
         </form>
+    <ul id="theme_list" style="float:left;width:25%;"></ul>
+    
+<div id="products" style="float:right;width:75%;"></div>
+    
     </div>
-<div id="products"></div>
 <div id="cpv"></div>
 </body>
 </html>

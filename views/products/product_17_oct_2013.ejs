@@ -1,69 +1,65 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/product.css">
-<script type="text/javascript" src="/javascripts/old.slides.min.jquery.js"></script>
 <style type="text/css">
 .a_slide { width:750px;height:479px;}
-.slide_background {width:375px;height:239px;background-color:<%= colours[0] %> }
-.slide_background img { width:375px; height:239px;}
+.slide_background {width:374px;height:239px;margin-bottom:1px;margin-right:1px;background-color:<%= colours[0] %> }
+.slide_background img { width:374px;margin-right:1px; margin-bottom:1px;height:239px;}
+
 @media all and (max-width: 768px) and (min-width: 320px) {
-  #inner_page_container_casamiento { width:96%; }
-  #product_section0 { margin-left:500px;}
-  #product_section1 { width:500px;}
+  #inner_page_container_casamiento { width:97%; }
 }
 .step { background-color:<%= colours[0] %>}
 
 </style>
 
-<script type="text/template" id="cart_item">
-    <tr  class="tooltip-select" data-tooltip="tooltip-guests">
-    <td colspan="3">     <div class="chat-bubble tooltip-guests"  style="display:none;"><div class="chat-bubble-arrow-border"></div>
-  <div class="chat-bubble-arrow"></div>Each place card will come individually printed with the name of each guest. Here you can add each guest name. Your names will be printed exactly as you type them, so make sure you use capital letters in the right places
-</div>
-</script>
-       
+     
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
 
 <div id="product_page">
 
   <div id="product_section1">
 
-      <div class="colour_0 slide_background" style="float:left;"><img src="/products/<%= _id %>/attachments/medium-1" class="slide_image" /><%- background_1 %></div>           
+      <div class="colour_0 slide_background" style="float:left;"><img src="/products/<%= _id %>/attachments/medium-1" class="slide_image" /><% if ((typeof background_1) !== "undefined") {%>
+      <%- background_1  %>
+      <% } %></div>           
          
-      <div class="colour_0 slide_background" style="float:right;"><img src="/products/<%= _id %>/attachments/medium-3" class="slide_image" /><%- background_3 %></div>
+      <div class="colour_0 slide_background" style="float:right;"><img src="/products/<%= _id %>/attachments/medium-2" class="slide_image" /><% if ((typeof background_2) !== "undefined") {%>
+      <%- background_2  %>
+      <% } %></div>
         
-      <div class="colour_0 slide_background" style="float:left;"><img src="/products/<%= _id %>/attachments/medium-2" class="slide_image" /><%- background_2 %></div>
-        
-        <div class="colour_0 slide_background" style="clear:both;float:right;"><img src="/products/<%= _id %>/attachments/medium-3" class="slide_image" /><%- background_3 %></div>           
-         
-      <script>
-       $(function(){
-                $("#slides").slides({
-                  play:3000,
-                  crossfade:true,
-                  effect: "fade",
-                  preload:true,
-                   preloadImage: '/gfx/spinner.gif'
-                });
-            });
-            </script>
-      <h1 class="product_name" style="text-align:center"><%= name %></h1>
+      <div class="colour_0 slide_background" style="float:left;"><img src="/products/<%= _id %>/attachments/medium-3" class="slide_image" /><% if ((typeof background_3) !== "undefined") {%>
+      <%- background_3  %>
+      <% } %></div>
       
-      <div style="text-align:center;margin-bottom:1em"><img src="/gfx/ornamentalline.png" /></div>
-    
-    <h6 style="width:75%;margin:0 auto;" id="welcome_description"><a href="/products">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</a></h6>
-  </div>    
+      <div style="width:374px;float:right;display:table-cell;vertical-align:middle;"><h1 class="product_name" style="text-align:center"><%= name %></h1>
+      
+        <div style="text-align:center;margin-bottom:1em"><img src="/gfx/ornamentalline.png" /></div>
+      </div>
+        
+      <div style="width:374px;float:left;clear:both;">
+      <p style="text-align:center;margin-top:1em;">
+    <img src="/gfx/shell.png" /></p>
+    <h6 style="width:95%;margin:0 auto;" id="welcome_description"><a href="/products">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</a></h6></div>
+      <div class="colour_0 slide_background" style="float:right;"><img src="/products/<%= _id %>/attachments/medium-4" class="slide_image" /><% if ((typeof background_4) !== "undefined") {%>
+      <%- background_4  %>
+      <% } %></div>           
+   </div>
+      
 
 <div id="product_section0">
 
   <div class="product_type spc"><img src="/gfx/product_types/small/name_place_small.png" style="width:130px;"></div>
 
-    
 <!-- COLOUR LABELS -->
 
-<div class="spc" id="colours_select">
+<div class="spc tooltip-select" data-tooltip="tooltip-1" id="colours_select">
   <div style="margin-bottom:0.5em;height:2em;">
+ 
     <div style="float:left;"><h1>Colours</h1></div>
-    <div class="step colour_0">STEP 2</div>
+    <div class="step colour_0">STEP 1</div>
   </div>
+   <div class="chat-bubble tooltip-1"><div class="chat-bubble-arrow-border"></div>
+  <div class="chat-bubble-arrow"></div>Click on a colour to change it! Navigate through the different palettes by clicking the labels at the top and bottom of each palette to move backwards and forwards.
+</div>
   <% var counter = 0 %>
     <% colours.forEach(function(colour) { %>
       <div id="colour_selector_<%= counter %>" style="display:inline-block;text-align:left;margin:0;padding:0;margin-right:1em;">
@@ -78,6 +74,8 @@
     <% cols.forEach(function(palette) { %>
     <% counter++ %>
         <div class="palette palette_<%= counter %>" style="z-index:100;background-color:white;border:1px dotted black;margin-top:0;padding-top:0;">
+<div style="padding:5px;margin:10px;" class="colour_index" data-colour="palette_<%= 
+counter -1 %>"><p style="text-decoration:underline;">&lt;&lt; <%= p[counter -2] %></p></div>
         <% palette.forEach(function(colour) { %>
         <% var ary = colour.split(" ") %>
         <% var hex = ary[0] %>
@@ -87,38 +85,51 @@
        </div>
         <% }) %><br/>
         
-<div style="display:inline-block" class="colour_index" data-colour="palette_<%= 
-counter -1 %>"><p>&lt;&lt; <%= p[counter -2] %></p></div>
-<div style="display:inline-block" class="colour_index" data-colour="palette_<%= 
-counter + 1%>"><p><%= p[counter] %> &gt;&gt;</p></div>
+<div style="display:inline-block;padding:5px;margin:10px;" class="colour_index" data-colour="palette_<%= 
+counter + 1%>"><p style="text-decoration:underline;"><%= p[counter] %> &gt;&gt;</p></div>
         </div>
     <% }) %>
     </div>
 </div>
-  <div class="spc" id="texture">
-    <div style="margin-bottom:0.5em;height:2em;">
-    <div style="float:left"><h1>Card Texture</h1></div>
-    <div class="step colour_0">STEP 1</div>
-  </div> 
 
+<!-- TEXTURE -->
+
+  <div class="spc tooltip-select" data-tooltip="tooltip-2" id="texture">
+    <div style="margin-bottom:0.5em;height:3em;">
+    <div style="float:left"><h1>Card Texture</h1></div>
+    <div class="step colour_0">STEP 2</div>
+  </div> 
+<div class="chat-bubble tooltip-2"><div class="chat-bubble-arrow-border"></div>
+  <div class="chat-bubble-arrow"></div>Click and highlight an icon to select the texture of your choice. Plain is the cheapest with its smooth plain finish, but hammered and linen both make your cards feel more luxurious. 
+</div>
   <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/hammer.png" style="width:2.5em"><p style="text-align:center">Hammered</p></div>
   <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/plaine.png" style="width:2.5em"><p style="text-align:center">Plain</p></div>
   <div style="display:inline-block;margin:0.5em;text-align:center;"><img src="/gfx/icons/linen.png" style="width:2.5em"><p style="text-align:center">Linen</p></div>
 </div>
+
+<!-- THICKNESS -->
     
-<div class="spc">
-    <h1>Thickness</h1>
-        
+<div class="spc tooltip-select" data-tooltip="tooltip-3"><div style="margin-bottom:0.5em;height:2em;">
+    <div style="float:left"><h1>Card Thickness</h1></div>
+    <div class="step colour_0">STEP 3</div>
+  </div> 
+  <div class="chat-bubble tooltip-3"><div class="chat-bubble-arrow-border"></div>
+  <div class="chat-bubble-arrow"></div>Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm). A normal sheet of A4 copy paper is usually about 80gsm.
+</div>
         <div style="margin:auto">
-            <div class="weight" style="border-top:2px solid #666;"></div>
-            <p>300gsm</p>
-            <div class="weight" style="border-top:4px solid #666;"></div>
-            <p>250gsm</p>
+            <p style="margin-bottom:2em;"><div class="weight" style="display:inline-block;border-top:3px solid #666;"></div> 300gsm</p>
+            <p><div class="weight" style="display:inline-block;border-top:8px solid #666;"></div>
+            250gsm</p>
         </div>
     </div>
 
+<!-- FORMAT -->
+
     <div class="spc">
-        <h1>Product format</h1>
+        <div style="margin-bottom:0.5em;height:2.5em;">
+    <div style="float:left"><h1>Product Format</h1></div>
+    <div class="step colour_0">STEP 4</div>
+  </div> 
         
         <div style="margin:auto;text-align:center;">
         <div class="spec" style="width:90px"><img src="/gfx/specs/tent.png"></div></div>
@@ -127,23 +138,46 @@ counter + 1%>"><p><%= p[counter] %> &gt;&gt;</p></div>
     <div class="spc">
         <h1>Monogram shown</h1>
         
-        <img id="mono_2" style="width:100%" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
+        <img id="mono_2" style="width:100%;max-width:300px;min-width:200px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
     </div>
-    <img src="/gfx/shell.png" />
+    <div class="spc">
+       <div style="margin-bottom:0.5em;height:2.5em;">
+    <div style="float:left"><h1>Quantity</h1></div>
+    <div class="step colour_0">STEP 5</div>
+  </div> 
+        <p style="text-align:center;font: normal 4em 'OS Light'"><span style="font-size:0.65em;vertical-align:top;">5</span>
+<div class="noUiSlider" style="margin:0 auto;width:90%;"></div>
+<div style="quantity;font:normal 1.3em OS" id="qty"></div>
+    &nbsp;
+    </div>
+    
+    
+    
+       <div class="spc">
+        <div style="margin-bottom:0.5em;height:2.5em;">
+    <div style="float:left"><h1><img src="/gfx/guests.png" style="width:30px"/> Guest names</h1></div>
+    <div class="step colour_0">STEP 6</div>
+  </div> 
+  <input type="text"></input>
+  
+  <input type="text"></input>
+  
+  <input type="text"></input>
+  
+  <input type="text"></input>
+  
+  <input type="text"></input>
+  
+  <input type="text"></input>
+        </div>
+    </div>
+    
 </div>  
 </div>
     
 <script type="text/javascript">
 
 // Setup and initialization
-
-// Create a new cart or initialize an existing one
-<% if (cart) { %>
-  var cart = new Cart(<%- cart %>, { parse: true });
-<% } else { %>
-  var cart = new Cart({ parse: true }) 
-<% }  %>
-
 var thisProduct = new Product({
     id: "<%= _id %>",
     name: "<%= name %>", 
@@ -154,19 +188,30 @@ var thisProduct = new Product({
     guests: ["&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;"], 
     texture: "plain" 
 });
-console.log(thisProduct)
-//var iv = new ItemsView({collection: cart.get("items")})
-//$('#cart').html(iv.render().el);
-//var mv = new MonogramView();
-//var pv = new PanelView({collection: cart.get("items") });
 
 $(function(){
 
+            var top = Math.max($(window).height() / 2 - $("#total_price")[0].offsetHeight / 2, 0);
+            var left = Math.max($(window).width() / 2 - $("#total_price")[0].offsetWidth / 2, 0);
+            $("#total_price").css('top', top + "px");
+            $("#total_price").css('position', 'fixed');
+        
+$('.noUiSlider').noUiSlider({
+        range: [10, 200]
+       ,start: 10
+       ,step: 10,
+       slide: function(input) {
+       },
+       handles: 1
+    });
   var ProductPageView = Backbone.View.extend({
     el: $('#product_page'),
     events: {
      'mouseenter .spc': 'fade_step_in',
      'mouseleave .spc': 'fade_step_out',
+     
+      "mouseenter .tooltip-select": "showTooltip",
+    "mouseleave .tooltip-select": "closeTooltip",
      
       "click .a_colour": "saveColour",
       "click .colour_index": "updatePalette",
@@ -175,6 +220,14 @@ $(function(){
       "mouseover .a_colour": "updateColour",
       "click .texture": "changeTexture"
     },
+    showTooltip: function(e) {
+    var which = $(e.currentTarget).data("tooltip")
+          $('.' + which).show()
+  },
+  closeTooltip: function(e) {
+       var which = $(e.currentTarget).data("tooltip")
+          $('.' + which).hide();
+  },
     saveColour: function(e) {
       var colours = this.model.get("colours");
       colours[0] = $(e.currentTarget).data("colour");
