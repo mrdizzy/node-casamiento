@@ -4,289 +4,136 @@ _.templateSettings = {
   evaluate: /\%\-(.+?)\-\%/g
 };
 
-var Product = Backbone.Model.extend({});
-var Items = Backbone.Collection.extend({});
-
-// Model representing a cart
-
-var Cart = Backbone.Model.extend({
-  idAttribute: "_id",
-  // Sets a context so we know which item we are editing/changing
-  setContext: function(current_item) {
-    this.context = current_item;
-  },
-  setMonogram: function(monogram) {
-    this.context.set("monogram", monogram)      
-  },
+var Product = Backbone.Model.extend({
   initialize: function() {
-    this.listenTo(this.get("items"), "add", this.updateCart)     
-    this.listenTo(this.get("items"), "change", this.updateCart)  
-    this.saving = 0;
+      this.on("change:quantity", this.calculatePrice)
+      this.on("change:texture", this.calculatePrice)
+      this.on("change:weight", this.calculatePrice)
   },
-  // To update the cart we need to check if it is currently being 
-  // saved, if so we need to wait for saving to complete before trying
-  // to save it again
-  updateCart: function(event) {
-    if (this.saving > 0) {
-      this.saving = this.saving + 1;
-    } else {
-      this.saving = this.saving + 1;
-      this.doSave();
+  calculatePrice: function() {    
+    var total = this.get("price") * this.get("quantity"),
+      texture = this.get("texture"),
+      weight = this.get("weight");
+    if(weight == "300") {
+      total = ((10/100) * total) + total 
     }
-  },
-  doSave: function() {
-    var that = this;
-    this.save(null, {
-      error: function() {  }, 
-      success: function() { 
-      
-      that.saving = that.saving - 1;
-        if(that.saving > 0) {
-          that.doSave();
-        }
-      }
-    })
-  },
-  defaults: {
-    items: new Items()      
-  },
-  parse: function(response, options) {
-    response.items = new Items(response.items);
-    return response;
-  },
-  urlRoot: '/cart'
+    if(texture == "hammered") {
+      total = ((10/100) * total) + total
+    } else if (texture == "linen") {
+      total = ((15/100) * total) + total
+    }
+    var total = (total).toFixed(2)
+    this.set("total", total)
+  }
 });
 
-////////////////////////
-///////// CART ITEM VIEW
-////////////////////////
-
-var CartItemView = Backbone.View.extend({
+$(function(){
+  // Positioning of fixed price/alert boxes
+  var top = Math.max($(window).height() / 2 - $("#total_price")[0].offsetHeight / 2, 0);
+  var left = Math.max($(window).width() / 2 - $("#total_price")[0].offsetWidth / 2, 0);
+  $("#total_price").css('top', top + "px");
+  $("#total_price").css('position', 'fixed');
+        
+  var ProductPageView = Backbone.View.extend({
     initialize: function() {
-    _.bindAll(this, 'render', 'renderQuantity', 'renderTotal', 'renderMonogram', 'calculatePrice', 'renderGuests', 'renderColour')
-    this.model.on("change:quantity", this.renderQuantity)  
-    this.model.on("change:quantity", this.calculatePrice) 
-    this.model.on("change:quantity", this.renderGuests)  
-    this.model.on("change:colour", this.renderColour)
-    this.model.on("change:total", this.renderTotal)  
-    this.model.on("change:texture", this.calculatePrice)
-    this.model.on("change:monogram", this.renderMonogram) 
-  },
-  render: function() {
-    var item_table_template = $('#cart_item_table').html();
-    var compiled = _.template(item_table_template);
-    var item_html = compiled(this.model.toJSON());
-    this.$el.html(item_html)
-    var that = this;
-    this.$('.noUiSlider').noUiSlider({
-        range: [10, 200]
-       ,start: that.model.get("quantity")
-       ,step: 5,
-       slide: function(input) {
-        that.$('#qty').html(that.$('.noUiSlider').val())
-       },
-       handles: 1
-    });
-    this.$('.noUiSlider a div').click(function() {
-      that.model.set("quantity", that.$('.noUiSlider').val())
-    })
-    this.renderColour();
-    this.calculatePrice()
-    this.renderTotal();
-    this.renderGuests();
-    return this;
-  },
-  renderColour: function() {
-  this.$('.colour_0').css("background-color", this.model.get("colours")[0])
-  },
-  renderMonogram: function() {
-      this.$('.monogram_image').attr("src", "/gfx/m/" + this.model.get("monogram") + ".png")
-  },
-  renderTotal: function() {
-  var total = this.model.get("total");
-  var ary = total.toString().split(".");
-  var pounds = ary[0];
-  var dec = ary[1]
-      this.$('span.pound').text(pounds);
-      this.$('span.dec').text("." + dec);
-  },
-  renderGuests: function() {
-      var html = "<table>";
-      var lists = _.groupBy(this.model.get("guests"), function(a, b){
-        return Math.floor(b/3);
-});
-    lists = _.toArray(lists); //Added this to convert the returned object to an array.
-      var i = 0;
-      _.forEach(lists, function(row) {
-        html = html + "<tr>"
-        _.forEach(row, function(guest) {
-          html = html + '<td><input data-name="' + i + '" class="guest_name" type="text" style="display:block;font:normal 1.2em \'OS Light Italic\';text-align:left;margin:0;border:0;width:100%;" value="' + (guest ? guest : "&hellip;") + '"></input></td>'
-          i++;
-        })
-    html = html + "</tr>"
-     })
-     html = html + "</table>"
-      this.$('.guests').html(html)
-  },
-  renderQuantity: function() {
-    this.$('#qty').html(this.model.get("quantity"))
-  },
- 
-  calculatePrice: function() {
-    var price = this.model.get("price") * this.model.get("quantity")
-    var texture = this.model.get("texture");
-    if(texture == "hammer") {
-      price = ((10/100) * price) + price
-    } else if (texture == "pearl") {
-      price = ((15/100) * price) + price
-    }
-    var price = (price).toFixed(2)
-    this.model.set("total", price)
-  },
-})
-
-////////////////////////
-///////////// ITEM VIEW 
-////////////////////////
-var ItemView = Backbone.View.extend({
-  tagName: "tr",
-  events: {
-    "mouseenter .tooltip-select": "showTooltip",
-    "mouseleave .tooltip-select": "closeTooltip",
-    "mouseenter .a_colour": "updateColour",
-   
-  },
-  selectFile: function(e) {
-      alert('change')
-  },
-  
- 
-  selectMonogram: function(e) {
-      if($(e.currentTarget).val() == "logo") {
-      $('.monogram_image').slideUp();
-     this.$('.selectedFile').click();
-     } else {
-       $('.monogram_image').slideDown();
-     }
-  },
-  showTooltip: function(e) {
-    var which = $(e.currentTarget).data("tooltip")
-          $('.' + which).show()
-  },
-  closeTooltip: function(e) {
-       var which = $(e.currentTarget).data("tooltip")
-          $('.' + which).hide();
-  },
-
-  updateGuestName: function(e) {
-    var currentTarget = $(e.currentTarget);
-    var id = currentTarget.data("name");
-    var name = $(e.currentTarget).val();
-    var guests = this.model.get("guests");
-    guests[id] = name;
-    this.model.set("guests", guests)
-    
-    this.model.trigger("change")
-  },
-  changeTexture: function(e) {
-    var currentTarget = $(e.currentTarget);
-    $('.texture').removeClass("selected")
-    currentTarget.toggleClass("selected");  
-    this.model.set("texture", currentTarget.data("texture"))
-  },
-  changeMonogram: function() {
-    cart.setContext(this.model)    
-    $('#cart').fadeOut(function() {
-      $('#monograms').fadeIn()
-   });
-  },
-  render: function() {
-    var item_template = $('#cart_item').html();
-    var compiled = _.template(item_template);
-    var item_html = compiled(this.model.toJSON());
-    
-    this.$el.html(item_html);
-    var cart_item_view = new CartItemView({model: this.model}).render().el
-    
-    $(cart_item_view).appendTo(this.$('td.second_col'));
-    
-    return this;
-  }
-});
-
-///////////////////
-//// ITEMS VIEW
-//////////////////
-
-/* View listing the items in the cart, delegates to ItemView
-var ItemsView = Backbone.View.extend({
-  tagName: "table",
-  attributes: { style: "border-collapse:collapse;border:1px dotted grey" },
-  initialize: function() {
-          this.listenTo(this.collection, "add", this.render)
-          //this.listenTo(this.collection, "change", this.render)
-  },
-  render: function() {
-     this.$el.empty();    
-     var header = $('#cart_header').html();
-     this.$el.html(header);
-     this.collection.forEach(function(item) {
+      this.step = 1;
+      _.bindAll(this, 'renderQuantity','renderTotal', 'changeAttribute')
+      this.model.on("change:quantity", this.renderQuantity) 
+      this.model.on("change:total", this.renderTotal)         
+    },
+    el: $('#product_page'),
+    events: {     
+      "mouseenter .spc": "showTooltip",
+      "mouseleave .spc": "closeTooltip",
      
-           this.$el.append(new ItemView({model: item}).render().el)
-           this.$el.append("<tr>" + $('#break').html() + "</tr>")
-     }, this);
-      this.$el.append("</table>");
-     return this;
-  }
-});
-
-var PanelView = Backbone.View.extend({
-  el: $('#product_page'),
-  showCart: function() {
-    $('#product_page_genesis').fadeOut();
-    $('#buy').fadeOut();
-    $('#nav').fadeOut();
-    $('#product_page_genesis').fadeOut();
-    $('#product_page').fadeOut(function() {
-      $('#cart_page').fadeIn();
-    })
-  }
-})
-*/
-/////////////////////
-//// MONOGRAM VIEW
-////////////////////
-
-var MonogramView = Backbone.View.extend({
-  el: $('#monograms'),
-  events: {
-          "click img": "selectMonogram"
-  },
-  selectMonogram: function(event) {
-    var monogram = $(event.target).attr('id');
-    var monogram_id = monogram.split("_")[1]
-    cart.setMonogram(monogram_id)
-    $('#monograms').fadeOut(function() {
-      $('#cart').fadeIn()
-    });
-  }
-})
-
-/*var BuyButtonView = Backbone.View.extend({
-  initialize: function() {
-    this.setElement($('#buy'))
-  },
-  events: { 
-    "click": "addToCart"
-  },
-  addToCart: function() {
-    cart.get("items").add(thisProduct)
-    pv.showCart();
-  }
-})*/
-
-var ProductRouter = Backbone.Router.extend({
-  routes: {
-    "monograms": "chooseMonogram"
-  }
+      "mouseover .a_colour": "renderColour",
+      "click .a_colour": "saveColour",
+      
+      "click .colour_index": "renderPalette",
+      "click .colour_change": "changeColour",
+      
+      "click .selectable": "changeAttribute",  
+    },
+    showTooltip: function(e) {
+      $(e.currentTarget).find('.step').fadeIn()
+      $(e.currentTarget).find('.chat-bubble').slideDown()
+    },
+    closeTooltip: function(e) {  
+    var step_container = $(e.currentTarget),
+      id = step_container.attr('id').split("_")[1];
+      if (id != this.step) {
+      $(e.currentTarget).find('.step').fadeOut()
+      $(e.currentTarget).find('.chat-bubble').slideUp()
+      }
+    },
+    renderQuantity: function() {
+      $('#qty').html(this.model.get("quantity"))
+    },
+    renderTotal: function() {
+      var total = this.model.get("total"),
+        ary = total.toString().split("."),
+        pounds = ary[0],
+        dec = ary[1];
+      $('span#pound').text(pounds);
+      $('span#decimal').text("." + dec);
+    },
+    
+    saveColour: function(e) {
+      var colours = this.model.get("colours");
+      colours[0] = $(e.currentTarget).data("colour");
+      this.model.set("colours", colours);
+      this.model.trigger("change:colour");
+      this.$('.colour_selector').slideUp();
+      if(this.step == 1) {
+        this.step = 2;
+        this.$('#step_1 .chat-bubble').slideUp();
+        this.$('#step_2 .step').fadeIn()
+        this.$('#step_2 .chat-bubble').slideDown();
+      }
+    },
+    changeAttribute: function(e) {
+      var currentTarget = $(e.currentTarget),
+      attribute = currentTarget.data("attribute"),
+      value = currentTarget.data("value")
+      $(' .' + attribute).removeClass("selected")
+      currentTarget.toggleClass("selected");  
+      this.model.set(attribute, value)
+    },
+    renderPalette: function(e) {
+      var which = $(e.currentTarget).data("colour")
+      this.$('.palette').hide();          
+      this.$('.' + which).show();
+    },  
+    renderColour: function(e) {
+      var currentTarget = $(e.currentTarget);
+      var hex = currentTarget.data("colour");
+      if(this.colourContext == 0) {
+        this.$('.colour_0').css("background-color", hex)
+      } else { 
+        this.$('.colour_0 div div').css("background-color", hex)
+        this.$('.colour_1').css("background-color", hex)
+      }
+    },
+    changeColour: function(e) {
+      var which = $(e.currentTarget).data("colour")
+      this.colourContext = which;
+      this.$('#colour_frame_' + which).fadeTo(0.2)
+      this.$('.colour_selector').slideDown();         
+    },
+  })
+  
+  var ppv= new ProductPageView({model: thisProduct})
+  
+// Calculate quantity
+  $('#plus_qty').click(function(e) {
+    var qty = thisProduct.get("quantity")
+      thisProduct.set("quantity", qty + 5)
+  })
+    
+  $('#minus_qty').click(function(e) {
+    var qty = thisProduct.get("quantity")
+    if(qty > 5) {
+        thisProduct.set("quantity", qty - 5)
+    }
+  })
 });

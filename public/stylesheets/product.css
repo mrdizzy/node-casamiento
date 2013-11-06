@@ -1,5 +1,5 @@
 #product_page_genesis {margin auto; border-bottom:1px solid grey; text-align:center; padding-top:10px;}
-#product_section0 { text-align:center;margin-left:755px; }
+#product_section0 { text-align:center;margin-left:749px; }
 
 #product_section1 { text-align:left; clear:both; width:750px; padding:0;margin:0;float:left;}
 
@@ -16,7 +16,7 @@
 
 .name_place_icon { width:130px; margin:auto; }
 
-.spc { border-bottom:1px dotted grey; padding-top:0; border-right:1px dotted grey; border-left:1px dotted grey; }
+.spc { border-bottom:1px dotted grey; padding-top:0; border-left:1px dotted grey; }
 .spc h1 { font: normal 0.9em "OS Condensed"; color:#000; margin:0;margin-bottom:0.5em; text-align:left;padding:0.5em;letter-spacing:0.01em; }
 .spc p { color:black;font-family: "OS"; font-size:1em; padding:0; margin:0em; line-height:1em; }
 

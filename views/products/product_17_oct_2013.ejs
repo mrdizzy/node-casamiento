@@ -4,6 +4,7 @@
 
   .step { background-color:<%= colours[0] %>}
   .slide_background {width:374px;height:239px;margin-bottom:1px;margin-right:1px;background-color:<%= colours[0] %> }
+  
   @media all and (max-width: 1000px) and (min-width: 768px) {
    #inner_page_container_casamiento { width:97%;}
   }
@@ -16,6 +17,8 @@
     #product_section0 { margin-left:374px;}
     #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 { float:none;clear:both;}
     #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { float:none;clear:both;}
+    #slide4 { width: inherit; height:auto;}
+    #slide5 .shell { display:none;}
   }
 
   @media all and (max-width: 600px) and (min-width: 320px) {
@@ -35,30 +38,47 @@
 <div id="product_page">
 
   <div id="product_section1">
+    
+<!-- 
 
-      <div id="slide1" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-1" class="slide_image" /><% if ((typeof background_1) !== "undefined") {%>
-      <%- background_1  %>
+  SLIDES 1 TO 3 
+
+-->
+
+      <div id="slide1" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-1" class="slide_image" /><% if ((typeof background_1) !== "undefined") {%><div style="width:374px;height:239px;">
+      <%- background_1  %></div>
       <% } %></div>           
          
-      <div id="slide2" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-2" class="slide_image" /><% if ((typeof background_2) !== "undefined") {%>
-      <%- background_2  %>
+      <div id="slide2" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-2" class="slide_image" /><% if ((typeof background_2) !== "undefined") {%><div style="width:374px;height:239px;">
+      <%- background_2  %></div>
       <% } %></div>
         
-      <div id="slide3" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-3" class="slide_image" /><% if ((typeof background_3) !== "undefined") {%>
-      <%- background_3  %>
+      <div id="slide3" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-3" class="slide_image" /><% if ((typeof background_3) !== "undefined") {%><div style="width:374px;height:239px;">
+      <%- background_3  %></div>
       <% } %></div>
       
-      <div id="slide4"><h1 class="product_name" style="text-align:center"><%= name %></h1>
+<!-- 
+
+  PRODUCT NAME AND DESCRIPTION 
+
+-->      
       
+      <div id="slide4"><h1 class="product_name" style="text-align:center"><%= name %></h1>
         <div style="text-align:center;margin-bottom:1em"><img src="/gfx/ornamentalline.png" /></div>
       </div>
         
       <div id="slide5", style="width:374px;clear:both;">
-      <p style="text-align:center;margin-top:1em;">
+      <p style="text-align:center;margin-top:1em;" class="shell">
     <img src="/gfx/shell.png" /></p>
     <h6 style="width:95%;margin:0 auto;" id="welcome_description">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h6></div>
-      <div id="slide6" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-4" class="slide_image" /><% if ((typeof background_4) !== "undefined") {%>
-      <%- background_4  %>
+  
+<!-- 
+
+  SLIDE 4 
+
+-->    
+      <div id="slide6" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-4" class="slide_image" /><% if ((typeof background_4) !== "undefined") {%><div style="width:374px;height:239px;">
+      <%- background_4  %></div>
       <% } %></div>           
    </div>
       
@@ -142,9 +162,9 @@ counter + 1%>"></div></td>
   
     <div class="chat-bubble">Click and highlight an icon to select the texture of your choice. Plain is the cheapest with its smooth plain finish, but hammered and linen both make your cards feel more luxurious. 
     </div>
-    <div class="texture"><img src="/gfx/icons/plaine.png"><p>Plain</p></div>
-    <div class="texture"><img src="/gfx/icons/hammer.png"><p>Hammered</p></div>
-    <div class="texture"><img src="/gfx/icons/linen.png"><p>Linen</p></div>
+    <div class="texture selectable" data-attribute="texture" data-value="plain"><img src="/gfx/icons/plaine.png"><p>Plain</p></div>
+    <div class="texture selectable" data-attribute="texture" data-value="hammered"><img src="/gfx/icons/hammer.png"><p>Hammered</p></div>
+    <div class="texture selectable" data-attribute="texture" data-value="linen"><img src="/gfx/icons/linen.png"><p>Linen</p></div>
   </div>
 
 <!-- 
@@ -161,14 +181,14 @@ counter + 1%>"></div></td>
     <div class="chat-bubble">Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm). A normal sheet of A4 copy paper is usually about 80gsm.
     </div>
     <br/>
-    <div class="weight">
+    <div class="weight selectable" data-attribute="weight" data-value="250">
        <div class="weight_line"></div>
-       <p class="casamiento">300gsm</p>
+       <p class="casamiento">250gsm</p>
     </div>
         
-    <div class="weight">
-      <div class="weight_line" style="border-top:8px solid black;"></div>
-      <p class="casamiento">250gsm</p>
+    <div class="weight selectable"  data-attribute="weight" data-value="300">
+      <div class="weight_line" style="border-top:10px solid black;"></div>
+      <p class="casamiento">300gsm</p>
     </div>
   </div>
 
@@ -185,7 +205,7 @@ counter + 1%>"></div></td>
     </div> 
         
     <div style="margin:auto;text-align:center;">
-      <div class="spec" style="width:90px"><img src="/gfx/specs/tent.png"></div>
+      <div class="spec" style="width:100px"><img src="/gfx/specs/tent.png"></div>
     </div>
   </div>
   
@@ -232,7 +252,6 @@ counter + 1%>"></div></td>
 </div>  
     
 <script type="text/javascript">
-
 // Setup and initialization
 var thisProduct = new Product({
     id: "<%= _id %>",
@@ -244,123 +263,4 @@ var thisProduct = new Product({
     guests: ["&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;"], 
     texture: "plain" 
 });
-
-$(function(){
-  // Positioning of fixed price/alert boxes
-  var top = Math.max($(window).height() / 2 - $("#total_price")[0].offsetHeight / 2, 0);
-  var left = Math.max($(window).width() / 2 - $("#total_price")[0].offsetWidth / 2, 0);
-  $("#total_price").css('top', top + "px");
-  $("#total_price").css('position', 'fixed');
-        
-  var ProductPageView = Backbone.View.extend({
-    initialize: function() {
-    this.step = 1;
-    _.bindAll(this, 'renderQuantity','renderTotal', 'calculatePrice')
-      this.model.on("change:quantity", this.renderQuantity)      
-      this.model.on("change:quantity", this.calculatePrice)
-          
-      this.model.on("change:total", this.renderTotal)         
-    },
-    el: $('#product_page'),
-    events: {     
-      "mouseenter .spc": "showTooltip",
-      "mouseleave .spc": "closeTooltip",
-     
-      "click .a_colour": "saveColour",
-      "click .colour_index": "updatePalette",
-    
-      "click .colour_change": "changeColour",
-      "mouseover .a_colour": "updateColour",
-      "click .texture": "changeTexture"
-    },
-    showTooltip: function(e) {
-      
-      $(e.currentTarget).find('.step').fadeIn()
-      $(e.currentTarget).find('.chat-bubble').slideDown()
-    },
-    closeTooltip: function(e) {  
-    var step_container = $(e.currentTarget),
-      id = step_container.attr('id').split("_")[1];
-      if (id != this.step) {
-      $(e.currentTarget).find('.step').fadeOut()
-      $(e.currentTarget).find('.chat-bubble').slideUp()
-      }
-    },
-    renderQuantity: function() {
-      $('#qty').html(this.model.get("quantity"))
-    },
-    renderTotal: function() {
-  var total = this.model.get("total");
-  var ary = total.toString().split(".");
-  var pounds = ary[0];
-  var dec = ary[1]
-      $('span#pound').text(pounds);
-      $('span#decimal').text("." + dec);
-  },
-    calculatePrice: function(e) {    
-    var price = this.model.get("price") * this.model.get("quantity")
-    var texture = this.model.get("texture");
-
-    if(texture == "hammer") {
-      price = ((10/100) * price) + price
-    } else if (texture == "pearl") {
-      price = ((15/100) * price) + price
-    }
-    var price = (price).toFixed(2)
-    this.model.set("total", price)
-    },
-    saveColour: function(e) {
-      var colours = this.model.get("colours");
-      colours[0] = $(e.currentTarget).data("colour");
-      this.model.set("colours", colours);
-      this.model.trigger("change:colour");
-      this.$('.colour_selector').slideUp();
-      if(this.step == 1) {
-        this.step = 2;
-        this.$('#step_1 .chat-bubble').slideUp();
-        
-      this.$('#step_2 .step').fadeIn()
-        this.$('#step_2 .chat-bubble').slideDown();
-      }
-    },
-    updatePalette: function(e) {
-      var which = $(e.currentTarget).data("colour")
-      this.$('.palette').hide();          
-      this.$('.' + which).show();
-    },  
-    updateColour: function(e) {
-      var currentTarget = $(e.currentTarget);
-      var hex = currentTarget.data("colour");
-      if(this.colourContext == 0) {
-        this.$('.colour_0').css("background-color", hex)
-      } else { 
-        this.$('.colour_0 div').css("background-color", hex)
-        this.$('.colour_1').css("background-color", hex)
-        
-      }
-    },
-    changeColour: function(e) {
-      var which = $(e.currentTarget).data("colour")
-      this.colourContext = which;
-      this.$('#colour_frame_' + which).fadeTo(0.2)
-      this.$('.colour_selector').slideDown();   
-      
-    },
-  })
-  var ppv= new ProductPageView({model: thisProduct})
-  
-// Calculate quantity
-  $('#plus_qty').click(function(e) {
-    var qty = thisProduct.get("quantity")
-      thisProduct.set("quantity", qty + 5)
-  })
-    
-  $('#minus_qty').click(function(e) {
-    var qty = thisProduct.get("quantity")
-    if(qty > 5) {
-        thisProduct.set("quantity", qty - 5)
-    }
-  })
-});
-
 </script>
