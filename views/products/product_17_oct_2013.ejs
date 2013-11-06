@@ -31,9 +31,14 @@
     #product_section1 { float:none; width:100%;clear:both; }
     #product_section0 { float:none; width:100%; clear:both;margin:0;}
     #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 { margin:0 auto;float:none;clear:both;}
-    #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { margin:0 auto;float:none;clear:both; width:310px;}
-    .collection { float:none;width:100%; }
+    .slide_image { width:320px; height:205px;margin:0 auto;float:none;clear:both; }
+    #footer .genesis_collection, #footer .castello_collection { float:none;width:100%; }
     .footer_seperator { float:none;width:100%;}
+    .slide_background { width:320px; height:205px; }
+.slide_background_container { width:320px; height:205px; }
+    #slide4 { width: inherit; height:auto;}
+    #slide5 .shell { display:none;}
+    #slide5 h6 { width:320px; height:auto;padding:0;margin:0 auto;}
     
   }
 </style>
@@ -50,15 +55,15 @@
 
 -->
 
-      <div id="slide1" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-1" class="slide_image" /><% if ((typeof background_1) !== "undefined") {%><div style="width:374px;height:239px;">
+      <div id="slide1" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-1" class="slide_image" /><% if ((typeof background_1) !== "undefined") {%><div class="slide_background_container">
       <%- background_1  %></div>
       <% } %></div>           
          
-      <div id="slide2" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-2" class="slide_image" /><% if ((typeof background_2) !== "undefined") {%><div style="width:374px;height:239px;">
+      <div id="slide2" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-2" class="slide_image" /><% if ((typeof background_2) !== "undefined") {%><div class="slide_background_container">
       <%- background_2  %></div>
       <% } %></div>
         
-      <div id="slide3" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-3" class="slide_image" /><% if ((typeof background_3) !== "undefined") {%><div style="width:374px;height:239px;">
+      <div id="slide3" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-3" class="slide_image" /><% if ((typeof background_3) !== "undefined") {%><div class="slide_background_container">
       <%- background_3  %></div>
       <% } %></div>
       
@@ -75,7 +80,7 @@
       <div id="slide5", style="width:374px;clear:both;">
       <p style="text-align:center;margin-top:1em;" class="shell">
     <img src="/gfx/shell.png" /></p>
-    <h6 style="width:95%;margin:0 auto;" id="welcome_description">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h6></div>
+    <h6 id="welcome_description">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h6></div>
   
 <!-- 
 
