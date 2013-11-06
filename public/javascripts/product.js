@@ -101,6 +101,8 @@ $(function(){
       if(this.step == this.attribute_steps[attribute]) {
         console.log("yes")
          this.$('#step_' + this.step + ' .chat-bubble').slideUp();
+         
+        this.$('#step_' + this.step + ' .step').fadeOut()
          this.step = this.step + 1;
         this.$('#step_' + this.step + ' .step').fadeIn()
         this.$('#step_'  + this.step + ' .chat-bubble').slideDown();
