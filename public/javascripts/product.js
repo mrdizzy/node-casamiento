@@ -37,6 +37,7 @@ $(function(){
   var ProductPageView = Backbone.View.extend({
     initialize: function() {
       this.step = 1;
+      this.attribute_steps = { texture: 2, weight: 3, format: 4}
       _.bindAll(this, 'renderQuantity','renderTotal', 'changeAttribute')
       this.model.on("change:quantity", this.renderQuantity) 
       this.model.on("change:total", this.renderTotal)         
@@ -59,11 +60,11 @@ $(function(){
       $(e.currentTarget).find('.chat-bubble').slideDown()
     },
     closeTooltip: function(e) {  
-    var step_container = $(e.currentTarget),
+      var step_container = $(e.currentTarget),
       id = step_container.attr('id').split("_")[1];
       if (id != this.step) {
-      $(e.currentTarget).find('.step').fadeOut()
-      $(e.currentTarget).find('.chat-bubble').slideUp()
+        $(e.currentTarget).find('.step').fadeOut()
+        $(e.currentTarget).find('.chat-bubble').slideUp()
       }
     },
     renderQuantity: function() {
@@ -76,8 +77,7 @@ $(function(){
         dec = ary[1];
       $('span#pound').text(pounds);
       $('span#decimal').text("." + dec);
-    },
-    
+    },    
     saveColour: function(e) {
       var colours = this.model.get("colours");
       colours[0] = $(e.currentTarget).data("colour");
@@ -98,6 +98,15 @@ $(function(){
       $(' .' + attribute).removeClass("selected")
       currentTarget.toggleClass("selected");  
       this.model.set(attribute, value)
+      if(this.step == this.attribute_steps[attribute]) {
+        console.log("yes")
+         this.$('#step_' + this.step + ' .chat-bubble').slideUp();
+         this.step = this.step + 1;
+        this.$('#step_' + this.step + ' .step').fadeIn()
+        this.$('#step_'  + this.step + ' .chat-bubble').slideDown();
+        
+        
+      }
     },
     renderPalette: function(e) {
       var which = $(e.currentTarget).data("colour")
