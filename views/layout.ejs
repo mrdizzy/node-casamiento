@@ -23,14 +23,21 @@
 <script type="text/javascript" src="/javascripts/product.js"></script>
     </head>
 
-    <body><div id="total_price" style="height:125px;border:1px dotted black;border-left:0; box-shadow:5px 5px 0 0 lightgrey;width:325px;text-align:center;background-color:white;z-index:500;">
-    <div style="width:50%;float:left;"><p class="casamiento" style="margin-top:0.5em;color:black;">Quantity</p>
-    <div id="minus_qty" style="display:inline-block;padding:5px;padding-left:10px;padding-right:10px;border:1px solid lightgrey;">-</div> <span style="font-size:2em;font: normal 2em 'OS Light';color:black;" id="qty">25</span>
-    <div id="plus_qty" style="display:inline-block;padding:5px;padding-left:10px;padding-right:10px;border:1px solid lightgrey;">+</div>
+    <body>
+    
+    <div id="total_price">
+    <div id="qty_container">
+        <p class="casamiento" style="margin-top:0.5em;color:black;">Quantity</p>
+        <div id="minus_qty">-</div> <span id="qty">25</span>
+        <div id="plus_qty"">+</div>
     </div>
     
     <p style="color:black;text-align:center;font: normal 3.5em 'OS Light'">
-<spanstyle="font-size:0.65em;vertical-align:top;">&pound;</span><span id="pound">2</span><span style="font-size:0.65em;vertical-align:text-top;" id="decimal">.99</span></p><div id="buy" style="display:inline-block;"></div>
+<spanstyle="font-size:0.65em;vertical-align:top;">&pound;</span><span id="pound">2</span><span style="font-size:0.65em;vertical-align:text-top;" id="decimal">.99</span></p>
+
+    <div id="buy" style="display:inline-block;"> BUY
+        <img src="/gfx/cart_white.png" style="padding-left:5px;width:30px;margin-top:7px;" />
+    </div>
 </div>  
     <div id="page_container_casamiento">
         <div id="inner_page_container_casamiento">

@@ -15,12 +15,12 @@ var Product = Backbone.Model.extend({
       texture = this.get("texture"),
       weight = this.get("weight");
     if(weight == "300") {
-      total = ((10/100) * total) + total 
+      total = ((25/100) * total) + total 
     }
     if(texture == "hammered") {
-      total = ((10/100) * total) + total
+      total = ((25/100) * total) + total
     } else if (texture == "linen") {
-      total = ((15/100) * total) + total
+      total = ((25/100) * total) + total
     }
     var total = (total).toFixed(2)
     this.set("total", total)

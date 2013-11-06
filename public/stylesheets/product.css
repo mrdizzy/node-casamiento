@@ -32,8 +32,8 @@
 .selected {opacity:1; }
    
 
-#buy { width:63px; height:53px; z-index:100;  background-image:url('/gfx/buy.png'); }
-#buy:hover { background-position: 0 -53px; }
+#buy {  font: normal 1.4em "OS Light"; border-radius:5px;width:125px; height:50px; z-index:100; background-color:grey;color:white;}
+#buy:hover { background-color:black; cursor:pointer;}
 
 
 .colour_index_left { width:46px; height:20px; z-index:100;  background-image:url('/gfx/thin_arrow.png'); background-size:46px 40px;}
@@ -42,15 +42,25 @@
 .colour_index_right { width:46px; height:20px; z-index:100;  background-image:url('/gfx/thin_arrow_right.png'); background-size:46px 40px;}
 /* COLOURS */
 .a_colour { opacity:0.8;text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-left:5px;margin-right:5px;margin-top:10px;}
-.a_colour:hover { opacity:1; border:1px dotted black;}
+.a_colour:hover { opacity:1; border:1px dotted black; cursor:pointer;}
 
 .palette { display:none; position:relative; border-top:1px solid black;}
 .palette_6 { display:block;}
 
-.color_square { width:30px;height:30px; }
+.color_square { width:30px;height:30px; cursor:pointer;}
+.selectable:hover { cursor:pointer }
+
 .color_label { font:normal 1.2em "OS";padding:0; margin-top:5px; color:#000}
 .colour_change{ display:inline-block;border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0; }
 .colour_change:hover { border:1px dotted black;}
 
 
 input { outline:none;border:1px solid darkgrey; font: normal 1.2em "OS";padding:0.25em; width:90%;}
+
+#total_price { height:125px;border:1px dotted black;border-left:0; box-shadow:5px 5px 0 0 lightgrey;width:325px;text-align:center;background-color:white;z-index:500;}
+
+#qty_container { width:50%;float:left;}
+#minus_qty, #plus_qty { display:inline-block;padding:5px;padding-left:10px;padding-right:10px;border:1px solid lightgrey;}
+
+#minus_qty:hover, #plus_qty:hover { border:1px solid black; color:black; cursor:pointer;}
+#qty { font-size:2em;font: normal 2em 'OS Light';color:black; }
