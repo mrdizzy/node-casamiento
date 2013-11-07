@@ -9,6 +9,7 @@
 #slide5 h6 { width:95%;margin:0 auto;}
 .slide_image { width:374px;height:239px;position:absolute; width:374px;margin-right:1px; margin-bottom:1px;height:239px; }
 
+    .slide_background_container { width:374px; height:239px; }
 .spec { display:inline-block; }
 .spec img { width:100%; }
 
