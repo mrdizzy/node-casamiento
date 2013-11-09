@@ -1,0 +1,44 @@
+<html>
+<head>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<div id="colours" style="width:150px;overflow:scroll;height:180px">
+</div>
+<script>
+for(var i=0; i < 256; i=i + 16) {
+var hex = i.toString(16)
+if (hex.length == 1) {
+  hex = " " + hex;
+}
+$('#colours').append("<div style='margin:5px;width:20px;height:20px;display:inline-block;background-color:#0000" + hex + ";'></div>")
+
+}
+for(var i=0; i < 256; i=i + 16) {
+var hex = i.toString(16)
+if (hex.length == 1) {
+  hex = " " + hex;
+}
+$('#colours').append("<div style='margin:5px;width:20px;height:20px;display:inline-block;background-color:#00" + hex + "FF;'></div>")
+
+}
+for(var i=255; i >0; i=i - 16) {
+var hex = i.toString(16)
+if (hex.length == 1) {
+  hex = " " + hex;
+}
+$('#colours').append("<div style='margin:5px;width:20px;height:20px;display:inline-block;background-color:#00FF" + hex + ";'></div>")
+
+}
+for(var i=0; i < 256; i=i + 16) {
+var hex = i.toString(16)
+if (hex.length == 1) {
+  hex = " " + hex;
+}
+$('#colours').append("<div style='margin:5px;width:20px;height:20px;display:inline-block;background-color:#" + hex + "FF00;'></div>")
+
+}
+</script>
+
+
+</html>
