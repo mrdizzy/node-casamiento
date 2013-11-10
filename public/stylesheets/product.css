@@ -37,12 +37,11 @@
 #buy:hover { background-color:black; cursor:pointer;}
 
 
-.colour_index_left { width:46px; height:20px; z-index:100;  background-image:url('/gfx/thin_arrow.png'); background-size:46px 40px;}
-.colour_index_left:hover, .colour_index_right:hover  { background-position: 0 -20px; }
+.colour_index_right, .colour_index_left {  z-index:100; color:lightgrey; font:normal 6em "OS Light";}
+.colour_index_left:hover, .colour_index_right:hover  { cursor:pointer; color:black; }
 
-.colour_index_right { width:46px; height:20px; z-index:100;  background-image:url('/gfx/thin_arrow_right.png'); background-size:46px 40px;}
 /* COLOURS */
-.a_colour { opacity:0.8;text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-left:5px;margin-right:5px;margin-top:10px;}
+.a_colour { opacity:0.8;text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-left:3px;margin-right:3px;margin-top:6px;}
 .a_colour:hover { opacity:1; border:1px dotted black; cursor:pointer;}
 
 .palette { display:none; position:relative; border-top:1px solid black;}

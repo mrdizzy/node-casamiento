@@ -49,7 +49,7 @@ a:active { color: #29A4BD; }
 /* FURNITURE
 ==================================== */
 #page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); }
-#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:93%;}
+#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:95%;}
 
   #top_container { z-index:5;border-bottom:1px dashed #000;}
     #logo {  margin-left:35px; float:left;}
