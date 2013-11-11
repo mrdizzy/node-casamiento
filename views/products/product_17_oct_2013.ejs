@@ -112,20 +112,34 @@
  -->
 
 <div class="spc" id="step_1">
-  <div style="margin-bottom:0.5em;height:2em;">
+  <div style="margin-bottom:0.5em;height:2.5em;">
     <div style="float:left;"><h1>Colours</h1></div>
     <div class="step colour_0">STEP 1</div>
   </div>
   
    <div class="chat-bubble tooltip-1">Click on a colour to change it! Navigate through the different palettes by clicking the labels at the top and bottom of each palette to move backwards and forwards.
 </div>
+<table>
+<tr>
   <% var counter = 0 %>
     <% colours.forEach(function(colour) { %>
-      <div id="colour_selector_<%= counter %>" style="display:inline-block;text-align:left;margin:0;padding:0;margin-right:1em;">
-      <div class="colour_frame_<%= counter %> colour_change" data-colour="<%= counter %>"><div class="colour_<%= counter %> color_square" style="background-color:<%= colour %>;"></div></div><br/><span class="color_label"><%= colour.toUpperCase() %></span>
+    <td style="vertical-align:top;width:49%">
+      <div id="colour_selector_<%= counter %>" style="display:inline-block;text-align:center;margin:0;padding:0;">
+      <div class="colour_frame_<%= counter %> colour_change" data-colour="<%= counter %>"><div class="colour_<%= counter %> color_square" style="background-color:<%= colour %>;"></div></div>
+      </div><br/>
+      <span id="color_label_<%= counter %>" class="color_label"><%= colour.toUpperCase() %></span>
       </div>
+      </td>
     <% counter++ %>
   <% }) %>
+  </tr>
+  </table>
+  
+  
+  <!--
+    COLOUR SELECTOR
+    -->
+    
   <div class="colour_selector" style="display:none">
     
    <% var counter = 0 %>
@@ -265,4 +279,6 @@ var thisProduct = new Product({
     guests: ["&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;"], 
     texture: "plain" 
 });
+
+var all_colours = <%- JSON.stringify(colours_ref) %>
 </script>

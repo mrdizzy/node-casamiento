@@ -120,9 +120,12 @@ $(function(){
       var hex = currentTarget.data("colour");
       if(this.colourContext == 0) {
         this.$('.colour_0').css("background-color", hex)
+        this.$('#color_label_0').text(all_colours[hex])
       } else { 
         this.$('.colour_0 div div').css("background-color", hex)
         this.$('.colour_1').css("background-color", hex)
+        
+        this.$('#color_label_1').text(all_colours[hex])
       }
     },
     changeColour: function(e) {
