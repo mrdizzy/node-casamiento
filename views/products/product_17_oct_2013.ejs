@@ -146,9 +146,12 @@
     <% hex_colours.forEach(function(page) { %>
     <div class="palette palette_<%= counter %>" style="z-index:100;background-color:white;margin-top:0;padding-top:0;">
 <table><tr><td>
+<% if (hex_colours[counter - 1]) { %>
 <div class="colour_index colour_index_left" data-colour="palette_<%= 
 counter -1 %>">&laquo;</div>
 </td>
+
+<% } %>
 <td>
         <% page.forEach(function(colour) { %>
         <div class="a_colour" data-colour="<%= colour %>">
@@ -156,8 +159,12 @@ counter -1 %>">&laquo;</div>
        </div>
         <% }) %>
         <td>
+        
+<% if (hex_colours[counter + 1]) { %>
 <div class="colour_index colour_index_right" data-colour="palette_<%= 
-counter + 1%>">&raquo;</div></td></tr></table>
+counter + 1%>">&raquo;</div>
+ <% } %></td></tr></table>
+
         </div>
         <% counter = counter + 1 %>
     <% }) %>
