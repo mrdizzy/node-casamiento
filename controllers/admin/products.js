@@ -1,4 +1,5 @@
 var db = require('./../../config/db').test_ebay,
+colours = require('./../../config/colours'),
     collateAttachments = require('./../../lib/collate_attachments'),
     product_types = ["invitation", "name_place", "wrap", "rsvp", "envelope"]
 
@@ -7,10 +8,11 @@ var db = require('./../../config/db').test_ebay,
             getTypes('product_type', function(product_types) {
                 getTypes('product', function(products) {
                     res.render("admin/products/index", {
+                    colours: colours.hex,
                         products: products,
                         themes: themes,
                         product_types: product_types
-                    })
+                    , layout:"admin_layout" })
                 })
 
             })

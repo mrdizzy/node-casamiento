@@ -50,10 +50,6 @@ var attachments = app.resource("attachments", require('./controllers/attachments
 
 products.add(attachments);
 
-app.resource("conversations", require('./controllers/conversations'));
-
-// ebay methods
-app.resource("paypal", require('./controllers/paypal'));
 
 app.get('/ebayplaces', require('./controllers/ebay').places);
 var ebay = app.resource("ebay", require('./controllers/ebay'));
@@ -81,7 +77,11 @@ app.post('/ebay', function(req, res) {
         res.end();
     })
 });
-    app.get("/admin/products", require('./controllers/admin/products').index);
+
+// 
+//    Admin
+//
+app.get("/admin/products", require('./controllers/admin/products').index);
     
 //Home page
 app.get("/", function(req, res) {
@@ -92,10 +92,16 @@ app.get("/", function(req, res) {
     })
 });
 
+app.resource("conversations", require('./controllers/conversations'));
+
+// ebay methods
+app.resource("paypal", require('./controllers/paypal'));
+
 http.createServer(app).listen((process.env.PORT || 3000), function() {
     console.log("Express server listening on port " + (process.env.PORT || 3000));
 });
 
+// Takes a request and parses the _rev and _id out of it
 function parseRevision(req, id, callback) {
         var id_split = id.split("--");
         callback(null, { rev: id_split[1], id: id_split[0]})

@@ -99,6 +99,7 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
         }
         else {
             this.waitingForSave = null;
+            console.log(arguments)
             var xhr = Backbone.sync.apply(this, arguments);
         }
         return xhr;
