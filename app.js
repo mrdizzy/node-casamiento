@@ -50,11 +50,12 @@ var attachments = app.resource("attachments", require('./controllers/attachments
 
 products.add(attachments);
 
+// EBAY
 
 app.get('/ebayplaces', require('./controllers/ebay').places);
 var ebay = app.resource("ebay", require('./controllers/ebay'));
 
-ebay.get('/sample/:theme_id', require('./controllers/ebay').show);
+    ebay.get('/sample/:theme_id', require('./controllers/ebay').show);
 app.get('/ebay_single_places/:id', require('./controllers/ebay').name_place_single)
 
 // The eBay Notify API posts a message to this address that we need to parse
