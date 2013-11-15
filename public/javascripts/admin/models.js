@@ -12,35 +12,7 @@ var Product = Backbone.Model.CouchDB.extend({
     }
     return json;
   },
-  initialize: function() {
-      this.selectedColours()
-  },
-  attachment_types: ["thumb","display","medium","large"],
-  selectedColours: function() {
-    var that = this;
-    if (this.get("selected_colours")) {
-      return this.get("selected_colours")
-    } else {
-      var selected_colours = _.map(colourList, function(colour) {
-        var matchingColour = _.any(that.get("colours"), function(selectedColour) {
-         return selectedColour == colour;
-        })
-        if (matchingColour) {
-          return {
-            colour: colour,
-              selected: "selected"
-          }
-        }
-        else {
-          return {
-            colour: colour,
-            selected: ""
-          }
-        }
-      })
-      this.set("selected_colours", selected_colours)
-    }
-  }
+  attachment_types: ["thumb","display","medium","large"]
 });
 
 var Products = Backbone.Collection.extend({

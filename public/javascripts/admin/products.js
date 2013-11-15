@@ -116,6 +116,9 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   initialize: function() {
     this.model.on("destroy", this.remove, this) 
     this.model.on("sync", this.render, this)
+    this.model.on("change:colour-1", this.updateBackground, this)
+    
+    this.model.on("change:colour-2", this.updateBackground, this)
     this.model.on("change:background-1", this.updateBackground, this) 
     this.model.on("change:background-2", this.updateBackground, this)             
     this.model.on("change:background-3", this.updateBackground, this) 
@@ -129,15 +132,22 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
       
       var divs = this.model.get("background-" + attach_number);
       var compiled = _.template(divs);
-      var divs = compiled({colour: this.model.get("rawcolours")[1]});
+      var divs = compiled({colour: this.model.get("colour-2")});
       this.$('#' +element).append(divs)       
     }
   },
   events: { 
+    'click select[name=colour-1] option': 'selectColour',
+    'click select[name=colour-2] option': 'selectColour',
     'click input[type=submit]': 'sendForm',
     'click .addmore': 'addMore',
     'click .delete': 'destroy',
     'blur .change_background': 'changeBackground'
+  },
+  selectColour: function(e) {
+    var option = $(e.currentTarget);
+    var parent = option.parent()
+    this.model.set(parent.attr('name'), option.val())
   },
   changeBackground: function(e) {
     var id = $(e.currentTarget).attr('id');
@@ -162,8 +172,9 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
      }})
   },
   render: function() {
-  console.log(this.model.attributes)
-    var result = Handlebars.compile($('#current_product_form').html())(this.model.toJSON());
+  var modelToJSON = this.model.toJSON();
+  modelToJSON.hex_colours = colourList;
+    var result = Handlebars.compile($('#current_product_form').html())(modelToJSON);
     this.$el.html(result);
     
     // Select boxes for product and theme
@@ -180,10 +191,10 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     
       var divs = this.model.get("background-" + attachment);
       var compiled = _.template(divs);
-      var divs = compiled({colour: this.model.get("colours")[1]});
+      var divs = compiled({colour: this.model.get("colour-2")});
       
       // Render background-coloured image
-      var result = Handlebars.compile($('#image_backgrounds').html(), {noEscape: true})({id: this.model.id, attachment: attachment, first_colour:this.model.get("colours")[0], divs: divs, background_html: this.model.get("background-"+attachment)});
+      var result = Handlebars.compile($('#image_backgrounds').html(), {noEscape: true})({id: this.model.id, attachment: attachment, first_colour:this.model.get("colour-1"), divs: divs, background_html: this.model.get("background-"+attachment)});
     this.$el.append(result);
     }, this)
     this.$el.append("<a class='addmore'>Add more</a>")

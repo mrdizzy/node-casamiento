@@ -28,11 +28,18 @@
       </div>
       
       <div style="float:right;width:50%;">
-        <select style="width:50%;font-size:1.5em;" size="15" name="colours" multiple="true">
-            {{#selected_colours}}
-          <option style="background-color:{{colour}}" value="{{colour}}" {{selected}}>{{colour}}</option>
-        {{/selected_colours}}
+      <div style="width:50%;float:left;">
+      <div style="width:30px;height:30px;background-color:{{colour-1}};border:1px solid black;"></div>
+        <select style="font-size:1.5em;" size="15" name="colour-1">
+            {{options_selected hex_colours colour-1}}
         </select>
+        </div>
+        <div style="width:50%;float:right;">
+      <div style="width:30px;height:30px;background-color:{{colour-2}};border:1px solid black;"></div>
+        <select style="font-size:1.5em;" size="15" name="colour-2">
+            {{options_selected hex_colours colour-2}}
+        </select>
+        </div>
       </div>
       
       <input type="submit" style="clear:both;">Submit</a>
@@ -79,7 +86,19 @@
 
     
 <script type="text/javascript">
+Handlebars.registerHelper('options_selected', function(context, test) {
+    var ret = '';
+    for (var i = 0; i < context.length; i++) {
+        var option = '<option value="' + context[i]+'" style="background-color:' + context[i] + '" ';
+        if (test.toLowerCase() == context[i].toLowerCase()) {
+            option += ' selected="selected"';
+        }
+        option += '>'+ Handlebars.Utils.escapeExpression(context[i]) + '</option>';
+        ret += option;
+    }
 
+    return new Handlebars.SafeString(ret);
+});
   var colourList = <%- JSON.stringify(colours) %>
   var results = _.map(colourList, function(colour) {
       var split = colour.split(" ");
