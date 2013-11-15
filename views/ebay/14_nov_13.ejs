@@ -8,6 +8,7 @@ document.write("</" + az + bz + cz + ">");
 </script>
 
 <style type="text/css">
+
 .intro p.first:first-letter { font:normal 5.5em TP;padding-right:0.05em;float:left;line-height:0.8em;}
   .intro p { text-align:left;}
 .tabbed_area { margin:0px;padding:0px;padding:8px; }
@@ -35,6 +36,7 @@ a.casamiento:hover { color:#000; }
 .buy_it_now { width:80%;padding:0.75em;color:white;border-radius:10px;background-color:<%= colours[0] %>;font:normal 1.2em 'OS Light';text-align:center;margin:0 auto;margin-top:0.5em;margin-bottom:0.5em;line-height:1.2em; }
 .buy_it_now:hover { text-decoration:underline;}
 
+
 /* FONTS */
 @font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
 @font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARAIT.woff') format('woff'); }
@@ -44,6 +46,18 @@ a.casamiento:hover { color:#000; }
 @font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OSL.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OSLI.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
+
+.color_label { font:normal 1.2em "OS";padding:0; margin-top:5px; color:#000}
+.colour_change{ display:inline-block;border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0; }
+.colour_change:hover { border:1px dotted black;}
+
+.color_square { width:30px;height:30px; cursor:pointer;}
+
+
+.chat-bubble { font: normal 0.9em "OS IL"; margin:10px auto;color:black; width:100%; }
+  .step { background-color:<%= colours[0] %>}
+  
+.step { width:50%;float:right;padding:0.25em;color:white;font:0.8em normal 'OS Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;border-top-right-radius:0;border-bottom-right-radius:0;border-top-left-radius:0;}
 
 h3.casamiento { font:normal 1.4em "Gara"; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
 
@@ -74,13 +88,13 @@ div .clrb:first-child { border-top:1px dotted #000; }
 #genesis_container { border-bottom:1px dotted grey; width:100%; margin:auto; padding-top:0.25em;padding-bottom:0.25em;text-align:center;}
 
 /* COLUMNS */
-.left_column { float:left;width:60%; border-right:1px dotted black;}
-.right_column { margin-left:61%; text-align:center;}
+.left_column { float:left;width:680px; border-right:1px dotted black;}
+.right_column { margin-left:685px; text-align:center; min-width:180px;}
 
 /* SPECIFICATIONS */
 
-.name_place_icon { width:130px; margin:auto; }
-.spc { padding:0.5em;border-bottom:1px dotted grey;   }
+.name_place_icon { width:130px; }
+.spc { padding:0;border-bottom:1px dotted grey;   }
 .spc h1 {font: normal 0.75em "OS Condensed"; margin:0;margin-bottom:0.5em; text-align:left}
 
 .weight { margin:0.5em 0 0.2em;width:2em;}
@@ -108,36 +122,28 @@ div .clrb:first-child { border-top:1px dotted #000; }
       <div id="main_slogan_casamiento" class="casamiento"><img src="http://www.casamiento.co.uk/gfx/logo/drms.png"></div>
       <div class="b1"></div>
     </div>
-   <img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attachments_order[0] %>.jpg">
+    <img class="casamiento" style="width:340px;float:left;" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/medium-<%= attachments_order[0] %>.jpg">
    
+   <img class="casamiento" style="width:340px;float:right;" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/medium-<%= attachments_order[1] %>.jpg">
+   
+   <img class="casamiento" style="clear:both;width:340px;float:left;" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/medium-<%= attachments_order[2] %>.jpg">
+   
+   <div style="width:340px;float:right;height:210px;">
   <h2 class="casamiento"><%= name %></h2>
    <div style="text-align:center;margin:0;margin-right:2%;"><p class="ornamental_line"><img src="/gfx/ornamentalline.png" /></p>
+   </div>
+   </div>
+   <div style="width:340px;float:left;clear:both">
+   
    <h3 class="casamiento" style="margin-left:0;padding-left:0;;padding-bottom:1em;"> <%= description %></h3>
    </div>
-   <% attachments_order.shift() %>
-  <% attachments_order.forEach(function(attach) { %>
-    <img class="casamiento" style="width:100%" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/large-<%= attach %>.jpg">
-    
-  <% }) %>
-  
    
-<div class="line"></div>
-  <div style="text-align:center;">
-  <h5 class="casamiento"><img src="http://www.casamiento.co.uk/gfx/bullets/small_dot_square.png" />  You may also like&hellip;</h3>
-  <img src="http://www.casamiento.co.uk/gfx/product_types/small/name_place_small.png" style="width:20%;max-width:150px;"/><br/>
-  <div style="display:inline-block;width:49%;"><img class="casamiento" src="http://www.casamiento.co.uk/products/00ec75d5ce64f8a7dc839706ad003094-name_place/attachments/medium-<%= attachments_order[0] %>.jpg" style="width:100%";></div>
-  <div style="display:inline-block;width:49%;"><img class="casamiento" src="http://www.casamiento.co.uk/products/00ec75d5ce64f8a7dc839706ad003094-name_place/attachments/medium-<%= attachments_order[1] %>.jpg" style="width:100%";></div>
-  </div>
-</div>
-
-<!-- ------------------------------------------------------------------------
-  RIGHT COLUMN
-  -->
-
-<div class="right_column">
-  <div class="spc intro">
-    <h6 style="padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:normal 3em Gara"><span style="letter-spacing:0.15em; font-size:0.75em;font-variant:small-caps"> IMPRESS</span> your guests with individually printed invitations&hellip;</h6>
-	
+   <img class="casamiento" style="width:340px;float:right;" src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/medium-<%= attachments_order[3] %>.jpg">
+   
+   
+  <div class="spc intro" style="clear:both;width:90%;margin:0 auto;text-align:center;">
+    <h6 style="padding:0;margin:0;text-align:center;letter-spacing:0; line-height:1em; font:normal 3em Gara"><span style="letter-spacing:0.15em; font-size:0.75em;font-variant:small-caps"> IMPRESS</span> your guests with individually printed invitations&hellip;</h6>
+  
     <div style="margin-top:1em;">  
       <div style="width:44%;display:inline-block;margin-top:5px;border-top:1px solid black;"></div>
       <div style="width:10%;display:inline-block;"><img src="http://www.casamiento.co.uk/gfx/page_seperators/orna.png" style="width:100%;" /></div>
@@ -158,83 +164,99 @@ div .clrb:first-child { border-top:1px dotted #000; }
     <span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
   </div>
   
-<h5 class="casamiento"><img src="/gfx/bullets/small_dot_square.png" /> This <%= sample ?  "auction": "buy-it-now listing" %> is for:</h5>
-  <div class="product_type spc">
+   </div>
+   
+
+<!-- ------------------------------------------------------------------------
+  RIGHT COLUMN
+  -->
+
+<div class="right_column">
+  <div class="spc">
    <% if(sample == true) { %>
-    <div class="name_place_icon"><img src="/gfx/product_types/sample.png" style="width:150px;"></div>
+    <div class="name_place_icon"><img src="/gfx/product_types/sample.png" style="width:130px;"></div>
     <% } else { %>
-    
+    <div class="name_place_icon" style="margin:0 auto"><img src="/gfx/product_types/name_place.png" style="width:130px;margin:0 auto;"></div>
     <% } %>
   </div>
   
-  <div class="spc">
-   <% if(sample == true) { %>
- <ul style="font:normal  0.8em 'OSReg';line-height:1em;"><li>1 &times; sample invitation</li>
-    <li>1 &times; matching envelope</li>
-   <li>1 &times; matching reply card</li>
-   <li>1 &times; matching name place card</li>
- </ul>
- <% } %>
-</div>
- <% if(sample == true) { %>
-  <div class="spc">
- 
-<div class="buy_it_now">CLICK HERE FOR A BUY-IT-NOW LISTING OF THIS PRODUCT WITH MANY MORE OPTIONS</div>
-</div>
-<% } %>
-  <div class="spc">
-    <h1>Card Texture</h1>
-
-    <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
-    <% if (!sample) { %>
-     <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/linen.png" style="width:2.5em"><br> Plain</p></div> <div style="float:left;margin-left:1em;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Plain</p></div>
-    <% } %>
-    <div class="b1"></div>
     
-  </div>
-
   <div class="spc">
-    <h1>Thickness</h1>
-    <div>
-  </div>
-  
-  <div>
-        <div class="weight" style="display:inline-block;width:75px;border-top:4px solid #666;"></div> <span style="font:normal 0.8em OS;margin-bottom:0em;">250gsm</span>
+    <div style="margin-bottom:0.5em;height:2em;">
+      <div style="float:left"><h1>Choose your colour</h1></div>
+      <div class="step colour_0">STEP 1</div>
+</div>
+
+         <div class="chat-bubble">Click on a colour to change it! Navigate through the different palettes by clicking the labels at the top and bottom of each palette to move backwards and forwards. </div>
+    <div id="colours-shown" style="margin-top:1em;">
+    <table>
+<tr>
+  <% var counter = 0 %>
+    <% colours.forEach(function(colour) { %>
+    <td style="vertical-align:top;width:49%">
+      <div id="colour_selector_<%= counter %>" style="display:inline-block;text-align:center;margin:0;padding:0;">
+      <div class="colour_frame_<%= counter %> colour_change" data-colour="<%= counter %>"><div class="colour_<%= counter %> color_square" style="background-color:<%= colour %>;"></div></div>
+      </div><br/>
+      <span id="color_label_<%= counter %>" class="color_label"><%= colour.toUpperCase() %></span>
       </div>
+      </td>
+    <% counter++ %>
+  <% }) %>
+  </tr>
+  </table>
+    
+    </div>
+  </div>
+  <div class="spc">
+    <div style="margin-bottom:0.5em;height:2em;">
+      <div style="float:left"><h1>Card Texture</h1></div>
+      <div class="step colour_0">STEP 2</div>
+</div>
+
+         <div class="chat-bubble">Click and highlight an icon to select the texture of your choice. Plain is the cheapest with its smooth plain finish, but hammered and linen both make your cards feel more luxurious.  </div>
+
+    <div style="margin-left:1em;display:inline-block;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:2.5em"><br> Plain</p></div>
+    <% if (!sample) { %>
+     <div style="margin-left:1em;display:inline-block;"><p><img src="http://www.casamiento.co.uk/gfx/icons/linen.png" style="width:2.5em"><br> Plain</p></div> <div style="margin-left:1em;display:inline-block;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:2.5em"><br> Plain</p></div>
+    <% } %>
+    
+  </div>
+
+  <div class="spc">
+      <div style="margin-bottom:0.5em;height:3em;">
+        <div style="float:left"><h1>Thickness</h1></div>
+        <div class="step colour_0">STEP 3</div>  
+      </div>
+
+         <div class="chat-bubble">Click on a colour to change it! Navigate through the different palettes by clicking the labels at the top and bottom of each palette to move backwards and forwards. </div>
+        <div class="weight" style="width:75px;border-top:6px solid #666;"></div> <span style="font:normal 0.8em OS;margin-bottom:0em;">250gsm</span>
+    
   <% if(!sample) { %>
-  <div  style="margin-top:1em;">
-     <div class="weight" style="display:inline-block;width:75px;border-top:8px solid #666;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span>
-     </div>
+     <div class="weight" style="width:75px;border-top:12px solid #666;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span>
+     
       <% } %>
   </div>
 
   <div class="spc">
-    <h1 style="margin-bottom:0">Product format</h1>
-   <div style="display:inline-block;margin-left:1em;margin-right:1em;"><img src="http://www.casamiento.co.uk/gfx/specs/single_a6_card.png" style="width:40px" /><p style="margin-top:0.2em;font:normal 0.8em OS;font-variant:small-caps">FLAT</p></div>
-   <% if(!sample) { %>
-   <div style="display:inline-block;margin-top:10px;margin-left:1em;margin-right:1em;"><img src="http://www.casamiento.co.uk/gfx/specs/foldout_a6_card.png"  style="width:45px" /><p style="margin-top:0.2em;font:normal 0.8em OS;font-variant:small-caps">FOLDOUT</p></div>
-   <% } %>
+    <div style="margin-bottom:0.5em;height:2em;">
+      <div style="float:left"><h1>Choose format</h1></div>
+      <div class="step colour_0">STEP 4</div>  
+    </div>
+    <div style="display:inline-block;margin-left:1em;margin-right:1em;"><img src="http://www.casamiento.co.uk/gfx/specs/single_a6_card.png" style="width:40px" /><p style="margin-top:0.2em;font:normal 0.8em OS;font-variant:small-caps">FLAT</p></div>
+    <% if(!sample) { %>
+      <div style="display:inline-block;margin-top:10px;margin-left:1em;margin-right:1em;"><img src="http://www.casamiento.co.uk/gfx/specs/foldout_a6_card.png"  style="width:45px" /><p style="margin-top:0.2em;font:normal 0.8em OS;font-variant:small-caps">FOLDOUT</p></div>
+    <% } %>
   </div>
-</div>
+  <div class="spc">
+<div style="margin-bottom:0.5em;height:2em;">
+        <div style="float:left"><h1>Choose Monogram</h1></div>
+        <div class="step colour_0">STEP 3</div>  
+      </div>
 
-
-    <h1>Monogram shown</h1>
+         <div class="chat-bubble">Click on a colour to change it! Navigate through the different palettes by clicking the labels at the top and bottom of each palette to move backwards and forwards. </div>
+      
     <img id="mono_2" style="width:100%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
     <p class="casamiento">Each design comes with your own unique monogram. Bearing the name of you and your partner, and underscored with the date or location of your ceremony, it provides the ultimate touch of understated sophistication.</p><p class="casamiento">We have many styles of monogram available, the only problem you'll have is deciding which one is for you.  Scroll down &darr; to see all the styles available.</p>
-  </div>
-    
-  <div class="spc"><h1>Colours shown</h1>
-    <div id="colours-shown" style="margin-top:1em;float:left;">
-    
-    <% colours.forEach(function(colour) { %>
-      <div style="float:left">
-        <div class="casamiento" style="margin-left:1em;width:30px;height:30px;background-color:<%= colour %>;border-radius:5px;"></div>
-        <p class="casamiento" style="margin-left:1em;text-indent:0;font:normal 1em GaraI;padding:0; margin-top:5px;"><%= colour %></p>
-      </div>
-    <% }) %>  
-    
-    </div>
-    <div class="b1"></div>
   </div>
   
   <div class="spc">
