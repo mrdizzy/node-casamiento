@@ -64,11 +64,12 @@ function getProduct(req, res,id,cart) {
     for(var i=0;i < 6; i++) {
         if (document['background-' + i]) {
             var compiled = _.template(document['background-' + i]);
-    document['background-' + i] = compiled({colour: document.colours[1]});
+    document['background-' + i] = compiled({colour: document.colour_2});
     
     document['background_' + i] = document['background-' + i]
         }
     }
+    document.document = document
     document.hex_colours = _.uniq(colours.hex)
     document.colours_ref = colours.labels
     document.hex_colours = inGroupsOf(document.hex_colours, 24)

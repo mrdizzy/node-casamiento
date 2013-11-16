@@ -2,8 +2,8 @@
 
 <style type="text/css">
 
-  .step { background-color:<%= colours[0] %>}
-  .slide_background {width:374px;height:239px;margin-bottom:1px;margin-right:1px;background-color:<%= colours[0] %> }
+  .step { background-color:<%= colour_1 %>}
+  .slide_background {width:374px;height:239px;margin-bottom:1px;margin-right:1px;background-color:<%= colour_1 %> }
   
   @media all and (max-width: 1000px) and (min-width: 768px) {
    #inner_page_container_casamiento { width:97%;}
@@ -57,15 +57,15 @@
 
 -->
 
-      <div id="slide1" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-1" class="slide_image" /><% if ((typeof background_1) !== "undefined") {%><div class="slide_background_container">
+      <div id="slide1" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-1" class="slide_image" /><% if ((typeof background_1) !== "undefined") {%><div class="slide_background_container">
       <%- background_1  %></div>
       <% } %></div>           
          
-      <div id="slide2" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-2" class="slide_image" /><% if ((typeof background_2) !== "undefined") {%><div class="slide_background_container">
+      <div id="slide2" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-2" class="slide_image" /><% if ((typeof background_2) !== "undefined") {%><div class="slide_background_container">
       <%- background_2  %></div>
       <% } %></div>
         
-      <div id="slide3" class="colour_0 slide_background"><img src="/products/<%= _id %>/attachments/medium-3" class="slide_image" /><% if ((typeof background_3) !== "undefined") {%><div class="slide_background_container">
+      <div id="slide3" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-3" class="slide_image" /><% if ((typeof background_3) !== "undefined") {%><div class="slide_background_container">
       <%- background_3  %></div>
       <% } %></div>
       
@@ -121,17 +121,15 @@
 </div>
 <table>
 <tr>
-  <% var counter = 0 %>
-    <% colours.forEach(function(colour) { %>
+    <% for(var i = 1; i < (number_of_colours + 1);  i++) { %>
     <td style="vertical-align:top;width:49%">
-      <div id="colour_selector_<%= counter %>" style="display:inline-block;text-align:center;margin:0;padding:0;">
-      <div class="colour_frame_<%= counter %> colour_change" data-colour="<%= counter %>"><div class="colour_<%= counter %> color_square" style="background-color:<%= colour %>;"></div></div>
+      <div id="colour_selector_<%= i %>" style="display:inline-block;text-align:center;margin:0;padding:0;">
+      <div class="colour_frame_<%= i %> colour_change" data-colour="<%= i %>"><div class="colour_<%= i %> color_square" style="background-color:<%= document["colour_" + i] %>;"></div></div>
       </div><br/>
-      <span id="color_label_<%= counter %>" class="color_label"><%= colour.toUpperCase() %></span>
+      <span id="color_label_<%= i %>" class="color_label"><%= document["colour_" + i] %></span>
       </div>
       </td>
-    <% counter++ %>
-  <% }) %>
+  <% } %>
   </tr>
   </table>
   
@@ -280,7 +278,6 @@ var thisProduct = new Product({
     id: "<%= _id %>",
     name: "<%= name %>", 
     monogram: <%= monogram %>, 
-    colours: <%- JSON.stringify(colours) %>, 
     quantity: 10, 
     price: <%= price %>, 
     guests: ["&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;"], 

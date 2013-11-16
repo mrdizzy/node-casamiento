@@ -59,9 +59,7 @@ $(function(){
       $(e.currentTarget).find('.step').fadeIn()
       $(e.currentTarget).find('.chat-bubble').slideDown()
     },
-    closeTooltip: function(e) {  
-      var step_container = $(e.currentTarget),
-      id = step_container.attr('id').split("_")[1];
+    closeTooltip: function(e) {   
       if (id != this.step) {
         $(e.currentTarget).find('.step').fadeOut()
         $(e.currentTarget).find('.chat-bubble').slideUp()
@@ -118,14 +116,14 @@ $(function(){
     renderColour: function(e) {
       var currentTarget = $(e.currentTarget);
       var hex = currentTarget.data("colour");
-      if(this.colourContext == 0) {
-        this.$('.colour_0').css("background-color", hex)
-        this.$('#color_label_0').text(all_colours[hex])
-      } else { 
-        this.$('.colour_0 div div').css("background-color", hex)
+      if(this.colourContext == 1) {
         this.$('.colour_1').css("background-color", hex)
-        
         this.$('#color_label_1').text(all_colours[hex])
+      } else { 
+        this.$('.colour_2 div div').css("background-color", hex)
+        this.$('.colour_2').css("background-color", hex)
+        
+        this.$('#color_label_2').text(all_colours[hex])
       }
     },
     changeColour: function(e) {
