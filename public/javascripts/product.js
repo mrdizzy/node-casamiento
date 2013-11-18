@@ -77,9 +77,8 @@ $(function(){
       $('span#decimal').text("." + dec);
     },    
     saveColour: function(e) {
-      var colours = this.model.get("colours");
-      colours[0] = $(e.currentTarget).data("colour");
-      this.model.set("colours", colours);
+      
+      var colours = this.model.set("colour_" + this.colourContext, $(e.currentTarget).data("colour"));
       this.model.trigger("change:colour");
       this.$('.colour_selector').slideUp();
       if(this.step == 1) {
@@ -116,11 +115,12 @@ $(function(){
     renderColour: function(e) {
       var currentTarget = $(e.currentTarget);
       var hex = currentTarget.data("colour");
+      console.log(this.colourContext, hex)
       if(this.colourContext == 1) {
         this.$('.colour_1').css("background-color", hex)
         this.$('#color_label_1').text(all_colours[hex])
       } else { 
-        this.$('.colour_2 div div').css("background-color", hex)
+        this.$('.colour_1 div div').css("background-color", hex)
         this.$('.colour_2').css("background-color", hex)
         
         this.$('#color_label_2').text(all_colours[hex])
