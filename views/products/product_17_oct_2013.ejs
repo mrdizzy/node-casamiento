@@ -57,16 +57,16 @@
 
 -->
 
-      <div id="slide1" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-1" class="slide_image" /><% if ((typeof background_1) !== "undefined") {%><div class="slide_background_container">
-      <%- background_1  %></div>
+      <div id="slide1" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-<%= attachments_order[0] %>" class="slide_image" /><% if ((typeof document["background_" + attachments_order[0]]) !== "undefined") {%><div class="slide_background_container">
+      <%-  document["background_" + attachments_order[0]] %></div>
       <% } %></div>           
          
-      <div id="slide2" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-2" class="slide_image" /><% if ((typeof background_2) !== "undefined") {%><div class="slide_background_container">
-      <%- background_2  %></div>
+      <div id="slide2" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-<%= attachments_order[1] %>" class="slide_image" /><% if ((typeof  document["background_" + attachments_order[1]]) !== "undefined") {%><div class="slide_background_container">
+      <%-  document["background_" + attachments_order[1]] %></div>
       <% } %></div>
         
-      <div id="slide3" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-3" class="slide_image" /><% if ((typeof background_3) !== "undefined") {%><div class="slide_background_container">
-      <%- background_3  %></div>
+      <div id="slide3" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-<%= attachments_order[2] %>" class="slide_image" /><% if ((typeof  document["background_" + attachments_order[2]]) !== "undefined") {%><div class="slide_background_container">
+      <%-  document["background_" + attachments_order[2]] %></div>
       <% } %></div>
       
 <!-- 
@@ -89,8 +89,8 @@
   SLIDE 4 
 
 -->    
-      <div id="slide6" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-4" class="slide_image" /><% if ((typeof background_4) !== "undefined") {%><div style="width:374px;height:239px;">
-      <%- background_4  %></div>
+      <div id="slide6" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-<%= attachments_order[3] %>" class="slide_image" /><% if ((typeof  document["background_" + attachments_order[3]]) !== "undefined") {%><div style="width:374px;height:239px;">
+      <%-  document["background_" + attachments_order[3]]  %></div>
       <% } %></div>           
    </div>
       
@@ -119,6 +119,11 @@
   
    <div class="chat-bubble tooltip-1">Click on a colour to change it! Navigate through the different palettes by clicking the labels at the top and bottom of each palette to move backwards and forwards.
 </div>
+
+<!--
+    COLOUR LABELS
+-->
+
 <table>
 <tr>
     <% for(var i = 1; i < (number_of_colours + 1);  i++) { %>
@@ -126,7 +131,7 @@
       <div id="colour_selector_<%= i %>" style="display:inline-block;text-align:center;margin:0;padding:0;">
       <div class="colour_frame_<%= i %> colour_change" data-colour="<%= i %>"><div class="colour_<%= i %> color_square" style="background-color:<%= document["colour_" + i] %>;"></div></div>
       </div><br/>
-      <span id="color_label_<%= i %>" class="color_label"><%= document["colour_" + i] %></span>
+      <span id="color_label_<%= i %>" class="color_label"><%= colours_ref[document["colour_" + i]] %></span>
       </div>
       </td>
   <% } %>

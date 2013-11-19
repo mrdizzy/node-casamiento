@@ -1,5 +1,9 @@
 var express = require('express'),
     http = require('http'),
+    _ = require('underscore'),
+    
+    inGroupsOf = require('./lib/in_groups_of'),
+    colours = require('./config/colours'),
     resource = require('express-resource'),
     importEbayMessage = require('./import_ebay_messages'),
     db = require('./config/db').test_ebay,
@@ -87,8 +91,14 @@ app.get("/admin/products", require('./controllers/admin/products').index);
 //Home page
 app.get("/", function(req, res) {
     db.view('products/name_place', function(error, documents) {
+    var d = documents.toArray()
+    d.hex_colours = _.uniq(colours.hex)
+    d.colours_ref = colours.labels
+    d.hex_colours = inGroupsOf(d.hex_colours, 24)
+    d.documents = d
+    console.log(d.colours_ref)
         res.render("welcome/index", {
-            documents: documents.toArray()
+            documents: d
         })
     })
 });

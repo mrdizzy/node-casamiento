@@ -1,6 +1,7 @@
 var db = require('./../config/db').test_ebay,
     colours = require('./../config/colours'),
-    _ = require('underscore')
+    _ = require('underscore'),
+    inGroupsOf = require('./../lib/in_groups_of')
 
 exports.update = function(req, res) {
 
@@ -87,22 +88,3 @@ function getProduct(req, res,id,cart) {
         //})
     });
 }
-
-var inGroupsOf = function(arr, n){
-  var ret = [];
-  var group = [];
-  var len = arr.length;
-  var per = len * (n / len);
-
-  for (var i = 0; i < len; ++i) {
-    group.push(arr[i]);
-    if ((i + 1) % n == 0) {
-      ret.push(group);
-      group = [];
-    }
-  }
-
-  if (group.length) ret.push(group);
-
-  return ret;
-};

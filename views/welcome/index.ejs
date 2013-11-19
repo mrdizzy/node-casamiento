@@ -1,108 +1,193 @@
 <style type="text/css">
 
-/* COLUMNS */
-#left_column { width:48%; float:left; border:0; margin-left:1%; margin-right:1%; }
-#right_column { width:49%; float:right; margin-right:1%;}
-#page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); width:100%; }
-#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:90%;}
+.color_square { width:30px;height:30px; cursor:pointer;}
+.selectable:hover { cursor:pointer }
 
-h2.casamiento { text-align:center; font: normal 2.2em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em;color:#000; }
+.color_label { font:normal 1.2em "OS";padding:0; margin-top:5px; color:#000}
+.colour_change{ display:inline-block;border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0; }
+.colour_change:hover { border:1px dotted black;}
+
+
+/* COLUMNS */
+#left_column { width:600px; float:left; border:0; }
+#total_price {display:none;}
+#right_column { margin-left:610px; border-left:1px dotted black; padding-left:10px;margin-right:20px;}
+#page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); width:100%; }
+#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:95%;}
+
+h2.casamiento { text-align:center; font: normal 1.8em "TP", sans-serif; letter-spacing:5px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em;color:#000; }
 
 p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 1.1em "OS", serif;line-height: 1.5em; padding:0; color:black;}
 
-/* PRODUCT SQUARES */
-.place_square { border:1px solid white;padding-bottom:1em; margin-bottom:1em;}
-.place_square_0, .place_square_1, .place_square_6 { float:left; border-bottom:1px solid grey; padding-bottom:4em;}
-
-.place_square_2, .place_square_3, .place_square_4, .place_square_5, .place_square_7, .place_square_8 {  padding:0;padding-bottom:1.5em; width:48%;float:left; margin-right:1%; margin-top:1%; border-bottom:1px solid grey;text-align:center;}
-
-.place_square_2 h2,  .place_square_3 h2,.place_square_4 h2, .place_square_5 h2, .place_square_7 h2, .place_square_8 h2 { padding:0;margin:0;font-size:1.2em;letter-spacing:5px}
-
-.inner_place_square, .inner_place_square_hidden { margin-bottom:0;padding:0.25em}
-.place_square:hover { border:1px solid grey; text-decoration:underline; cursor:pointer;}
-
-.inner_place_square img, .inner_place_square_hidden img { width:100%; }
-
-#welcome_description { margin-left:3em;margin-right:3em; }
 	
-.welcome_column_1 { width:66.6%;float:left; }
-.welcome_column_2 {width:33%;float:left; }
 </style>
-	
-<div id="slides_container">
-	<div id="slides" style="width:100%;">
-		<% documents.forEach(function(place) { %>
-			<div>
-				<div class="welcome_column_1">
-					<a href="/products/<%= place._id %>"><img src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/medium-<%= place.attachments_order[0] %>.jpg" class="img_100" /></a>
-				</div>
 
-				<div class="welcome_column_2">
-					<img src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/display-<%= place.attachments_order[1] %>.jpg" class="img_100" />
-					<img src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/display-<%= place.attachments_order[2] %>.jpg" class="img_100" />
-				</div>
+<!-- 
+	LEFT COLUMN
+	-->
+	
+<div id="left_column" style="text-align:center;">
+
+<div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:275px;margin:0 auto;padding-top:5px;"/></div>
+	<div class="inner_place_square" style="width:600px;display:inline-block;">
+		<img src="http://www.casamiento.co.uk/products/<%= documents[5]._id %>/attachments/display-<%= documents[5].attachments_order[0] %>.jpg" style="width:395px;margin-right:5px;float:left;"/>
+		<img src="http://www.casamiento.co.uk/products/<%= documents[5]._id %>/attachments/display-<%= documents[5].attachments_order[1] %>.jpg" style="width:200px;float:right;"/>
+		
+		<img src="http://www.casamiento.co.uk/products/<%= documents[5]._id %>/attachments/display-<%= documents[5].attachments_order[2] %>.jpg" style="width:200px;float:right;"/>
+		
+	</div>
+	<div style="width:49%;float:left">
+			<h2 class="casamiento" style="margin-top:0em;padding-top:0em;font-size:2.5em;text-align:left;"><%= documents[5].name %></h2>
+		
+		<p class="casamiento" style="text-align:left;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p></div>
+		<div style="width:49%;float:right">
+				
+<!--
+		COLOUR LABELS
+-->
+
+<table>
+<tr>
+		<% for(var i = 1; i < (documents[5].number_of_colours + 1);  i++) { %>
+	
+		<td style="vertical-align:top;width:49%">
+			<div id="colour_selector_<%= i %>" style="display:inline-block;text-align:center;margin:0;padding:0;">
+			<div class="colour_frame_<%= i %> colour_change" data-colour="<%= i %>"><div class="colour_<%= i %> color_square" style="width:30px;height:30px;background-color:<%= documents[5]["colour_" + i] %>;"></div></div>
+			</div><br/>
+			<span id="color_label_<%= i %>" class="color_label"><%= documents.colours_ref[documents[5]["colour_" + i]].toUpperCase() %></span>
 			</div>
-
-		<% }) %>
-
-	</div>
-</div>
-
-<div style="width:100%;margin-top:1em; margin-bottom:1em;">
-	<% var i = 0 %>
-	<% documents.forEach(function(place) { %>
-  <% i = i+ 1; %>
-	<div style="width:90%;margin:auto;text-align:center;display:none;" class="description" id="description_<%= i %>">
-		<h2 class="casamiento" style="text-align:center;padding:0;margin:0;font-size:2.5em;margin-left:1%;"><a href="/products/<%= place._id %>"><%= place.name %></a></h2>
-    
-    <h6 id="welcome_description"><a href="/products/<%= place._id %>">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</a></h6>
-    
-    <p class="center" style="margin-top:1em;margin-bottom:1em;"><img src="/gfx/shell.png" /></p>
- 
-	</div>
-<% }) %>
-</div>
-
-<script type="text/javascript">
-	$("#slides").slidesjs({
-		callback: {
-			loaded: function(number) {
-				$('#description_' + number).show()
-			},
-			complete: function(number) {
-				$('.description').hide()
-				$('#description_' + number).show()
-			}
-		},
-		pagination: { active: true },
-		navigation: { active: false },
-		play: { auto: true,
-		interval: 5000,
-		pauseOnHover:true,
-		effect: "swap" },
-		width: 750,
-		height: 320
-		});
-</script>
+			</td>
+	<% } %>
+	</tr>
+	</table>
 	
-<div style="clear:both;"></div>
+						</div>
+						
+		<div style="clear:both;width:100%;border-top:1px dotted black;"></div>
+	<div class="inner_place_square" style="width:600px;display:inline-block;">
+	
+		<img src="http://www.casamiento.co.uk/products/<%= documents[6]._id %>/attachments/display-<%= documents[6].attachments_order[1] %>.jpg" style="width:200px;float:left;"/>
+		
+		<img src="http://www.casamiento.co.uk/products/<%= documents[6]._id %>/attachments/display-<%= documents[6].attachments_order[0] %>.jpg" style="width:395px;margin-right:5px;float:right;"/>
+		<img src="http://www.casamiento.co.uk/products/<%= documents[6]._id %>/attachments/display-<%= documents[6].attachments_order[2] %>.jpg" style="width:200px;float:left;"/>
+		
+	</div>
+	<div style="width:49%;float:left">
+	
+	<!--
+		COLOUR LABELS
+-->
 
-<% var counter = 0 %>
+<table>
+<tr>
+		<% for(var i = 1; i < (documents[6].number_of_colours + 1);  i++) { %>
+	
+		<td style="vertical-align:top;width:49%">
+			<div id="colour_selector_<%= i %>" style="display:inline-block;text-align:center;margin:0;padding:0;">
+			<div class="colour_frame_<%= i %> colour_change" data-colour="<%= i %>"><div class="colour_<%= i %> color_square" style="width:30px;height:30px;background-color:<%= documents[6]["colour_" + i] %>;"></div></div>
+			</div><br/>
+			<span id="color_label_<%= i %>" class="color_label"><%= documents.colours_ref[documents[6]["colour_" + i]].toUpperCase() %></span>
+			</div>
+			</td>
+	<% } %>
+	</tr>
+	</table>
+	</div>
+	
+	
+	<div style="clear:both;">
+	</div>
+	
+	<div class="inner_place_square" style="width:600px;display:inline-block;">
+		<img src="http://www.casamiento.co.uk/products/<%= documents[3]._id %>/attachments/display-<%= documents[3].attachments_order[0] %>.jpg" style="width:395px;margin-right:5px;float:left;"/>
+		<img src="http://www.casamiento.co.uk/products/<%= documents[3]._id %>/attachments/display-<%= documents[3].attachments_order[1] %>.jpg" style="width:200px;float:right;"/>
+		
+		<img src="http://www.casamiento.co.uk/products/<%= documents[3]._id %>/attachments/display-<%= documents[3].attachments_order[2] %>.jpg" style="width:200px;float:right;"/>
+		
+	</div>
+	<div style="width:49%;float:left">
+			<h2 class="casamiento" style="margin-top:0em;padding-top:0em;font-size:2.5em;text-align:left;"><%= documents[3].name %></h2>
+		
+		<p class="casamiento" style="text-align:left;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p></div>
+		<div style="width:49%;float:right">
+				
+<!--
+		COLOUR LABELS
+-->
 
-<div id="left_column">
+<table>
+<tr>
+		<% for(var i = 1; i < (documents[3].number_of_colours + 1);  i++) { %>
+	
+		<td style="vertical-align:top;width:49%">
+			<div id="colour_selector_<%= i %>" style="display:inline-block;text-align:center;margin:0;padding:0;">
+			<div class="colour_frame_<%= i %> colour_change" data-colour="<%= i %>"><div class="colour_<%= i %> color_square" style="width:30px;height:30px;background-color:<%= documents[3]["colour_" + i] %>;"></div></div>
+			</div><br/>
+			<span id="color_label_<%= i %>" class="color_label"><%= documents.colours_ref[documents[3]["colour_" + i]].toUpperCase() %></span>
+			</div>
+			</td>
+	<% } %>
+	</tr>
+	</table>
+	
+						</div>
+						
+		<div style="clear:both;width:49%;float:right">
+				
+			<h2 class="casamiento" style="margin-top:0em;padding-top:0em;font-size:2.5em;text-align:left;"><%= documents[6].name %></h2>
+		
+		<p class="casamiento" style="text-align:left;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
 
-<% documents.forEach(function(place) { %>
-	<% if (counter == 1) { %>
+						</div>
+	
+	<div class="inner_place_square" style="clear:both;width:295px;float:left;">
+		<img src="http://www.casamiento.co.uk/products/<%= documents[1]._id %>/attachments/display-<%= documents[1].attachments_order[2] %>.jpg" style="width:295px;"/>
+		
+			<h2 class="casamiento" style="margin-top:0em;padding-top:0em;text-align:left;"><%= documents[1].name %></h2>
+	
+		<p class="casamiento" style="text-align:left;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
+		
+	</div>
+	
+	<div class="inner_place_square" style="width:295px;float:right;">
+		<img src="http://www.casamiento.co.uk/products/<%= documents[4]._id %>/attachments/display-<%= documents[4].attachments_order[3] %>.jpg" style="width:295px;"/>
+		
+			<h2 class="casamiento" style="margin-top:0em;padding-top:0em;font-size:em;text-align:left;"><%= documents[4].name %></h2>
+		
+		<p class="casamiento" style="text-align:left;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
+		
+	</div>
+	<div style="clear:both;"></div>
+	<div class="inner_place_square" style="float:left;width:295px;">
+		<img src="http://www.casamiento.co.uk/products/<%= documents[3]._id %>/attachments/display-<%= documents[3].attachments_order[1] %>.jpg" style="width:295px;"/>
+		
+			<h2 class="casamiento" style="margin-top:0em;padding-top:0em;text-align:left;"><%= documents[3].name %></h2>
+	
+		<p class="casamiento" style="text-align:left;margin-top:0;margin-left:0.25em;0;padding:0;font-size:1.8em">&pound;2.99</p>
+		
+	</div>
+
+	<div class="inner_place_square" style="float:right;width:295px;">
+		<img src="http://www.casamiento.co.uk/products/<%= documents[6]._id %>/attachments/display-<%= documents[4].attachments_order[0] %>.jpg" style="width:295px;"/>
+		
+			<h2 class="casamiento" style="margin-top:0em;padding-top:0em;text-align:left;"><%= documents[6].name %></h2>
+	
+		<p class="casamiento" style="text-align:left;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
+		
+	</div>
+
+</div>
+
+<div id="right_column">
+
 	<div class="spc intro">
 <h6 style="padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:normal 3em Gara;text-align:center;"><span style="letter-spacing:0.15em; font-size:0.75em;font-variant:small-caps"> IMPRESS</span> your guests with individually printed invitations&hellip;</h6>
 	
 	<div style="margin-top:1em;">  
-		<div style="width:45%;float:left;margin-top:5px;border-top:1px solid black;"></div>
+		<div style="width:35%;float:left;margin-top:5px;border-top:1px solid black;"></div>
 		<div style="width:10%;float:left;"><img src="http://www.casamiento.co.uk/gfx/page_seperators/orna.png" style="width:100%;" /></div>
-		<div style="width:45%;float:left;margin-top:5px;border-top:1px solid black;"></div>
-		</div>
-		<div style="clear:both"></div>
-<img src="http://www.casamiento.co.uk/gfx/me2.jpg" style="padding:0.25em;margin-top:0.7em;float:left;padding-right:0.4em;">
+		<div style="width:35%;float:left;margin-top:5px;border-top:1px solid black;"></div>
+		</div><br/>
 <p class="first casamiento">Y<span style="letter-spacing:0.2em; font-size:1em;font-family:Gara';font-variant:small-caps">OUR GUESTS</span>, will love seeing their names individually printed on your wedding invitations. It'll make them feel special and give them a keepsake to treasure for years to come&hellip; </p>
 <p style="font:normal 1.6em GaraI;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;">Save time and hassle...</p>
 <p class="casamiento">&hellip; and it doesn't stop at just names! Take the pain out of preparing your invitations by letting me individually address each envelope and invitation with the name and address of each of your guests. Not only will it look <span style="letter-spacing:0.2em; font-size:1em;font-family:'Gara';font-variant:small-caps">PROFESSIONAL</span>, but it'll save you a lot of hassle&mdash;you'd be surprised how time-consuming and frustrating it is addressing just 25 invitations without making a mistake or missing a guest. All you have to do is a send a list of names and addresses&hellip;
@@ -116,29 +201,6 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 1.1em "OS", serif
 <span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
 </div>
 </div>
-<div id="right_column">
-	<% } %>
-	
-<a href="/products/<%= place._id %>">
-<div class="place_square_<%= counter %> place_square" style="border-bottom:1px solid grey;">
-	<div class="inner_place_square">
-		<img src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/display-<%= place.attachments_order[0] %>.jpg" />
-	</div>
-	<div class="inner_place_square_hidden" style="display:none">
-		<img src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/display-<%= place.attachments_order[2] %>.jpg" />
-	</div>
-	<div style="position:absolute;margin:0;padding:0;"><h2 class="casamiento" style="width:60%;margin-top:0em;padding-top:0em;text-align:left;"><%= place.name %></h2></div>
-	<div>
-		<p class="casamiento" style="text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
-	</div>
-</div>
-</a>
-<% counter++ %>
-<% }) %>
-
-</div>
-
-<div class="b1"></div>
 
 <script type="text/javascript">
 	$(function(){	
