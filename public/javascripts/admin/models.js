@@ -4,7 +4,7 @@ var ProductTypes = Backbone.Collection.extend({
 
 var Product = Backbone.Model.CouchDB.extend({
   urlRoot: "/products",
-  defaults: { "type": "product" },
+  defaults: { "type": "product", colour_1: "", colour_2: "" },
   toJSON: function() {
     var json = Backbone.Model.CouchDB.prototype.toJSON.apply(this, arguments)
     if(!json._id && this.get("theme")) {

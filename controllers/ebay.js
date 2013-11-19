@@ -1,5 +1,7 @@
 var db = require('./../config/db').test_ebay,
-    _ = require('underscore');
+    _ = require('underscore'),
+    colours = require('./../config/colours')
+    inGroupsOf = require('./../lib/in_groups_of');
 
 //casamiento.co.uk/ebay places -> exports.places -> renders all name place cards on one page
 // casamiento.co.uk/ebay/product-id -> exports.show -> renders the product id
@@ -22,8 +24,21 @@ exports.show = function(req, res) {
         startkey: theme,
         endkey: theme + "z"
     }, function(err, docs) {
+    
         var documents = docs.toArray();
         var current = _.find(documents, function(doc) {
+        doc.document = doc;
+            for(var i=0;i < 6; i++) {
+        if (doc['background-' + i]) {
+            var compiled = _.template(doc['background-' + i]);
+    doc['background-' + i] = compiled({colour: doc.colour_2});
+    
+    doc['background_' + i] = doc['background-' + i]
+        }
+    }
+    doc.hex_colours = _.uniq(colours.hex)
+    doc.colours_ref = colours.labels
+    doc.hex_colours = inGroupsOf(doc.hex_colours, 36)
             return doc._id == id;
         })
         var without = _.without(documents, current);

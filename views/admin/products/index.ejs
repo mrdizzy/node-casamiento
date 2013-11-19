@@ -30,14 +30,14 @@
       <div style="float:right;width:50%;">
       <div style="width:50%;float:left;">
       <div style="width:30px;height:30px;background-color:{{colour-1}};border:1px solid black;"></div>
-        <select style="font-size:1.5em;" size="15" name="colour-1">
-            {{options_selected hex_colours colour-1}}
+        <select style="font-size:1.5em;" size="15" name="colour_1">
+            {{options_selected hex_colours colour_1}}
         </select>
         </div>
         <div style="width:50%;float:right;">
       <div style="width:30px;height:30px;background-color:{{colour-2}};border:1px solid black;"></div>
-        <select style="font-size:1.5em;" size="15" name="colour-2">
-            {{options_selected hex_colours colour-2}}
+        <select style="font-size:1.5em;" size="15" name="colour_2">
+            {{options_selected hex_colours colour_2}}
         </select>
         </div>
       </div>
@@ -50,7 +50,7 @@
   IMAGE BACKGROUNDS
 -->
   <script type="text/template" id="image_backgrounds">
-  <div style="clear:both;width:500px;height:319px;background-color:{{first_colour}};background-image:url('new.png');" id="background_{{id}}_{{attachment}}">
+  <div style="clear:both;width:500px;height:319px;background-color:{{first_colour}};background-image:url('new.png');" id="background_{{id}}_{{attachment}}" class="background_container">
     <img style="width:500px;position:absolute;" src="/products/{{id}}/attachments/medium-{{attachment}}" />{{divs}}
   </div>
   <textarea rows="5" cols="100" class="change_background" id="{{id}}-{{attachment}}">{{background_html}}</textarea>

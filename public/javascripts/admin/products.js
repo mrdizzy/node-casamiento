@@ -94,10 +94,12 @@ var ProductsView = Backbone.View.extend({
   },
   addNew: function() {
     var product = new Product();
+    
     this.collection.add(product);
-      
     var cpv = new CurrentProductView({model:product, attachmentView: AttachView});
+    console.log("done")
     $('#cpv').html(cpv.render().el)
+   
   },
   render: function() {
     this.$el.empty();
@@ -116,15 +118,30 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   initialize: function() {
     this.model.on("destroy", this.remove, this) 
     this.model.on("sync", this.render, this)
-    this.model.on("change:colour-1", this.updateBackground, this)
+    this.model.on("change:colour_1", this.updateAllBackgrounds, this)
     
-    this.model.on("change:colour-2", this.updateBackground, this)
+    this.model.on("change:colour_2", this.updateAllBackgrounds, this)
     this.model.on("change:background-1", this.updateBackground, this) 
     this.model.on("change:background-2", this.updateBackground, this)             
     this.model.on("change:background-3", this.updateBackground, this) 
     this.model.on("change:background-4", this.updateBackground, this) 
     },
+    updateAllBackgrounds: function(e, f,g) {
+      for(att in e.changed) {
+      
+        if(att == "colour_2") {
+       
+      this.$('.background_container').css("background-color",  this.model.get(att))
+       
+      } else {
+         this.$('.background_container div').css("background-color", this.model.get(att))
+      }
+      
+  }
+
+  },
   updateBackground: function(e, f,g) {
+  
     for(att in e.changed) {
       var attach_number = att.split("-")[1]
       var element = "background_" + this.model.id + "_" + attach_number;
@@ -132,13 +149,13 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
       
       var divs = this.model.get("background-" + attach_number);
       var compiled = _.template(divs);
-      var divs = compiled({colour: this.model.get("colour-2")});
+      var divs = compiled({colour: this.model.get("colour_2")});
       this.$('#' +element).append(divs)       
     }
   },
   events: { 
-    'click select[name=colour-1] option': 'selectColour',
-    'click select[name=colour-2] option': 'selectColour',
+    'click select[name=colour_1] option': 'selectColour',
+    'click select[name=colour_2] option': 'selectColour',
     'click input[type=submit]': 'sendForm',
     'click .addmore': 'addMore',
     'click .delete': 'destroy',
@@ -164,7 +181,7 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   sendForm: function(e) {
       e.preventDefault();
      this.model.set(Backbone.Syphon.serialize(this))
-     this.model.save(null, {success: function(model, response, options) {
+     this.model.save(this.model.attributes, {success: function(model, response, options) {
        console.log("Success:", response)
      }, 
      error: function(model, xhr, options) {
@@ -174,6 +191,7 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   render: function() {
   var modelToJSON = this.model.toJSON();
   modelToJSON.hex_colours = colourList;
+  console.log($('#current_product_form').html())
     var result = Handlebars.compile($('#current_product_form').html())(modelToJSON);
     this.$el.html(result);
     
@@ -181,22 +199,23 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     this.$('form').append(themes_view)
     this.$('form').append(product_types_view)
     
-    // Build attachments
-    this.$el.append("<table>")
-    this.$el.append(this.buildAttachments({groupEl: 'tr'}))
-    this.$el.append("</table>")
     
     // Render product images with coloured background divs
     this.model.attachments_order.forEach(function(attachment) {
     
       var divs = this.model.get("background-" + attachment);
       var compiled = _.template(divs);
-      var divs = compiled({colour: this.model.get("colour-2")});
+      var divs = compiled({colour: this.model.get("colour_2")});
       
       // Render background-coloured image
-      var result = Handlebars.compile($('#image_backgrounds').html(), {noEscape: true})({id: this.model.id, attachment: attachment, first_colour:this.model.get("colour-1"), divs: divs, background_html: this.model.get("background-"+attachment)});
+      var result = Handlebars.compile($('#image_backgrounds').html(), {noEscape: true})({id: this.model.id, attachment: attachment, first_colour:this.model.get("colour_1"), divs: divs, background_html: this.model.get("background-"+attachment)});
     this.$el.append(result);
     }, this)
+    
+    // Build attachments
+    this.$el.append("<table>")
+    this.$el.append(this.buildAttachments({groupEl: 'tr'}))
+    this.$el.append("</table>")
     this.$el.append("<a class='addmore'>Add more</a>")
     this.$el.append("<a class='delete'>Delete</a>" )
     return this;

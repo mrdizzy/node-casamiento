@@ -46,28 +46,18 @@ a:link, a:visited { text-decoration:none;color: #000; }
  a:hover { text-decoration:underline;}
 a:active { color: #29A4BD; }
 .b1 { clear:both; }
+
 /* FURNITURE
 ==================================== */
 #page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); }
 #inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:95%;}
 
-  #top_container { z-index:5;border-bottom:1px dashed #000;}
-    #logo {  margin-left:35px; float:left;}
-    .navbar {
-        height:30px;
-        padding-top:10px;
-        float:left;   
-        background-color:white;
-        z-index:5;
-        text-align:center;
-        width:24.5%;
-        border-right:1px dotted grey;
-        border-bottom: 1px dotted grey; 
-    }
-
-    .navbar img.dreams_on_paper { position:relative; top:-7px; }
+    
+  
   #page_container {  margin: 0 auto; background-color: white;  border-left: 1px dotted #939598; border-right: 1px dotted #939598;}
-
+  
+/* FOOTER
+==================================== */
   #footer { margin: 0 auto; clear:both; padding-top:10px; height:60px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; border-top: 1px solid #939598;}
   
     .footer_seperator {  text-align:center; padding-top:1em;  float:left;  width:20%; }
@@ -85,8 +75,6 @@ input:focus { background-color: lightgrey;outline:none;}
 /* WELCOME PAGE 
 ============================================== */
 
-#product_type { clear:both; width:25%; text-align:center; float:left; padding-top:20px; }
-#welcome_logo { width:75%; padding-top:10px; }
 
 .pagination { background:white; width:110px; height:20px; margin-top:6px; padding-left:7px; padding-top:8px; position:relative; top:-840px; left:800px; z-index:100; }
  

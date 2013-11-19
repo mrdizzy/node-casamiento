@@ -94,7 +94,7 @@ app.get("/", function(req, res) {
     var d = documents.toArray()
     d.hex_colours = _.uniq(colours.hex)
     d.colours_ref = colours.labels
-    d.hex_colours = inGroupsOf(d.hex_colours, 24)
+    d.hex_colours = inGroupsOf(d.hex_colours, 16)
     d.documents = d
     console.log(d.colours_ref)
         res.render("welcome/index", {

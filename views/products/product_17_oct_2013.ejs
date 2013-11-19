@@ -282,7 +282,7 @@ counter + 1%>">&raquo;</div>
 var thisProduct = new Product({
     id: "<%= _id %>",
     name: "<%= name %>", 
-    monogram: <%= monogram %>, 
+    monogram: <%= (monogram || "1") %>, 
     quantity: 10, 
     price: <%= price %>, 
     guests: ["&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;"], 
