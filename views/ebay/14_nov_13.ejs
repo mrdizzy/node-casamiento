@@ -38,11 +38,6 @@ document.write("</" + az + bz + cz + ">");
 a.casamiento:link, a.casamiento:active, a.casamiento:visited { font-style:underline; color:<%= colour_1 %>;}
 a.casamiento:hover { color:#000; }
 
-.color_label { font:normal 1.2em "OS";padding:0; margin-top:5px; color:#000}
-.colour_change{ border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0; }
-.colour_change:hover { border:1px dotted black;}
-
-.color_square { width:30px;height:30px; cursor:pointer;}
 
 .chat-bubble {padding-left:1em;padding-right:1em; font: normal 0.9em "OS IL"; margin:10px auto;color:black; }
   .step { background-color:<%= colour_1 %>}
@@ -59,15 +54,6 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-
 ul { font: normal 0.9em "OS", sans-serif;line-height: 1.5em; text-align:left; }
 li {margin-bottom:0.5em;}
 
-.colour_index_right, .colour_index_left {  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  z-index:100; color:lightgrey; font:normal 6em "OS Light";}
-  
-.colour_index_left:hover, .colour_index_right:hover  { cursor:pointer; color:black; }
 #page_container_casamiento {  padding:0; margin:0; }
 .b1 { clear:both; }
 
@@ -83,29 +69,6 @@ li {margin-bottom:0.5em;}
 
 .left_column { float:left;width:680px; }
 .right_column { border-left:1px dotted black;margin-left:680px; text-align:center; min-width:180px;}
-
-
-.colour_index_right, .colour_index_left {  z-index:100; color:lightgrey; font:normal 6em "OS Light";}
-.colour_index_left:hover, .colour_index_right:hover  { cursor:pointer; color:black; }
-
-/* COLOURS */
-.a_colour { opacity:0.8;text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-left:3px;margin-right:3px;margin-top:6px;}
-.a_colour:hover { opacity:1; border:1px dotted black; cursor:pointer;}
-
-.palette { display:none; position:relative; }
-.palette_2 { display:block;}
-
-.color_square { width:30px;height:30px; cursor:pointer;}
-.selectable:hover { cursor:pointer }
-
-.color_square { width:30px;height:30px; cursor:pointer;}
-.selectable:hover { cursor:pointer }
-.colour_alert_box { display: none}
-.color_label { font:normal 1.2em "OS";padding:0; margin-top:5px; color:#000}
-.colour_change{border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0; }
-.colour_alert_box_1, .colour_alert_box_2 { display:none;}
-.colour_change:hover { border:1px dotted black;}
-
 
 /* SPECIFICATIONS */
 
@@ -143,15 +106,15 @@ li {margin-bottom:0.5em;}
   SLIDES 1-3
 -->     
 
-<div id="slide1" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/display-<%= attachments_order[0] %>" class="slide_image" /><% if ((typeof document["background_" + attachments_order[0]]) !== "undefined") {%><div class="slide_background_container">
+<div id="slide1" class="colour_1 slide_background"><img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[0] %>" class="slide_image" /><% if ((typeof document["background_" + attachments_order[0]]) !== "undefined") {%><div class="slide_background_container">
       <%-  document["background_" + attachments_order[0]] %></div>
       <% } %></div>           
          
-      <div id="slide2" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/display-<%= attachments_order[1] %>" class="slide_image" /><% if ((typeof  document["background_" + attachments_order[1]]) !== "undefined") {%><div class="slide_background_container">
+      <div id="slide2" class="colour_1 slide_background"><img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[1] %>" class="slide_image" /><% if ((typeof  document["background_" + attachments_order[1]]) !== "undefined") {%><div class="slide_background_container">
       <%-  document["background_" + attachments_order[1]] %></div>
       <% } %></div>
         
-      <div id="slide3" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>" class="slide_image" /><% if ((typeof  document["background_" + attachments_order[2]]) !== "undefined") {%><div class="slide_background_container">
+      <div id="slide3" class="colour_1 slide_background"><img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>" class="slide_image" /><% if ((typeof  document["background_" + attachments_order[2]]) !== "undefined") {%><div class="slide_background_container">
       <%-  document["background_" + attachments_order[2]] %></div>
       <% } %></div>
    
@@ -163,7 +126,7 @@ li {margin-bottom:0.5em;}
  -->   
    <div style="width:340px;float:right;height:210px;">
   <h2 class="casamiento"><%= name %></h2>
-   <div style="text-align:center;margin:0;margin-right:2%;"><p class="ornamental_line"><img src="/gfx/ornamentalline.png" /></p>
+   <div style="text-align:center;margin:0;margin-right:2%;"><p class="ornamental_line"><img src="http://www.casamiento.co.uk/gfx/ornamentalline.png" /></p>
    </div>
    </div>
    <div style="width:340px;float:left;clear:both">
@@ -177,7 +140,7 @@ li {margin-bottom:0.5em;}
 <!-- 
     SLIDE 6 
  -->
-      <div id="slide6" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/display-<%= attachments_order[3] %>" class="slide_image" /><% if ((typeof  document["background_" + attachments_order[3]]) !== "undefined") {%><div style="width:374px;height:239px;">
+      <div id="slide6" class="colour_1 slide_background"><img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[3] %>" class="slide_image" /><% if ((typeof  document["background_" + attachments_order[3]]) !== "undefined") {%><div class="slide_background_container">
       <%-  document["background_" + attachments_order[3]]  %></div>
       <% } %></div>    
    
@@ -191,7 +154,7 @@ li {margin-bottom:0.5em;}
   
   
   <div class="colour_1" style="width:75%;border-radius:5px;color:white;background-color:<%= colour_1 %>;text-align:center;margin:0 auto;padding:1em;font:normal 1.4em OS;margin-top:1em;margin-bottom:1em;">
-      <img src="/gfx/cart_white.png" style="width:30px;"/> CLICK HERE TO BUY THIS ITEM<br/> WITH FREE POSTAGE&hellip;
+      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" style="width:30px;"/> CLICK HERE TO BUY THIS ITEM<br/> WITH FREE POSTAGE&hellip;
       
   </div>
 </div>
@@ -236,9 +199,9 @@ li {margin-bottom:0.5em;}
 <div class="right_column">
   <div class="spc">
    <% if(sample == true) { %>
-    <div class="name_place_icon"><img src="/gfx/product_types/sample.png" style="width:130px;"></div>
+    <div class="name_place_icon"><img src="http://www.casamiento.co.uk/gfx/product_types/sample.png" style="width:130px;"></div>
     <% } else { %>
-    <div class="name_place_icon" style="margin:0 auto"><img src="/gfx/product_types/name_place.png" style="width:150px;margin:0 auto;"></div>
+    <div class="name_place_icon" style="margin:0 auto"><img src="http://www.casamiento.co.uk/gfx/product_types/name_place.png" style="width:150px;margin:0 auto;"></div>
     <% } %>
   </div>
 
@@ -248,13 +211,13 @@ li {margin-bottom:0.5em;}
  -->
   <div class="spc">
   <div class="colour_1" style="width:65%;border-radius:5px;color:white;background-color:grey;text-align:center;margin:0 auto;padding:1em;font:normal 1.4em OS;margin-top:1em;margin-bottom:1em;">
-      <img src="/gfx/cart_white.png" style="width:30px;"/> DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH FREE POSTAGE&hellip;
+      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" style="width:30px;"/> DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH FREE POSTAGE&hellip;
       
   </div>
 </div>
 
 
-<%- partial("ebay/colours.ejs", document) %>
+<%- partial("partials/colours.ejs", document) %>
 
 
   <div class="spc">
@@ -286,7 +249,7 @@ li {margin-bottom:0.5em;}
 
          <div class="chat-bubble">Decide how thick your cards will be. Thinner card is cheaper but thicker card gives for an expensive feel </div>
          <div>
-        <div class="weight" style="width:75px;border-top:6px solid #666;display:inline-block;"></div> <span style="font:normal 0.8em OS;margin-bottom:0em;">250gsm</span>
+        <div class="weight" style="width:75px;border-top:6px solid #666;display:inline-block;"></div> <span style="font:normal 0.8em OS;">250gsm</span>
     </div>
   <% if(!sample) { %>
   <div>
@@ -296,26 +259,6 @@ li {margin-bottom:0.5em;}
   </div>
 
 
-
- <!-- 
-    FORMAT 
- -->
-
-  <div class="spc">
-    <div style="margin-bottom:0.5em;height:2em;">
-      <div style="float:left"><h1>Choose format</h1></div>
-      <div class="step colour_1">STEP 4</div>  
-    </div>
-    
-         <div class="chat-bubble">Would you like your place cards to stand up on a table or lay flat? The choice is yours&hellip;</div>
-    <div style="display:inline-block;margin-left:1em;margin-right:1em;"><img src="http://www.casamiento.co.uk/gfx/specs/single_a6_card.png" style="width:40px" /><p style="margin-top:0.2em;font:normal 0.8em OS;font-variant:small-caps">FLAT</p></div>
-    <% if(!sample) { %>
-      <div style="display:inline-block;margin-top:10px;margin-left:1em;margin-right:1em;"><img src="http://www.casamiento.co.uk/gfx/specs/foldout_a6_card.png"  style="width:45px" /><p style="margin-top:0.2em;font:normal 0.8em OS;font-variant:small-caps">FOLDOUT</p></div>
-    <% } %>
-  </div>
-  
-  
-  
   
  <!-- 
     MONOGRAM 
@@ -343,65 +286,71 @@ li {margin-bottom:0.5em;}
     TESTIMONIALS 
  -->  
   
-  <div class="spc">
+<div class="spc">
   <h1>Don't take our word for it&hellip;</h1>
   
-    <div class="quote" style="width:200px;padding-bottom:5px;padding-top:10px;"><h6 class="casamiento" style="margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> Beautiful place cards, thank you! Would Highly recommend :-)&rdquo;</h6><h6 class="casamiento" style="font:1.2em GaraI;text-align:right;margin-right:10%">&mdash;<a class="casamiento" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=baked.potato07">baked.potato07</a></h6></div>
-                           
-<div class="quote" style="padding-bottom:5px;padding-top:10px;">
- <h6 class="casamiento" style="width:75%; margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> Totally perfect. Thank you</h6><h6 class="casamiento" style="font:1.2em GaraI;text-align:right;margin-right:10%" href="">&mdash;<a class="casamiento" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=mummysmith1974">mummysmith1974</a></h6>
- </div>
+  <div class="quote" style="width:200px;padding-bottom:5px;padding-top:10px;"><h6 class="casamiento" style="margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> Beautiful place cards, thank you! Would Highly recommend :-)&rdquo;</h6><h6 class="casamiento" style="font:1.2em GaraI;text-align:right;margin-right:10%">&mdash;<a class="casamiento" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=baked.potato07">baked.potato07</a></h6></div>
+                         
+  <div class="quote" style="padding-bottom:5px;padding-top:10px;">
+   <h6 class="casamiento" style="width:75%; margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> Totally perfect. Thank you</h6><h6 class="casamiento" style="font:1.2em GaraI;text-align:right;margin-right:10%" href="">&mdash;<a class="casamiento" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=mummysmith1974">mummysmith1974</a></h6>
+   </div>
                  
- <div class="quote" style="width:300px;padding-bottom:5px;padding-top:10px;">
- <h6 class="casamiento" style="margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> These are amazing, excellent quality for an excellent price, highly recommended&rdquo;</h6><h6 class="casamiento" style="font:1.2em GaraI;text-align:right;margin-right:20%">&mdash;<a class="casamiento" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=chris.hall20">chris.hall20</a></h6>
-            </div>
-                                       
-<div class="quote" style="padding-bottom:5px;padding-top:10px;">
- <h6 class="casamiento" style="width:75%; margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> They look amazing and came so fast. Highly recommend :)</h6><h6 class="casamiento" style="font:1.2em GaraI;text-align:right;margin-right:10%" href="">&mdash;<a class="casamiento" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=kellyc3456">kellyc3456</a></h6>
- </div>
-            
+   <div class="quote" style="width:300px;padding-bottom:5px;padding-top:10px;">
+    <h6 class="casamiento" style="margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> These are amazing, excellent quality for an excellent price, highly recommended&rdquo;</h6><h6 class="casamiento" style="font:1.2em GaraI;text-align:right;margin-right:20%">&mdash;<a class="casamiento" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=chris.hall20">chris.hall20</a></h6>
   </div>
-  <div style="clear:both;"></div>
+                                         
+  <div class="quote" style="padding-bottom:5px;padding-top:10px;">
+   <h6 class="casamiento" style="width:75%; margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> They look amazing and came so fast. Highly recommend :)</h6><h6 class="casamiento" style="font:1.2em GaraI;text-align:right;margin-right:10%" href="">&mdash;<a class="casamiento" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=kellyc3456">kellyc3456</a></h6>
+   </div>
+            
 </div>
-
-
+<div style="clear:both;"></div>
+</div>
 
 <script type="text/javascript">
 $(function() {
-
-  $('.colour_change').mouseenter(function(e) {
+  var all_colours = <%- JSON.stringify(colours_ref) %>
+  var colourContext = 1;
+  $('.big_colour_square_frame').mouseenter(function(e) {
+    var which = $(e.currentTarget).data("colour");
+    colourContext = which;
     var colour = $(e.currentTarget);
     var id = colour.data("colour");
-    
     $('.colour_alert_box_' + id).fadeIn();
   })
   
-    $('.colour_alert_box_2').mouseleave(function() {
-      $('.colour_alert_box_2').fadeOut();
-      })
-        $('.colour_alert_box_1').mouseleave(function() {
+  $('.colour_alert_box_2').mouseleave(function() {
+    $('.colour_alert_box_2').fadeOut();
+  })
+  $('.colour_alert_box_1').mouseleave(function() {
+    $('.colour_alert_box_1').fadeOut();
+  })
+   $('.small_solid_square_frame').click(function() {
       $('.colour_alert_box_1').fadeOut();
-      })
-$('.a_colour').mouseover(function(e) {
-   var currentTarget = $(e.currentTarget);
-      var hex = currentTarget.data("colour");
-      if(colourContext == 1) {
-        $('.colour_1').css("background-color", hex)
-       // $('#color_label_1').text(all_colours[hex])
-      } else { 
-        $('.colour_1 div div').css("background-color", hex)
-        $('.colour_2').css("background-color", hex)
-        
-       // $('#color_label_2').text(all_colours[hex])
-      }
-})
-var colourContext = 1;
-  $('.colour_change').click(function(e) {
+       $('.colour_alert_box_2').fadeOut();
+   })
+  $('.small_solid_square_frame').mouseover(function(e) {
+    var currentTarget = $(e.currentTarget);
+    var hex = currentTarget.data("colour");
+    if(colourContext == 1) {
+      $('.colour_1').css("background-color", hex)
+     $('.color_label_1').text(all_colours[hex].toUpperCase())
+    } else { 
+      $('.colour_1 div div').css("background-color", hex)
+      $('.colour_2').css("background-color", hex)
+      $('.color_label_2').text(all_colours[hex].toUpperCase())
+    }
+  })
   
+  $('.colour_index').click(function(e) {
+    var which = $(e.currentTarget).data("colour")
+    $('.palette').hide();  
+      $('.' + which).show();    
+  })
+
+  $('.big_colour_square_frame').click(function(e) {
     var which = $(e.currentTarget).data("colour");
     colourContext = which;
-    
-      $('#colour_frame_' + which).fadeTo(0.2)
   })
 })
 </script>
