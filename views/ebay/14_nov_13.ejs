@@ -39,7 +39,7 @@ a.casamiento:link, a.casamiento:active, a.casamiento:visited { font-style:underl
 a.casamiento:hover { color:#000; }
 
 .color_label { font:normal 1.2em "OS";padding:0; margin-top:5px; color:#000}
-.colour_change{ display:inline-block;border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0; }
+.colour_change{ border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0; }
 .colour_change:hover { border:1px dotted black;}
 
 .color_square { width:30px;height:30px; cursor:pointer;}
@@ -84,16 +84,28 @@ li {margin-bottom:0.5em;}
 .left_column { float:left;width:680px; }
 .right_column { border-left:1px dotted black;margin-left:680px; text-align:center; min-width:180px;}
 
-.palette { display:none; position:relative; border-top:1px solid black;}
-.palette_6 { display:block;}
+
+.colour_index_right, .colour_index_left {  z-index:100; color:lightgrey; font:normal 6em "OS Light";}
+.colour_index_left:hover, .colour_index_right:hover  { cursor:pointer; color:black; }
+
+/* COLOURS */
 .a_colour { opacity:0.8;text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-left:3px;margin-right:3px;margin-top:6px;}
 .a_colour:hover { opacity:1; border:1px dotted black; cursor:pointer;}
+
+.palette { display:none; position:relative; }
+.palette_2 { display:block;}
+
 .color_square { width:30px;height:30px; cursor:pointer;}
 .selectable:hover { cursor:pointer }
 
+.color_square { width:30px;height:30px; cursor:pointer;}
+.selectable:hover { cursor:pointer }
+.colour_alert_box { display: none}
 .color_label { font:normal 1.2em "OS";padding:0; margin-top:5px; color:#000}
-.colour_change{ border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0; }
+.colour_change{border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0; }
+.colour_alert_box_1, .colour_alert_box_2 { display:none;}
 .colour_change:hover { border:1px dotted black;}
+
 
 /* SPECIFICATIONS */
 
@@ -240,7 +252,11 @@ li {margin-bottom:0.5em;}
       
   </div>
 </div>
+
+
 <%- partial("ebay/colours.ejs", document) %>
+
+
   <div class="spc">
     <div style="margin-bottom:0.5em;height:2em;">
       <div style="float:left"><h1>Card Texture</h1></div>
@@ -353,6 +369,19 @@ li {margin-bottom:0.5em;}
 <script type="text/javascript">
 $(function() {
 
+  $('.colour_change').mouseenter(function(e) {
+    var colour = $(e.currentTarget);
+    var id = colour.data("colour");
+    
+    $('.colour_alert_box_' + id).fadeIn();
+  })
+  
+    $('.colour_alert_box_2').mouseleave(function() {
+      $('.colour_alert_box_2').fadeOut();
+      })
+        $('.colour_alert_box_1').mouseleave(function() {
+      $('.colour_alert_box_1').fadeOut();
+      })
 $('.a_colour').mouseover(function(e) {
    var currentTarget = $(e.currentTarget);
       var hex = currentTarget.data("colour");
@@ -366,9 +395,6 @@ $('.a_colour').mouseover(function(e) {
        // $('#color_label_2').text(all_colours[hex])
       }
 })
-$('.a_colour').click(function(e) {
-  $('.colour_selector').slideUp();  
-})
 var colourContext = 1;
   $('.colour_change').click(function(e) {
   
@@ -376,7 +402,6 @@ var colourContext = 1;
     colourContext = which;
     
       $('#colour_frame_' + which).fadeTo(0.2)
-      $('.colour_selector').slideDown();  
   })
 })
 </script>

@@ -38,7 +38,7 @@ exports.show = function(req, res) {
     }
     doc.hex_colours = _.uniq(colours.hex)
     doc.colours_ref = colours.labels
-    doc.hex_colours = inGroupsOf(doc.hex_colours, 36)
+    doc.hex_colours = inGroupsOf(doc.hex_colours, 16)
             return doc._id == id;
         })
         var without = _.without(documents, current);

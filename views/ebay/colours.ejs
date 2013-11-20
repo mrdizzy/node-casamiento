@@ -8,60 +8,87 @@
   </div>
 
   <div id="colours-shown" style="margin-top:1em;">
-     
-<!--
-    COLOUR LABELS
--->
+ 
+    <div>
+            
+      <table>
+        <tr>
+          <% for(var i = 1; i < (number_of_colours + 1);  i++) { %>
+            
+            <td style="vertical-align:top;width:100%;text-align:left;">
+              <div>
+              
+      <!-- 
+      THE HIDDEN ABSOLUTE DIV IS FIRST 
+      -->
+                <div class="colour_alert_box_<%= i %>" style="position:absolute;width:250px;height:250px;border:1px dotted black;background-color:white;">
+                  <div id="colour_selector_<%= i %>" style="text-align:center;margin:0;padding:0;">
+                    <div class="colour_frame_<%= i %> colour_change" data-colour="<%= i %>">
+                      <div class="colour_<%= i %> color_square" style="width:30px;height:30px;background-color:<%= document["colour_" + i] %>;">
+                      </div>
+                    </div>
+                  </div>
+                  <span id="color_label_<%= i %>" class="color_label"><%= colours_ref[document["colour_" + i]].toUpperCase() %></span>
+                            
+                             
+        <!--
+         COLOUR SELECTOR WHICH IS A 16X16 GRID OF SELECTABLE COLOURS
+        -->
+                      
+                  <div class="colour_selector">
+                      
+                   <% var counter = 0 %>
+                    <% hex_colours.forEach(function(page) { %>
+                      <div class="palette palette_<%= counter %>" style="z-index:100;background-color:white;margin-top:0;padding-top:0;">
+                      <table>
+                        <tr>
+                          <td>
+                            <% if (hex_colours[counter - 1]) { %>
+                             <div class="colour_index colour_index_left" data-colour="palette_<%= counter -1 %>">&laquo;</div>
+                          </td>
 
-    <table>
-      <tr>
-        <% for(var i = 1; i < (number_of_colours + 1);  i++) { %>
-          <td style="vertical-align:top;width:49%">
-            <div id="colour_selector_<%= i %>" style="text-align:center;margin:0;padding:0;">
-              <div class="colour_frame_<%= i %> colour_change" data-colour="<%= i %>">
-                <div class="colour_<%= i %> color_square" style="background-color:<%= document["colour_" + i] %>;">
-                </div>
+                          <% } %>
+                          <td style="width:160px;">
+                            <% page.forEach(function(colour) { %>
+                              <div class="a_colour" data-colour="<%= colour %>">
+                                <div style="background-color:<%= colour %>;margin-bottom:0;padding-bottom:0;margin:0 auto;width:18px;height:18px;">
+                                </div>
+                              </div>
+                            <% }) %>
+                          <td>
+                              
+                            <% if (hex_colours[counter + 1]) { %>
+                              <div class="colour_index colour_index_right" data-colour="palette_<%= 
+                            counter + 1%>">&raquo;</div>
+                            <% } %></td></tr></table>
+
+                              </div>
+                              <% counter = counter + 1 %>
+                             <% }) %>
+                      
+                          </div>
+                                              
+                            </div>
+                                                   
+        <!--
+         ORIGINAL COLOUR LABELS
+        --><div style="border:1px solid transparent;">
+                  <div id="colour_selector_<%= i %>" style="margin:0;padding:0;">
+                      <div class="colour_frame_<%= i %> colour_change" data-colour="<%= i %>">
+                          <div class="colour_<%= i %> color_square" style="width:30px;height:30px;background-color:<%= document["colour_" + i] %>;">
+                          </div>
+                      </div>
+                  </div>
+                  <span id="color_label_<%= i %>" class="color_label"><%= colours_ref[document["colour_" + i]].toUpperCase() %></span>
+                  </div>
               </div>
-          
-              <span id="color_label_<%= i %>" class="color_label"><%= colours_ref[document["colour_" + i]] %></span>
-            </div>
+              </div>
           </td>
-        <% } %>
-      </tr>
-    </table>
-    
-<!--
-  COLOUR SELECTOR
-  -->
-    
-  <div class="colour_selector" style="display:none">
-    
-   <% var counter = 0 %>
-    <% hex_colours.forEach(function(page) { %>
-    <div class="palette palette_<%= counter %>" style="z-index:100;background-color:white;margin-top:0;padding-top:0;">
-<table><tr><td>
-<% if (hex_colours[counter - 1]) { %>
-<div class="colour_index colour_index_left" data-colour="palette_<%= 
-counter -1 %>">&laquo;</div>
-</td>
+      <% } %>
+    </tr>
+  </table>
 
-<% } %>
-<td>
-        <% page.forEach(function(colour) { %>
-        <div class="a_colour" data-colour="<%= colour %>">
-       <div style="background-color:<%= colour %>;margin-bottom:0;padding-bottom:0;margin:0 auto;width:18px;height:18px;"></div>
-       </div>
-        <% }) %>
-        <td>
-        
-<% if (hex_colours[counter + 1]) { %>
-<div class="colour_index colour_index_right" data-colour="palette_<%= 
-counter + 1%>">&raquo;</div>
- <% } %></td></tr></table>
 
-        </div>
-        <% counter = counter + 1 %>
-    <% }) %>
-  </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
