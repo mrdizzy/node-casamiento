@@ -36,6 +36,7 @@ exports.show = function(req, res) {
     doc['background_' + i] = doc['background-' + i]
         }
     }
+    
     doc.hex_colours = _.uniq(colours.hex)
     doc.colours_ref = colours.labels
     doc.hex_colours = inGroupsOf(doc.hex_colours, 16)
@@ -48,7 +49,7 @@ exports.show = function(req, res) {
         console.log(without);
         current.quantity = req.query.quantity || 1;
         current.auction = req.query.auction;
-        res.render('ebay/14_nov_13.ejs', {
+        res.render('ebay/16_sep_13.ejs', {
             layout: false,
             locals: current
         });
