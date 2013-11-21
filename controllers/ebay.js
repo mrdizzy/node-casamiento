@@ -49,7 +49,7 @@ exports.show = function(req, res) {
         console.log(without);
         current.quantity = req.query.quantity || 1;
         current.auction = req.query.auction;
-        res.render('ebay/16_sep_13.ejs', {
+        res.render('ebay/14_nov_13.ejs', {
             layout: false,
             locals: current
         });
