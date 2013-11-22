@@ -12,7 +12,7 @@ document.write("</" + az + bz + cz + ">");
 .odd_slide_background_container, .even_slide_background_container { width:339px; height:217px; margin-bottom:1px;margin-right:1px;background-color:<%= colour_1 %>}
 .odd_slide_background_container {  float:left; }
 .even_slide_background_container  { float:right; }
-
+.slide_background_container { width:339px;height:217px;}
 #slide5 h6 { width:95%;margin:0 auto;}
 
 .intro p.first:first-letter { font:normal 5.5em TP;padding-right:0.05em;float:left;line-height:0.8em;}
@@ -305,8 +305,47 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 </div>
 <div style="clear:both;"></div>
 </div>
+<script type="text/template" id="colour_template">
 
+                    <% var counter = 0 %>
+                    <% hex_colours.forEach(function(page_for_palette) { %>
+                      <div class="palette palette_<%= counter %>">
+                        <table>
+                          <tr>                            
+                            <% if (hex_colours[counter - 1]) { %>
+                              <td>
+                                <div class="colour_index colour_index_left" data-colour="palette_<%= counter -1 %>">&laquo;</div>
+                              </td>
+                            <% } %>
+                            
+                            <td style="width:160px;">
+                              <% page_for_palette.forEach(function(hex) { %>
+                                <div class="small_solid_square_frame" data-colour="<%= hex %>">
+                                  <div class="small_solid_colour_square" style="background-color:<%= hex %>">
+                                  </div>
+                                </div>
+                              <% }) %>
+                            </td>
+                            
+                              
+                            <% if (hex_colours[counter + 1]) { %>
+                              <td>
+                                <div class="colour_index colour_index_right" data-colour="palette_<%= 
+                            counter + 1%>">&raquo;</div>
+                              </td>
+                            <% } %>
+                           
+                          </tr>
+                        </table>
+
+                      </div>
+                      <% counter = counter + 1 %>
+                    <% }) %>
+</script>
 <script type="text/javascript">
+
+var grid_colours = $('#colour_template').html();
+$('.colour_grid_container').append(grid_colours);
 $(function() {
   var all_colours = <%- JSON.stringify(colours_ref) %>
   var colourContext = 1;

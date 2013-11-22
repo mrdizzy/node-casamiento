@@ -73,41 +73,6 @@
                       
                   <div class="colour_grid_container">
                       
-                    <% var counter = 0 %>
-                    <% hex_colours.forEach(function(page_for_palette) { %>
-                      <div class="palette palette_<%= counter %>">
-                        <table>
-                          <tr>                            
-                            <% if (hex_colours[counter - 1]) { %>
-                              <td>
-                                <div class="colour_index colour_index_left" data-colour="palette_<%= counter -1 %>">&laquo;</div>
-                              </td>
-                            <% } %>
-                            
-                            <td style="width:160px;">
-                              <% page_for_palette.forEach(function(hex) { %>
-                                <div class="small_solid_square_frame" data-colour="<%= hex %>">
-                                  <div class="small_solid_colour_square" style="background-color:<%= hex %>">
-                                  </div>
-                                </div>
-                              <% }) %>
-                            </td>
-                            
-                              
-                            <% if (hex_colours[counter + 1]) { %>
-                              <td>
-                                <div class="colour_index colour_index_right" data-colour="palette_<%= 
-                            counter + 1%>">&raquo;</div>
-                              </td>
-                            <% } %>
-                           
-                          </tr>
-                        </table>
-
-                      </div>
-                      <% counter = counter + 1 %>
-                    <% }) %>
-                      
                   </div>               
                 </div>
                                                    
