@@ -1,11 +1,16 @@
 <html>
 <head></head>
 
-<body>
-    <ul>
-        <% documents.forEach(function(product) { %>
+<body>  <ul>
+        <% for (var product_type in documents) { %>
+      
+                <li><%= product_type %></li>
+                <ul>
+                       <% documents[product_type].forEach(function(product) { %>
         <li><a href="/ebay/<%= product._id %>"><%= product._id %></a></li>
         <% }) %>
-    </ul>
+        </ul>
+        <% } %>
+          </ul>
 </body>
 </html>
