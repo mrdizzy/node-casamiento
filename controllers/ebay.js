@@ -3,17 +3,12 @@ var db = require('./../config/db').test_ebay,
     colours = require('./../config/colours')
     inGroupsOf = require('./../lib/in_groups_of');
 
-//casamiento.co.uk/ebayplaces -> exports.places -> renders all name place cards on one page
-// casamiento.co.uk/ebay/product-id -> exports.show -> renders the product id
-// casamiento.co.uk/ebay_single_places/product-id -> exports.name_place_single -> renders the product id
-
-// Route: /ebay/id
-// Renders the view found in catalog/
+// Route: /ebay/:id
+// This renders an ebay product view by looking in the /views/ebay/product_type folder for its template as different product types will need different rendering
 exports.show = function(req, res) {
-
-    var theme = req.params.id.split("-")[0],
-    product_type = req.params.id.split("-")[1];
-        var id = req.params.id;
+    var id = req.params.id,
+    theme = id.split("-")[0],
+    product_type = id.split("-")[1];
     
     db.view('products/all', {
         startkey: theme,
@@ -23,7 +18,7 @@ exports.show = function(req, res) {
         var documents = docs.toArray();
         var current = _.find(documents, function(doc) {
         doc.document = doc;
-            for(var i=0;i < 6; i++) {
+        for(var i=0;i < 6; i++) {
         if (doc['background-' + i]) {
             var compiled = _.template(doc['background-' + i]);
     doc['background-' + i] = compiled({colour: doc.colour_2});
