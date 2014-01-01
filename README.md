@@ -1,3 +1,12 @@
+DEPENDENCIES USED
+=================
+
+This is a good article about dependencies:
+
+http://blog.nodejitsu.com/package-dependencies-done-right
+
+Node uses Semantic versioning in the format 1.2.3 where 1 is a major version that is not backwards compatible, 2 is a minor version and 3 is a patch version. 
+
 /admin
     - Static page linking to the following pages:
     
