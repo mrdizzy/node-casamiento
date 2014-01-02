@@ -2,7 +2,7 @@ var db = require('./../config/db').test_ebay;
 
 exports.index = function(req, res) {
     db.view('all/type', { key: "theme" },  function(err, docs) {
-        console.log(err, docs)
+        res.render('admin/themes', {themes: docs.toArray(), layout:"admin_layout" })
     })
 }
 

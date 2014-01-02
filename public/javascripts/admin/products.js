@@ -1,63 +1,9 @@
-var ThemeView = Backbone.View.extend({
-  tagName: 'li',
-  events: {
-      'click .delete': 'destroy'
-  },
-  destroy: function(e) {
-      e.preventDefault();
-      this.model.destroy();
-      this.remove();  
-  },
-  render: function() {
-      this.$el.html(this.model.get("name") + " | <span class='delete'>Delete</span>");
-      return this;
-  }
-})
+var ProductTypeSelectionView = SelectionView.extend({attributes: { name: "product_type"}}) 
+var ThemeSelectionView = SelectionView.extend({attributes: { name: "theme"}})
 
-var ThemeAdminView = Backbone.View.extend({
-  el: $('#themes_admin'),
-  initialize: function() {
-    this.collection.on("add", this.render, this);  
-  },
-  events: {
-    'click input[type=submit]': 'addTheme'            
-  },
-  addTheme: function(e) {
-    e.preventDefault();
-    var name = this.$('input[name=new_theme]').val();
-    var description = this.$('textarea[name=description]').val();
-    this.collection.create({name: name, description: description}, { wait:true })
-  },
-  render: function() {
-    this.$('#theme_list').empty();
-    this.collection.forEach(function(theme) {
-      this.$('#theme_list').append(new ThemeView({model:theme}).render().el)
-    }, this)
-     
-    return this;
-  }
-})
 
-// A view that renders a drop-down select menu from the models in a Backbone collection
-// Inherit from this View and define attributes { name: name_of_select_form }
-var SelectionView = Backbone.View.extend({
-  initialize: function() {
-    this.collection.on('add', this.render, this)  
-  },
-  tagName: "select",
-  render: function() {
-    this.$el.empty();
-    this.collection.forEach(function(model) {
-        var model = model.toJSON()
-        this.$el.append("<option value='" + model._id + "'>" + model.name + "</option>")
-    },this)
-    return this;
-  }
-})
 
-var ProductTypesView = SelectionView.extend({attributes: { name: "product_type"}}) 
-var ThemesView = SelectionView.extend({attributes: { name: "theme"}})
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var AttachView = Backbone.View.Attachment.extend({
   initialize: function() {
     this.model.on("change", this.render, this)
@@ -70,20 +16,26 @@ var AttachView = Backbone.View.Attachment.extend({
   }
 })
 
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var ProductView = Backbone.View.extend({
   events: {
-      'click': 'select'
+    'click': 'select'
   },
   select: function() {
-      var cpv = new CurrentProductView({model:this.model, attachmentView: AttachView});
-      $('#cpv').html(cpv.render().el)
+    var cpv = new CurrentProductView({model:this.model, attachmentView: AttachView});
+    $('#cpv').html(cpv.render().el)
   },
   render: function() {
-      this.$el.html(this.model.get("_id"));
-      return this;
+    this.$el.html(this.model.get("_id"));
+    return this;
   }
 });
 
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var ProductsView = Backbone.View.extend({
   initialize: function() {
     this.collection.on("add", this.render, this)  
@@ -98,8 +50,7 @@ var ProductsView = Backbone.View.extend({
     this.collection.add(product);
     var cpv = new CurrentProductView({model:product, attachmentView: AttachView});
     console.log("done")
-    $('#cpv').html(cpv.render().el)
-   
+    $('#cpv').html(cpv.render().el)   
   },
   render: function() {
     this.$el.empty();
@@ -114,34 +65,57 @@ var ProductsView = Backbone.View.extend({
   }
 });
 
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var BackgroundView = Backbone.View.extend({
+  render: function() {
+      // Divs for a background
+      var compiled = _.template(this.model.divs);
+      var divs = compiled({colour: this.model.colour_2});
+      
+      // Render background-coloured image
+      var result = Handlebars.compile($('#image_backgrounds').html(), {noEscape: true})(this.model);
+      this.$el.html(result)
+      return this
+  }
+  
+})
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var CurrentProductView = Backbone.View.CouchDB.extend({
   initialize: function() {
     this.model.on("destroy", this.remove, this) 
     this.model.on("sync", this.render, this)
-    this.model.on("change:colour_1", this.updateAllBackgrounds, this)
-    
+    this.model.on("change:colour_1", this.updateAllBackgrounds, this)    
     this.model.on("change:colour_2", this.updateAllBackgrounds, this)
+    this.model.on("change:number_of_colours", this.render, this)
     this.model.on("change:background-1", this.updateBackground, this) 
     this.model.on("change:background-2", this.updateBackground, this)             
     this.model.on("change:background-3", this.updateBackground, this) 
     this.model.on("change:background-4", this.updateBackground, this) 
-    },
-    updateAllBackgrounds: function(e, f,g) {
-      for(att in e.changed) {
-      
-        if(att == "colour_2") {
-       
-      this.$('.background_container').css("background-color",  this.model.get(att))
-       
-      } else {
-         this.$('.background_container div').css("background-color", this.model.get(att))
-      }
-      
-  }
-
+  },    
+  events: { 
+    'click select[name=colour_1] option': 'selectColour',
+    'click select[name=colour_2] option': 'selectColour',
+    'click input[type=submit]': 'sendForm',
+    'blur input[name=number_of_colours]': 'changeNumberOfColours',
+    'click .addmore': 'addAttachment',
+    'click .delete': 'destroy',
+    'blur .change_background': 'changeBackground'
+  },
+  updateAllBackgrounds: function(e, f,g) {
+    for(att in e.changed) {
+      if(att == "colour_1") {
+        this.$('.background_container').css("background-color",  this.model.get(att))       
+      } 
+      else {
+        this.$('.background_container div').css("background-color", this.model.get(att))
+      }      
+    }
   },
   updateBackground: function(e, f,g) {
-  
     for(att in e.changed) {
       var attach_number = att.split("-")[1]
       var element = "background_" + this.model.id + "_" + attach_number;
@@ -153,19 +127,24 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
       this.$('#' +element).append(divs)       
     }
   },
-  events: { 
-    'click select[name=colour_1] option': 'selectColour',
-    'click select[name=colour_2] option': 'selectColour',
-    'click input[type=submit]': 'sendForm',
-    'click .addmore': 'addMore',
-    'click .delete': 'destroy',
-    'blur .change_background': 'changeBackground'
+  // When the number of colours in a design are changed, this causes the current product
+  // view to be re-rendered. If there is only one colour in the design, there is no need
+  // to create and render background divs for the second colour, and there is only 
+  // one drop-down colour-select menu. 
+  
+  // TODO: Stop entire view from re-rendering, only re-render the colour drop-down selection
+  // boxes and the attachments
+  changeNumberOfColours: function(e) {  
+    this.model.set(Backbone.Syphon.serialize(this))
   },
   selectColour: function(e) {
     var option = $(e.currentTarget);
-    var parent = option.parent()
+    var parent = option.parent() // name of the select form, ie the colour to change 
     this.model.set(parent.attr('name'), option.val())
   },
+  
+  // This is called when the textarea box containing the divs that represent the second background
+  // colour is changed. 
   changeBackground: function(e) {
     var id = $(e.currentTarget).attr('id');
     var val = $(e.currentTarget).val()
@@ -175,41 +154,40 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   destroy: function() {
     this.model.destroy();  
   },
-  addMore: function() {
-    this.addAttachment();
-  },
   sendForm: function(e) {
-      e.preventDefault();
-     this.model.set(Backbone.Syphon.serialize(this))
-     this.model.save(this.model.attributes, {success: function(model, response, options) {
-       console.log("Success:", response)
-     }, 
-     error: function(model, xhr, options) {
-       console.log("error", model, xhr, options)
-     }})
+    e.preventDefault();
+    this.model.set(Backbone.Syphon.serialize(this))
+    this.model.save(this.model.attributes, {success: function(model, response, options) {
+      console.log("Success:", response)
+    }, 
+    error: function(model, xhr, options) {
+      console.log("error", model, xhr, options)
+    }})
   },
   render: function() {
-  var modelToJSON = this.model.toJSON();
-  modelToJSON.hex_colours = colourList;
-  console.log($('#current_product_form').html())
+    var modelToJSON = this.model.toJSON();
+    modelToJSON.hex_colours = colourList;
     var result = Handlebars.compile($('#current_product_form').html())(modelToJSON);
     this.$el.html(result);
     
     // Select boxes for product and theme
-    this.$('form').append(themes_view)
-    this.$('form').append(product_types_view)
-    
+    this.$('form').append(theme_selection_view)
+    this.$('form').append(product_type_selection_view)
     
     // Render product images with coloured background divs
     this.model.attachments_order.forEach(function(attachment) {
-    
-      var divs = this.model.get("background-" + attachment);
-      var compiled = _.template(divs);
-      var divs = compiled({colour: this.model.get("colour_2")});
-      
-      // Render background-coloured image
-      var result = Handlebars.compile($('#image_backgrounds').html(), {noEscape: true})({id: this.model.id, attachment: attachment, first_colour:this.model.get("colour_1"), divs: divs, background_html: this.model.get("background-"+attachment)});
-    this.$el.append(result);
+      var attachment_model = {
+        id: this.model.id, 
+        attachment: attachment, 
+        number_of_colours: this.model.get("number_of_colours"), 
+        first_colour:this.model.get("colour_1"), 
+        second_colour: this.model.get("colour_2"),
+        divs: this.model.get("background-" + attachment), 
+        background_html: this.model.get("background-"+attachment)
+       }
+    var background_view = new BackgroundView({model: attachment_model})
+      var result = background_view.render().el
+      this.$el.append(result);
     }, this)
     
     // Build attachments

@@ -1,3 +1,6 @@
+
+<script src="/javascripts/colours.js"></script>
+
 <!-- 
     PRODUCT FORM TEMPLATE
 -->
@@ -19,6 +22,9 @@
         <p><label for="price">Description:</label></p>
         <p><textarea name="description">{{description}}</textarea></p>
         
+        <p><label for="number_of_colours">Number of colors:</label></p>
+        <p><input type="text" name="number_of_colours" value="{{number_of_colours}}"></input></p>
+        
         <p><label for="buy_it_now_id">Buy-it-now listing item number:</label></p>
         <p><input type="text" name="buy_it_now_id" value="{{buy_it_now_id}}"></input></p>
         
@@ -27,19 +33,23 @@
         
       </div>
       
+      <!-- COLOUR_SELECTORS -->
+      
       <div style="float:right;width:50%;">
-      <div style="width:50%;float:left;">
-      <div style="width:30px;height:30px;background-color:{{colour-1}};border:1px solid black;"></div>
-        <select style="font-size:1.5em;" size="15" name="colour_1">
+        <div style="width:50%;float:left;">
+          <div style="width:30px;height:30px;background-color:{{colour-1}};border:1px solid black;"></div>
+          <select style="font-size:1.5em;" size="15" name="colour_1">
             {{options_selected hex_colours colour_1}}
-        </select>
+          </select>
         </div>
+        {{#is number_of_colours 2}}
         <div style="width:50%;float:right;">
-      <div style="width:30px;height:30px;background-color:{{colour-2}};border:1px solid black;"></div>
-        <select style="font-size:1.5em;" size="15" name="colour_2">
+          <div style="width:30px;height:30px;background-color:{{colour-2}};border:1px solid black;"></div>
+          <select style="font-size:1.5em;" size="15" name="colour_2">
             {{options_selected hex_colours colour_2}}
-        </select>
+          </select>
         </div>
+        {{/is}}
       </div>
       
       <input type="submit" style="clear:both;">Submit</a>
@@ -51,9 +61,11 @@
 -->
   <script type="text/template" id="image_backgrounds">
   <div style="clear:both;width:500px;height:319px;background-color:{{first_colour}};background-image:url('new.png');" id="background_{{id}}_{{attachment}}" class="background_container">
-    <img style="width:500px;position:absolute;" src="/products/{{id}}/attachments/medium-{{attachment}}" />{{divs}}
+    <img style="width:500px;position:absolute;" src="/products/{{id}}/attachments/medium-{{attachment}}" />{{#is number_of_colours 2}}{{divs}}{{/is}}
   </div>
+  {{#is number_of_colours 2}}
   <textarea rows="5" cols="100" class="change_background" id="{{id}}-{{attachment}}">{{background_html}}</textarea>
+  {{/is}}
   </script>
 
 
@@ -61,19 +73,6 @@
     .attachment { text-align:center;}
 </style>
 
-<div id="themes_admin" style="float:left;width:25%;">
-<h3>Themes</h3>
-
-<ul id="theme_list"></ul>
-
-<h2 style="border-top:1px solid black;padding-top:10px;">Add new theme</h2>
-    <form>
-        <p>Theme name:</p><p><input name="new_theme"></input></p>
-        <p>Theme description:</p><p><textarea name="description"></textarea></p>
-        <input type="submit"></input>
-    </form>
-
-</div>
 <div id="products_container">
 <h3>Products</h3>
 <div id="products" style="float:right;width:75%;"></div>
@@ -99,23 +98,17 @@ Handlebars.registerHelper('options_selected', function(context, test) {
 
     return new Handlebars.SafeString(ret);
 });
-  var colourList = <%- JSON.stringify(colours) %>
-  var results = _.map(colourList, function(colour) {
-      var split = colour.split(" ");
-      var hex = split[0];
-      var label = split[1]
-      return hex
-  })
-  colourList = results;
-  var themes_view, product_types_view
+  var colourList = casamiento_colours;
+  var product_type_selection_view, theme_selection_view;
+  
   $(function() {    
-    var themes = new Themes(<%- JSON.stringify(themes) %>)
-    var product_types = new ProductTypes(<%- JSON.stringify(product_types) %>);
-    
-    themes_view = new ThemesView({collection:themes}).render().el    
-    product_types_view = new ProductTypesView({collection:product_types}).render().el    
-      
-    new ThemeAdminView({collection:themes}).render();
+    // Populate product_types and themes for use in the SelectionView menus below
+    var product_types = new ProductTypes(<%- JSON.stringify(product_types) %>),
+    themes = new Themes(<%- JSON.stringify(themes) %>);
+       
+    // Selection view drop down menus
+    product_type_selection_view = new ProductTypeSelectionView({collection:product_types}).render().el    
+    theme_selection_view = new ThemeSelectionView({collection:themes}).render().el 
       
     var products = new Products( <%- JSON.stringify(products) %>, {parse: true} );
     
@@ -127,5 +120,5 @@ Handlebars.registerHelper('options_selected', function(context, test) {
 </script>
 
 <script src="/javascripts/admin/products.js"></script>
-
+<script src="/javascripts/admin/themes.js"></script>
 <script src="/javascripts/admin/models.js"></script>

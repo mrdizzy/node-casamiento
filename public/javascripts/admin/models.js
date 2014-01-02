@@ -20,18 +20,3 @@ var Products = Backbone.Collection.extend({
     url: "/products"
 });
   
-var Theme = Backbone.Model.CouchDB.extend({
-  toJSON: function() {
-    var json = Backbone.Model.CouchDB.prototype.toJSON.apply(this, arguments)
-    
-    // Set the id to the value of theme_name with spaces replaced by underscores and all in lower case if not already been set
-    // e.g. Birds of Paradise -> birds_of_paradise
-    json._id = json._id || this.get("name").replace(/\s+/g, '_').toLowerCase();
-    return json;
-  }
-})
-
-var Themes = Backbone.Collection.extend({
-  model: Theme,
-  url: "/themes"
-})

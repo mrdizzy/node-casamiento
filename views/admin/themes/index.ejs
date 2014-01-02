@@ -1,0 +1,23 @@
+<div id="themes_admin" style="float:left;width:25%;">
+<h3>Themes</h3>
+
+<ul id="theme_list"></ul>
+
+<h2 style="border-top:1px solid black;padding-top:10px;">Add new theme</h2>
+	<form>
+		<p>Theme name:</p><p><input name="new_theme"></input></p>
+		<p>Theme description:</p><p><textarea name="description"></textarea></p>
+		<input type="submit"></input>
+	</form>
+
+</div>
+
+
+<script src="/javascripts/admin/themes.js"></script>
+<script type="text/javascript">
+
+	var themes = new Themes(<%- JSON.stringify(themes) %>)
+	
+	var themes_view = new ThemesView({collection:themes}).render().el 
+	new ThemeAdminView({collection:themes}).render();
+	</script>
