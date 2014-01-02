@@ -70,31 +70,58 @@ var ProductsView = Backbone.View.extend({
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var BackgroundView = Backbone.View.extend({
+  initialize: function(options) {
+    this.attachment = options.attachment
+    this.model.on("change:background-" + this.attachment, this.updateBackground, this)
+    this.model.on("change:colour_1", this.updateFirstColour, this)    
+    this.model.on("change:colour_2", this.updateSecondColour, this)
+  },
+  events: {
+    'blur .change_background': 'changeBackground'
+  },
+
+  // This is called when the textarea box containing the divs that represent the second background colour is changed. 
+  changeBackground: function(e) {
+    var val = $(e.currentTarget).val()
+    this.model.set("background-" + this.attachment, val)
+  },
+  
+  updateFirstColour: function(e, f,g) {
+    this.$('.background_container').css("background-color",  this.model.get("colour_1"))       
+  },
+  updateSecondColour: function() {
+    this.$('.background_container div').css("background-color", this.model.get("colour_2"))
+  },
+  updateBackground: function(e, f,g) {
+      this.$('div div').remove();
+      var divs = $(this.model.get("background-" + this.attachment));
+      divs.css('background-color', this.model.get("colour_2"))
+      this.$('div').append(divs)  
+  },
   render: function() {
-      // Divs for a background
-      var compiled = _.template(this.model.divs);
-      var divs = compiled({colour: this.model.colour_2});
-      
+    var attach_model = this.model.toJSON();
+    
+    attach_model.current_attachment = this.attachment;
+    attach_model.url = "/products/" +  attach_model._id + "/attachments/medium-" + attach_model.current_attachment
+    attach_model.divs = attach_model["background-" + this.attachment]
       // Render background-coloured image
-      var result = Handlebars.compile($('#image_backgrounds').html(), {noEscape: true})(this.model);
-      this.$el.html(result)
+    var result = Handlebars.compile($('#image_backgrounds').html(), {noEscape: true})(attach_model);
+    this.$el.html(result)
+      //update colours
+      this.$('.first_colour').css('background-color', this.model.get("colour_1"))
+    this.$('.background_container div').css("background-color", this.model.get("colour_2"))
       return this
   }
-  
 })
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var CurrentProductView = Backbone.View.CouchDB.extend({
   initialize: function() {
     this.model.on("destroy", this.remove, this) 
     this.model.on("sync", this.render, this)
-    this.model.on("change:colour_1", this.updateAllBackgrounds, this)    
-    this.model.on("change:colour_2", this.updateAllBackgrounds, this)
     this.model.on("change:number_of_colours", this.render, this)
-    this.model.on("change:background-1", this.updateBackground, this) 
-    this.model.on("change:background-2", this.updateBackground, this)             
-    this.model.on("change:background-3", this.updateBackground, this) 
-    this.model.on("change:background-4", this.updateBackground, this) 
   },    
   events: { 
     'click select[name=colour_1] option': 'selectColour',
@@ -103,29 +130,6 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     'blur input[name=number_of_colours]': 'changeNumberOfColours',
     'click .addmore': 'addAttachment',
     'click .delete': 'destroy',
-    'blur .change_background': 'changeBackground'
-  },
-  updateAllBackgrounds: function(e, f,g) {
-    for(att in e.changed) {
-      if(att == "colour_1") {
-        this.$('.background_container').css("background-color",  this.model.get(att))       
-      } 
-      else {
-        this.$('.background_container div').css("background-color", this.model.get(att))
-      }      
-    }
-  },
-  updateBackground: function(e, f,g) {
-    for(att in e.changed) {
-      var attach_number = att.split("-")[1]
-      var element = "background_" + this.model.id + "_" + attach_number;
-      this.$('#' + element + ' div').remove();
-      
-      var divs = this.model.get("background-" + attach_number);
-      var compiled = _.template(divs);
-      var divs = compiled({colour: this.model.get("colour_2")});
-      this.$('#' +element).append(divs)       
-    }
   },
   // When the number of colours in a design are changed, this causes the current product
   // view to be re-rendered. If there is only one colour in the design, there is no need
@@ -141,15 +145,6 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     var option = $(e.currentTarget);
     var parent = option.parent() // name of the select form, ie the colour to change 
     this.model.set(parent.attr('name'), option.val())
-  },
-  
-  // This is called when the textarea box containing the divs that represent the second background
-  // colour is changed. 
-  changeBackground: function(e) {
-    var id = $(e.currentTarget).attr('id');
-    var val = $(e.currentTarget).val()
-    var attachment = id.split("-")[2]
-    this.model.set("background-" + attachment, val)
   },
   destroy: function() {
     this.model.destroy();  
@@ -176,24 +171,13 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     
     // Render product images with coloured background divs
     this.model.attachments_order.forEach(function(attachment) {
-      var attachment_model = {
-        id: this.model.id, 
-        attachment: attachment, 
-        number_of_colours: this.model.get("number_of_colours"), 
-        first_colour:this.model.get("colour_1"), 
-        second_colour: this.model.get("colour_2"),
-        divs: this.model.get("background-" + attachment), 
-        background_html: this.model.get("background-"+attachment)
-       }
-    var background_view = new BackgroundView({model: attachment_model})
+      var background_view = new BackgroundView({model: this.model, attachment: attachment})
       var result = background_view.render().el
       this.$el.append(result);
     }, this)
     
     // Build attachments
-    this.$el.append("<table>")
-    this.$el.append(this.buildAttachments({groupEl: 'tr'}))
-    this.$el.append("</table>")
+    this.$el.append("<table>" + this.buildAttachments({groupEl: 'tr'}) + "</table>")
     this.$el.append("<a class='addmore'>Add more</a>")
     this.$el.append("<a class='delete'>Delete</a>" )
     return this;
