@@ -79,14 +79,12 @@ var BackgroundView = Backbone.View.extend({
   events: {
     'blur .change_background': 'changeBackground'
   },
-
   // This is called when the textarea box containing the divs that represent the second background colour is changed. 
   changeBackground: function(e) {
     var val = $(e.currentTarget).val()
     this.model.set("background-" + this.attachment, val)
   },
-  
-  updateFirstColour: function(e, f,g) {
+  updateFirstColour: function() {
     this.$('.background_container').css("background-color",  this.model.get("colour_1"))       
   },
   updateSecondColour: function() {
@@ -107,9 +105,8 @@ var BackgroundView = Backbone.View.extend({
       // Render background-coloured image
     var result = Handlebars.compile($('#image_backgrounds').html(), {noEscape: true})(attach_model);
     this.$el.html(result)
-      //update colours
-      this.$('.first_colour').css('background-color', this.model.get("colour_1"))
-    this.$('.background_container div').css("background-color", this.model.get("colour_2"))
+      this.updateFirstColour();
+      this.updateSecondColour();
       return this
   }
 })
