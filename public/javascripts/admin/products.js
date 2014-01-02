@@ -49,7 +49,6 @@ var ProductsView = Backbone.View.extend({
     
     this.collection.add(product);
     var cpv = new CurrentProductView({model:product, attachmentView: AttachView});
-    console.log("done")
     $('#cpv').html(cpv.render().el)   
   },
   render: function() {
@@ -105,9 +104,9 @@ var BackgroundView = Backbone.View.extend({
       // Render background-coloured image
     var result = Handlebars.compile($('#image_backgrounds').html(), {noEscape: true})(attach_model);
     this.$el.html(result)
-      this.updateFirstColour();
-      this.updateSecondColour();
-      return this
+    this.updateFirstColour();
+    this.updateSecondColour();
+    return this
   }
 })
 
@@ -148,6 +147,8 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   },
   sendForm: function(e) {
     e.preventDefault();
+    // Backbone.Syphon serializes a Backbone view into a JavaScript object. See:
+    // https://github.com/derickbailey/backbone.syphon/
     this.model.set(Backbone.Syphon.serialize(this))
     this.model.save(this.model.attributes, {success: function(model, response, options) {
       console.log("Success:", response)
@@ -158,11 +159,13 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   },
   render: function() {
     var modelToJSON = this.model.toJSON();
+    
+    // colourList is defined globally and is an array of hex colours, sorted by hue
     modelToJSON.hex_colours = colourList;
     var result = Handlebars.compile($('#current_product_form').html())(modelToJSON);
     this.$el.html(result);
     
-    // Select boxes for product and theme
+    // Drop-down select-option menus for product and theme
     this.$('form').append(theme_selection_view)
     this.$('form').append(product_type_selection_view)
     
