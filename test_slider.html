@@ -1,0 +1,22 @@
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/noUiSlider/3.1.1/nouislider.space.min.css" />
+<script src="http://cdnjs.cloudflare.com/ajax/libs/noUiSlider/3.1.1/jquery.nouislider.min.js"></script>
+</head>
+<body>
+<div class="slider" style="width:100%">sss
+
+</div>
+</body>
+<script>
+$(function() {
+$(".slider").noUiSlider({
+	range: [20, 100]
+   ,start: [40, 80]
+   ,step: 20
+});
+console.log("done")
+})
+</script>
+</html>
