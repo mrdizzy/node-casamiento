@@ -67,8 +67,11 @@ function getProduct(req, res,id,cart) {
     }
     document.document = document
     document.hex_colours = _.uniq(colours.hex)
+    var new_hex = _.map(document.hex_colours, function(hex) {
+        return { hex: hex, name: colours.labels[hex]}
+    })
     document.colours_ref = colours.labels
-    document.hex_colours = inGroupsOf(document.hex_colours, 24)
+    document.hex_colours = new_hex;
               
        // res.format({
         //    json: function() {

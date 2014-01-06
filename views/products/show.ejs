@@ -1,5 +1,6 @@
+<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js"></script>
+<script type="text/javascript" src="/javascripts/products/show.js"></script>
 
-    <script type="text/javascript" src="/javascripts/products/show.js"></script>
 <link rel="stylesheet" type="text/css" href="/stylesheets/product.css">
 
 <style type="text/css">
@@ -43,10 +44,85 @@
     #slide4 { width: inherit; height:auto;}
     #slide5 .shell { display:none;}
     #slide5 h6 { width:95%; padding:0;margin:0 auto;}
-    
   }
 </style>
 
+<style type="text/css">
+
+
+.big_colour_square_frame {border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0; }
+
+  .big_colour_square_frame:hover { border:1px dotted black;}
+  .big_colour_square { width:30px;height:30px; cursor:pointer;}
+  
+  .text_label_for_colour { font:normal 1.2em "OS";padding:0; margin-top:5px; color:#000}
+
+.colour_alert_box { position:absolute;width:250px;height:250px;border:1px dotted black;background-color:white; display:none;}
+.colour_selector_box { text-align:center;margin:0;padding:0.25em; }
+
+.palette { z-index:100;background-color:white;margin-top:0;padding-top:0; }
+
+.small_solid_square_frame { opacity:0.8;text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-left:5px;margin-right:5px;margin-top:6px;}
+.small_solid_square_frame:hover { opacity:1; border:1px dotted black; cursor:pointer;}
+
+.small_solid_colour_square { margin-bottom:0;padding-bottom:0;margin:0 auto;width:18px;height:18px;}
+
+.colour_index_right, .colour_index_left {  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index:100; color:lightgrey; font:normal 6em "OS Light";}
+  
+  .colour_index_right, .colour_index_left {  }
+  .colour_index_left:hover, .colour_index_right:hover  { cursor:pointer; color:black; }
+
+.palette { display:none; position:relative; }
+.palette_2 { display:block;}
+
+</style>
+
+<script type="text/template" id="colour_label_view">
+  <div style="padding:0.5em;">
+        
+    <div class="colour_alert_box">
+      <div class="colour_selector_box">
+        <div class="big_colour_square_frame">
+          <div class="big_colour_square" style="background-color:{{hex}};"></div>
+        </div>
+      </div>
+      <span class="text_label_for_colour">{{hex}}</span>
+    </div>
+    <div style="border:1px solid transparent;">
+        <div class="visible_colours big_colour_square_frame">
+          <div class="big_colour_square" style="background-color:{{hex}};"></div>
+        </div>
+      
+      <span class="text_label_for_colour">{{hex}}</span>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="colour_grid">
+<div>
+  <table>
+    <tr>
+    <td>
+      <div class="colour_index colour_index_left">&laquo;</div>
+    </td>
+
+    <td style="width:160px;"  class="colour_grid_container">
+    
+    </td>
+    
+    <td>
+      <div class="colour_index colour_index_right">&raquo;</div>
+    </td>
+    </tr>
+  </table>
+</div>
+</script>
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
 
 <div id="product_page">
@@ -107,7 +183,31 @@
 
   <div class="product_type spc"><img src="/gfx/product_types/small/name_place_small.png" style="width:130px;"></div>
 
-<%- partial("partials/colours.ejs", { locals: document }) %>
+
+<!-- 
+
+  COLOURS 
+
+-->
+
+<div  class="spc" id="step_1">
+    <div style="margin-bottom:0.5em;height:2em;">
+  <div style="float:left"><h1>Choose your colour</h1></div>
+  <div class="step colour_1">STEP 1</div>
+  </div>
+
+  <div class="chat-bubble">Choose from hundreds of colours! Click on the colour below to change it and the image will change so you can see exactly what your design will look like. 
+  </div>
+
+
+  <div id="colour_section_render">
+  <table id="colour_table">
+    <tr>
+    
+  </tr>
+  </table>
+  </div>
+</div>
 
 <!-- 
 
@@ -211,7 +311,7 @@
   </div>
    
 </div>  
-    
+
 <script type="text/javascript">
 // Setup and initialization
 var thisProduct = new Product({
@@ -219,10 +319,21 @@ var thisProduct = new Product({
     name: "<%= name %>", 
     monogram: <%= (monogram || "1") %>, 
     quantity: 10, 
+    colour_1: "<%= colour_1 %>",
+    colour_2: "<%= colour_2 ? colour_2 : "" %>",
+    number_of_colours: <%= number_of_colours %>,
     price: <%= price %>, 
     guests: ["&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;"], 
     texture: "plain" 
 });
 
 var all_colours = <%- JSON.stringify(colours_ref) %>
+var hex_colours = <%- JSON.stringify(hex_colours) %>
+
+var colours = new Colours(<%- JSON.stringify(hex_colours) %>);
+
+var colour_view = new ColourView({model:thisProduct, collection:colours, el: $('#colour_section_render')})
+colour_view.render()
+
+
 </script>
