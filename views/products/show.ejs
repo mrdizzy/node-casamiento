@@ -91,19 +91,27 @@
     <div class="colour_alert_box">
       <div class="colour_selector_box">
         <div class="big_colour_square_frame">
-          <div class="big_colour_square" style="background-color:{{hex}};"></div>
+          <div class="big_colour_square colour_label_{{colour}}" style="background-color:{{hex}};"></div>
         </div>
       </div>
       <span class="text_label_for_colour">{{hex}}</span>
+      
+      
     </div>
     <div style="border:1px solid transparent;">
         <div class="visible_colours big_colour_square_frame">
-          <div class="big_colour_square" style="background-color:{{hex}};"></div>
+          <div class="big_colour_square  colour_label_{{colour}}" style="background-color:{{hex}};"></div>
         </div>
       
       <span class="text_label_for_colour">{{hex}}</span>
     </div>
   </div>
+</script>
+
+<script type="text/template" id="actual_grid">
+{{#each colours}}
+<div class="small_solid_square_frame"><div class='small_solid_colour_square' style='background-color:{{hex}}'></div></div>
+{{/each}}
 </script>
 
 <script type="text/template" id="colour_grid">
