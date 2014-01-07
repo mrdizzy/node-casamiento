@@ -1,6 +1,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js"></script>
 <script type="text/javascript" src="/javascripts/products/show.js"></script>
 
+<script type="text/javascript" src="/javascripts/libraries/in_groups_of.js"></script>
 <link rel="stylesheet" type="text/css" href="/stylesheets/product.css">
 
 <style type="text/css">
@@ -44,6 +45,7 @@
     #slide4 { width: inherit; height:auto;}
     #slide5 .shell { display:none;}
     #slide5 h6 { width:95%; padding:0;margin:0 auto;}
+    #step_1 { display:block;}
   }
 </style>
 
@@ -57,7 +59,7 @@
   
   .text_label_for_colour { font:normal 1.2em "OS";padding:0; margin-top:5px; color:#000}
 
-.colour_alert_box { position:absolute;width:250px;height:250px;border:1px dotted black;background-color:white; display:none;}
+.colour_alert_box { position:absolute;width:250px;height:250px;border:1px dotted black;background-color:white; display:none;z-index:32;}
 .colour_selector_box { text-align:center;margin:0;padding:0.25em; }
 
 .palette { z-index:100;background-color:white;margin-top:0;padding-top:0; }
@@ -202,7 +204,7 @@
 
   <div id="colour_section_render">
   <table id="colour_table">
-    <tr>
+    <tr id="row"s>
     
   </tr>
   </table>
@@ -329,10 +331,9 @@ var thisProduct = new Product({
 
 var all_colours = <%- JSON.stringify(colours_ref) %>
 var hex_colours = <%- JSON.stringify(hex_colours) %>
+var json_colours = <%- JSON.stringify(hex_colours) %>
 
-var colours = new Colours(<%- JSON.stringify(hex_colours) %>);
-
-var colour_view = new ColourView({model:thisProduct, collection:colours, el: $('#colour_section_render')})
+var colour_view = new ColourView({model:thisProduct, el: $('#colour_section_render')})
 colour_view.render()
 
 

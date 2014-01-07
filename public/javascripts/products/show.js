@@ -3,54 +3,63 @@ _.templateSettings = {
   interpolate : /\%\%(.+?)\%\%/g,
   evaluate: /\%\-(.+?)\-\%/g
 };
-function inGroupsOf(arr, n){
-  var ret = [];
-  var group = [];
-  var len = arr.length;
-  var per = len * (n / len);
-
-  for (var i = 0; i < len; ++i) {
-    group.push(arr[i]);
-    if ((i + 1) % n == 0) {
-      ret.push(group);
-      group = [];
-    }
-  }
-  if (group.length) ret.push(group);
-  return ret;
-};
 
 var ColourSwatchView = Backbone.View.extend({
-initialize:function(options) {
-  _.bindAll(this, 'render')
-},
-events:  {
-  'mouseover': 'changeColour'
-},
-changeColour:function() {
-  thisProduct.set("colour_1", this.model.get("hex"));
-},
+  initialize: function(options) {
+    this.current_colour = options.current_colour
+    _.bindAll(this, 'render')
+    this.model.on('change', this.render)
+  },
+  events:  {
+    'mouseover': 'changeColour'
+  },
+  changeColour:function() {
+    thisProduct.set("colour_" + this.current_colour, this.model.get("hex"));
+  },
   render: function() {
     this.$el.html("<div class='small_solid_colour_square' style='background-color:" + this.model.get("hex") + "'></div>");   
-    console.log("in render",this)
     return this;
   }
 })
 
 var ColourListView = Backbone.View.extend({
-  initialize: function() {
-      this.grouped = inGroupsOf(this.collection.toArray(), 16)
+  initialize: function(options) {
+    this.current_colour = options.current_colour
+    this.grouped = inGroupsOf(this.collection.toArray(), 16)
+    this.pointer = 0;
+    this.current_group = this.grouped[0]
+    _.bindAll(this, 'renderNewColours')
   },
+  events: {
+    'click .colour_index_right': 'moveRight',
+    'click .colour_index_left': 'moveLeft'
+  },
+  moveRight: function() {
+    this.pointer = this.pointer + 1;
+    this.renderNewColours();
+  },
+  moveLeft: function() {
+    this.pointer = this.pointer - 1;
+    this.renderNewColours();
+  },
+  renderNewColours: function() {
+    var counter = 0; 
+    
+    this.current_group.forEach(function(colour) {
+      colour.set(this.grouped[this.pointer][counter].attributes)
+      counter++;
+    }, this)
+  },
+  
   render: function() {
     var template = $('#colour_grid').html();
     var result = $(Handlebars.compile(template)());
     
-    this.$el.html(result)
-    var colours = [];
-    this.grouped[0].forEach(function(colour) {
-      var clv = new ColourSwatchView({model:colour, className: "small_solid_square_frame"})
-      colours.push(clv.render().el);
-    })
+    this.$el.html(result)   
+        var colours = _.map(this.current_group, function(colour) {
+      var clv = new ColourSwatchView({model:colour, className: "small_solid_square_frame", current_colour: this.current_colour})
+      return(clv.render().el);
+    }, this)
     
       this.$('.colour_grid_container').append(colours)
       return this;
@@ -59,19 +68,18 @@ var ColourListView = Backbone.View.extend({
 
 var ColourLabelView = Backbone.View.extend({
   initialize: function(options) {
+    this.collection = new Colours(json_colours)
     this.current_colour = options.current_colour;
     _.bindAll(this, 'render')
-    
   },
   events: {
-    'mouseenter .visible_colours.big_colour_square_frame': 'selectColour',
-    
+    'mouseenter .visible_colours.big_colour_square_frame': 'selectColour',    
     'mouseleave .colour_alert_box': 'fadeColour'
   },
   selectColour: function() {
     this.$('.colour_alert_box').fadeIn()
   },
-    fadeColour: function() {
+  fadeColour: function() {
     this.$('.colour_alert_box').fadeOut()
   },
   render: function() {
@@ -79,14 +87,14 @@ var ColourLabelView = Backbone.View.extend({
     var result = $(Handlebars.compile(template)({hex: thisProduct.get("colour_" + this.current_colour)}));
     this.$el.html(result);
     
-    var colour_grid = new ColourListView({collection: this.collection})
+    var colour_grid = new ColourListView({collection: this.collection, current_colour: this.current_colour})
     var r = colour_grid.render().el;
-    this.$('.colour_selector_box').append(r)
+    this.$('.colour_alert_box').append(r)
     return this;
   }
-  
 })
-
+// The main container for the colour labels, is bound to the 
+// #colour_section_render element
 var ColourView = Backbone.View.extend({
   // colour_label_view
   initialize: function() {
@@ -94,17 +102,16 @@ var ColourView = Backbone.View.extend({
   },
   render: function() {
     var number_of_colours = this.model.get("number_of_colours");
-    console.log(this.model.toJSON())
-    for(var i=0; i < 1; i++) {
-      var colour_label_view = new ColourLabelView({collection: this.collection, current_colour: (i + 1), tagName: 'td', attributes: { style: "vertical-align:top;text-align:left;"}})
+    for(var i=0; i < number_of_colours; i++) {
+      var colour_label_view = new ColourLabelView({current_colour: (i + 1), tagName: 'td', attributes: { style: "vertical-align:top;text-align:left;"}})
       
-      this.$('#colour_table tr').append(colour_label_view.render().el)
+      this.$('#row').append(colour_label_view.render().el)
     }
   }
 });
 
+// Models to hold colour palettes
 var Colour = Backbone.Model.extend({});
-
 var Colours = Backbone.Collection.extend({});
 
 var Product = Backbone.Model.extend({
@@ -141,9 +148,11 @@ $(function(){
     initialize: function() {
       this.step = 1;
       this.attribute_steps = { texture: 2, weight: 3, format: 4}
-      _.bindAll(this, 'renderQuantity','renderTotal', 'changeAttribute', 'changeColour')
+      _.bindAll(this, 'renderQuantity','renderTotal', 'changeAttribute','changeColour2', 'changeColour')
       this.model.on("change:quantity", this.renderQuantity) 
       this.model.on("change:colour_1", this.changeColour)
+      
+      this.model.on("change:colour_2", this.changeColour2)
       this.model.on("change:total", this.renderTotal)         
     },
     el: $('#product_page'),
@@ -153,13 +162,14 @@ $(function(){
       
       "click .selectable": "changeAttribute",  
     },
-    showTooltip: function(e) {
+    showTooltip: function(e) { 
       $(e.currentTarget).find('.step').fadeIn()
       $(e.currentTarget).find('.chat-bubble').slideDown()
     },
     closeTooltip: function(e) { 
       var id = $(e.currentTarget).attr('id')  
-      if (id != this.step) {
+      var number = id.split("_")[1]
+      if (number != this.step) {
         $(e.currentTarget).find('.step').fadeOut()
         $(e.currentTarget).find('.chat-bubble').slideUp()
       }
@@ -199,6 +209,10 @@ $(function(){
     changeColour: function() {
         this.$('.colour_1').css("background-color", this.model.get("colour_1"))
         this.$('#color_label_1').text(this.model.get("colour_1"))
+    },
+        changeColour2: function() {
+        this.$('.slide_background_container div').css("background-color", this.model.get("colour_2"))
+        this.$('#color_label_2').text(this.model.get("colour_2"))
     }
   })
   
@@ -217,12 +231,3 @@ $(function(){
     }
   })
 });
-
-  $('.place_square').mouseover(function() {
-    $(".inner_place_square", this).hide();
-    $(".inner_place_square_hidden",this).show();
-  })
-  $('.place_square').mouseout(function() {
-    $(".inner_place_square", this).show();
-    $(".inner_place_square_hidden",this).hide();
-  })
