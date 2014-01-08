@@ -14,7 +14,10 @@ var ColourListView = Backbone.View.extend({
   events: {
   'mouseover .small_solid_colour_square': 'changeColour',
     'click .colour_index_right': 'moveRight',
-    'click .colour_index_left': 'moveLeft'
+    'click .colour_index_left': 'moveLeft',
+  },
+  selectColour: function() {
+    
   },
   changeColour:function(e) {
   var background = $(e.currentTarget).css("background-color")
@@ -50,8 +53,10 @@ var ColourLabelView = Backbone.View.extend({
   },
   events: {
     'mouseenter .visible_colours.big_colour_square_frame': 'selectColour',    
-    'mouseleave .colour_alert_box': 'fadeColour'
-  },
+    'mouseleave .colour_alert_box': 'fadeColour',
+    
+    'click .small_solid_colour_square': 'fadeColour'
+          },
   selectColour: function() {
     this.$('.colour_alert_box').fadeIn()
   },
