@@ -51,7 +51,6 @@
 
 <style type="text/css">
 
-
 .big_colour_square_frame {border:1px solid lightgrey;padding-left:5px;padding-top:5px;width:35px;height:35px;margin:0; }
 
   .big_colour_square_frame:hover { border:1px dotted black;}
@@ -61,8 +60,6 @@
 
 .colour_alert_box { position:absolute;width:250px;height:250px;border:1px dotted black;background-color:white; display:none;z-index:32;}
 .colour_selector_box { text-align:center;margin:0;padding:0.25em; }
-
-.palette { z-index:100;background-color:white;margin-top:0;padding-top:0; }
 
 .small_solid_square_frame { opacity:0.8;text-align:center;display:inline-block;padding:3px;border:1px solid lightgrey;margin-left:5px;margin-right:5px;margin-top:6px;}
 .small_solid_square_frame:hover { opacity:1; border:1px dotted black; cursor:pointer;}
@@ -80,59 +77,51 @@
   .colour_index_right, .colour_index_left {  }
   .colour_index_left:hover, .colour_index_right:hover  { cursor:pointer; color:black; }
 
-.palette { display:none; position:relative; }
-.palette_2 { display:block;}
-
 </style>
 
+<!-- .colour_alert_box is the container that actually fades in -->
 <script type="text/template" id="colour_label_view">
-  <div style="padding:0.5em;">
+  <div style="padding:0.5em;position:relative;">
         
-    <div class="colour_alert_box">
+    <div class="colour_alert_box" style="left:-97px;text-align:center;">
       <div class="colour_selector_box">
-        <div class="big_colour_square_frame">
-          <div class="big_colour_square colour_label_{{colour}}" style="background-color:{{hex}};"></div>
+        <div class="big_colour_square_frame" style="margin:0 auto;text-align:center;">
+          <div class="big_colour_square colour_label_{{colour_number}}" style="background-color:{{hex}};"></div>
         </div>
       </div>
-      <span class="text_label_for_colour">{{hex}}</span>
-      
-      
+      <span class="text_label_for_colour">{{hex}}</span>     
     </div>
+    
     <div style="border:1px solid transparent;">
-        <div class="visible_colours big_colour_square_frame">
-          <div class="big_colour_square  colour_label_{{colour}}" style="background-color:{{hex}};"></div>
-        </div>
-      
+      <div class="visible_colours big_colour_square_frame">
+        <div class="big_colour_square colour_label_{{colour_number}}" style="background-color:{{hex}};"></div>
+      </div>
+    
       <span class="text_label_for_colour">{{hex}}</span>
     </div>
   </div>
 </script>
 
 <script type="text/template" id="actual_grid">
-{{#each colours}}
-<div class="small_solid_square_frame"><div class='small_solid_colour_square' style='background-color:{{hex}}'></div></div>
-{{/each}}
+  {{#each colours}}
+  <div class="small_solid_square_frame"><div class='small_solid_colour_square' style='background-color:{{hex}}'></div></div>
+  {{/each}}
 </script>
 
 <script type="text/template" id="colour_grid">
-<div>
-  <table>
-    <tr>
-    <td>
-      <div class="colour_index colour_index_left">&laquo;</div>
-    </td>
+  <div>
+    <table>
+      <tr>
+        <td><div class="colour_index colour_index_left">&laquo;</div></td>
 
-    <td style="width:160px;"  class="colour_grid_container">
-    
-    </td>
-    
-    <td>
-      <div class="colour_index colour_index_right">&raquo;</div>
-    </td>
-    </tr>
-  </table>
-</div>
+        <td style="width:160px;"  class="colour_grid_container"></td>
+        
+        <td><div class="colour_index colour_index_right">&raquo;</div></td>
+      </tr>
+    </table>
+  </div>
 </script>
+
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
 
 <div id="product_page">
@@ -211,11 +200,9 @@
 
 
   <div id="colour_section_render">
-  <table id="colour_table">
-    <tr id="row"s>
-    
-  </tr>
-  </table>
+    <table id="colour_table">
+      <tr id="row"></tr>
+    </table>
   </div>
 </div>
 
