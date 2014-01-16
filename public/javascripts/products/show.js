@@ -1,85 +1,72 @@
-var ColourGridView = Backbone.View.extend({
-  initialize: function(options) {
-    this.current_colour = options.current_colour
-    this.grouped = inGroupsOf(json_colours, 16)
-    this.pointer = 0; // where in the grouped colours array we are
-    _.bindAll(this, 'render')
-  },
-  events: {
-  'mouseover .small_solid_colour_square': 'changeColour',
-    'click .colour_index_right': 'moveRight',
-    'click .colour_index_left': 'moveLeft',
-  },
-  changeColour:function(e) {
-    var background = $(e.currentTarget).css("background-color")
-    thisProduct.set("colour_" + this.current_colour, background);
-  },
-  moveRight: function() {
-    this.pointer = this.pointer + 1;
-    this.render();
-  },
-  moveLeft: function() {
-    this.pointer = this.pointer - 1;
-    this.render();
-  },
-  renderGrid: function() {
-    var template = $('#actual_grid').html();
-    var grid = $(Handlebars.compile(template)({colours: this.grouped[this.pointer]}));
-    return grid;
-  },
-  render: function() {
-    var template = $('#colour_grid').html();
-    var result = $(Handlebars.compile(template)());
-    this.$el.html(result)   
-    this.$('.colour_grid_container').append(this.renderGrid())
-    return this;
-  }
-})
+// A generic presenter object for Backbone.Model
+// =============================================
 
-var ColourLabelView = Backbone.View.extend({
-  initialize: function(options) {
-    this.collection = new Colours(json_colours)
-    this.current_colour = options.current_colour;
+// presenter = new ModelPresenter({model: model});
+var ProductPresenter = function(options) {
+  var options = options ? options : {};
+  this.model = options.model; 
+  this.chosenColour = options.chosen_colour;
+  this.pointer = 0;
+  this.selectColour = false;
+  this.coloursInGroupsOf16 = inGroupsOf(json_colours, 16)
+}
+ProductPresenter.prototype = {
+  hex: function() {
+    return this.model.get("colour_" + this.chosenColour)
+  },
+  moveForward: function() {
+    this.pointer = this.pointer + 1;
+  },
+  moveBackward: function() {
+    this.pointer = this.pointer - 1;
+  },
+  currentGrid: function() {
+    return this.coloursInGroupsOf16[this.pointer]
+  }
+};
+
+var ColourView = Backbone.View.extend({
+  initialize: function() {
     _.bindAll(this, 'render')
+    ColourView.colourNumber = ColourView.colourNumber + 1;  
   },
   events: {
     'mouseenter .visible_colours.big_colour_square_frame': 'selectColour',    
     'mouseleave .colour_alert_box': 'fadeColour',
-    'click .small_solid_colour_square': 'fadeColour'
+    'mouseover .small_solid_colour_square': 'changeColour',    
+    'click .small_solid_colour_square': 'fadeColour',
+    'click .colour_index_right': 'moveRight',
+    'click .colour_index_left': 'moveLeft',
+  },
+  changeColour: function(e) {
+    var element = $(e.currentTarget);
+    this.model.set("colour_1", element.css("background-color"))
   },
   selectColour: function() {
     this.$('.colour_alert_box').fadeIn()
+    this.presenter.selectColour = true;
   },
   fadeColour: function() {
     this.$('.colour_alert_box').fadeOut()
+    this.presenter.selectColour = false;
+  },  
+  moveLeft: function() {
+    this.presenter.moveBackward();
+    this.render();
+  },
+  moveRight: function() {
+    this.presenter.moveForward();
+    this.render();
   },
   render: function() {
     var template = $('#colour_label_view').html();
-    var result = $(Handlebars.compile(template)({colour_number: this.current_colour, hex: thisProduct.get("colour_" + this.current_colour)}));
+    var result = $(Handlebars.compile(template)(this.presenter));
     this.$el.html(result);
     
-    var colour_grid = new ColourGridView({collection: this.collection, current_colour: this.current_colour})
-    var r = colour_grid.render().el;
-    this.$('.colour_alert_box').append(r)
     return this;
   }
-})
-// The main container for the colour labels, is bound to the 
-// #colour_section_render element
-var ColourView = Backbone.View.extend({
-  // colour_label_view
-  initialize: function() {
-    _.bindAll(this, 'render')
-  },
-  render: function() {
-    var number_of_colours = this.model.get("number_of_colours");
-    for(var i=0; i < number_of_colours; i++) {
-      var colour_label_view = new ColourLabelView({current_colour: (i + 1), tagName: 'td', attributes: { style: "vertical-align:top;text-align:left;"}})
-      
-      this.$('#row').append(colour_label_view.render().el)
-    }
-  }
-});
+}, { colourNumber: 0})
+
 
 // Models to hold colour palettes
 var Colour = Backbone.Model.extend({});
@@ -180,7 +167,6 @@ $(function(){
     changeColour: function() {
         this.$('.colour_1').css("background-color", this.model.get("colour_1"))
         this.$('.colour_label_1').css("background-color", this.model.get("colour_1"))
-        
     },
     changeColour2: function() {
       this.$('.slide_background_container div').css("background-color", this.model.get("colour_2"))

@@ -6,6 +6,13 @@
 <script type="text/template" id="template">
 Template results
 <ul>
+{{#testingAFunction}}
+{{#.}}
+{{name}}
+{{/.}}
+{{/testingAFunction}}
+</ul>
+<ul>
 {{#array_of_objects}}
     <li>Name: {{name}}, Age: {{age}}</li>
 {{/array_of_objects}}
@@ -32,6 +39,10 @@ var objects = { array_of_objects:  [ { name: "David", age: 18},
                 { name: "Helena", age: 32 },
                 {name: "Shiirley", age: 87} 
               ],
+              
+              testingAFunction: function() {
+                  return([{name: "david"}, { name: "Helena"}])
+              },
               array_of_arrays: [[1,2,3,4], ["a","b","c","d"], ["helena","david","mark", "gary"]]}
 
 var template = $('#template').html()
