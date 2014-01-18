@@ -15,12 +15,17 @@ ProductPresenter.prototype = {
   hex: function() {
     return this.model.get("colour_" + this.chosenColour)
   },
-  moveForward: function() {
-    this.pointer = this.pointer + 1;
+  movePointer: function(i) {
+    this.pointer = this.pointer + i;
+    console.log(this.pointer)
+    this.view.render();
   },
   hoverColour: function() {
     this.fadeToggle = true;
     this.view.render();
+    
+    this.fadeToggle = false;
+    this.selectColour = true;
   },  
   hoverOut: function() {
     this.fadeToggle = true;
@@ -28,9 +33,6 @@ ProductPresenter.prototype = {
     this.view.render();
     this.fadeToggle = false;
     this.selectColour = false;
-  },
-  moveBackward: function() {
-    this.pointer = this.pointer - 1;
   },
   currentGrid: function() {
     return coloursInGroupsOf16[this.pointer]
@@ -51,20 +53,16 @@ var ColourView = Backbone.View.extend({
     },
     'mouseover .small_solid_colour_square': 'changeColour',    
     'click .small_solid_colour_square': 'fadeColour',
-    'click .colour_index_right': 'moveRight',
-    'click .colour_index_left': 'moveLeft',
+    'click .colour_index_right': function() {
+      this.presenter.movePointer(1)
+    },
+    'click .colour_index_left': function() {
+      this.presenter.movePointer(-1)
+    },
   },
   changeColour: function(e) {
     var element = $(e.currentTarget);
     this.model.set("colour_1", element.css("background-color"))
-  },
-  moveLeft: function() {
-    this.presenter.moveBackward();
-    this.render();
-  },
-  moveRight: function() {
-    this.presenter.moveForward();
-    this.render();
   },
   render: function() {
     var template = $('#colour_label_view').html();
