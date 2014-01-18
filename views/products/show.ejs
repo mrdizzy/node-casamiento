@@ -83,10 +83,10 @@
 <script type="text/template" id="colour_label_view">
   <div style="padding:0.5em;position:relative;">
         
-    <div class="colour_alert_box" style="left:-97px;text-align:center;{{#selectColour}}display:block;{{/selectColour}}">
+    <div class="colour_alert_box" style="left:-97px;text-align:center;{{#if selectColour}}display:block;{{/if}}">
       <div class="colour_selector_box">
         <div class="big_colour_square_frame" style="margin:0 auto;text-align:center;">
-          <div class="big_colour_square colour_label_{{colour_number}}" style="background-color:{{hex}};"></div>
+          <div class="big_colour_square colour_label_{{chosenColour}}" style="background-color:{{hex}};"></div>
         </div>
       </div>
       <span class="text_label_for_colour">{{hex}}</span>     
@@ -117,11 +117,6 @@
     </div>
   </div>
 </script>
-
-<script type="text/template" id="actual_grid">
-  
-</script>
-
 
 <div id="product_page_genesis"><img src="/gfx/logo/genesis_collection.png" style="width:285px;"/></div>
 
@@ -329,16 +324,11 @@ var all_colours = <%- JSON.stringify(colours_ref) %>
 var hex_colours = <%- JSON.stringify(hex_colours) %>
 var json_colours = <%- JSON.stringify(hex_colours) %>
 
-var ColourLabel = Backbone.Model.extend({
-  initialize: function () {
-    ColourLabel.colour_number = ColourLabel.colour_number + 1;    
-    this.set("colour_number", ColourLabel.colour_number)
-    this.set("json_colours", json_colours)
-    this.set("current_colour", thisProduct.get("colour_" + this.get("colour_number")))
-  }}, { colour_number: 0
-})
+var coloursInGroupsOf16 = inGroupsOf(json_colours, 16)
+
 
 var colour_view = new ColourView({model:thisProduct, el: $('#row')})
+
 colour_view.render()
 
 

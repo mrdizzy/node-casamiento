@@ -2,14 +2,15 @@
 // =============================================
 
 // presenter = new ModelPresenter({model: model});
-var ProductPresenter = function(options) {
-  var options = options ? options : {};
-  this.model = options.model; 
-  this.chosenColour = options.chosen_colour;
+var ProductPresenter = function(model, view) {
+this.view = view;
+  this.model = model; 
+  this.chosenColour = ProductPresenter.chosenColour + 1;
+  ProductPresenter.chosenColour = ProductPresenter.chosenColour + 1;
   this.pointer = 0;
   this.selectColour = false;
-  this.coloursInGroupsOf16 = inGroupsOf(json_colours, 16)
 }
+ProductPresenter.chosenColour = 0;
 ProductPresenter.prototype = {
   hex: function() {
     return this.model.get("colour_" + this.chosenColour)
@@ -17,22 +18,37 @@ ProductPresenter.prototype = {
   moveForward: function() {
     this.pointer = this.pointer + 1;
   },
+  hoverColour: function() {
+    this.fadeToggle = true;
+    this.view.render();
+  },  
+  hoverOut: function() {
+    this.fadeToggle = true;
+    this.selectColour = true;
+    this.view.render();
+    this.fadeToggle = false;
+    this.selectColour = false;
+  },
   moveBackward: function() {
     this.pointer = this.pointer - 1;
   },
   currentGrid: function() {
-    return this.coloursInGroupsOf16[this.pointer]
+    return coloursInGroupsOf16[this.pointer]
   }
 };
 
 var ColourView = Backbone.View.extend({
   initialize: function() {
     _.bindAll(this, 'render')
-    ColourView.colourNumber = ColourView.colourNumber + 1;  
+    this.presenter = new ProductPresenter(this.model, this)
   },
   events: {
-    'mouseenter .visible_colours.big_colour_square_frame': 'selectColour',    
-    'mouseleave .colour_alert_box': 'fadeColour',
+    'mouseenter .visible_colours.big_colour_square_frame': function() {
+      this.presenter.hoverColour();
+    },
+    'mouseleave .colour_alert_box': function() {
+      this.presenter.hoverOut();
+    },
     'mouseover .small_solid_colour_square': 'changeColour',    
     'click .small_solid_colour_square': 'fadeColour',
     'click .colour_index_right': 'moveRight',
@@ -42,14 +58,6 @@ var ColourView = Backbone.View.extend({
     var element = $(e.currentTarget);
     this.model.set("colour_1", element.css("background-color"))
   },
-  selectColour: function() {
-    this.$('.colour_alert_box').fadeIn()
-    this.presenter.selectColour = true;
-  },
-  fadeColour: function() {
-    this.$('.colour_alert_box').fadeOut()
-    this.presenter.selectColour = false;
-  },  
   moveLeft: function() {
     this.presenter.moveBackward();
     this.render();
@@ -62,10 +70,12 @@ var ColourView = Backbone.View.extend({
     var template = $('#colour_label_view').html();
     var result = $(Handlebars.compile(template)(this.presenter));
     this.$el.html(result);
-    
+    if(this.presenter.fadeToggle) {
+      this.$('.colour_alert_box').fadeToggle()
+    }
     return this;
   }
-}, { colourNumber: 0})
+})
 
 
 // Models to hold colour palettes
