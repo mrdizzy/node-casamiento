@@ -20,7 +20,7 @@
 .spc p { color:black;font-family: "OS"; font-size:1em; padding:0; margin:0em; line-height:1em; }
 
 .step { display:none;width:50%;float:right;padding:0.25em;color:white;font:1em normal 'OS Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;border-top-right-radius:0;border-bottom-right-radius:0;border-top-left-radius:0;}
-#step_1 .step, #step_1 .chat-bubble { display:block;}
+
 .chat-bubble { display:none; font: normal 1.1em "OS Light Italic"; margin:10px auto;color:black; width:100%; }
 
 .texture {  display:inline-block;margin:0.5em;text-align:center;opacity:0.3;}

@@ -45,7 +45,6 @@
     #slide4 { width: inherit; height:auto;}
     #slide5 .shell { display:none;}
     #slide5 h6 { width:95%; padding:0;margin:0 auto;}
-    #step_1 { display:block;}
   }
 </style>
 
@@ -167,17 +166,9 @@
       <% } %></div>           
    </div>
       
-<!-- 
-
-  SPECIFICATIONS 
-
--->
-
-
-<div id="product_section0">
-
+      
+ <script type="text/template" id="step_through">
   <div class="product_type spc"><img src="/gfx/product_types/small/name_place_small.png" style="width:130px;"></div>
-
 
 <!-- 
 
@@ -188,12 +179,11 @@
 <div  class="spc" id="step_1">
     <div style="margin-bottom:0.5em;height:2em;">
   <div style="float:left"><h1>Choose your colour</h1></div>
-  <div class="step colour_1">STEP 1</div>
+  <div class="step colour_1" style="{{display_step_1}}">STEP 1</div>
   </div>
 
-  <div class="chat-bubble">Choose from hundreds of colours! Click on the colour below to change it and the image will change so you can see exactly what your design will look like. 
+  <div class="chat-bubble" style="{{display_step_1}}">Choose from hundreds of colours! Click on the colour below to change it and the image will change so you can see exactly what your design will look like. 
   </div>
-
 
   <div id="colour_section_render">
     <table id="colour_table">
@@ -211,14 +201,16 @@
   <div class="spc" id="step_2">
     <div style="margin-bottom:0.5em;height:3em;">
       <div style="float:left"><h1>Card Texture</h1></div>
-      <div class="step colour_1">STEP 2</div>
+      <div class="step colour_1" style="{{display_step_2}}">STEP 2</div>
     </div> 
   
-    <div class="chat-bubble">Click and highlight an icon to select the texture of your choice. Plain is the cheapest with its smooth plain finish, but hammered and linen both make your cards feel more luxurious. 
+    <div class="chat-bubble" style="{{display_step_2}}">Click and highlight an icon to select the texture of your choice. Plain is the cheapest with its smooth plain finish, but hammered and linen both make your cards feel more luxurious. 
     </div>
-    <div class="texture selectable" data-attribute="texture" data-value="plain"><img src="/gfx/icons/plaine.png"><p>Plain</p></div>
-    <div class="texture selectable" data-attribute="texture" data-value="hammered"><img src="/gfx/icons/hammer.png"><p>Hammered</p></div>
-    <div class="texture selectable" data-attribute="texture" data-value="linen"><img src="/gfx/icons/linen.png"><p>Linen</p></div>
+    <div id="texture_selection">
+      <div class="texture selectable"><img src="/gfx/icons/plaine.png"><p>Plain</p></div>
+      <div class="texture selectable"><img src="/gfx/icons/hammer.png"><p>Hammered</p></div>
+      <div class="texture selectable"><img src="/gfx/icons/linen.png"><p>Linen</p></div>
+    </div>
   </div>
 
 <!-- 
@@ -230,17 +222,17 @@
   <div class="spc"  id="step_3">
     <div style="margin-bottom:0.5em;height:2em;">
       <div style="float:left"><h1>Card Thickness</h1></div>
-      <div class="step colour_1">STEP 3</div>
+      <div class="step colour_1"  style="{{display_step_3}}">STEP 3</div>
     </div> 
-    <div class="chat-bubble">Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm). A normal sheet of A4 copy paper is usually about 80gsm.
+    <div class="chat-bubble"  style="{{display_step_3}}">Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm). A normal sheet of A4 copy paper is usually about 80gsm.
     </div>
     <br/>
-    <div class="weight selectable" data-attribute="weight" data-value="250">
+    <div class="weight selectable">
        <div class="weight_line"></div>
        <p class="casamiento">250gsm</p>
     </div>
         
-    <div class="weight selectable"  data-attribute="weight" data-value="300">
+    <div class="weight selectable">
       <div class="weight_line" style="border-top:10px solid black;"></div>
       <p class="casamiento">300gsm</p>
     </div>
@@ -255,7 +247,7 @@
   <div class="spc"  id="step_4">
     <div style="margin-bottom:0.5em;height:2.5em;">
       <div style="float:left"><h1>Product Format</h1></div>
-      <div class="step colour_1">STEP 4</div>
+      <div class="step colour_1"  style="{{display_step_3}}">STEP 4</div>
     </div> 
         
     <div style="margin:auto;text-align:center;">
@@ -270,7 +262,7 @@
 -->
 
     <div class="spc"  id="step_5">
-        <h1>Monogram shown</h1>
+        <h1>Monogram</h1>
         
         <img id="mono_2" style="width:100%;max-width:300px;min-width:200px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
     </div>
@@ -286,24 +278,20 @@
         <div style="float:left">
           <h1><img src="/gfx/guests.png" style="width:30px"/> Guest names</h1>
         </div>
-        <div class="step colour_1">STEP 6</div>
+        <div class="step colour_1"  style="{{display_step_6}}">STEP 6</div>
       </div> 
-      <div class="chat-bubble">Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm). A normal sheet of A4 copy paper is usually about 80gsm.
+      <div class="chat-bubble"  style="{{display_step_6}}">Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm). A normal sheet of A4 copy paper is usually about 80gsm.
       </div>
-      <input type="text"></input>
-      <input type="text"></input>
-      <input type="text"></input>
-      <input type="text"></input>
-      <input type="text"></input>
-      <input type="text"></input>
-      <input type="text"></input>
-      <input type="text"></input>
-      <input type="text"></input>
-      <input type="text"></input>
+      {{#guests}}
+      {{#.}}
+      <input type="text" value="{{.}}"></input>
+      {{/.}}
+      {{/guests}}
     </div>
   </div>
-   
-</div>  
+ </script>     
+      
+<div id="product_section0"></div>  
 
 <script type="text/javascript">
 // Setup and initialization
@@ -320,16 +308,75 @@ var thisProduct = new Product({
     texture: "plain" 
 });
 
-var all_colours = <%- JSON.stringify(colours_ref) %>
 var hex_colours = <%- JSON.stringify(hex_colours) %>
 var json_colours = <%- JSON.stringify(hex_colours) %>
 
 var coloursInGroupsOf16 = inGroupsOf(json_colours, 16)
 
+var StepView = Backbone.View.extend({
+  el: '#product_section0',
+   initialize: function() {
+    _.bindAll(this, 'render')
+    this.presenter = new StepsPresenter(thisProduct, this)
+  },
+  events: {     
+      "mouseenter .spc": "hoverStep",
+      "mouseleave .spc": "hoverStep",      
+      "click .texture": "updateTexture",  
+    },
+    updateTexture: function(e) {
+        this.presenter.updateTexture($(e.currentTarget).index())
+    },
+    hoverStep: function(e) {
+      this.presenter.hoverStep($(e.currentTarget).index());
+    },
+  render: function() {
+    if(this.presenter.toggleStep) {
+      this.$('#step_' + this.presenter.toggleStep + " .step").fadeToggle()      
+      this.$('#step_' + this.presenter.toggleStep + " .chat-bubble").slideToggle()
+      this.presenter.toggleStep = false;
+    } else if (this.presenter.changeTexture) { 
+      this.$('.texture').removeClass("selected")
+      var texture_changed = this.$('.texture').get(this.presenter.changeTexture) ;
+      $(texture_changed).toggleClass("selected"); 
+      this.presenter.changeTexture = false;
+    } else {
+      var template = $('#step_through').html();
+      var result = $(Handlebars.compile(template)(this.presenter));
+      this.$el.html(result)
+    }
+    return this;
+  },
+  changeColour: function() {
+      this.$('.colour_1').css("background-color", this.model.get("colour_1"))
+      this.$('.colour_label_1').css("background-color", this.model.get("colour_1"))
+  },
+  changeColour2: function() {
+    this.$('.slide_background_container div').css("background-color", this.model.get("colour_2"))
+      this.$('.colour_label_2').css("background-color", this.model.get("colour_2"))
+      this.$('#color_label_2').text(this.model.get("colour_2"))
+  }
+})
+var steps_view = new StepView();
+steps_view.render();
 
 var colour_view = new ColourView({model:thisProduct, el: $('#row')})
-
 colour_view.render()
 
+var QuantityView = Backbone.View.extend({  
+    renderQuantity: function() {
+      $('#qty').html(this.model.get("quantity"))
+    },
+    renderTotal: function() {
+      var total = this.model.get("total"),
+        ary = total.toString().split("."),
+        pounds = ary[0],
+        dec = ary[1];
+      $('span#pound').text(pounds);
+      $('span#decimal').text("." + dec);
+    }
+})
+
+var quantity_view = new QuantityView()
 
 </script>

@@ -1,7 +1,3 @@
-// A generic presenter object for Backbone.Model
-// =============================================
-
-// presenter = new ModelPresenter({model: model});
 var ProductPresenter = function(model, view) {
 this.view = view;
   this.model = model; 
@@ -17,23 +13,12 @@ ProductPresenter.prototype = {
   },
   movePointer: function(i) {
     this.pointer = this.pointer + i;
-    console.log(this.pointer)
     this.view.render();
   },
   hoverColour: function() {
     this.fadeToggle = true;
     this.view.render();
-    
-    this.fadeToggle = false;
-    this.selectColour = true;
   },  
-  hoverOut: function() {
-    this.fadeToggle = true;
-    this.selectColour = true;
-    this.view.render();
-    this.fadeToggle = false;
-    this.selectColour = false;
-  },
   currentGrid: function() {
     return coloursInGroupsOf16[this.pointer]
   }
@@ -45,14 +30,10 @@ var ColourView = Backbone.View.extend({
     this.presenter = new ProductPresenter(this.model, this)
   },
   events: {
-    'mouseenter .visible_colours.big_colour_square_frame': function() {
-      this.presenter.hoverColour();
-    },
-    'mouseleave .colour_alert_box': function() {
-      this.presenter.hoverOut();
-    },
+    'mouseenter .visible_colours.big_colour_square_frame': 'hoverColour',
+    'mouseleave .colour_alert_box': 'hoverColour',
     'mouseover .small_solid_colour_square': 'changeColour',    
-    'click .small_solid_colour_square': 'fadeColour',
+    'click .small_solid_colour_square': 'hoverColour',
     'click .colour_index_right': function() {
       this.presenter.movePointer(1)
     },
@@ -60,25 +41,25 @@ var ColourView = Backbone.View.extend({
       this.presenter.movePointer(-1)
     },
   },
+  hoverColour: function() {
+      this.presenter.hoverColour();
+    },
   changeColour: function(e) {
     var element = $(e.currentTarget);
     this.model.set("colour_1", element.css("background-color"))
   },
   render: function() {
-    var template = $('#colour_label_view').html();
-    var result = $(Handlebars.compile(template)(this.presenter));
-    this.$el.html(result);
     if(this.presenter.fadeToggle) {
       this.$('.colour_alert_box').fadeToggle()
+      this.presenter.fadeToggle = false;
+    } else {
+      var template = $('#colour_label_view').html();
+      var result = $(Handlebars.compile(template)(this.presenter));
+      this.$el.html(result);
     }
     return this;
   }
 })
-
-
-// Models to hold colour palettes
-var Colour = Backbone.Model.extend({});
-var Colours = Backbone.Collection.extend({});
 
 var Product = Backbone.Model.extend({
   initialize: function() {
@@ -103,88 +84,45 @@ var Product = Backbone.Model.extend({
   }
 });
 
+var StepsPresenter = function(model, view) {
+  this.view = view;
+  this.model = model; 
+  this.currentStep = 1;
+  this.hoveringStep = 0;
+  this.changeTexture = false;
+  this.textures = ["plain", "hammered", "linen"]
+}
+
+StepsPresenter.prototype = {
+  hoverStep: function(step_number) {
+    if(this.currentStep == step_number) {
+      return false
+      } else {
+        this.toggleStep = step_number;
+        this.view.render();
+      }
+  },
+  updateTexture: function(index) {
+    this.model.set("texture", this.textures[index])
+    this.changeTexture = index;
+    this.view.render();
+  },
+  display_step_1: function() {
+   if(this.currentStep == 1) {
+     return("display:block;")
+   }
+  },
+  guests: function() {
+    return(this.model.get("guests"))
+  }
+}
+
 $(function(){
   // Positioning of fixed price/alert boxes
   var top = Math.max($(window).height() / 2 - $("#total_price")[0].offsetHeight / 2, 0);
   var left = Math.max($(window).width() / 2 - $("#total_price")[0].offsetWidth / 2, 0);
   $("#total_price").css('top', top + "px");
   $("#total_price").css('position', 'fixed');
-        
-  var ProductPageView = Backbone.View.extend({
-    initialize: function() {
-      this.step = 1;
-      this.attribute_steps = { texture: 2, weight: 3, format: 4}
-      _.bindAll(this, 'renderQuantity','renderTotal', 'changeAttribute','changeColour2', 'changeColour')
-      this.model.on("change:quantity", this.renderQuantity) 
-      this.model.on("change:colour_1", this.changeColour)
-      
-      this.model.on("change:colour_2", this.changeColour2)
-      this.model.on("change:total", this.renderTotal)         
-    },
-    el: $('#product_page'),
-    events: {     
-      "mouseenter .spc": "showTooltip",
-      "mouseleave .spc": "closeTooltip",
-      
-      "click .selectable": "changeAttribute",  
-    },
-    showTooltip: function(e) { 
-      $(e.currentTarget).find('.step').fadeIn()
-      $(e.currentTarget).find('.chat-bubble').slideDown()
-    },
-    closeTooltip: function(e) { 
-      var id = $(e.currentTarget).attr('id')  
-      var number = id.split("_")[1]
-      if (number != this.step) {
-        $(e.currentTarget).find('.step').fadeOut()
-        $(e.currentTarget).find('.chat-bubble').slideUp()
-      }
-    },
-    renderQuantity: function() {
-      $('#qty').html(this.model.get("quantity"))
-    },
-    renderTotal: function() {
-      var total = this.model.get("total"),
-        ary = total.toString().split("."),
-        pounds = ary[0],
-        dec = ary[1];
-      $('span#pound').text(pounds);
-      $('span#decimal').text("." + dec);
-    },    
-    changeAttribute: function(e) {
-      var currentTarget = $(e.currentTarget),
-      attribute = currentTarget.data("attribute"),
-      value = currentTarget.data("value")
-      $(' .' + attribute).removeClass("selected")
-      currentTarget.toggleClass("selected");  
-      this.model.set(attribute, value)
-      if(this.step == this.attribute_steps[attribute]) {
-         this.$('#step_' + this.step + ' .chat-bubble').slideUp();
-         
-        this.$('#step_' + this.step + ' .step').fadeOut()
-         this.step = this.step + 1;
-        this.$('#step_' + this.step + ' .step').fadeIn()
-        this.$('#step_'  + this.step + ' .chat-bubble').slideDown();
-      }
-    },
-    renderPalette: function(e) {
-      var which = $(e.currentTarget).data("colour")
-      this.$('.palette').hide();          
-      this.$('.' + which).show();
-    },  
-    changeColour: function() {
-        this.$('.colour_1').css("background-color", this.model.get("colour_1"))
-        this.$('.colour_label_1').css("background-color", this.model.get("colour_1"))
-    },
-    changeColour2: function() {
-      this.$('.slide_background_container div').css("background-color", this.model.get("colour_2"))
-        
-        this.$('.colour_label_2').css("background-color", this.model.get("colour_2"))
-        this.$('#color_label_2').text(this.model.get("colour_2"))
-    }
-  })
-  
-  var ppv= new ProductPageView({model: thisProduct})
   
 // Calculate quantity
   $('#plus_qty').click(function(e) {
