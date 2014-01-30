@@ -13,6 +13,7 @@ ProductPresenter.prototype = {
   },
   movePointer: function(i) {
     this.pointer = this.pointer + i;
+    this.selectColour = true;
     this.view.render();
   },
   hoverColour: function() {
@@ -21,6 +22,14 @@ ProductPresenter.prototype = {
   },  
   currentGrid: function() {
     return coloursInGroupsOf16[this.pointer]
+  },
+  english_description: function() {
+      return(hex_colours[this.model.get("colour_" + this.chosenColour)])
+  },
+  changeColour: function(index) {
+    this.model.set("colour_" + this.chosenColour, coloursInGroupsOf16[this.pointer][index])
+    this.colourChanged = true;
+    this.view.render();
   }
 };
 
@@ -32,7 +41,7 @@ var ColourView = Backbone.View.extend({
   events: {
     'mouseenter .visible_colours.big_colour_square_frame': 'hoverColour',
     'mouseleave .colour_alert_box': 'hoverColour',
-    'mouseover .small_solid_colour_square': 'changeColour',    
+    'mouseenter .small_solid_square_frame': 'changeColour',    
     'click .small_solid_colour_square': 'hoverColour',
     'click .colour_index_right': function() {
       this.presenter.movePointer(1)
@@ -46,13 +55,18 @@ var ColourView = Backbone.View.extend({
     },
   changeColour: function(e) {
     var element = $(e.currentTarget);
-    this.model.set("colour_1", element.css("background-color"))
+    var index = this.$('td.colour_grid_container div.small_solid_square_frame').index(element)
+    this.presenter.changeColour(index)
   },
   render: function() {
     if(this.presenter.fadeToggle) {
       this.$('.colour_alert_box').fadeToggle()
       this.presenter.fadeToggle = false;
-    } else {
+    } else if (this.presenter.colourChanged) {
+      this.$('.big_colour_square').css("background-color", this.presenter.hex())
+      this.$('.text_label_for_colour').html(this.presenter.english_description())
+      this.presenter.colourChanged = false;
+    }else {
       var template = $('#colour_label_view').html();
       var result = $(Handlebars.compile(template)(this.presenter));
       this.$el.html(result);
@@ -117,6 +131,50 @@ StepsPresenter.prototype = {
   }
 }
 
+var StepView = Backbone.View.extend({
+  el: '#product_section0',
+   initialize: function() {
+    _.bindAll(this, 'render')
+    this.presenter = new StepsPresenter(thisProduct, this)
+  },
+  events: {     
+      "mouseenter .spc": "hoverStep",
+      "mouseleave .spc": "hoverStep",      
+      "click .texture": "updateTexture",  
+    },
+    updateTexture: function(e) {
+        this.presenter.updateTexture($(e.currentTarget).index())
+    },
+    hoverStep: function(e) {
+      this.presenter.hoverStep($(e.currentTarget).index());
+    },
+  render: function() {
+    if(this.presenter.toggleStep) {
+      this.$('#step_' + this.presenter.toggleStep + " .step").fadeToggle()      
+      this.$('#step_' + this.presenter.toggleStep + " .chat-bubble").slideToggle()
+      this.presenter.toggleStep = false;
+    } else if (this.presenter.changeTexture) { 
+      this.$('.texture').removeClass("selected")
+      var texture_changed = this.$('.texture').get(this.presenter.changeTexture) ;
+      $(texture_changed).toggleClass("selected"); 
+      this.presenter.changeTexture = false;
+    } else {
+      var template = $('#step_through').html();
+      var result = $(Handlebars.compile(template)(this.presenter));
+      this.$el.html(result)
+    }
+    return this;
+  },
+  changeColour: function() {
+      this.$('.colour_1').css("background-color", this.model.get("colour_1"))
+      this.$('.colour_label_1').css("background-color", this.model.get("colour_1"))
+  },
+  changeColour2: function() {
+    this.$('.slide_background_container div').css("background-color", this.model.get("colour_2"))
+      this.$('.colour_label_2').css("background-color", this.model.get("colour_2"))
+      this.$('#color_label_2').text(this.model.get("colour_2"))
+  }
+})
 $(function(){
   // Positioning of fixed price/alert boxes
   var top = Math.max($(window).height() / 2 - $("#total_price")[0].offsetHeight / 2, 0);

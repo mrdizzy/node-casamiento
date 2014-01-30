@@ -88,7 +88,7 @@
           <div class="big_colour_square colour_label_{{chosenColour}}" style="background-color:{{hex}};"></div>
         </div>
       </div>
-      <span class="text_label_for_colour">{{hex}}</span>     
+      <span class="text_label_for_colour">{{english_description}}</span>     
       <div>
         <table>
           <tr>
@@ -97,7 +97,7 @@
             <td style="width:160px;"  class="colour_grid_container">
             {{#currentGrid}}
             {{#.}}
-  <div class="small_solid_square_frame"><div class='small_solid_colour_square' style='background-color:{{hex}}'></div></div>
+  <div class="small_solid_square_frame"><div class='small_solid_colour_square' style='background-color:{{.}}'></div></div>
   {{/.}}
   {{/currentGrid}}</td>
             
@@ -112,7 +112,7 @@
         <div class="big_colour_square colour_label_{{colour_number}}" style="background-color:{{hex}};"></div>
       </div>
     
-      <span class="text_label_for_colour">{{hex}}</span>
+      <span class="text_label_for_colour">{{english_description}}</span>
     </div>
   </div>
 </script>
@@ -168,7 +168,7 @@
       
       
  <script type="text/template" id="step_through">
-  <div class="product_type spc"><img src="/gfx/product_types/small/name_place_small.png" style="width:130px;"></div>
+  <div class="product_type"><img src="/gfx/product_types/small/name_place_small.png" style="width:130px;"></div>
 
 <!-- 
 
@@ -308,55 +308,10 @@ var thisProduct = new Product({
     texture: "plain" 
 });
 
-var hex_colours = <%- JSON.stringify(hex_colours) %>
-var json_colours = <%- JSON.stringify(hex_colours) %>
+var hex_colours = <%- JSON.stringify(colour_list) %>
 
-var coloursInGroupsOf16 = inGroupsOf(json_colours, 16)
+var coloursInGroupsOf16 = inGroupsOf(Object.keys(hex_colours), 16)
 
-var StepView = Backbone.View.extend({
-  el: '#product_section0',
-   initialize: function() {
-    _.bindAll(this, 'render')
-    this.presenter = new StepsPresenter(thisProduct, this)
-  },
-  events: {     
-      "mouseenter .spc": "hoverStep",
-      "mouseleave .spc": "hoverStep",      
-      "click .texture": "updateTexture",  
-    },
-    updateTexture: function(e) {
-        this.presenter.updateTexture($(e.currentTarget).index())
-    },
-    hoverStep: function(e) {
-      this.presenter.hoverStep($(e.currentTarget).index());
-    },
-  render: function() {
-    if(this.presenter.toggleStep) {
-      this.$('#step_' + this.presenter.toggleStep + " .step").fadeToggle()      
-      this.$('#step_' + this.presenter.toggleStep + " .chat-bubble").slideToggle()
-      this.presenter.toggleStep = false;
-    } else if (this.presenter.changeTexture) { 
-      this.$('.texture').removeClass("selected")
-      var texture_changed = this.$('.texture').get(this.presenter.changeTexture) ;
-      $(texture_changed).toggleClass("selected"); 
-      this.presenter.changeTexture = false;
-    } else {
-      var template = $('#step_through').html();
-      var result = $(Handlebars.compile(template)(this.presenter));
-      this.$el.html(result)
-    }
-    return this;
-  },
-  changeColour: function() {
-      this.$('.colour_1').css("background-color", this.model.get("colour_1"))
-      this.$('.colour_label_1').css("background-color", this.model.get("colour_1"))
-  },
-  changeColour2: function() {
-    this.$('.slide_background_container div').css("background-color", this.model.get("colour_2"))
-      this.$('.colour_label_2').css("background-color", this.model.get("colour_2"))
-      this.$('#color_label_2').text(this.model.get("colour_2"))
-  }
-})
 var steps_view = new StepView();
 steps_view.render();
 
