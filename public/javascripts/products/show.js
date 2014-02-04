@@ -2,10 +2,24 @@ var ProductPresenter = function(model, view) {
   this.view = view;
   this.model = model; 
   this.chosenColour = ProductPresenter.chosenColour + 1;
+  
+  var currentColour = this.model.get("colour_" + this.chosenColour)
   ProductPresenter.chosenColour = ProductPresenter.chosenColour + 1;
-  this.pointer = 0;
+  // Make sure the current grid shown is relative to the current hue
+  for(var i = 0; i < coloursInGroupsOf16.length; i++) {
+	var result = _.find(coloursInGroupsOf16[i], function(item) {
+		return item == currentColour;
+	})
+	if(result) {
+		this.pointer = i;
+		break;
+	}
+  }
   this.selectColour = false;
 }
+
+// PRODUCT PRESENTER
+
 ProductPresenter.chosenColour = 0;
 ProductPresenter.prototype = {
   hex: function() {
@@ -27,11 +41,15 @@ ProductPresenter.prototype = {
       return(hex_colours[this.model.get("colour_" + this.chosenColour)])
   },
   changeColour: function(index) {
+  console.log(this.chosenColour)
     this.model.set("colour_" + this.chosenColour, coloursInGroupsOf16[this.pointer][index])
     this.colourChanged = true;
     this.view.render();
   }
 };
+
+
+// COLOUR VIEW
 
 var ColourView = Backbone.View.extend({
   initialize: function() {
@@ -42,13 +60,17 @@ var ColourView = Backbone.View.extend({
     'mouseenter .visible_colours.big_colour_square_frame': 'hoverColour',
     'mouseleave .colour_alert_box': 'hoverColour',
     'mouseenter .small_solid_square_frame': 'changeColour',    
-    'click .small_solid_square_frame': 'hoverColour',
+    'click .small_solid_square_frame': 'selectColour',
     'click .colour_index_right': function() {
       this.presenter.movePointer(1)
     },
     'click .colour_index_left': function() {
       this.presenter.movePointer(-1)
     },
+  },
+  selectColour: function() {
+  this.presenter.fadeToggle = false;
+  this.render()
   },
   hoverColour: function() {
       this.presenter.hoverColour();
@@ -135,7 +157,9 @@ var StepView = Backbone.View.extend({
    initialize: function() {
     _.bindAll(this, 'render')
     this.presenter = new StepsPresenter(thisProduct, this)
-    this.listenTo(thisProduct, 'change', this.changeColour)
+    this.listenTo(thisProduct, 'change:colour_1', this.changeColour)
+	
+    this.listenTo(thisProduct, 'change:colour_2', this.changeColour2)
   },
   events: {     
       "mouseenter .spc": "hoverStep",
@@ -169,9 +193,8 @@ var StepView = Backbone.View.extend({
       $('.colour_1').css("background-color", thisProduct.get("colour_1"))
   },
   changeColour2: function() {
-    this.$('.slide_background_container div').css("background-color", this.model.get("colour_2"))
-      this.$('.colour_label_2').css("background-color", this.model.get("colour_2"))
-      this.$('#color_label_2').text(this.model.get("colour_2"))
+    $('.slide_background_container div').css("background-color", thisProduct.get("colour_2"))
+      $('.colour_label_2').css("background-color", thisProduct.get("colour_2"))
   }
 })
 $(function(){

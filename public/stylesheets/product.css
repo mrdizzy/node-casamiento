@@ -32,7 +32,7 @@
 
 .selected {opacity:1; }
    
-
+#colour_row  td.label_container { width:50%;}
 #buy {  font: normal 1.4em "OS Light"; border-radius:5px;width:125px; height:50px; z-index:100; background-color:grey;color:white;}
 #buy:hover { background-color:black; cursor:pointer;}
 

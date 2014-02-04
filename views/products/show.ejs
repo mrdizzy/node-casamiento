@@ -73,7 +73,7 @@ var thisProduct = new Product({
     monogram: <%= (monogram || "1") %>, 
     quantity: 10, 
     colour_1: "<%= colour_1 %>",
-    colour_2: "<%= colour_2 ? colour_2 : "" %>",
+    colour_2: "<%= colour_2 ? colour_2 : null %>",
     number_of_colours: <%= number_of_colours %>,
     price: <%= price %>, 
     guests: ["&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;"], 
@@ -87,8 +87,10 @@ var coloursInGroupsOf16 = inGroupsOf(Object.keys(hex_colours), 16)
 var steps_view = new StepView();
 steps_view.render();
 
-var colour_view = new ColourView({model:thisProduct, el: $('#row')})
-colour_view.render()
+for(var i =0; i < thisProduct.get("number_of_colours"); i++) {
+	var colour_view = new ColourView({model:thisProduct, tagName: 'td', className: 'label_container'})
+	$('#colour_row').append(colour_view.render().el)
+}
 
 var quantity_view = new QuantityView()
 
