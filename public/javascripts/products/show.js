@@ -1,5 +1,5 @@
 var ProductPresenter = function(model, view) {
-this.view = view;
+  this.view = view;
   this.model = model; 
   this.chosenColour = ProductPresenter.chosenColour + 1;
   ProductPresenter.chosenColour = ProductPresenter.chosenColour + 1;
@@ -42,7 +42,7 @@ var ColourView = Backbone.View.extend({
     'mouseenter .visible_colours.big_colour_square_frame': 'hoverColour',
     'mouseleave .colour_alert_box': 'hoverColour',
     'mouseenter .small_solid_square_frame': 'changeColour',    
-    'click .small_solid_colour_square': 'hoverColour',
+    'click .small_solid_square_frame': 'hoverColour',
     'click .colour_index_right': function() {
       this.presenter.movePointer(1)
     },
@@ -67,8 +67,7 @@ var ColourView = Backbone.View.extend({
       this.$('.text_label_for_colour').html(this.presenter.english_description())
       this.presenter.colourChanged = false;
     }else {
-      var template = $('#colour_label_view').html();
-      var result = $(Handlebars.compile(template)(this.presenter));
+      var result = $(Handlebars.template(templates["products_show"])(this.presenter));
       this.$el.html(result);
     }
     return this;
@@ -136,6 +135,7 @@ var StepView = Backbone.View.extend({
    initialize: function() {
     _.bindAll(this, 'render')
     this.presenter = new StepsPresenter(thisProduct, this)
+    this.listenTo(thisProduct, 'change', this.changeColour)
   },
   events: {     
       "mouseenter .spc": "hoverStep",
@@ -159,15 +159,14 @@ var StepView = Backbone.View.extend({
       $(texture_changed).toggleClass("selected"); 
       this.presenter.changeTexture = false;
     } else {
-      var template = $('#step_through').html();
-      var result = $(Handlebars.compile(template)(this.presenter));
+      var result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter));
       this.$el.html(result)
     }
     return this;
   },
   changeColour: function() {
-      this.$('.colour_1').css("background-color", this.model.get("colour_1"))
-      this.$('.colour_label_1').css("background-color", this.model.get("colour_1"))
+      this.$('.colour_label_1').css("background-color", thisProduct.get("colour_1"))
+      $('.colour_1').css("background-color", thisProduct.get("colour_1"))
   },
   changeColour2: function() {
     this.$('.slide_background_container div').css("background-color", this.model.get("colour_2"))
@@ -195,3 +194,18 @@ $(function(){
     }
   })
 });
+
+
+var QuantityView = Backbone.View.extend({  
+    renderQuantity: function() {
+      $('#qty').html(this.model.get("quantity"))
+    },
+    renderTotal: function() {
+      var total = this.model.get("total"),
+        ary = total.toString().split("."),
+        pounds = ary[0],
+        dec = ary[1];
+      $('span#pound').text(pounds);
+      $('span#decimal').text("." + dec);
+    }
+})

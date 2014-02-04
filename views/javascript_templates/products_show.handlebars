@@ -1,0 +1,36 @@
+<div style="padding:0.5em;position:relative;">
+	{{! this is the container that actually fades in }}
+	<div class="colour_alert_box" style="left:-97px;text-align:center;{{#if selectColour}}display:block;{{/if}}">
+	  <div class="colour_selector_box">
+			<div class="big_colour_square_frame" style="margin:0 auto;text-align:center;">
+				<div class="big_colour_square colour_label_{{chosenColour}}" style="background-color:{{hex}};"></div>
+			</div>
+	  </div>
+	  <span class="text_label_for_colour">{{english_description}}</span>     
+	  <div>
+			<table>
+				<tr>
+					<td><div class="colour_index colour_index_left">&laquo;</div></td>
+
+					<td style="width:160px;"  class="colour_grid_container">
+						{{#currentGrid}}
+						{{#.}}
+						<div class="small_solid_square_frame"><div class='small_solid_colour_square' style='background-color:{{.}}'></div></div>
+						{{/.}}
+						{{/currentGrid}}
+					</td>
+					
+					<td><div class="colour_index colour_index_right">&raquo;</div></td>
+				</tr>
+			</table>
+	  </div>
+	</div>
+	
+	<div style="border:1px solid transparent;">
+	  <div class="visible_colours big_colour_square_frame">
+			<div class="big_colour_square colour_label_{{colour_number}}" style="background-color:{{hex}};"></div>
+	  </div>
+	
+	  <div  style="text-align:left;"><span class="text_label_for_colour">{{english_description}}</span></div>
+	</div>
+</div>

@@ -44,6 +44,7 @@ exports.create = function(req, res) {
 }
 
 exports.show = function(req, res) {
+console.log(res.locals.templates)
   var id = req.params.product;
   var cart_id = req.cookies.cart;
   if (req.cookies.cart) {
