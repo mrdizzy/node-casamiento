@@ -41,13 +41,11 @@ ProductPresenter.prototype = {
       return(hex_colours[this.model.get("colour_" + this.chosenColour)])
   },
   changeColour: function(index) {
-  console.log(this.chosenColour)
     this.model.set("colour_" + this.chosenColour, coloursInGroupsOf16[this.pointer][index])
     this.colourChanged = true;
     this.view.render();
   }
 };
-
 
 // COLOUR VIEW
 
