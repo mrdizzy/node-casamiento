@@ -6,7 +6,8 @@ var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
 document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
 document.write("</" + az + bz + cz + ">");
 </script>
-
+<link rel="stylesheet" type="text/css" href="/stylesheets/color_picker.css">
+<script src="/javascripts/libraries/color_picker.js"></script>
 <style type="text/css">
 
 .odd_slide_background_container, .even_slide_background_container { width:339px; height:217px; margin-bottom:1px;margin-right:1px;background-color:<%= colour_1 %>}
@@ -217,7 +218,21 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
   </div>
 </div>
 
-<%- partial("partials/colours.ejs", document) %>
+
+<div class="spc">
+  <div style="margin-bottom:0.5em;height:2em;">
+  <div style="float:left"><h1>Choose your colour</h1></div>
+  <div class="step colour_1">STEP 1</div>
+  </div>
+  
+  <div class="chat-bubble">Choose from hundreds of colours! Click on the colour below to change it and the image will change so you can see exactly what your design will look like. 
+  </div>
+  <div id="first_colour"></div>
+  <script>
+  $('#first_colour').colorPicker();
+  </script>
+
+</div>
 
   <div class="spc">
     <div style="margin-bottom:0.5em;height:2em;">

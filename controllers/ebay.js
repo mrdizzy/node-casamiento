@@ -27,8 +27,8 @@ exports.show = function(req, res) {
         }
     }
     
-    doc.hex_colours = _.uniq(colours.hex)
-    doc.colours_ref = colours.labels
+    doc.hex_colours = Object.keys(colours)
+    doc.colours_ref = colours
     doc.hex_colours = inGroupsOf(doc.hex_colours, 16)
             return doc._id == id;
         })
