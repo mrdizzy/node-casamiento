@@ -1,6 +1,3 @@
-
-<script src="/javascripts/colours.js"></script>
-
 <!-- 
     PRODUCT FORM TEMPLATE
 -->
@@ -22,9 +19,6 @@
         <p><label for="price">Description:</label></p>
         <p><textarea name="description">{{description}}</textarea></p>
         
-        <p><label for="number_of_colours">Number of colors:</label></p>
-        <p><input type="text" name="number_of_colours" value="{{number_of_colours}}"></input></p>
-        
         <p><label for="buy_it_now_id">Buy-it-now listing item number:</label></p>
         <p><input type="text" name="buy_it_now_id" value="{{buy_it_now_id}}"></input></p>
         
@@ -32,26 +26,7 @@
         <p><input type="text" name="buy_it_now_price" value="{{buy_it_now_price}}"></input></p>
         
       </div>
-      
-      <!-- COLOUR_SELECTORS -->
-      
-      <div style="float:right;width:50%;">
-        <div style="width:50%;float:left;">
-          <div style="width:30px;height:30px;background-color:{{colour-1}};border:1px solid black;"></div>
-          <select style="font-size:1.5em;" size="15" name="colour_1">
-            {{options_selected hex_colours colour_1}}
-          </select>
-        </div>
-        {{#is number_of_colours 2}}
-        <div style="width:50%;float:right;">
-          <div style="width:30px;height:30px;background-color:{{colour-2}};border:1px solid black;"></div>
-          <select style="font-size:1.5em;" size="15" name="colour_2">
-            {{options_selected hex_colours colour_2}}
-          </select>
-        </div>
-        {{/is}}
-      </div>
-      
+      <div id="colour_picker"></div>
       <input type="submit" style="clear:both;">Submit</a>
     </form>
     <h3 style="clear:both">Attachments</h3>
@@ -75,31 +50,17 @@
 </style>
 
 <div id="products_container">
-<h3>Products</h3>
-<div id="products" style="float:right;width:75%;"></div>
-</div>
-<div id="current_product_container" style="clear:both;width:90%;margin:0 auto">
-<h3>Current Product</h3>
-<div id="cpv"></div>
+        <h3>Products</h3>
+        <div id="products" style="float:right;width:75%;"></div>
+        </div>
+        <div id="current_product_container" style="clear:both;width:90%;margin:0 auto">
+        <h3>Current Product</h3>
+        <div id="cpv"></div>
 </div>
 
 
-    
 <script type="text/javascript">
-  Handlebars.registerHelper('options_selected', function(context, test) {
-    var ret = '';
-    for (var i = 0; i < context.length; i++) {
-        var option = '<option value="' + context[i]+'" style="background-color:' + context[i] + '" ';
-        if (test.toLowerCase() == context[i].toLowerCase()) {
-            option += ' selected="selected"';
-        }
-        option += '>'+ Handlebars.Utils.escapeExpression(context[i]) + '</option>';
-        ret += option;
-    }
-
-    return new Handlebars.SafeString(ret);
-});
-  var colourList = casamiento_colours;
+  
   var product_type_selection_view, theme_selection_view;
   
   $(function() {    

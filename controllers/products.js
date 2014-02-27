@@ -1,6 +1,5 @@
 var db = require('./../config/db').test_ebay,
-  colours = require('./../config/colours'),
-  _ = require('underscore'),
+  _ = require('underscore');
   inGroupsOf = require('./../lib/in_groups_of')
 
 exports.update = function(req, res) {
@@ -44,7 +43,6 @@ exports.create = function(req, res) {
 }
 
 exports.show = function(req, res) {
-console.log(res.locals.templates)
   var id = req.params.product;
   var cart_id = req.cookies.cart;
   if (req.cookies.cart) {

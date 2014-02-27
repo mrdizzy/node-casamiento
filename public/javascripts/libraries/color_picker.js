@@ -83,7 +83,7 @@
         var chosen_colour = colour_groups[pointer][$(this).index()]
         $big_colour_square_swatch.css("background-color",chosen_colour)
         $text_label_for_colour.text(settings.colour_list[chosen_colour])        
-        that.trigger('hover_colour', chosen_colour)
+        $(that).trigger('hover_colour', chosen_colour)
     })      
     
     // Click on a swatch    

@@ -1,5 +1,4 @@
-var db = require('./../../config/db').test_ebay,
-  product_types = ["invitation", "name_place", "wrap", "rsvp", "envelope"]
+var db = require('./../../config/db').test_ebay;
 
 exports.index = function(req, res) {
     getTypes('theme', function(themes) {
