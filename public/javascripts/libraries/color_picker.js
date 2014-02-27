@@ -37,7 +37,6 @@
         break;
       }
     }
-    alert(pointer)
     
     //static container
     var $static_container = $('<div></div>').addClass('dizzycp-static_container')
@@ -128,4 +127,4 @@
   }
   
 
-})(jQuery)
+})(jQuery)  

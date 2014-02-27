@@ -208,16 +208,6 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
   </div>
 
 
- <!-- 
-    BUY-IT BOX 2
- -->
-  <div class="spc">
-  <div class="colour_1" style="width:65%;border-radius:5px;color:white;background-color:grey;text-align:center;margin:0 auto;padding:1em;font:normal 1.4em OS;margin-top:1em;margin-bottom:1em;">
-      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" style="width:30px;"/> DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH FREE POSTAGE&hellip;
-      
-  </div>
-</div>
-
 
 <div class="spc">
   <div style="margin-bottom:0.5em;height:2em;">
@@ -228,12 +218,20 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
   <div class="chat-bubble">Choose from hundreds of colours! Click on the colour below to change it and the image will change so you can see exactly what your design will look like. 
   </div>
   <div id="first_colour"></div>
-  <script>
-  $('#first_colour').colorPicker();
-  </script>
 
+  <div id="second_colour"></div>
 </div>
 
+
+ <!-- 
+    BUY-IT BOX 2
+ -->
+  <div class="spc">
+  <div class="colour_1" style="width:65%;border-radius:5px;color:white;background-color:grey;text-align:center;margin:0 auto;padding:1em;font:normal 1.4em OS;margin-top:1em;margin-bottom:1em;">
+      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" style="width:30px;"/> DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH FREE POSTAGE&hellip;
+      
+  </div>
+</div>
   <div class="spc">
     <div style="margin-bottom:0.5em;height:2em;">
       <div style="float:left"><h1>Card Texture</h1></div>
@@ -320,90 +318,14 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 </div>
 <div style="clear:both;"></div>
 </div>
-<script type="text/template" id="colour_template">
-
-                    <% var counter = 0 %>
-                    <% hex_colours.forEach(function(page_for_palette) { %>
-                      <div class="palette palette_<%= counter %>">
-                        <table>
-                          <tr>                            
-                            <% if (hex_colours[counter - 1]) { %>
-                              <td>
-                                <div class="colour_index colour_index_left" data-colour="palette_<%= counter -1 %>">&laquo;</div>
-                              </td>
-                            <% } %>
-                            
-                            <td style="width:160px;">
-                              <% page_for_palette.forEach(function(hex) { %>
-                                <div class="small_solid_square_frame" data-colour="<%= hex %>">
-                                  <div class="small_solid_colour_square" style="background-color:<%= hex %>">
-                                  </div>
-                                </div>
-                              <% }) %>
-                            </td>
-                            
-                              
-                            <% if (hex_colours[counter + 1]) { %>
-                              <td>
-                                <div class="colour_index colour_index_right" data-colour="palette_<%= 
-                            counter + 1%>">&raquo;</div>
-                              </td>
-                            <% } %>
-                           
-                          </tr>
-                        </table>
-
-                      </div>
-                      <% counter = counter + 1 %>
-                    <% }) %>
-</script>
 <script type="text/javascript">
-
-var grid_colours = $('#colour_template').html();
-$('.colour_grid_container').append(grid_colours);
-$(function() {
-  var all_colours = <%- JSON.stringify(colours_ref) %>
-  var colourContext = 1;
-  $('.big_colour_square_frame').mouseenter(function(e) {
-    var which = $(e.currentTarget).data("colour");
-    colourContext = which;
-    var colour = $(e.currentTarget);
-    var id = colour.data("colour");
-    $('.colour_alert_box_' + id).fadeIn();
-  })
-  
-  $('.colour_alert_box_2').mouseleave(function() {
-    $('.colour_alert_box_2').fadeOut();
-  })
-  $('.colour_alert_box_1').mouseleave(function() {
-    $('.colour_alert_box_1').fadeOut();
-  })
-   $('.small_solid_square_frame').click(function() {
-      $('.colour_alert_box_1').fadeOut();
-       $('.colour_alert_box_2').fadeOut();
-   })
-  $('.small_solid_square_frame').mouseover(function(e) {
-    var currentTarget = $(e.currentTarget);
-    var hex = currentTarget.data("colour");
-    if(colourContext == 1) {
-      $('.colour_1').css("background-color", hex)
-     $('.color_label_1').text(all_colours[hex].toUpperCase())
-    } else { 
-      $('.colour_1 div div').css("background-color", hex)
-      $('.colour_2').css("background-color", hex)
-      $('.color_label_2').text(all_colours[hex].toUpperCase())
-    }
-  })
-  
-  $('.colour_index').click(function(e) {
-    var which = $(e.currentTarget).data("colour")
-    $('.palette').hide();  
-      $('.' + which).show();    
+  $('#first_colour').colorPicker({default_color: '<%= colour_1 %>'});
+  $('#first_colour').on('hover_colour', function(e, colour) {
+    $('.colour_1').css("background-color", colour)
   })
 
-  $('.big_colour_square_frame').click(function(e) {
-    var which = $(e.currentTarget).data("colour");
-    colourContext = which;
+  $('#second_colour').colorPicker({default_color: '<%= colour_2 %>'});
+  $('#second_colour').on('hover_colour', function(e, colour) {
+    $('.slide_background_container div').css("background-color", colour)
   })
-})
 </script>

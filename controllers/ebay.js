@@ -36,7 +36,6 @@ exports.show = function(req, res) {
         current.related = without;
         current.sample = ""
         current.theme = theme
-        console.log(without);
         current.quantity = req.query.quantity || 1;
         current.auction = req.query.auction;
         res.render('ebay/' + product_type + 's/14_nov_13.ejs', {
