@@ -69,81 +69,6 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 1.1em "OS", serif
 			<h2 class="casamiento" style="margin-top:0em;padding-top:0em;margin-bottom:0.25em;font-size:2.5em;text-align:left;"><%= documents[5].name %></h2>
 		</div>
 		
-<!-- 
-	COLOUR LABELS
-	-->		
-		
-		<div style="width:49%;float:right">
-				
-			<table>
-			<tr>
-					<% for(var i = 1; i < (documents[5].number_of_colours + 1);  i++) { %>
-				
-					<td style="vertical-align:top;width:49%">
-						<div>
-							<div class="colour_alert_box_<%= i %>" style="position:absolute;width:340px;height:250px;border:1px dotted black;background-color:white;">
-								<div id="colour_selector_<%= i %>" style="text-align:center;margin:0;padding:0;">
-									<div class="colour_frame_<%= i %> colour_change" data-colour="<%= i %>">
-										<div class="colour_<%= i %> color_square" style="width:30px;height:30px;background-color:<%= documents[5]["colour_" + i] %>;">
-										</div>
-									</div>
-								</div>
-								<span id="color_label_<%= i %>" class="color_label"><%= documents.colours_ref[documents[5]["colour_" + i]].toUpperCase() %></span>
-								
-								
-								<!--
-		COLOUR SELECTOR
-		-->
-		
-	<div class="colour_selector">
-		
-	 <% var counter = 0 %>
-		<% documents.hex_colours.forEach(function(page) { %>
-		<div class="palette palette_<%= counter %>" style="z-index:100;background-color:white;margin-top:0;padding-top:0;">
-<table><tr><td>
-<% if (documents.hex_colours[counter - 1]) { %>
-<div class="colour_index colour_index_left" data-colour="palette_<%= 
-counter -1 %>">&laquo;</div>
-</td>
-
-<% } %>
-<td style="width:160px;">
-				<% page.forEach(function(colour) { %>
-				<div class="a_colour" data-colour="<%= colour %>">
-			 <div style="background-color:<%= colour %>;margin-bottom:0;padding-bottom:0;margin:0 auto;width:18px;height:18px;"></div>
-			 </div>
-				<% }) %>
-				<td>
-				
-<% if (documents.hex_colours[counter + 1]) { %>
-<div class="colour_index colour_index_right" data-colour="palette_<%= 
-counter + 1%>">&raquo;</div>
- <% } %></td></tr></table>
-
-				</div>
-				<% counter = counter + 1 %>
-		<% }) %>
-		
-	</div>
-								
-							</div>
-							
-							<div id="colour_selector_<%= i %>" style="text-align:center;margin:0;padding:0;">
-								<div class="colour_frame_<%= i %> colour_change" data-colour="<%= i %>">
-									<div class="colour_<%= i %> color_square" style="width:30px;height:30px;background-color:<%= documents[5]["colour_" + i] %>;">
-									</div>
-								</div>
-							</div>
-							<span id="color_label_<%= i %>" class="color_label"><%= documents.colours_ref[documents[5]["colour_" + i]].toUpperCase() %></span>
-							</div>
-						</div>
-					</td>
-				<% } %>
-				</tr>
-				</table>
-	
-
-</div>
 
 <div style="clear:both;width:49%;float:left">
 <div class="spc" style="" id="step_1">
@@ -188,24 +113,7 @@ counter + 1%>">&raquo;</div>
 	</div>
 	<div style="width:49%;float:left">
 	
-	<!--
-		COLOUR LABELS
--->
-
-<table>
-<tr>
-		<% for(var i = 1; i < (documents[6].number_of_colours + 1);  i++) { %>
 	
-		<td style="vertical-align:top;width:49%">
-			<div id="colour_selector_<%= i %>" style="display:inline-block;text-align:center;margin:0;padding:0;">
-			<div class="colour_frame_<%= i %> colour_change" data-colour="<%= i %>"><div class="colour_<%= i %> color_square" style="width:30px;height:30px;background-color:<%= documents[6]["colour_" + i] %>;"></div></div>
-			</div><br/>
-			<span id="color_label_<%= i %>" class="color_label"><%= documents.colours_ref[documents[6]["colour_" + i]].toUpperCase() %></span>
-			</div>
-			</td>
-	<% } %>
-	</tr>
-	</table>
 	</div>
 	
 	

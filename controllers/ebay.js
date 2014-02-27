@@ -1,7 +1,5 @@
 var db = require('./../config/db').test_ebay,
-    _ = require('underscore'),
-    colours = require('./../config/colours')
-    inGroupsOf = require('./../lib/in_groups_of');
+    _ = require('underscore');
 
 // Route: /ebay/:id
 // This renders an ebay product view by looking in the /views/ebay/product_type folder for its template as different product types will need different rendering
@@ -17,19 +15,14 @@ exports.show = function(req, res) {
     
         var documents = docs.toArray();
         var current = _.find(documents, function(doc) {
-        doc.document = doc;
-        for(var i=0;i < 6; i++) {
-        if (doc['background-' + i]) {
-            var compiled = _.template(doc['background-' + i]);
-    doc['background-' + i] = compiled({colour: doc.colour_2});
-    
-    doc['background_' + i] = doc['background-' + i]
-        }
-    }
-    
-    doc.hex_colours = Object.keys(colours)
-    doc.colours_ref = colours
-    doc.hex_colours = inGroupsOf(doc.hex_colours, 16)
+            doc.document = doc;
+            for(var i=0;i < 6; i++) {
+                if (doc['background-' + i]) {
+                    var compiled = _.template(doc['background-' + i]);
+                    doc['background-' + i] = compiled({colour: doc.colour_2});    
+                    doc['background_' + i] = doc['background-' + i]
+                }
+            }
             return doc._id == id;
         })
         var without = _.without(documents, current);
