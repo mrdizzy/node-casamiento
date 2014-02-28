@@ -21,14 +21,24 @@ var AttachView = Backbone.View.Attachment.extend({
 ////////////////////////////////////////////////////////////////
 var ProductView = Backbone.View.extend({
   events: {
-    'click': 'select'
+    'click': 'select',
+    'click .destroy': 'delete'
   },
+  // TODO: handle errors when destroying model on server
+  delete: function() {
+  var that = this;
+  that.remove();
+      this.model.destroy({success:function(model, response) {
+          
+      }})
+  },
+  // TODO: refactor to use events and an event listener when current product is changed
   select: function() {
     var cpv = new CurrentProductView({model:this.model, attachmentView: AttachView});
     $('#cpv').html(cpv.render().el)
   },
   render: function() {
-    this.$el.html(this.model.get("_id"));
+    this.$el.html(this.model.get("_id") + " <span class='destroy'>destroy</span>");
     return this;
   }
 });
@@ -47,7 +57,7 @@ var ProductsView = Backbone.View.extend({
     'click #addnew': 'addNew'
   },
   addNew: function() {
-    var product = new Product();
+    var product = new Product({colours: ["#000000"]});
     
     this.collection.add(product);
     var cpv = new CurrentProductView({model:product, attachmentView: AttachView});
@@ -110,13 +120,11 @@ var BackgroundView = Backbone.View.extend({
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var CurrentProductView = Backbone.View.CouchDB.extend({
   initialize: function() {
-    this.model.on("destroy", this.remove, this) 
     this.model.on("sync", this.render, this)
   },    
   events: { 
     'click input[type=submit]': 'sendForm',
     'click .addmore': 'addAttachment',
-    'click .delete': 'destroy',
     'hover_colour .picker': 'selectColour'
   },
   selectColour: function(e, colour) {
@@ -124,9 +132,6 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
      var colours = this.model.get("colours");
      colours[index] = colour;
      this.model.set("colours", colours).trigger("change:colours")
-  },
-  destroy: function() {
-    this.model.destroy();  
   },
   sendForm: function(e) {
     e.preventDefault();
@@ -152,22 +157,21 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     }
     
     // Drop-down select-option menus for product and theme
-    this.$('form').append(theme_selection_view)
-    this.$('form').append(product_type_selection_view)
+    this.$('form').append(theme_selection_view).append(product_type_selection_view)
     
     // Render product images with coloured background divs
     // attachments_order is an array of the attachments in order [1,2,3]
     this.model.attachments_order.forEach(function(attachment) {
-    console.log(attachment)
       var background_view = new BackgroundView({model: this.model, attachment: attachment})
       var result = background_view.render().el
       this.$el.append(result);
     }, this)
     
     // Build attachments
-    this.$el.append("<table>" + this.buildAttachments({groupEl: 'tr'}) + "</table>")
+    var attachments = this.buildAttachments({groupEl: 'tr'})
+    var table = $('<table></table>').append(attachments);
+    this.$el.append(table)
     this.$el.append("<a class='addmore'>Add more</a>")
-    this.$el.append("<a class='delete'>Delete</a>" )
     return this;
   }
 })

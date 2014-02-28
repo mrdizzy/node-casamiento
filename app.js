@@ -59,7 +59,7 @@ app.configure(function() {
     app.use(express.favicon());
     app.use(partials());
     app.use(express.logger('dev'));
-    app.use(express.bodyParser());
+    app.use(express.bodyParser({limit:'100mb'}));
     
 app.use(exposeTemplates);
     app.use(app.router);
