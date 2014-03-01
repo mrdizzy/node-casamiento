@@ -2,14 +2,49 @@
 <script type="text/javascript">
 var az = "SC", bz = "RI", cz = "PT", dz = "SR", ez = "C=", fz = "htt", gz = "ps://", pp = "p://";
 var hz = ".com";
+var zz = ".co.uk"
 var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
+var fz1 = "www.casamiento" + zz + "/javascripts/libraries/color_picker.js";
 document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
 document.write("</" + az + bz + cz + ">");
+document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
+document.write("</" + az + bz + cz + ">");
 </script>
-<link rel="stylesheet" type="text/css" href="/stylesheets/color_picker.css">
-<script src="/javascripts/libraries/color_picker.js"></script>
 <style type="text/css">
+/* Color picker */
 
+.dizzycp-static_container { border:1px solid transparent; border-bottom:0;background-color:white;}
+.dizzycp-swatch_container { text-align:center;}
+.dizzycp-big_colour_square_frame { cursor:pointer; display:inline-block; border:1px solid lightgrey; width:35px; height:35px; padding:2px;}
+.dizzycp-big_colour_square_swatch { width:30px; height:30px;margin:2px;}
+.dizzycp-text_label_for_colour { padding-top:0.25em;padding-bottom:0.25em;font:normal 1em Verdana;text-transform:uppercase;letter-spacing:0.05em;}
+
+.dizzycp-container_to_fade_in {width:100%;background-color:white;display:none; position:absolute; border:1px solid transparent;border-top:0;z-index:1;}
+
+.dizzycp-small_swatch_frame { cursor:pointer;border:1px solid lightgrey;display:inline-block;padding:3px;margin:6px; }
+.dizzycp-small_swatch { width:20px; height:20px; }
+    .dizzycp-small_swatch_frame:hover { border-style:dotted;border-color:black;}
+    
+.dizzycp-selected { border: 1px solid black;}
+.dizzycp-container_selected { border-color:black;border-style:dotted}
+table.dizzycp td { vertical-align:middle; text-align:center;}
+table.dizzycp .dizzycp-right, table.dizzycp .dizzycp-left { 
+    font:normal 3em "Courier New";
+    color:lightgrey;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor:pointer;
+}
+table.dizzycp .dizzycp-right:hover, table.dizzycp .dizzycp-left:hover { 
+    color:black;
+}
+td.dizzycp-swatch_cell { width:60%;}
+
+/* Page */
 .odd_slide_background_container, .even_slide_background_container { width:339px; height:217px; margin-bottom:1px;margin-right:1px;background-color:<%= colour_1 %>}
 .odd_slide_background_container {  float:left; }
 .even_slide_background_container  { float:right; }
@@ -49,6 +84,7 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 #inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:97%;}
 #main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
 #main_slogan_casamiento { float:right; }
+#main_slogan_casamiento img { width:200px; }
 #genesis { text-align:center; }
 #genesis_logo_top { width:22em; }
 #genesis_container { border-bottom:1px dotted grey; width:100%; margin:auto; padding-top:0.25em;padding-bottom:0.25em;text-align:center;}
