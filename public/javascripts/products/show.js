@@ -1,99 +1,3 @@
-var ProductPresenter = function(model, view) {
-  this.view = view;
-  this.model = model; 
-  this.chosenColour = ProductPresenter.chosenColour + 1;
-  
-  var currentColour = this.model.get("colour_" + this.chosenColour)
-  ProductPresenter.chosenColour = ProductPresenter.chosenColour + 1;
-  // Make sure the current grid shown is relative to the current hue
-  for(var i = 0; i < coloursInGroupsOf16.length; i++) {
-	var result = _.find(coloursInGroupsOf16[i], function(item) {
-		return item == currentColour;
-	})
-	if(result) {
-		this.pointer = i;
-		break;
-	}
-  }
-  this.selectColour = false;
-}
-
-// PRODUCT PRESENTER
-
-ProductPresenter.chosenColour = 0;
-ProductPresenter.prototype = {
-  hex: function() {
-    return this.model.get("colour_" + this.chosenColour)
-  },
-  movePointer: function(i) {
-    this.pointer = this.pointer + i;
-    this.selectColour = true;
-    this.view.render();
-  },
-  hoverColour: function() {
-    this.fadeToggle = true;
-    this.view.render();
-  },  
-  currentGrid: function() {
-    return coloursInGroupsOf16[this.pointer]
-  },
-  english_description: function() {
-      return(hex_colours[this.model.get("colour_" + this.chosenColour)])
-  },
-  changeColour: function(index) {
-    this.model.set("colour_" + this.chosenColour, coloursInGroupsOf16[this.pointer][index])
-    this.colourChanged = true;
-    this.view.render();
-  }
-};
-
-// COLOUR VIEW
-
-var ColourView = Backbone.View.extend({
-  initialize: function() {
-    _.bindAll(this, 'render')
-    this.presenter = new ProductPresenter(this.model, this)
-  },
-  events: {
-    'mouseenter .visible_colours.big_colour_square_frame': 'hoverColour',
-    'mouseleave .colour_alert_box': 'hoverColour',
-    'mouseenter .small_solid_square_frame': 'changeColour',    
-    'click .small_solid_square_frame': 'selectColour',
-    'click .colour_index_right': function() {
-      this.presenter.movePointer(1)
-    },
-    'click .colour_index_left': function() {
-      this.presenter.movePointer(-1)
-    },
-  },
-  selectColour: function() {
-  this.presenter.fadeToggle = false;
-  this.render()
-  },
-  hoverColour: function() {
-      this.presenter.hoverColour();
-    },
-  changeColour: function(e) {
-    var element = $(e.currentTarget);
-    var index = this.$('td.colour_grid_container div.small_solid_square_frame').index(element)
-    this.presenter.changeColour(index)
-  },
-  render: function() {
-    if(this.presenter.fadeToggle) {
-      this.$('.colour_alert_box').fadeToggle()
-      this.presenter.fadeToggle = false;
-    } else if (this.presenter.colourChanged) {
-      this.$('.big_colour_square').css("background-color", this.presenter.hex())
-      this.$('.text_label_for_colour').html(this.presenter.english_description())
-      this.presenter.colourChanged = false;
-    }else {
-      var result = $(Handlebars.template(templates["products_show"])(this.presenter));
-      this.$el.html(result);
-    }
-    return this;
-  }
-})
-
 var Product = Backbone.Model.extend({
   initialize: function() {
       this.on("change:quantity", this.calculatePrice)
@@ -150,25 +54,28 @@ StepsPresenter.prototype = {
   }
 }
 
-var StepView = Backbone.View.extend({
+var StepView = Backbone.View.extend({ 
   el: '#product_section0',
    initialize: function() {
     _.bindAll(this, 'render')
     this.presenter = new StepsPresenter(thisProduct, this)
-    this.listenTo(thisProduct, 'change:colour_1', this.changeColour)
-	
+    this.listenTo(thisProduct, 'change:colour_1', this.changeColour)	
     this.listenTo(thisProduct, 'change:colour_2', this.changeColour2)
   },
   events: {     
       "mouseenter .spc": "hoverStep",
       "mouseleave .spc": "hoverStep",      
       "click .texture": "updateTexture",  
+      "hover_colour #colour_section_render": "updateColour"
     },
     updateTexture: function(e) {
         this.presenter.updateTexture($(e.currentTarget).index())
     },
     hoverStep: function(e) {
       this.presenter.hoverStep($(e.currentTarget).index());
+    },
+    updateColour: function(e, colour) {
+      thisProduct.set("colour_1", colour)
     },
   render: function() {
     if(this.presenter.toggleStep) {

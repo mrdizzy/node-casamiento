@@ -56,28 +56,15 @@ exports.show = function(req, res) {
 
 function getProduct(req, res,id,cart) {
     db.get(id, function(error, document) {
-    document.cart = cart;
+    //document.cart = cart;
     for(var i=0;i < 6; i++) {
         if (document['background-' + i]) {
             var compiled = _.template(document['background-' + i]);
-    document['background-' + i] = compiled({colour: document.colour_2});
-    document['background_' + i] = document['background-' + i]
+            document['background-' + i] = compiled({colour: document.colours[1]});
         }
     }
-    document.document = document
-    console.log(colours)
-    document.colour_list = colours
-              
-       // res.format({
-        //    json: function() {
-         //       res.json(document)
-         //   },
-          //  html: function() {
-          
         res.render('products/show.ejs', {
-            locals: document
+            locals: {product: document}
         });
-          //  }
-        //})
     });
 }

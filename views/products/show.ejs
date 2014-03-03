@@ -1,11 +1,15 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
 <script type="text/javascript" src="/javascripts/products/show.js"></script>
 <script type="text/javascript" src="/javascripts/libraries/in_groups_of.js"></script>
+
+<script type="text/javascript" src="/javascripts/libraries/color_picker.js"></script>
 <link rel="stylesheet" type="text/css" href="/stylesheets/product.css">
 
+<link rel="stylesheet" type="text/css" href="/stylesheets/color_picker.css">
+
 <style type="text/css">
-  .step { background-color:<%= colour_1 %>}
-  .slide_background {width:374px;height:239px;margin-bottom:1px;margin-right:1px;background-color:<%= colour_1 %> }
+  .step { background-color:<%= product.colours[0] %>}
+  .slide_background {width:374px;height:239px;margin-bottom:1px;margin-right:1px;background-color:<%= product.colours[0] %> }
 </style>
 
 
@@ -19,16 +23,16 @@
 
 -->
 
-      <div id="slide1" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-<%= attachments_order[0] %>" class="slide_image" /><% if ((typeof document["background_" + attachments_order[0]]) !== "undefined") {%><div class="slide_background_container">
-      <%-  document["background_" + attachments_order[0]] %></div>
+      <div id="slide1" class="colour_1 slide_background"><img src="/products/<%= product._id %>/attachments/medium-<%= product.attachments_order[0] %>" class="slide_image" /><% if ((typeof product["background-" + product.attachments_order[0]]) !== "undefined") {%><div class="slide_background_container">
+      <%-  product["background-" + product.attachments_order[0]] %></div>
       <% } %></div>           
          
-      <div id="slide2" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-<%= attachments_order[1] %>" class="slide_image" /><% if ((typeof  document["background_" + attachments_order[1]]) !== "undefined") {%><div class="slide_background_container">
-      <%-  document["background_" + attachments_order[1]] %></div>
+      <div id="slide2" class="colour_1 slide_background"><img src="/products/<%= product._id %>/attachments/medium-<%= product.attachments_order[1] %>" class="slide_image" /><% if ((typeof  product["background-" + product.attachments_order[1]]) !== "undefined") {%><div class="slide_background_container">
+      <%-  product["background-" + product.attachments_order[1]] %></div>
       <% } %></div>
         
-      <div id="slide3" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-<%= attachments_order[2] %>" class="slide_image" /><% if ((typeof  document["background_" + attachments_order[2]]) !== "undefined") {%><div class="slide_background_container">
-      <%-  document["background_" + attachments_order[2]] %></div>
+      <div id="slide3" class="colour_1 slide_background"><img src="/products/<%= product._id %>/attachments/medium-<%= product.attachments_order[2] %>" class="slide_image" /><% if ((typeof  product["background-" + product.attachments_order[2]]) !== "undefined") {%><div class="slide_background_container">
+      <%-  product["background-" + product.attachments_order[2]] %></div>
       <% } %></div>
       
 <!-- 
@@ -37,7 +41,7 @@
 
 -->      
       
-      <div id="slide4"><h1 class="product_name" style="text-align:center"><%= name %></h1>
+      <div id="slide4"><h1 class="product_name" style="text-align:center"><%= product.name %></h1>
         <div style="text-align:center;margin-bottom:1em"><img src="/gfx/ornamentalline.png" /></div>
       </div>
         
@@ -51,8 +55,8 @@
   SLIDE 4 
 
 -->    
-      <div id="slide6" class="colour_1 slide_background"><img src="/products/<%= _id %>/attachments/medium-<%= attachments_order[3] %>" class="slide_image" /><% if ((typeof  document["background_" + attachments_order[3]]) !== "undefined") {%><div style="width:374px;height:239px;">
-      <%-  document["background_" + attachments_order[3]]  %></div>
+      <div id="slide6" class="colour_1 slide_background"><img src="/products/<%= product._id %>/attachments/medium-<%= product.attachments_order[3] %>" class="slide_image" /><% if ((typeof  product["background-" + product.attachments_order[3]]) !== "undefined") {%><div style="width:374px;height:239px;">
+      <%-  product["background-" + product.attachments_order[3]]  %></div>
       <% } %></div>           
    </div>
       
@@ -67,31 +71,10 @@ var templates = {}
 <% }) %>
 
 // Setup and initialization
-var thisProduct = new Product({
-    id: "<%= _id %>",
-    name: "<%= name %>", 
-    monogram: <%= (monogram || "1") %>, 
-    quantity: 10, 
-    colour_1: "<%= colour_1 %>",
-    colour_2: "<%= colour_2 ? colour_2 : null %>",
-    number_of_colours: <%= number_of_colours %>,
-    price: <%= price %>, 
-    guests: ["&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;","&hellip;"], 
-    texture: "plain" 
-});
+var thisProduct = new Product(<%- JSON.stringify(product) %>);
 
-var hex_colours = <%- JSON.stringify(colour_list) %>
-
-var coloursInGroupsOf16 = inGroupsOf(Object.keys(hex_colours), 16)
-
-var steps_view = new StepView();
-steps_view.render();
-
-for(var i =0; i < thisProduct.get("number_of_colours"); i++) {
-	var colour_view = new ColourView({model:thisProduct, tagName: 'td', className: 'label_container'})
-	$('#colour_row').append(colour_view.render().el)
-}
+new StepView().render();
 
 var quantity_view = new QuantityView()
-
+$('#colour_section_render').colorPicker({colours_per_page:12, default_color: '<%- product.colours[0] %>'});
 </script>
