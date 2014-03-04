@@ -1,6 +1,5 @@
 var db = require('./../config/db').test_ebay,
   _ = require('underscore');
-  inGroupsOf = require('./../lib/in_groups_of')
 
 exports.update = function(req, res) {
   db.save(req.body, function(err, documents) {
@@ -56,13 +55,13 @@ exports.show = function(req, res) {
 
 function getProduct(req, res,id,cart) {
     db.get(id, function(error, document) {
-    //document.cart = cart;
-    for(var i=0;i < 6; i++) {
-        if (document['background-' + i]) {
-            var compiled = _.template(document['background-' + i]);
-            document['background-' + i] = compiled({colour: document.colours[1]});
+        for(var i=0;i < 6; i++) {
+            // compile templates for different coloured backgrounds
+            if (document['background-' + i]) {
+                var compiled = _.template(document['background-' + i]);
+                document['background-' + i] = compiled({colour: document.colours[1]});
+            }
         }
-    }
         res.render('products/show.ejs', {
             locals: {product: document}
         });
