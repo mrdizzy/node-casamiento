@@ -4,7 +4,7 @@ var az = "SC", bz = "RI", cz = "PT", dz = "SR", ez = "C=", fz = "htt", gz = "ps:
 var hz = ".com";
 var zz = ".co.uk"
 var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
-var fz1 = "www.casamiento" + zz + "/javascripts/libraries/color_picker.js";
+var fz1 = "localhost:3000"+ "/javascripts/libraries/color_picker.js";
 document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
 document.write("</" + az + bz + cz + ">");
 document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
@@ -352,12 +352,12 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 </div>
 <script type="text/javascript">
   $('#first_colour').colorPicker({default_color: '<%= colour_1 %>'});
-  $('#first_colour').on('hover_colour', function(e, colour) {
+  $('#first_colour').on('dizzy-cp:hoverColor', function(e, colour) {
     $('.colour_1').css("background-color", colour)
   })
 <% if (colour_2) { %>
   $('#second_colour').colorPicker({default_color: '<%= colour_2 %>'});
-  $('#second_colour').on('hover_colour', function(e, colour) {
+  $('#second_colour').on('dizzy-cp:hoverColor', function(e, colour) {
     $('.slide_background_container div').css("background-color", colour)
   })
 <% }  %>
