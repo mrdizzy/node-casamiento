@@ -66,7 +66,8 @@ var StepView = Backbone.View.extend({
       "mouseenter .spc": "hoverStep",
       "mouseleave .spc": "hoverStep",      
       "click .texture": "updateTexture",  
-      "hover_colour #colour_section_render": "updateColour"
+      "hover_colour #picker_1": "updateColour1",
+      "hover_colour #picker_2": "updateColour2"
     },
     updateTexture: function(e) {
         this.presenter.updateTexture($(e.currentTarget).index())
@@ -74,8 +75,11 @@ var StepView = Backbone.View.extend({
     hoverStep: function(e) {
       this.presenter.hoverStep($(e.currentTarget).index());
     },
-    updateColour: function(e, colour) {
+    updateColour1: function(e, colour) {
       thisProduct.set("colour_1", colour)
+    },
+    updateColour2: function(e, colour) {
+      thisProduct.set("colour_2", colour)
     },
   render: function() {
     if(this.presenter.toggleStep) {
@@ -89,7 +93,12 @@ var StepView = Backbone.View.extend({
       this.presenter.changeTexture = false;
     } else {
       var result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter));
+      var colours_1 = $("<div id='picker_1'></div>").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[0]});
+      if(thisProduct.get("colours")[1]) {
+        var colours_2 =$("<div id='picker_2'></div>").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[1]});
+      }
       this.$el.html(result)
+      this.$('#colour_section_render').append(colours_1).append(colours_2);
     }
     return this;
   },
