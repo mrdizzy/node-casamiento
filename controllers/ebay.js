@@ -8,32 +8,14 @@ exports.show = function(req, res) {
     theme = id.split("-")[0],
     product_type = id.split("-")[1];
     
-    db.view('products/all', {
-        startkey: theme,
-        endkey: theme + "z"
-    }, function(err, docs) {
-    
-        var documents = docs.toArray();
-        var current = _.find(documents, function(doc) {
-            doc.document = doc;
-            for(var i=0;i < 6; i++) {
-                if (doc['background-' + i]) {
-                    var compiled = _.template(doc['background-' + i]);
-                    doc['background-' + i] = compiled({colour: doc.colour_2});    
-                    doc['background_' + i] = doc['background-' + i]
-                }
-            }
-            return doc._id == id;
-        })
-        var without = _.without(documents, current);
-        current.related = without;
-        current.sample = ""
-        current.theme = theme
-        current.quantity = req.query.quantity || 1;
-        current.auction = req.query.auction;
+    db.get(id, function(err, doc) {
+        
+      var divs = prepareDivs(doc);
+        doc.document = doc;
+        doc.divs = divs;
         res.render('ebay/' + product_type + 's/14_nov_13.ejs', {
             layout: false,
-            locals: current
+            locals: doc
         });
     });
 }
@@ -55,4 +37,24 @@ exports.index = function(req, res) {
             documents: documents
         });
     });
+}
+
+
+function prepareDivs(object) {
+var results = []
+    object.attachments_order.forEach(function(number) {
+        if (object['background-' + number]) {
+            var compiled = _.template(object['background-' + number]);
+            var result = compiled({colour: object.colours[1]});   
+        }
+        var html = '<div id="slide' + number + '" class="slide_container colour_0">';
+        html = html + '<img src="http://www.casamiento.co.uk/products/' + object._id + '/attachments/display-' + number + '" class="slide_image" />'
+      if ((typeof  object["background-" + number]) !== "undefined") {
+        html = html + '<div class="slide_background_container">' + result + '</div>'
+      }
+      html = html + '</div>'
+      results.push(html)
+     })  
+     return results;
+     
 }

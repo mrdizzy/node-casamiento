@@ -2,7 +2,7 @@
 <script type="text/javascript">
 var az = "SC", bz = "RI", cz = "PT", dz = "SR", ez = "C=", fz = "htt", gz = "ps://", pp = "p://";
 var hz = ".com";
-var zz = ".co.uk"
+var zz = ".co.uk"   
 var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
 var fz1 = "localhost:3000"+ "/javascripts/libraries/color_picker.js";
 document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
@@ -10,9 +10,10 @@ document.write("</" + az + bz + cz + ">");
 document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
 document.write("</" + az + bz + cz + ">");
 </script>
-<style type="text/css">
-/* Color picker */
 
+<style type="text/css">
+
+/* Color picker */
 .dizzycp-static_container { border:1px solid transparent; border-bottom:0;background-color:white;}
 .dizzycp-swatch_container { text-align:center;}
 .dizzycp-big_colour_square_frame { cursor:pointer; display:inline-block; border:1px solid lightgrey; width:35px; height:35px; padding:2px;}
@@ -45,9 +46,7 @@ table.dizzycp .dizzycp-right:hover, table.dizzycp .dizzycp-left:hover {
 td.dizzycp-swatch_cell { width:60%;}
 
 /* Page */
-.odd_slide_background_container, .even_slide_background_container { width:339px; height:217px; margin-bottom:1px;margin-right:1px;background-color:<%= colour_1 %>}
-.odd_slide_background_container {  float:left; }
-.even_slide_background_container  { float:right; }
+.slide_container { width:339px; height:217px; margin-bottom:1px;margin-right:1px;background-color:<%= colours[0] %>}
 .slide_background_container { width:339px;height:217px;}
 #slide5 h6 { width:95%;margin:0 auto;}
 
@@ -66,16 +65,18 @@ td.dizzycp-swatch_cell { width:60%;}
 @font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OSLI.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
 
-a.caz:link, a.caz:active, a.caz:visited { font-style:underline; color:<%= colour_1 %>;}
+a.caz:link, a.caz:active, a.caz:visited { font-style:underline; color:<%= colours[0] %>;}
 a.caz:hover { color:#000; }
 
 .chat-bubble {padding-left:1em;padding-right:1em; font: normal 0.9em "OS IL"; margin:10px auto;color:black; }
 
-.step { width:50%;float:right;padding:0.25em;color:white;font:0.8em normal 'OS Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;border-top-right-radius:0;border-bottom-right-radius:0;border-top-left-radius:0; background-color:<%= colour_1 %>}
+.step { width:50%;float:right;padding:0.25em;color:white;font:0.8em normal 'OS Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;border-top-right-radius:0;border-bottom-right-radius:0;border-top-left-radius:0; background-color:<%= colours[0] %>}
 
 h3.caz { font:normal 1.4em "Gara", serif; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
 h2.caz { text-align:center; font: normal 2.2em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
 h6.caz { font: normal 1.375em "OS Light", sans-serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
+h5 { padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:normal 3em Gara;}
+h4 { font:normal 1.3em Gara;letter-spacing:0.1em;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;border-bottom:1px solid black;display:inline-block; padding-bottom:1em; text-transform:uppercase}
 p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;line-height: 1.5em; padding:0; margin-bottom:1em;}
 
 /* COLUMNS */
@@ -127,60 +128,27 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 <!--
   SLIDES 1-3
 -->     
+<div>
+  <%- divs[0] %>  
+  <%- divs[1] %>
+</div>
 
-<div id="slide1" class="odd_slide_background_container colour_1">
-  <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[0] %>" class="slide_image" />
-  <% if ((typeof document["background_" + attachments_order[0]]) !== "undefined") {%>
-    <div class="slide_background_container">
-      <%-  document["background_" + attachments_order[0]] %>
-    </div>
-  <% } %>
-</div>           
-         
-<div id="slide2" class="even_slide_background_container colour_1">
-  <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[1] %>" class="slide_image" />
-  <% if ((typeof  document["background_" + attachments_order[1]]) !== "undefined") {%>
-    <div class="slide_background_container">
-      <%-  document["background_" + attachments_order[1]] %>
-    </div>
-  <% } %>
-</div>
-        
-<div id="slide3" class="odd_slide_background_container colour_1">
-  <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[2] %>" class="slide_image" />
-  <% if ((typeof  document["background_" + attachments_order[2]]) !== "undefined") {%>
-    <div class="slide_background_container">
-      <%-  document["background_" + attachments_order[2]] %>
-    </div>
-  <% } %>
-</div>
+<div>
+  <%-divs[2] %>
    
-   
- <!-- 
-    NAME AND DESCRIPTION 
- -->   
 <div style="width:340px;float:right;height:210px;">
   <h2 class="caz"><%= name %></h2>
   <div style="text-align:center;margin:0;margin-right:2%;"><p class="ornamental_line"><img src="http://www.casamiento.co.uk/gfx/ornamentalline.png" /></p>
   </div>
 </div>
-
+</div>
+<div>
 <div style="width:340px;float:left;clear:both">
   <h3 class="caz" style="margin-left:0;padding:0.3em;"><%= description %></h3>
 </div>
    
-   
-<!-- 
-    SLIDE 6 
- -->
-<div id="slide6" class="even_slide_background_container colour_1">
-  <img src="http://www.casamiento.co.uk/products/<%= _id %>/attachments/display-<%= attachments_order[3] %>" class="slide_image" />
-  <% if ((typeof  document["background_" + attachments_order[3]]) !== "undefined") {%>
-    <div class="slide_background_container">
-      <%-  document["background_" + attachments_order[3]]  %>
-    </div>
-  <% } %>
-</div>    
+   <%- divs[3] %>
+   </div>
    
 
  <!-- 
@@ -189,7 +157,7 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
  
   <div class="spc" style="clear:both">
   
-  <div class="colour_1" style="width:75%;border-radius:5px;color:white;background-color:<%= colour_1 %>;text-align:center;margin:0 auto;padding:1em;font:normal 1.4em OS;margin-top:1em;margin-bottom:1em;">
+  <div class="colour_0" style="width:75%;border-radius:5px;color:white;background-color:<%= colours[0]%>;text-align:center;margin:0 auto;padding:1em;font:normal 1.4em OS;margin-top:1em;margin-bottom:1em;">
       <img src="http://www.casamiento.co.uk/gfx/cart_white.png" style="width:30px;"/> CLICK HERE TO BUY THIS ITEM<br/> WITH FREE POSTAGE&hellip;
       
   </div>
@@ -201,7 +169,7 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
  -->
 
   <div class="spc intro" style="clear:both;width:90%;margin:0 auto;text-align:center;">
-    <h6 style="padding:0;margin:0;text-align:center;letter-spacing:0; line-height:1em; font:normal 3em Gara"><span style="letter-spacing:0.15em; font-size:0.75em;font-variant:small-caps"> IMPRESS</span> your guests with individually printed invitations&hellip;</h6>
+    <h5><span style="letter-spacing:0.15em; font-size:0.75em;font-variant:small-caps"> IMPRESS</span> your guests with individually printed invitations&hellip;</h5>
   
     <div style="margin-top:1em;">  
       <div style="width:44%;display:inline-block;margin-top:5px;border-top:1px solid black;"></div>
@@ -211,11 +179,11 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
     
     <img src="http://www.casamiento.co.uk/gfx/me2.jpg" style="padding:0.25em;margin-top:0.7em;float:left;padding-right:0.4em;">
     <p class="first caz casamiento">Y<span style="letter-spacing:0.2em; font-size:1em;font-family:Gara';font-variant:small-caps">OUR GUESTS</span>, will love seeing their names individually printed on your wedding invitations. It'll make them feel special and give them a keepsake to treasure for years to come&hellip; </p>
-    <p style="font:normal 1.6em GaraI;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;">Save time and hassle...</p>
+    <h4>Save time and hassle...</h4>
     <p class="caz">&hellip; and it doesn't stop at just names! Take the pain out of preparing your invitations by letting me individually address each envelope and invitation with the name and address of each of your guests. Not only will it look <span style="letter-spacing:0.2em; font-size:1em;font-family:'Gara';font-variant:small-caps">PROFESSIONAL</span>, but it'll save you a lot of hassle&mdash;you'd be surprised how time-consuming and frustrating it is addressing just 25 invitations without making a mistake or missing a guest. All you have to do is a send a list of names and addresses&hellip;
-    <p style="font:normal 1.6em GaraI;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;">Stand out from the crowd...</p>
+    <h4>Stand out from the crowd...</h4>
     <p class="caz">Each invitation is truly unique as it comes with your own carefully styled monogram bearing the name of you and your partner and the date of your ceremony: a unique and special symbol to represent a unique and special relationship. 
-    <p style="font:normal 1.6em GaraI;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;">Are you worried about your invitations...?</p>
+    <h4>Are you worried about your invitations...?</h4>
     <p class="caz" style="margin-bottom:0.2em;padding-bottom:0;">I know how much you can worry about each aspect of your wedding: will the invitations arrive on time? What if there are mistakes? Will I like the card texture?</p>
     <p class="caz"> That's why I will make sure that all your questions are answered at each step of the way and give you honest answers as to what we can and can't do, and exactly when to expect your invitations to arrive. And if there are mistakes, I'll reprint for you&mdash;free of charge. Order a sample pack today&hellip;</p>
     <p class="caz" style="margin:0;padding:0;"><img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/></p>
@@ -232,11 +200,9 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 
 <div class="right_column">
   <div class="spc">
-   <% if(sample == true) { %>
-    <div class="name_place_icon"><img src="http://www.casamiento.co.uk/gfx/product_types/sample.png" style="width:130px;"></div>
-    <% } else { %>
+   
     <div class="name_place_icon" style="margin:0 auto"><img src="http://www.casamiento.co.uk/gfx/product_types/name_place.png" style="width:150px;margin:0 auto;"></div>
-    <% } %>
+
   </div>
 
 
@@ -244,14 +210,14 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 <div class="spc">
   <div style="margin-bottom:0.5em;height:2em;">
   <div style="float:left"><h1>Choose your colour</h1></div>
-  <div class="step colour_1">STEP 1</div>
+  <div class="step colour_0">STEP 1</div>
   </div>
   
   <div class="chat-bubble">Choose from hundreds of colours! Click on the colour below to change it and the image will change so you can see exactly what your design will look like. 
   </div>
-  <div id="first_colour"></div>
-
-  <div id="second_colour"></div>
+  <% for(var i=0; i < colours.length; i++) { %>
+  <div id="colour_<%=i %>"></div>
+  <% } %>
 </div>
 
 
@@ -267,15 +233,15 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
   <div class="spc">
     <div style="margin-bottom:0.5em;height:2em;">
       <div style="float:left"><h1>Card Texture</h1></div>
-      <div class="step colour_1">STEP 2</div>
+      <div class="step colour_0">STEP 2</div>
     </div>
 
     <div class="chat-bubble">Choose a card texture. Plain is the cheapest with its smooth plain finish, but hammered makes your cards feel more luxurious.  </div>
 
     <div style="margin-left:1em;display:inline-block;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:3.5em"><br> Plain</p></div>
 
-    <% if (!sample) { %><div style="margin-left:1em;display:inline-block;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:3.5em"><br> Hammered</p></div>
-    <% } %>
+  <div style="margin-left:1em;display:inline-block;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:3.5em"><br> Hammered</p></div>
+  
     
   </div>
   
@@ -286,7 +252,7 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
   <div class="spc">
     <div style="margin-bottom:0.5em;height:3em;">
       <div style="float:left"><h1>Choose Thickness</h1></div>
-      <div class="step colour_1">STEP 3</div>  
+      <div class="step colour_0">STEP 3</div>  
     </div>
 
     <div class="chat-bubble">Decide how thick your cards will be. Thinner card is cheaper but thicker card gives for an expensive feel 
@@ -294,11 +260,9 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
     <div>
       <div class="weight"></div> <span style="font:normal 0.8em OS;">250gsm</span>
       </div>
-  <% if(!sample) { %>
   <div>
      <div class="weight" style="border-top:12px;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span></div>
      
-      <% } %>
   </div>
 
 
@@ -311,7 +275,7 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
   <div class="spc">
 <div style="margin-bottom:0.5em;height:2em;">
         <div style="float:left"><h1>Choose Monogram</h1></div>
-        <div class="step colour_1">STEP 3</div>  
+        <div class="step colour_0">STEP 3</div>  
       </div>
 
          <div class="chat-bubble">Each design comes with your own unique monogram. Bearing the name of you and your partner, and underscored with the date or location of your ceremony, it provides the ultimate touch of understated sophistication.<br/><br/>We have many styles of monogram available, the only problem you'll have is deciding which one is for you.  Click the  &larr; arrows &rarr; to scroll through the styles available. </div>
@@ -351,14 +315,11 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 <div style="clear:both;"></div>
 </div>
 <script type="text/javascript">
-  $('#first_colour').colorPicker({default_color: '<%= colour_1 %>'});
-  $('#first_colour').on('dizzy-cp:hoverColor', function(e, colour) {
-    $('.colour_1').css("background-color", colour)
-  })
-<% if (colour_2) { %>
-  $('#second_colour').colorPicker({default_color: '<%= colour_2 %>'});
-  $('#second_colour').on('dizzy-cp:hoverColor', function(e, colour) {
-    $('.slide_background_container div').css("background-color", colour)
-  })
-<% }  %>
+<% for (var i = 0; i < colours.length; i ++) { %>
+
+  $('#colour_' + <%=i%>).colorPicker({default_color: '<%= colours[i] %>'}).on('dizzy-cp:hoverColor', function(e, colour) {
+    $('.colour_<%= i %>').css("background-color", colour)
+    })
+<% } %>
+
 </script>
