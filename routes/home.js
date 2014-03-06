@@ -7,8 +7,9 @@ module.exports = function(app){
     app.get("/", function(req, res) {
         db.view('products/name_place', function(error, documents) {
         var d = documents.toArray()
+        console.log(d)
         d.documents = d
-            res.render("welcome/index", {
+            res.render("welcome/index_2_old", {
                 documents: d
             })
         })
