@@ -53,6 +53,33 @@ exports.show = function(req, res) {
   }
 };
 
+var template = '<div style="position:relative;background-color:<%= background_colour %>">';
+template = template + '<div style="width:100%;height:100%;position:absolute;z-index:5;"><%=background %></div>';
+
+template = template + '<img src="<%= url %>" style="display:block;width:100%;position:relative;z-index:100;"/>';
+template = template + "</div>"
+
+exports.test = function(req, res) {
+    var id = req.params.id; 
+    db.get(id, function(err, doc) {
+        for(var i=0;i < 6; i++) {
+            // compile templates for different coloured backgrounds
+            if (doc['background-' + i]) {
+                var compiled = _.template(doc['background-' + i]);
+                doc['background-' + i] = compiled({colour: doc.colours[1]});
+                var finished = _.template(template)
+                doc['div_' + i] = finished({background: doc['background-' + i]})
+                console.log(doc['div_' + i])
+            }
+        }
+        
+        res.render('test/test_background_rendering.ejs', {
+            locals: doc, layout:false
+            });
+    })
+ 
+}
+
 function getProduct(req, res,id,cart) {
     db.get(id, function(error, document) {
         for(var i=0;i < 6; i++) {

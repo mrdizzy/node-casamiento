@@ -1,6 +1,14 @@
 var db = require('./../config/db').test_ebay,
     _ = require('underscore');
 
+
+
+var template = '<div style="position:relative;background-color:<%= background_colour %>">';
+template = template + '<div style="width:100%;height:100%;position:absolute;z-index:5;"><%=background %></div>';
+
+template = template + '<img src="<%= url %>" style="display:block;width:100%;position:relative;z-index:100;"/>';
+template = template + "</div>"
+
 // Route: /ebay/:id
 // This renders an ebay product view by looking in the /views/ebay/product_type folder for its template as different product types will need different rendering
 exports.show = function(req, res) {
