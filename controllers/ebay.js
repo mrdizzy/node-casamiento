@@ -1,11 +1,8 @@
 var db = require('./../config/db').test_ebay,
     _ = require('underscore');
 
-
-
-var template = '<div style="position:relative;background-color:<%= background_colour %>">';
+var template = '<div style="position:relative;background-color:<%= background_colour %>" id="<%= id %>" class="<%= klass %>">';
 template = template + '<div style="width:100%;height:100%;position:absolute;z-index:5;"><%=background %></div>';
-
 template = template + '<img src="<%= url %>" style="display:block;width:100%;position:relative;z-index:100;"/>';
 template = template + "</div>"
 
@@ -23,7 +20,7 @@ exports.show = function(req, res) {
            related.divs = prepareDivs(related, "thumbnail", "thumbnail", "display", "related_colour")
        })
         doc.related = related;
-      var divs = prepareDivs(doc);
+      var divs = prepareDivs(doc, "slide", "slide", "display", "colour");
         doc.document = doc;
         doc.divs = divs;
         res.render('ebay/' + product_type + 's/14_nov_13.ejs', {
@@ -53,34 +50,23 @@ exports.index = function(req, res) {
     });
 }
 
-
-function prepareDivs(object, id, klass, size, colour_class) {
-    if(id == undefined) {
-        id = "slide"
-    }
-    if (klass == undefined) {
-        klass= "slide"
-    }
-    if(size == undefined) {
-        size="display"
-    }
-    if(colour_class == undefined) {
-        colour_class = "colour"
-    }
-var results = []
+function prepareDivs(object,id,klass,size,colour_class) {
+    var results = []
     object.attachments_order.forEach(function(number) {
         if (object['background-' + number]) {
             var compiled = _.template(object['background-' + number]);
-            var result = compiled({colour: object.colours[1]});   
+            var result = compiled({colour: object.colours[1]}); 
         }
-        var html = '<div id="' + id + number + '" class="' + klass+ '_container_' + number + " "+ klass + '_container ' + colour_class + '_0"' + 'style="background-color:' + object.colours[0] + '">';
-        html = html + '<img src="http://www.casamiento.co.uk/products/' + object._id + '/attachments/' + size + '-' + number + '" class="' + klass + '_image" />'
-      if ((typeof  object["background-" + number]) !== "undefined") {
-        html = html + '<div class="' + klass + '_background_container ' + colour_class + '_1">' + result + '</div>'
-      }
-      html = html + '</div>'
+        var url = 'http://www.casamiento.co.uk/products/' + object._id + '/attachments/' + size + '-' + number
+        var finished = _.template(template)
+        if(object.colours[0] != undefined) {
+            var backgroundcolor = object.colours[0]
+        }
+        else {
+            var backgroundcolor = ""
+        }
+        var html = finished({background: result, background_colour:backgroundcolor, url: url, klass: klass, id: id + number}) 
       results.push(html)
      })  
-     return results;
-     
+     return results;   
 }
