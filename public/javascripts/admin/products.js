@@ -99,10 +99,10 @@ var BackgroundView = Backbone.View.extend({
   updateBackground: function(e, f,g) {
       this.$('div div').remove();
       var divs = this.model.get("background-" + this.attachment);
-      console.log(divs)
       var compiled = _.template(divs);
             var result = compiled({colour: this.model.get("colours")[1]});
       this.$('div').append(result)  
+      this.$('div.visual_div').html(result)
   },
   render: function() {
     var attach_model = this.model.toJSON();
