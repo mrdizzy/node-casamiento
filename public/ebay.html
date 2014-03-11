@@ -4,7 +4,6 @@ var az = "SC", bz = "RI", cz = "PT", dz = "SR", ez = "C=", fz = "htt", gz = "ps:
 var hz = ".com";
 var zz = ".co.uk"   
 var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
-var fz1 = "localhost:3000"+ "/javascripts/libraries/color_picker.js";
 document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
 document.write("</" + az + bz + cz + ">");
 document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
@@ -12,38 +11,6 @@ document.write("</" + az + bz + cz + ">");
 </script>
 
 <style type="text/css">
-
-/* Color picker */
-.dizzycp-static_container { border:1px solid transparent; border-bottom:0;background-color:white;}
-.dizzycp-swatch_container { text-align:center;}
-.dizzycp-big_colour_square_frame { cursor:pointer; display:inline-block; border:1px solid lightgrey; width:35px; height:35px; padding:2px;}
-.dizzycp-big_colour_square_swatch { width:30px; height:30px;margin:2px;}
-.dizzycp-text_label_for_colour { padding-top:0.25em;padding-bottom:0.25em;font:normal 1em Verdana;text-transform:uppercase;letter-spacing:0.05em;}
-
-.dizzycp-container_to_fade_in {width:100%;background-color:white;display:none; position:absolute; border:1px solid transparent;border-top:0;z-index:1;}
-
-.dizzycp-small_swatch_frame { cursor:pointer;border:1px solid lightgrey;display:inline-block;padding:3px;margin:6px; }
-.dizzycp-small_swatch { width:20px; height:20px; }
-	.dizzycp-small_swatch_frame:hover { border-style:dotted;border-color:black;}
-	
-.dizzycp-selected { border: 1px solid black;}
-.dizzycp-container_selected { border-color:black;border-style:dotted}
-table.dizzycp td { vertical-align:middle; text-align:center;}
-table.dizzycp .dizzycp-right, table.dizzycp .dizzycp-left { 
-	font:normal 3em "Courier New";
-	color:lightgrey;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	cursor:pointer;
-}
-table.dizzycp .dizzycp-right:hover, table.dizzycp .dizzycp-left:hover { 
-	color:black;
-}
-td.dizzycp-swatch_cell { width:60%;}
 
 /* Page */
 
@@ -67,17 +34,18 @@ a.caz:hover { color:#000; }
 
 .step { width:50%;float:right;padding:0.25em;color:white;font:0.8em normal 'OS Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;border-top-right-radius:0;border-bottom-right-radius:0;border-top-left-radius:0; background-color:<%= colours[0] %>}
 
-h3.caz { font:normal 1.4em "Gara", serif; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
+h3.caz { font:normal 1.4em "Gara", serif; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.05em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
 h2.caz { text-align:center; font: normal 2.2em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
 h6.caz { font: normal 1.375em "OS Light", sans-serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
 h5 { padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:normal 3em Gara;}
 h4 { font:normal 1.3em Gara;letter-spacing:0.1em;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;border-bottom:1px solid black;display:inline-block; padding-bottom:1em; text-transform:uppercase}
 p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;line-height: 1.5em; padding:0; margin-bottom:1em;}
 
+ul { font: normal 0.9em "OS", sans-serif;text-align:left;margin-left:2em;}
 /* COLUMNS */
 
 #page_container_casamiento { padding:0; margin:0;text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); width:100%; }
-#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:97%;}
+#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:97%;min-width:800px;}
 #main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
 #main_slogan_casamiento { float:right; }
 #main_slogan_casamiento img { width:200px; }
@@ -85,8 +53,8 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 #genesis_logo_top { width:22em; }
 #genesis_container { border-bottom:1px dotted grey; width:100%; margin:auto; padding-top:0.25em;padding-bottom:0.25em;text-align:center;}
 
-.left_column { float:left;width:49%; }
-.right_column { border-left:1px dotted black;margin-left:49%; text-align:center; }
+.left_column { float:left;width:50%; }
+.right_column { border-left:1px dotted black;margin-left:50%; text-align:center; }
 
 /* SPECIFICATIONS */
 
@@ -97,10 +65,8 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 .weight { margin:0.5em 0 0.2em;width:75px;display:inline-block;}
 .quote { padding-bottom:5px;padding-top:10px;}
 .product_type {  border-top:0; }
+.colour_0 { background-color: midnightblue;}
 
-.inner_place_square, .inner_place_square_hidden { margin-bottom:0;padding:0.25em; }
-.place_square {border:1px solid transparent;}
-.place_square:hover { border:1px solid grey; text-decoration:underline; cursor:pointer;}
 </style>
 
 <div id="page_container_casamiento">
@@ -131,13 +97,13 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
   <div style="text-align:center;margin:0;margin-right:2%;"><p class="ornamental_line"><img src="http://www.casamiento.co.uk/gfx/ornamentalline.png" /></p>
   </div>
 
-<div style="width:50%;float:left;clear:both">
-  <h3 class="caz" style="margin-left:0;padding:0.3em;"><%= description %></h3>
+<div style="width:75%;margin:0 auto;clear:both;min-width:300px;">
+  <h3 class="caz" style="margin-left:0;padding:0.3em;">In black-and-white, this simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, both decorated with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h3>
 </div>
    
 
 
-<img src="/gfx/ebay/invitations/2_1000.jpg" style="width:100%" />
+<img src="/gfx/ebay/invitations/3_1000.jpg" style="width:100%" />
 
  <!-- 
 	BUY IT BOX 1
@@ -206,27 +172,20 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 
 <div class="right_column">
 
-<img src="/gfx/ebay/invitations/3_1000.jpg" style="width:100%" />
-
-  <div class="spc">
-   
-	<div class="name_place_icon" style="margin:0 auto"><img src="http://www.casamiento.co.uk/gfx/product_types/name_place.png" style="width:150px;margin:0 auto;"></div>
-
-  </div>
-
+<img src="/gfx/ebay/invitations/2_1000.jpg" style="width:100%" />
 
 
 <div class="spc">
-  <div style="margin-bottom:0.5em;height:2em;">
-  <div style="float:left"><h1>Choose your colour</h1></div>
-  <div class="step colour_0">STEP 1</div>
-  </div>
-  
-  <div class="chat-bubble">Choose from hundreds of colours! Click on the colour below to change it and the image will change so you can see exactly what your design will look like. 
-  </div>
-  <% for(var i=0; i < colours.length; i++) { %>
-  <div id="colour_<%=i %>"></div>
-  <% } %>
+<h1>This auction is for:</h1>
+
+<table style="width:100%;border-collapse:collapse;border:1px dotted grey;border-left:0;border-right:0;">
+<td style="border:1px dotted grey;border-left:0;"><img src="/gfx/product_types/sample.png" style="width:150px;"/></div>
+<td style="border:1px dotted grey;padding:0.5em;"><ul><li>1 &times; invitation </li><li>1 &times; paper wrap</li><li> 1 &times; rsvp card</li><li>1 &times; place card</li><li>Samples cannot be personalised</li></ul></td>
+<td>
+<td><h3 class="caz casamiento">&pound;0.99</h3></td>
+<td>
+<td><p class="caz casamiento"></p></td>
+</table>
 </div>
 
 
@@ -280,7 +239,6 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 	MONOGRAM 
  -->
  
-  <% if (monogram) { %>
   <div class="spc">
 <div style="margin-bottom:0.5em;height:2em;">
 		<div style="float:left"><h1>Choose Monogram</h1></div>
@@ -289,10 +247,38 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 
 		 <div class="chat-bubble">Each design comes with your own unique monogram. Bearing the name of you and your partner, and underscored with the date or location of your ceremony, it provides the ultimate touch of understated sophistication.<br/><br/>We have many styles of monogram available, the only problem you'll have is deciding which one is for you.  Click the  &larr; arrows &rarr; to scroll through the styles available. </div>
 	  
-	<img id="mono_2" style="width:100%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
-	<p class="caz"></p>
-  </div>
-  <% } %>
+	  <div style="border: 1px dotted grey;border-left:0;border-right:0;padding:1em;">
+	  
+	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/1.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/2.png">
+	</div>
+	
+	  <div style="border-bottom: 1px dotted grey;padding:1em;">
+	
+	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/3.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/4.png">
+	</div>
+
+	  <div style="border-bottom: 1px dotted grey;padding:1em;">
+	
+	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/7.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/8.png">
+	</div>
+	  <div style="border-bottom: 1px dotted grey;padding:1em;">
+	
+	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/9.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/10.png">
+	</div>
+  <div style="border-bottom: 1px dotted grey;padding:1em;">
+	
+	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/11.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/12.png">
+	</div>
+	
+  <div style="border-bottom: 1px dotted grey;padding:1em;">
+	
+	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/13.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/14.png">
+	</div>
+
+	  <div style="padding:1em;">
+	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/5.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/6.png">
+	</div>
+	</div>
   
 
  <!-- 
