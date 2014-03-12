@@ -12,11 +12,13 @@ document.write("</" + az + bz + cz + ">");
 
 <style type="text/css">
 
-/* Page */
-
 .intro p.first:first-letter { font:normal 5.5em TP;padding-right:0.05em;float:left;line-height:0.8em;}
   .intro p { text-align:left;}
-  
+  #caz_description { width:75%;margin:0 auto;clear:both;min-width:300px;}
+	#caz_description h3 { margin-left:0;padding:0.3em;
+	}
+	img.caz_100 { width:100%;}
+	.caz_buybox { width:80%;max-width:325px;border-radius:5px;color:white;background-color:midnightblue;text-align:center;margin:0 auto;padding:1em;font:normal 1.2em OS;margin-top:1em;margin-bottom:1em; }
 /* FONTS */
 @font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
 @font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARAIT.woff') format('woff'); }
@@ -37,12 +39,12 @@ a.caz:hover { color:#000; }
 h3.caz { font:normal 1.4em "Gara", serif; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.05em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
 h2.caz { text-align:center; font: normal 2.2em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
 h6.caz { font: normal 1.375em "OS Light", sans-serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
+h6.caz_quote { margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;}
 h5 { padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:normal 3em Gara;}
 h4 { font:normal 1.3em Gara;letter-spacing:0.1em;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;border-bottom:1px solid black;display:inline-block; padding-bottom:1em; text-transform:uppercase}
 p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;line-height: 1.5em; padding:0; margin-bottom:1em;}
 
-ul { font: normal 0.9em "OS", sans-serif;text-align:left;margin-left:2em;}
-/* COLUMNS */
+ul { font: normal 0.9em "OS", sans-serif;margin-left:1em;}
 
 #page_container_casamiento { padding:0; margin:0;text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); width:100%; }
 #inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:97%;min-width:800px;}
@@ -56,9 +58,6 @@ ul { font: normal 0.9em "OS", sans-serif;text-align:left;margin-left:2em;}
 .left_column { float:left;width:50%; }
 .right_column { border-left:1px dotted black;margin-left:50%; text-align:center; }
 
-/* SPECIFICATIONS */
-
-.name_place_icon { width:130px; }
 .spc { padding:0;border-bottom:1px dotted grey;   }
 .spc h1 {font: normal 0.75em "OS Condensed";padding:0.25em;padding-left:1em;margin:0;margin-bottom:0.5em; text-align:left}
 
@@ -90,33 +89,31 @@ ul { font: normal 0.9em "OS", sans-serif;text-align:left;margin-left:2em;}
 
 <div class="left_column">
 
-<img src="/gfx/ebay/invitations/1_1000.jpg" style="width:100%" />
+<img src="/gfx/ebay/invitations/1_1000.jpg" class="caz_100" />
 
-  
   <h2 class="caz">Simplicity</h2>
-  <div style="text-align:center;margin:0;margin-right:2%;"><p class="ornamental_line"><img src="http://www.casamiento.co.uk/gfx/ornamentalline.png" /></p>
+  <div style="text-align:center;margin:0;margin-right:2%;">
+		<p class="ornamental_line"><img src="http://www.casamiento.co.uk/gfx/ornamentalline.png" /></p>
   </div>
 
-<div style="width:75%;margin:0 auto;clear:both;min-width:300px;">
-  <h3 class="caz" style="margin-left:0;padding:0.3em;">In black-and-white, this simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, both decorated with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h3>
+<div id="caz_description">
+  <h3 class="caz">In black-and-white, this simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, both decorated with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h3>
 </div>
    
+<div style="text-align:center"><img src="/gfx/shell.png" style="margin:0.5em;"/></div>
 
-
-<img src="/gfx/ebay/invitations/3_1000.jpg" style="width:100%" />
-
- <!-- 
-	BUY IT BOX 1
- -->
+<img src="/gfx/ebay/invitations/3_1000.jpg" class="caz_100" />
  
   <div class="spc" style="clear:both">
   
-  <div class="colour_0" style="width:75%;border-radius:5px;color:white;background-color:<%= colours[0]%>;text-align:center;margin:0 auto;padding:1em;font:normal 1.4em OS;margin-top:1em;margin-bottom:1em;">
-	  <img src="http://www.casamiento.co.uk/gfx/cart_white.png" style="width:30px;"/> CLICK HERE TO BUY THIS ITEM<br/> WITH FREE POSTAGE&hellip;
-	  
+	<div class="caz_buybox">
+		<img src="http://www.casamiento.co.uk/gfx/cart_white.png" style="width:25px;"/> DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH FREE POSTAGE&hellip;
+		
   </div>
+	
 </div>
-
+<img src="/gfx/ebay/invitations/4_1000.jpg" class="caz_100" />
+<img src="/gfx/ebay/invitations/5_1000.jpg" class="caz_100" />
 
  <!-- 
 	BLURB 
@@ -178,14 +175,13 @@ ul { font: normal 0.9em "OS", sans-serif;text-align:left;margin-left:2em;}
 <div class="spc">
 <h1>This auction is for:</h1>
 
-<table style="width:100%;border-collapse:collapse;border:1px dotted grey;border-left:0;border-right:0;">
-<td style="border:1px dotted grey;border-left:0;"><img src="/gfx/product_types/sample.png" style="width:150px;"/></div>
-<td style="border:1px dotted grey;padding:0.5em;"><ul><li>1 &times; invitation </li><li>1 &times; paper wrap</li><li> 1 &times; rsvp card</li><li>1 &times; place card</li><li>Samples cannot be personalised</li></ul></td>
-<td>
-<td><h3 class="caz casamiento">&pound;0.99</h3></td>
-<td>
-<td><p class="caz casamiento"></p></td>
-</table>
+<div style="border-bottom:1px dotted grey;border-top:1px dotted grey;"><img src="/gfx/product_types/sample.png" style="width:150px;padding:0.5em;"/></div>
+<table style="border-collapse:collapse;width:100%;"><tr><td style="border-right:1px dotted grey;text-align:left;padding-right:2em;width:65%;"><ul><li>1 &times; invitation </li><li>1 &times; paper wrap</li><li> 1 &times; rsvp card</li><li>1 &times; place card</li>
+<li style="list-style-type:none;font-size:0.8em;text-align:left;margin-top:0.5em;">Please note that samples cannot be personalised</li></ul></td><td style="width:35%;"><h3 class="caz casamiento" style="text-align:center;font-size:2em;">&pound;0.99</h3></td>
+</tr></table>
+
+
+
 </div>
 
 
@@ -193,8 +189,8 @@ ul { font: normal 0.9em "OS", sans-serif;text-align:left;margin-left:2em;}
 	BUY-IT BOX 2
  -->
   <div class="spc">
-  <div style="width:65%;border-radius:5px;color:white;background-color:grey;text-align:center;margin:0 auto;padding:1em;font:normal 1.4em OS;margin-top:1em;margin-bottom:1em;">
-	  <img src="http://www.casamiento.co.uk/gfx/cart_white.png" style="width:30px;"/> DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH FREE POSTAGE&hellip;
+  <div class="caz_buybox">
+	  <img src="http://www.casamiento.co.uk/gfx/cart_white.png" style="width:25px;"/> DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH FREE POSTAGE&hellip;
 	  
   </div>
 </div>
@@ -209,7 +205,6 @@ ul { font: normal 0.9em "OS", sans-serif;text-align:left;margin-left:2em;}
 	<div style="margin-left:1em;display:inline-block;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:3.5em"><br> Plain</p></div>
 
   <div style="margin-left:1em;display:inline-block;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:3.5em"><br> Hammered</p></div>
-  
 	
   </div>
   
@@ -226,10 +221,10 @@ ul { font: normal 0.9em "OS", sans-serif;text-align:left;margin-left:2em;}
 	<div class="chat-bubble">Decide how thick your cards will be. Thinner card is cheaper but thicker card gives for an expensive feel 
 	</div>
 	<div>
-	  <div class="weight" style="border-top:6px;"></div> <span style="font:normal 0.8em OS;">250gsm</span>
+	  <div class="weight" style="border-top:3px solid #000;"></div> <span style="font:normal 0.8em OS;">250gsm</span>
 	  </div>
   <div>
-	 <div class="weight" style="border-top:12px;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span></div>
+	 <div class="weight" style="border-top:8px solid #000;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span></div>
 	 
   </div>
 
@@ -275,6 +270,10 @@ ul { font: normal 0.9em "OS", sans-serif;text-align:left;margin-left:2em;}
 	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/13.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/14.png">
 	</div>
 
+	<div style="border-bottom: 1px dotted grey;padding:1em;">
+	
+	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/15.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/16.png">
+	</div>
 	  <div style="padding:1em;">
 	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/5.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/6.png">
 	</div>
@@ -289,21 +288,21 @@ ul { font: normal 0.9em "OS", sans-serif;text-align:left;margin-left:2em;}
   <h1>Don't take our word for it&hellip;</h1>
   
   <div class="quote">
-	<h6 class="caz" style="margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> Beautiful place cards, thank you! Would Highly recommend :-)&rdquo;</h6>
+	<h6 class="caz_quote"><img src="/gfx/QUOTE.png" /> Beautiful place cards, thank you! Would Highly recommend :-)&rdquo;</h6>
 	<h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:10%">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=baked.potato07">baked.potato07</a></h6>
   </div>
 						 
   <div class="quote">
-	<h6 class="caz" style="width:75%; margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> Totally perfect. Thank you</h6>
+	<h6 class="caz_quote" style="width:75%;"><img src="/gfx/QUOTE.png" /> Totally perfect. Thank you</h6>
 	<h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:10%" href="">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=mummysmith1974">mummysmith1974</a></h6>
   </div>
 				 
    <div class="quote">
-	<h6 class="caz" style="margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> These are amazing, excellent quality for an excellent price, highly recommended&rdquo;</h6><h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:20%">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=chris.hall20">chris.hall20</a></h6>
+	<h6 class="caz_quote"><img src="/gfx/QUOTE.png" /> These are amazing, excellent quality for an excellent price, highly recommended&rdquo;</h6><h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:20%">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=chris.hall20">chris.hall20</a></h6>
   </div>
 										 
   <div class="quote">
-   <h6 class="caz" style="width:75%; margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> They look amazing and came so fast. Highly recommend :)</h6><h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:10%" href="">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=kellyc3456">kellyc3456</a></h6>
+   <h6 class="caz_quote" style="width:75%;"><img src="/gfx/QUOTE.png" /> They look amazing and came so fast. Highly recommend :)</h6><h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:10%" href="">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=kellyc3456">kellyc3456</a></h6>
    </div>
 			
 </div>
