@@ -1,25 +1,13 @@
 <!doctype html>
-<script type="text/javascript">
-var az = "SC", bz = "RI", cz = "PT", dz = "SR", ez = "C=", fz = "htt", gz = "ps://", pp = "p://";
-var hz = ".com";
-var zz = ".co.uk"   
-var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
-document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
-document.write("</" + az + bz + cz + ">");
-document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
-document.write("</" + az + bz + cz + ">");
-</script>
 
 <style type="text/css">
-
 .intro p.first:first-letter { font:normal 5.5em TP;padding-right:0.05em;float:left;line-height:0.8em;}
   .intro p { text-align:left;}
   #caz_description { width:75%;margin:0 auto;clear:both;min-width:300px;}
-	#caz_description h3 { margin-left:0;padding:0.3em;
-	}
+	#caz_description h3 { margin-left:0;padding:0.3em;}
 	img.caz_100 { width:100%;}
 	.caz_buybox { width:80%;max-width:325px;border-radius:5px;color:white;background-color:midnightblue;text-align:center;margin:0 auto;padding:1em;font:normal 1.2em OS;margin-top:1em;margin-bottom:1em; }
-/* FONTS */
+	
 @font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
 @font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARAIT.woff') format('woff'); }
 @font-face { font-family:"Gara"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARA.woff') format('woff'); }
@@ -32,7 +20,7 @@ document.write("</" + az + bz + cz + ">");
 a.caz:link, a.caz:active, a.caz:visited { font-style:underline; color:<%= colours[0] %>;}
 a.caz:hover { color:#000; }
 
-.chat-bubble {padding-left:1em;padding-right:1em; font: normal 0.9em "OS IL"; margin:10px auto;color:black; }
+.chat-bubble {padding-left:1em;padding-right:1em; font: normal 0.9em "OS IL"; margin:10px auto; }
 
 .step { width:50%;float:right;padding:0.25em;color:white;font:0.8em normal 'OS Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;border-top-right-radius:0;border-bottom-right-radius:0;border-top-left-radius:0; background-color:<%= colours[0] %>}
 
@@ -47,7 +35,7 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 ul { font: normal 0.9em "OS", sans-serif;margin-left:1em;}
 
 #page_container_casamiento { padding:0; margin:0;text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); width:100%; }
-#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:97%;min-width:800px;}
+#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:97%;min-width:600px;}
 #main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
 #main_slogan_casamiento { float:right; }
 #main_slogan_casamiento img { width:200px; }
@@ -65,7 +53,7 @@ ul { font: normal 0.9em "OS", sans-serif;margin-left:1em;}
 .quote { padding-bottom:5px;padding-top:10px;}
 .product_type {  border-top:0; }
 .colour_0 { background-color: midnightblue;}
-
+.mono { display:inline-block;width:40%;max-width:300px;min-width:220px;border-bottom:1px dotted grey;}
 </style>
 
 <div id="page_container_casamiento">
@@ -113,13 +101,16 @@ ul { font: normal 0.9em "OS", sans-serif;margin-left:1em;}
 	
 </div>
 <img src="/gfx/ebay/invitations/4_1000.jpg" class="caz_100" />
-<img src="/gfx/ebay/invitations/5_1000.jpg" class="caz_100" />
+<img src="/gfx/ebay/invitations/5_1000.jpg" style="width:49.25%;" />
+<img src="/gfx/ebay/invitations/3_1000.jpg" style="width:49.25%;" />
+<img src="/gfx/ebay/place/2_1000.jpg" style="width:49.25%;" />
+<img src="/gfx/ebay/place/4_1000.jpg" style="width:49.25%;" />
 
  <!-- 
 	BLURB 
  -->
 
-  <div class="spc intro" style="clear:both;width:85%;margin:0 auto;text-align:center;border:0;">
+  <div class="spc intro" style="clear:both;width:85%;margin:0 auto;text-align:center;border:0;min-width:280px;">
 	<h5 style="text-align:center;"><span style="letter-spacing:0.15em; font-size:0.75em;font-variant:small-caps;"> IMPRESS</span> your guests with individually printed invitations&hellip;</h5>
   
 	<div style="margin-top:1em;">  
@@ -141,13 +132,6 @@ ul { font: normal 0.9em "OS", sans-serif;margin-left:1em;}
 	<p class="caz" style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
 	<span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
   </div>
-  <div class="spc" style="border:0;">
-  <h1>You will also like&hellip;</h1>
-  
-  
-	  
-  
-   </div>
 </div>   
 
 
@@ -201,10 +185,8 @@ ul { font: normal 0.9em "OS", sans-serif;margin-left:1em;}
 	</div>
 
 	<div class="chat-bubble">Choose a card texture. Plain is the cheapest with its smooth plain finish, but hammered makes your cards feel more luxurious.  </div>
-
-	<div style="margin-left:1em;display:inline-block;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:3.5em"><br> Plain</p></div>
-
-  <div style="margin-left:1em;display:inline-block;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:3.5em"><br> Hammered</p></div>
+  <div style="margin-left:1em;display:inline-block;"><p class="caz casamiento"><div style="width:3em;height:3em;border:1px solid black;border-radius:1.5em;display:inline-block;"></div>	<br/> Plain</p></div>
+  <div style="margin-left:1em;display:inline-block;"><p class="caz casamiento"><div style="width:3em;height:3em;border:1px solid black;border-radius:1.5em;display:inline-block;background-image:url('/gfx/hammered.png');background-size:2em;"></div>	<br/> Hammered</p></div>
 	
   </div>
   
@@ -229,10 +211,6 @@ ul { font: normal 0.9em "OS", sans-serif;margin-left:1em;}
   </div>
 
 
-  
- <!-- 
-	MONOGRAM 
- -->
  
   <div class="spc">
 <div style="margin-bottom:0.5em;height:2em;">
@@ -241,48 +219,27 @@ ul { font: normal 0.9em "OS", sans-serif;margin-left:1em;}
 	  </div>
 
 		 <div class="chat-bubble">Each design comes with your own unique monogram. Bearing the name of you and your partner, and underscored with the date or location of your ceremony, it provides the ultimate touch of understated sophistication.<br/><br/>We have many styles of monogram available, the only problem you'll have is deciding which one is for you.  Click the  &larr; arrows &rarr; to scroll through the styles available. </div>
-	  
-	  <div style="border: 1px dotted grey;border-left:0;border-right:0;padding:1em;">
-	  
-	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/1.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/2.png">
+	<div>
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/1.png" />
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/2.png" />
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/3.png" />
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/4.png" />	
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/5.png" />
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/6.png" />	
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/7.png" />
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/8.png" />	
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/9.png" />			
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/10.png" />
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/11.png" />
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/12.png" />	
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/13.png" />
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/14.png" />
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/15.png" />
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/16.png" />
+		<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/17.png" />
 	</div>
-	
-	  <div style="border-bottom: 1px dotted grey;padding:1em;">
-	
-	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/3.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/4.png">
-	</div>
-
-	  <div style="border-bottom: 1px dotted grey;padding:1em;">
-	
-	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/7.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/8.png">
-	</div>
-	  <div style="border-bottom: 1px dotted grey;padding:1em;">
-	
-	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/9.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/10.png">
-	</div>
-  <div style="border-bottom: 1px dotted grey;padding:1em;">
-	
-	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/11.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/12.png">
-	</div>
-	
-  <div style="border-bottom: 1px dotted grey;padding:1em;">
-	
-	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/13.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/14.png">
-	</div>
-
-	<div style="border-bottom: 1px dotted grey;padding:1em;">
-	
-	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/15.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/16.png">
-	</div>
-	  <div style="padding:1em;">
-	<img id="mono_2" style="display:block;width:49%;max-width:300px;min-width:200px;border-right:1px dotted grey;float:left;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/5.png"><img id="mono_2" style="display:block;width:49%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/6.png">
-	</div>
-	</div>
-  
-
- <!-- 
-	TESTIMONIALS 
- -->  
+</div>
+</div>
   
 <div class="spc">
   <h1>Don't take our word for it&hellip;</h1>
@@ -308,25 +265,3 @@ ul { font: normal 0.9em "OS", sans-serif;margin-left:1em;}
 </div>
 <div style="clear:both;"></div>
 </div>
-<script type="text/javascript">
-<% for (var i = 0; i < colours.length; i ++) { %>
-
-  $('#colour_' + <%=i%>).colorPicker({default_color: '<%= colours[i] %>'}).on('dizzy-cp:hoverColor', function(e, colour) {
-	<% if(i == 1) { %>      
-	  $('.slide > div > div:not(.nocolor)').css("background-color", colour)
-	<% } else { %> 
-	  $('.colour_<%= i %>').css("background-color", colour)
-	  $('.slide').css("background-color", colour)
-	<% } %>
-  })
-<% } %>
-
-$('.place_square').mouseover(function() {
-  $(".inner_place_square", this).hide();
-  $(".inner_place_square_hidden",this).show();
-})
-$('.place_square').mouseout(function() {
-  $(".inner_place_square", this).show();
-  $(".inner_place_square_hidden",this).hide();
-})
-</script>
