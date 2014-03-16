@@ -1,0 +1,429 @@
+<!doctype html>
+<script type="text/javascript">
+var az = "SC", bz = "RI", cz = "PT", dz = "SR", ez = "C=", fz = "htt", gz = "ps://", pp = "p://";
+var hz = ".com";
+var zz = ".co.uk"   
+var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
+var fz1 = "localhost:3000"+ "/javascripts/libraries/color_picker.js";
+document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
+document.write("</" + az + bz + cz + ">");
+document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
+document.write("</" + az + bz + cz + ">");
+</script>
+
+<style type="text/css">
+
+/* Color picker */
+.dizzycp-static_container { border:1px solid transparent; border-bottom:0;background-color:white;}
+.dizzycp-swatch_container { text-align:center;}
+.dizzycp-big_colour_square_frame { cursor:pointer; display:inline-block; border:1px solid lightgrey; width:35px; height:35px; padding:2px;}
+.dizzycp-big_colour_square_swatch { width:30px; height:30px;margin:2px;}
+.dizzycp-text_label_for_colour { padding-top:0.25em;padding-bottom:0.25em;font:normal 1em Verdana;text-transform:uppercase;letter-spacing:0.05em;}
+
+.dizzycp-container_to_fade_in {width:100%;background-color:white;display:none; position:absolute; border:1px solid transparent;border-top:0;z-index:1;}
+
+.dizzycp-small_swatch_frame { cursor:pointer;border:1px solid lightgrey;display:inline-block;padding:3px;margin:6px; }
+.dizzycp-small_swatch { width:20px; height:20px; }
+    .dizzycp-small_swatch_frame:hover { border-style:dotted;border-color:black;}
+    
+.dizzycp-selected { border: 1px solid black;}
+.dizzycp-container_selected { border-color:black;border-style:dotted}
+table.dizzycp td { vertical-align:middle; text-align:center;}
+table.dizzycp .dizzycp-right, table.dizzycp .dizzycp-left { 
+    font:normal 3em "Courier New";
+    color:lightgrey;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor:pointer;
+}
+table.dizzycp .dizzycp-right:hover, table.dizzycp .dizzycp-left:hover { 
+    color:black;
+}
+td.dizzycp-swatch_cell { width:60%;}
+
+/* Page */
+
+.intro p.first:first-letter { font:normal 5.5em TP;padding-right:0.05em;float:left;line-height:0.8em;}
+  .intro p { text-align:left;}
+  
+/* FONTS */
+@font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
+@font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARAIT.woff') format('woff'); }
+@font-face { font-family:"Gara"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARA.woff') format('woff'); }
+@font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
+@font-face { font-family:"OSReg"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSReg.woff') format('woff'); }
+@font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OSL.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
+@font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OSLI.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSLI.woff') format('woff'); }
+@font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
+
+a.caz:link, a.caz:active, a.caz:visited { font-style:underline; color:<%= colours[0] %>;}
+a.caz:hover { color:#000; }
+
+.chat-bubble {padding-left:1em;padding-right:1em; font: normal 0.9em "OS IL"; margin:10px auto;color:black; }
+
+.step { width:50%;float:right;padding:0.25em;color:white;font:0.8em normal 'OS Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;border-top-right-radius:0;border-bottom-right-radius:0;border-top-left-radius:0; background-color:<%= colours[0] %>}
+
+h3.caz { font:normal 1.4em "Gara", serif; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
+h2.caz { text-align:center; font: normal 2.2em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
+h6.caz { font: normal 1.375em "OS Light", sans-serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
+h5 { padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:normal 3em Gara;}
+h4 { font:normal 1.3em Gara;letter-spacing:0.1em;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;border-bottom:1px solid black;display:inline-block; padding-bottom:1em; text-transform:uppercase}
+p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;line-height: 1.5em; padding:0; margin-bottom:1em;}
+
+/* COLUMNS */
+
+#page_container_casamiento { padding:0; margin:0;text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); width:100%; }
+#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:97%;}
+#main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
+#main_slogan_casamiento { float:right; }
+#main_slogan_casamiento img { width:200px; }
+#genesis { text-align:center; }
+#genesis_logo_top { width:22em; }
+#genesis_container { border-bottom:1px dotted grey; width:100%; margin:auto; padding-top:0.25em;padding-bottom:0.25em;text-align:center;}
+
+.left_column { float:left;width:680px; }
+.right_column { border-left:1px dotted black;margin-left:680px; text-align:center; min-width:180px;}
+
+/* SPECIFICATIONS */
+
+.name_place_icon { width:130px; }
+.spc { padding:0;border-bottom:1px dotted grey;   }
+.spc h1 {font: normal 0.75em "OS Condensed";padding:0.25em;padding-left:1em;margin:0;margin-bottom:0.5em; text-align:left}
+
+.weight { margin:0.5em 0 0.2em;width:75px;display:inline-block;}
+.quote { padding-bottom:5px;padding-top:10px;}
+.product_type {  border-top:0; }
+
+.inner_place_square, .inner_place_square_hidden { margin-bottom:0;padding:0.25em; }
+.place_square {border:1px solid transparent;}
+.place_square:hover { border:1px solid grey; text-decoration:underline; cursor:pointer;}
+</style>
+
+<div id="page_container_casamiento">
+  <div id="inner_page_container_casamiento">
+   
+<!-- --------------------------------------------------------
+  LEFT COLUMN
+-->
+
+<div class="left_column">
+  <div class="caz" id="header_container_casamiento" style="padding-top:0.5em;border-bottom:1px solid #000;margin:0;padding-bottom:0.5em;text-align:center;">
+
+    <div id="main_logo_casamiento" class="caz">
+      <img src="http://www.casamiento.co.uk/gfx/logo/cas.png" style="width:202px;" id="logo" class="caz">
+    </div>
+      
+    <div id="main_slogan_casamiento" class="caz">
+      <img src="http://www.casamiento.co.uk/gfx/logo/drms.png">
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+    
+<!--
+  SLIDES 1-3
+-->     
+
+  <div style="width:50%;float:left"><%- divs[0] %></div>  
+   
+  <div style="width:50%;float:right;"><%- divs[1] %></div>  
+  
+  <div style="width:50%;clear:both;float:left;"><%- divs[2] %></div>
+<div style="width:49%;float:right;">
+  <h2 class="caz"><%= name %></h2>
+  <div style="text-align:center;margin:0;margin-right:2%;"><p class="ornamental_line"><img src="http://www.casamiento.co.uk/gfx/ornamentalline.png" /></p>
+  </div>
+</div>
+
+<div style="width:50%;float:left;clear:both">
+  <h3 class="caz" style="margin-left:0;padding:0.3em;"><%= description %></h3>
+</div>
+   
+
+  <div style="width:50%;float:right;"><%- divs[3] %></div>  
+ <!-- 
+    BUY IT BOX 1
+ -->
+ 
+  <div class="spc" style="clear:both">
+  
+  <div class="colour_0" style="width:75%;border-radius:5px;color:white;background-color:<%= colours[0]%>;text-align:center;margin:0 auto;padding:1em;font:normal 1.4em OS;margin-top:1em;margin-bottom:1em;">
+      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" style="width:30px;"/> CLICK HERE TO BUY THIS ITEM<br/> WITH FREE POSTAGE&hellip;
+      
+  </div>
+</div>
+
+
+ <!-- 
+    BLURB 
+ -->
+
+  <div class="spc intro" style="clear:both;width:85%;margin:0 auto;text-align:center;border:0;">
+    <h5 style="text-align:center;"><span style="letter-spacing:0.15em; font-size:0.75em;font-variant:small-caps;"> IMPRESS</span> your guests with personalised place cards&hellip;</h5>
+  
+    <div style="margin-top:1em;">  
+      <div style="width:44%;display:inline-block;margin-top:5px;border-top:1px solid black;"></div>
+      <div style="width:10%;display:inline-block;"><img src="http://www.casamiento.co.uk/gfx/page_seperators/orna.png" style="width:100%;" /></div>
+      <div style="width:44%;display:inline-block;margin-top:5px;border-top:1px solid black;"></div>
+    </div>
+    
+    <img src="http://www.casamiento.co.uk/gfx/me2.jpg" style="padding:0.25em;margin-top:0.7em;float:left;padding-right:0.4em;">
+    <p class="first caz casamiento">Y<span style="letter-spacing:0.2em; font-size:1em;font-family:Gara';font-variant:small-caps">OUR GUESTS</span>, will love seeing their names individually printed on our elegant freestanding place cards&hellip; </p>
+    <p class="caz casamiento">&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs below are bound to compliment your theme&hellip;</p>
+
+    <h4>Save time and hassle&hellip;</h4>
+    <p class="caz">They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.
+ </p>
+ <p class="caz casamiento">Place your order today!</p>
+    <p class="caz" style="margin:0;padding:0;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/></p>
+    <p class="caz" style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
+    <span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
+  </div>
+  <div class="spc" style="border:0;">
+  <h1>You will also like&hellip;</h1>
+  
+  
+  <div class="place_square_1 place_square" style="width:60%;float:left;border-bottom:1px solid grey;">
+    <div class="inner_place_square">
+    <%- related[0].divs[0] %>
+    </div>
+    <div class="inner_place_square_hidden" style="display:none">
+     <%- related[0].divs[2] %>
+    </div>
+    <div style="margin:0;padding:0;"><h2 class="caz" style="float:left;width:50%;margin-top:0em;padding-top:0em;letter-spacing:0.2em;text-align:left;font-size:1.5em;"><%= related[0].name %></h2></div>
+    <div>
+      <p class="casamiento" style="width:40%;float:right;text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
+    </div>
+  </div>
+    <div class="place_square_2 place_square" style="width:39%;float:right;border-bottom:1px solid grey;">
+    <div class="inner_place_square">
+    <%- related[2].divs[3] %>
+    </div>
+    <div class="inner_place_square_hidden" style="display:none">
+     <%- related[2].divs[2] %>
+    </div>
+    <div style="margin:0;padding:0;"><h2 class="caz" style="float:left;width:60%;margin-top:0em;padding-top:0em;letter-spacing:0.2em;text-align:left;font-size:1.5em;"><%= related[2].name %></h2></div>
+    <div>
+      <p class="casamiento" style="width:40%;float:right;text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
+    </div>
+  </div>
+  
+    <div class="place_square_4 place_square" style="width:60%;float:right;border-bottom:1px solid grey;">
+    <div class="inner_place_square">
+    <%- related[3].divs[2] %>
+    </div>
+    <div class="inner_place_square_hidden" style="display:none">
+     <%- related[3].divs[3] %>
+    </div>
+    <div style="margin:0;padding:0;"><h2 class="caz" style="float:left;margin-top:0em;padding-top:0em;letter-spacing:0.2em;text-align:left;font-size:1.5em;width:250px;"><%= related[3].name %></h2></div>
+    <div>
+      <p class="casamiento" style="float:right;text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
+    </div>
+  </div>
+   
+    <div class="place_square_3 place_square" style="width:39%;float:left;border-bottom:1px solid grey;">
+        <div class="inner_place_square"><%- related[1].divs[0] %></div>
+        <div class="inner_place_square_hidden" style="display:none"><%- related[1].divs[1] %></div>
+        <div style="margin:0;padding:0;"><h2 class="caz" style="float:left;margin-top:0em;padding-top:0em;letter-spacing:0.2em;text-align:left;font-size:1.5em;width:250px;"><%= related[1].name %></h2></div>
+        <div>
+            <p class="casamiento" style="float:right;text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
+        </div>
+    </div>
+  
+    <div class="place_square_3 place_square" style="width:39%;float:left;border-bottom:1px solid grey;">
+    <div class="inner_place_square"><%- related[4].divs[3] %></div>
+    <div class="inner_place_square_hidden" style="display:none"><%- related[4].divs[2] %></div>
+    <div style="margin:0;padding:0;"><h2 class="caz" style="float:left;margin-top:0em;padding-top:0em;letter-spacing:0.2em;text-align:left;font-size:1.5em;width:250px;"><%= related[4].name %></h2></div>
+    <div>
+      <p class="casamiento" style="float:right;text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
+    </div>
+  </div>
+  
+  
+    <div class="place_square_4 place_square" style="width:60%;float:right;border-bottom:1px solid grey;">
+    <div class="inner_place_square">
+    <%- related[5].divs[0] %>
+    </div>
+    <div class="inner_place_square_hidden" style="display:none">
+     <%- related[5].divs[1] %>
+    </div>
+    <div style="margin:0;padding:0;"><h2 class="caz" style="float:left;margin-top:0em;padding-top:0em;letter-spacing:0.2em;text-align:left;font-size:1.5em;width:250px;"><%= related[5].name %></h2></div>
+    <div>
+      <p class="casamiento" style="float:right;text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
+    </div>
+  </div>
+   
+   <div class="place_square_7 place_square" style="width:60%;float:left;border-bottom:1px solid grey;">
+    <div class="inner_place_square">
+    <%- related[6].divs[1] %>
+    </div>
+    <div class="inner_place_square_hidden" style="display:none">
+     <%- related[6].divs[2] %>
+    </div>
+    <div style="margin:0;padding:0;"><h2 class="caz" style="float:left;width:50%;margin-top:0em;padding-top:0em;letter-spacing:0.2em;text-align:left;font-size:1.5em;"><%= related[6].name %></h2></div>
+    <div>
+      <p class="casamiento" style="width:40%;float:right;text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
+    </div>
+  </div>
+      
+  
+   </div>
+</div>   
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- -------------------------------------------------------------
+  RIGHT COLUMN
+  -->
+
+<div class="right_column">
+  <div class="spc">
+   
+    <div class="name_place_icon" style="margin:0 auto"><img src="http://www.casamiento.co.uk/gfx/product_types/name_place.png" style="width:150px;margin:0 auto;"></div>
+
+  </div>
+
+
+
+<div class="spc">
+  <div style="margin-bottom:0.5em;height:2em;">
+  <div style="float:left"><h1>Choose your colour</h1></div>
+  <div class="step colour_0">STEP 1</div>
+  </div>
+  
+  <div class="chat-bubble">Choose from hundreds of colours! Click on the colour below to change it and the image will change so you can see exactly what your design will look like. 
+  </div>
+  <% for(var i=0; i < colours.length; i++) { %>
+  <div id="colour_<%=i %>"></div>
+  <% } %>
+</div>
+
+
+ <!-- 
+    BUY-IT BOX 2
+ -->
+  <div class="spc">
+  <div style="width:65%;border-radius:5px;color:white;background-color:grey;text-align:center;margin:0 auto;padding:1em;font:normal 1.4em OS;margin-top:1em;margin-bottom:1em;">
+      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" style="width:30px;"/> DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH FREE POSTAGE&hellip;
+      
+  </div>
+</div>
+  <div class="spc">
+    <div style="margin-bottom:0.5em;height:2em;">
+      <div style="float:left"><h1>Card Texture</h1></div>
+      <div class="step colour_0">STEP 2</div>
+    </div>
+
+    <div class="chat-bubble">Choose a card texture. Plain is the cheapest with its smooth plain finish, but hammered makes your cards feel more luxurious.  </div>
+
+    <div style="margin-left:1em;display:inline-block;"><p><img src="http://www.casamiento.co.uk/gfx/icons/plaine.png" style="width:3.5em"><br> Plain</p></div>
+
+  <div style="margin-left:1em;display:inline-block;"><p><img src="http://www.casamiento.co.uk/gfx/icons/hammer.png" style="width:3.5em"><br> Hammered</p></div>
+  
+    
+  </div>
+  
+ <!-- 
+    THICKNESS 
+ -->
+ 
+  <div class="spc">
+    <div style="margin-bottom:0.5em;height:3em;">
+      <div style="float:left"><h1>Choose Thickness</h1></div>
+      <div class="step colour_0">STEP 3</div>  
+    </div>
+
+    <div class="chat-bubble">Decide how thick your cards will be. Thinner card is cheaper but thicker card gives for an expensive feel 
+    </div>
+    <div>
+      <div class="weight" style="border-top:6px;"></div> <span style="font:normal 0.8em OS;">250gsm</span>
+      </div>
+  <div>
+     <div class="weight" style="border-top:12px;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span></div>
+     
+  </div>
+
+
+  
+ <!-- 
+    MONOGRAM 
+ -->
+ 
+  <% if (monogram) { %>
+  <div class="spc">
+<div style="margin-bottom:0.5em;height:2em;">
+        <div style="float:left"><h1>Choose Monogram</h1></div>
+        <div class="step colour_0">STEP 3</div>  
+      </div>
+
+         <div class="chat-bubble">Each design comes with your own unique monogram. Bearing the name of you and your partner, and underscored with the date or location of your ceremony, it provides the ultimate touch of understated sophistication.<br/><br/>We have many styles of monogram available, the only problem you'll have is deciding which one is for you.  Click the  &larr; arrows &rarr; to scroll through the styles available. </div>
+      
+    <img id="mono_2" style="width:100%;max-width:300px;" class="casamiento mono" src="http://www.casamiento.co.uk/gfx/m/<%= monogram %>.png">
+    <p class="caz"></p>
+  </div>
+  <% } %>
+  
+
+ <!-- 
+    TESTIMONIALS 
+ -->  
+  
+<div class="spc">
+  <h1>Don't take our word for it&hellip;</h1>
+  
+  <div class="quote">
+    <h6 class="caz" style="margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> Beautiful place cards, thank you! Would Highly recommend :-)&rdquo;</h6>
+    <h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:10%">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=baked.potato07">baked.potato07</a></h6>
+  </div>
+                         
+  <div class="quote">
+    <h6 class="caz" style="width:75%; margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> Totally perfect. Thank you</h6>
+    <h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:10%" href="">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=mummysmith1974">mummysmith1974</a></h6>
+  </div>
+                 
+   <div class="quote">
+    <h6 class="caz" style="margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> These are amazing, excellent quality for an excellent price, highly recommended&rdquo;</h6><h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:20%">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=chris.hall20">chris.hall20</a></h6>
+  </div>
+                                         
+  <div class="quote">
+   <h6 class="caz" style="width:75%; margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> They look amazing and came so fast. Highly recommend :)</h6><h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:10%" href="">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=kellyc3456">kellyc3456</a></h6>
+   </div>
+            
+</div>
+<div style="clear:both;"></div>
+</div>
+<script type="text/javascript">
+<% for (var i = 0; i < colours.length; i ++) { %>
+
+  $('#colour_' + <%=i%>).colorPicker({default_color: '<%= colours[i] %>'}).on('dizzy-cp:hoverColor', function(e, colour) {
+    <% if(i == 1) { %>      
+      $('.slide > div > div:not(.nocolor)').css("background-color", colour)
+    <% } else { %> 
+      $('.colour_<%= i %>').css("background-color", colour)
+      $('.slide').css("background-color", colour)
+    <% } %>
+  })
+<% } %>
+
+$('.place_square').mouseover(function() {
+  $(".inner_place_square", this).hide();
+  $(".inner_place_square_hidden",this).show();
+})
+$('.place_square').mouseout(function() {
+  $(".inner_place_square", this).show();
+  $(".inner_place_square_hidden",this).hide();
+})
+</script>

@@ -19,7 +19,7 @@ exports.show = function(req, res) {
       var divs = prepareDivs(doc, "slide", "slide", "display", "colour");
         doc.document = doc;
         doc.divs = divs;
-        res.render('ebay/' + product_type + 's/14_nov_13.ejs', {
+        res.render('ebay/' + product_type + 's/new.ejs', {
             layout: false,
             locals: doc
         });
