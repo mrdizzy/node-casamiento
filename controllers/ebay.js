@@ -27,7 +27,7 @@ exports.show = function(req, res) {
 }
 exports.places = function(req, res) {
        db.view('products/name_place', function(err, docs) {
-       
+       console.log(docs)
         res.render('ebay/name_places/name_places_new_trial', {
             layout: false,
             documents: docs

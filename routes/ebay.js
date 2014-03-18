@@ -1,5 +1,5 @@
 module.exports = function(app){
-
+app.get("/ebay/places", require('./../controllers/ebay').places)
   app.get("/ebay", require('./../controllers/ebay').index);
 
   app.get('/ebay/:id', require('./../controllers/ebay').show)
