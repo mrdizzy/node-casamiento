@@ -101,6 +101,8 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 .inner_place_square, .inner_place_square_hidden { margin-bottom:0;padding:0.25em; }
 .place_square {border:1px solid transparent;}
 .place_square:hover { border:1px solid grey; text-decoration:underline; cursor:pointer;}
+.place_square h2 { float:left;width:50%;margin-top:0em;padding-top:0em;letter-spacing:0.2em;text-align:left;font-size:1.5em;}
+    
 </style>
 
 <div id="page_container_casamiento">
@@ -193,7 +195,7 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
     <div class="inner_place_square_hidden" style="display:none">
      <%- related[0].divs[2] %>
     </div>
-    <div style="margin:0;padding:0;"><h2 class="caz" style="float:left;width:50%;margin-top:0em;padding-top:0em;letter-spacing:0.2em;text-align:left;font-size:1.5em;"><%= related[0].name %></h2></div>
+    <div style="margin:0;padding:0;"><h2 class="caz"><%= related[0].name %></h2></div>
     <div>
       <p class="casamiento" style="width:40%;float:right;text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
     </div>
