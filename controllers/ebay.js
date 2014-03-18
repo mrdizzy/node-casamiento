@@ -1,5 +1,6 @@
 var db = require('./../config/db').test_ebay,
-    _ = require('underscore');
+    _ = require('underscore'),
+    prepareDivs = require('./../lib/prepare_divs');
 
 // Route: /ebay/:id
 // This renders an ebay product view by looking in the /views/ebay/product_type folder for its template as different product types will need different rendering
@@ -15,10 +16,10 @@ exports.show = function(req, res) {
            related.divs = prepareDivs(related, "thumbnail", "thumbnail", "display", "related_colour")
        })
         doc.related = related;
-      var divs = prepareDivs(doc);
+      var divs = prepareDivs(doc, "slide", "slide", "display", "colour");
         doc.document = doc;
         doc.divs = divs;
-        res.render('ebay/' + product_type + 's/14_nov_13.ejs', {
+        res.render('ebay/' + product_type + 's/new.ejs', {
             layout: false,
             locals: doc
         });
@@ -45,34 +46,3 @@ exports.index = function(req, res) {
     });
 }
 
-
-function prepareDivs(object, id, klass, size, colour_class) {
-    if(id == undefined) {
-        id = "slide"
-    }
-    if (klass == undefined) {
-        klass= "slide"
-    }
-    if(size == undefined) {
-        size="display"
-    }
-    if(colour_class == undefined) {
-        colour_class = "colour"
-    }
-var results = []
-    object.attachments_order.forEach(function(number) {
-        if (object['background-' + number]) {
-            var compiled = _.template(object['background-' + number]);
-            var result = compiled({colour: object.colours[1]});   
-        }
-        var html = '<div id="' + id + number + '" class="' + klass+ '_container_' + number + " "+ klass + '_container ' + colour_class + '_0"' + 'style="background-color:' + object.colours[0] + '">';
-        html = html + '<img src="http://www.casamiento.co.uk/products/' + object._id + '/attachments/' + size + '-' + number + '" class="' + klass + '_image" />'
-      if ((typeof  object["background-" + number]) !== "undefined") {
-        html = html + '<div class="' + klass + '_background_container ' + colour_class + '_1">' + result + '</div>'
-      }
-      html = html + '</div>'
-      results.push(html)
-     })  
-     return results;
-     
-}

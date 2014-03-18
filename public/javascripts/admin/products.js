@@ -94,13 +94,15 @@ var BackgroundView = Backbone.View.extend({
   },
   updateColours: function() {
     this.$('.background_container').css("background-color",  this.model.get("colours")[0])       
-    this.$('.background_container div').css("background-color", this.model.get("colours")[1])
+    this.$('.background_container div:not(.nocolor)').css("background-color", this.model.get("colours")[1])
   },
   updateBackground: function(e, f,g) {
       this.$('div div').remove();
-      var divs = $(this.model.get("background-" + this.attachment));
-      divs.css('background-color', this.model.get("colours")[1])
-      this.$('div').append(divs)  
+      var divs = this.model.get("background-" + this.attachment);
+      var compiled = _.template(divs);
+            var result = compiled({colour: this.model.get("colours")[1]});
+      this.$('div').append(result)  
+      this.$('div.visual_div').html(result)
   },
   render: function() {
     var attach_model = this.model.toJSON();
@@ -125,12 +127,13 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   events: { 
     'click input[type=submit]': 'sendForm',
     'click .addmore': 'addAttachment',
-    'hover_colour .picker': 'selectColour'
+    'dizzy-cp:hoverColor .picker': 'selectColour'
   },
   selectColour: function(e, colour) {
      var index = $(e.currentTarget).index();
      var colours = this.model.get("colours");
      colours[index] = colour;
+     console.log(colour)
      this.model.set("colours", colours).trigger("change:colours")
   },
   sendForm: function(e) {

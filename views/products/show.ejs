@@ -23,17 +23,10 @@
 
 -->
 
-      <div id="slide1" class="colour_1 slide_background"><img src="/products/<%= product._id %>/attachments/medium-<%= product.attachments_order[0] %>" class="slide_image" /><% if ((typeof product["background-" + product.attachments_order[0]]) !== "undefined") {%><div class="slide_background_container">
-      <%-  product["background-" + product.attachments_order[0]] %></div>
-      <% } %></div>           
+      <%-  product.divs[0] %>
+      <%-  product.divs[1] %>
          
-      <div id="slide2" class="colour_1 slide_background"><img src="/products/<%= product._id %>/attachments/medium-<%= product.attachments_order[1] %>" class="slide_image" /><% if ((typeof  product["background-" + product.attachments_order[1]]) !== "undefined") {%><div class="slide_background_container">
-      <%-  product["background-" + product.attachments_order[1]] %></div>
-      <% } %></div>
-        
-      <div id="slide3" class="colour_1 slide_background"><img src="/products/<%= product._id %>/attachments/medium-<%= product.attachments_order[2] %>" class="slide_image" /><% if ((typeof  product["background-" + product.attachments_order[2]]) !== "undefined") {%><div class="slide_background_container">
-      <%-  product["background-" + product.attachments_order[2]] %></div>
-      <% } %></div>
+      <%-  product.divs[2] %>
       
 <!-- 
 
@@ -55,16 +48,15 @@
   SLIDE 4 
 
 -->    
-      <div id="slide6" class="colour_1 slide_background"><img src="/products/<%= product._id %>/attachments/medium-<%= product.attachments_order[3] %>" class="slide_image" /><% if ((typeof  product["background-" + product.attachments_order[3]]) !== "undefined") {%><div style="width:374px;height:239px;">
-      <%-  product["background-" + product.attachments_order[3]]  %></div>
-      <% } %></div>           
+     <%-  product.divs[3] %>
+                
    </div>
       
 <div id="product_section0"></div>  
 
 <script type="text/javascript">
 
-// Templates
+// Initialize templates
 var templates = {}
 <% templates.forEach(function(template) { %>
   templates["<%= template.name %>"] = <%- template.template %>;

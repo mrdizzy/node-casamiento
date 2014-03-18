@@ -69,8 +69,8 @@ app.use(exposeTemplates);
 app.configure('development', function() {
     app.use(express.errorHandler());
 });
-require('./routes')(app);
 
+require('./routes')(app);
 http.createServer(app).listen((process.env.PORT || 3000), function() {
     console.log("Express server listening on port " + (process.env.PORT || 3000));
 });

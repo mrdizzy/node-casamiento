@@ -66,8 +66,8 @@ var StepView = Backbone.View.extend({
       "mouseenter .spc": "hoverStep",
       "mouseleave .spc": "hoverStep",      
       "click .texture": "updateTexture",  
-      "hover_colour #picker_1": "updateColour1",
-      "hover_colour #picker_2": "updateColour2"
+      "dizzy-cp:hoverColor #picker_1": "updateColour1",
+      "dizzy-cp:hoverColor #picker_2": "updateColour2"
     },
     updateTexture: function(e) {
         this.presenter.updateTexture($(e.currentTarget).index())
@@ -76,9 +76,11 @@ var StepView = Backbone.View.extend({
       this.presenter.hoverStep($(e.currentTarget).index());
     },
     updateColour1: function(e, colour) {
-      thisProduct.set("colour_1", colour)
+      $('.colour_1').css("background-color", colour)
+      $('.slide').css("background-color", colour)
     },
-    updateColour2: function(e, colour) {
+    updateColour2: function(e, colour) {    
+      $('.slide > div > div:not(.nocolor)').css("background-color", colour);
       thisProduct.set("colour_2", colour)
     },
   render: function() {
@@ -102,14 +104,6 @@ var StepView = Backbone.View.extend({
     }
     return this;
   },
-  changeColour: function() {
-      this.$('.colour_label_1').css("background-color", thisProduct.get("colour_1"))
-      $('.colour_1').css("background-color", thisProduct.get("colour_1"))
-  },
-  changeColour2: function() {
-    $('.slide_background_container div').css("background-color", thisProduct.get("colour_2"))
-      $('.colour_label_2').css("background-color", thisProduct.get("colour_2"))
-  }
 })
 $(function(){
   // Positioning of fixed price/alert boxes

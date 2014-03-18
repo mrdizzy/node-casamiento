@@ -1,5 +1,6 @@
 var db = require('./../config/db').test_ebay,
-  _ = require('underscore');
+  _ = require('underscore'),  
+    prepareDivs = require('./../lib/prepare_divs');
 
 exports.update = function(req, res) {
   db.save(req.body, function(err, documents) {
@@ -54,16 +55,10 @@ exports.show = function(req, res) {
 };
 
 function getProduct(req, res,id,cart) {
-    db.get(id, function(error, document) {
-        for(var i=0;i < 6; i++) {
-            // compile templates for different coloured backgrounds
-            if (document['background-' + i]) {
-                var compiled = _.template(document['background-' + i]);
-                document['background-' + i] = compiled({colour: document.colours[1]});
-            }
-        }
+    db.get(id, function(error, doc) {
+        doc.divs = prepareDivs(doc, "slide", "slide", "display", "colour");
         res.render('products/show.ejs', {
-            locals: {product: document}
+            locals: {product: doc}
         });
     });
 }
