@@ -1,0 +1,83 @@
+<%- contentFor('inline_styles') %>
+.left_column { width:65%; }
+.right_column { margin-left: 66%; } 
+
+<%- contentFor('left') %>
+
+	<% for (var i = 0; i < 10; i++) { %>
+	<%if (place_cards[i]) { %>
+	<div>
+		<div style="width:60%;float:left;clear:both;"><%- place_cards[i].divs[0] %>
+		<h2 class="caz"><%= place_cards[i].name%></h2></div>		
+		<div style="width:39%;float:right;"><%- place_cards[i].divs[1] %> <%- place_cards[i].divs[2] %>
+		
+	<% for(var j=0; j < place_cards[i].colours.length; j++) { %>
+	<div id="colour_<%=i %>_<%= j %>"></div>
+	<script>$('#colour_<%=i%>_<%=j%>').colorPicker({default_color: '<%= place_cards[i].colours[j] %>'}).on('dizzy-cp:hoverColor', function(e, colour) {
+		<% if(j == 1) { %>      
+			$('.slide_<%= i %> > div > div:not(.nocolor)').css("background-color", colour)
+		<% } else { %> 
+			$('.slide_<%= i %>').css("background-color", colour)
+		<% } %>
+	});</script>
+	<% } %></div>
+		</div>
+		<% } %>
+	<% } %>
+
+
+
+<%- contentFor('right') %>
+
+ <div class="spc">
+	 
+		<div class="name_place_icon" style="margin:0 auto"><img src="http://www.casamiento.co.uk/gfx/product_types/name_place.png" style="width:150px;margin:0 auto;"></div>
+
+	</div>
+
+
+
+<div class="spc">
+	<div style="margin-bottom:0.5em;height:2em;">
+	<div style="float:left"><h1>Choose your colour</h1></div>
+	<div class="step colour_0">STEP 1</div>
+	</div>
+	
+	<div class="chat-bubble">Choose from hundreds of colours! Click on the colour below to change it and the image will change so you can see exactly what your design will look like. 
+	</div>
+</div>
+
+
+	
+	
+<div class="spc">
+	<div style="margin-bottom:0.5em;height:2em;">
+		<div style="float:left"><h1>Card Texture</h1></div>
+		<div class="step colour_0">STEP 2</div>
+</div>
+
+<div class="chat-bubble">Choose a card texture. Plain is the cheapest with its smooth untextured finish, but hammered makes your cards feel more luxurious.</div>
+<div style="margin-left:1em;margin-bottom:0.75em;display:inline-block;font-family:'TP'"><div class="texture"></div><br/>Plain</div>
+<div style="margin-left:1em;margin-bottom:0.75em;display:inline-block;font-family:'TP'"><div class="texture" style="background-image:url('/gfx/hammered.png');background-size:2em;"></div><br/>Hammered</div>
+	
+	</div>
+	
+ <!-- 
+		THICKNESS 
+ -->
+ 
+	<div class="spc">
+		<div style="margin-bottom:0.5em;height:3em;">
+			<div style="float:left"><h1>Choose Thickness</h1></div>
+			<div class="step colour_0">STEP 3</div>  
+		</div>
+
+		<div class="chat-bubble">Decide how thick your cards will be. Thinner card is cheaper but thicker card gives for an expensive feel 
+		</div>
+		<div>
+			<div class="weight" style="border-top:6px;"></div> <span style="font:normal 0.8em OS;">250gsm</span>
+			</div>
+	<div>
+		 <div class="weight" style="border-top:12px;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span></div>
+		 
+	</div>

@@ -3,7 +3,8 @@ var express = require('express'),
     resource = require('express-resource'),
     db = require('./config/db').test_ebay,
     handlebars = require('express3-handlebars').create(),
-    partials = require('express-partials');
+    partials = require('express-partials'),
+    expressLayouts = require('express-ejs-layouts');
 
 var app = express();
 var dir = __dirname;
@@ -48,6 +49,7 @@ app.configure(function(){
   });
 });
 
+
 app.configure(function() {
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
@@ -57,7 +59,8 @@ app.configure(function() {
     });
     app.use(express.cookieParser());
     app.use(express.favicon());
-    app.use(partials());
+    
+    app.use(expressLayouts)
     app.use(express.logger('dev'));
     app.use(express.bodyParser({limit:'100mb'}));
     
