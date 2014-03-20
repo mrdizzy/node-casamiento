@@ -1,6 +1,10 @@
 <%- contentFor('inline_styles') %>
-.left_column { width:65%; }
-.right_column { margin-left: 66%; } 
+.left_column { width:73%; }
+.right_column { margin-left: 73%; } 
+.slide { width:100%; }
+.guest { margin:0; padding:0.2em; border:1px solid grey; border-bottom:0;display:block;font: normal 1em "OS"; width:95%; }
+.guest:last-child{ border-bottom:1px solid grey; }
+.guest:hover, .guest:focus { background-color:lightgrey; }
 
 <%- contentFor('left') %>
 
@@ -35,20 +39,15 @@
 
 	</div>
 
-
-
 <div class="spc">
 	<div style="margin-bottom:0.5em;height:2em;">
 	<div style="float:left"><h1>Choose your colour</h1></div>
 	<div class="step colour_0">STEP 1</div>
 	</div>
 	
-	<div class="chat-bubble">Choose from hundreds of colours! Click on the colour below to change it and the image will change so you can see exactly what your design will look like. 
+	<div class="chat-bubble">Choose from hundreds of colours! Click the colour below each design to watch the image change so you can see exactly what your design will look like!
 	</div>
 </div>
-
-
-	
 	
 <div class="spc">
 	<div style="margin-bottom:0.5em;height:2em;">
@@ -75,9 +74,38 @@
 		<div class="chat-bubble">Decide how thick your cards will be. Thinner card is cheaper but thicker card gives for an expensive feel 
 		</div>
 		<div>
-			<div class="weight" style="border-top:6px;"></div> <span style="font:normal 0.8em OS;">250gsm</span>
+			<div class="weight" style="border-top:5px solid grey;"></div> <span style="font:normal 0.8em OS;">250gsm</span>
 			</div>
 	<div>
-		 <div class="weight" style="border-top:12px;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span></div>
+		 <div class="weight" style="border-top:8px solid grey;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span></div>
 		 
 	</div>
+
+
+ <div class="spc">
+		<div style="margin-bottom:0.5em;height:3em;">
+			<div style="float:left"><h1>Enter guest names</h1></div>
+			<div class="step colour_0">STEP 3</div>  
+		</div>
+
+		<div class="chat-bubble">Email us with a list of your guest names, or enter them in the form below after making your purchase!
+		</div>
+		<div style="padding:5px;margin:0 auto;">
+		<input class="guest" type="text" value="Guest 1" ></input>    
+		<input class="guest" type="text" value="Guest 2" ></input>    
+		<input class="guest" type="text" value="Guest 3" ></input>    
+		<input class="guest" type="text" value="Guest 4" ></input>    
+		<input class="guest" type="text" value="Guest 5"></input>    
+		<input class="guest" type="text" value="Guest 6"></input>
+		<input class="guest" type="text" value="Guest 7"></input>       
+		<input class="guest" type="text" value="Guest 8"></input>    
+		<input class="guest" type="text" value="Guest 9"></input>    
+		<input class="guest" type="text" value="Guest 10"></input>
+		</div>
+	</div>
+	
+	<script>
+	$('input.guest').focus(function(e) {
+		$(e.currentTarget)val("");
+	})
+	</script>
