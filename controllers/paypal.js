@@ -14,11 +14,13 @@ function parseTransactions(transactions, maincallback) {
             callback(null, null)
         }
         else {
-            console.log(transaction.L_TYPE);
             paypal.buildQuery("GetTransactionDetails", function(err, response) {
-                console.log(err, response);
+
                     response.items = response.GetTransactionDetailsResponse;
-                    console.log(response);
+                                response.items = _.map(response.items, function(item) {
+                                    item.L_NAME = item.L_NAME.replace("&", "&amp;")
+                                    return item;
+                                })
                     callback(err,response)
                 }, {
                 TRANSACTIONID: transaction.L_TRANSACTIONID
