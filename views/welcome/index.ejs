@@ -1,6 +1,3 @@
-
-
-<% var counter  = 0 %>
 <style type="text/css">
   
 body { margin:0; padding:0; }
@@ -10,63 +7,64 @@ a.casamiento:hover { color:#000; }
 
 /* FONTS */
 @font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
-@font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARAIT.woff') format('woff'); }
 @font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OSL.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
 
-h2.casamiento { text-align:center; font: normal 2.2em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
-h5.casamiento { font: normal 1em "OS IL", serif; text-indent:1em;text-align:left; border-bottom: 1px solid #333; padding-top:0.75em; padding-bottom:0.75em;line-height:1.5em; margin-bottom:1.5em;margin-top:1.5em; }
-h6.casamiento { font: normal 1.375em "OS Light", serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
-p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS Light", serif;line-height: 1.5em; padding:0; }
+h2 { text-align:center; font: normal 2.2em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
 
 .b1 { clear:both; }
 
 /* COLUMNS */
-#left_column { width:48%; float:left; border:0; margin-left:1%; margin-right:1%; }
+#left_column { width:48%; float:left; margin-left:1%; margin-right:1%; }
 #right_column { width:49%; float:right; margin-right:1%;}
-#slides { margin-top:0.5em;margin-bottom:0.5em;border-bottom:1px solid #000 }
 #page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); width:100%; }
 #inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:90%;}
 
 /* IMAGES */
 
 .place_square { border:1px solid white;padding-bottom:1em; margin-bottom:1em;}
+.place_square img { width:100%; }
+.place_square h2 { letter-spacing:0.2em;text-align:left;width:60%;}
+.place_square p { font: normal 0.9em "OS Light", serif;width:39%;float:right;text-align:right;margin-top:0.25em;font-size:1.6em}
 .place_square_0, .place_square_1, .place_square_6 { float:left; border-bottom:1px solid grey; padding-bottom:4em;}
 
-.place_square_2, .place_square_3, .place_square_4, .place_square_5, .place_square_7, .place_square_8 {  padding:0;padding-bottom:1.5em; width:48%;float:left; margin-right:1%; margin-top:1%; border-bottom:1px solid grey;text-align:center;}
+.place_square_2, .place_square_3, .place_square_4, .place_square_5, .place_square_7, .place_square_8, .place_square_9, .place_square_10  {  padding:0;padding-bottom:1.5em; width:48%;float:left; margin-right:1%; margin-top:1%; border-bottom:1px solid grey;text-align:center;}
 
-.place_square_2 h2,  .place_square_3 h2,.place_square_4 h2, .place_square_5 h2, .place_square_7 h2, .place_square_8 h2 { padding:0;margin:0;font-size:1.5em;}
-
+.place_square_2 h2,  .place_square_3 h2,.place_square_4 h2, .place_square_5 h2, .place_square_7 h2, .place_square_8 h2 { font-size:1.5em;}
 
 .inner_place_square, .inner_place_square_hidden { margin-bottom:0;padding:0.25em}
 .place_square:hover { border:1px solid grey; text-decoration:underline; cursor:pointer;}
 
+.inner_place_square_hidden { display:none;}
 
-.inner_place_square img, .inner_place_square_hidden img { width:100%; }
+/* Mobile responsive */
+  @media all and (max-width: 600px) and (min-width: 320px) {
+  #left_column { float:none;width:95%;margin:0 auto;}
+  #right_column { float:none; width:95%; margin:0 auto;}
+  }
 </style>
-
 
 <% var counter = 0 %>
 
 <div id="left_column">
-
-<% documents.forEach(function(place) { %>
-<% if (counter == 4) { %>
-</div><div id="right_column">
-<% } %>
-  <a href="/products/<%= place._id %>">
-    <div class="place_square_<%= counter %> place_square">
-        <div class="inner_place_square"><%- place.divs[0] %></div>
-        <div class="inner_place_square_hidden" style="display:none"><%- place.divs[1] %></div>
-        <div style="margin:0;padding:0;"><h2 class="casamiento" style="letter-spacing:0.2em;text-align:left;width:60%;"><%= place.name %></h2></div>
-        <div>
-            <p class="casamiento" style="width:40%;float:right;text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.6em">&pound;2.99</p>
-        </div>
-    </div>
-
-</a>
-<% counter++ %>
-<% }) %>
+    <% documents.forEach(function(place) { %>
+  
+   
+        <% if (counter == 4) { %>
+        </div><div id="right_column">
+        <% } %>
+        <a href="/products/<%= place._id %>">
+            <div class="place_square_<%= counter %> place_square">
+                <div class="inner_place_square"><%- place.divs[place.attachments_order[0]] %></div>
+                <div class="inner_place_square_hidden"><%- place.divs[place.attachments_order[1]] %></div>                      
+                <h2><%= place.name %></h2>
+                <p>&pound;2.99</p>
+            </div>
+        </a>
+        
+        <% counter++ %>
+        
+    <% }) %>
 </div>
 <div class="b1"></div>
 </div>
@@ -74,29 +72,13 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS Light",
 
 <script>
   $(function(){
-  $('.place_square').mouseover(function() {
-
-    $(".inner_place_square", this).hide();
-    $(".inner_place_square_hidden",this).show();
-  })
-  $('.place_square').mouseout(function() {
-
-    $(".inner_place_square", this).show();
-    $(".inner_place_square_hidden",this).hide();
-  })
-    $("#slides").slidesjs({
-    pagination: { active: false },
-    navigation: { active: false },
-    play: { auto: true,
-    interval: 3500,
-    effect: "slide" },
-    effect: {
-    fade: {speed: 2000,
-    crossfade: true
-    }},
-    width: 750,
-    height: 375
-    });
+      $('.place_square').mouseover(function() {
+        $(".inner_place_square", this).hide();
+        $(".inner_place_square_hidden",this).show();
+      })
+      $('.place_square').mouseout(function() {
+        $(".inner_place_square", this).show();
+        $(".inner_place_square_hidden",this).hide();
+      })
   });
-  </script>
-  
+</script>
