@@ -3,7 +3,7 @@
 .dizzycp-swatch_container { text-align:center;}
 .dizzycp-big_colour_square_frame { cursor:pointer; display:inline-block; border:1px solid lightgrey; width:35px; height:35px; padding:2px;}
 .dizzycp-big_colour_square_swatch { width:30px; height:30px;margin:2px;}
-.dizzycp-text_label_for_colour { padding-top:0.25em;padding-bottom:0.25em;font:normal 1em Verdana;text-transform:uppercase;letter-spacing:0.05em;}
+.dizzycp-text_label_for_colour { color:black;padding-top:0.25em;padding-bottom:0.25em;font:normal 1.2em 'OS';text-transform:uppercase;letter-spacing:0.05em;}
 
 .dizzycp-container_to_fade_in {width:100%;background-color:white;display:none; position:absolute; border:1px solid transparent;border-top:0;z-index:1;}
 
