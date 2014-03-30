@@ -17,6 +17,9 @@ SERVER SIDE LIBS
 prepare_divs.js - for preparing the background divs used to display product images
 in_groups_of - identical to client-side version below
 
+LAYOUTS 
+=======
+
 
 CLIENT SIDE JAVASCRIPTS
 =======================

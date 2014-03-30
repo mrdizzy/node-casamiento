@@ -78,3 +78,22 @@ a:active { color: #29A4BD; }
 form { display:inline; }
 input { display:inline;padding:0;outline:none;margin:0;border:1px solid darkgrey; font: normal 1.2em "OS";padding:0.25em; width:30%;}
 input:focus { background-color: lightgrey;outline:none;}
+
+
+  /* Mobile phone devices */
+
+@media all and (max-width: 600px) and (min-width: 320px) {
+  #logo { float:none;padding:0;margin:0 auto;}
+  #browse, #contact, #cart { display:none;margin:0 auto;}
+  #dreams_container { float:none;clear:both;margin:0 auto;border:0;padding:0;}
+  
+    #inner_page_container_casamiento { width:100%;margin:0;padding:0}
+    #page_container { margin:0;border:0;padding:0;}
+    #page_container_casamiento { border:0;padding:0;margin:0;}
+   #total_price { display:none;}
+
+    
+    #footer .genesis_collection, #footer .castello_collection { float:none;width:100%; }
+    .footer_seperator { float:none;width:100%;}
+    
+  }

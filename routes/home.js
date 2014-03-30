@@ -12,7 +12,7 @@ module.exports = function(app){
            place_card.divs = prepareDivs(place_card, "thumbnail", "thumbnail", "display", "related_colour")
        })
             res.render("welcome/index", {
-                documents: place_cards, layout: 'layout_no_cart'
+                documents: place_cards
             })
         })
     })

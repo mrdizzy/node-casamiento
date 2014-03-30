@@ -79,3 +79,20 @@
     </div>
   </body>
 </html>
+
+
+<script>
+$('#browse').mouseenter(function() {
+$('#browse').css('border', '1px solid black')
+
+  $('#contact').css('border-left', '1px solid transparent')
+  $('#designs').show()
+})
+
+$('#browse').mouseleave(function() {
+  $('#designs').hide()
+  
+  $('#contact').css('border-left', '1px solid black')
+  $('#browse').css('border', '1px solid transparent')
+})
+</script>
