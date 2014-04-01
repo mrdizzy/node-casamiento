@@ -1,4 +1,4 @@
- <div class="product_type"><img src="/gfx/product_types/small/name_place_small.png" style="width:130px;"></div>
+<img src="/gfx/product_types/small/name_place_small.png" class="product_type_icon">
 
 <!-- 
 
@@ -6,17 +6,16 @@
 
 -->
 
-<div  class="spc" id="step_1">
-	<div style="margin-bottom:0.5em;height:2em;">
-  <div style="float:left"><h1>Choose your colour</h1></div>
+<div class="spc" id="step_1">
+	<div class="step_header_container">
+  <h4>Choose your colour</h4>
   <div class="step colour_1" style="{{display_step_1}}">STEP 1</div>
   </div>
 
   <div class="chat-bubble" style="{{display_step_1}}">Choose from hundreds of colours! Click on the colour below to change it and the image will change so you can see exactly what your design will look like. 
   </div>
 
-  <div id="colour_section_render">
-  </div>
+  <div id="colour_section_render"></div>
 </div>
 
 <!-- 
@@ -25,20 +24,20 @@
   
 -->
 
-  <div class="spc" id="step_2">
-	<div style="margin-bottom:0.5em;height:3em;">
-	  <div style="float:left"><h1>Card Texture</h1></div>
-	  <div class="step colour_1" style="{{display_step_2}}">STEP 2</div>
+<div class="spc" id="step_2">
+	<div class="step_header_container">
+		<h4>Card Texture</h4>
+		<div class="step colour_1" style="{{display_step_2}}">STEP 2</div>
 	</div> 
-  
+	
 	<div class="chat-bubble" style="{{display_step_2}}">Click and highlight an icon to select the texture of your choice. Plain is the cheapest with its smooth plain finish, but hammered and linen both make your cards feel more luxurious. 
 	</div>
 	<div id="texture_selection">
-	  <div class="texture selectable"><img src="/gfx/icons/plaine.png"><p>Plain</p></div>
-	  <div class="texture selectable"><img src="/gfx/icons/hammer.png"><p>Hammered</p></div>
-	  <div class="texture selectable"><img src="/gfx/icons/linen.png"><p>Linen</p></div>
+		<div class="texture selectable deselected"><img src="/gfx/icons/plaine.png"><p>Plain</p></div>
+		<div class="texture selectable deselected"><img src="/gfx/icons/hammer.png"><p>Hammered</p></div>
+		<div class="texture selectable deselected"><img src="/gfx/icons/linen.png"><p>Linen</p></div>
 	</div>
-  </div>
+</div>
 
 <!-- 
 
@@ -46,24 +45,24 @@
   
 -->
 	
-  <div class="spc"  id="step_3">
-	<div style="margin-bottom:0.5em;height:2em;">
-	  <div style="float:left"><h1>Card Thickness</h1></div>
-	  <div class="step colour_1"  style="{{display_step_3}}">STEP 3</div>
+<div class="spc"  id="step_3">
+	<div class="step_header_container">
+		<h4>Card Thickness</h4>
+		<div class="step colour_1"  style="{{display_step_3}}">STEP 3</div>
 	</div> 
 	<div class="chat-bubble"  style="{{display_step_3}}">Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm). A normal sheet of A4 copy paper is usually about 80gsm.
 	</div>
 	<br/>
-	<div class="weight selectable">
-	   <div class="weight_line"></div>
-	   <p class="casamiento">250gsm</p>
+	<div class="weight deselected selectable">
+		 <div class="weight_line"></div>
+		 <p>250gsm</p>
 	</div>
 		
-	<div class="weight selectable">
-	  <div class="weight_line" style="border-top:10px solid black;"></div>
-	  <p class="casamiento">300gsm</p>
+	<div class="weight deselected selectable">
+		<div class="weight_line" style="border-top:10px solid black;"></div>
+		<p>300gsm</p>
 	</div>
-  </div>
+</div>
 
 <!-- 
 
@@ -71,36 +70,77 @@
   
 -->
 
-  <div class="spc"  id="step_4">
-	<div style="margin-bottom:0.5em;height:2.5em;">
-	  <div style="float:left"><h1>Product Format</h1></div>
-	  <div class="step colour_1"  style="{{display_step_3}}">STEP 4</div>
+<div class="spc"  id="step_4">
+	<div class="step_header_container">
+		<h4>Product Format</h4>
+		<div class="step colour_1"  style="{{display_step_3}}">STEP 4</div>
 	</div> 
-		
+	
 	<div style="margin:auto;text-align:center;">
-	  <div class="spec" style="width:100px"><img src="/gfx/specs/tent.png"></div>
+		<div class="spec" style="width:100px"><img src="/gfx/specs/tent.png"></div>
 	</div>
-  </div>
-  
+</div>
+
+	
+	<!-- 
+	
+	QUANTITY 
+	
+	-->
+
+<div class="spc" id="step_5">
+	<div class="step_header_container">
+		<h4>Quantity</h4>
+		<div class="step colour_1"  style="{{display_step_3}}">STEP 5</div>
+	</div> 
+	
+
+	<div id="total_price">
+		<div id="qty_container">
+				<div id="minus_qty" class="deselected">-</div> <span id="qty">{{quantity}}</span>
+				<div id="plus_qty" class="deselected">+</div>
+		</div>
+		<div class="price">
+		<span class="pound_sign">&pound;</span><span class="number" id="pound">{{pounds}}</span><span class="decimal" id="decimal">.{{dec}}</span></div>
+
+	</div>
+</div>
+
 <!-- 
 
   GUESTS 
   
  -->
-	
-	<div class="spc"  id="step_6">
-	  <div style="margin-bottom:0.5em;height:2.5em;">
-		<div style="float:left">
-		  <h1><img src="/gfx/guests.png" style="width:30px"/> Guest names</h1>
-		</div>
+
+<div class="spc"  id="step_6">
+	<div class="step_header_container">
+		<h4><img src="/gfx/guests.png" style="width:30px"/> Guest names</h4>
 		<div class="step colour_1"  style="{{display_step_6}}">STEP 6</div>
-	  </div> 
-	  <div class="chat-bubble"  style="{{display_step_6}}">Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm). A normal sheet of A4 copy paper is usually about 80gsm.
-	  </div>
-	  {{#guests}}
-	  {{#.}}
-	  <input type="text" value="{{.}}"></input>
-	  {{/.}}
-	  {{/guests}}
+	</div> 
+	<div class="chat-bubble"  style="{{display_step_6}}">Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm). A normal sheet of A4 copy paper is usually about 80gsm.
 	</div>
-  </div>
+	<div id="guests">
+	{{#guests}}
+	{{#.}}
+	<input type="text" value="{{.}}"></input>
+	{{/.}}
+	{{/guests}}
+	</div>
+</div>
+</div>
+	
+<!--
+
+	BUY 
+
+-->
+
+<div class="spc"  id="step_7">
+	<div class="step_header_container">
+		<h4>Place your order&hellip;</h4>
+		<div class="step colour_1"  style="{{display_step_7}}">STEP 7</div>
+	</div> 
+
+	<div id="buy" class="deselected"> BUY <img src="/gfx/cart_white.png" /></div>
+	
+</div>

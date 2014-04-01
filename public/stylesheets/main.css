@@ -13,8 +13,7 @@
   input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
   input,textarea,select{*font-size:100%;}legend{color:#000;}del,ins{text-decoration:none;}
 
-/* YAHOO FONTS =========================================== */
-  body { font:13px/1.5 "Arial","Helvetica",sans-serif;*font-size:small;*font:x-small;color:#636667; }
+  body { font:13px/1.5 "Arial","Helvetica",sans-serif;*font-size:small;*font:x-small;color:#000; }
   select, input, button, textarea { font:99% arial,helvetica,clean,sans-serif; }
   table { font-size:inherit;font:100%;width:100%; }
   pre, code, kbd, samp, tt { font-family:monospace;*font-size:108%;line-height:100%; }
@@ -29,56 +28,336 @@
 @font-face { font-family:"OS Light Italic"; src: url('/f/OSLI.eot?') format('eot'), url('/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('/f/OSCB.eot?') format('eot'), url('/f/OSCB.woff') format('woff'); }
 
-h1 { text-align:center;  font-family: TP; padding:0;margin:0;}
-.theme_name { color:black;text-align:center; font-size: 4em; line-height:0.5em;letter-spacing:0.15em;}
-.product_name { color:black; font-size:2.5em;  text-align:left; letter-spacing:0.2em;}
+h1 { 
+  text-align:center;  
+  font-family: TP; 
+}
+  .theme_name { font-size: 4em; line-height:0.5em;letter-spacing:0.15em;}
+  .product_name { font-size:2.5em;  text-align:left; letter-spacing:0.2em;}
 
-h3 { color:#690172; font-weight:bold; margin-bottom: 1em; font-size:1.5em; }
-h6 { font-size:20px; text-align:justify; letter-spacing:0.1em; line-height:150%; font-family: "Gara"; color:black; }
+h2 {
+  text-align:center; 
+  font: normal 2.2em "TP", sans-serif; 
+  letter-spacing:10px; 
+  padding-right:10px;
+  padding-left:10px;
+  margin-top:0.5em;
+  margin-bottom:0.5em; 
+  }
+
+h4 { font: normal 0.9em "OS Condensed"; letter-spacing:0.01em;   }
+h6 { 
+  font-size:20px; 
+  text-align:justify; 
+  letter-spacing:0.1em; 
+  line-height:150%; 
+  font-family: "Gara"; 
+}
 .small { font-size:0.85em;}
 
 h5 { font: bold 0.85em "OS Light", sans-serif; padding-bottom: 10px; border-bottom: 1px solid grey; }
-p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
+p { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
+
+.pound_sign, .decimal { font-size:1.6em; position:relative;top:-8px;}
 .number {  font-size:2.4em;  }
-.decimal {  font-size:1.6em; position:relative;top:-8px; }
 
 a:link, a:visited { text-decoration:none;color: #000; }
- a:hover { text-decoration:underline;}
-a:active { color: #29A4BD; }
-.b1 { clear:both; }
-
-/* FURNITURE
-==================================== */
-#page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); }
-#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:95%;}  
-  #page_container {  margin: 0 auto; background-color: white;  border-left: 1px dotted #939598; border-right: 1px dotted #939598;}
-  
-  
-  /* HEADER */
-  #top_container { padding-top:1em;color:black; }
-  #logo { float:left;width:20%;text-align:center;padding-bottom:0.25em;}
-  #browse, #contact, #cart { margin-top:1em;width:20%;float:left;text-align:center;font:normal 1.3em 'OS Light'; }
-  #contact { border-left:1px solid black;}
-  #cart { font-size:1em; width:39%;padding-top:0.25em}
-  #dreams_container { clear:both;width:20%;float:left;border-top:1px solid black;min-width:140px;}
-  .dreams { text-align:center;border-right:1px solid black;}
-
-/* FOOTER
-==================================== */
-  #footer { margin: 0 auto; clear:both; padding-top:10px; height:60px; border-left: 1px dotted #939598; border-right: 1px dotted #939598; border-top: 1px solid #939598;}
-  
-    .footer_seperator {  text-align:center; padding-top:1em;  float:left;  width:20%; }
-    #footer .genesis_collection, #footer .castello_collection { width:40%; float:left; text-align:center; }
-    
-    .img_100 { width:100% }
-    .center { text-align:center }
+  a:hover { text-decoration:underline;}
+  a:active { color: #29A4BD; }
 
 /* FORMS
 ===================================== */  
 form { display:inline; }
-input { display:inline;padding:0;outline:none;margin:0;border:1px solid darkgrey; font: normal 1.2em "OS";padding:0.25em; width:30%;}
-input:focus { background-color: lightgrey;outline:none;}
+input { 
+  display:inline;
+  outline:none;
+  border:1px solid darkgrey; 
+  font: normal 1.2em "OS";
+  padding:0.25em; 
+}
+input:focus, input:hover { background-color: lightgrey;}
 
+/* LAYOUT
+==================================== */
+#page_container { 
+  background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); 
+}
+
+  #inner_page_container { 
+    background-color:#fff; 
+    border-left: 1px dotted #000;
+    border-right: 1px dotted #000;
+    margin:auto; 
+    width:95%;
+  }  
+    #top_container { 
+      padding:15px; 
+    }
+      #logo { 
+        float:left;
+        padding-bottom:0.25em;
+        width:20%;
+        text-align:center;
+      }
+        #logo img { width:100%; }
+      #browse, #contact, #cart { 
+        float:left;
+        font:normal 1.3em 'OS Light'; 
+        margin-top:1em;
+        width:20%;
+        text-align:center;
+       }
+      #contact { border-left:1px solid black;}
+      #cart { font-size:1em; width:39%;padding-top:0.25em}
+    #dreams_container { 
+      border-top:1px solid #000;
+      border-right:1px solid black;
+      clear:both;
+      min-width:140px;
+      text-align:center;
+      width:20%;
+    }
+      #dreams_on_paper_img { 
+        border-top:1px solid #000;
+        border-right:1px solid #000;
+        clear:both;
+        display:block;
+        width:170px;
+        padding:5px;
+      }
+
+    #footer { 
+      border-left: 1px dotted #939598;      
+      border-top: 1px solid #939598;
+      border-right: 1px dotted #939598; 
+      clear:both; 
+      height:60px; 
+      margin: 0 auto; 
+      padding-top:10px; 
+    }
+  
+      .footer_seperator {  
+        text-align:center; 
+        padding-top:1em;  
+        float:left;  
+        width:20%; 
+      }
+    #footer .genesis_collection, #footer .castello_collection { 
+      width:40%; 
+      float:left; 
+      text-align:center; 
+    }
+
+  /* Mobile phone devices */
+
+  @media all and (max-width: 600px) and (min-width: 320px) {
+    #logo { 
+      float:none;
+      width:200px;
+      margin:0 auto;
+    }
+    #browse, #contact, #cart { display:none;margin:0 auto;}
+    #dreams_on_paper_img { margin:0 auto;border:0; }
+      #inner_page_container { width:100%;}
+
+      #footer .genesis_collection, #footer .castello_collection { float:none;width:100%; }
+      .footer_seperator { float:none;width:100%;}
+    }
+
+
+/* WELCOME PAGE 
+============================= */
+#left_column, #right_column { 
+  width:49%; 
+  float:left; 
+  margin-left:0.5%;  
+  margin-right:0.5%;  
+}
+#right_column { 
+  float:right;   
+}
+.place_square { 
+  margin-bottom:0.25em;
+}
+  .place_square_container {
+    border:1px solid white; 
+    border-bottom:1px solid grey; 
+  }  
+  .place_square_container:hover { 
+    border:1px solid grey; 
+    text-decoration:underline; 
+  }
+    
+    .place_square_0, .place_square_1, .place_square_4, .place_square_7, .place_square_8 {
+      clear:both;
+    }
+  .place_square_2, .place_square_3, .place_square_5,.place_square_6, .place_square_9, .place_square_10, .place_square_11, .place_square_12  { 
+      width:50%;
+      float:left; 
+    }
+
+  .place_square_2 h2, .place_square_3 h2,.place_square_5 h2, .place_square_6 h2,  .place_square_9 h2, .place_square_10 h2, .place_square_11 h2, .place_square_12 h2 { font-size:1.5em; }
+  .place_square img { width:100%; }
+  .place_square h2 { 
+    letter-spacing:0.2em;
+    text-align:left;
+    width:60%; 
+  }
+  .place_square p {   
+    float:right;
+    font: normal 1.6em "OS Light";
+    margin-top:0.25em;
+    text-align:right;    
+    width:39%;
+  }
+  .inner_place_square_hidden { display:none; }
+    .price { text-align:right;font: normal 1em 'OS Light' }
+
+/* Mobile responsive */
+  @media all and (max-width: 600px) and (min-width: 320px) {
+    #left_column, #right_column { 
+      float:none;
+      margin:0 auto;
+      width:100%;
+    }
+  }
+/* PRODUCT PAGE
+==================================== */
+.product_type_icon { width:130px;}
+  
+#product_section1 { 
+  clear:both; 
+  float:left;
+  width:75%; 
+}
+  #slide1, #slide3 {  float:left;width:49.75%; }
+  #slide2, #slide4 { float:right; width:49.75%;}
+  #slide5 h6 { width:95%;margin:0 auto;}
+  .slide { position:relative; margin-right:1px; margin-bottom:1px; }
+  #description_container {   
+    float:left;
+    width:49.75%;
+    clear:both;
+  }
+    #description_container h6 { padding:1em;}
+
+#product_section0 { margin-left:75%; }  
+
+  #step_1 { border-top:1px dotted #000;}
+  .spec { display:inline-block; }
+    .spec img { width:100%; }
+
+  .spc {   
+    padding-left:0.3em;
+    border-bottom:1px dotted grey; 
+    border-left:1px dotted grey;
+  }    
+    .step_header_container { margin-bottom:0.5em;height:2em; }
+    .highlight { box-shadow:5px 5px 0 0 lightgrey;}
+    .spc h4 { float:left; }
+
+    .step { 
+      border-bottom-left-radius:10px;
+      border-bottom-right-radius:10px;
+      border-top-right-radius:0;
+      border-bottom-right-radius:0;
+      border-top-left-radius:0;
+      color:white;
+      text-align:center;
+      display:none;      
+      float:right;
+      font:1em normal 'OS Light';
+      padding:0.25em;
+      width:50%;
+    }
+
+    .chat-bubble { 
+      display:none; 
+      font: normal 1.1em "OS Light Italic"; 
+      margin:10px auto;
+    }
+
+    .texture {  
+      display:inline-block;
+      margin:0.5em;
+      text-align:center;
+    }
+      .texture img { width:3.5em; }
+
+    .weight {  
+      margin:0.2em 0 0.2em;
+      width:5em;
+      margin:0 auto; 
+      margin-bottom:1em; 
+    }
+    .weight_line {     
+      border-top:3px solid black; 
+      display:inline-block;
+      width:100px;
+    }
+
+    #total_price {     
+      font-size:1em;
+      text-align:center; 
+    }
+      #total_price .price { 
+        font-size:1.4em;
+        text-align:center;
+      }
+
+      #minus_qty, #plus_qty { 
+        border: 1px solid black;
+        display:inline-block;
+        padding:5px;
+        padding-left:10px;
+        padding-right:10px;
+      }
+
+      #qty { font-size:2em;font: normal 2em 'OS Light';color:black; }
+      
+    input { 
+      border:1px solid darkgrey; 
+      text-align:center;
+      font: normal 1.2em "OS";
+      padding:0.25em; 
+      width:90%;
+    }
+      
+    #buy {  
+      background-color:black;
+      border-radius:5px;
+      color:white;
+      font: normal 1.4em "OS Light"; 
+      height:50px;       
+      text-align:center;
+      width:125px; 
+      display:inline-block;
+    }
+      #buy img { padding-left:5px;width:30px;margin-top:7px;}
+
+/* RESPONSIVE DESIGNS
+============================= */
+
+@media all and (max-width: 1000px) and (min-width: 768px) {
+   #inner_page_container_casamiento { width:97%;}
+  }
+  
+/* Tablet devices */
+@media all and (max-width: 999px) and (min-width: 601px) {
+
+  #inner_page_container_casamiento { width:97%;}
+  .chat-bubble { left:3em;}
+  #product_section1 { width:374px; }
+  #product_section0 { margin-left:374px;}
+  #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 { float:none;clear:both;}
+  #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { float:none;clear:both;}
+  #slide4 { width: inherit; height:auto;}
+  #slide5 .shell { display:none;}
+  
+  #footer .genesis_collection { width:35%; }
+  .footer_seperator { width:10%;}
+   #footer .castello_collection { width:55%; }
+}
 
   /* Mobile phone devices */
 
@@ -90,10 +369,23 @@ input:focus { background-color: lightgrey;outline:none;}
     #inner_page_container_casamiento { width:100%;margin:0;padding:0}
     #page_container { margin:0;border:0;padding:0;}
     #page_container_casamiento { border:0;padding:0;margin:0;}
-   #total_price { display:none;}
-
+    #product_section1 { float:none; width:100%;clear:both; }
+    #product_section0 { float:none; width:100%; clear:both;margin:0 auto;}
+    #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 { width:100%; margin:0 auto;float:none;clear:both;}
+    .slide { width:100%;}
+    #description_container { float:none;width:90%;margin:0 auto;}
     
     #footer .genesis_collection, #footer .castello_collection { float:none;width:100%; }
     .footer_seperator { float:none;width:100%;}
     
+    #slide4 { width: inherit; height:auto;}
+    #slide5 .shell { display:none;}
+    #slide5 h6 { width:95%; padding:0;margin:0 auto;}
   }
+
+/* GLOBAL CLASSES
+=========================== */
+.deselected { opacity:0.4; }
+  .deselected:hover, .selected { opacity: 1; cursor:pointer;}
+
+.clearfix { clear:both; }

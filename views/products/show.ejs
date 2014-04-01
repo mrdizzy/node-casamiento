@@ -1,8 +1,6 @@
 <script type="text/javascript" src="/javascripts/products/show.js"></script>
 <script type="text/javascript" src="/javascripts/libraries/in_groups_of.js"></script>
 <script type="text/javascript" src="/javascripts/libraries/color_picker.js"></script>
-
-<link rel="stylesheet" type="text/css" href="/stylesheets/product.css">
 <link rel="stylesheet" type="text/css" href="/stylesheets/color_picker.css">
 
 <style type="text/css">
@@ -19,7 +17,7 @@
 -->
 
       <%-  product.divs[0] %>
-       <div class="product_type"><img src="/gfx/product_types/small/name_place_small.png" style="width:130px;"></div>
+       <img src="/gfx/product_types/small/name_place_small.png" class="product_type_icon">
       <%-  product.divs[1] %>
       <%-  product.divs[2] %>
       
@@ -36,7 +34,7 @@
       <div id="description_container">
         <p style="text-align:center;margin-top:1em;" class="shell">
         <img src="/gfx/shell.png" /></p>
-        <h6 id="welcome_description">This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h6>
+        <h6>This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h6>
       </div>
   
 <!-- 
@@ -57,11 +55,9 @@ var templates = {}
 <% templates.forEach(function(template) { %>
   templates["<%= template.name %>"] = <%- template.template %>;
 <% }) %>
-
 // Setup and initialization
 var thisProduct = new Product(<%- JSON.stringify(product) %>);
 
 new StepView().render();
 
-var quantity_view = new QuantityView()
 </script>

@@ -5,6 +5,8 @@ var Product = Backbone.Model.extend({
       this.on("change:weight", this.calculatePrice)
   },
   calculatePrice: function() {    
+  
+      console.log(this.get("quantity"))
     var total = this.get("price") * this.get("quantity"),
       texture = this.get("texture"),
       weight = this.get("weight");
@@ -22,12 +24,17 @@ var Product = Backbone.Model.extend({
 });
 
 var StepsPresenter = function(model, view) {
+
   this.view = view;
   this.model = model; 
+    this.model.set("quantity", 5)
+    this.model.set("guests", ["...", "...", "...", "...", "..."])
+    this.quantity = 5
   this.currentStep = 1;
   this.hoveringStep = 0;
   this.changeTexture = false;
   this.textures = ["plain", "hammered", "linen"]
+  this.renderPrice();
 }
 
 StepsPresenter.prototype = {
@@ -38,6 +45,26 @@ StepsPresenter.prototype = {
         this.toggleStep = step_number;
         this.view.render();
       }
+  },
+  renderPrice: function() {
+    var total = thisProduct.get("total"),
+        ary = total.toString().split(".");
+        this.pounds = ary[0];
+        this.dec = ary[1];
+  },
+  updateQty: function(number) {
+    this.quantity = this.quantity + number;
+    this.model.set("quantity", this.quantity)
+    this.changeQty = true;
+    var guests = this.model.get("guests")
+    if(number > 0) {
+      guests.push("...", "...", "...", "...", "...") }
+    else {
+      guests.splice(guests.length-5, 5)
+    }
+    this.model.set("guests", guests)
+    this.renderPrice();
+    this.view.render();
   },
   updateTexture: function(index) {
     this.model.set("texture", this.textures[index])
@@ -67,7 +94,15 @@ var StepView = Backbone.View.extend({
       "mouseleave .spc": "hoverStep",      
       "click .texture": "updateTexture",  
       "dizzy-cp:hoverColor #picker_1": "updateColour1",
-      "dizzy-cp:hoverColor #picker_2": "updateColour2"
+      "dizzy-cp:hoverColor #picker_2": "updateColour2",
+      "click #plus_qty": "plusQty",
+      "click #minus_qty": "minusQty"
+    },
+    plusQty: function(e) {
+      this.presenter.updateQty(5)
+    },
+    minusQty: function(e) {
+      this.presenter.updateQty(-5)
     },
     updateTexture: function(e) {
         this.presenter.updateTexture($(e.currentTarget).index())
@@ -87,13 +122,23 @@ var StepView = Backbone.View.extend({
     if(this.presenter.toggleStep) {
       this.$('#step_' + this.presenter.toggleStep + " .step").fadeToggle()      
       this.$('#step_' + this.presenter.toggleStep + " .chat-bubble").slideToggle()
+      this.$('#step_' + this.presenter.toggleStep).toggleClass('highlight')
       this.presenter.toggleStep = false;
     } else if (this.presenter.changeTexture) { 
       this.$('.texture').removeClass("selected")
       var texture_changed = this.$('.texture').get(this.presenter.changeTexture) ;
       $(texture_changed).toggleClass("selected"); 
       this.presenter.changeTexture = false;
-    } else {
+    } else if (this.presenter.changeQty) {      
+        this.$('#qty').text(thisProduct.get("quantity"))
+      this.$('span#pound').text(this.presenter.pounds);
+      this.$('span#decimal').text("." + this.presenter.dec);
+      var input_fields = []
+      thisProduct.get("guests").forEach(function(guest) {
+        input_fields.push($('<input type="text" name="guest" value="' + guest + '"></input>'))
+      })
+      this.$('#guests').html(input_fields)
+    }else {
       var result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter));
       var colours_1 = $("<div id='picker_1'></div>").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[0]});
       if(thisProduct.get("colours")[1]) {
@@ -104,39 +149,4 @@ var StepView = Backbone.View.extend({
     }
     return this;
   },
-})
-$(function(){
-  // Positioning of fixed price/alert boxes
-  var top = Math.max($(window).height() / 2 - $("#total_price")[0].offsetHeight / 2, 0);
-  var left = Math.max($(window).width() / 2 - $("#total_price")[0].offsetWidth / 2, 0);
-  $("#total_price").css('top', top + "px");
-  $("#total_price").css('position', 'fixed');
-  
-// Calculate quantity
-  $('#plus_qty').click(function(e) {
-    var qty = thisProduct.get("quantity")
-      thisProduct.set("quantity", qty + 5)
-  })
-    
-  $('#minus_qty').click(function(e) {
-    var qty = thisProduct.get("quantity")
-    if(qty > 5) {
-        thisProduct.set("quantity", qty - 5)
-    }
-  })
-});
-
-
-var QuantityView = Backbone.View.extend({  
-    renderQuantity: function() {
-      $('#qty').html(this.model.get("quantity"))
-    },
-    renderTotal: function() {
-      var total = this.model.get("total"),
-        ary = total.toString().split("."),
-        pounds = ary[0],
-        dec = ary[1];
-      $('span#pound').text(pounds);
-      $('span#decimal').text("." + dec);
-    }
 })

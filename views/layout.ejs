@@ -9,39 +9,19 @@
     
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="/javascripts/libraries/jquery.slides.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
   </head>
 
   <body>
     
-  <div id="total_price">
-    <div id="qty_container">
-        <p class="casamiento" style="margin-top:0.5em;color:black;">Quantity</p>
-        <div id="minus_qty">-</div> <span id="qty">25</span>
-        <div id="plus_qty"">+</div>
-    </div>
-    
-    <p style="color:black;text-align:center;font: normal 3.5em 'OS Light'">
-    <span style="font-size:0.65em;vertical-align:top;">&pound;</span><span id="pound">2</span><span style="font-size:0.65em;vertical-align:text-top;" id="decimal">.99</span></p>
-
-    <div id="buy" style="display:inline-block;"> BUY
-      <img src="/gfx/cart_white.png" style="padding-left:5px;width:30px;margin-top:7px;" />
-    </div>
-  </div>
-    
-<!--
-  MAIN PAGE
-  -->
-  
-  <div id="page_container_casamiento">
-    <div id="inner_page_container_casamiento">
+  <div id="page_container">
+    <div id="inner_page_container">
           
       <!-- HEADER -->
       
       <div id="top_container">
-        <div id="logo" style="width:170px;"><a href="/"><img src="/gfx/logo/cas.png" style="width:100%;"/></a></div>
+        <div id="logo"><a href="/"><img src="/gfx/logo/cas.png" /></a></div>
         <div id="browse">BROWSE DESIGNS</div>
         <div id="contact">CONTACT US</div>
         <div id="cart">
@@ -49,26 +29,21 @@
            <tr><td style="vertical-align:middle"><img src="/gfx/icons/cart.png" style="width:30px;padding:2px;"/></td>
            <td style="vertical-align:middle"><p class="casamiento" style="margin:0;padding:0;font:normal 1.4em 'OS Light'"> View basket</td>
            <td  style="vertical-align:middle"><p class="casamiento" style="margin:0;padding:0;font:normal 1em 'OS Light'">2 items</p></td>       
-          <td style="vertical-align:middle"><p class="casamiento" style="margin:0;padding:0;font:normal 1em 'OS Light'">&pound;3.78</p></td>
+           <td style="vertical-align:middle"><p class="casamiento" style="margin:0;padding:0;font:normal 1em 'OS Light'">&pound;3.78</p></td>
             </tr>
           </table>
-          <div style="clear:both;"></div>
-        </div>
+        </div>        
+        <div class="clearfix"></div>
       </div>
       
-      <div id="dreams_container">
-          <div class="dreams"><img class="dreams_on_paper" src="/gfx/logo/drms.png" style="width:100%;padding-top:5px;padding-bottom:0;margin-bottom:0;"/></div>
-          </div>
+      <img id="dreams_on_paper_img" src="/gfx/logo/drms.png">
           
-          <div style="clear:both;"></div>
-          
-      <div style="width:80%;float:right;border-bottom:1px solid black;"></div>
-         
+      <div style="clear:both;"></div>
+            
+      <div style="width:100%;margin-left:180px;height:1px;float:right;border-bottom:1px solid black;"></div>
 
       <%- body %>
      
-      <!-- FOOTER   -->
-      
       <div id="footer">
         <div class="genesis_collection"><img src="/gfx/logo/gen_compact.png" style="width:160px"/></div>
         <div class="footer_seperator"><img src="/gfx/three_across.png" style="width:60px"/></div>
@@ -80,19 +55,3 @@
   </body>
 </html>
 
-
-<script>
-$('#browse').mouseenter(function() {
-$('#browse').css('border', '1px solid black')
-
-  $('#contact').css('border-left', '1px solid transparent')
-  $('#designs').show()
-})
-
-$('#browse').mouseleave(function() {
-  $('#designs').hide()
-  
-  $('#contact').css('border-left', '1px solid black')
-  $('#browse').css('border', '1px solid transparent')
-})
-</script>
