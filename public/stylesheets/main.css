@@ -92,15 +92,16 @@ input:focus, input:hover { background-color: lightgrey;}
   }  
     #top_container { 
       padding:15px; 
+      border-bottom:1px solid #000;
     }
       #logo { 
         float:left;
         padding-bottom:0.25em;
-        width:20%;
+        width:22%;
         text-align:center;
       }
         #logo img { width:100%; }
-      #browse, #contact, #cart { 
+      #browse, #contact { 
         float:left;
         font:normal 1.3em 'OS Light'; 
         margin-top:1em;
@@ -108,21 +109,11 @@ input:focus, input:hover { background-color: lightgrey;}
         text-align:center;
        }
       #contact { border-left:1px solid black;}
-      #cart { font-size:1em; width:39%;padding-top:0.25em}
-    #dreams_container { 
-      border-top:1px solid #000;
-      border-right:1px solid black;
-      clear:both;
-      min-width:140px;
-      text-align:center;
-      width:20%;
-    }
+   
       #dreams_on_paper_img { 
-        border-top:1px solid #000;
-        border-right:1px solid #000;
-        clear:both;
+        float:right;
         display:block;
-        width:170px;
+        width:190px;
         padding:5px;
       }
 
