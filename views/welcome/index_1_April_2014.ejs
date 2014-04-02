@@ -1,0 +1,36 @@
+<% var counter = 0 %>
+<div id="left_column">
+  <% documents.forEach(function(place) { %>
+    <% if (counter == 5) { %>
+    </div><div id="right_column">
+    <% } %>
+    <a href="/products/<%= place._id %>">
+      <div class="place_square_<%= counter %> place_square">
+      <div class="place_square_container">
+          <div class="inner_place_square"><%- place.divs[0] %></div>
+          <div class="inner_place_square_hidden"><%- place.divs[1] %></div>                      
+          <h2><%= place.name %></h2>
+          <div class="price">
+            <span class="pound_sign">&pound;</span><span class="number">2</span><span class="decimal">.99</span>
+          </div>
+        </div>
+      </div>
+    </a>
+    
+    <% counter++ %>
+    
+  <% }) %>
+</div>
+
+<script>
+  $(function(){
+      $('.place_square').mouseover(function() {
+        $(".inner_place_square", this).hide();
+        $(".inner_place_square_hidden",this).show();
+      })
+      $('.place_square').mouseout(function() {
+        $(".inner_place_square", this).show();
+        $(".inner_place_square_hidden",this).hide();
+      })
+  });
+</script>

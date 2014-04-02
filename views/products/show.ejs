@@ -1,17 +1,12 @@
-<script type="text/javascript" src="/javascripts/products/show.js"></script>
+<%- contentFor('inline_styles') %>
+  .step { background-color:<%= product.colours[0] %>}
+
+
+<%- contentFor('left') %>
+    <script type="text/javascript" src="/javascripts/products/show.js"></script>
 <script type="text/javascript" src="/javascripts/libraries/in_groups_of.js"></script>
 <script type="text/javascript" src="/javascripts/libraries/color_picker.js"></script>
 <link rel="stylesheet" type="text/css" href="/stylesheets/color_picker.css">
-
-<style type="text/css">
-  .step { background-color:<%= product.colours[0] %>}
-</style>
-
-
-<div id="product_page">
-
-  <div id="product_section1">
-    
 <!-- 
   SLIDES 1 TO 3 
 -->
@@ -43,11 +38,8 @@
 
 -->    
      <%-  product.divs[3] %>
-                
-   </div>
-      
-<div id="product_section0"></div>  
-
+                <%- contentFor('right') %>
+<div id="steps"></div>
 <script type="text/javascript">
 
 // Initialize templates

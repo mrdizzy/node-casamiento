@@ -88,35 +88,21 @@ input:focus, input:hover { background-color: lightgrey;}
     border-left: 1px dotted #000;
     border-right: 1px dotted #000;
     margin:auto; 
-    width:95%;
+    width:97%;
   }  
-    #top_container { 
-      padding:15px; 
-      border-bottom:1px solid #000;
-    }
-      #logo { 
-        float:left;
-        padding-bottom:0.25em;
-        width:22%;
-        text-align:center;
-      }
-        #logo img { width:100%; }
-      #browse, #contact { 
-        float:left;
-        font:normal 1.3em 'OS Light'; 
-        margin-top:1em;
-        width:20%;
-        text-align:center;
-       }
-      #contact { border-left:1px solid black;}
    
-      #dreams_on_paper_img { 
-        float:right;
-        display:block;
-        width:190px;
-        padding:5px;
-      }
-
+    #header_container_casamiento { 
+      padding-top:0.5em;
+      border-bottom:1px solid #000;
+      padding-bottom:0.5em;
+      text-align:center;
+    }
+    #main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
+    #main_slogan_casamiento { padding-top:0.75em;float:right; padding-right:1em;}
+    #main_slogan_casamiento img { width:200px; }
+    .left_column { float:left; width:70%; background-color:#fff}
+    .right_column {background-color:#fff; border-left:1px dotted black;margin-left: 70%; text-align:center; min-width:180px;}
+.slide { width:100%; }
     #footer { 
       border-left: 1px dotted #939598;      
       border-top: 1px solid #939598;
@@ -156,62 +142,6 @@ input:focus, input:hover { background-color: lightgrey;}
     }
 
 
-/* WELCOME PAGE 
-============================= */
-#left_column, #right_column { 
-  width:49%; 
-  float:left; 
-  margin-left:0.5%;  
-  margin-right:0.5%;  
-}
-#right_column { 
-  float:right;   
-}
-.place_square { 
-  margin-bottom:0.25em;
-}
-  .place_square_container {
-    border:1px solid white; 
-    border-bottom:1px solid grey; 
-  }  
-  .place_square_container:hover { 
-    border:1px solid grey; 
-    text-decoration:underline; 
-  }
-    
-    .place_square_0, .place_square_1, .place_square_4, .place_square_7, .place_square_8 {
-      clear:both;
-    }
-  .place_square_2, .place_square_3, .place_square_5,.place_square_6, .place_square_9, .place_square_10, .place_square_11, .place_square_12  { 
-      width:50%;
-      float:left; 
-    }
-
-  .place_square_2 h2, .place_square_3 h2,.place_square_5 h2, .place_square_6 h2,  .place_square_9 h2, .place_square_10 h2, .place_square_11 h2, .place_square_12 h2 { font-size:1.5em; }
-  .place_square img { width:100%; }
-  .place_square h2 { 
-    letter-spacing:0.2em;
-    text-align:left;
-    width:60%; 
-  }
-  .place_square p {   
-    float:right;
-    font: normal 1.6em "OS Light";
-    margin-top:0.25em;
-    text-align:right;    
-    width:39%;
-  }
-  .inner_place_square_hidden { display:none; }
-    .price { text-align:right;font: normal 1em 'OS Light' }
-
-/* Mobile responsive */
-  @media all and (max-width: 600px) and (min-width: 320px) {
-    #left_column, #right_column { 
-      float:none;
-      margin:0 auto;
-      width:100%;
-    }
-  }
 /* PRODUCT PAGE
 ==================================== */
 .product_type_icon { width:130px;}
@@ -232,7 +162,7 @@ input:focus, input:hover { background-color: lightgrey;}
   }
     #description_container h6 { padding:1em;}
 
-#product_section0 { margin-left:75%; }  
+#product_section0 { margin-left:75%; }
 
   #step_1 { border-top:1px dotted #000;}
   .spec { display:inline-block; }
@@ -326,6 +256,21 @@ input:focus, input:hover { background-color: lightgrey;}
     }
       #buy img { padding-left:5px;width:30px;margin-top:7px;}
 
+/* WELCOME PAGE 
+============================= */
+  #welcome_column .step { color: black; text-align:right; }
+  #welcome_column .chat-bubble { display:block; }
+  #welcome_column h5 { font-size:2.5em; font-family: "Gara"; font-weight:normal;letter-spacing:0.05em; }
+  #welcome_column p { padding: 0 0.25em 0.75em 0.25em 0; font: normal 1.1em "OS", sans-serif;line-height: 1.5em; padding:0; margin-bottom:1em;}
+  #welcome_column h3 { font:normal 1.3em Gara;letter-spacing:0.1em;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;border-bottom:1px solid black;display:inline-block; padding-bottom:1em; text-transform:uppercase}}
+/* Mobile responsive */
+  @media all and (max-width: 600px) and (min-width: 320px) {
+    #left_column, #right_column { 
+      float:none;
+      margin:0 auto;
+      width:100%;
+    }
+  }
 /* RESPONSIVE DESIGNS
 ============================= */
 

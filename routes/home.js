@@ -6,14 +6,19 @@ var colours = require('./../config/colours'),
     
 module.exports = function(app){
     app.get("/", function(req, res) {
-        db.view('products/name_place', function(error, documents) {
-        var place_cards = documents.toArray()
-        place_cards.forEach(function(place_card) {
-           place_card.divs = prepareDivs(place_card, "thumbnail", "thumbnail", "display", "related_colour")
+    db.view('products/name_place', function(err, docs) {
+       docs = docs.toArray();
+       var counter = 0;
+       docs.forEach(function(place) {
+           place.divs = prepareDivs(place, "slide_" + counter + "_", "slide slide_" + counter, "display", "colour");
+           counter++;
        })
-            res.render("welcome/index", {
-                documents: place_cards
-            })
-        })
+       docs.place_cards = docs;
+       
+        res.render('welcome/index', {
+            layout: 'layout',
+            locals: docs
+        });
+    });
     })
 }

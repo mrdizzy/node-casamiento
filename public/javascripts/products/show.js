@@ -4,9 +4,7 @@ var Product = Backbone.Model.extend({
       this.on("change:texture", this.calculatePrice)
       this.on("change:weight", this.calculatePrice)
   },
-  calculatePrice: function() {    
-  
-      console.log(this.get("quantity"))
+  calculatePrice: function() {   
     var total = this.get("price") * this.get("quantity"),
       texture = this.get("texture"),
       weight = this.get("weight");
@@ -82,7 +80,7 @@ StepsPresenter.prototype = {
 }
 
 var StepView = Backbone.View.extend({ 
-  el: '#product_section0',
+  el: '#steps',
    initialize: function() {
     _.bindAll(this, 'render')
     this.presenter = new StepsPresenter(thisProduct, this)
