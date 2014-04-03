@@ -4,8 +4,20 @@ var Product = Backbone.Model.extend({
       this.on("change:texture", this.calculatePrice)
       this.on("change:weight", this.calculatePrice)
   },
+  applyDiscounts: function(total) {
+    var qty = this.get("quantity"),
+    discount = 0;
+    if((qty > 32) && (qty < 96)) {
+      discount = (10/100) * total
+    }
+      if((qty >95) && (qty < 152)) {
+    discount = (15/100) * total
+    }
+    return discount;
+  },
   calculatePrice: function() {   
-    var total = this.get("price") * this.get("quantity"),
+  var qty = this.get("quantity"),
+   total = this.get("price") * qty,
       texture = this.get("texture"),
       weight = this.get("weight");
     if(weight == "300") {
@@ -16,7 +28,12 @@ var Product = Backbone.Model.extend({
     } else if (texture == "linen") {
       total = ((25/100) * total) + total
     }
-    var total = (total).toFixed(2)
+    var discount = this.applyDiscounts(total)
+    total = total - discount;
+    var unit_cost = (total/qty).toFixed(2);
+    this.set("unit", unit_cost);
+    total = unit_cost * qty;
+    total = total.toFixed(2)
     this.set("total", total)
   }
 });
@@ -24,23 +41,24 @@ var Product = Backbone.Model.extend({
 var StepsPresenter = function(model, view) {
   this.view = view;
   this.model = model; 
-  this.model.set("quantity", 5)
+  this.model.set("quantity", 8)
   this.model.set("guests", ["...", "...", "...", "...", "..."])
-  this.quantity = 5
+  this.quantity = 8
   this.currentStep = 1;
   this.hoveringStep = 0;
+  this.name = this.model.get("name")
   this.changeTexture = false;
   this.textures = ["plain", "hammered", "linen"]
   this.renderPrice();
 }
 
 StepsPresenter.prototype = {
-moveStep: function() {
-  this.toggleStepOff = this.currentStep;
-  this.view.render();
-  this.toggleStepOn = this.currentStep + 1;
-  this.view.render();
-  this.currentStep = this.currentStep + 1;
+  moveStep: function() {
+    this.toggleStepOff = this.currentStep;
+    this.view.render();
+    this.toggleStepOn = this.currentStep + 1;
+    this.view.render();
+    this.currentStep = this.currentStep + 1;
 },
   hoverStepOn: function(step_number) {
     if(this.currentStep == step_number) {
@@ -60,7 +78,7 @@ moveStep: function() {
   },
   renderPrice: function() {
     var total = thisProduct.get("total"),
-      ary = total.toString().split(".");
+      ary = total.toString()  .split(".");
     this.pounds = ary[0];
     this.dec = ary[1];
   },
@@ -109,6 +127,7 @@ var StepView = Backbone.View.extend({
     this.listenTo(thisProduct, 'change:colour_2', this.changeColour2)
   },
   events: {     
+    "click #buy": "checkout",
     "mouseenter .spc": "hoverStepOn",
     "mouseleave .spc": "hoverStepOff",      
     "click .texture": "updateTexture",  
@@ -120,16 +139,21 @@ var StepView = Backbone.View.extend({
     "click #plus_qty": "plusQty",
     "click #minus_qty": "minusQty"
   },
+  checkout: function() {
+    $.form('/payments', { "L_PAYMENTREQUEST_0_AMT0": thisProduct.get("unit"), "PAYMENTREQUEST_0_AMT": thisProduct.get("total"), "L_PAYMENTREQUEST_0_QTY0": thisProduct.get("quantity"), "L_PAYMENTREQUEST_0_NAME0": thisProduct.get("name"), "L_PAYMENTREQUEST_0_DESC0": "Some description" }).submit();
+  },
   selectColour1: function(e, colour) {
     if(thisProduct.get("colours").length == 1) {
       this.presenter.moveStep()
     }
   },
   plusQty: function(e) {
-    this.presenter.updateQty(5)
+    this.presenter.updateQty(8)
   },
   minusQty: function(e) {
-    this.presenter.updateQty(-5)
+    if(thisProduct.get("quantity") > 8) {
+    this.presenter.updateQty(-8)
+    }
   },
   updateTexture: function(e) {
       this.presenter.updateTexture($(e.currentTarget).index())
@@ -137,11 +161,11 @@ var StepView = Backbone.View.extend({
         this.presenter.moveStep();
       }
   },
-    updateWeight: function(e) {
-      this.presenter.updateWeight($(e.currentTarget).index())
-      if(this.presenter.currentStep < 4) {
-        this.presenter.moveStep();
-      }
+  updateWeight: function(e) {
+    this.presenter.updateWeight($(e.currentTarget).index())
+    if(this.presenter.currentStep < 4) {
+      this.presenter.moveStep();
+    }
   },
   hoverStepOn: function(e) {
     this.presenter.hoverStepOn($(e.currentTarget).index());  
@@ -158,7 +182,7 @@ var StepView = Backbone.View.extend({
     thisProduct.set("colour_2", colour)
   },
   render: function() {
-  if(this.presenter.toggleStepOn) {
+    if(this.presenter.toggleStepOn) {
       this.$('#step_' + this.presenter.toggleStepOn + " .step").fadeIn()      
       this.$('#step_' + this.presenter.toggleStepOn + " .chat-bubble").slideDown()
       this.$('#step_' + this.presenter.toggleStepOn).addClass('highlight')
