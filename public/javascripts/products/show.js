@@ -22,12 +22,11 @@ var Product = Backbone.Model.extend({
 });
 
 var StepsPresenter = function(model, view) {
-
   this.view = view;
   this.model = model; 
-    this.model.set("quantity", 5)
-    this.model.set("guests", ["...", "...", "...", "...", "..."])
-    this.quantity = 5
+  this.model.set("quantity", 5)
+  this.model.set("guests", ["...", "...", "...", "...", "..."])
+  this.quantity = 5
   this.currentStep = 1;
   this.hoveringStep = 0;
   this.changeTexture = false;
@@ -36,19 +35,34 @@ var StepsPresenter = function(model, view) {
 }
 
 StepsPresenter.prototype = {
-  hoverStep: function(step_number) {
+moveStep: function() {
+  this.toggleStepOff = this.currentStep;
+  this.view.render();
+  this.toggleStepOn = this.currentStep + 1;
+  this.view.render();
+  this.currentStep = this.currentStep + 1;
+},
+  hoverStepOn: function(step_number) {
     if(this.currentStep == step_number) {
       return false
       } else {
-        this.toggleStep = step_number;
+        this.toggleStepOn = step_number;
+        this.view.render();
+      }
+  },  
+  hoverStepOff: function(step_number) {
+      if(this.currentStep == step_number) {
+      return false
+      } else {
+        this.toggleStepOff = step_number;
         this.view.render();
       }
   },
   renderPrice: function() {
     var total = thisProduct.get("total"),
-        ary = total.toString().split(".");
-        this.pounds = ary[0];
-        this.dec = ary[1];
+      ary = total.toString().split(".");
+    this.pounds = ary[0];
+    this.dec = ary[1];
   },
   updateQty: function(number) {
     this.quantity = this.quantity + number;
@@ -69,6 +83,11 @@ StepsPresenter.prototype = {
     this.changeTexture = index;
     this.view.render();
   },
+  updateWeight: function(index) {
+    this.model.set("weight", 200)
+    this.changeWeight = index;
+    this.view.render();
+  },
   display_step_1: function() {
    if(this.currentStep == 1) {
      return("display:block;")
@@ -81,54 +100,81 @@ StepsPresenter.prototype = {
 
 var StepView = Backbone.View.extend({ 
   el: '#steps',
-   initialize: function() {
+  initialize: function() {
+  this.effectChanging =0;
+    this.currentStep = 0;
     _.bindAll(this, 'render')
     this.presenter = new StepsPresenter(thisProduct, this)
     this.listenTo(thisProduct, 'change:colour_1', this.changeColour)	
     this.listenTo(thisProduct, 'change:colour_2', this.changeColour2)
   },
   events: {     
-      "mouseenter .spc": "hoverStep",
-      "mouseleave .spc": "hoverStep",      
-      "click .texture": "updateTexture",  
-      "dizzy-cp:hoverColor #picker_1": "updateColour1",
-      "dizzy-cp:hoverColor #picker_2": "updateColour2",
-      "click #plus_qty": "plusQty",
-      "click #minus_qty": "minusQty"
-    },
-    plusQty: function(e) {
-      this.presenter.updateQty(5)
-    },
-    minusQty: function(e) {
-      this.presenter.updateQty(-5)
-    },
-    updateTexture: function(e) {
-        this.presenter.updateTexture($(e.currentTarget).index())
-    },
-    hoverStep: function(e) {
-      this.presenter.hoverStep($(e.currentTarget).index());
-    },
-    updateColour1: function(e, colour) {
-      $('.colour_1').css("background-color", colour)
-      $('.slide').css("background-color", colour)
-    },
-    updateColour2: function(e, colour) {    
-      $('.slide > div > div:not(.nocolor)').css("background-color", colour);
-      thisProduct.set("colour_2", colour)
-    },
+    "mouseenter .spc": "hoverStepOn",
+    "mouseleave .spc": "hoverStepOff",      
+    "click .texture": "updateTexture",  
+    "click .weight": "updateWeight",  
+    "dizzy-cp:hoverColor #picker_1": "updateColour1",
+    "dizzy-cp:hoverColor #picker_2": "updateColour2",
+    "dizzy-cp:click #picker_1": "selectColour1",    
+    "dizzy-cp:click #picker_2": "selectColour2",
+    "click #plus_qty": "plusQty",
+    "click #minus_qty": "minusQty"
+  },
+  selectColour1: function(e, colour) {
+    if(thisProduct.get("colours").length == 1) {
+      this.presenter.moveStep()
+    }
+  },
+  plusQty: function(e) {
+    this.presenter.updateQty(5)
+  },
+  minusQty: function(e) {
+    this.presenter.updateQty(-5)
+  },
+  updateTexture: function(e) {
+      this.presenter.updateTexture($(e.currentTarget).index())
+      if(this.presenter.currentStep < 3) {
+        this.presenter.moveStep();
+      }
+  },
+    updateWeight: function(e) {
+      this.presenter.updateWeight($(e.currentTarget).index())
+      if(this.presenter.currentStep < 4) {
+        this.presenter.moveStep();
+      }
+  },
+  hoverStepOn: function(e) {
+    this.presenter.hoverStepOn($(e.currentTarget).index());  
+  },
+  hoverStepOff: function(e) {
+    this.presenter.hoverStepOff($(e.currentTarget).index());   
+  },
+  updateColour1: function(e, colour) {
+    $('.colour_1').css("background-color", colour)
+    $('.slide').css("background-color", colour)
+  },
+  updateColour2: function(e, colour) {    
+    $('.slide > div > div:not(.nocolor)').css("background-color", colour);
+    thisProduct.set("colour_2", colour)
+  },
   render: function() {
-    if(this.presenter.toggleStep) {
-      this.$('#step_' + this.presenter.toggleStep + " .step").fadeToggle()      
-      this.$('#step_' + this.presenter.toggleStep + " .chat-bubble").slideToggle()
-      this.$('#step_' + this.presenter.toggleStep).toggleClass('highlight')
-      this.presenter.toggleStep = false;
+  if(this.presenter.toggleStepOn) {
+      this.$('#step_' + this.presenter.toggleStepOn + " .step").fadeIn()      
+      this.$('#step_' + this.presenter.toggleStepOn + " .chat-bubble").slideDown()
+      this.$('#step_' + this.presenter.toggleStepOn).addClass('highlight')
+      this.presenter.toggleStepOn = false;
+    } else if(this.presenter.toggleStepOff) {
+      this.$('#step_' + this.presenter.toggleStepOff + " .step").fadeOut()      
+      this.$('#step_' + this.presenter.toggleStepOff + " .chat-bubble").slideUp()
+      this.$('#step_' + this.presenter.toggleStepOff).removeClass('highlight')
+      this.presenter.toggleStepOff = false;
     } else if (this.presenter.changeTexture) { 
       this.$('.texture').removeClass("selected")
       var texture_changed = this.$('.texture').get(this.presenter.changeTexture) ;
       $(texture_changed).toggleClass("selected"); 
       this.presenter.changeTexture = false;
     } else if (this.presenter.changeQty) {      
-        this.$('#qty').text(thisProduct.get("quantity"))
+      this.$('#qty').text(thisProduct.get("quantity"))
       this.$('span#pound').text(this.presenter.pounds);
       this.$('span#decimal').text("." + this.presenter.dec);
       var input_fields = []

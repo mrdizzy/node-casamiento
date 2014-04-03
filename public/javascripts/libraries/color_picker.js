@@ -84,6 +84,8 @@
     
     // Click on a swatch    
     $wrapper.on('click', 'div.dizzycp-small_swatch_frame', function() {
+    var chosen_colour = colour_groups[pointer][$(this).index()]
+        that.trigger('dizzy-cp:click', chosen_colour)
         $container_to_fade_in.hide();
     })  
     

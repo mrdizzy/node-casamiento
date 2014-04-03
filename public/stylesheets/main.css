@@ -32,8 +32,11 @@ h1 {
   text-align:center;  
   font-family: TP; 
 }
-  .theme_name { font-size: 4em; line-height:0.5em;letter-spacing:0.15em;}
-  .product_name { font-size:2.5em;  text-align:left; letter-spacing:0.2em;}
+  .product_name { 
+    font-size:2.5em;  
+    text-align:center; 
+    letter-spacing:0.2em;
+  }
 
 h2 {
   text-align:center; 
@@ -44,8 +47,33 @@ h2 {
   margin-top:0.5em;
   margin-bottom:0.5em; 
   }
+  
+h3 { 
+  font:normal 1.3em Gara;
+  letter-spacing:0.1em;
+  text-align:center;
+  margin-top:0.5em;
+  margin-bottom:0.5em;
+  border-bottom:1px solid black;
+  padding-bottom:1em; 
+  text-transform:uppercase
+}
 
-h4 { font: normal 0.9em "OS Condensed"; letter-spacing:0.01em;   }
+h4 { 
+  font: normal 0.9em "OS Condensed"; 
+  letter-spacing:0.01em;   
+}
+
+h5 {
+  border-bottom: 1px solid grey; 
+  font: bold 0.85em "OS Light", sans-serif; 
+  padding-bottom: 10px; 
+}
+  #welcome_column h5 { 
+    font: normal 2.5em "Gara";
+    letter-spacing:0.05em; 
+  }
+  
 h6 { 
   font-size:20px; 
   text-align:justify; 
@@ -55,9 +83,17 @@ h6 {
 }
 .small { font-size:0.85em;}
 
-h5 { font: bold 0.85em "OS Light", sans-serif; padding-bottom: 10px; border-bottom: 1px solid grey; }
-p { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", serif;line-height: 1.5em; padding:0; margin-bottom:1.5em;}
-
+p { 
+  padding: 0 0.25em 0.75em 0.25em 0; 
+  font: normal 0.9em "OS", sans-serif;
+  line-height: 1.5em; 
+  padding:0; 
+  margin-bottom:1.5em;
+}
+  #welcome_column p { 
+    font: normal 1.1em "OS", sans-serif;
+  }
+  
 .pound_sign, .decimal { font-size:1.6em; position:relative;top:-8px;}
 .number {  font-size:2.4em;  }
 
@@ -74,13 +110,13 @@ input {
   border:1px solid darkgrey; 
   font: normal 1.2em "OS";
   padding:0.25em; 
-}
-input:focus, input:hover { background-color: lightgrey;}
+} 
+  input:focus, input:hover { background-color: lightgrey;}
 
 /* LAYOUT
 ==================================== */
 #page_container { 
-  background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); 
+  background-image:url('/gfx/backgrounds/grey_header.png'); 
 }
 
   #inner_page_container { 
@@ -97,12 +133,31 @@ input:focus, input:hover { background-color: lightgrey;}
       padding-bottom:0.5em;
       text-align:center;
     }
-    #main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
-    #main_slogan_casamiento { padding-top:0.75em;float:right; padding-right:1em;}
-    #main_slogan_casamiento img { width:200px; }
-    .left_column { float:left; width:70%; background-color:#fff}
-    .right_column {background-color:#fff; border-left:1px dotted black;margin-left: 70%; text-align:center; min-width:180px;}
-.slide { width:100%; }
+    #main_logo_casamiento { 
+      text-align:left; 
+      width:25%; 
+      float:left; 
+      padding-left:20px; 
+    }
+    #main_slogan_casamiento { 
+      padding-top:0.75em;
+      float:right; 
+      padding-right:1em;
+    }
+      #main_slogan_casamiento img { width:200px; }
+    
+    .left_column { 
+      float:left; 
+      width:70%; 
+      background-color:#fff
+    }
+    .right_column {
+      background-color:#fff; 
+        border-left:1px dotted black;
+        margin-left: 70%; 
+        text-align:center; 
+        min-width:180px;
+    }
     #footer { 
       border-left: 1px dotted #939598;      
       border-top: 1px solid #939598;
@@ -144,7 +199,7 @@ input:focus, input:hover { background-color: lightgrey;}
 
 /* PRODUCT PAGE
 ==================================== */
-.product_type_icon { width:130px;}
+.product_type_icon { width:130px; }
   
 #product_section1 { 
   clear:both; 
@@ -152,7 +207,7 @@ input:focus, input:hover { background-color: lightgrey;}
   width:75%; 
 }
   #slide1, #slide3 {  float:left;width:49.75%; }
-  #slide2, #slide4 { float:right; width:49.75%;}
+  #slide2, #slide4,#product_name_container { float:right; width:49.75%;}
   #slide5 h6 { width:95%;margin:0 auto;}
   .slide { position:relative; margin-right:1px; margin-bottom:1px; }
   #description_container {   
@@ -171,7 +226,6 @@ input:focus, input:hover { background-color: lightgrey;}
   .spc {   
     padding-left:0.3em;
     border-bottom:1px dotted grey; 
-    border-left:1px dotted grey;
   }    
     .step_header_container { margin-bottom:0.5em;height:2em; }
     .highlight { box-shadow:5px 5px 0 0 lightgrey;}
@@ -217,12 +271,8 @@ input:focus, input:hover { background-color: lightgrey;}
       width:100px;
     }
 
-    #total_price {     
-      font-size:1em;
-      text-align:center; 
-    }
-      #total_price .price { 
-        font-size:1.4em;
+      .price {      
+        font:normal 1.4em 'Gara';
         text-align:center;
       }
 
@@ -248,21 +298,27 @@ input:focus, input:hover { background-color: lightgrey;}
       background-color:black;
       border-radius:5px;
       color:white;
-      font: normal 1.4em "OS Light"; 
-      height:50px;       
+      font: normal 1.1em "OS Light Italic";
       text-align:center;
-      width:125px; 
+      width:170px; 
       display:inline-block;
     }
-      #buy img { padding-left:5px;width:30px;margin-top:7px;}
+      .cart_icon { padding-left:5px;width:30px;margin-top:7px;}
+      #paypal { width:90px;padding-top:0.25em;}
 
 /* WELCOME PAGE 
 ============================= */
-  #welcome_column .step { color: black; text-align:right; }
+  .welcome_page_product .slide {
+    width:100%;
+  }
+  #welcome_column .step { 
+    display:block;
+    letter-spacing:0.2em;
+    color: black; 
+    text-align:right; 
+  }
   #welcome_column .chat-bubble { display:block; }
-  #welcome_column h5 { font-size:2.5em; font-family: "Gara"; font-weight:normal;letter-spacing:0.05em; }
-  #welcome_column p { padding: 0 0.25em 0.75em 0.25em 0; font: normal 1.1em "OS", sans-serif;line-height: 1.5em; padding:0; margin-bottom:1em;}
-  #welcome_column h3 { font:normal 1.3em Gara;letter-spacing:0.1em;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;border-bottom:1px solid black;display:inline-block; padding-bottom:1em; text-transform:uppercase}}
+ 
 /* Mobile responsive */
   @media all and (max-width: 600px) and (min-width: 320px) {
     #left_column, #right_column { 
@@ -305,8 +361,6 @@ input:focus, input:hover { background-color: lightgrey;}
     #inner_page_container_casamiento { width:100%;margin:0;padding:0}
     #page_container { margin:0;border:0;padding:0;}
     #page_container_casamiento { border:0;padding:0;margin:0;}
-    #product_section1 { float:none; width:100%;clear:both; }
-    #product_section0 { float:none; width:100%; clear:both;margin:0 auto;}
     #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 { width:100%; margin:0 auto;float:none;clear:both;}
     .slide { width:100%;}
     #description_container { float:none;width:90%;margin:0 auto;}
@@ -324,4 +378,21 @@ input:focus, input:hover { background-color: lightgrey;}
 .deselected { opacity:0.4; }
   .deselected:hover, .selected { opacity: 1; cursor:pointer;}
 
+.shell { 
+  background-image:url('/gfx/shell.png');
+  background-repeat:no-repeat; 
+  background-position:center;
+  background-size:24px 17px;
+  height:17px;
+  padding-top:1em;
+  padding-bottom:1em;
+}
+.ornamental_line { 
+  background-image:url('/gfx/ornamentalline.png');
+  background-repeat:no-repeat; 
+  background-position:center;
+  background-size:179px 5px;
+  height:5px;
+  padding-top:0.5em;
+}
 .clearfix { clear:both; }

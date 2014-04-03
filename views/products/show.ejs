@@ -1,12 +1,10 @@
 <%- contentFor('inline_styles') %>
   .step { background-color:<%= product.colours[0] %>}
 
-
 <%- contentFor('left') %>
     <script type="text/javascript" src="/javascripts/products/show.js"></script>
 <script type="text/javascript" src="/javascripts/libraries/in_groups_of.js"></script>
-<script type="text/javascript" src="/javascripts/libraries/color_picker.js"></script>
-<link rel="stylesheet" type="text/css" href="/stylesheets/color_picker.css">
+
 <!-- 
   SLIDES 1 TO 3 
 -->
@@ -22,13 +20,12 @@
 
 -->      
       
-      <div id="product_name_container"><h1 class="product_name" style="text-align:center"><%= product.name %></h1>
-        <div style="text-align:center;margin-bottom:1em"><img src="/gfx/ornamentalline.png" /></div>
+      <div id="product_name_container"><h1 class="product_name"><%= product.name %></h1>
+        <div class="ornamental_line"></div>
       </div>
         
       <div id="description_container">
-        <p style="text-align:center;margin-top:1em;" class="shell">
-        <img src="/gfx/shell.png" /></p>
+        <div class="shell"></div>
         <h6>This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h6>
       </div>
   
@@ -38,7 +35,9 @@
 
 -->    
      <%-  product.divs[3] %>
-                <%- contentFor('right') %>
+
+<%- contentFor('right') %>
+
 <div id="steps"></div>
 <script type="text/javascript">
 

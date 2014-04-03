@@ -4,10 +4,23 @@ var express = require('express'),
     db = require('./config/db').test_ebay,
     handlebars = require('express3-handlebars').create(),
     partials = require('express-partials'),
-    expressLayouts = require('express-ejs-layouts');
+    expressLayouts = require('express-ejs-layouts'),    
+    paypal = require('./config/paypal_config')();
 
 var app = express();
 var dir = __dirname;
+
+paypal.buildQuery("SetExpressCheckout", function(error, response) {
+        console.log(error, response)
+    }, {
+        "PAYMENTREQUEST_0_AMT": 10.00,
+        "PAYMENTREQUEST_0_CURRENCYCODE": "GBP",
+        "RETURNURL": "http://www.casamiento.co.uk",
+        "CANCELURL": "http://www.casamiento.co.uk/admin/products",
+        "PAYMENTREQUEST_0_PAYMENTACTION": "Sale",
+        "LOGOIMG": "http://www.casamiento.co.uk/gfx/logo/cas.png"
+    })
+    
 
 function exposeTemplates(req, res, next) {
     // Uses the `ExpressHandlebars` instance to get the get the **precompiled**
