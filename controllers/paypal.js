@@ -18,7 +18,10 @@ function parseTransactions(transactions, maincallback) {
 
                     response.items = response.GetTransactionDetailsResponse;
                                 response.items = _.map(response.items, function(item) {
+                                console.log(item.L_NAME);
+                                if(item.L_NAME) {
                                     item.L_NAME = item.L_NAME.replace("&", "&amp;")
+                                    }
                                     return item;
                                 })
                     callback(err,response)
@@ -47,6 +50,6 @@ module.exports.index = {
     })
 },
 html: function(req, res){
-       res.render('paypal/index');
+       res.render('paypal/index', {layout:"admin_layout" });
 }
 }

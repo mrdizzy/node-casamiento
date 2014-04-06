@@ -34,6 +34,9 @@ var ProductView = Backbone.View.extend({
   },
   // TODO: refactor to use events and an event listener when current product is changed
   select: function() {
+  var svg = this.model.get("svg");
+  svg = svg.replace('#6D9200','purple')
+  this.model.set("svg", svg)
     var cpv = new CurrentProductView({model:this.model, attachmentView: AttachView});
     $('#cpv').html(cpv.render().el)
   },
