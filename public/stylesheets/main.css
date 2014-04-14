@@ -139,6 +139,8 @@ input {
       float:left; 
       padding-left:20px; 
     }
+      #logo { width:202px;}
+      #dreams_on_paper_slogan { width:180px;}
     #main_slogan_casamiento { 
       padding-top:0.75em;
       float:right; 
@@ -188,9 +190,14 @@ input {
       width:200px;
       margin:0 auto;
     }
+    #main_logo_casamiento { float:none;margin:0 auto;}
+    
+    #inner_page_container { width:100%;}
+    .left_column, .right_column { margin:0;float:none; clear:both;width:100%;}
     #browse, #contact, #cart { display:none;margin:0 auto;}
-    #dreams_on_paper_img { margin:0 auto;border:0; }
+    #main_slogan_casamiento { float:none;}
       #inner_page_container { width:100%;}
+      .chat-bubble { display:block;}
 
       #footer .genesis_collection, #footer .castello_collection { float:none;width:100%; }
       .footer_seperator { float:none;width:100%;}

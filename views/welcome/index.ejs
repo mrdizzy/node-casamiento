@@ -7,8 +7,15 @@
 
   <% for (var i = 0; i < 15; i++) { %>
   <% if (place_cards[i]) { %>
+  
+  
   <div class="welcome_page_product">
+  
+  <div style="position:relative">
+  <div class="customise"     style="display:none;position:absolute;z-index:1000000;text-align:center;margin:0 auto;width:100%;margin-top:8em;"><div style="display:inline-block;font: normal 1.2em 'OS Light';width:150px;background-color:black;opacity:0.8;color:white;padding:15px;border-radius:10px;padding-bottom:1.25em;padding-top:0;"><img src="/gfx/star.png" style="padding-top:0.3em;width:30px;"><a href="/products/<%= place_cards[i]._id %>" style="color:white;">CUSTOMISE THIS DESIGN</a></div>
+    </div></div>
     <div style="width:60%;float:left;clear:both;"><%- place_cards[i].divs[0] %>
+    
       <h2 class="caz"><a href="/products/<%= place_cards[i]._id %>"><%= place_cards[i].name%></a></h2>
       
       <div class="ornamental_line"></div>	
@@ -34,6 +41,7 @@
   
     <div style="clear:both;border-bottom:1px double black;height:1px;"></div>
     </div>
+    
     <% } %>
   <% } %>
 
@@ -106,3 +114,12 @@
     </div>
   </div>
 </div>
+
+<script>
+$('.welcome_page_product').mouseenter(function() {
+    $('.customise').fadeIn();
+})
+$('.welcome_page_product').mouseleave(function() {
+    $('.customise').fadeOut();
+})
+</script>
