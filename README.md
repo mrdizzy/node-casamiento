@@ -14,6 +14,25 @@ LAYOUTS
 =======
 
 
+EBAY TEMPLATES GENERATOR
+========================
+
+/public/ebay_templates/auction.html -> Simplicity Invitation package sample auction
+/public/ebay_templates/buy_it_now.html -> Simplicity Invitation package buy-it-now multiple variation listing
+/public/ebay_templates/testing.html -> Simplicity Invitation package old listing ebay from 2011 with photographs
+
+/views/ebay/name_places/new.ejs -> Single name place card listing
+/views/ebay/name_places/name_places_new_trial.ejs -> Multiple name place cards listing
+
+    ## Single place card template 
+    /ebay/birds_of_paradise-name_place?auction=true&price=6.99&quantity=50&buy_it_now=251504908304
+    
+    Use the query string to provide options to the template:
+        buy_it_now = item number
+        quantity
+        auction = true or false
+        price = decimal
+
 SERVER SIDE LIBS
 ================
 prepare_divs.js - for preparing the background divs used to display product images

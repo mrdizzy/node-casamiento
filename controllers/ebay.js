@@ -19,6 +19,8 @@ exports.show = function(req, res) {
       var divs = prepareDivs(doc, "slide", "slide", "display", "colour");
         doc.document = doc;
         doc.divs = divs;
+        doc.params = req.query
+        console.log(req.query)
         res.render('ebay/' + product_type + 's/new.ejs', {
             layout: false,
             locals: doc
@@ -27,20 +29,19 @@ exports.show = function(req, res) {
     })
 }
 exports.places = function(req, res) {
-       db.view('products/name_place', function(err, docs) {
-       docs = docs.toArray();
-       var counter = 0;
-       docs.forEach(function(place) {
-           place.divs = prepareDivs(place, "slide_" + counter + "_", "slide slide_" + counter, "display", "colour");
-           counter++;
-       })
-       docs.place_cards = docs;
-       
-        res.render('ebay/name_places/name_places_new_trial', {
-            layout: 'ebay_layout',
-            locals: docs
-        });
+  db.view('products/name_place', function(err, docs) {
+    docs = docs.toArray();
+    var counter = 0;
+    docs.forEach(function(place) {
+       place.divs = prepareDivs(place, "slide_" + counter + "_", "slide slide_" + counter, "display", "colour");
+       counter++;
+    })
+    docs.place_cards = docs;
+    res.render('ebay/name_places/name_places_new_trial', {
+      layout: 'ebay_layout',
+      locals: docs
     });
+  });
 }
 exports.index = function(req, res) {
     db.view('products/all', function(err, docs) {
