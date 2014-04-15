@@ -1,15 +1,26 @@
 <!doctype HTML>
-
 <html>
-
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>    
+
 <script type="text/javascript">
+
+function handleHyphens(str) {
+console.log(str)
+  var pieces = str.split("-");
+  if (pieces[1]) {
+  pieces[1] = toTitleCase(pieces[1]);
+  }
+  console.log(pieces)
+  str = pieces.join("-");
+  return str;
+}
 function toTitleCase(str)
 {
     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
+
 _.chunk = function(array, n) {
     var chunks = [];
     var numChunks = Math.ceil(array.length / n);
@@ -18,8 +29,8 @@ _.chunk = function(array, n) {
     }
     return chunks;
 }
-
 </script>
+
 <script type="text/template" id="template"><?xml version="1.0" encoding="UTF-8"?>
 <svg>
   <variableSets>
@@ -55,6 +66,72 @@ _.chunk = function(array, n) {
     </variableSet>
   </variableSets>
 </svg></script>
+
+
+
+<script type="text/template" id="envelopes_template"><?xml version="1.0" encoding="UTF-8"?>
+<svg>
+  <variableSets>
+    <variableSet locked="none">
+      <variables>
+        <variable varName="Variable0" trait="textcontent"/>
+      </variables>
+      <v:sampleDataSets xmlns:v="casamiento">
+      <% var counter = 0; %>
+      <% var name_counter = "" %>
+      <% names.forEach(function(list) { %>
+      <% name_counter = 0 %>
+        <v:sampleDataSet dataSetName="<%=counter %>">
+        <% for(var i =0; i < 1; i++) { %>
+            <% var name = list[i] %>
+        <% name == undefined ? name = "" : name = name %>
+          <Variable<%= name_counter %>>
+            <p><%= name %></p>
+          </Variable<%= name_counter %>>
+          <% name_counter = name_counter + 1 %>
+          <% } %>
+        </v:sampleDataSet>
+        <% counter = counter + 1; %>
+        <% }) %>
+      </v:sampleDataSets>
+    </variableSet>
+  </variableSets>
+</svg>
+</script>
+
+
+<script type="text/template" id="invitations_template"><?xml version="1.0" encoding="UTF-8"?>
+<svg>
+  <variableSets>
+    <variableSet locked="none">
+      <variables>
+        <variable varName="Variable0" trait="textcontent"/>
+        <variable varName="Variable1" trait="textcontent"/>
+        <variable varName="Variable2" trait="textcontent"/>
+        <variable varName="Variable3" trait="textcontent"/>
+      </variables>
+      <v:sampleDataSets xmlns:v="casamiento">
+      <% var counter = 0; %>
+      <% var name_counter = "" %>
+      <% names.forEach(function(list) { %>
+      <% name_counter = 0 %>
+        <v:sampleDataSet dataSetName="<%=counter %>">
+        <% for(var i =0; i < 4; i++) { %>
+            <% var name = list[i] %>
+        <% name == undefined ? name = "" : name = name %>
+          <Variable<%= name_counter %>>
+            <p><%= name %></p>
+          </Variable<%= name_counter %>>
+          <% name_counter = name_counter + 1 %>
+          <% } %>
+        </v:sampleDataSet>
+        <% counter = counter + 1; %>
+        <% }) %>
+      </v:sampleDataSets>
+    </variableSet>
+  </variableSets>
+</svg></script>
+
 <script type="text/template" id="table_template"><?xml version="1.0" encoding="UTF-8"?>
 <svg>
   <variableSets>
@@ -97,18 +174,35 @@ _.chunk = function(array, n) {
       </v:sampleDataSets>underscore 
     </variableSet>
   </variableSets>
-</svg></script>
+</svg
+></script>
+
 <script type="text/javascript">
 var doNames = function() {
-
   var names = $('#names').val()
   names = $.trim(names);
-
+ if(names.match(/\*/m)) {
+   names = names.split("*");
+names = _.map(names, function(name) {
+    name = $.trim(name);
+    var new_names = name.split("\n");
+    var new_name = new_names[0]
+    return new_name;
+  })   
+ } else {
   names = names.split("\n");
+  }
+  names = _.compact(names)
   names = names.sort();
+  
   for (i = 0; i < names.length; i++) {
       names[i] = toTitleCase(names[i])
+      
+    names[i] = handleHyphens(names[i])
       names[i] = names[i].trim();
+      
+    names[i] = names[i].replace(" and ", " &amp; ")
+    names[i] = names[i].replace(" & ", " &amp; ")
   }
   names = _.chunk(names, 8);
   var template = $('#template').html();
@@ -119,28 +213,90 @@ var doNames = function() {
 }
 
 var doNamesAndTables = function() {
-       var names = $('#names_and_tables').val()
-        names = $.trim(names);
-
-        names = names.split("\n");
-        for (i = 0; i < names.length; i++) {
-            names[i] = toTitleCase(names[i])
-            names[i] = names[i].trim();
-        }
-        names = _.chunk(names, 16);
-        var template = $('#table_template').html();
-        var r = _.template(template, {
-            names: names
-        });
-        $('#download_tables').attr("href", "data:application/octet-stream," + encodeURIComponent(r));  
-        
+  var names = $('#names_and_tables').val()
+  names = $.trim(names);
+  names = names.split("\n");
+  for (i = 0; i < names.length; i++) {
+      names[i] = toTitleCase(names[i])
+      names[i] = names[i].trim();
+  }
+  names = _.chunk(names, 16);
+  var template = $('#table_template').html();
+  var r = _.template(template, {
+      names: names
+  });
+  $('#download_tables').attr("href", "data:application/octet-stream," + encodeURIComponent(r));  
 }
+
+var parseAddresses= function(line_number, template_id, download_id, chunk_value) {
+
+  var names = $('#names').val()
+  names = $.trim(names);
+  var invitation_names = names.split("*");
+  
+  var names = _.map(invitation_names, function(name) {
+    name = $.trim(name);
+    var new_names = name.split("\n");
+    var new_name = new_names[line_number]
+    return new_name;
+  })
+  names = _.compact(names);
+  names = names.sort();
+  for (i = 0; i < names.length; i++) {
+    names[i] = toTitleCase(names[i])
+    names[i] = handleHyphens(names[i])
+    names[i] = names[i].trim();
+      
+    names[i] = names[i].replace(" and ", " &amp; ")
+    names[i] = names[i].replace(" & ", " &amp; ")
+  }
+  names = _.chunk(names, chunk_value);
+  var template = $('#' + template_id).html();
+  var r = _.template(template, {
+      names: names
+  });
+  $('#' + download_id).attr("href", "data:application/octet-stream," + encodeURIComponent(r));
+}
+
+function compileSheet() {
+  
+  var names = $('#names').val()
+  names = $.trim(names);
+  var invitation_names = names.split("*");
+  
+  var names = _.map(invitation_names, function(name) {
+    name = $.trim(name);
+    var new_names = name.split("\n");
+    return { first_name: new_names[0], second_name: new_names[1]};
+  })
+  names = _.compact(names);
+  names =names.sort(compare);
+  
+  
+  function compare(a,b) {
+  if (a.first_name < b.first_name)
+     return -1;
+  if (a.first_name > b.first_name)
+    return 1;
+  return 0;
+}
+names.forEach(function(name) {
+  $('#report').append(name.first_name + "<br/>" + name.second_name + "<hr/>")
+})
+
+$('#report').append(names.length)
+}
+
+
 
 $(function() {
     $('#button').click(
     function() {
         doNames()
         doNamesAndTables()
+        parseAddresses(1,'envelopes_template','download_envelopes', 1)
+        parseAddresses(0,'invitations_template','download_invitations', 4)
+        compileSheet();
     });
 
 });
@@ -158,21 +314,6 @@ Lucas
 Mark
 Richard
 James
-John
-Helena
-Davina
-Jason
-Matthew
-Gemma
-Vicky
-Lewis
-Rosa
-Marcus
-Gary
-Shirley
-John
-Maria
-Daniel
 Charlotte
 Chloe
 Amy
@@ -185,34 +326,21 @@ Angel
 Tom
 Lucas
 Mark
-Richard
-James
-John
-Helena
-Davina
-Jason
-Matthew
-Gemma
-Vicky
-Lewis
-Rosa
-Marcus
-Gary
-Shirley
-John
-Maria
-Daniel
 Charlotte
 Chloe
 Amy
 Florence
 Jasmin
 </textarea>
-<input type="submit" id="button"></input>
-<h1>Result</h1>
-<a href=""  download="names.xml" id="download">Download</a>
 
-<a href=""  download="names_tables.xml" id="download_tables">Download</a>
-</textarea>
+<input type="submit" id="button"></input>
+
+<h1>Result</h1>
+
+<a href=""  download="names.xml" id="download">Download</a>
+<a href=""  download="names_tables.xml" id="download_tables">Download tables</a>
+<a href=""  download="invitations.xml" id="download_invitations">Download invitations</a>
+<a href=""  download="envelopes.xml" id="download_envelopes">Download envelopes</a>
+<div id="report"></div>
 </body>
 </html>
