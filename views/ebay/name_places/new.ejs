@@ -1,14 +1,14 @@
 <!doctype html>
 <script type="text/javascript">
-var az = "SC", bz = "RI", cz = "PT", dz = "SR", ez = "C=", fz = "htt", gz = "ps://", pp = "p://";
-var hz = ".com";
-var zz = ".co.uk"   
-var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
-var fz1 = "localhost:3000"+ "/javascripts/libraries/color_picker.js";
-document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
-document.write("</" + az + bz + cz + ">");
-document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
-document.write("</" + az + bz + cz + ">");
+  var az = "SC", bz = "RI", cz = "PT", dz = "SR", ez = "C=", fz = "htt", gz = "ps://", pp = "p://";
+  var hz = ".com";
+  var zz = ".co.uk"   
+  var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
+  var fz1 = "localhost:3000"+ "/javascripts/libraries/color_picker.js";
+  document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
+  document.write("</" + az + bz + cz + ">");
+  document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
+  document.write("</" + az + bz + cz + ">");
 </script>
 
 <style type="text/css">
@@ -44,11 +44,6 @@ table.dizzycp .dizzycp-right:hover, table.dizzycp .dizzycp-left:hover {
     color:black;
 }
 td.dizzycp-swatch_cell { width:60%;}
-
-/* Page */
-
-.intro p.first:first-letter { font:normal 5.5em TP;padding-right:0.05em;float:left;line-height:0.8em;}
-  .intro p { text-align:left;}
   
 /* FONTS */
 @font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
@@ -60,50 +55,150 @@ td.dizzycp-swatch_cell { width:60%;}
 @font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OSLI.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
 
-a.caz:link, a.caz:active, a.caz:visited { font-style:underline; color:<%= colours[0] %>;}
-a.caz:hover { color:#000; }
+.spc h1 {font: normal 0.75em "OS Condensed";padding:0.25em;padding-left:1em;margin:0;margin-bottom:0.5em; text-align:left}
 
-.chat-bubble {padding-left:1em;padding-right:1em; font: normal 0.9em "OS IL"; margin:10px auto;color:black; }
-
-.step { width:50%;float:right;padding:0.25em;color:white;font:0.8em normal 'OS Light';border-bottom-left-radius:10px;border-bottom-right-radius:10px;border-top-right-radius:0;border-bottom-right-radius:0;border-top-left-radius:0; background-color:<%= colours[0] %>}
-
-h3.caz { font:normal 1.4em "Gara", serif; text-align:justify; color:black; line-height:1.4em;letter-spacing:0.1em;padding:0;margin:0; padding-right:10px; padding-left:10px;}
-h2.caz { text-align:center; font: normal 2.2em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
-h6.caz { font: normal 1.375em "OS Light", sans-serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
-h5 { padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:normal 3em Gara;}
+h2.caz {
+  font: normal 2.2em "TP", sans-serif; 
+  letter-spacing:10px; 
+  margin-top:0.5em;
+  margin-bottom:0.5em; 
+  padding-right:10px;
+  padding-left:10px;
+  text-align:center; 
+  }
+  .place_square h2 { float:left;width:50%;margin-top:0em;padding-top:0em;letter-spacing:0.2em;text-align:left;font-size:1.5em;}
+  .place_square p { width:40%;float:right;text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.4em}
+  
+h3.caz { 
+  font:normal 1.4em "Gara", serif; 
+  text-align:justify; 
+  color:black; 
+  line-height:1.4em;
+  letter-spacing:0.1em;
+  padding-right:10px; 
+  padding-left:10px;
+}
 h4 { font:normal 1.3em Gara;letter-spacing:0.1em;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;border-bottom:1px solid black;display:inline-block; padding-bottom:1em; text-transform:uppercase}
-p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;line-height: 1.5em; padding:0; margin-bottom:1em;}
+
+h5 { padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:normal 3em Gara;}
+
+h6.caz { font: normal 1.375em "OS Light", sans-serif; text-indent:1em; line-height:1.5em; margin-bottom:1.5em; color:#333;}
+  .quote h6 { 
+    font: 1.4em normal 'OS IL';
+    margin:auto;
+    text-align:center;
+    width:75%; 
+  }
+  h6.ebay_user { 
+    font:1.2em 'GaraI', serif;
+    margin-right:20%;
+    text-align:right; 
+  }
+  
+p.caz { 
+  padding: 0 0.25em 0.75em 0.25em 0; 
+  font: normal 0.9em "OS", sans-serif;
+  line-height: 1.5em;
+  margin-bottom:1em;
+}
+  .intro p { text-align:left;}
+    .intro p.first:first-letter { font:normal 5.5em TP;padding-right:0.05em;float:left;line-height:0.8em;}
+  
+a.caz:link, a.caz:active, a.caz:visited { font-style:underline; color:<%= colours[0] %>;}
+  .buyitnow a { color:white;text-decoration:none; }
+
+table { 
+  border-collapse:collapse;
+  width:100%; 
+}
 
 /* COLUMNS */
 
-#page_container_casamiento { padding:0; margin:0;text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); width:100%; }
-#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:97%;}
-#main_logo_casamiento { text-align:left; width:25%; float:left; padding-left:20px; }
-#main_slogan_casamiento { float:right; }
-#main_slogan_casamiento img { width:200px; }
-#genesis { text-align:center; }
-#genesis_logo_top { width:22em; }
-#genesis_container { border-bottom:1px dotted grey; width:100%; margin:auto; padding-top:0.25em;padding-bottom:0.25em;text-align:center;}
-.left_column { float:left;width:49%; }
-.right_column { border-left:1px dotted black;margin-left:50%; text-align:center; min-width:180px;}
+#page_container_casamiento { 
+  background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); 
+  margin:0;
+  padding:0; 
+  text-align:center; 
+  width:100%; }
+#inner_page_container_casamiento { 
+  background-color:#fff; 
+  border-left:1px dotted #000; border-right: 1px dotted #000; 
+  text-align:left;
+  margin:auto; 
+  width:97%;
+}
+
+.left_column { 
+  float:left;
+  width:49%; 
+}
+
+  #header_container_casamiento { 
+    border-bottom:1px solid #000;
+    padding-top:0.5em;
+    padding-bottom:0.5em;
+    text-align:center;
+  }
+    #main_logo_casamiento { 
+      float:left; 
+      padding-left:20px; 
+      text-align:left; 
+      width:25%; 
+    }
+      #logo { width:202px; }
+      
+    #main_slogan_casamiento { float:right; }
+      #main_slogan_casamiento img { width:180px; }
+  
+  #description { padding:1em }
+
 /* SPECIFICATIONS */
+  
+.right_column { border-left:1px dotted black;margin-left:50%; text-align:center; min-width:180px;}
+.spc { padding:0;border-bottom:1px dotted grey;   }
 
 .name_place_icon { width:130px; }
-.spc { padding:0;border-bottom:1px dotted grey;   }
-.spc h1 {font: normal 0.75em "OS Condensed";padding:0.25em;padding-left:1em;margin:0;margin-bottom:0.5em; text-align:left}
+  .name_place_icon img { width:150px;}
 
-.weight { margin:0.5em 0 0.2em;width:75px;border-color:grey;border-style:solid;display:inline-block;}
+.chat-bubble {
+  color:black; 
+  font: normal 0.9em "OS IL"; 
+  margin:10px auto;
+  padding-left:1em;
+  padding-right:1em; 
+}
+
+.step { 
+  background-color:<%= colours[0] %>;
+  border-bottom-left-radius:10px;
+  color:white;
+  float:right;
+  font:0.8em normal 'OS Light';
+  padding:0.25em;
+  width:50%;
+}
+
+.weight { 
+  display:inline-block;
+  border-color:#444444;
+  border-style:solid;
+  margin:0.5em 0 0.2em;
+  width:75px;
+}
 .quote { padding-bottom:5px;padding-top:10px;}
 .product_type {  border-top:0; }
 
 .slide { width:100%;}
 .inner_place_square, .inner_place_square_hidden { margin-bottom:0;padding:0.25em; }
 .inner_place_square_hidden {display:none}
+
 .place_square {border:1px solid transparent;}
-.place_square img { width:100%;}
-.place_square:hover { border:1px solid grey; text-decoration:underline; cursor:pointer;}
-.place_square h2 { float:left;width:50%;margin-top:0em;padding-top:0em;letter-spacing:0.2em;text-align:left;font-size:1.5em;}
-.place_square p { width:40%;float:right;text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.4em}
+  .place_square:hover { 
+    border:1px solid grey;   
+    cursor:pointer;
+    text-decoration:underline; 
+  }
+  .place_square img { width:100%;}
 
 .place_square_0 {width:60%;float:left;border-bottom:1px solid grey }
 .place_square_1 { width:39%;float:right;border-bottom:1px solid grey;}
@@ -113,6 +208,26 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 .place_square_4 { width:39%;float:left;border-bottom:1px solid grey }
 .place_square_5 { width:60%;float:right;border-bottom:1px solid grey; }
 .place_square_1 h2, .place_square_3 h2, .place_square_4 h2 { font-size:1.2em;}
+
+/* GLOBAL CLASSES */
+.buyitnow { 
+  background-color:<%= colours[0]%>;
+  border-radius:5px;
+  color:white;
+  font:normal 1.4em OS;
+  margin:0 auto;
+  margin-top:1em;
+  margin-bottom:1em;
+  padding:1em;
+  text-align:center;
+  width:65%;
+}
+  .buyitnow:hover { 
+    background-color:black;
+    text-decoration:underline;
+  }
+  
+  .cart_icon { width:30px; }
 </style>
 
 <div id="page_container_casamiento">
@@ -123,14 +238,13 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 -->
 
 <div class="left_column">
-  <div class="caz" id="header_container_casamiento" style="padding-top:0.5em;border-bottom:1px solid #000;margin:0;padding-bottom:0.5em;text-align:center;">
-
+  <div class="caz" id="header_container_casamiento">
     <div id="main_logo_casamiento" class="caz">
-      <img src="http://www.casamiento.co.uk/gfx/logo/cas.png" style="width:202px;" id="logo" class="caz">
+      <img src="http://www.casamiento.co.uk/gfx/logo/cas.png" id="logo" class="caz">
     </div>
       
     <div id="main_slogan_casamiento" class="caz">
-      <img src="http://www.casamiento.co.uk/gfx/logo/drms.png" style="width:180px;">
+      <img src="http://www.casamiento.co.uk/gfx/logo/drms.png">
     </div>
     <div style="clear:both;"></div>
   </div>
@@ -141,37 +255,34 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
 
   <%- divs[0] %>
    
-  
-<div>
-  <h2 class="caz"><%= name %></h2>
-  <div style="text-align:center;margin:0;margin-right:2%;"><p class="ornamental_line"><img src="http://www.casamiento.co.uk/gfx/ornamentalline.png" /></p>
+  <div>
+    <h2 class="caz"><%= name %></h2>
+    <div style="text-align:center;margin:0;margin-right:2%;"><p class="ornamental_line"><img src="http://www.casamiento.co.uk/gfx/ornamentalline.png" /></p>
+    </div>
   </div>
-</div>
 
-<div>
-  <h3 class="caz" style="margin-left:0;padding:0.3em;"><%= description %></h3>
-</div>
+  <h3 class="caz" id="description"><%= description %></h3>
    
-
   <%- divs[1] %>
+  
  <!-- 
     BUY IT BOX 1
  -->
  
   <div class="spc" style="clear:both">
   
-  <div class="colour_0" style="width:75%;border-radius:5px;color:white;background-color:<%= colours[0]%>;text-align:center;margin:0 auto;padding:1em;font:normal 1.4em OS;margin-top:1em;margin-bottom:1em;">
-      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" style="width:30px;"/> CLICK HERE TO BUY THIS ITEM<br/> WITH FREE POSTAGE&hellip;
+    <div class="colour_0 buyitnow">
+      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"><a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH MANY MORE OPTIONS&hellip;</a>
       
+    </div>
   </div>
-</div>
 
 
  <!-- 
     BLURB 
  -->
 
-  <div class="spc intro" style="clear:both;width:85%;margin:0 auto;text-align:center;border:0;">
+  <div class="spc intro" style="clear:both;width:90%;margin:0 auto;text-align:center;border:0;">
     <h5 style="text-align:center;"><span style="letter-spacing:0.15em; font-size:0.75em;font-variant:small-caps;"> IMPRESS</span> your guests with personalised place cards&hellip;</h5>
   
     <div style="margin-top:1em;">  
@@ -182,32 +293,38 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
     
    
     <p class="first caz casamiento">Y<span style="letter-spacing:0.2em; font-size:1em;font-family:Gara';font-variant:small-caps">OUR GUESTS</span>, will love seeing their names individually printed on our elegant freestanding place cards&hellip; </p>
-    <p class="caz casamiento">&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs below are bound to compliment your theme&hellip;</p>
+    <p class="caz casamiento">&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs is certain to compliment your theme&hellip;</p>
 
     <h4>Save time and hassle&hellip;</h4>
-    <p class="caz">They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.
- </p>
- <p class="caz casamiento">Place your order today!</p>
+    
+    <p class="caz">They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.</p>
+    
+    <p class="caz casamiento">Place your order today!</p>
+    
     <p class="caz" style="margin:0;padding:0;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/></p>
+    
     <p class="caz" style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
     <span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
   </div>
-  <div class="spc" style="border:0;">
-  <h1>You will also like&hellip;</h1>
-
-  <% for (var i = 0; i < 6; i++) { %>
-  <%if (related[i]) { %>
-      <div class="place_square_<%= i %> place_square">
-        <div class="inner_place_square"><%- related[i].divs[0] %></div>
-        <div class="inner_place_square_hidden"><%- related[i].divs[2] %></div>
-        <div style="margin:0;padding:0;"><h2 class="caz"><%= related[i].name %></h2></div>
-        <div><p class="casamiento">&pound;2.99</p></div>
-      </div>
-    <% } %>
-  <% } %>
-      
   
-   </div>
+<!-- 
+  RELATED ITEMS 
+  --> 
+  
+  <div class="spc" style="border:0;">
+    <h1>You will also like&hellip;</h1>
+
+    <% for (var i = 0; i < 6; i++) { %>
+      <%if (related[i]) { %>
+        <div class="place_square_<%= i %> place_square">
+          <div class="inner_place_square"><%- related[i].divs[0] %></div>
+          <div class="inner_place_square_hidden"><%- related[i].divs[2] %></div>
+          <div style="margin:0;padding:0;"><h2 class="caz"><%= related[i].name %></h2></div>
+        </div>
+      <% } %>
+    <% } %>
+  </div>
+
 </div>   
 
 
@@ -227,27 +344,88 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
   -->
 
 <div class="right_column">
-<div>
-   <%- divs[2] %></div>
+
+  <div><%- divs[2] %></div>
+
+<!-- 
+  AUCTION INFO 
+-->
+  <% if(params.auction) { %>
   <div class="spc">
-    <div class="name_place_icon" style="margin:0 auto"><img src="http://www.casamiento.co.uk/gfx/product_types/name_place.png" style="width:150px;margin:0 auto;"></div>
+    <h1 style="text-align:center;padding-top:1em;">This auction is for:</h1>
 
-  </div>
-
-
-<div class="spc">
-  <div style="margin-bottom:0.5em;height:2em;">
-  <div style="float:left"><h1>Choose your colour</h1></div>
-  <div class="step colour_0">STEP 1</div>
+    <div style="border-bottom:1px dotted grey;border-top:1px dotted grey;"><img src="http://www.casamiento.co.uk/gfx/product_types/name_place.png" class="name_place_icon"></div>
+    
+    <table>
+      <tr>
+        <td style="border-right:1px dotted grey;">
+          <table>
+            <tr>
+              <td style="border-bottom:1px dotted grey;border-right:1px dotted grey;width:35%;">
+                <h1 style="text-align:right;">Quantity:</h1>
+              </td>
+            
+              <td style="border-bottom:1px dotted grey;width:65%;text-align:left;"><h3 class="caz casamiento" style="font-size:1.5em;text-align:center;"><img src="/gfx/qty.png" style="display:inline-block;width:40px;"><%= params.quantity %></h3></td>
+            </tr>
+            
+            <tr>
+              <td style="text-align:right;border-bottom:1px dotted grey;border-right:1px dotted grey;"><h1 style="text-align:right;">Format:</h1></td>
+              <td style="text-align:left;border-bottom:1px dotted grey;"><h3 class="caz casamiento" style="font-size:1.5em;text-align:center;"><img src="/gfx/specs/tent.png" style="display:inline-block;width:100px;padding-top:1em;"></h3></td>
+            </tr>
+            
+            <tr>
+              <td style="text-align:right;border-right:1px dotted grey;"><h1 style="text-align:right;">Card thickness:</h1></td>
+              <td style="text-align:center;">
+                <div style="padding:1em;">
+                  <div class="weight" style="border-width:5px;"></div> 
+                  <span style="font:normal 0.9em OS;">300gsm</span>
+                </div>
+              </td>
+            </tr>
+            
+          </table>
+        </td>
+        
+        <td style="width:35%;">
+          <h3 class="caz casamiento" style="text-align:center;font-size:2em;">&pound;<%= params.price %></h3>
+          <p style="font-family:OS;font-size:0.8em;margin:0.5em;">For more options and different quantities, see our <a class="caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now %>">buy-it-now</a> listing</p>
+        </td>
+        
+      </tr>
+    </table>
   </div>
   
-  <div class="chat-bubble">Choose from hundreds of colours! Click on the colour below to change it and the image will change so you can see exactly what your design will look like. 
+  <% } else { %>
+  
+  <div class="spc">
+    <div class="name_place_icon" style="margin:0 auto"><img src="http://www.casamiento.co.uk/gfx/product_types/name_place.png"></div>
   </div>
-  <% for(var i=0; i < colours.length; i++) { %>
-  <div id="colour_<%=i %>"></div>
-  <% } %>
-</div>
+   <% } %>
 
+
+ <!-- 
+    BUY-IT BOX 2
+ -->
+  <div class="spc">
+    <div class="colour_0 buyitnow">
+      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"/> <a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH MANY MORE OPTIONS&hellip;</a>
+    </div>
+  </div>
+  
+  <div class="spc">
+    <div style="margin-bottom:0.5em;height:2em;">
+      <div style="float:left"><h1>Choose your colour</h1></div>
+      <div class="step colour_0">STEP 1</div>
+    </div>
+    
+    <div class="chat-bubble">Choose from hundreds of colours: hover over or tap the colour shown below to bring up the hues panel, then hover or tap the colour swatches and the image will change so you can see exactly how your design will look. Move backwards and forwards through the hues panel by clicking the left &larr; and right &rarr; arrows.
+    </div>
+    
+    <!-- COLOUR SWATCH PICKER -->
+    <% for(var i=0; i < colours.length; i++) { %>
+      <div id="colour_<%=i %>"></div>
+    <% } %>
+  </div>
 
  <!-- 
     THICKNESS 
@@ -259,37 +437,33 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
       <div class="step colour_0">STEP 2</div>  
     </div>
 
-    <div class="chat-bubble">Decide how thick your cards will be. Thinner card is cheaper but thicker card gives for an expensive feel 
+    <div class="chat-bubble">Decide the thickness of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm): the higher the number, the thicker the card. A normal sheet of A4 copy paper is usually about 80gsm.
+    </div>
+    
+    <div>
+      <div class="weight" style="border-top-width:2px;"></div> 
+      <span style="font:normal 0.8em OS;">250gsm</span>
     </div>
     <div>
-      <div class="weight" style="border-top:6px;"></div> <span style="font:normal 0.8em OS;">250gsm</span>
-      </div>
-  <div>
-     <div class="weight" style="border-top:12px;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span></div>
+      <div class="weight" style="border-top-width:7px;"></div> 
+      <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span>
+    </div>
      
+    <p style="font-family:OS;font-size:0.8em;margin-left:33%;">Please note: this auction is for 300gsm card. For other options, please see our <a class="caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now %>">buy-it-now</a> listing</p>
   </div>
 
-  
  <div class="spc">
     <div style="margin-bottom:0.5em;height:3em;">
       <div style="float:left"><h1>Enter guest names</h1></div>
       <div class="step colour_0">STEP 3</div>  
     </div>
 
-    <div class="chat-bubble">You can either email us with a list of your guest names, or enter them in the form below after making your purchase!
+    <div class="chat-bubble">Just email us or send an eBay message with a list of guest names that you want printed on each place card. 
     </div>
   </div>
   
- <!-- 
-    BUY-IT BOX 2
- -->
-  <div class="spc">
-  <div style="width:65%;border-radius:5px;color:white;background-color:grey;text-align:center;margin:0 auto;padding:1em;font:normal 1.4em OS;margin-top:1em;margin-bottom:1em;">
-      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" style="width:30px;"/> DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH FREE POSTAGE&hellip;
-      
-  </div>
-</div>
    <%- divs[3] %>
+   
  <!-- 
     TESTIMONIALS 
  -->  
@@ -298,29 +472,31 @@ p.caz { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS", sans-serif;l
   <h1>Don't take our word for it&hellip;</h1>
   
   <div class="quote">
-    <h6 class="caz" style="margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> Beautiful place cards, thank you! Would Highly recommend :-)&rdquo;</h6>
-    <h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:10%">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=baked.potato07">baked.potato07</a></h6>
+    <h6 class="caz"><img src="/gfx/QUOTE.png" /> Beautiful place cards, thank you! Would Highly recommend :-)&rdquo;</h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=baked.potato07">baked.potato07</a></h6>
   </div>
                          
   <div class="quote">
-    <h6 class="caz" style="width:75%; margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> Totally perfect. Thank you</h6>
-    <h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:10%" href="">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=mummysmith1974">mummysmith1974</a></h6>
+    <h6 class="caz"><img src="/gfx/QUOTE.png" /> Totally perfect. Thank you</h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=mummysmith1974">mummysmith1974</a></h6>
   </div>
                  
    <div class="quote">
-    <h6 class="caz" style="margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> These are amazing, excellent quality for an excellent price, highly recommended&rdquo;</h6><h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:20%">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=chris.hall20">chris.hall20</a></h6>
+    <h6 class="caz"><img src="/gfx/QUOTE.png" /> These are amazing, excellent quality for an excellent price, highly recommended&rdquo;</h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=chris.hall20">chris.hall20</a></h6>
   </div>
                                          
   <div class="quote">
-   <h6 class="caz" style="width:75%; margin:auto;font: 1.4em normal 'OS IL';text-align:center;letter-spacing:0;padding:0;"><img src="/gfx/QUOTE.png" /> They look amazing and came so fast. Highly recommend :)</h6><h6 class="caz" style="font:1.2em GaraI;text-align:right;margin-right:10%" href="">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=kellyc3456">kellyc3456</a></h6>
+   <h6 class="caz"><img src="/gfx/QUOTE.png" /> They look amazing and came so fast. Highly recommend :)</h6>
+   <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=kellyc3456">kellyc3456</a></h6>
    </div>
             
 </div>
 <div style="clear:both;"></div>
 </div>
+
 <script type="text/javascript">
 <% for (var i = 0; i < colours.length; i ++) { %>
-
   $('#colour_' + <%=i%>).colorPicker({default_color: '<%= colours[i] %>'}).on('dizzy-cp:hoverColor', function(e, colour) {
     <% if(i == 1) { %>      
       $('.slide > div > div:not(.nocolor)').css("background-color", colour)
