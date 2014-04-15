@@ -55,7 +55,13 @@ td.dizzycp-swatch_cell { width:60%;}
 @font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OSLI.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
 
-.spc h1 {font: normal 0.75em "OS Condensed";padding:0.25em;padding-left:1em;margin:0;margin-bottom:0.5em; text-align:left}
+h1 { 
+  font: normal 0.75em "OS Condensed";
+  margin-bottom:0.5em; 
+  padding:0.25em;
+  padding-left:1em;
+  text-align:left
+}
 
 h2.caz {
   font: normal 2.2em "TP", sans-serif; 
@@ -65,24 +71,46 @@ h2.caz {
   padding-right:10px;
   padding-left:10px;
   text-align:center; 
+}
+  .place_square h2 { 
+    float:left;
+    width:50%;
+    margin-top:0em;
+    padding-top:0em;
+    letter-spacing:0.2em;
+    text-align:left;
+    font-size:1.5em;
   }
-  .place_square h2 { float:left;width:50%;margin-top:0em;padding-top:0em;letter-spacing:0.2em;text-align:left;font-size:1.5em;}
-  .place_square p { width:40%;float:right;text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.4em}
-  
+ 
 h3.caz { 
   font:normal 1.4em "Gara", serif; 
   text-align:justify; 
-  color:black; 
   line-height:1.4em;
   letter-spacing:0.1em;
   padding-right:10px; 
   padding-left:10px;
 }
-h4 { font:normal 1.3em Gara;letter-spacing:0.1em;text-align:center;color:#000;margin-top:0.5em;margin-bottom:0.5em;border-bottom:1px solid black;display:inline-block; padding-bottom:1em; text-transform:uppercase}
+h4 { 
+  border-bottom:1px solid black;
+  display:inline-block; 
+  font:normal 1.3em Gara;
+  letter-spacing:0.1em;
+  margin-top:0.5em;
+  margin-bottom:0.5em;
+  padding-bottom:1em; 
+  text-align:center;
+  text-transform:uppercase
+}
 
 h5 { padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:normal 3em Gara;}
 
-h6.caz { font: normal 1.375em "OS Light", sans-serif; text-indent:1em; line-height:1.5em; margin-bottom:1.5em; color:#333;}
+h6.caz { 
+  color:#333;
+  font: normal 1.375em "OS Light", sans-serif; 
+  line-height:1.5em;
+  margin-bottom:1.5em; 
+  text-indent:1em; 
+ }
   .quote h6 { 
     font: 1.4em normal 'OS IL';
     margin:auto;
@@ -102,10 +130,21 @@ p.caz {
   margin-bottom:1em;
 }
   .intro p { text-align:left;}
-    .intro p.first:first-letter { font:normal 5.5em TP;padding-right:0.05em;float:left;line-height:0.8em;}
+    .intro p.first:first-letter { 
+      float:left;
+      font:normal 5.5em TP;
+      line-height:0.8em;
+      padding-right:0.05em;
+    }
   
-a.caz:link, a.caz:active, a.caz:visited { font-style:underline; color:<%= colours[0] %>;}
-  .buyitnow a { color:white;text-decoration:none; }
+a.caz:link, a.caz:active, a.caz:visited { 
+  color:<%= colours[0] %>;  
+  font-style:underline; 
+}
+  .buyitnow a { 
+    color:white;
+    text-decoration:none; 
+  }
 
 table { 
   border-collapse:collapse;
@@ -115,14 +154,15 @@ table {
 /* COLUMNS */
 
 #page_container_casamiento { 
+  color:#000; 
   background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); 
   margin:0;
-  padding:0; 
-  text-align:center; 
-  width:100%; }
+  padding:0;  
+}
 #inner_page_container_casamiento { 
   background-color:#fff; 
-  border-left:1px dotted #000; border-right: 1px dotted #000; 
+  border-left:1px dotted #000; 
+  border-right: 1px dotted #000; 
   text-align:left;
   margin:auto; 
   width:97%;
@@ -154,8 +194,15 @@ table {
 
 /* SPECIFICATIONS */
   
-.right_column { border-left:1px dotted black;margin-left:50%; text-align:center; min-width:180px;}
-.spc { padding:0;border-bottom:1px dotted grey;   }
+.right_column { 
+  border-left:1px dotted black;
+  margin-left:50%; 
+  min-width:180px;
+  text-align:center; 
+}
+.spc {
+  border-bottom:1px dotted grey;   
+}
 
 .name_place_icon { width:130px; }
   .name_place_icon img { width:150px;}
@@ -180,7 +227,7 @@ table {
 
 .weight { 
   display:inline-block;
-  border-color:#444444;
+  border-color:#444;
   border-style:solid;
   margin:0.5em 0 0.2em;
   width:75px;
@@ -272,8 +319,7 @@ table {
   <div class="spc" style="clear:both">
   
     <div class="colour_0 buyitnow">
-      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"><a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH MANY MORE OPTIONS&hellip;</a>
-      
+      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"><a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH MANY MORE OPTIONS&hellip;</a>      
     </div>
   </div>
 
