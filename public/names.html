@@ -7,12 +7,11 @@
 <script type="text/javascript">
 
 function handleHyphens(str) {
-console.log(str)
+
   var pieces = str.split("-");
   if (pieces[1]) {
   pieces[1] = toTitleCase(pieces[1]);
   }
-  console.log(pieces)
   str = pieces.join("-");
   return str;
 }
@@ -217,6 +216,7 @@ var doNamesAndTables = function() {
   names = $.trim(names);
   names = names.split("\n");
   for (i = 0; i < names.length; i++) {
+
       names[i] = toTitleCase(names[i])
       names[i] = names[i].trim();
   }
@@ -229,32 +229,56 @@ var doNamesAndTables = function() {
 }
 
 var parseAddresses= function(line_number, template_id, download_id, chunk_value) {
-
+console.log("Parsing addresses\n---------------------")
   var names = $('#names').val()
   names = $.trim(names);
   var invitation_names = names.split("*");
   
   var names = _.map(invitation_names, function(name) {
+
     name = $.trim(name);
     var new_names = name.split("\n");
-    var new_name = new_names[line_number]
+     
+    for(i = 0; i < new_names.length; i++) {
+      
+    if(new_names.length == (i + 1)) {
+    } else {
+      new_names[i] = toTitleCase(new_names[i])
+    new_names[i] = handleHyphens(new_names[i])
+    
+    }
+    if((i == 0) || (i == 1)) {
+      new_names[i] = new_names[i].replace(" and ", " &amp; ")
+      new_names[i] = new_names[i].replace(" & ", " &amp; ")
+      }
+    }
+    if (line_number == 1) {
+    new_names.shift();
+    
+    var new_name = new_names.join("<br/>")
+    }
     return new_name;
   })
   names = _.compact(names);
   names = names.sort();
+ 
   for (i = 0; i < names.length; i++) {
+   if(line_number != 1) {
     names[i] = toTitleCase(names[i])
     names[i] = handleHyphens(names[i])
     names[i] = names[i].trim();
       
     names[i] = names[i].replace(" and ", " &amp; ")
     names[i] = names[i].replace(" & ", " &amp; ")
+    }
   }
   names = _.chunk(names, chunk_value);
   var template = $('#' + template_id).html();
+  console.log(names)
   var r = _.template(template, {
       names: names
   });
+  console.log(r)
   $('#' + download_id).attr("href", "data:application/octet-stream," + encodeURIComponent(r));
 }
 

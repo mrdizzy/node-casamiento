@@ -34,6 +34,7 @@ var ProductView = Backbone.View.extend({
   },
   // TODO: refactor to use events and an event listener when current product is changed
   select: function() {
+  if(svg) {
   var svg = this.model.get("svg");
   if (svg) {
   svg = svg.replace('#6D9200','purple')
