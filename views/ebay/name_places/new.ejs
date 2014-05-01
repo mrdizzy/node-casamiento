@@ -81,6 +81,8 @@ h2.caz {
     text-align:left;
     font-size:1.5em;
   }
+  
+  a h2 { color: black; }
  
 h3.caz { 
   font:normal 1.4em "Gara", serif; 
@@ -307,8 +309,6 @@ table {
     <div style="text-align:center;margin:0;margin-right:2%;"><p class="ornamental_line"><img src="http://www.casamiento.co.uk/gfx/ornamentalline.png" /></p>
     </div>
   </div>
-
-  <h3 class="caz" id="description"><%= description %></h3>
    
   <%- divs[1] %>
   
@@ -359,16 +359,21 @@ table {
   
   <div class="spc" style="border:0;">
     <h1>You will also like&hellip;</h1>
-
+<% j = 0 %>
+<% for (var k = 0; k < 2; k++) { %>
     <% for (var i = 0; i < 6; i++) { %>
-      <%if (related[i]) { %>
+      <%if (related[j]) { %><a class="caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now %>">
         <div class="place_square_<%= i %> place_square">
-          <div class="inner_place_square"><%- related[i].divs[0] %></div>
-          <div class="inner_place_square_hidden"><%- related[i].divs[2] %></div>
-          <div style="margin:0;padding:0;"><h2 class="caz"><%= related[i].name %></h2></div>
+          <div class="inner_place_square"><%- related[j].divs[0] %></div>
+          <div class="inner_place_square_hidden"><%- related[j].divs[2] %></div>
+          <div style="margin:0;padding:0;"><h2 class="caz"><%= related[j].name %></h2></div>
         </div>
+      </a>
       <% } %>
+      <% j++ %>
     <% } %>
+    <% } %>
+  
   </div>
 
 </div>   
@@ -392,61 +397,6 @@ table {
 <div class="right_column">
 
   <div><%- divs[2] %></div>
-
-<!-- 
-  AUCTION INFO 
--->
-  <% if(params.auction) { %>
-  <div class="spc">
-    <h1 style="text-align:center;padding-top:1em;">This auction is for:</h1>
-
-    <div style="border-bottom:1px dotted grey;border-top:1px dotted grey;"><img src="http://www.casamiento.co.uk/gfx/product_types/name_place.png" class="name_place_icon"></div>
-    
-    <table>
-      <tr>
-        <td style="border-right:1px dotted grey;">
-          <table>
-            <tr>
-              <td style="border-bottom:1px dotted grey;border-right:1px dotted grey;width:35%;">
-                <h1 style="text-align:right;">Quantity:</h1>
-              </td>
-            
-              <td style="border-bottom:1px dotted grey;width:65%;text-align:left;"><h3 class="caz casamiento" style="font-size:1.5em;text-align:center;"><img src="/gfx/qty.png" style="display:inline-block;width:40px;"><%= params.quantity %></h3></td>
-            </tr>
-            
-            <tr>
-              <td style="text-align:right;border-bottom:1px dotted grey;border-right:1px dotted grey;"><h1 style="text-align:right;">Format:</h1></td>
-              <td style="text-align:left;border-bottom:1px dotted grey;"><h3 class="caz casamiento" style="font-size:1.5em;text-align:center;"><img src="/gfx/specs/tent.png" style="display:inline-block;width:100px;padding-top:1em;"></h3></td>
-            </tr>
-            
-            <tr>
-              <td style="text-align:right;border-right:1px dotted grey;"><h1 style="text-align:right;">Card thickness:</h1></td>
-              <td style="text-align:center;">
-                <div style="padding:1em;">
-                  <div class="weight" style="border-width:5px;"></div> 
-                  <span style="font:normal 0.9em OS;">300gsm</span>
-                </div>
-              </td>
-            </tr>
-            
-          </table>
-        </td>
-        
-        <td style="width:35%;">
-          <h3 class="caz casamiento" style="text-align:center;font-size:2em;">&pound;<%= params.price %></h3>
-          <p style="font-family:OS;font-size:0.8em;margin:0.5em;">For more options and different quantities, see our <a class="caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now %>">buy-it-now</a> listing</p>
-        </td>
-        
-      </tr>
-    </table>
-  </div>
-  
-  <% } else { %>
-  
-  <div class="spc">
-    <div class="name_place_icon" style="margin:0 auto"><img src="http://www.casamiento.co.uk/gfx/product_types/name_place.png"></div>
-  </div>
-   <% } %>
 
 
  
@@ -488,7 +438,7 @@ table {
       <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span>
     </div>
      
-    <p style="font-family:OS;font-size:0.8em;margin-left:33%;">Please note: this auction is for 300gsm card. For other options, please see our <a class="caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now %>">buy-it-now</a> listing</p>
+    <p style="font-family:OS;font-size:0.8em;margin-left:33%;">Please note: this auction is for 250gsm card. For other options, please see our <a class="caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now %>">buy-it-now</a> listing</p>
   </div>
 
  <div class="spc">
@@ -510,6 +460,62 @@ table {
       <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"/> <a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH MANY MORE OPTIONS&hellip;</a>
     </div>
   </div>
+  
+<!-- 
+  AUCTION INFO 
+-->
+  <% if(params.auction) { %>
+  <div class="spc">
+    <h1 style="text-align:center;padding-top:1em;">This auction is for:</h1>
+
+    <div style="border-bottom:1px dotted grey;border-top:1px dotted grey;"><img src="http://www.casamiento.co.uk/gfx/product_types/name_place.png" class="name_place_icon"></div>
+    
+    <table>
+      <tr>
+        <td style="border-right:1px dotted grey;">
+          <table>
+            <tr>
+              <td style="border-bottom:1px dotted grey;border-right:1px dotted grey;width:35%;">
+                <h1 style="text-align:right;">Quantity:</h1>
+              </td>
+            
+              <td style="border-bottom:1px dotted grey;width:65%;text-align:left;"><h3 class="caz casamiento" style="font-size:1.5em;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/qty.png" style="display:inline-block;width:40px;"><%= params.quantity %></h3></td>
+            </tr>
+            
+            <tr>
+              <td style="text-align:right;border-bottom:1px dotted grey;border-right:1px dotted grey;"><h1 style="text-align:right;">Format:</h1></td>
+              <td style="text-align:left;border-bottom:1px dotted grey;"><h3 class="caz casamiento" style="font-size:1.5em;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/specs/tent.png" style="display:inline-block;width:100px;padding-top:1em;"></h3></td>
+            </tr>
+            
+            <tr>
+              <td style="text-align:right;border-right:1px dotted grey;"><h1 style="text-align:right;">Card thickness:</h1></td>
+              <td style="text-align:center;">
+                <div style="padding:1em;">
+                  <div class="weight" style="border-width:2px;"></div> 
+                  <span style="font:normal 0.9em OS;">250gsm</span>
+                </div>
+              </td>
+            </tr>
+            
+          </table>
+        </td>
+        
+        <td style="width:35%;">
+          <h3 class="caz casamiento" style="text-align:center;font-size:2em;">&pound;<%= params.price %></h3>
+          <p style="font-family:OS;font-size:0.8em;margin:0.5em;">For more options and different quantities, see our <a class="caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now %>">buy-it-now</a> listing</p>
+        </td>
+        
+      </tr>
+    </table>
+  </div>
+  
+  <% } else { %>
+  
+  <div class="spc">
+    <div class="name_place_icon" style="margin:0 auto"><img src="http://www.casamiento.co.uk/gfx/product_types/name_place.png"></div>
+  </div>
+   <% } %>
+
  <!-- 
     TESTIMONIALS 
  -->  
@@ -518,29 +524,29 @@ table {
   <h1>Don't take our word for it&hellip;</h1>
   
   <div class="quote">
-    <h6 class="caz"><img src="/gfx/QUOTE.png" /> Beautiful place cards, thank you! Would Highly recommend :-)&rdquo;</h6>
+    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Beautiful place cards, thank you! Would Highly recommend :-)&rdquo;</h6>
     <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=baked.potato07">baked.potato07</a></h6>
   </div>.
                           <div class="quote">
-    <h6 class="caz"><img src="/gfx/QUOTE.png" /> Wow. Look very professional and expensive. Highly recommend</h6>
+    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Wow. Look very professional and expensive. Highly recommend</h6>
     <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=jurider1">jurider1</a></h6>
   </div>
                            <div class="quote">
-    <h6 class="caz"><img src="/gfx/QUOTE.png" /> These are amazing value for money and very professional, perfect for our event.</h6>
+    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> These are amazing value for money and very professional, perfect for our event.</h6>
     <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=dannyw3341">dannyw3341</a></h6>
   </div>
   <div class="quote">
-    <h6 class="caz"><img src="/gfx/QUOTE.png" /> Totally perfect. Thank you</h6>
+    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Totally perfect. Thank you</h6>
     <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=mummysmith1974">mummysmith1974</a></h6>
   </div>
                  
    <div class="quote">
-    <h6 class="caz"><img src="/gfx/QUOTE.png" /> These are amazing, excellent quality for an excellent price, highly recommended&rdquo;</h6>
+    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> These are amazing, excellent quality for an excellent price, highly recommended&rdquo;</h6>
     <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=chris.hall20">chris.hall20</a></h6>
   </div>
                                          
   <div class="quote">
-   <h6 class="caz"><img src="/gfx/QUOTE.png" /> They look amazing and came so fast. Highly recommend :)</h6>
+   <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> They look amazing and came so fast. Highly recommend :)</h6>
    <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=kellyc3456">kellyc3456</a></h6>
    </div>
             
