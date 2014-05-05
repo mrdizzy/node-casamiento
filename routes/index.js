@@ -5,6 +5,8 @@ module.exports = function(app){
   app.resource("themes", require("./../controllers/themes"),  {
       load: parseRevision
   })
+  
+  app.resource("downloads", require("./../controllers/downloads"))
   app.resource("payments", require("./../controllers/payments"))
   app.resource("cart", require("./../controllers/cart"))
   app.resource("product_types", require("./../controllers/product_types"))

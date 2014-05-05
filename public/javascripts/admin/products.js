@@ -36,10 +36,10 @@ var ProductView = Backbone.View.extend({
   select: function() {
   if(svg) {
   var svg = this.model.get("svg");
-  if (svg) {
-  svg = svg.replace('#6D9200','purple')
-  this.model.set("svg", svg)
-  }
+  
+      svg = svg.replace('#6D9200','purple')
+      this.model.set("svg", svg)
+      }
     var cpv = new CurrentProductView({model:this.model, attachmentView: AttachView});
     $('#cpv').html(cpv.render().el)
   },
