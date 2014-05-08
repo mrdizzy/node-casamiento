@@ -1,7 +1,7 @@
 
 
-<% var counter  = 0 %>
-<style type="text/css">
+<%- contentFor('inline_styles') %>
+
 	
 body { margin:0; padding:0; }
 a { color: black; }
@@ -47,10 +47,11 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS Light",
 
 
 <% var counter = 0 %>
-
+<%- contentFor('right') %>
+<%- contentFor('left') %>
 <div id="left_column">
 
-<% documents.forEach(function(place) { %>
+<% place_cards.forEach(function(place) { %>
 <% if (counter == 4) { %>
 </div><div id="right_column">
 <% } %>

@@ -15,7 +15,7 @@ module.exports = function(app){
        })
        docs.place_cards = docs;
        
-        res.render('welcome/index', {
+        res.render('welcome/index_2_old', {
             layout: 'layout',
             locals: docs
         });

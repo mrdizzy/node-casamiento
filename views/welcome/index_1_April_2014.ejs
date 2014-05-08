@@ -1,6 +1,13 @@
+<%- contentFor('inline_styles') %>
+
+<%- contentFor('right') %>
+
+<%- contentFor('left') %>
+
+
 <% var counter = 0 %>
 <div id="left_column">
-  <% documents.forEach(function(place) { %>
+  <% place_cards.forEach(function(place) { %>
     <% if (counter == 5) { %>
     </div><div id="right_column">
     <% } %>
