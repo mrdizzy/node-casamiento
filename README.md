@@ -13,6 +13,10 @@ CONVENTIONS
 LAYOUTS 
 =======
 
+COUCHDB PRODUCT
+===============
+
+attachments_order: this field is an array that determines the order of the attachments [1,4,3,5] means attachments will be displayed in that order.
 
 EBAY TEMPLATES GENERATOR
 ========================
@@ -22,7 +26,7 @@ EBAY TEMPLATES GENERATOR
 /public/ebay_templates/testing.html -> Simplicity Invitation package old listing ebay from 2011 with photographs
 
 /views/ebay/name_places/new.ejs -> Single name place card listing
-/views/ebay/name_places/name_places_new_trial.ejs -> Multiple name place cards listing
+/views/ebay/name_places/name_places_new_trial.ejs -> Multiple name place cards listing this is called by /ebay/places url
 
     ## Single place card template 
     /ebay/birds_of_paradise-name_place?auction=true&price=6.99&quantity=50&buy_it_now=251504908304
@@ -35,7 +39,11 @@ EBAY TEMPLATES GENERATOR
 
 SERVER SIDE LIBS
 ================
-prepare_divs.js - for preparing the background divs used to display product images
+
+prepare_divs.js
+---------------
+For preparing the background divs that are used to display the background colours for the transparent product images. This works by looping through each of the attachments using the attachments_order field, and then checking the colours attribute to see if the product has more than 1 colour. If it has only 1 colour then we just specify the background colour in the <img> tag as css. If it has more than 1 colour, then we find the correlating background-[number] field which contains the divs for the second background colour, and we render these using a template. We then use a second template which is passed the resulting divs we just rendered to create a self-container div that can be displayed.
+
 in_groups_of - identical to client-side version below
 
 

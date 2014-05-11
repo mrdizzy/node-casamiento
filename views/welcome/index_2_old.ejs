@@ -1,72 +1,57 @@
-
-
 <%- contentFor('inline_styles') %>
 
-	
-body { margin:0; padding:0; }
-a { color: black; }
-a.casamiento:link, a.casamiento:active, a.casamiento:visited { font-style:underline; color:green;}
-a.casamiento:hover { color:#000; }
-
-/* FONTS */
-@font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
-@font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/GARAIT.eot?') format('eot'), url('http://www.casamiento.co.uk/f/GARAIT.woff') format('woff'); }
-@font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
-@font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OSL.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
-
-h2.casamiento { text-align:center; font: normal 2.2em "TP", sans-serif; letter-spacing:10px; padding-right:10px;padding-left:10px;margin-top:0.5em;margin-bottom:0.5em; }
-h5.casamiento { font: normal 1em "OS IL", serif; text-indent:1em;text-align:left; border-bottom: 1px solid #333; padding-top:0.75em; padding-bottom:0.75em;line-height:1.5em; margin-bottom:1.5em;margin-top:1.5em; }
-h6.casamiento { font: normal 1.375em "OS Light", serif; text-indent:1em; line-height:1.5em; margin:0; margin-bottom:1.5em; color:#333;}
-p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS Light", serif;line-height: 1.5em; padding:0; }
-
-.b1 { clear:both; }
-
 /* COLUMNS */
-#left_column { width:48%; float:left; border:0; margin-left:1%; margin-right:1%; }
-#right_column { width:49%; float:right; margin-right:1%;}
-#slides { margin-top:0.5em;margin-bottom:0.5em;border-bottom:1px solid #000 }
-#page_container_casamiento { text-align:center; background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); width:100%; }
-#inner_page_container_casamiento { text-align:left;margin:auto; border-left:1px dotted #000; border-right: 1px dotted #000; background-color:#fff; width:90%;}
+#welcome_left { width:48%; float:left; border:0; margin-left:1%; margin-right:1%; }
+#welcome_right { width:49%; float:right; margin-right:1%;}
 
 /* IMAGES */
-
+.customise {
+	background-color:white;
+	border-bottom-left-radius:12px;
+	font: normal 1.1em 'OS Light';
+	opacity:0.75;
+	padding:5px;
+	position:absolute;
+	right:0;
+	text-align:center;
+	top:0;
+	z-index:10001;
+}
 .place_square { border:1px solid white;padding-bottom:1em; margin-bottom:1em;}
+.place_square:hover { border:1px solid grey; text-decoration:underline; cursor:pointer;}
+
 .place_square_0, .place_square_1, .place_square_6 { float:left; border-bottom:1px solid grey; padding-bottom:4em;}
 
 .place_square_2, .place_square_3, .place_square_4, .place_square_5, .place_square_7, .place_square_8 {  padding:0;padding-bottom:1.5em; width:48%;float:left; margin-right:1%; margin-top:1%; border-bottom:1px solid grey;text-align:center;}
 
 .place_square_2 h2,  .place_square_3 h2,.place_square_4 h2, .place_square_5 h2, .place_square_7 h2, .place_square_8 h2 { padding:0;margin:0;font-size:1.2em;}
 
-
 .inner_place_square, .inner_place_square_hidden { margin-bottom:0;padding:0.25em}
-.place_square:hover { border:1px solid grey; text-decoration:underline; cursor:pointer;}
-
-
-.inner_place_square img, .inner_place_square_hidden img { width:100%; }
-</style>
-
+	.inner_place_square img, .inner_place_square_hidden img { width:100%; }
 
 <% var counter = 0 %>
 <%- contentFor('right') %>
+
 <%- contentFor('left') %>
-<div id="left_column">
+<div id="welcome_left">
 
 <% place_cards.forEach(function(place) { %>
 <% if (counter == 4) { %>
-</div><div id="right_column">
+</div><div id="welcome_right">
 <% } %>
 <a href="/products/<%= place._id %>">
 <div class="place_square_<%= counter %> place_square" style="border-bottom:1px solid grey;">
 	<div class="inner_place_square">
-		<img src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/display-<%= place.attachments_order[0] %>.jpg" />
+		<%- place.divs[0] %>
 	</div>
 	<div class="inner_place_square_hidden" style="display:none">
-		<img src="http://www.casamiento.co.uk/products/<%= place._id %>/attachments/display-<%= place.attachments_order[2] %>.jpg" />
+	<div style="position:relative;z-index:10000;">
+		<div class="customise" style=""><img src="/gfx/customise.png" style="width:30px"/> CUSTOMISE</div>
+		</div>
+		<%- place.divs[2] %>
+		
 	</div>
-	<div style="position:absolute;margin:0;padding:0;"><h2 class="casamiento" style="width:60%;margin-top:0em;padding-top:0em;letter-spacing:2px;text-align:left;"><%= place.name %></h2></div>
-	<div>
-		<p class="casamiento" style="text-align:right;margin-top:0.25em;margin:0;padding:0;font-size:1.4em">&pound;2.99</p>
-	</div>
+	<div style="margin:0;padding:0;"><h2 class="casamiento" style="width:60%;margin-top:0em;padding-top:0em;letter-spacing:2px;text-align:left;"><%= place.name %></h2></div>
 </div>
 </a>
 <% counter++ %>
@@ -78,29 +63,16 @@ p.casamiento { padding: 0 0.25em 0.75em 0.25em 0; font: normal 0.9em "OS Light",
 
 <script>
 	$(function(){
-	$('.place_square').mouseover(function() {
-
-		$(".inner_place_square", this).hide();
-		$(".inner_place_square_hidden",this).show();
+		$('.place_square').mouseover(function() {
+			$(".customise", this).show();
+			$(".inner_place_square", this).hide();
+			$(".inner_place_square_hidden",this).show();
+		})
+		$('.place_square').mouseout(function() {
+			$(".customise", this).hide();
+			$(".inner_place_square", this).show();
+			$(".inner_place_square_hidden",this).hide();
+		})
 	})
-	$('.place_square').mouseout(function() {
-
-		$(".inner_place_square", this).show();
-		$(".inner_place_square_hidden",this).hide();
-	})
-	  $("#slides").slidesjs({
-	  pagination: { active: false },
-	  navigation: { active: false },
-	  play: { auto: true,
-	  interval: 3500,
-	  effect: "slide" },
-	  effect: {
-	  fade: {speed: 2000,
-	  crossfade: true
-	  }},
-		width: 750,
-		height: 375
-	  });
-	});
-  </script>
+</script>
   
