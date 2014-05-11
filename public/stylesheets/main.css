@@ -203,6 +203,53 @@ input {
       .footer_seperator { float:none;width:100%;}
     }
 
+/* WELCOME PAGE 
+=================================== */
+
+.left_welcome_column { width:49.5%; float:left; }
+.right_welcome_column { width:49.5%; float:right;}
+
+.customise {
+  background-color:white;
+  border-bottom-left-radius:12px;
+  font: normal 1.1em 'OS Light';
+  opacity:0.75;
+  padding:5px;
+  position:absolute;
+  right:0;
+  text-align:center;
+  top:0;
+  z-index:10001;
+}
+.place_square { 
+  border:1px solid white;
+  border-bottom:1px solid grey; 
+  margin:0;
+  margin-bottom:1em;
+  padding:0;
+  padding-bottom:1em;
+}
+
+  .place_square img { width:100%; }
+  .place_square:hover { 
+    border:1px solid grey; 
+    cursor:pointer;
+    text-decoration:underline; 
+  }
+  
+  .place_square_2, .place_square_3, .place_square_5, .place_square_6, .place_square_8, .place_square_9, .place_square_11, .place_square_12 { 
+    float:left;
+    width:49.25%; 
+  }
+    
+  .place_square_4, .place_square_7, .place_square_10 { float:left;width:100%; }
+
+    .place_square_2 h2, .place_square_3 h2, .place_square_5 h2, .place_square_6 h2,.place_square_8 h2, .place_square_9 h2, .place_square_11 h2, .place_square_12 h2 { font-size:1.2em; }
+
+  .inner_place_square, .inner_place_square_hidden { 
+    margin-bottom:0;
+    padding:0.25em;
+  }
 
 /* PRODUCT PAGE
 ==================================== */
@@ -313,27 +360,6 @@ input {
       .cart_icon { padding-left:5px;width:30px;margin-top:7px;}
       #paypal { width:90px;padding-top:0.25em;}
 
-/* WELCOME PAGE 
-============================= */
-  .welcome_page_product .slide {
-    width:100%;
-  }
-  #welcome_column .step { 
-    display:block;
-    letter-spacing:0.2em;
-    color: black; 
-    text-align:right; 
-  }
-  #welcome_column .chat-bubble { display:block; }
- 
-/* Mobile responsive */
-  @media all and (max-width: 600px) and (min-width: 320px) {
-    #left_column, #right_column { 
-      float:none;
-      margin:0 auto;
-      width:100%;
-    }
-  }
 /* RESPONSIVE DESIGNS
 ============================= */
 
