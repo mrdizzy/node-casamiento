@@ -2,6 +2,7 @@ var ProductTypeSelectionView = SelectionView.extend({attributes: { name: "produc
 var ThemeSelectionView = SelectionView.extend({attributes: { name: "theme"}})
 
 
+    var default_tags = ["victorian", "wallpaper", "damask", "contemporary", "pattern", "floral", "minimalistic", "geometric", "birds", "hearts", "vintage", "dots", "simple"];
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var AttachView = Backbone.View.Attachment.extend({
   initialize: function() {
@@ -146,7 +147,9 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     e.preventDefault();
     // Backbone.Syphon serializes a Backbone view into a JavaScript object. See:
     // https://github.com/derickbailey/backbone.syphon/
-    this.model.set(Backbone.Syphon.serialize(this))
+    var serialized = Backbone.Syphon.serialize(this);
+    serialized.tags.sort();
+    this.model.set(serialized)
     this.model.save(this.model.attributes, {success: function(model, response, options) {
       console.log("Success:", response)
     }, 
@@ -157,7 +160,18 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   render: function() {
     var modelToJSON = this.model.toJSON();
     
-    var result = Handlebars.compile($('#current_product_form').html())(modelToJSON);
+    // Prepare tags for view
+    var tags = this.model.get("tags");
+    var options_for_select = "";
+    default_tags.forEach(function(tag) {
+        if(_.contains(tags, tag)) {
+            options_for_select = options_for_select + "<option value='" + tag + "' selected='selected'>" + tag + "</option>";
+        } else {
+            options_for_select = options_for_select + "<option value='" + tag + "'>" + tag + "</option>";
+        }
+    })
+    modelToJSON.tags_for_select= options_for_select
+    var result = Handlebars.compile($('#current_product_form').html(),{noEscape: true})(modelToJSON);
     this.$el.html(result);
     var number_of_colours = this.model.get("colours").length;
     for(var i=0; i < number_of_colours; i++) {

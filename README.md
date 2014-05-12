@@ -17,6 +17,15 @@ The main layout is in views/layout.ejs
 This is used by home.js. This layout also specifies the stylesheet to use which is main.css
 
 
+COUCHDB TAGGING 
+===============
+
+See this gist regarding implementing tagging in CouchDB:
+
+https://gist.github.com/amedeo/820412
+
+Arrays of tags must be in alphabetical order in order to match one another when searching for matching tags. 
+
 COUCHDB PRODUCT
 ===============
 

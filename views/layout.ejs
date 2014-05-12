@@ -12,6 +12,8 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+    <script type="text/javascript" src="/javascripts/libraries/backbone_syphon.js"></script>
+    
     <script src="/javascripts/libraries/color_picker.js"></script>
     <style type="text/css">
         <%- inline_styles %>
@@ -62,37 +64,45 @@
               <div class="tag">Pattern <div class="tag_close">x</div></div>  
               <div class="tag">Damask <div class="tag_close">x</div></div> 
             </div>
-            
             <div id="navigation_options">
+            
+            <form id="tags_form">
               <table style="font:1em normal 'OS'">
                 <tr>
                   <td>
                     <p style="line-height:2em;">
-                      <input type="checkbox" style="border:1px solid black;margin:0;padding:0;text-align:left;"></input> Victorian<br/>
-                      <input type="checkbox"></input> Contemporary<br/>
-                      <input type="checkbox"></input> Floral<br/>
+                      <input type="checkbox" name="victorian"></input> Victorian<br/>
+                      <input type="checkbox" name="contemporary"></input> Contemporary<br/>
+                      <input type="checkbox" name="wallpaper"></input> Wallpaper<br/>
+                      <input type="checkbox" name="floral"></input> Floral<br/>
                     </p>
                   </td>
                   
                   <td>
                     <p style="line-height:2em;">
-                      <input type="checkbox"></input> Pattern<br/>
-                      <input type="checkbox"></input> Xmas<br/>
-                      <input type="checkbox"></input> Plain<br/>
+                      <input type="checkbox" name="pattern"></input> Pattern<br/>
+                      <input type="checkbox" name="xmas"></input> Xmas<br/>
+                      <input type="checkbox" name="plain"></input> Plain<br/>
+                      
+                      <input type="checkbox" name="hearts"></input> Hearts<br/>
                     </p>
                   </td>
                   
                   <td>
                     <p style="line-height:2em;">
-                      <input type="checkbox"></input> Abstract<br/>
-                      <input type="checkbox"></input> Ornamental<br/>
-                      <input type="checkbox"></input> Whimsical<br/>
+                      <input type="checkbox" name="abstract"></input> Abstract<br/>
+                      <input type="checkbox" name="ornamental"></input> Ornamental<br/>
+                      <input type="checkbox" name="whimsical"></input> Whimsical<br/>
+                      
+                      <input type="checkbox" name="vintage"></input> Vintage<br/>
                     </p>
                   </td>              
                 </tr>
               </table>
+              </form>
             </div>
-              
+            <div class="loading" style="text-align:center;display:none;padding:3em;"><img src="/gfx/spinner.gif" /></div>
+              <div id="search_results" style="clear:both;"></div>
           </div>
         </div>
       </div>
@@ -123,5 +133,36 @@ $('.browse').mouseover(function() {
 $('.browse').mouseout(function() {
   $('#designs').hide();
 })
+
+Backbone.Syphon.InputReaders.register('checkbox', function($el){
+    return $el.prop('checked') ? $el.val() : false;
+});
+var TagsView = Backbone.View.extend({
+    events: {
+      'click [type="checkbox"]': 'selectTag'
+    },
+    selectTag: function(e) {
+    $('#search_results').empty();
+      var serialized = Backbone.Syphon.serialize(this);
+      
+      var result = []
+      for(var prop in serialized) {
+        if(serialized[prop]) {
+          result.push(prop)
+        }
+      }
+      result.sort();
+      if(result) {
+      $('.loading').show();
+        $.post("/search",  {tags: result }, function(data) {
+        $('.loading').hide();
+          $('#search_results').html(data)
+        })
+      }
+    }
+})
+
+var tv = new TagsView({el: $('#designs')});
+
 </script>
 

@@ -50,6 +50,8 @@ h2 {
   
   .place_square_2 h2, .place_square_3 h2, .place_square_5 h2, .place_square_6 h2,.place_square_8 h2, .place_square_9 h2, .place_square_11 h2, .place_square_12 h2 { font-size:1.2em; }
   
+  #search_results h2 { font-size:1.2em; letter-spacing:0.1em;}
+  
 h3 { 
   font:normal 1.3em Gara;
   letter-spacing:0.1em;
@@ -201,6 +203,8 @@ input {
         text-align:left;
         width:65%;
       }
+      
+      #search_results img { width: 100%;}
     .left_column { 
       float:left; 
       width:70%; 

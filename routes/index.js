@@ -6,6 +6,8 @@ module.exports = function(app){
       load: parseRevision
   })
   
+  app.post("/search", require("./../controllers/search"))
+  
   app.resource("downloads", require("./../controllers/downloads"))
   app.resource("payments", require("./../controllers/payments"))
   app.resource("cart", require("./../controllers/cart"))
