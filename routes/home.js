@@ -1,7 +1,5 @@
-var colours = require('./../config/colours'),
-    _ = require('underscore'),
+var _ = require('underscore'),
     db = require('./../config/db').test_ebay,
-    inGroupsOf = require('./../lib/in_groups_of'),
     prepareDivs = require('./../lib/prepare_divs');
     
 module.exports = function(app){

@@ -20,35 +20,108 @@
 
   <body>
     
-  <div id="page_container">
-    <div id="inner_page_container">
-          
-     
-    <div class="left_column">
-        <div class="caz" id="header_container_casamiento">
-
-            <div id="main_logo_casamiento" class="caz">
-              <a href="/"><img src="http://www.casamiento.co.uk/gfx/logo/cas.png" id="logo" class="caz"></a>
+    <div id="page_container">
+      <div id="inner_page_container">
+          <div>
+            <div>
+              <a href="/"><img src="http://www.casamiento.co.uk/gfx/logo/cas.png" id="logo" class="caz" style="display:block;margin-left:3em;padding:1em;"></a>
             </div>
+            
+            <div style="position:relative">
+          
+              <div style="height:50px;float:left;border-top:1px dashed grey;border-bottom:1px solid black;width:25%;text-align:center;">
+                <img src="http://www.casamiento.co.uk/gfx/logo/drms.png" style="width:150px;padding-top:0.25em;">
+              </div>
               
-            <div id="main_slogan_casamiento" class="caz">
-              <img src="http://www.casamiento.co.uk/gfx/logo/drms.png" /id="dreams_on_paper_slogan">
+              <div style="font: 1.2em normal 'OS Light Italic';border-top:1px dashed grey;border-bottom:1px solid black;float:left;width:24.95%;">
+                <div style="padding-top:15px;height:35px;border-left:1px dotted grey;text-align:center;">
+                  <img src="/gfx/bullets/line_diamond.png" /> About
+                </div>
+              </div>
+              
+             <div id="browse" class="browse" style="border-top:1px dashed grey;font: 1.2em normal 'OS Light Italic';float:left;width:24.85%;border-bottom:1px solid black;">
+                <div style="padding-top:15px;height:35px;border-left:1px dotted grey;border-right:1px dotted grey;text-align:center;">
+                  <img src="/gfx/bullets/line_diamond.png" /> Browse designs
+                </div>
+              </div>
+              
+              <div style="height:50px;border-top:1px dashed grey;border-bottom:1px solid black;font: 1.2em normal 'OS Light Italic';float:left;width:24.95%;">
+                <div style="padding-top:15px;height:35px;text-align:center;">
+                  <img src="/gfx/bullets/line_diamond.png" />  Contact us
+                </div>
+              </div>
             </div>
             
         <div style="clear:both;"></div>
+        
+        <div id="designs" class="browse">
+          <div style="padding:2em;">
+          
+            <div id="navigation_selected_tags">
+              <div class="tag">All items <div class="tag_close">x</div></div> 
+              <div class="tag">Pattern <div class="tag_close">x</div></div>  
+              <div class="tag">Damask <div class="tag_close">x</div></div> 
+            </div>
+            
+            <div id="navigation_options">
+              <table style="font:1em normal 'OS'">
+                <tr>
+                  <td>
+                    <p style="line-height:2em;">
+                      <input type="checkbox" style="border:1px solid black;margin:0;padding:0;text-align:left;"></input> Victorian<br/>
+                      <input type="checkbox"></input> Contemporary<br/>
+                      <input type="checkbox"></input> Floral<br/>
+                    </p>
+                  </td>
+                  
+                  <td>
+                    <p style="line-height:2em;">
+                      <input type="checkbox"></input> Pattern<br/>
+                      <input type="checkbox"></input> Xmas<br/>
+                      <input type="checkbox"></input> Plain<br/>
+                    </p>
+                  </td>
+                  
+                  <td>
+                    <p style="line-height:2em;">
+                      <input type="checkbox"></input> Abstract<br/>
+                      <input type="checkbox"></input> Ornamental<br/>
+                      <input type="checkbox"></input> Whimsical<br/>
+                    </p>
+                  </td>              
+                </tr>
+              </table>
+            </div>
+              
+          </div>
         </div>
-        <%- left %>
-    </div>   
-    <div class="right_column"><%- right %></div>
+      </div>
+       
+      <div class="left_column"><%- left %></div>       
+      <div class="right_column"><%- right %></div>
      
       <div id="footer">
         <div class="genesis_collection"><img src="/gfx/logo/gen_compact.png" style="width:160px"/></div>
         <div class="footer_seperator"><img src="/gfx/three_across.png" style="width:60px"/></div>
         <div class="castello_collection"><img src="/gfx/logo/castello.png" style="width:250px;" /></div>
       </div>
-<div style="clear:both;"></div>
       
+      <div style="clear:both;"></div>
     </div>
   </body>
 </html>
+
+<script>
+$('.browse').mouseover(function() {
+  $('#designs').show();
+  $('#browse div').css("border", "0")
+  $('#browse').css("border", "1px solid black")
+  $('#browse').css("border-bottom", 0)
+  
+})
+
+$('.browse').mouseout(function() {
+  $('#designs').hide();
+})
+</script>
 

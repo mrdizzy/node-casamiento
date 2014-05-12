@@ -1,16 +1,45 @@
 <%- contentFor('inline_styles') %>
 
 <% var counter = 0 %>
+
 <%- contentFor('right') %>
 
+<div id="welcome_column">  
+	<div class="spc" style="padding:0.2em;">
+		<h5 style="font-size:2.8em;padding-top:0.75em;padding-bottom:0;border-bottom:0;"><span style="letter-spacing:0.15em; font-size:0.9em;font-variant:small-caps;"> IMPRESS</span> your guests with personalised place cards&hellip;</h5>
+		 
+		<div class="shell"></div>
+			
+		<p class="first"><span style="letter-spacing:0.2em; font-size:1em;font-family:Gara';font-variant:small-caps">YOUR GUESTS</span>, will love seeing their names individually printed on our elegant freestanding place cards&hellip; </p>
+		
+		<p>&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs below are bound to compliment your theme&hellip;</p>
+
+		<h3>Save time &amp; hassle&hellip;</h3>
+		
+		<p>They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.</p>
+		
+		<p>Place your order today!</p>
+	 
+		<p style="margin:0;padding:0;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/></p>
+		 
+		<p style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
+		
+		<span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
+		
+	</div>
+</div>
+	 
 <%- contentFor('left') %>
 
 <% place_cards.forEach(function(place) { %>
+
 <% if (counter == 0) { %>
 <div class="left_welcome_column">
 <% } else if (counter == 5) { %>
+
 </div><div class="right_welcome_column">
 <% } %>
+
 <% if (counter < 13) { %>
 <a href="/products/<%= place._id %>">
 <div class="place_square_<%= counter %> place_square" style="border-bottom:1px solid grey;">
@@ -33,9 +62,6 @@
 <% counter++ %>
 <% } %>
 <% }) %>
-</div>
-<div class="b1"></div>
-</div>
 </div>
 
 <script>

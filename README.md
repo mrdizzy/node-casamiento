@@ -12,6 +12,10 @@ CONVENTIONS
 
 LAYOUTS 
 =======
+The main layout is in views/layout.ejs
+
+This is used by home.js. This layout also specifies the stylesheet to use which is main.css
+
 
 COUCHDB PRODUCT
 ===============
