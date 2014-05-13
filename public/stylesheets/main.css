@@ -205,6 +205,8 @@ input {
       }
       
       #search_results img { width: 100%;}
+      .search_image { border:1px solid transparent;}
+      .search_image:hover { opacity:0.85; border:1px solid grey;}
     .left_column { 
       float:left; 
       width:70%; 

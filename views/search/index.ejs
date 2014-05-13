@@ -1,6 +1,6 @@
 <% docs.forEach(function(place) { %>
-  <div style="float:left;width:24%;margin-right:1%;">
+  <a href="/products/<%= place._id %>"><div class="search_image" style="float:left;width:24%;margin-right:0.75%;">
   <%- place.divs[0] %>
   <h2><%= place.name %></h2>
-  </div>
+  </div></a>
 <% }) %>

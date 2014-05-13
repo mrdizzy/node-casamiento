@@ -64,7 +64,7 @@ var ProductsView = Backbone.View.extend({
     'click #addnew': 'addNew'
   },
   addNew: function() {
-    var product = new Product({colours: ["#000000"]});
+    var product = new Product({colours: ["#23297a"]});
     
     this.collection.add(product);
     var cpv = new CurrentProductView({model:product, attachmentView: AttachView});
