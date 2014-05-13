@@ -200,10 +200,12 @@ input {
         text-align:left;
         width:65%;
       }
-      
+       
       #search_results img { width: 100%;}
+      .search { border-radius:10px;}
+     
       .search_image { border:1px solid transparent;}
-      .search_image:hover { opacity:0.85; border:1px solid grey;}
+      .search_image:hover { opacity:0.85; border:1px solid grey; border-radius: 10px;}
     .left_column { 
       float:left; 
       width:70%; 
