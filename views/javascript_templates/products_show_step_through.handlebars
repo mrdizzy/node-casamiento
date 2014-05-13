@@ -24,6 +24,8 @@
   
 -->
 
+
+
 <div class="spc" id="step_2">
 	<div class="step_header_container">
 		<h4>Card Texture</h4>
@@ -32,10 +34,23 @@
 	
 	<div class="chat-bubble" style="{{display_step_2}}">Click and highlight an icon to select the texture of your choice. Plain is the cheapest with its smooth plain finish, but hammered and linen both make your cards feel more luxurious. 
 	</div>
+	
 	<div id="texture_selection">
-		<div class="texture selectable deselected"><img src="/gfx/icons/plaine.png"><p>Plain</p></div>
-		<div class="texture selectable deselected"><img src="/gfx/icons/hammer.png"><p>Hammered</p></div>
-		<div class="texture selectable deselected"><img src="/gfx/icons/linen.png"><p>Linen</p></div>
+	
+		<div class="texture selectable deselected">
+			<div class="texture_circle"></div>
+			<br/>Plain
+		</div>
+		
+		<div class="texture selectable deselected">
+			<div class="texture_circle" style="background-image:url('/gfx/hammered.png');background-size:2em;"></div>
+			<br/>Hammered
+		</div>		
+		
+		<div class="texture selectable deselected">
+			<div class="texture_circle" style="background-image:url('/gfx/icons/linen.png');background-size:2em;"></div>
+			<br/>Linen
+		
 	</div>
 </div>
 
@@ -52,7 +67,7 @@
 	</div> 
 	<div class="chat-bubble"  style="{{display_step_3}}">Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm): the higher the number, the thicker the card. A normal sheet of A4 copy paper is usually about 80gsm.
 	</div>
-	<br/>
+	
 	<div class="weight deselected selectable">
 		 <div class="weight_line"></div>
 		 <p>250gsm</p>
@@ -62,6 +77,7 @@
 		<div class="weight_line" style="border-top:10px solid black;"></div>
 		<p>300gsm</p>
 	</div>
+	
 </div>
 
 <!-- 
@@ -95,7 +111,7 @@
 	
 
 		<div id="qty_container">
-				<div id="minus_qty" class="deselected">-</div> <span id="qty">{{quantity}}</span>
+				<div id="minus_qty" class="deselected">-</div> <input type="text" id="qty" value="{{quantity}}" size="3"></input>
 				<div id="plus_qty" class="deselected">+</div>
 		</div>
 		<div class="price">

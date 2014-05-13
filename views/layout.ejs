@@ -24,30 +24,28 @@
     
     <div id="page_container">
       <div id="inner_page_container">
-          <div>
-            <div>
-              <a href="/"><img src="http://www.casamiento.co.uk/gfx/logo/cas.png" id="logo" class="caz" style="display:block;margin-left:3em;padding:1em;"></a>
-            </div>
+          <div id="header_container">
+            <a href="/"><img src="http://www.casamiento.co.uk/gfx/logo/cas.png" id="logo"></a>
             
             <div style="position:relative">
           
               <div style="height:50px;float:left;border-top:1px dashed grey;border-bottom:1px solid black;width:25%;text-align:center;">
-                <img src="http://www.casamiento.co.uk/gfx/logo/drms.png" style="width:150px;padding-top:0.25em;">
+                <img src="http://www.casamiento.co.uk/gfx/logo/drms.png" id="dreams_slogan">
               </div>
               
-              <div style="font: 1.2em normal 'OS Light Italic';border-top:1px dashed grey;border-bottom:1px solid black;float:left;width:24.95%;">
+              <div class="nav_link" id="about">
                 <div style="padding-top:15px;height:35px;border-left:1px dotted grey;text-align:center;">
                   <img src="/gfx/bullets/line_diamond.png" /> About
                 </div>
               </div>
               
-             <div id="browse" class="browse" style="border-top:1px dashed grey;font: 1.2em normal 'OS Light Italic';float:left;width:24.85%;border-bottom:1px solid black;">
+             <div id="browse" class="browse nav_link">
                 <div style="padding-top:15px;height:35px;border-left:1px dotted grey;border-right:1px dotted grey;text-align:center;">
                   <img src="/gfx/bullets/line_diamond.png" /> Browse designs
                 </div>
               </div>
               
-              <div style="height:50px;border-top:1px dashed grey;border-bottom:1px solid black;font: 1.2em normal 'OS Light Italic';float:left;width:24.95%;">
+              <div class="nav_link">
                 <div style="padding-top:15px;height:35px;text-align:center;">
                   <img src="/gfx/bullets/line_diamond.png" />  Contact us
                 </div>
@@ -132,6 +130,9 @@ $('.browse').mouseover(function() {
 
 $('.browse').mouseout(function() {
   $('#designs').hide();
+  
+  $('#browse').css("border", "0")
+  $('#browse div').css("border", "1px dashed grey")
 })
 
 Backbone.Syphon.InputReaders.register('checkbox', function($el){

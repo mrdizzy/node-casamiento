@@ -10,13 +10,13 @@ var Product = Backbone.Model.extend({
     if((qty > 32) && (qty < 96)) {
       discount = (10/100) * total
     }
-      if((qty >95) && (qty < 152)) {
-    discount = (15/100) * total
+    if((qty >95) && (qty < 152)) {
+      discount = (15/100) * total
     }
     return discount;
   },
   calculatePrice: function() {   
-  var qty = this.get("quantity"),
+    var qty = this.get("quantity"),
    total = this.get("price") * qty,
       texture = this.get("texture"),
       weight = this.get("weight");
@@ -42,7 +42,7 @@ var StepsPresenter = function(model, view) {
   this.view = view;
   this.model = model; 
   this.model.set("quantity", 8)
-  this.model.set("guests", ["...", "...", "...", "...", "..."])
+  this.model.set("guests", ["...", "...", "...", "...", "...", "...", "...", "..."])
   this.quantity = 8
   this.currentStep = 1;
   this.hoveringStep = 0;
@@ -59,7 +59,7 @@ StepsPresenter.prototype = {
     this.toggleStepOn = this.currentStep + 1;
     this.view.render();
     this.currentStep = this.currentStep + 1;
-},
+  },
   hoverStepOn: function(step_number) {
     if(this.currentStep == step_number) {
       return false
@@ -88,9 +88,9 @@ StepsPresenter.prototype = {
     this.changeQty = true;
     var guests = this.model.get("guests")
     if(number > 0) {
-      guests.push("...", "...", "...", "...", "...") }
+      guests.push("...", "...", "...", "...", "...", "...", "...", "...") }
     else {
-      guests.splice(guests.length-5, 5)
+      guests.splice(guests.length-8, 8)
     }
     this.model.set("guests", guests)
     this.renderPrice();
@@ -140,7 +140,13 @@ var StepView = Backbone.View.extend({
     "click #minus_qty": "minusQty"
   },
   checkout: function() {
-    $.form('/payments', { "L_PAYMENTREQUEST_0_AMT0": thisProduct.get("unit"), "PAYMENTREQUEST_0_AMT": thisProduct.get("total"), "L_PAYMENTREQUEST_0_QTY0": thisProduct.get("quantity"), "L_PAYMENTREQUEST_0_NAME0": thisProduct.get("name"), "L_PAYMENTREQUEST_0_DESC0": "Some description" }).submit();
+    $.form('/payments', { 
+      "L_PAYMENTREQUEST_0_AMT0": thisProduct.get("unit"), 
+      "PAYMENTREQUEST_0_AMT": thisProduct.get("total"), 
+      "L_PAYMENTREQUEST_0_QTY0": thisProduct.get("quantity"), 
+      "L_PAYMENTREQUEST_0_NAME0": thisProduct.get("name"), 
+      "L_PAYMENTREQUEST_0_DESC0": "Some description" 
+    }).submit();
   },
   selectColour1: function(e, colour) {
     if(thisProduct.get("colours").length == 1) {
@@ -198,7 +204,7 @@ var StepView = Backbone.View.extend({
       $(texture_changed).toggleClass("selected"); 
       this.presenter.changeTexture = false;
     } else if (this.presenter.changeQty) {      
-      this.$('#qty').text(thisProduct.get("quantity"))
+      this.$('#qty').val(thisProduct.get("quantity"))
       this.$('span#pound').text(this.presenter.pounds);
       this.$('span#decimal').text("." + this.presenter.dec);
       var input_fields = []
@@ -206,7 +212,7 @@ var StepView = Backbone.View.extend({
         input_fields.push($('<input type="text" name="guest" value="' + guest + '"></input>'))
       })
       this.$('#guests').html(input_fields)
-    }else {
+    } else {
       var result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter));
       var colours_1 = $("<div id='picker_1'></div>").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[0]});
       if(thisProduct.get("colours")[1]) {

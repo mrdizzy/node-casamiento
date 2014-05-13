@@ -6,7 +6,7 @@ exports.show = function(req, res) {
  db.get(id, function(error, doc) {
 
         res.render('downloads/show.ejs', {
-            locals: doc ,layout: false
+            locals: doc
         })
     });
 };

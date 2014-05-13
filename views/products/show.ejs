@@ -3,18 +3,18 @@
 
 <%- contentFor('left') %>
 
-    <script type="text/javascript" src="/javascripts/libraries/jquery_form.js"></script>
-    <script type="text/javascript" src="/javascripts/products/show.js"></script>
-<script type="text/javascript" src="/javascripts/libraries/in_groups_of.js"></script>
+  <script type="text/javascript" src="/javascripts/libraries/jquery_form.js"></script>
+  <script type="text/javascript" src="/javascripts/products/show.js"></script>
+  <script type="text/javascript" src="/javascripts/libraries/in_groups_of.js"></script>
 
 <!-- 
   SLIDES 1 TO 3 
 -->
 
-      <%-  product.divs[0] %>
-       <img src="/gfx/product_types/small/name_place_small.png" class="product_type_icon">
-      <%-  product.divs[1] %>
-      <%-  product.divs[2] %>
+  <%-  product.divs[0] %>
+   <img src="/gfx/product_types/small/name_place_small.png" class="product_type_icon">
+  <%-  product.divs[1] %>
+  <%-  product.divs[2] %>
       
 <!-- 
 
@@ -22,36 +22,40 @@
 
 -->      
       
-      <div id="product_name_container"><h1 class="product_name"><%= product.name %></h1>
-        <div class="ornamental_line"></div>
-      </div>
-        
-      <div id="description_container">
-        <div class="shell"></div>
-        <h6>This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h6>
-      </div>
-  
+  <div id="product_name_container">
+    <h1 class="product_name"><%= product.name %></h1>
+    <div class="ornamental_line"></div>
+  </div>
+    
+  <div id="description_container">
+    <div class="shell"></div>
+    <h6>This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h6>
+  </div>
+
 <!-- 
 
   SLIDE 4 
 
 -->    
-     <%-  product.divs[3] %>
+  <%-  product.divs[3] %>
 
   <a href="/downloads/<%= product.id %>">Download</a>
+
 <%- contentFor('right') %>
 
-<div id="steps"></div>
-<script type="text/javascript">
+  <div id="steps"></div>
+  
+  <script type="text/javascript">
 
-// Initialize templates
-var templates = {}
-<% templates.forEach(function(template) { %>
-  templates["<%= template.name %>"] = <%- template.template %>;
-<% }) %>
-// Setup and initialization
-var thisProduct = new Product(<%- JSON.stringify(product) %>);
+    // Initialize templates
+    var templates = {}
+    <% templates.forEach(function(template) { %>
+      templates["<%= template.name %>"] = <%- template.template %>;
+    <% }) %>
+    
+    // Setup and initialization
+    var thisProduct = new Product(<%- JSON.stringify(product) %>);
 
-new StepView().render();
+    new StepView().render();
 
-</script>
+  </script>
