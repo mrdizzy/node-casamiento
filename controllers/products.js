@@ -2,6 +2,23 @@ var db = require('./../config/db').test_ebay,
   _ = require('underscore'),  
     prepareDivs = require('./../lib/prepare_divs');
 
+exports.index = function(req, res) {
+  db.view('products/name_place', function(err, docs) {
+    docs = docs.toArray();
+    var counter = 0;
+      docs.forEach(function(place) {
+        place.divs = prepareDivs(place, "slide_" + counter + "_", "slide slide_" + counter, "display", "colour");
+        counter++;
+      })
+      docs.place_cards = docs;
+       
+      res.render('products/index', {
+        layout: 'layout',
+        locals: docs
+      });
+    });
+}
+
 exports.update = function(req, res) {
   db.save(req.body, function(err, documents) {
     if (err) {

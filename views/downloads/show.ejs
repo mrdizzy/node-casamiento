@@ -1,37 +1,121 @@
 <%- contentFor('inline_styles') %>
-@media print {
-#header_container { display:none; }
-#footer { display:none; }
+  .page div { margin:0 auto; }
+  .page { 
+    padding-top:3em;
+    width:210mm;
+    margin:0 auto;
+    height:297mm;
+  }
+  
+  .casamiento_black_logo {
+    text-align:center;
+    width:50mm;
+    display:none;
+  }
+  
+  .place_card_container {
+    border:1px dotted lightgrey;
+    height:74.25mm;
+    position:relative;
+    width:105mm;
+  } 
+  
+  .top_top_left_crop_mark {
+    position:absolute;width:20px;height:20px;border-right:1px solid black;z-index:200000;top:-30px;left:-21px;
+  }
+  
+  .top_left_left_crop_mark {
+    position:absolute;width:20px;height:20px;border-bottom:1px solid black;z-index:200000;top:-21px;left:-30px;
+  } 
+  .top_top_right_crop_mark {
+    position:absolute;width:20px;height:20px;border-bottom:1px solid black;z-index:200000;top:-21px;right:-30px;
+  }
+  .top_right_right_crop_mark {
+    position:absolute;width:20px;height:20px;border-left:1px solid black;z-index:200000;top:-30px;right:-21px;
+  }
+  
+  .bottom_bottom_left_crop_mark {
+    position:absolute;width:20px;height:20px;border-right:1px solid black;z-index:200000;bottom:-30px;left:-21px;
+  }
+  
+  .bottom_left_left_crop_mark {
+    position:absolute;width:20px;height:20px;border-top:1px solid black;z-index:200000;bottom:-21px;left:-30px;
+  } 
+  
+  .bottom_bottom_right_crop_mark {
+    position:absolute;width:20px;height:20px;border-left:1px solid black;z-index:200000;bottom:-30px;right:-21px;
+  }
+  
+  .bottom_right_right_crop_mark {
+    position:absolute;width:20px;height:20px;border-top:1px solid black;z-index:200000;bottom:-21px;right:-30px;
+  } 
+  @media print {
+    #header_container { display:none; }
+    #footer { display:none; }
+    .page {  }
+    #picker_1 { display:none; }
+    .casamiento_black_logo { display:block; }
+  }
+  
+  svg { height:100%; width:100%; position:absolute; }
+
+  .name { 
+    border:none;
+    margin:0;
+    padding:0;
+    outline:none;
+    background-color:transparent;
+    display:inline;
+    font-size:2em;
+    letter-spacing:0;
+    font-family:'TP';
+    text-align:center;
+    line-height:3.7125cm; 
 }
-@font-face { font-family:"TP"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
-
-svg { height:100%; width:100%; position:absolute; }
-
-.name { border:none;margin:0;padding:0;outline:none;background-color:transparent;display:inline;font-size:2em;letter-spacing:0;font-family:'TP';text-align:center;line-height:3.7125cm; }
 
 <%- contentFor('left') %>
 
+<div class="page">
 
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-<div class="page" style="margin:0 auto;margin-left:10em;margin-top:2em;">
-    <div style="width:105mm;height:74.25mm;border:1px dotted lightgrey;position:relative;"><div style="position:absolute;width:10px;height:10px;border:1px solid black;z-index:200000;top:-11px;left:-11px;border-top:0;border-left:0;"></div><div style="position:absolute;width:10px;height:10px;border:1px solid black;z-index:200000;top:-11px;right:-11px;border-top:0;border-right:0;"></div><div style="z-index:5;width:100%;height:7.245cm;text-align:center;position:absolute;"><div style="height:3.7125cm;"></div><div style="height:3.7125cm;border-top:1px dotted lightgrey"><input type="text" class="name" value="David Louise"></input></div></div>
-    <%- svg %>
+  <div class="casamiento_black_logo">
+    <img src="/gfx/logo/casamiento_black.svg" style="width:50mm;" />
+  </div>
+    
+  <div class="place_card_container">
+    <div class="top_top_left_crop_mark"></div>
+    <div class="top_left_left_crop_mark"></div>
+    <div class="top_top_right_crop_mark"></div>
+    
+    <div class="top_right_right_crop_mark"></div>
+    <div class="bottom_bottom_left_crop_mark"></div>
+    
+    <div class="bottom_left_left_crop_mark"></div>
+    <div class="bottom_bottom_right_crop_mark"></div>
+    
+    <div class="bottom_right_right_crop_mark"></div>
+    <div style="z-index:5;width:100%;height:7.245cm;text-align:center;position:absolute;">
+      <div style="height:3.7125cm;"></div>
+      <div style="height:3.7125cm;border-top:1px dotted lightgrey">
+        <input type="text" class="name" value="David Louise"></input>
+      </div>
     </div>
-     <div style="width:105mm;height:74.25mm;border:1px dotted lightgrey;position:relative;"><div style="z-index:5;width:100%;height:7.245cm;text-align:center;position:absolute;"><div style="height:3.7125cm;"></div><div style="height:3.7125cm;border-top:1px dotted lightgrey"><input type="text" class="name" value="David Louise"></input></div></div>
     <%- svg %>
-    </div>
-     <div style="width:105mm;height:74.25mm;border:1px dotted lightgrey;position:relative;"><div style="z-index:5;width:100%;height:7.245cm;text-align:center;position:absolute;"><div style="height:3.7125cm;"></div><div style="height:3.7125cm;border-top:1px dotted lightgrey"><input type="text" class="name" value="David Louise"></input></div></div>
-    <%- svg %>
-    </div>
+  </div>
 </div>
-<script>
-/*var result =  $('#template').clone().html();
-$('.page').html(result);
-for(var i=0; i<24;i++) {
-$('.page').append(result)
-}*/
-</script>
 
 
 <%- contentFor('right') %>
+<div id='picker_1'></div>
+
+<script type="text/javascript">
+$(function(){
+var current_colour = '<%= colours[0] %>';
+$('[fill=#F9A350]').attr('fill', '<%= colours[0] %>')
+
+$('#picker_1').colorPicker({colours_per_page:12, default_color: "<%=colours[0] %>"}).on('dizzy-cp:hoverColor', function(e, colour) {
+    $('[fill=' + current_colour + ']').attr('fill', colour)
+    current_colour = colour
+})
+
+});
+</script>
