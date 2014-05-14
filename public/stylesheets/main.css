@@ -200,6 +200,8 @@ input {
         text-align:left;
         width:65%;
       }
+      #browse div:hover { background-color:#EEE;}
+      #browse div { padding-top:15px;height:35px;border-left:1px dotted grey;border-right:1px dotted grey;text-align:center;}
        
       #search_results img { width: 100%;}
       .search { border-radius:10px;}

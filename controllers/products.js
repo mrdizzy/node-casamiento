@@ -7,11 +7,11 @@ exports.index = function(req, res) {
     docs = docs.toArray();
     var counter = 0;
       docs.forEach(function(place) {
-        place.divs = prepareDivs(place, "slide_" + counter + "_", "slide slide_" + counter, "display", "colour");
+        place.divs = prepareDivs(place, "search", "search", "display", "colour");
         counter++;
       })
       docs.place_cards = docs;
-       
+       console.log(docs)
       res.render('products/index', {
         layout: 'layout',
         locals: docs

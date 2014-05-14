@@ -39,11 +39,11 @@
                 </div>
               </div>
               
-             <div id="browse" class="browse nav_link">
-                <div style="padding-top:15px;height:35px;border-left:1px dotted grey;border-right:1px dotted grey;text-align:center;">
+             <a href="/products"><div id="browse" class="browse nav_link">
+                <div>
                   <img src="/gfx/bullets/line_diamond.png" /> Browse designs
                 </div>
-              </div>
+              </div></a>
               
               <div class="nav_link">
                 <div style="padding-top:15px;height:35px;text-align:center;">
@@ -54,55 +54,6 @@
             
         <div style="clear:both;"></div>
         
-        <div id="designs" class="browse">
-          <div style="padding:2em;">
-          
-            <div id="navigation_selected_tags">
-              <div class="tag">All items <div class="tag_close">x</div></div> 
-              <div class="tag">Pattern <div class="tag_close">x</div></div>  
-              <div class="tag">Damask <div class="tag_close">x</div></div> 
-            </div>
-            <div id="navigation_options">
-            
-            <form id="tags_form">
-              <table style="font:1em normal 'OS'">
-                <tr>
-                  <td>
-                    <p style="line-height:2em;">
-                      <input type="checkbox" name="victorian"></input> Victorian<br/>
-                      <input type="checkbox" name="contemporary"></input> Contemporary<br/>
-                      <input type="checkbox" name="wallpaper"></input> Wallpaper<br/>
-                      <input type="checkbox" name="floral"></input> Floral<br/>
-                    </p>
-                  </td>
-                  
-                  <td>
-                    <p style="line-height:2em;">
-                      <input type="checkbox" name="pattern"></input> Pattern<br/>
-                      <input type="checkbox" name="xmas"></input> Xmas<br/>
-                      <input type="checkbox" name="plain"></input> Plain<br/>
-                      
-                      <input type="checkbox" name="hearts"></input> Hearts<br/>
-                    </p>
-                  </td>
-                  
-                  <td>
-                    <p style="line-height:2em;">
-                      <input type="checkbox" name="abstract"></input> Abstract<br/>
-                      <input type="checkbox" name="ornamental"></input> Ornamental<br/>
-                      <input type="checkbox" name="whimsical"></input> Whimsical<br/>
-                      
-                      <input type="checkbox" name="vintage"></input> Vintage<br/>
-                    </p>
-                  </td>              
-                </tr>
-              </table>
-              </form>
-            </div>
-            <div class="loading" style="text-align:center;display:none;padding:3em;"><img src="/gfx/spinner.gif" /></div>
-              <div id="search_results" style="clear:both;"></div>
-          </div>
-        </div>
       </div>
        
       <div class="left_column"><%- left %></div>       
@@ -120,7 +71,7 @@
 </html>
 
 <script>
-$('.browse').mouseover(function() {
+/*$('.browse').mouseover(function() {
   $('#designs').show();
   $('#browse div').css("border", "0")
   $('#browse').css("border", "1px solid black")
@@ -133,7 +84,7 @@ $('.browse').mouseout(function() {
   
   $('#browse').css("border", "0")
   $('#browse div').css("border", "1px dashed grey")
-})
+})*/
 
 Backbone.Syphon.InputReaders.register('checkbox', function($el){
     return $el.prop('checked') ? $el.val() : false;
