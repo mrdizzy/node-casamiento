@@ -28,6 +28,30 @@ exports.show = function(req, res) {
     });
     })
 }
+exports.create = function(req, res) {
+     var id = req.body.id,
+    theme = id.split("-")[0],
+    product_type = id.split("-")[1];
+    
+    db.get(id, function(err, doc) {
+    db.view('products/name_place', function(err, related) {
+    var related = related.toArray()
+       related.forEach(function(related) {
+           related.divs = prepareDivs(related, "thumbnail", "thumbnail", "display", "related_colour")
+       })
+        doc.related = related;
+      var divs = prepareDivs(doc, "slide", "slide", "display", "colour");
+        doc.document = doc;
+        doc.divs = divs;
+        doc.params = req.body
+        console.log(doc)
+        res.render('ebay/' + product_type + 's/new.ejs', {
+            layout: false,
+            locals: doc
+        });
+    });
+    })
+}
 exports.places = function(req, res) {
   db.view('products/name_place', function(err, docs) {
     docs = docs.toArray();
