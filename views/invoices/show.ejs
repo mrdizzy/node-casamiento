@@ -1,52 +1,83 @@
 <!doctype html>
 <style type="text/css">
 @font-face { font-family:"TP"; src: url('../public/f/OSL.eot?') format('eot'), url('../public/f/OSL.woff') format('woff'); }
-body,div,img,p { padding:0;margin:0;border:0}
+body,div,img,p, textarea { padding:0;margin:0;border:0}
 
 @font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OS Light Italic"; src: url('/f/OSLI.eot?') format('eot'), url('/f/OSLI.woff') format('woff'); }
 .page { width:210mm;height:296.7mm;position:relative;}
-p { font: normal 11pt "OS Light"; color:#000; }
-p.invoice { font-size: 10pt;}
+
+textarea.delivery_address, textarea.invoice_address, textarea.label {
+position:relative;
+z-index:100000;
+resize:none;
+background-color:transparent;
+overflow:hidden;
+display:block;
+    font: normal 11pt "OS Light"; 
+    color:#000;
+    text-align:center;width:75mm;height:34.25mm;padding-left:5mm;padding-top:28mm;
+}
+textarea.label { padding-top:25mm; height:38mm;}
+  textarea.delivery_address { position:relative; width:100mm; font-size: 10pt;float:left;}
+  textarea.invoice_address { font-size: 10pt;}
+
+p { z-index:100000;position:relative;font: normal 10pt "OS Light"; color:#000; line-height:10pt;}
+.transaction_id { margin-left:37mm;clear:both;float:left;margin-top:0.5mm;}
+.order_time { margin-left:130mm;margin-top:0.75mm;}
+.payer_id { margin-left:37mm;margin-top:0.75mm;}
+table { border-collapse:collapse; position:relative;z-index:100000;width:86%;margin:0 auto;margin-top:12mm;}
+td { vertical-align:top; padding-top:0.25em;}
+td p { text-align:center;line-height:12pt;}
+td.tdqty { width:11%;}
+td.tdcode { width:15%;}
+td.tdname { width:47%;}
+td.tdamount { width:15%;}
+.total { position:absolute;z-index:1000000; right:38mm; width:25mm;bottom:62mm;}
+.total p { font-size: 18pt; text-align:center;}
 </style>
     <html><body>
-
+<% var total = 0; %>
 <% transactions.forEach(function(t) { %>
 
-<div class="page" style=""><img src="/gfx/invoice.svg" style="position:absolute;width:100%;"/>
-  <div style="text-align:center;position:absolute;width:75mm;height:40mm;padding-left:5mm;padding-top:25mm;"><p class="label">
-    <%= t.SHIPTONAME %><br/>
-    <%= t.SHIPTOSTREET %><br/>
-    <%= t.SHIPTOSTREET2%><br/>
-    <%= t.SHIPTOCITY%></br>
-    <%= t.SHIPTOSTATE%><br/>
-    <%= t.SHIPTOZIP%></p>
-  </div>
-  <div style="text-align:center;position:absolute;width:75mm;height:40mm;margin-left:20mm;padding-top:92mm;"><p class="invoice">
-    <%= t.SHIPTONAME %><br/>
-    <%= t.SHIPTOSTREET %><br/>
-    <%= t.SHIPTOSTREET2%><br/>
-    <%= t.SHIPTOCITY%></br>
-    <%= t.SHIPTOSTATE%><br/>
-    <%= t.SHIPTOZIP%></p>
-  </div>
+<div class="page" style=""><img src="/gfx/invoice_new.svg" style="position:absolute;width:100%;"/>
+  <textarea class="label"><%= t.SHIPTONAME %>
+<%= t.SHIPTOSTREET %>
+<%= t.SHIPTOSTREET2%>
+<%= t.SHIPTOCITY%>
+<%= t.SHIPTOSTATE%>
+<%= t.SHIPTOZIP%></textarea>
+ 
+ <textarea class="delivery_address"><%= t.SHIPTONAME %>
+<%= t.SHIPTOSTREET %>
+<%= t.SHIPTOSTREET2%>
+<%= t.SHIPTOCITY%>
+<%= t.SHIPTOSTATE%>
+<%= t.SHIPTOZIP%></textarea>
   
-  
-  <div style="text-align:center;position:absolute;width:75mm;height:40mm;margin-left:110mm;padding-top:92mm;"><p class="invoice">
-    <%= t.SHIPTONAME %><br/>
-    <%= t.SHIPTOSTREET %><br/>
-    <%= t.SHIPTOSTREET2%><br/>
-    <%= t.SHIPTOCITY%></br>
-    <%= t.SHIPTOSTATE%><br/>
-    <%= t.SHIPTOZIP%></p>
-  </div>
-  <div>
-  <%=  t.TRANSACTIONID %>
+  <textarea class="invoice_address"><%= t.SHIPTONAME %>
+<%= t.SHIPTOSTREET %>
+<%= t.SHIPTOSTREET2%>
+<%= t.SHIPTOCITY%>
+<%= t.SHIPTOSTATE%>
+<%= t.SHIPTOZIP%></textarea>
+ 
+  <p class="transaction_id"><%=  t.TRANSACTIONID %></p>
          
- <%= t.ORDERTIME %>
+ <P class="order_time"><%= t.ORDERTIME %></p>
          
-     <%= t.PAYERID  %>
-  </div>
+     <p class="payer_id"><%= t.PAYERID  %></p>
+      <table>
+<% t.items.forEach(function(item) { %>
+<tr><td class="tdqty"><p class="qty"><%= item.L_QTY %></p></td><td class="tdcode"><p class="code">PLACE</p></td>
+<td class="tdname"><p class="name"><%= item.L_NAME %></p></td>
+<td class="tdamount"><p class="amount"><%= item.L_AMT %></p></td>
+<% total = total + (item.L_QTY * item.L_AMT) %>
+<td class="tdtotal"><p class="amount"><%= (item.L_QTY * item.L_AMT).toFixed(2) %></p></td>
+</tr>
+<% })%>
+</table>
+<div class="total"><p><%= total.toFixed(2) %></p></div>
 </div>
 
 <% }) %>
