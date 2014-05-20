@@ -1,0 +1,54 @@
+<!doctype html>
+<style type="text/css">
+@font-face { font-family:"TP"; src: url('../public/f/OSL.eot?') format('eot'), url('../public/f/OSL.woff') format('woff'); }
+body,div,img,p { padding:0;margin:0;border:0}
+
+@font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
+@font-face { font-family:"OS Light Italic"; src: url('/f/OSLI.eot?') format('eot'), url('/f/OSLI.woff') format('woff'); }
+.page { width:210mm;height:296.7mm;position:relative;}
+p { font: normal 11pt "OS Light"; color:#000; }
+p.invoice { font-size: 10pt;}
+</style>
+    <html><body>
+
+<% transactions.forEach(function(t) { %>
+
+<div class="page" style=""><img src="/gfx/invoice.svg" style="position:absolute;width:100%;"/>
+  <div style="text-align:center;position:absolute;width:75mm;height:40mm;padding-left:5mm;padding-top:25mm;"><p class="label">
+    <%= t.SHIPTONAME %><br/>
+    <%= t.SHIPTOSTREET %><br/>
+    <%= t.SHIPTOSTREET2%><br/>
+    <%= t.SHIPTOCITY%></br>
+    <%= t.SHIPTOSTATE%><br/>
+    <%= t.SHIPTOZIP%></p>
+  </div>
+  <div style="text-align:center;position:absolute;width:75mm;height:40mm;margin-left:20mm;padding-top:92mm;"><p class="invoice">
+    <%= t.SHIPTONAME %><br/>
+    <%= t.SHIPTOSTREET %><br/>
+    <%= t.SHIPTOSTREET2%><br/>
+    <%= t.SHIPTOCITY%></br>
+    <%= t.SHIPTOSTATE%><br/>
+    <%= t.SHIPTOZIP%></p>
+  </div>
+  
+  
+  <div style="text-align:center;position:absolute;width:75mm;height:40mm;margin-left:110mm;padding-top:92mm;"><p class="invoice">
+    <%= t.SHIPTONAME %><br/>
+    <%= t.SHIPTOSTREET %><br/>
+    <%= t.SHIPTOSTREET2%><br/>
+    <%= t.SHIPTOCITY%></br>
+    <%= t.SHIPTOSTATE%><br/>
+    <%= t.SHIPTOZIP%></p>
+  </div>
+  <div>
+  <%=  t.TRANSACTIONID %>
+         
+ <%= t.ORDERTIME %>
+         
+     <%= t.PAYERID  %>
+  </div>
+</div>
+
+<% }) %>
+
+</html>

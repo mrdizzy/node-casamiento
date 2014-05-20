@@ -39,7 +39,7 @@ module.exports.index = {
             if (err) {
                 console.log(err);
             } else {
-                results = _.compact(results);
+                results = _.compact(results); // remove all falsy values
             res.json(results);
             }
         });
