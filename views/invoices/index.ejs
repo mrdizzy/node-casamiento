@@ -16,7 +16,7 @@ Invoices
     <td><%= t.ORDERTIME %></td>
     <td><%= t.SHIPTONAME %></td>
     <td><input type="checkbox" name="transaction_ids" value='<%= t.TRANSACTIONID %>' /></input></td>
-    <td><%= t.EMAIL %></td>
+    <td><a href="mailto:<%= t.EMAIL %>"><%= t.EMAIL %></a></td>
     <td><%= t.NOTE %></td>
     <td>
     </td>

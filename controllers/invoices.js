@@ -60,7 +60,7 @@ module.exports.index = function(req, res) {
   paypal.buildQuery("TransactionSearch", function(error, response) {
     parseTransactions(response.TransactionSearchResponse, function(err, results) {
       if (err) {
-
+consol.log(err)
       } else {
         results = _.compact(results); // remove all falsy values
 
