@@ -19,16 +19,27 @@ exports.index = function(req, res) {
     });
 }
 
-exports.update = function(req, res) {
+exports.update = exports.create = function(req, res) {
+var svg = { data: new String(req.body.svg) }
+delete req["body"].svg;
   db.save(req.body, function(err, documents) {
     if (err) {
       res.status(500);
       res.end();
     }
     else {
-      db.get(documents.id, function(error, response) {
-        res.json(response)
-        res.end();
+      svg._id = "svg__" + documents.id;
+      db.save(svg, function(error, result) {
+        if (err) {
+          res.status(500);
+          res.end();
+        } else {
+        console.log(result)
+          db.get(documents.id, function(error, response) {
+              res.json(response)
+              res.end();
+          })
+        }
       })
     }
   });
@@ -43,20 +54,6 @@ exports.destroy = function(req, res) {
       res.end()
     }
   })
-}
-exports.create = function(req, res) {
-  db.save(req.body, function(err, documents) {
-    if (err) {
-      res.status(500);
-      res.end();
-    }
-    else {
-      db.get(documents.id, function(error, response) {
-          res.json(response)
-          res.end();
-      })
-    }
-  });
 }
 
 exports.show = function(req, res) {

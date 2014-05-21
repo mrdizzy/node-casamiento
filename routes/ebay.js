@@ -1,8 +1,9 @@
 module.exports = function(app){
-app.get("/ebay/places", require('./../controllers/ebay').places)
   app.get("/ebay", require('./../controllers/ebay').index);
 app.post("/ebay", require('./../controllers/ebay').create);
   app.get('/ebay/:id', require('./../controllers/ebay').show)
+  
+app.post("/ebay/places", require('./../controllers/ebay').places)
 
 // The eBay Notify API posts a message to this address that we need to parse
 app.post('/ebaymessage', function(req, res) {

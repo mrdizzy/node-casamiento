@@ -5,6 +5,7 @@ var db = require('./../config/db').test_ebay,
 // Route: /ebay/:id
 // This renders an ebay product view by looking in the /views/ebay/product_type folder for its template as different product types will need different rendering
 exports.show = function(req, res) {
+console.log("SHOW")
     var id = req.params.id,
     theme = id.split("-")[0],
     product_type = id.split("-")[1];
@@ -52,8 +53,10 @@ exports.create = function(req, res) {
     });
     })
 }
+
+// POST to places with an array of ids for multiple place cards on one page
 exports.places = function(req, res) {
-  db.view('products/name_place', function(err, docs) {
+  db.get(req.body.ids, function(err, docs) {
     docs = docs.toArray();
     var counter = 0;
     docs.forEach(function(place) {

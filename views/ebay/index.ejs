@@ -1,24 +1,28 @@
 <html>
-<head></head>
+<body>  
+<form action="/ebay" method="post">
+  <select name="id">
+  <% for (var product_type in documents) { %>
+   <% documents[product_type].forEach(function(product) { %>
+    <option value="<%= product._id %>"><%= product._id %></option>
+    <% }) %>
+  <% } %>
+    </select><br/>
+    Buy-it-now?<input type="checkbox" name="buy_it_now"></input><br/>
+    Listing number for related listing:<input type="text" name="buy_it_now_number" value="261481248893"></input><br/>
+    Quantity: <input type="text" name="quantity" value="50"></input><br/>
+    Bidding starts from (auction only): <input type="text" name="bidding" value="2.99"></input><br/>
+    Buy it now price: <input type="text" name="buy_it_now_price" value="5.99"></input><br/>
+    <input type="submit"></input>
+  </form>
 
-<body>  <form action="/ebay" method="post">
-<select name="id">
-        <% for (var product_type in documents) { %>
-      
-                
-                       <% documents[product_type].forEach(function(product) { %>
-        
-                <option value="<%= product._id %>"><%= product._id %></option>
-        <% }) %>
-       
-        <% } %>
-          </select><br/>
-          Buy-it-now?<input type="checkbox" name="buy_it_now"></input><br/>
-          Listing number for related listing:<input type="text" name="buy_it_now_number" value="261481248893"></input><br/>
-          Quantity: <input type="text" name="quantity" value="50"></input><br/>
-          Bidding starts from (auction only): <input type="text" name="bidding" value="2.99"></input><br/>
-          Buy it now price: <input type="text" name="buy_it_now_price" value="5.99"></input><br/>
-          <input type="submit"></input>
-          </form>
+  <form action="/ebay/places" method="POST">
+  <% for (var product_type in documents) { %>
+   <% documents[product_type].forEach(function(product) { %>
+    <input type="checkbox" name="ids" value="<%= product._id%>"></input><%= product._id %><br/>
+    <% }) %>
+  <% } %>
+     <input type="submit"></input>
+  </form>
 </body>
 </html>
