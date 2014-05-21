@@ -1,5 +1,4 @@
-var db = require('./../config/db').test_ebay,
-  _ = require('underscore');
+var db = require('./../config/db').test_ebay;
   
 exports.show = function(req, res) {
   var id = req.params.download;
