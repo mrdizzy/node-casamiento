@@ -151,6 +151,9 @@ var DownloadView = Backbone.View.extend({
       $('[fill=#FF0000]').attr('fill', thisProduct.get("colours")[0]).attr('class', 'colour0')
     $('[stroke=#FF0000]').attr('stroke', thisProduct.get("colours")[0]).attr('class', 'colour0')
     
+    $('[fill=#0000FF]').attr('fill', thisProduct.get("colours")[1]).attr('class', 'colour1')
+    $('[stroke=#0000FF]').attr('stroke', thisProduct.get("colours")[1]).attr('class', 'colour1')
+    
     }
   }
   
@@ -227,6 +230,9 @@ var StepView = Backbone.View.extend({
   },
   updateColour2: function(e, colour) {    
     $('.slide > div > div:not(.nocolor)').css("background-color", colour);
+    
+    $('[fill][class="colour1"]').attr('fill', colour)
+         $('[stroke][class="colour1"]').attr('stroke', colour)
     thisProduct.set("colour_2", colour)
   },
   render: function() {
