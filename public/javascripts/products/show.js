@@ -116,6 +116,46 @@ StepsPresenter.prototype = {
   }
 }
 
+var DownloadView = Backbone.View.extend({
+  initialize: function() {
+    this.toggleDownloadView = false;
+    this.loadSVG = false;
+  },
+  events: {
+    'click #download_link': 'downloadView'
+  },
+  downloadView: function() {
+  that = this;
+    this.toggleDownloadView = true;
+    console.log(thisProduct._id)
+    
+      $('.spinner').show();
+    this.render();
+    $.get("/svg/" + thisProduct.get("_id"), function(data) {
+      thisProduct.set("svg", data.data)
+      that.loadSVG = true;
+      that.render();
+    })
+  },
+  render: function() {
+    if(this.toggleDownloadView) {
+    
+      this.$('#image_container').fadeToggle();
+      this.toggleDownloadView = false;
+    }
+    if(this.loadSVG) {
+    
+      $('.spinner').hide();
+      this.$('#print_container').fadeToggle();
+      this.$('.svg_image').html(thisProduct.get("svg"))
+      $('[fill=#FF0000]').attr('fill', thisProduct.get("colours")[0]).attr('class', 'colour0')
+    $('[stroke=#FF0000]').attr('stroke', thisProduct.get("colours")[0]).attr('class', 'colour0')
+    
+    }
+  }
+  
+})
+
 var StepView = Backbone.View.extend({ 
   el: '#steps',
   initialize: function() {
@@ -182,6 +222,8 @@ var StepView = Backbone.View.extend({
   updateColour1: function(e, colour) {
     $('.colour_1').css("background-color", colour)
     $('.slide').css("background-color", colour)
+    $('[fill][class="colour0"]').attr('fill', colour)
+         $('[stroke][class="colour0"]').attr('stroke', colour)
   },
   updateColour2: function(e, colour) {    
     $('.slide > div > div:not(.nocolor)').css("background-color", colour);

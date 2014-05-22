@@ -446,6 +446,90 @@ input {
         padding-top:0.25em;
         width:90px;
       }
+      
+      #print_container { display:none; }
+
+
+/* PRINT AND DOWNLOAD
+=============================== */
+
+ .page div { margin:0 auto; }
+  .page { 
+    padding-top:3em;
+    width:210mm;
+    margin:0 auto;
+    height:297mm;
+  }
+  
+  .casamiento_black_logo {
+    text-align:center;
+    width:50mm;
+    display:none;
+  }
+  
+  .place_card_container {
+    border:1px dotted lightgrey;
+    height:74.25mm;
+    position:relative;
+    width:105mm;
+  } 
+  
+  .crop_mark { 
+   position:absolute;width:20px;height:20px;z-index:200000;
+  }
+  
+  .top_top_left_crop_mark {
+   border-right:1px solid black;top:-30px;left:-21px;
+  }
+  
+  .top_left_left_crop_mark {
+    border-bottom:1px solid black;top:-21px;left:-30px;
+  } 
+  .top_top_right_crop_mark {
+    border-bottom:1px solid black;top:-21px;right:-30px;
+  }
+  .top_right_right_crop_mark {
+   border-left:1px solid black;top:-30px;right:-21px;
+  }
+  
+  .bottom_bottom_left_crop_mark {
+   border-right:1px solid black;bottom:-30px;left:-21px;
+  }
+  
+  .bottom_left_left_crop_mark {
+    border-top:1px solid black;bottom:-21px;left:-30px;
+  } 
+  
+  .bottom_bottom_right_crop_mark {
+    border-left:1px solid black;bottom:-30px;right:-21px;
+  }
+  
+  .bottom_right_right_crop_mark {
+    border-top:1px solid black;bottom:-21px;right:-30px;
+  } 
+  @media print {
+   
+    #picker_1, #picker_2, #footer, #header_container { display:none; }
+    .casamiento_black_logo { display:block; }
+  }
+  
+  svg { height:100%; width:100%; position:absolute; }
+
+  .name { 
+    border:none;
+    margin:0;
+    padding:0;
+    outline:none;
+    background-color:transparent;
+    display:inline;
+    font-size:2em;
+    letter-spacing:0;
+    font-family:'TP';
+    text-align:center;
+    line-height:3.7125cm; 
+}
+.name:hover { background-color:transparent; border:1px dotted black; }
+
 
 /* RESPONSIVE DESIGNS
 ============================= */
@@ -514,5 +598,10 @@ input {
   background-size:179px 5px;
   height:5px;
   padding-top:0.5em;
+}
+
+.spinner { 
+  text-align:center;
+  display:none
 }
 .clearfix { clear:both; }
