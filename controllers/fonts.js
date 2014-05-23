@@ -31,20 +31,21 @@ db.view('all/type', {
     })
   
 }
-exports.create = function(req, res) {
-var font = req.body;{}
-font.type = "font";
-var files = req.files;
-woff = req.files
-db.save(font.name, font, function (err, res) {
-  if(err) {
-    console.log(err)
-  } else {
-  db.saveAttachment(res, { name:"woff", "Content-Type":"application/font-woff"}, function(err, res) {
-  console.log(err, res)
-  }, fs.createReadStream(req.files.woff.path))
-    
-  }
-});
-  res.status(200)
+exports.create = function(req, response) {
+  var attachment_data = { name:"woff", "Content-Type":"application/font-woff"}
+  console.log(req.files.woff.path)
+  var readStream = fs.createReadStream(req.files.woff.path)
+  var font = req.body;
+  font.type = "font";
+  db.save(font.name, font, function (err, res) {
+    if(err) {
+      console.log(err)
+    } else {
+      var writeStream = db.saveAttachment(res, attachment_data, function(error, resp) {
+        console.log(error, resp)           
+        response.status(200) 
+      })
+      readStream.pipe(writeStream);
+    }
+  });
 }

@@ -1,50 +1,55 @@
 <%- contentFor('inline_styles') %>
   .step { background-color:<%= product.colours[0] %>}
 
-@font-face { font-family:"Metroscript"; src: url('/fonts/Metroscript2') format('woff'); }
-p { font-family: "Metroscript";font-size:30pt; }
+  @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>') format('woff'); }
+  .name { font-family:"<%= product.font %>"; font-size: <%= product.font_size %>pt; }
+  
 <%- contentFor('left') %>
 
   <script type="text/javascript" src="/javascripts/libraries/jquery_form.js"></script>
   <script type="text/javascript" src="/javascripts/products/show.js"></script>
   <script type="text/javascript" src="/javascripts/libraries/in_groups_of.js"></script>
  
-  
 <div id="product_container">
- <div class="spinner">
+ 
+  <div class="spinner">
       <img src="/gfx/spinner.gif">
   </div>
-  <div id="print_container">
   
-<div class="page">
+  <div id="print_container">
+    
+  <div class="page">
 
-  <div class="casamiento_black_logo">
-    <img src="/gfx/logo/casamiento_black.svg" style="width:50mm;" />
-  </div>
-  <p>Metroscript</p>
-  <div class="place_card_container">
-    <div class="top_top_left_crop_mark crop_mark"></div>
-    <div class="top_left_left_crop_mark crop_mark"></div>
-    <div class="top_top_right_crop_mark crop_mark"></div>
-    
-    <div class="top_right_right_crop_mark crop_mark"></div>
-    <div class="bottom_bottom_left_crop_mark crop_mark"></div>
-    
-    <div class="bottom_left_left_crop_mark crop_mark"></div>
-    <div class="bottom_bottom_right_crop_mark crop_mark"></div>
-    
-    <div class="bottom_right_right_crop_mark crop_mark"></div>
-    <div style="z-index:5;width:100%;height:7.245cm;text-align:center;position:absolute;">
-      <div style="height:3.7125cm;"></div>
-      <div style="height:3.7125cm;border-top:1px dotted lightgrey">
-        <input type="text" class="name" value="David Louise"></input>
-      </div>
+    <div class="casamiento_black_logo">
+      <img src="/gfx/logo/casamiento_black.svg" style="width:50mm;" />
     </div>
-    <div class="svg_image"></div>
+    
+    <div class="place_card_container">
+      <div class="top_top_left_crop_mark crop_mark"></div>
+      <div class="top_left_left_crop_mark crop_mark"></div>
+      <div class="top_top_right_crop_mark crop_mark"></div>
+      
+      <div class="top_right_right_crop_mark crop_mark"></div>
+      <div class="bottom_bottom_left_crop_mark crop_mark"></div>
+      
+      <div class="bottom_left_left_crop_mark crop_mark"></div>
+      <div class="bottom_bottom_right_crop_mark crop_mark"></div>
+      
+      <div class="bottom_right_right_crop_mark crop_mark"></div>
+      <div style="z-index:5;width:100%;height:7.245cm;text-align:center;position:absolute;">
+        <div style="height:3.7125cm;"></div>
+        <div style="height:3.7125cm;border-top:1px dotted lightgrey">
+          <input type="text" class="name" value="David Louise"></input>
+        </div>
+      </div>
+      
+      <div class="svg_image"></div>
+    </div>
   </div>
 </div>
-  </div>
-  <div id="image_container">
+
+<div id="image_container">
+
 <!-- 
   SLIDES 1 TO 3 
 -->

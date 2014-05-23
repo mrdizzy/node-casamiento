@@ -27,7 +27,7 @@
 @font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OS Light Italic"; src: url('/f/OSLI.eot?') format('eot'), url('/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('/f/OSCB.eot?') format('eot'), url('/f/OSCB.woff') format('woff'); }
-@font-face { font-family:"Metroscript"; src: url('/fonts/Metroscript2') format('woff'); }
+@font-face { font-family:"mappy"; src: url('http://localhost:3000/f/GARAIT.eot?') format('eot'), url('http://localhost:3000/fonts/Elizabeth2') format('woff'); }
 
 h1 { 
   text-align:center;  
@@ -526,7 +526,6 @@ input {
     color:#000;
     font-size:2em;
     letter-spacing:0;
-    font-family:'Metroscript';
     text-align:center;
     line-height:3.7125cm; 
 }
