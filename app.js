@@ -1,5 +1,6 @@
 var express = require('express'),
     http = require('http'),
+    //compression = require('compression'),
     resource = require('express-resource'),
     db = require('./config/db').test_ebay,
     handlebars = require('express3-handlebars').create(),
@@ -59,7 +60,7 @@ app.configure(function() {
     });
     app.use(express.cookieParser());
     app.use(express.favicon());
-    
+    //app.use(compression());
     app.use(expressLayouts)
     app.use(express.logger('dev'));
     app.use(express.bodyParser({limit:'100mb'}));

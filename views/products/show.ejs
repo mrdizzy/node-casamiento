@@ -1,6 +1,8 @@
 <%- contentFor('inline_styles') %>
   .step { background-color:<%= product.colours[0] %>}
 
+@font-face { font-family:"Metroscript"; src: url('/fonts/Metroscript2') format('woff'); }
+p { font-family: "Metroscript";font-size:30pt; }
 <%- contentFor('left') %>
 
   <script type="text/javascript" src="/javascripts/libraries/jquery_form.js"></script>
@@ -19,7 +21,7 @@
   <div class="casamiento_black_logo">
     <img src="/gfx/logo/casamiento_black.svg" style="width:50mm;" />
   </div>
-    
+  <p>Metroscript</p>
   <div class="place_card_container">
     <div class="top_top_left_crop_mark crop_mark"></div>
     <div class="top_left_left_crop_mark crop_mark"></div>

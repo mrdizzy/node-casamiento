@@ -27,6 +27,7 @@
 @font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OS Light Italic"; src: url('/f/OSLI.eot?') format('eot'), url('/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('/f/OSCB.eot?') format('eot'), url('/f/OSCB.woff') format('woff'); }
+@font-face { font-family:"Metroscript"; src: url('/fonts/Metroscript2') format('woff'); }
 
 h1 { 
   text-align:center;  
@@ -522,12 +523,14 @@ input {
     outline:none;
     background-color:transparent;
     display:inline;
+    color:#000;
     font-size:2em;
     letter-spacing:0;
-    font-family:'TP';
+    font-family:'Metroscript';
     text-align:center;
     line-height:3.7125cm; 
 }
+
 .name:hover { background-color:transparent; border:1px dotted black; }
 
 

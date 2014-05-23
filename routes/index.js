@@ -12,7 +12,7 @@ module.exports = function(app){
   app.resource("payments", require("./../controllers/payments"))
   app.resource("cart", require("./../controllers/cart"))
   app.resource("product_types", require("./../controllers/product_types"))
-
+app.resource("fonts", require("./../controllers/fonts"))
   var products = app.resource('products', require('./../controllers/products'), {
       load: parseRevision
   });
