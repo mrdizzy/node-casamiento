@@ -10,6 +10,7 @@ var express = require('express'),
 var app = express();
 var dir = __dirname;
 
+// Middleware for compiling and exposing javascript server-side templates to client side
 function exposeTemplates(req, res, next) {
     // Uses the `ExpressHandlebars` instance to get the get the **precompiled**
     // templates which will be shared with the client-side of the app.
@@ -34,7 +35,6 @@ function exposeTemplates(req, res, next) {
         if (templates.length) {
             res.locals.templates = templates;
         }
-
         next();
     });
 }
@@ -50,7 +50,6 @@ app.configure(function(){
   });
 });
 
-
 app.configure(function() {
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
@@ -59,14 +58,15 @@ app.configure(function() {
         layout: false
     });
     
-    //app.use(compression()); // must be one of the first middlewares to compress effectively
+    // Compresses static files and res.json responses
+    
+    app.use(compression()); // must be one of the first middlewares to compress effectively
     app.use(express.cookieParser());
     app.use(express.favicon());
     app.use(expressLayouts)
     app.use(express.logger('dev'));
     app.use(express.bodyParser({limit:'100mb'}));
-    
-app.use(exposeTemplates);
+    app.use(exposeTemplates); // exposes server side javascript templates to client side
     app.use(app.router);
     app.use(express.static(__dirname + '/public'));
 });
@@ -76,6 +76,7 @@ app.configure('development', function() {
 });
 
 require('./routes')(app);
+
 http.createServer(app).listen((process.env.PORT || 3000), function() {
     console.log("Express server listening on port " + (process.env.PORT || 3000));
 });

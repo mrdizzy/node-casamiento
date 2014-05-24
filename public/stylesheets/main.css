@@ -27,7 +27,6 @@
 @font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OS Light Italic"; src: url('/f/OSLI.eot?') format('eot'), url('/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('/f/OSCB.eot?') format('eot'), url('/f/OSCB.woff') format('woff'); }
-@font-face { font-family:"mappy"; src: url('http://localhost:3000/f/GARAIT.eot?') format('eot'), url('http://localhost:3000/fonts/Elizabeth2') format('woff'); }
 
 h1 { 
   text-align:center;  
@@ -508,8 +507,8 @@ input {
   .bottom_right_right_crop_mark {
     border-top:1px solid black;bottom:-21px;right:-30px;
   } 
+  
   @media print {
-   
     #picker_1, #picker_2, #footer, #header_container { display:none; }
     .casamiento_black_logo { display:block; }
   }
@@ -593,6 +592,7 @@ input {
   padding-top:1em;
   padding-bottom:1em;
 }
+
 .ornamental_line { 
   background-image:url('/gfx/ornamentalline.png');
   background-repeat:no-repeat; 

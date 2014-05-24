@@ -7,6 +7,8 @@ This is a good article about dependencies done right:
 
 Node uses Semantic versioning in the format 1.2.3 where 1 is a major version that is not backwards compatible, 2 is a minor version and 3 is a patch version. 
 
+    compression - this module which can be found in app.js as part of middleware is used to compress using gzip and serve gzip compressed files (svg, json, html) to the browser. 
+
 CONVENTIONS
 ===========
 
@@ -15,6 +17,8 @@ LAYOUTS
 The main layout is in views/layout.ejs
 
 This is used by home.js. This layout also specifies the stylesheet to use which is main.css
+
+THe admin layout is in views/admin_layout.ejs
 
 
 COUCHDB TAGGING 

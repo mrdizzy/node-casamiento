@@ -10,16 +10,15 @@ module.exports = function(app){
   app.get("/svg/:id", require("./../controllers/svg").show)
   app.resource("downloads", require("./../controllers/downloads"))
   app.resource("payments", require("./../controllers/payments"))
-  app.resource("cart", require("./../controllers/cart"))
   app.resource("product_types", require("./../controllers/product_types"))
-app.resource("fonts", require("./../controllers/fonts"))
+  app.resource("fonts", require("./../controllers/fonts"))
   var products = app.resource('products', require('./../controllers/products'), {
       load: parseRevision
   });
   var attachments = app.resource("attachments", require('./../controllers/attachments'));
-
   products.add(attachments);
 
+  // Look at all the files in the current /routes directory and require them
   fs.readdirSync(__dirname).forEach(function(file) {
       if (file == "index.js") return;
       var name = file.substr(0, file.indexOf('.'));
