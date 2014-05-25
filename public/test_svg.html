@@ -11,7 +11,7 @@ svg { display:block;width:400px;border:1px solid black;}
 </body>
 <script>
 
-$.get("http://localhost:3000/svg/svg.svgz", function(results) {
+$.get("/svg/svg.svgz", function(results) {
 $('.spinner').hide();
 $('body').html(results)
 })
