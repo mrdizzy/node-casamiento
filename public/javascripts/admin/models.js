@@ -4,7 +4,7 @@ var ProductTypes = Backbone.Collection.extend({
 
 var Product = Backbone.Model.CouchDB.extend({
   urlRoot: "/products",
-  defaults: { "type": "product", colour_1: "", colour_2: "" },
+  defaults: { "type": "product" },
   toJSON: function() {
     var json = Backbone.Model.CouchDB.prototype.toJSON.apply(this, arguments)
     if(!json._id && this.get("theme")) {
@@ -12,7 +12,7 @@ var Product = Backbone.Model.CouchDB.extend({
     }
     return json;
   },
-  attachment_types: ["thumb","small", "display","medium","large"]
+  attachment_types: ["thumb", "display","medium","large"]
 });
 
 var Products = Backbone.Collection.extend({

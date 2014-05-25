@@ -1,8 +1,7 @@
 var ProductTypeSelectionView = SelectionView.extend({attributes: { name: "product_type"}}) 
 var ThemeSelectionView = SelectionView.extend({attributes: { name: "theme"}})
 
-
-    var default_tags = ["victorian", "wallpaper", "damask", "contemporary", "pattern", "floral", "minimalistic", "geometric", "birds", "hearts", "vintage", "dots", "simple"];
+var default_tags = ["victorian", "wallpaper", "damask", "contemporary", "pattern", "floral", "minimalistic", "geometric", "birds", "hearts", "vintage", "dots", "simple"];
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var AttachView = Backbone.View.Attachment.extend({
   initialize: function() {
@@ -16,7 +15,6 @@ var AttachView = Backbone.View.Attachment.extend({
   }
 })
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Click on a product to select it, rendered by ProductsView below
 ////////////////////////////////////////////////////////////////
@@ -27,22 +25,16 @@ var ProductView = Backbone.View.extend({
   },
   // TODO: handle errors when destroying model on server
   delete: function() {
-  var that = this;
-  that.remove();
-      this.model.destroy({success:function(model, response) {
-          
-      }})
+    var that = this;
+    that.remove();
+    this.model.destroy({success:function(model, response) {
+    }})
   },
   // TODO: refactor to use events and an event listener when current product is changed
   select: function() {
-  var that = this
-    $.get("/svg/" + this.model.id, function(svg) {
-        that.model.set("svg", svg.data)
-        that.model.set("svg_rev", svg._rev)
-         var cpv = new CurrentProductView({model:that.model, attachmentView: AttachView});
-    $('#cpv').html(cpv.render().el)
-    })
-   
+    var that = this
+       var cpv = new CurrentProductView({model:that.model, attachmentView: AttachView});
+      $('#cpv').html(cpv.render().el)
   },
   render: function() {
     this.$el.html(this.model.get("_id") + " <span class='destroy'>destroy</span>");

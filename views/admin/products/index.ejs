@@ -3,10 +3,16 @@
 -->
 
   <script type="text/template" id="current_product_form">
+  <h1>SVG</h1>
+  <div>
+  <form action="/svg/{{id}}" method="post">
+        <input type="file" name="data"></input>
+        <input type="submit"></input>
+  </form>
+  </div>
     <form>
       <div style="width:50%;float:left">
         <h1>{{ id }}</h1>        
-     <div id="svg">ddd{{{svg}}}</div>
         <p><label for="price">Name:</label></p>
         <p><input type="text" name="name" value="{{name}}"></input></p>
      
@@ -14,29 +20,17 @@
         <p><input type="text" name="price" value="{{price}}"></input></p>
        
         <p><label for="font">Font:</label></p>
-        <p><input type="text" name="font" value="{{font}}"></input></p>
-        
+        <p><input type="text" name="font" value="{{font}}"></input></p>        
         
         <p><label for="font_size">Font Size:</label></p>
-        <p><input type="text" name="font_size" value="{{font_size}}"></input></p>
+        <p><input type="text" name="font_size" value="{{font_size}}"></input></p>    
         
-        
-        <p><label for="monogram">monogram:</label></p>
-        <p><input type="text" name="monogram" value="{{monogram}}"></input></p>
-        
-        <p><label for="price">Description:</label></p>
+        <p><label for="description">Description:</label></p>
         <p><textarea name="description">{{description}}</textarea></p>
+        
         <p><select name="tags" multiple="true">{{tags_for_select}}</select></p>
-        <p><label for="price">SVG:</label></p>
-        <p><textarea name="svg">{{svg}}</textarea></p>
-        
-        <p><label for="buy_it_now_id">Buy-it-now listing item number:</label></p>
-        <p><input type="text" name="buy_it_now_id" value="{{buy_it_now_id}}"></input></p>
-        
-        <p><label for="buy_it_now_price">Buy-it-now price:</label></p>
-        <p><input type="text" name="buy_it_now_price" value="{{buy_it_now_price}}"></input></p>
-        
       </div>
+      
       <div style="width:50%;float:right" id="colour_picker"></div>
       <input type="submit" style="clear:both;">Submit</a>
     </form>

@@ -1,40 +1,28 @@
 var db = require('./../config/db').test_ebay,
   _ = require('underscore');
-  
 
 exports.show = function(req, res) {
 
-res.set("Content-Type", "text/plain")
+  // We set the type to text/plain rather than image/svg+xml oraas otherwise
+  // when the data is sent to jQuery it will try to parse the SVG and this 
+  // will cause problems, so instead we send it as plaintext and then use the
+  // $.html() to insert the SVG data into an element
+  res.set("Content-Type", "text/plain")
 
-res.set("Content-Encoding", "gzip")
-
+  // We are sending the gzipped version which is stored in couchDB. Storing 
+  // the gzipped version in CouchDB reduces bandwidth and storage space 
+  // and the browser will then unzip the data
+  res.set("Content-Encoding", "gzip")
+  
+  // Let's stream the data'
   var stream = db.getAttachment("svg__damask-name_place", "gary2.svg.gz")
   stream.on("data", function(chunk) {
-  console.log(chunk)
     res.write(chunk)
   });
   stream.on('end', function() {
-
     res.end();
   });
 
-//    res.set("Content-Type", "image/svg+xml")
-//    res.set("Content-Encoding", "gzip")
-//  db.getAttachment("svg__damask-name_place", "damask.svgz", function (err, reply) {
-//  if (err) {
-//    console.log(err)
-//   
-//  }
-//}).pipe(res)
-//res.set(200)
-//res.end()
 // //db.get("svg__" + req.params.id, function(error, results) {
- //console.log(req.params.id, error)
- //  if(error) {
- //    res.json({})
- //  } else {
- //    res.json(results)
- //  }
- //})
   
 }
