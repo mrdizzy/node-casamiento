@@ -131,8 +131,11 @@ var DownloadView = Backbone.View.extend({
     
       $('.spinner').show();
     this.render();
+    
+
     $.get("/svg/" + thisProduct.get("_id"), function(data) {
-      thisProduct.set("svg", data.data)
+    console.log(data)
+      thisProduct.set("svg", data)
       that.loadSVG = true;
       that.render();
     })

@@ -15,7 +15,7 @@ exports.show = function(req, res) {
   res.set("Content-Encoding", "gzip")
   
   // Let's stream the data'
-  var stream = db.getAttachment("svg__damask-name_place", "gary2.svg.gz")
+  var stream = db.getAttachment("svg__" + req.params.id, "svg")
   stream.on("data", function(chunk) {
     res.write(chunk)
   });

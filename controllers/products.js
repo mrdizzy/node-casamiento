@@ -1,6 +1,7 @@
 var db = require('./../config/db').test_ebay,
   _ = require('underscore'),  
-    prepareDivs = require('./../lib/prepare_divs');
+    prepareDivs = require('./../lib/prepare_divs'),
+    zlib = require('zlib');
 
 exports.index = function(req, res) {
   db.view('products/name_place', function(err, docs) {
@@ -20,30 +21,46 @@ exports.index = function(req, res) {
 }
 
 exports.update = exports.create = function(req, res) {
-var svg = { data: new String(req.body.svg) }
-delete req["body"].svg;
-  db.save(req.body, function(err, documents) {
+  var rev = req.product.rev,
+  id = req.product.id;
+  console.log(req.product.rev, req.product.id)
+  req.body._rev = rev;
+  var svg = req.body.svg
+//var svg = new String(req.body.svg) // new String is used to "copy" the string as we are about to delete it in the next line
+
+  delete req["body"].svg;
+  db.save(id, rev, req.body, function(err, documents) {
     if (err) {
+    console.log(err)
       res.status(500);
       res.end();
     }
     else {
-      svg._id = "svg__" + documents.id;
-      db.save(svg, function(error, result) {
-        if (err) {
-          res.status(500);
-          res.end();
-        } else {
-        console.log(result)
-          db.get(documents.id, function(error, response) {
-              res.json(response)
+      var svg_id = "svg__" + documents.id;
+      db.get(svg_id, function(e, record) {
+        zlib.gzip(svg.toString(), function (theerror, file) {  
+          if (record) {
+            var svg_rev = record._rev
+          }
+          db.saveAttachment({id: svg_id, rev: svg_rev}, {name: "svg", 'Content-Type': "image/xml+svgz", body: file}, function(anerror, done) {
+            if (anerror) {
+              console.log("Error here",anerror)
+              res.status(500);
               res.end();
+            } else {
+              console.log("DONE")
+              
+            }
           })
-        }
-      })
+          
+          
+          console.log(file.toString('base64'))
+        })
+      })  
     }
   });
 }
+
 exports.destroy = function(req, res) {
   db.remove(req.product.id, req.product.rev, function(err, doc) {
     if (err) {

@@ -4,12 +4,6 @@
 
   <script type="text/template" id="current_product_form">
   <h1>SVG</h1>
-  <div>
-  <form action="/svg/{{id}}" method="post">
-        <input type="file" name="data"></input>
-        <input type="submit"></input>
-  </form>
-  </div>
     <form>
       <div style="width:50%;float:left">
         <h1>{{ id }}</h1>        
@@ -26,7 +20,11 @@
         <p><input type="text" name="font_size" value="{{font_size}}"></input></p>    
         
         <p><label for="description">Description:</label></p>
-        <p><textarea name="description">{{description}}</textarea></p>
+        <p><textarea name="description">{{description}}</textarea></p>        
+        
+        <p><label for="font">SVG:</label></p>
+         <p><textarea cols="100" rows="10" name="svg">{{svg}}</textarea></p>
+        <div id="parse_svg">Parse SVG</div>
         
         <p><select name="tags" multiple="true">{{tags_for_select}}</select></p>
       </div>

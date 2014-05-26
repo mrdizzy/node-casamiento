@@ -126,7 +126,13 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   events: { 
     'click input[type=submit]': 'sendForm',
     'click .addmore': 'addAttachment',
-    'dizzy-cp:hoverColor .picker': 'selectColour'
+    'dizzy-cp:hoverColor .picker': 'selectColour',
+    'click #parse_svg': 'parseSVG'
+  },
+  parseSVG: function(e) {
+     var svg = this.$('textarea[name=svg]').val();
+    
+     this.$('textarea[name=svg]').val(svg);
   },
   selectColour: function(e, colour) {
      var index = $(e.currentTarget).index();
