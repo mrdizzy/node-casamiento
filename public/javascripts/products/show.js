@@ -54,33 +54,16 @@ var StepsPresenter = function(model, view) {
 
 StepsPresenter.prototype = {
   moveStep: function() {
-    this.svgDownloaded = false;
+  this.toggleDownload = false;
     this.toggleStepOff = this.currentStep;
     this.view.render();
     this.toggleStepOn = this.currentStep + 1;
     this.view.render();
     this.currentStep = this.currentStep + 1;
   },
-  toggleDownloadView: function() {
-   
-    var that = this;
-    this.toggleDownload = true;
-    if(!this.svgDownloaded) {
-    
-    $('.spinner').show();  
-    
-   $('#image_container').fadeToggle();
-      this.svgDownloaded = true;
-      this.svgNewlyDownloaded = true;
-      $.get("/svg/" + thisProduct.get("_id"), function(data) {
-      console.log("Downloaded SVG")
-        thisProduct.set("svg", data)
-        that.view.render();
-      })
-    } else {
+  toggleDownloadView: function() {   
       this.toggleDownload = true;
-      that.view.render();
-    }
+      this.view.render();
   },
   hoverStepOn: function(step_number) {
     if(this.currentStep == step_number) {
@@ -236,24 +219,14 @@ var StepView = Backbone.View.extend({
   },
   render: function() {
   
-    if(this.presenter.svgNewlyDownloaded) {  
-      this.presenter.toggleDownload = false; 
-      $('.spinner').hide();      
-      $('.svg-container').html(thisProduct.get("svg"))
-      
-      $('.svg_parent').fadeIn();
-      $('[fill=#FF0000]').attr('fill', thisProduct.get("colours")[0]).attr('class', 'colour0')
-      $('[stroke=#FF0000]').attr('stroke', thisProduct.get("colours")[0]).attr('class', 'colour0')
-      $('[fill=#0000FF]').attr('fill', thisProduct.get("colours")[1]).attr('class', 'colour1')
-      $('[stroke=#0000FF]').attr('stroke', thisProduct.get("colours")[1]).attr('class', 'colour1')
-      this.presenter.svgNewlyDownloaded = false;
-    } else if (this.presenter.toggleDownload){
-    console.log("Fade svg")
-      $('.svg_parent').fadeToggle()
+ if (this.presenter.toggleDownload){
+
+      $('#svgs').fadeToggle()
+      $('#add_another').fadeToggle();
       $('#image_container').fadeToggle();
       this.presenter.toggleDownload = false;
     
-    }
+    } else
     if(this.presenter.toggleStepOn) {
       this.$('#step_' + this.presenter.toggleStepOn + " .step").fadeIn()      
       this.$('#step_' + this.presenter.toggleStepOn + " .chat-bubble").slideDown()

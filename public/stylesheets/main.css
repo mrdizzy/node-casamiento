@@ -468,6 +468,7 @@ input {
   top: 0;
   left: 0;
 }
+.svg_parent { width:75%; }
 
   .casamiento_black_logo {
     text-align:center;
@@ -475,8 +476,11 @@ input {
     display:none;
   }
   
+  #svgs { display:none;}
+  
+  #add_another { display:none;}
+  
   .svg_parent {  
-    display:none;
     width:75%;
     margin:0 auto;
     margin-top:2em;
@@ -526,7 +530,7 @@ input {
     display:inline;
     color:#000;
     height:100%;
-    font-size:100%;
+    font-size:2em;
     letter-spacing:0;
     text-align:center;
     line-height:100%; 
@@ -546,10 +550,18 @@ input {
   @media print {
     #picker_1, #picker_2, #footer, #header_container { display:none; }
     .casamiento_black_logo { display:block; }
+      .svg_parent {  
+    display:block;
+    margin:0 auto;
+    width:105mm;
+    height:74.25mm;
+    margin:0 auto;
+    position:relative;
+  }
+  #add_another { display:none;}
+  .right_column { display:none;}
   }
  
-
-
 /* RESPONSIVE DESIGNS
 ============================= */
 

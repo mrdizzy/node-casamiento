@@ -21,10 +21,13 @@ exports.index = function(req, res) {
 }
 
 exports.update = exports.create = function(req, res) {
+  if(req.product) {
   var rev = req.product.rev,
   id = req.product.id;
-  console.log(req.product.rev, req.product.id)
-  req.body._rev = rev;
+    req.body._rev = rev;
+} else {
+  var id = req.body._id
+}
   var svg = req.body.svg
 //var svg = new String(req.body.svg) // new String is used to "copy" the string as we are about to delete it in the next line
 
