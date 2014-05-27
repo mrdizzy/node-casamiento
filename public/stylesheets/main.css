@@ -137,6 +137,8 @@ input {
       padding:1em;      
       width:202px;
     }
+    #slogan_container { height:50px;float:left;border-top:1px dashed grey;border-bottom:1px solid black;width:25%;text-align:center;}
+    
     #dreams_slogan { 
       padding-top:0.25em;
       width:150px;
@@ -250,12 +252,12 @@ input {
       width:200px;
       margin:0 auto;
     }
-    #main_logo_casamiento { width:100%;float:none;margin:0 auto;}
+    #slogan_container { 
+      clear:both;border:0;border-bottom:1px solid black;width:100%;padding-top:1em;text-align:center;}
+    .nav_link { display:none;}
     
     #inner_page_container { width:100%;}
     .left_column, .right_column { margin:0;float:none; clear:both;width:100%;}
-    #browse, #contact, #cart { display:none;margin:0 auto;}
-    #main_slogan_casamiento { float:none;}
       #inner_page_container { width:100%;}
       .chat-bubble { display:block;}
 
@@ -449,30 +451,37 @@ input {
       
       #print_container { display:none; }
 
-
 /* PRINT AND DOWNLOAD
 =============================== */
 
- .page div { margin:0 auto; }
-  .page { 
-    padding-top:3em;
-    width:210mm;
-    margin:0 auto;
-    height:297mm;
-  }
-  
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width:100%;
+  padding-bottom: 70%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+  .svg-content { 
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
   .casamiento_black_logo {
     text-align:center;
     width:50mm;
     display:none;
   }
   
-  .place_card_container {
-    border:1px dotted lightgrey;
-    height:74.25mm;
+  .svg_parent {  
+    display:none;
+    width:75%;
+    margin:0 auto;
+    margin-top:2em;
     position:relative;
-    width:105mm;
-  } 
+  }
   
   .crop_mark { 
    position:absolute;width:20px;height:20px;z-index:200000;
@@ -507,14 +516,7 @@ input {
   .bottom_right_right_crop_mark {
     border-top:1px solid black;bottom:-21px;right:-30px;
   } 
-  
-  @media print {
-    #picker_1, #picker_2, #footer, #header_container { display:none; }
-    .casamiento_black_logo { display:block; }
-  }
-  
-  svg { height:100%; width:100%; position:absolute; }
-
+  .front_place_card, .back_place_card { height:50%; }
   .name { 
     border:none;
     margin:0;
@@ -523,13 +525,29 @@ input {
     background-color:transparent;
     display:inline;
     color:#000;
-    font-size:2em;
+    height:100%;
+    font-size:100%;
     letter-spacing:0;
     text-align:center;
-    line-height:3.7125cm; 
+    line-height:100%; 
 }
-
-.name:hover { background-color:transparent; border:1px dotted black; }
+#add_another {
+  width:5em;
+  background-color:grey;
+  padding:2em;
+  margin:0 auto;
+  text-align:center;
+  color:white;
+  border-radius:10px;
+}
+#add_another:hover {
+  background-color:black;
+}
+  @media print {
+    #picker_1, #picker_2, #footer, #header_container { display:none; }
+    .casamiento_black_logo { display:block; }
+  }
+ 
 
 
 /* RESPONSIVE DESIGNS
@@ -559,10 +577,7 @@ input {
   /* Mobile phone devices */
 
 @media all and (max-width: 600px) and (min-width: 320px) {
-  #logo { float:none;padding:0;margin:0 auto;}
-  #browse, #contact, #cart { display:none;margin:0 auto;}
-  #dreams_container { float:none;clear:both;margin:0 auto;border:0;padding:0;}
-  
+
     #inner_page_container_casamiento { width:100%;margin:0;padding:0}
     #page_container { margin:0;border:0;padding:0;}
     #page_container_casamiento { border:0;padding:0;margin:0;}
@@ -576,6 +591,7 @@ input {
     #slide4 { width: inherit; height:auto;}
     #slide5 .shell { display:none;}
     #slide5 h6 { width:95%; padding:0;margin:0 auto;}
+    #second_product_type_icon { display:none;}
   }
 
 /* GLOBAL CLASSES

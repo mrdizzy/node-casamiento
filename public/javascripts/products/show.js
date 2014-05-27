@@ -54,11 +54,33 @@ var StepsPresenter = function(model, view) {
 
 StepsPresenter.prototype = {
   moveStep: function() {
+    this.svgDownloaded = false;
     this.toggleStepOff = this.currentStep;
     this.view.render();
     this.toggleStepOn = this.currentStep + 1;
     this.view.render();
     this.currentStep = this.currentStep + 1;
+  },
+  toggleDownloadView: function() {
+   
+    var that = this;
+    this.toggleDownload = true;
+    if(!this.svgDownloaded) {
+    
+    $('.spinner').show();  
+    
+   $('#image_container').fadeToggle();
+      this.svgDownloaded = true;
+      this.svgNewlyDownloaded = true;
+      $.get("/svg/" + thisProduct.get("_id"), function(data) {
+      console.log("Downloaded SVG")
+        thisProduct.set("svg", data)
+        that.view.render();
+      })
+    } else {
+      this.toggleDownload = true;
+      that.view.render();
+    }
   },
   hoverStepOn: function(step_number) {
     if(this.currentStep == step_number) {
@@ -120,46 +142,7 @@ var DownloadView = Backbone.View.extend({
   initialize: function() {
     this.toggleDownloadView = false;
     this.loadSVG = false;
-  },
-  events: {
-    'click #download_link': 'downloadView'
-  },
-  downloadView: function() {
-  that = this;
-    this.toggleDownloadView = true;
-    console.log(thisProduct._id)
-    
-      $('.spinner').show();
-    this.render();
-    
-
-    $.get("/svg/" + thisProduct.get("_id"), function(data) {
-    console.log(data)
-      thisProduct.set("svg", data)
-      that.loadSVG = true;
-      that.render();
-    })
-  },
-  render: function() {
-    if(this.toggleDownloadView) {
-    
-      this.$('#image_container').fadeToggle();
-      this.toggleDownloadView = false;
-    }
-    if(this.loadSVG) {
-    
-      $('.spinner').hide();
-      this.$('#print_container').fadeToggle();
-      this.$('.svg_image').html(thisProduct.get("svg"))
-      $('[fill=#FF0000]').attr('fill', thisProduct.get("colours")[0]).attr('class', 'colour0')
-    $('[stroke=#FF0000]').attr('stroke', thisProduct.get("colours")[0]).attr('class', 'colour0')
-    
-    $('[fill=#0000FF]').attr('fill', thisProduct.get("colours")[1]).attr('class', 'colour1')
-    $('[stroke=#0000FF]').attr('stroke', thisProduct.get("colours")[1]).attr('class', 'colour1')
-    
-    }
   }
-  
 })
 
 var StepView = Backbone.View.extend({ 
@@ -171,9 +154,15 @@ var StepView = Backbone.View.extend({
     this.presenter = new StepsPresenter(thisProduct, this)
     this.listenTo(thisProduct, 'change:colour_1', this.changeColour)	
     this.listenTo(thisProduct, 'change:colour_2', this.changeColour2)
-  },
+    var that = this;
+    $('#add_another').click(function() {
+      that.addAnother();
+      })
+       },
   events: {     
-    "click #buy": "checkout",
+    "click #buy": "checkout",    
+    'click #you_print': 'downloadView',
+    'click #we_print': 'downloadView',
     "mouseenter .spc": "hoverStepOn",
     "mouseleave .spc": "hoverStepOff",      
     "click .texture": "updateTexture",  
@@ -184,6 +173,13 @@ var StepView = Backbone.View.extend({
     "dizzy-cp:click #picker_2": "selectColour2",
     "click #plus_qty": "plusQty",
     "click #minus_qty": "minusQty"
+  },
+  addAnother: function() {
+  console.log("add another")
+    $( ".svg_parent").clone().appendTo( "#svgs" );
+  },
+    downloadView: function() {
+    this.presenter.toggleDownloadView();
   },
   checkout: function() {
     $.form('/payments', { 
@@ -239,6 +235,25 @@ var StepView = Backbone.View.extend({
     thisProduct.set("colour_2", colour)
   },
   render: function() {
+  
+    if(this.presenter.svgNewlyDownloaded) {  
+      this.presenter.toggleDownload = false; 
+      $('.spinner').hide();      
+      $('.svg-container').html(thisProduct.get("svg"))
+      
+      $('.svg_parent').fadeIn();
+      $('[fill=#FF0000]').attr('fill', thisProduct.get("colours")[0]).attr('class', 'colour0')
+      $('[stroke=#FF0000]').attr('stroke', thisProduct.get("colours")[0]).attr('class', 'colour0')
+      $('[fill=#0000FF]').attr('fill', thisProduct.get("colours")[1]).attr('class', 'colour1')
+      $('[stroke=#0000FF]').attr('stroke', thisProduct.get("colours")[1]).attr('class', 'colour1')
+      this.presenter.svgNewlyDownloaded = false;
+    } else if (this.presenter.toggleDownload){
+    console.log("Fade svg")
+      $('.svg_parent').fadeToggle()
+      $('#image_container').fadeToggle();
+      this.presenter.toggleDownload = false;
+    
+    }
     if(this.presenter.toggleStepOn) {
       this.$('#step_' + this.presenter.toggleStepOn + " .step").fadeIn()      
       this.$('#step_' + this.presenter.toggleStepOn + " .chat-bubble").slideDown()
