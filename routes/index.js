@@ -8,6 +8,8 @@ module.exports = function(app){
   
   app.post("/search", require("./../controllers/search"))
   app.get("/svg/:id", require("./../controllers/svg").show)
+  
+  app.get("/svg", require("./../controllers/svg").index)
   app.resource("downloads", require("./../controllers/downloads"))
   app.resource("payments", require("./../controllers/payments"))
   app.resource("product_types", require("./../controllers/product_types"))
