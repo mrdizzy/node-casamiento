@@ -5,6 +5,7 @@ var db = require('./../config/db').test_ebay,
 exports.index = function(req, res) {
 
 fs.readFile("svg_template.svg", 'utf8', function(err, data) {
+console.log(err)
   data = data.replace(/\#FF0000/g, "#00DDCC")
   res.set("Content-Type", "image/svg+xml")
   res.send(data)

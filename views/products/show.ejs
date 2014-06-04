@@ -2,19 +2,80 @@
   .step { background-color:<%= product.colours[0] %>}
 
   @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>') format('woff'); }
-  .name { font-family:"<%= product.font %>"; font-size: <%= product.font_size %>pt; }
+  .name, .guest { font-family:"<%= product.font %>"; font-size: <%= product.font_size %>pt; }
   
 <%- contentFor('left') %>
+<div id="print_box">
 
+<div class="spc" style="padding:1em;">
+<h4 style="clear:both;float:none">Print your own</h4>
+<div style="width:50%;float:left;">
+  <div style="width:100px;border:1px solid black;height:112px;">
+      <table style="width:100%;border-collapse:collapse;border:0;">
+        <tr>
+        <td style="width:50%;height:28px;border:1px dotted grey;"></td>
+        
+        <td style="width:50%;height:28px;border:1px dotted grey;"></td>
+      </tr><tr>
+        <td style="width:50%;height:28px;border:1px dotted grey;"></td>
+        
+        <td style="width:50%;height:28px;border:1px dotted grey;"></td>
+      </tr><tr>
+        <td style="width:50%;height:28px;border:1px dotted grey;"></td>
+        
+        <td style="width:50%;height:28px;border:1px dotted grey;"></td>
+      </tr><tr>
+        <td style="width:50%;height:28px;border:1px dotted grey;"></td>
+        
+        <td style="width:50%;height:28px;border:1px dotted grey;"></td>
+      </tr>
+      </table>
+    </div>
+    </div>
+    <div style="width:50%;float:right;">
+     <div style="width:100px;border:1px solid black;height:98px;padding-top:14px;">
+      <table style="padding-top:14px;width:50%;border-collapse:collapse;margin:0 auto;">
+        <tr>
+        <td style="width:100%;height:28px;border:1px dotted grey;"></td>
+        
+      </tr><tr>
+        <td style="width:100%;height:28px;border:1px dotted grey;"></td>
+        
+      </tr><tr>
+        <td style="width:100%;height:28px;border:1px dotted grey;"></td>
+      </tr>
+      </table>
+    </div></div>
+    
+    
+    </div>
+</div>
   <script type="text/javascript" src="/javascripts/libraries/jquery_form.js"></script>
   <script type="text/javascript" src="/javascripts/products/show.js"></script>
   <script type="text/javascript" src="/javascripts/libraries/in_groups_of.js"></script>
+ 
+ <script type="text/template" id="svg_place_card_template">
+ 
+  <div class="print_place_left_column_container">
+    <div class="single_place_card_container">
+      <div class="half_container"></div>
+      <div class="half_container"><span class="guest">David</span></div>
+    </div>
+    <img src="http://localhost:3000/svg/FF00DD" class="place_card_image"/>
+  </div>
+ </script>
+ 
+ 
+<div id="per_8_page_print">
+
+</div>
  
 <div id="product_container">
  
   <div class="spinner">
       <img src="/gfx/spinner.gif">
   </div>
+  <a id="2Dview" name="2Dview"></a>
 <div id="svgs">
   <div class="svg_parent"> 
     <div class="top_top_left_crop_mark crop_mark"></div>
@@ -34,11 +95,13 @@
     <div class="bottom_bottom_right_crop_mark crop_mark"></div>
 
     <div class="bottom_right_right_crop_mark crop_mark"></div>
-    <div style="width:100%;"><img src="/gary.png" style="width:100%" style="background-color:<%= product.colours[0] %>" class="colour_1" /></div>
+    <div style="width:100%;">
+  <%- product.divs[4] %></div>
   </div>
-</div>
+  
+    <div id="add_another"><p style="font-size:1.4em;margin:0;padding:0;">PRINT</p></div>
     
-    <div id="add_another"><p style="font-size:1.4em;margin:0;padding:0;">ADD ANOTHER</p></div>
+</div>
     
 <div id="image_container">
 
@@ -46,10 +109,10 @@
   SLIDES 1 TO 3 
 -->
 
-  <%-  product.divs[0] %>
+  <img id="slide1" src="/products/<%= product._id %>/attachments/display-<%= product.attachments_order[0]%>" />
    <img src="/gfx/product_types/small/name_place_small.png" class="product_type_icon">
-  <%-  product.divs[1] %>
-  <%-  product.divs[2] %>
+   <img id="slide2" src="/products/<%= product._id %>/attachments/display-<%= product.attachments_order[1]%>" />
+   <img id="slide3" src="/products/<%= product._id %>/attachments/display-<%= product.attachments_order[2]%>" />
       
 <!-- 
 
@@ -61,6 +124,8 @@
     <h1 class="product_name"><%= product.name %></h1>
     <div class="ornamental_line"></div>
   </div>
+  
+  
     
   <div id="description_container">
     <div class="shell"></div>
@@ -72,7 +137,7 @@
   SLIDE 4 
 
 -->    
-  <%-  product.divs[3] %>
+  <img id="slide4" src="/products/<%= product._id %>/attachments/display-<%= product.attachments_order[3]%>" />
 
 </div>
 </div>
@@ -94,5 +159,35 @@
 
     new StepView().render();
     new DownloadView({el: '#product_container', model: thisProduct}).render();
+
+var PlaceView = Backbone.View.extend({
+initialize: function() {
+  
+    this.listenTo(this.model, 'change:name', this.render)	
+},
+    render: function() {
+    var template = $('#svg_place_card_template').html();
+      this.$el.html(template);
+      this.$('.guest').text(this.model.get("name"))
+      return this;
+    }
+})
+
+  var PrintView = Backbone.View.extend({
+    initialize: function() {            
+    },
+    render: function() {
+    var guests = thisProduct.get("guests");
+    guests.forEach(function(guest) {
+
+        var place_card = new PlaceView({model: guest}).render().el
+        this.$el.append(place_card);
+       
+      }, this)
+      return this;          
+    } 
+  })
+  
+  new PrintView({el: '#per_8_page_print', model: thisProduct}).render();
 
   </script>

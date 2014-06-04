@@ -60,7 +60,7 @@ app.configure(function() {
     
     // Compresses static files and res.json responses
     
-    app.use(compression()); // must be one of the first middlewares to compress effectively
+    //app.use(compression()); // must be one of the first middlewares to compress effectively
     app.use(express.cookieParser());
     app.use(express.favicon());
     app.use(expressLayouts)

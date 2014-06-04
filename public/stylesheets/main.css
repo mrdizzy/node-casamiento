@@ -335,9 +335,10 @@ input {
   float:left;
   width:75%; 
 }
-  #slide1, #slide3 {  float:left;width:49.75%; }
-  #slide2, #slide4,#product_name_container { float:right; width:49.75%;}
+  #slide1, #slide3 { display:block; float:left;width:49.75%; }
+  #slide2, #slide4,#product_name_container { display:block;float:right; width:49.75%;}
   #slide5 h6 { width:95%;margin:0 auto;}
+  #slide5 { width:100%;}
   .slide { position:relative; margin-right:1px; margin-bottom:1px; }
   #description_container {   
     float:left;
@@ -449,39 +450,28 @@ input {
         width:90px;
       }
       
-      #print_container { display:none; }
-
-/* PRINT AND DOWNLOAD
-=============================== */
-
-.svg-container {
-  display: inline-block;
-  position: relative;
-  width:100%;
-  padding-bottom: 70%;
-  vertical-align: middle;
-  overflow: hidden;
+      #print_box{
+      box-shadow:10px 10px 0 0 lightgrey;
+      border-radius:10px;
+  position: fixed;
+  z-index:100000;
+  top: 50%;
+  height:300px;
+  width:400px;
+  background-color:white;
+  border:1px solid black;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -200px;
 }
-  .svg-content { 
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.svg_parent { width:75%; }
-
-  .casamiento_black_logo {
-    text-align:center;
-    width:50mm;
-    display:none;
-  }
-  
+#print_box .preview {  width:48px;height:20px;display:inline-block;padding:0;margin:0;line-height:100%;border:1px dotted black;}
+.preview .slide { width:100%; padding:0;margin:0;}
+      
   #svgs { display:none;}
   
-  #add_another { display:none;}
   
   .svg_parent {  
-    width:75%;
+    width:85%;
     margin:0 auto;
     margin-top:2em;
     position:relative;
@@ -521,7 +511,7 @@ input {
     border-top:1px solid black;bottom:-21px;right:-30px;
   } 
   .front_place_card, .back_place_card { height:50%; }
-  .name { 
+  .name, .guest { 
     border:none;
     margin:0;
     padding:0;
@@ -547,7 +537,41 @@ input {
 #add_another:hover {
   background-color:black;
 }
+      
+      
+/* PRINT AND DOWNLOAD
+=============================== */  
+#per_8_page_print { width:210mm;height:297mm; clear:both; display:none;}
+  .print_place_left_column_container {
+    padding:0;margin:0;
+    position:relative;
+    float:left;
+    width:10.5cm;  height:7.425cm;
+  }
+  .print_place_right_column_container {
+    float:right;
+    padding:0;margin:0;
+    position:relative;
+    width:10.435cm;  height:7.40cm;
+  }
+    .single_place_card_container { padding:0;margin:0;
+    z-index:5;width:100%;height:7.245cm;text-align:center;position:absolute;
+    }
+      .half_container { padding:0;margin:0;
+      height:3.7125cm;
+      }
+      .place_card_image { 
+      padding:0;margin:0;
+      width:100%;position:absolute;
+      }
+
   @media print {
+ #per_8_page_print { display:block;}
+  #page_container { margin:0;padding:0; }
+#images_container { display:none;}
+#product_container { display:none;}
+  #inner_page_container { margin:0;padding:0; }
+  body { margin:0;padding:0; }
     #picker_1, #picker_2, #footer, #header_container { display:none; }
     .casamiento_black_logo { display:block; }
       .svg_parent {  
@@ -558,6 +582,7 @@ input {
     margin:0 auto;
     position:relative;
   }
+  #per_8_page_print { display:block;}
   #add_another { display:none;}
   .right_column { display:none;}
   }
@@ -576,7 +601,7 @@ input {
   .chat-bubble { left:3em;}
   #product_section1 { width:374px; }
   #product_section0 { margin-left:374px;}
-  #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 { float:none;clear:both;}
+  #slide1, #slide2, #slide3, #slide4, #slide5, #slide6,#product_name_container { float:none;clear:both;}
   #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { float:none;clear:both;}
   #slide4 { width: inherit; height:auto;}
   #slide5 .shell { display:none;}
@@ -593,7 +618,7 @@ input {
     #inner_page_container_casamiento { width:100%;margin:0;padding:0}
     #page_container { margin:0;border:0;padding:0;}
     #page_container_casamiento { border:0;padding:0;margin:0;}
-    #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 { width:100%; margin:0 auto;float:none;clear:both;}
+    #slide1, #slide2, #slide3, #slide4, #slide5, #slide6, #product_name_container{ width:100%; margin:0 auto;float:none;clear:both;}
     .slide { width:100%;}
     #description_container { float:none;width:90%;margin:0 auto;}
     
@@ -603,6 +628,7 @@ input {
     #slide4 { width: inherit; height:auto;}
     #slide5 .shell { display:none;}
     #slide5 h6 { width:95%; padding:0;margin:0 auto;}
+    
     #second_product_type_icon { display:none;}
   }
 
