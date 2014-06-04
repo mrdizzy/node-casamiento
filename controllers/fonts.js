@@ -1,13 +1,12 @@
 var db = require('./../config/db').test_ebay,
 fs = require('fs');
+
 exports.new = function(req,res) {
   res.render('fonts/new', {layout:"admin_layout" });
 }
 
-
 exports.show = function(req, res) {
   var id = req.params.font;
-  console.log(id)
   var stream = db.getAttachment(id, "woff")
   stream.on("data", function(chunk) {
     res.write(chunk)
@@ -19,18 +18,18 @@ exports.show = function(req, res) {
 }
 
 exports.index = function(req, res) {
-db.view('all/type', {
-        key: "font"
-    }, function(error, docs) {
-        if (error) {
-            console.log(error)
-        }
-        else {
-            res.render("fonts/index", { layout: "admin_layout", locals: {fonts: docs.toArray()}})
-        }
-    })
-  
+  db.view('all/type', {
+    key: "font"
+  }, function(error, docs) {
+    if (error) {
+      console.log(error)
+    }
+    else {
+      res.render("fonts/index", { layout: "admin_layout", locals: {fonts: docs.toArray()}})
+    }
+  })
 }
+
 exports.create = function(req, response) {
   var attachment_data = { name:"woff", "Content-Type":"application/font-woff"}
   console.log(req.files.woff.path)
