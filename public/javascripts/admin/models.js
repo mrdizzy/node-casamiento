@@ -12,7 +12,7 @@ var Product = Backbone.Model.CouchDB.extend({
     }
     return json;
   },
-  attachment_types: ["thumb", "display","medium","large"]
+  attachment_types: ["thumb", "display","medium","large","transparent_display", "transparent_medium", "transparent_large"]
 });
 
 var Products = Backbone.Collection.extend({

@@ -1,8 +1,8 @@
 var Guest = Backbone.Model.extend({})
  
- var Guests = Backbone.Collection.extend({
-   model: Guest
- })
+var Guests = Backbone.Collection.extend({
+  model: Guest
+})
 
 var Product = Backbone.Model.extend({
   initialize: function() {
@@ -152,7 +152,7 @@ var GuestView = Backbone.View.extend({
 var StepView = Backbone.View.extend({ 
   el: '#steps',
   initialize: function() {
-  this.effectChanging =0;
+    this.effectChanging = 0;
     this.currentStep = 0;
     _.bindAll(this, 'render')
     this.presenter = new StepsPresenter(thisProduct, this)
@@ -161,8 +161,8 @@ var StepView = Backbone.View.extend({
     var that = this;
     $('#add_another').click(function() {
       that.print();
-      })
-       },
+    })
+  },
   events: {     
     "click #buy": "checkout",        
     "mouseenter .spc": "hoverStepOn",
@@ -177,22 +177,25 @@ var StepView = Backbone.View.extend({
     "click #minus_qty": "minusQty"
   },
   print: function() {
-    var images = $('img.place_card_image');
-    var counter = images.length;
-    var i = 0;
-    var hex =thisProduct.get("colour_1").substring(1);
-    $('img.place_card_image').attr("src", "/svg/" + hex);
+    $('#print_spinner').fadeIn();
+    $('#add_another').fadeOut();
+    var images = $('img.place_card_image'),
+      counter = images.length,
+      i = 0,
+      hex = thisProduct.get("colour_1").substring(1); // remove # from hexcode
+    $('img.place_card_image').attr("src", "/svg/" + hex); // url to pull new svg image
     $('img.place_card_image').load(function() {
-    i++;
+      i++;
       if(counter == i) {
-        window.print();
+        $('#print_box').fadeIn();        
+        $('#print_spinner').fadeOut();
       }
     })
   },
-    downloadView: function() {
-      if(!this.show2DView) {
-    this.presenter.show2DView();
-    this.show2DView = true;
+  downloadView: function() {
+    if(!this.show2DView) {
+      this.presenter.show2DView();
+      this.show2DView = true;
     }
   },
   checkout: function() {
@@ -249,12 +252,11 @@ var StepView = Backbone.View.extend({
   render: function() {
     if (this.presenter.show2D){
       $(document.body).animate({
-    'scrollTop':   $('#2Dview').offset().top
-}, 1, function() {
-  
-      $('#image_container').hide(); // hide 3D slides  
-      $('#svgs').show() // display 2D customise image 
-});
+        'scrollTop': $('#2Dview').offset().top
+        }, 1, function() {  
+          $('#image_container').hide(); // hide 3D slides  
+          $('#svgs').show() // display 2D customise image 
+      });
     } 
     else if(this.presenter.toggleStepOn) {
       this.$('#step_' + this.presenter.toggleStepOn + " .step").fadeIn()      

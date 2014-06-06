@@ -2,38 +2,39 @@
     PRODUCT FORM TEMPLATE
 -->
 
-  <script type="text/template" id="current_product_form">
-  <h1>SVG</h1>
-    <form>
-      <div style="width:50%;float:left">
-        <h1>{{ id }}</h1>        
-        <p><label for="price">Name:</label></p>
-        <p><input type="text" name="name" value="{{name}}"></input></p>
+<script type="text/template" id="current_product_form">
+<h1>SVG</h1>
+  <form>
+    <div style="width:50%;float:left">
+      <h1>{{ id }}</h1>        
+      <p><label for="price">Name:</label></p>
+      <p><input type="text" name="name" value="{{name}}"></input></p>
+   
+      <p><label for="price">Price:</label></p>
+      <p><input type="text" name="price" value="{{price}}"></input></p>
      
-        <p><label for="price">Price:</label></p>
-        <p><input type="text" name="price" value="{{price}}"></input></p>
-       
-        <p><label for="font">Font:</label></p>
-        <p><input type="text" name="font" value="{{font}}"></input></p>        
-        
-        <p><label for="font_size">Font Size:</label></p>
-        <p><input type="text" name="font_size" value="{{font_size}}"></input></p>    
-        
-        <p><label for="description">Description:</label></p>
-        <p><textarea name="description">{{description}}</textarea></p>        
-        
-        <p><label for="font">SVG:</label></p>
-         <p><textarea cols="100" rows="10" name="svg">{{svg}}</textarea></p>
-        <div id="parse_svg">Parse SVG</div>
-        
-        <p><select name="tags" multiple="true">{{tags_for_select}}</select></p>
-      </div>
+      <p><label for="font">Font:</label></p>
+      <p><input type="text" name="font" value="{{font}}"></input></p>        
       
-      <div style="width:50%;float:right" id="colour_picker"></div>
-      <input type="submit" style="clear:both;">Submit</a>
-    </form>
-    <h3 style="clear:both">Attachments</h3>
-  </script>
+      <p><label for="font_size">Font Size:</label></p>
+      <p><input type="text" name="font_size" value="{{font_size}}"></input></p>    
+      
+      <p><label for="description">Description:</label></p>
+      <p><textarea name="description">{{description}}</textarea></p>        
+      
+      <p><label for="font">SVG:</label></p>
+       <p><textarea cols="100" rows="10" name="svg">{{svg}}</textarea></p>
+      <div id="parse_svg">Parse SVG</div>
+      
+      <p><select name="tags" multiple="true">{{tags_for_select}}</select></p>
+    </div>
+    
+    <div style="width:50%;float:right" id="colour_picker"></div>
+    <input type="submit" style="clear:both;">Submit</a>
+  </form>
+  <h3 style="clear:both">Attachments</h3>
+</script>
+
 <!-- 
   IMAGE BACKGROUNDS
 -->
@@ -53,12 +54,12 @@
 </style>
 
 <div id="products_container">
-        <h3>Products</h3>
-        <div id="products" style="float:right;width:75%;"></div>
-        </div>
-        <div id="current_product_container" style="clear:both;width:90%;margin:0 auto">
-        <h3>Current Product</h3>
-        <div id="cpv"></div>
+  <h3>Products</h3>
+  <div id="products" style="float:right;width:75%;"></div>
+  </div>
+  <div id="current_product_container" style="clear:both;width:90%;margin:0 auto">
+  <h3>Current Product</h3>
+  <div id="cpv"></div>
 </div>
 
 
