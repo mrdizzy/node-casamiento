@@ -131,15 +131,25 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     this.model.on("sync", this.render, this)
   },    
   events: { 
+    'change input[name=svgupload]': 'prepareSVG',
     'click input[type=submit]': 'sendForm',
     'click .addmore': 'addAttachment',
     'dizzy-cp:hoverColor .picker': 'selectColour',
-    'click #parse_svg': 'parseSVG'
+    'click #parse_svg': 'parseSVG',
   },
-  parseSVG: function(e) {
-     var svg = this.$('textarea[name=svg]').val();
+  prepareSVG: function(e) {
+       var that = this;
+    var file = e.currentTarget.files[0]
+   
+    var reader  = new FileReader();
     
-     this.$('textarea[name=svg]').val(svg);
+    reader.onload = function() {
+      var data = reader.result.split(",")[1];
+      console.log(data)
+      that.model.set("svg", data)
+    }
+
+    reader.readAsDataURL(file);
   },
   selectColour: function(e, colour) {
      var index = $(e.currentTarget).index();

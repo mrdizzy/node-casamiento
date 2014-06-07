@@ -65,11 +65,16 @@ module.exports.index = function(req, res) {  // GET /invoices
 
 function parseTransactions(transactions, maincallback) {
   async.map(transactions, function(transaction, callback) {
-    if (transaction.L_TYPE == 'Fee' || transaction.L_TYPE == 'Fee Reversal' || transaction.L_TYPE == 'Temporary Hold' || transaction.L_TYPE == 'Transfer') {
+    if (transaction.L_TYPE == 'Fee' || transaction.L_TYPE == 'Fee Reversal' || transaction.L_TYPE == 'Temporary Hold' || transaction.L_TYPE == 'Transfer' || transaction.L_TYPE == 'Refund' || transaction.L_TYPE == 'Voucher') {
         callback(null, null)
     }
     else {
       paypal.buildQuery("GetTransactionDetails", function(err, response) {
+      if(err) {
+        console.log("THERE HAS BEEN AN ERROR RETRIEVING THE RESPONSE:")
+        console.log(err)
+        console.log(transaction)
+      } else {
         response.items = response.GetTransactionDetailsResponse;
           response.items = _.map(response.items, function(item) {
           if(item.L_NAME) {
@@ -78,6 +83,7 @@ function parseTransactions(transactions, maincallback) {
               return item;
           })
         callback(err,response)
+        }
         }, {
         TRANSACTIONID: transaction.L_TRANSACTIONID
       })

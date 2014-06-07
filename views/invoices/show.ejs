@@ -37,27 +37,31 @@ td.tdamount { width:15%;}
 .total p { font-size: 18pt; text-align:center;}
 </style>
     <html><body>
-<% var total = 0; %>
 <% transactions.forEach(function(t) { %>
 
+<% var total = 0; %>
 <div class="page" style=""><img src="/gfx/invoice_new.svg" style="position:absolute;width:100%;"/>
   <textarea class="label"><%= t.SHIPTONAME %>
-<%= t.SHIPTOSTREET %>
-<%= t.SHIPTOSTREET2%>
+<%= t.SHIPTOSTREET %><% if (t.SHIPTOSTREET2) {  %>
+<%= t.SHIPTOSTREET2%><% } %>
 <%= t.SHIPTOCITY%>
 <%= t.SHIPTOSTATE%>
 <%= t.SHIPTOZIP%></textarea>
  
  <textarea class="delivery_address"><%= t.SHIPTONAME %>
 <%= t.SHIPTOSTREET %>
+<% if (t.SHIPTOSTREET2) {  %>
 <%= t.SHIPTOSTREET2%>
+<% } %>
 <%= t.SHIPTOCITY%>
 <%= t.SHIPTOSTATE%>
 <%= t.SHIPTOZIP%></textarea>
   
   <textarea class="invoice_address"><%= t.SHIPTONAME %>
 <%= t.SHIPTOSTREET %>
+<% if (t.SHIPTOSTREET2) {  %>
 <%= t.SHIPTOSTREET2%>
+<% } %>
 <%= t.SHIPTOCITY%>
 <%= t.SHIPTOSTATE%>
 <%= t.SHIPTOZIP%></textarea>
