@@ -14,9 +14,8 @@ var AttachView = Backbone.View.Attachment.extend({
   render: function() {
   if(this.model) {
     this.$el.html(this.model.id + " - " + this.model.get("width") + "x" + this.model.get("height") + "<br/><img src='" + this.model.url() + "' width='120' height='90' />")
-    
     } else {
-        this.$el.html("<div style='width:120px;height:90px;border:1px solid black;display:inline-block;'>' + '</div>")
+        this.$el.html("<div style='width:120px;height:90px;border:1px solid black;display:inline-block;'></div>")
     }
     return this;
   }
@@ -114,7 +113,7 @@ var BackgroundView = Backbone.View.extend({
     var attach_model = this.model.toJSON();
     attach_model.number_of_colours = this.model.get("colours").length
     attach_model.current_attachment = this.attachment;
-    attach_model.url = "/products/" +  attach_model._id + "/attachments/medium-" + attach_model.current_attachment
+    attach_model.url = "/products/" +  attach_model._id + "/attachments/transparent_medium-" + attach_model.current_attachment
     attach_model.divs = attach_model["background-" + this.attachment]
       // Render background-coloured image
     var result = Handlebars.compile($('#image_backgrounds').html(), {noEscape: true})(attach_model);
