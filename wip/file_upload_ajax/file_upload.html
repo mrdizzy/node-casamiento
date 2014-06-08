@@ -1,0 +1,68 @@
+<html>
+<head>
+
+<style type="text/css">
+
+</style>
+    
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
+</head>
+
+<body>
+<input type="file"></input>
+
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<img src="" class="image" />
+<script>
+$(function() {
+
+function readFile(readFileField, callback) {
+  readFileField.change(function (e) {
+    var file = e.currentTarget.files[0]
+   
+    var reader  = new FileReader();
+
+    reader.onload = function() {
+      callback(reader.result);
+    }
+
+    reader.readAsDataURL(file);
+  })
+  }
+ readFile($("input:file"), function(result) {
+   console.log(result)
+ });
+  
+  })
+</script>
+</body>
+</html>

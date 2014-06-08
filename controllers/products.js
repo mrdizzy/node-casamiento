@@ -28,7 +28,7 @@ exports.update = exports.create = function(req, res) {
 } else {
   var id = req.body._id
 }
-console.log(req.body.svg)
+console.log("SVG:", req.body.svg)
   var svg = req.body.svg.toString();
 //var svg = new String(req.body.svg) // new String is used to "copy" the string as we are about to delete it in the next line
 console.log(id)
@@ -45,7 +45,7 @@ console.log(id)
         if (record) {
           var svg_rev = record._rev
         }
-        console.log(svg_rev)
+        console.log(svg_rev, svg)
         db.save(svg_id,svg_rev, {_attachments: { svg: { 'Content-Type': "image/xml+svgz", data: svg}}}, function(anerror, done) {
             if (anerror) {
               console.log("Error here",anerror)

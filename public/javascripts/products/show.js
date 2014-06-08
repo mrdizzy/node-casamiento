@@ -185,6 +185,7 @@ var StepView = Backbone.View.extend({
       hex = thisProduct.get("colour_1").substring(1); // remove # from hexcode
     $('img.place_card_image').attr("src", "/svg/" + hex); // url to pull new svg image
     $('img.place_card_image').load(function() {
+    console.log("Loaded")
       i++;
       if(counter == i) {
         $('#print_box').fadeIn();        

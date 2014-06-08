@@ -137,14 +137,12 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     'click #parse_svg': 'parseSVG',
   },
   prepareSVG: function(e) {
-       var that = this;
-    var file = e.currentTarget.files[0]
-   
-    var reader  = new FileReader();
+   var that = this,
+   file = e.currentTarget.files[0],
+   reader  = new FileReader();
     
-    reader.onload = function() {
+   reader.onload = function() {
       var data = reader.result.split(",")[1];
-      console.log(data)
       that.model.set("svg", data)
     }
 
