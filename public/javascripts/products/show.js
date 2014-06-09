@@ -1,18 +1,39 @@
+// 
+// GUEST VIEW
+// 
 var Guest = Backbone.Model.extend({})
  
 var Guests = Backbone.Collection.extend({
   model: Guest
 })
 
+
+var GuestView = Backbone.View.extend({  
+  events: {
+    "blur input": 'updateGuest'
+  },
+  updateGuest: function() {
+    this.model.set("name", this.$('input').val())
+  },
+  render: function() { 
+    this.$el.html('<input type="text" name="guest" value="' + this.model.get("name") + 'View"></input>')
+    return this;
+  }
+})
+
+// 
+// PRODUCT MODEL
+// 
+
 var Product = Backbone.Model.extend({
   initialize: function() {
-      this.on("change:quantity", this.calculatePrice)
-      this.on("change:texture", this.calculatePrice)
-      this.on("change:weight", this.calculatePrice)
+    this.on("change:quantity", this.calculatePrice)
+    this.on("change:texture", this.calculatePrice)
+    this.on("change:weight", this.calculatePrice)
   },
   applyDiscounts: function(total) {
     var qty = this.get("quantity"),
-    discount = 0;
+      discount = 0;
     if((qty > 32) && (qty < 96)) {
       discount = (10/100) * total
     }
@@ -23,7 +44,7 @@ var Product = Backbone.Model.extend({
   },
   calculatePrice: function() {   
     var qty = this.get("quantity"),
-   total = this.get("price") * qty,
+      total = this.get("price") * qty,
       texture = this.get("texture"),
       weight = this.get("weight");
     if(weight == "300") {
@@ -43,6 +64,10 @@ var Product = Backbone.Model.extend({
     this.set("total", total)
   }
 });
+
+// 
+// STEPS PRESENTER
+// 
 
 var StepsPresenter = function(model, view) {
   this.view = view;
@@ -128,6 +153,10 @@ StepsPresenter.prototype = {
   }
 }
 
+// 
+// DOWNLOAD VIEW
+// 
+
 var DownloadView = Backbone.View.extend({
   initialize: function() {
     this.toggleDownloadView = false;
@@ -135,20 +164,9 @@ var DownloadView = Backbone.View.extend({
   }
 })
 
-var GuestView = Backbone.View.extend({  
-  events: {
-    "blur input": 'updateGuest'
-  },
-  updateGuest: function() {
-    this.model.set("name", this.$('input').val())
-  },
-  render: function() {
- 
-  this.$el.html('<input type="text" name="guest" value="' + this.model.get("name") + 'View"></input>')
-  return this;
-  }
-})
-
+// 
+// STEP VIEW
+// 
 var StepView = Backbone.View.extend({ 
   el: '#steps',
   initialize: function() {
@@ -161,6 +179,7 @@ var StepView = Backbone.View.extend({
     var that = this;
     $('#add_another').click(function() {
       that.print();
+        $('#print_box').hide();
     })
   },
   events: {     
@@ -177,19 +196,21 @@ var StepView = Backbone.View.extend({
     "click #minus_qty": "minusQty"
   },
   print: function() {
-    $('#print_spinner').fadeIn();
-    $('#add_another').fadeOut();
+    $('#add_another').fadeOut(function() {
+      $('#print_spinner').fadeIn()
+    });
+    
     var images = $('img.place_card_image'),
       counter = images.length,
       i = 0,
       hex = thisProduct.get("colour_1").substring(1); // remove # from hexcode
-    $('img.place_card_image').attr("src", "/svg/" + hex); // url to pull new svg image
+    $('img.place_card_image').attr("src", "/svg/" + thisProduct.get("_id") + "/" + hex); // url to pull new svg image
     $('img.place_card_image').load(function() {
-    console.log("Loaded")
       i++;
-      if(counter == i) {
-        $('#print_box').fadeIn();        
-        $('#print_spinner').fadeOut();
+      if(counter == i) {      
+        $('#print_spinner').hide(function() {                 
+          $('#print_box').fadeIn();  
+        }); 
       }
     })
   },

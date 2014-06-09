@@ -449,81 +449,67 @@ input {
         width:90px;
       }
       
-      #print_box{
-      box-shadow:10px 10px 0 0 lightgrey;
-      border-radius:10px;
-  position: fixed;
-  z-index:100000;
-  top: 50%;
-  height:300px;
-  width:400px;
-  background-color:white;
-  border:1px solid black;
-  left: 50%;
-  margin-top: -150px;
-  margin-left: -200px;
-}
-#print_box .preview {  width:48px;height:20px;display:inline-block;padding:0;margin:0;line-height:100%;border:1px dotted black;}
+      #print_box {
+        box-shadow:10px 10px 0 0 lightgrey;
+        border-radius:10px;
+        display:none;
+        position: fixed;
+        z-index:100000;
+        top: 50%;
+        height:300px;
+        width:400px;
+        background-color:white;
+        border:1px solid black;
+        left: 50%;
+        margin-top: -150px;
+        margin-left: -200px;
+      }
+      #print_box .preview {  width:48px;height:20px;display:inline-block;padding:0;margin:0;line-height:100%;border:1px dotted black;}
 .preview .slide { width:100%; padding:0;margin:0;}
       
-  #svgs { display:none;}
+/*  #svgs { display:none;}*/
   
+    .svg_parent {  
+      width:85%;
+      margin:0 auto;
+      margin-top:2em;
+      position:relative;
+    }
+    
+      .crop_mark { 
+       position:absolute;width:20px;height:20px;z-index:200000;
+      }
+      
+      .top_top_left_crop_mark {
+       border-right:1px solid black;top:-30px;left:-21px;
+      }
+      
+      .top_left_left_crop_mark {
+        border-bottom:1px solid black;top:-21px;left:-30px;
+      } 
+      .top_top_right_crop_mark {
+        border-bottom:1px solid black;top:-21px;right:-30px;
+      }
+      .top_right_right_crop_mark {
+       border-left:1px solid black;top:-30px;right:-21px;
+      }
+      
+      .bottom_bottom_left_crop_mark {
+       border-right:1px solid black;bottom:-30px;left:-21px;
+      }
+      
+      .bottom_left_left_crop_mark {
+        border-top:1px solid black;bottom:-21px;left:-30px;
+      } 
+      
+      .bottom_bottom_right_crop_mark {
+        border-left:1px solid black;bottom:-30px;right:-21px;
+      }
+      
+      .bottom_right_right_crop_mark {
+        border-top:1px solid black;bottom:-21px;right:-30px;
+      } 
   
-  .svg_parent {  
-    width:85%;
-    margin:0 auto;
-    margin-top:2em;
-    position:relative;
-  }
-  
-  .crop_mark { 
-   position:absolute;width:20px;height:20px;z-index:200000;
-  }
-  
-  .top_top_left_crop_mark {
-   border-right:1px solid black;top:-30px;left:-21px;
-  }
-  
-  .top_left_left_crop_mark {
-    border-bottom:1px solid black;top:-21px;left:-30px;
-  } 
-  .top_top_right_crop_mark {
-    border-bottom:1px solid black;top:-21px;right:-30px;
-  }
-  .top_right_right_crop_mark {
-   border-left:1px solid black;top:-30px;right:-21px;
-  }
-  
-  .bottom_bottom_left_crop_mark {
-   border-right:1px solid black;bottom:-30px;left:-21px;
-  }
-  
-  .bottom_left_left_crop_mark {
-    border-top:1px solid black;bottom:-21px;left:-30px;
-  } 
-  
-  .bottom_bottom_right_crop_mark {
-    border-left:1px solid black;bottom:-30px;right:-21px;
-  }
-  
-  .bottom_right_right_crop_mark {
-    border-top:1px solid black;bottom:-21px;right:-30px;
-  } 
-  .front_place_card, .back_place_card { height:50%; }
-  .name, .guest { 
-    border:none;
-    margin:0;
-    padding:0;
-    outline:none;
-    background-color:transparent;
-    display:inline;
-    color:#000;
-    height:100%;
-    font-size:2em;
-    letter-spacing:0;
-    text-align:center;
-    line-height:100%; 
-}
 #add_another {
   width:5em;
   background-color:grey;
@@ -540,7 +526,12 @@ input {
       
 /* PRINT AND DOWNLOAD
 =============================== */  
-#per_8_page_print { width:210mm;height:297mm; clear:both; display:none;}
+#per_8_page_print { 
+  width:210mm;
+  height:297mm; 
+  clear:both; 
+  display:none;
+}
   .print_place_left_column_container {
     padding:0;margin:0;
     position:relative;
@@ -565,26 +556,20 @@ input {
       }
 
   @media print {
- #per_8_page_print { display:block;}
-  #page_container { margin:0;padding:0; }
-#images_container { display:none;}
-#product_container { display:none;}
-  #inner_page_container { margin:0;padding:0; }
-  body { margin:0;padding:0; }
-    #picker_1, #picker_2, #footer, #header_container { display:none; }
-    .casamiento_black_logo { display:block; }
+    #per_8_page_print { display:block;}
+    #page_container { margin:0;padding:0; }
+    #inner_page_container { margin:0;padding:0; }
+    body { margin:0;padding:0; }
+    #picker_1, #picker_2, #footer, #header_container, #images_container, #product_container, #print_box { display:none; }
       .svg_parent {  
-    display:block;
-    margin:0 auto;
-    width:105mm;
-    height:74.25mm;
-    margin:0 auto;
-    position:relative;
-  }
-  #per_8_page_print { display:block;}
-  #add_another { display:none;}
-  .right_column { display:none;}
-  }
+        display:block;
+        margin:0 auto;
+        width:105mm;
+        height:74.25mm;
+        margin:0 auto;
+        position:relative;
+    }
+    #per_8_page_print { display:block;}
  
 /* RESPONSIVE DESIGNS
 ============================= */

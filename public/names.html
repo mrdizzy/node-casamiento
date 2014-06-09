@@ -69,6 +69,40 @@ _.chunk = function(array, n) {
 
 
 
+<script type="text/template" id="template_6"><?xml version="1.0" encoding="UTF-8"?>
+<svg>
+  <variableSets>
+    <variableSet locked="none">
+      <variables>
+        <variable varName="Variable0" trait="textcontent"/>
+        <variable varName="Variable1" trait="textcontent"/>
+        <variable varName="Variable2" trait="textcontent"/>
+        <variable varName="Variable3" trait="textcontent"/>
+        <variable varName="Variable4" trait="textcontent"/>
+        <variable varName="Variable5" trait="textcontent"/>
+      </variables>
+      <v:sampleDataSets xmlns:v="casamiento">
+      <% var counter = 0; %>
+      <% var name_counter = "" %>
+      <% names.forEach(function(list) { %>
+      <% name_counter = 0 %>
+        <v:sampleDataSet dataSetName="<%=counter %>">
+        <% for(var i =0; i < 6; i++) { %>
+            <% var name = list[i] %>
+        <% name == undefined ? name = "" : name = name %>
+          <Variable<%= name_counter %>>
+            <p><%= name %></p>
+          </Variable<%= name_counter %>>
+          <% name_counter = name_counter + 1 %>
+          <% } %>
+        </v:sampleDataSet>
+        <% counter = counter + 1; %>
+        <% }) %>
+      </v:sampleDataSets>underscore 
+    </variableSet>
+  </variableSets>
+</svg></script>
+
 <script type="text/template" id="envelopes_template"><?xml version="1.0" encoding="UTF-8"?>
 <svg>
   <variableSets>
@@ -211,6 +245,40 @@ names = _.map(names, function(name) {
   });
   $('#download').attr("href", "data:application/octet-stream," + encodeURIComponent(r));
 }
+var doNames6 = function() {
+  var names = $('#names').val()
+  names = $.trim(names);
+ if(names.match(/\*/m)) {
+   names = names.split("*");
+names = _.map(names, function(name) {
+    name = $.trim(name);
+    var new_names = name.split("\n");
+    var new_name = new_names[0]
+    return new_name;
+  })   
+ } else {
+  names = names.split("\n");
+  }
+  names = _.compact(names)
+  names = names.sort();
+  
+  for (i = 0; i < names.length; i++) {
+      names[i] = toTitleCase(names[i])
+      
+    names[i] = handleHyphens(names[i])
+      names[i] = names[i].trim();
+      
+    names[i] = names[i].replace(" and ", " &amp; ")
+    names[i] = names[i].replace(" & ", " &amp; ")
+  }
+  names = _.chunk(names, 6);
+  var template = $('#template_6').html();
+  var r = _.template(template, {
+      names: names
+  });
+  console.log(r)
+  $('#download_6').attr("href", "data:application/octet-stream," + encodeURIComponent(r));
+}
 
 var doNamesAndTables = function() {
   var names = $('#names_and_tables').val()
@@ -318,6 +386,7 @@ $(function() {
     $('#button').click(
     function() {
         doNames()
+        doNames6()
         doNamesAndTables()
         parseAddresses(1,'envelopes_template','download_envelopes', 1)
         parseAddresses(0,'invitations_template','download_invitations', 4)
@@ -363,6 +432,7 @@ Jasmin
 <h1>Result</h1>
 
 <a href=""  download="names.xml" id="download">Download</a>
+<a href=""  download="names.xml" id="download_6">Download 6</a>
 <a href=""  download="names_tables.xml" id="download_tables">Download tables</a>
 <a href=""  download="invitations.xml" id="download_invitations">Download invitations</a>
 <a href=""  download="envelopes.xml" id="download_envelopes">Download envelopes</a>

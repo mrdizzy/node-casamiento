@@ -22,16 +22,13 @@ exports.index = function(req, res) {
 
 exports.update = exports.create = function(req, res) {
   if(req.product) {
-  var rev = req.product.rev,
-  id = req.product.id;
+    var rev = req.product.rev,
+    id = req.product.id;
     req.body._rev = rev;
-} else {
-  var id = req.body._id
-}
-console.log("SVG:", req.body.svg)
-  var svg = req.body.svg.toString();
-//var svg = new String(req.body.svg) // new String is used to "copy" the string as we are about to delete it in the next line
-console.log(id)
+  } else {
+    var id = req.body._id
+  }
+  //var svg = new String(req.body.svg) // new String is used to "copy" the string as we are about to delete it in the next line
   delete req["body"].svg;
   db.save(id, rev, req.body, function(err, documents) {
     if (err) {
@@ -39,13 +36,13 @@ console.log(id)
       res.status(500);
       res.end();
     }
-    else {
+    else if(req.body.svg) {
+    var svg = req.body.svg.toString()
       var svg_id = "svg__" + documents.id;
       db.get(svg_id, function(e, record) {
         if (record) {
           var svg_rev = record._rev
         }
-        console.log(svg_rev, svg)
         db.save(svg_id,svg_rev, {_attachments: { svg: { 'Content-Type': "image/xml+svgz", data: svg}}}, function(anerror, done) {
             if (anerror) {
               console.log("Error here",anerror)
