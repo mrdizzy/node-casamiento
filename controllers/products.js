@@ -29,15 +29,20 @@ exports.update = exports.create = function(req, res) {
     var id = req.body._id
   }
   //var svg = new String(req.body.svg) // new String is used to "copy" the string as we are about to delete it in the next line
-  delete req["body"].svg;
+  if(req.body.svg) {
+  console.log("Yes there is")
+    var svg = req.body.svg.toString();
+    
+    delete req["body"].svg;
+  }
   db.save(id, rev, req.body, function(err, documents) {
     if (err) {
     console.log(err)
       res.status(500);
       res.end();
     }
-    else if(req.body.svg) {
-    var svg = req.body.svg.toString()
+    else if(svg) {
+    console.log("Savin g svg")
       var svg_id = "svg__" + documents.id;
       db.get(svg_id, function(e, record) {
         if (record) {
