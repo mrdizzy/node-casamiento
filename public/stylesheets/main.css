@@ -18,6 +18,7 @@
   table { font-size:inherit;font:100%;width:100%; }
   pre, code, kbd, samp, tt { font-family:monospace;*font-size:108%;line-height:100%; }
   
+  
 /* Typography
 ==================================== */
 @font-face { font-family:"Gara"; src: url('/f/GARA.eot?') format('eot'), url('/f/GARA.woff') format('woff'); }
@@ -556,7 +557,7 @@ input {
     float:right;
     padding:0;margin:0;
     position:relative;
-    width:10.435cm;  height:7.40cm;
+    width:10.5cm;  height:7.425cm;
   }
     .single_place_card_container { padding:0;margin:0;
     z-index:5;width:100%;height:7.245cm;text-align:center;position:absolute;
@@ -586,6 +587,7 @@ input {
         margin:0 auto;
         position:relative;
     }
+  }
  
 /* RESPONSIVE DESIGNS
 ============================= */
@@ -615,10 +617,27 @@ input {
 
 @media all and (max-width: 600px) and (min-width: 320px) {
 
-    #inner_page_container_casamiento { width:100%;margin:0;padding:0}
-    #page_container { margin:0;border:0;padding:0;}
-    #page_container_casamiento { border:0;padding:0;margin:0;}
-    #slide1, #slide2, #slide3, #slide4, #slide5, #slide6, #product_name_container{ width:100%; margin:0 auto;float:none;clear:both;}
+    #inner_page_container_casamiento { 
+      width:100%;
+      margin:0;
+      padding:0
+    }
+    #page_container { 
+      margin:0;
+      border:0;
+      padding:0;
+    }
+    #page_container_casamiento { 
+      border:0;
+      padding:0;
+      margin:0;
+    }
+    #slide1, #slide2, #slide3, #slide4, #slide5, #slide6, #product_name_container { 
+      width:100%; 
+      margin:0 auto;
+      float:none;
+      clear:both;
+    }
     .slide { width:100%;}
     #description_container { float:none;width:90%;margin:0 auto;}
     
@@ -634,9 +653,9 @@ input {
 
 /* GLOBAL CLASSES
 =========================== */
+
 .deselected { opacity:0.4; }
   .deselected:hover, .selected { opacity: 1; cursor:pointer;}
-
 .shell { 
   background-image:url('/gfx/shell.png');
   background-repeat:no-repeat; 

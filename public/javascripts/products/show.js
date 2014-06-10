@@ -376,7 +376,7 @@ var StepView = Backbone.View.extend({
     thisProduct.get("guests").forEach(function(guest) {
       this.$('#guests').append(new GuestView({model:guest}).render().el);
     }, this)
-    
+    $('.step').css("background-color", thisProduct.get("colours")[0]) 
     this.$('#colour_section_render').append(colours_1).append(colours_2);
   },
   _render2DPreview: function() {
