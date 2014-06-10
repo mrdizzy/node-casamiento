@@ -217,14 +217,9 @@ StepsPresenter.prototype = {
 }
 
 // 
-// DOWNLOAD VIEW
+// PREVIEW VIEW
 // 
-
 var DownloadView = Backbone.View.extend({
-  initialize: function() {
-    this.toggleDownloadView = false;
-    this.loadSVG = false;
-  },
   events: {
     'click #plus_font': 'increaseFont',
     'click #minus_font': 'decreaseFont'
@@ -247,8 +242,6 @@ var DownloadView = Backbone.View.extend({
 var StepView = Backbone.View.extend({ 
   el: '#steps',
   initialize: function() {
-    this.effectChanging = 0;
-    this.currentStep = 0;
     _.bindAll(this, 'render')
     this.presenter = new StepsPresenter(thisProduct, this)
     this.listenTo(thisProduct, 'change:colour_1', this.changeColour)	
@@ -316,7 +309,7 @@ var StepView = Backbone.View.extend({
   },
   minusQty: function(e) {
     if(thisProduct.get("quantity") > 8) {
-    this.presenter.updateQty(-8)
+      this.presenter.updateQty(-8)
     }
   },
   updateTexture: function(e) {
@@ -353,31 +346,25 @@ var StepView = Backbone.View.extend({
     thisProduct.set("colour_2", colour)
   },
   render: function() {
-    if (this.presenter.show2D){
-      $(document.body).animate({
-        'scrollTop': $('#2Dview').offset().top
-        }, 1, function() {  
-          $('#image_container').hide(); // hide 3D slides  
-          $('#svgs').show() // display 2D customise image 
-      });
-    } else if(this.presenter.toggleStepOn) {
-      this._enterStep();
-    } else if(this.presenter.toggleStepOff) {
-      this._leaveStep();
-    } else if (this.presenter.changeTexture) { 
-     this._highlightTexture();
-    } else if (this.presenter.changeQty) {      
-      this._quantityChanged();
-    } else {
-      this._renderFirstTime()
-    }
+    if (this.presenter.show2D)
+      this._render2DPreview();
+    else if(this.presenter.toggleStepOn) 
+      this._renderEnterStep();
+    else if(this.presenter.toggleStepOff)
+      this._renderLeaveStep();
+    else if (this.presenter.changeTexture)
+     this._renderHighlightTexture();
+    else if (this.presenter.changeQty)   
+      this._renderQuantityChanged();
+    else 
+      this._renderFirstTime() 
     return this;
   },
   _renderFirstTime: function() {  
     // Compile the steps template
     var result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter));     
       
-    // Attach colour pickers
+    // Create colour pickers
     var colours_1 = $("<div id='picker_1'></div>").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[0]});
     if(thisProduct.get("colours")[1]) {
       var colours_2 =$("<div id='picker_2'></div>").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[1]});
@@ -389,34 +376,43 @@ var StepView = Backbone.View.extend({
     thisProduct.get("guests").forEach(function(guest) {
       this.$('#guests').append(new GuestView({model:guest}).render().el);
     }, this)
+    
     this.$('#colour_section_render').append(colours_1).append(colours_2);
   },
-  _enterStep: function() {
+  _render2DPreview: function() {
+    $('#image_container').fadeOut(function() { // hide 3D slides  
+      $('#svgs').fadeIn()// display 2D customise image 
+      // Calculate font size relative to container
+      var fontSize = $(".front_place_card").width() * 0.10; // 10% of container width
+      $(".front_place_card").css('font-size', fontSize);
+    }); 
+  },
+  _renderEnterStep: function() {
     this.$('#step_' + this.presenter.toggleStepOn + " .step").fadeIn()      
     this.$('#step_' + this.presenter.toggleStepOn + " .chat-bubble").slideDown()
     this.$('#step_' + this.presenter.toggleStepOn).addClass('highlight')
     this.presenter.toggleStepOn = false;
   },
-  _leaveStep: function() {    
+  _renderLeaveStep: function() {    
       this.$('#step_' + this.presenter.toggleStepOff + " .step").fadeOut()      
       this.$('#step_' + this.presenter.toggleStepOff + " .chat-bubble").slideUp()
       this.$('#step_' + this.presenter.toggleStepOff).removeClass('highlight')
       this.presenter.toggleStepOff = false;
   },
-  _highlightTexture: function() {
+  _renderHighlightTexture: function() {
     this.$('.texture').removeClass("selected")
     var texture_changed = this.$('.texture').get(this.presenter.changeTexture) ;
     $(texture_changed).toggleClass("selected"); 
     this.presenter.changeTexture = false;
   },
-  _quantityChanged: function() {
+  _renderQuantityChanged: function() {
     this.$('#qty').val(thisProduct.get("quantity"))
-      this.$('span#pound').text(this.presenter.pounds);
-      this.$('span#decimal').text("." + this.presenter.dec);
-      var input_fields = []
-      thisProduct.get("guests").forEach(function(guest) {
-        input_fields.push(new GuestView({model:guest}).render().el)
-      })
-      this.$('#guests').html(input_fields)
+    this.$('span#pound').text(this.presenter.pounds);
+    this.$('span#decimal').text("." + this.presenter.dec);
+    var input_fields = []
+    thisProduct.get("guests").forEach(function(guest) {
+      input_fields.push(new GuestView({model:guest}).render().el)
+    })
+    this.$('#guests').html(input_fields)
   }
 })

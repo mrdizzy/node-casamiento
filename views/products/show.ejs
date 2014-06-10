@@ -55,8 +55,6 @@
     <h1 class="product_name"><%= product.name %></h1>
     <div class="ornamental_line"></div>
   </div>
-  
-  
     
   <div id="description_container">
     <div class="shell"></div>
@@ -79,13 +77,12 @@
   
 <script type="text/javascript">
 
-// Set the font size of the place card preview
-  var fontSize = $(".front_place_card").width() * 0.10; // 10% of container width
-  $(".front_place_card").css('font-size', fontSize);
-
-$('#send_to_print').click(function() {
-  window.print();
-})
+  $('#send_to_print').click(function() {
+    $('#print_box').hide(function() {
+      window.print();
+      $('#add_another').show();
+    });
+  })
   // Initialize templates
   var templates = {}
   <% templates.forEach(function(template) { %>
