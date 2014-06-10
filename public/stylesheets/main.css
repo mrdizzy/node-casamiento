@@ -480,7 +480,7 @@ input {
       }
 .preview .slide { width:100%; padding:0;margin:0;}
       
-/*  #svgs { display:none;}*/
+  #svgs { display:none;}
   
     .svg_parent {  
       width:85%;
@@ -577,7 +577,7 @@ input {
     #page_container { margin:0;padding:0; }
     #inner_page_container { margin:0;padding:0; }
     body { margin:0;padding:0; }
-    #picker_1, #picker_2, #footer, #header_container, #images_container, #product_container, #print_box { display:none; }
+    #picker_1, #picker_2, #footer, #header_container, #images_container, #product_container, #steps, #product_section0, #print_box { display:none; }
       .svg_parent {  
         display:block;
         margin:0 auto;
@@ -586,7 +586,6 @@ input {
         margin:0 auto;
         position:relative;
     }
-    #per_8_page_print { display:block;}
  
 /* RESPONSIVE DESIGNS
 ============================= */
@@ -659,6 +658,6 @@ input {
 
 .spinner { 
   text-align:center;
-  display:none
+  display:none;
 }
 .clearfix { clear:both; }
