@@ -7,18 +7,65 @@ var Guests = Backbone.Collection.extend({
   model: Guest
 })
 
-
 var GuestView = Backbone.View.extend({  
+  initialize: function() {
+    this.first_clear = true;
+  },
   events: {
-    "blur input": 'updateGuest'
+    "blur input": 'updateGuest',
+    'focus input': 'clearGuest'
+  },
+  clearGuest: function() {
+    if(this.first_clear) {
+      this.$('input').val("")
+    }
+    this.first_clear = false;
   },
   updateGuest: function() {
     this.model.set("name", this.$('input').val())
   },
   render: function() { 
-    this.$el.html('<input type="text" name="guest" value="' + this.model.get("name") + 'View"></input>')
+    this.$el.html('<input type="text" name="guest" value="' + this.model.get("name") + '"></input>')
     return this;
   }
+})
+
+//
+// PLACE CARDS FOR PRINT
+//
+
+// This view handles each individual place card for printing
+var PlaceView = Backbone.View.extend({
+  initialize: function() {
+    this.listenTo(this.model, 'change:name', this.render)	
+  },
+  render: function() {
+    this.$el.html($('#svg_place_card_template').html());
+    // http://www.unitconversion.org/unit_converter/typography-ex.html
+    var fontSize = 395 * 0.10; // 10% of container width
+    this.$(".half_container").css('font-size', fontSize);
+    this.$('.print_guest').text(this.model.get("name"))
+    return this;
+  }
+})
+
+// This view is a container for the individual place card views 
+// At the  moment it re-renders every single place card when there is 
+// an additional or removal from the collection
+var PrintView = Backbone.View.extend({
+  initialize: function() {
+    this.listenTo(thisProduct.get("guests"), 'add', this.render)    
+    this.listenTo(thisProduct.get("guests"), 'remove', this.render)
+  },
+  render: function() {
+    this.$el.empty();
+    var guests = thisProduct.get("guests");
+    guests.forEach(function(guest) {
+      var place_card = new PlaceView({model: guest}).render().el
+      this.$el.append(place_card);
+    }, this)
+    return this;          
+  } 
 })
 
 // 
@@ -30,6 +77,18 @@ var Product = Backbone.Model.extend({
     this.on("change:quantity", this.calculatePrice)
     this.on("change:texture", this.calculatePrice)
     this.on("change:weight", this.calculatePrice)
+    this.on("change:colour_1", this.updateColour1)
+    this.on("change:colour_2", this.updateColour2)
+  },
+  updateColour1: function() {
+    var colours = this.get("colours");
+    colours[0] = this.get("colour_1");
+    this.set("colours", colours)
+  },
+  updateColour2: function() {
+    var colours = this.get("colours");
+    colours[1] = this.get("colour_2");
+    this.set("colours", colours)
   },
   applyDiscounts: function(total) {
     var qty = this.get("quantity"),
@@ -73,9 +132,9 @@ var StepsPresenter = function(model, view) {
   this.view = view;
   this.model = model; 
   this.model.set("quantity", 8)
-  this.model.set("guests", new Guests([{name: "David Pettifer"},{name: "Alicia Barnes"},{name: "Martin Visor"},{name: "Tania Smith"},{name: "Dr Alan McCarthy"},{name: "..."},{name: "..."},{name: "..."}]))
+  this.model.set("guests", new Guests([{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."}]))
   this.quantity = 8
-  this.currentStep = 1;
+  this.currentStep = 1; // The current step that is highlighted, starts with 1 as this is the first step 
   this.hoveringStep = 0;
   this.name = this.model.get("name")
   this.changeTexture = false;
@@ -96,21 +155,21 @@ StepsPresenter.prototype = {
     this.show2D = true;
     this.view.render();
   },
-  hoverStepOn: function(step_number) {
+  hoverStepOn: function(step_number) { // takes the new step_number to fade in
     if(this.currentStep == step_number) {
       return false
-      } else {
-        this.toggleStepOn = step_number;
-        this.view.render();
-      }
+    } else {
+      this.toggleStepOn = step_number;
+      this.view.render();
+    }
   },  
   hoverStepOff: function(step_number) {
-      if(this.currentStep == step_number) {
-      return false
-      } else {
-        this.toggleStepOff = step_number;
-        this.view.render();
-      }
+    if(this.currentStep == step_number) {
+    return false
+    } else {
+      this.toggleStepOff = step_number;
+      this.view.render();
+    }
   },
   renderPrice: function() {
     var total = thisProduct.get("total"),
@@ -127,7 +186,11 @@ StepsPresenter.prototype = {
       guests.add([{name: "..."}, {name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."}]) 
       }
     else {
-      guests.splice(guests.length-8, 8)
+      var silent = false;  
+      for(var i =0;  i < 8; i++) {  
+        if(i > 6) { silent = true;} 
+        guests.pop({silent: silent});
+      }
     }
     this.model.set("guests", guests)
     this.renderPrice();
@@ -161,6 +224,20 @@ var DownloadView = Backbone.View.extend({
   initialize: function() {
     this.toggleDownloadView = false;
     this.loadSVG = false;
+  },
+  events: {
+    'click #plus_font': 'increaseFont',
+    'click #minus_font': 'decreaseFont'
+  },
+  increaseFont: function() {
+    var fontSize = $('.front_place_card').css('font-size').replace("px", "");
+    fontSize =  5 + parseInt(fontSize);
+    $('.front_place_card').css('font-size',fontSize + "px");
+  },
+  decreaseFont: function() {
+    var fontSize = $('.front_place_card').css('font-size').replace("px", "");
+    fontSize =  parseInt(fontSize) - 5;
+    $('.front_place_card').css('font-size',fontSize + "px");
   }
 })
 
@@ -203,7 +280,7 @@ var StepView = Backbone.View.extend({
     var images = $('img.place_card_image'),
       counter = images.length,
       i = 0,
-      hex = thisProduct.get("colour_1").substring(1); // remove # from hexcode
+      hex = thisProduct.get("colours")[0].substring(1); // remove # from hexcode
     $('img.place_card_image').attr("src", "/svg/" + thisProduct.get("_id") + "/" + hex); // url to pull new svg image
     $('img.place_card_image').load(function() {
       i++;
@@ -254,8 +331,12 @@ var StepView = Backbone.View.extend({
       this.presenter.moveStep();
     }
   },
+  
+  // We use the index of the div to toggle it (index is its place within the hierarchy of other siblings obtained by the jquery.index() function), this breaks easily if other divs are added between or before steps. The first sibling
+  // element is actually the img of the name place icon so this counts as index 0, then the first step is index 1. 
+  // If we were to move the img then the first step would be index 0 so this would break things. 
   hoverStepOn: function(e) {
-    this.presenter.hoverStepOn($(e.currentTarget).index());  
+   this.presenter.hoverStepOn($(e.currentTarget).index());  
   },
   hoverStepOff: function(e) {
     this.presenter.hoverStepOff($(e.currentTarget).index());   
@@ -279,24 +360,57 @@ var StepView = Backbone.View.extend({
           $('#image_container').hide(); // hide 3D slides  
           $('#svgs').show() // display 2D customise image 
       });
-    } 
-    else if(this.presenter.toggleStepOn) {
-      this.$('#step_' + this.presenter.toggleStepOn + " .step").fadeIn()      
-      this.$('#step_' + this.presenter.toggleStepOn + " .chat-bubble").slideDown()
-      this.$('#step_' + this.presenter.toggleStepOn).addClass('highlight')
-      this.presenter.toggleStepOn = false;
+    } else if(this.presenter.toggleStepOn) {
+      this._enterStep();
     } else if(this.presenter.toggleStepOff) {
+      this._leaveStep();
+    } else if (this.presenter.changeTexture) { 
+     this._highlightTexture();
+    } else if (this.presenter.changeQty) {      
+      this._quantityChanged();
+    } else {
+      this._renderFirstTime()
+    }
+    return this;
+  },
+  _renderFirstTime: function() {  
+    // Compile the steps template
+    var result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter));     
+      
+    // Attach colour pickers
+    var colours_1 = $("<div id='picker_1'></div>").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[0]});
+    if(thisProduct.get("colours")[1]) {
+      var colours_2 =$("<div id='picker_2'></div>").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[1]});
+    }
+    
+    this.$el.html(result)
+    
+    // Input fields for guests
+    thisProduct.get("guests").forEach(function(guest) {
+      this.$('#guests').append(new GuestView({model:guest}).render().el);
+    }, this)
+    this.$('#colour_section_render').append(colours_1).append(colours_2);
+  },
+  _enterStep: function() {
+    this.$('#step_' + this.presenter.toggleStepOn + " .step").fadeIn()      
+    this.$('#step_' + this.presenter.toggleStepOn + " .chat-bubble").slideDown()
+    this.$('#step_' + this.presenter.toggleStepOn).addClass('highlight')
+    this.presenter.toggleStepOn = false;
+  },
+  _leaveStep: function() {    
       this.$('#step_' + this.presenter.toggleStepOff + " .step").fadeOut()      
       this.$('#step_' + this.presenter.toggleStepOff + " .chat-bubble").slideUp()
       this.$('#step_' + this.presenter.toggleStepOff).removeClass('highlight')
       this.presenter.toggleStepOff = false;
-    } else if (this.presenter.changeTexture) { 
-      this.$('.texture').removeClass("selected")
-      var texture_changed = this.$('.texture').get(this.presenter.changeTexture) ;
-      $(texture_changed).toggleClass("selected"); 
-      this.presenter.changeTexture = false;
-    } else if (this.presenter.changeQty) {      
-      this.$('#qty').val(thisProduct.get("quantity"))
+  },
+  _highlightTexture: function() {
+    this.$('.texture').removeClass("selected")
+    var texture_changed = this.$('.texture').get(this.presenter.changeTexture) ;
+    $(texture_changed).toggleClass("selected"); 
+    this.presenter.changeTexture = false;
+  },
+  _quantityChanged: function() {
+    this.$('#qty').val(thisProduct.get("quantity"))
       this.$('span#pound').text(this.presenter.pounds);
       this.$('span#decimal').text("." + this.presenter.dec);
       var input_fields = []
@@ -304,20 +418,5 @@ var StepView = Backbone.View.extend({
         input_fields.push(new GuestView({model:guest}).render().el)
       })
       this.$('#guests').html(input_fields)
-    } else {
-      var result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter));
-      var colours_1 = $("<div id='picker_1'></div>").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[0]});
-      if(thisProduct.get("colours")[1]) {
-        var colours_2 =$("<div id='picker_2'></div>").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[1]});
-      }
-      
-      this.$el.html(result)
-      
-      thisProduct.get("guests").forEach(function(guest) {
-        this.$('#guests').append(new GuestView({model:guest}).render().el);
-      }, this)
-      this.$('#colour_section_render').append(colours_1).append(colours_2);
-    }
-    return this;
-  },
+  }
 })
