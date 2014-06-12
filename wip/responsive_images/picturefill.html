@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1">
+    <title>Casamiento</title>
+    
+    <style type="text/css">
+    
+    html, body, div { margin:0;padding:0;border:0; overflow:hidden;}
+    // If thje viewport is bigger than 320px
+    @media only screen and (min-width:320px) {
+      body { background-color:red;}
+    }
+    
+    // If the viewport is bigger than 500 pixels
+    @media only screen and (min-width:500px) {
+      body { background-color:green;}
+    }
+    
+    // If the viewport is bigger than 750px pixels
+    @media only screen and (min-width:750px) {
+      body { background-color:yellow;}
+    }
+    // If the viewport is BIGGER than 1000 pixels
+    @media only screen and (min-width:1000px) {
+      body { background-color:purple;}
+    }
+    
+    
+    
+    
+    </style>
+    
+    <script src="http://localhost:3000/javascripts/libraries/picturefill.min.js"></script>
+    
+  </head>
+  <body>
+  320px
+  <div style="width:320px;border-top:5px solid black;margin-top:1em;"></div>
+  500px
+  
+  <div style="width:500px;border-top:5px solid black;margin-top:1em;"></div>
+  750px
+  <div style="width:750px;border-top:5px solid black;margin-top:1em;"></div>
+  
+  1000px
+  <div style="width:1000px;border:5px solid black;margin-top:1em;"></div>
+    <img srcset="http://www.casamiento.co.uk/products/birds_of_paradise-name_place/attachments/large-1 1500px,http://www.casamiento.co.uk/products/damask-name_place/attachments/large-1 1000px,
+             http://www.casamiento.co.uk/products/damask-name_place/attachments/medium-1 750px,
+             http://www.casamiento.co.uk/products/damask-name_place/attachments/display-1 500px,
+             http://www.casamiento.co.uk/products/damask-name_place/attachments/thumb-1 300px"
+     sizes="(min-width:1000px) 1500px,(min-width:750px) 999px,(min-width:500px) 749px,  (min-width: 320px) 320px, 
+            100vw"
+     alt="Image" style="width:95%;" />
+    </body>
+</html>
