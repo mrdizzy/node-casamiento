@@ -605,7 +605,6 @@ input {
   #product_section0 { margin-left:374px;}
   #slide1, #slide2, #slide3, #slide4, #slide5, #slide6,#product_name_container { float:none;clear:both;}
   #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { float:none;clear:both;}
-  #slide4 { width: inherit; height:auto;}
   #slide5 .shell { display:none;}
   
   #footer .genesis_collection { width:35%; }
