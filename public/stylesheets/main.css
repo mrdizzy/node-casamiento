@@ -244,28 +244,6 @@ input {
       float:left; 
       text-align:center; 
     }
-
-  /* Mobile phone devices */
-
-  @media all and (max-width: 600px) and (min-width: 320px) {
-    #logo { 
-      display:block;
-      width:200px;
-      margin:0 auto;
-    }
-    #slogan_container { 
-      clear:both;border:0;border-bottom:1px solid black;width:100%;padding-top:1em;text-align:center;}
-    .nav_link { display:none;}
-    
-    #inner_page_container { width:100%;}
-    .left_column, .right_column { margin:0;float:none; clear:both;width:100%;}
-      #inner_page_container { width:100%;}
-      .chat-bubble { display:block;}
-
-      #footer .genesis_collection, #footer .castello_collection { float:none;width:100%; }
-      .footer_seperator { float:none;width:100%;}
-    }
-
 /* WELCOME PAGE 
 =================================== */
 
@@ -312,18 +290,6 @@ input {
   .inner_place_square, .inner_place_square_hidden { 
     margin-bottom:0;
     padding:0.25em;
-  }
-
-  /* Mobile phone devices */
-
-  @media all and (max-width: 600px) and (min-width: 320px) {
-  
-    .left_welcome_column, .right_welcome_column { 
-      clear:both;
-      float:none;
-      width:100%;
-    }
-    
   }
 
 /* PRODUCT PAGE
@@ -573,81 +539,6 @@ input {
         width:100%;position:absolute;
       }
 
-  @media print {
-    #per_8_page_print { display:block;}
-    #page_container { margin:0;padding:0; }
-    #inner_page_container { margin:0;padding:0; }
-    body { margin:0;padding:0; }
-    #picker_1, #picker_2, #footer, #header_container, #images_container, #product_container, #steps, #product_section0, #print_box { display:none; }
-      .svg_parent {  
-        display:block;
-        margin:0 auto;
-        width:105mm;
-        height:74.25mm;
-        margin:0 auto;
-        position:relative;
-    }
-  }
- 
-/* RESPONSIVE DESIGNS
-============================= */
-
-@media all and (max-width: 1000px) and (min-width: 768px) {
-   #inner_page_container_casamiento { width:97%;}
-  }
-  
-/* Tablet devices */
-@media all and (max-width: 999px) and (min-width: 601px) {
-
-  #inner_page_container_casamiento { width:97%;}
-  .chat-bubble { left:3em;}
-  #product_section1 { width:374px; }
-  #product_section0 { margin-left:374px;}
-  #slide1, #slide2, #slide3, #slide4, #slide5, #slide6,#product_name_container { float:none;clear:both;}
-  #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { float:none;clear:both;}
-  #slide5 .shell { display:none;}
-  
-  #footer .genesis_collection { width:35%; }
-  .footer_seperator { width:10%;}
-   #footer .castello_collection { width:55%; }
-}
-
-  /* Mobile phone devices */
-
-@media all and (max-width: 600px) and (min-width: 320px) {
-
-    #inner_page_container_casamiento { 
-      width:100%;
-      margin:0;
-      padding:0
-    }
-    #page_container { 
-      margin:0;
-      border:0;
-      padding:0;
-    }
-    #page_container_casamiento { 
-      border:0;
-      padding:0;
-      margin:0;
-    }
-    #slide1, #slide2, #slide3, #slide4, #slide5, #slide6, #product_name_container { 
-      width:100%; 
-      margin:0 auto;
-      float:none;
-      clear:both;
-    }
-    .slide { width:100%;}
-    #description_container { float:none;width:90%;margin:0 auto;}
-    
-    #footer .genesis_collection, #footer .castello_collection { float:none;width:100%; }
-    .footer_seperator { float:none;width:100%;}
-    
-    #slide5 .shell { display:none;}
-    #slide5 h6 { width:95%; padding:0;margin:0 auto;}
-    
-    #second_product_type_icon { display:none;}
-  }
 
 /* GLOBAL CLASSES
 =========================== */
