@@ -644,7 +644,6 @@ input {
     #footer .genesis_collection, #footer .castello_collection { float:none;width:100%; }
     .footer_seperator { float:none;width:100%;}
     
-    #slide4 { width: inherit; height:auto;}
     #slide5 .shell { display:none;}
     #slide5 h6 { width:95%; padding:0;margin:0 auto;}
     
