@@ -54,9 +54,18 @@
       float:none;
       clear:both;
     }
+    #customise_button {
+      display:block;
+    }
     .slide { width:100%;}
+    
+      .crop_mark { 
+       position:absolute;width:15px;height:15px;z-index:200000;
+      }
+      
     #description_container { float:none;width:90%;margin:0 auto;}
     
+  #steps { display:none;}
     #slide5 .shell { display:none;}
     #slide5 h6 { width:95%; padding:0;margin:0 auto;}
     
@@ -71,6 +80,7 @@
   .chat-bubble { left:3em;}
   .left_column { width:60% }
   .right_column { margin-left:60%;}
+  
   #slide1, #slide2, #slide3, #slide4, #slide5, #slide6,#product_name_container { 
     width:100%;
     float:none;

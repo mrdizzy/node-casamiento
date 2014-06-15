@@ -488,20 +488,7 @@ input {
       
       .bottom_right_right_crop_mark {
         border-top:1px solid black;bottom:-21px;right:-30px;
-      } 
-  
-#add_another {
-  width:5em;
-  background-color:grey;
-  padding:2em;
-  margin:0 auto;
-  text-align:center;
-  color:white;
-  border-radius:10px;
-}
-#add_another:hover {
-  background-color:black;
-}
+      }
       
       
 /* HIDDEN DIVS FOR PRINT
@@ -568,3 +555,19 @@ input {
   display:none;
 }
 .clearfix { clear:both; }
+
+#customise_button {
+  display:none;
+}
+#product_container { text-align:center;}
+.grey_button {
+margin:1em;
+cursor:pointer;  display:inline-block;
+  background-color:grey;
+  padding:2em;
+  color:white;
+  border-radius:10px;
+}
+
+  .grey_button:hover { 
+  background-color:black;}
