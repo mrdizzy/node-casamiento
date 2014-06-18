@@ -1,11 +1,15 @@
 <!doctype html>
 <html>
   <head>
-    <meta name="viewport" content="initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, user-scalable=no">
     <title>Casamiento</title>
     
     <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/stylesheets/main.css" />    
+    <link rel="stylesheet" href="/stylesheets/main.css" />   
+    
+    <link rel="stylesheet" href="/stylesheets/responsive.css" />  
+    
+    <link rel="stylesheet" href="/stylesheets/print.css" /> 
     <link rel="stylesheet" href="/stylesheets/color_picker.css" />
     
     <script src="http://localhost:3000/javascripts/libraries/picturefill.min.js"></script>
@@ -24,9 +28,10 @@
   </head>
 
   <body>
-    
+    <%- main %>
     <div id="page_container">
       <div id="inner_page_container">
+       
           <div id="header_container">
             <a href="/"><img src="http://www.casamiento.co.uk/gfx/logo/cas.png" id="logo"></a>
             

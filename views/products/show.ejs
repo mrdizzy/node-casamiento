@@ -3,6 +3,10 @@
   @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>') format('woff'); }
   .half_container, .name, .guest { font-family:"<%= product.font %>"; }
   
+<%- contentFor('main') %>
+
+<% include partials/print_view.ejs %>  
+  
 <%- contentFor('left') %>
 
   <script type="text/javascript" src="/javascripts/libraries/jquery_form.js"></script>
@@ -10,7 +14,6 @@
   <script type="text/javascript" src="/javascripts/libraries/in_groups_of.js"></script>
 
 <% include partials/print.ejs %>
-  
  <!-- PLACE CARD TEMPLATE FOR DUPLICATING AND PRINTING VIA JAVASCRIPT --> 
  
   <script type="text/template" id="svg_place_card_template">
@@ -39,15 +42,24 @@
   SLIDES 1 TO 3 
 -->
 
-  <img id="slide1" srcset="/products/<%= product._id %>/attachments/large-<%= product.attachments_order[0]%> 1500px,/products/<%= product._id %>/attachments/large-<%= product.attachments_order[0]%> 1000px,
-             /products/<%= product._id %>/attachments/medium-<%= product.attachments_order[0]%> 750px,
-             /products/<%= product._id %>/attachments/display-<%= product.attachments_order[0]%> 500px,
-             /products/<%= product._id %>/attachments/thumb-<%= product.attachments_order[0]%> 300px"
-     sizes="(min-width:1000px) 600px,(min-width:750px) 999px,(min-width:500px) 500px,  (min-width: 360px) 251px, 
-            100vw"/>
+  <img id="slide1" srcset="/products/<%= product._id %>/attachments/large-<%= product.attachments_order[0]%> 1080px,
+             /products/<%= product._id %>/attachments/medium-<%= product.attachments_order[0]%> 720px,
+             /products/<%= product._id %>/attachments/display-<%= product.attachments_order[0]%> 360px,
+             /products/<%= product._id %>/attachments/thumb-<%= product.attachments_order[0]%> 200px"
+     sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw,  (min-width: 320px),            100vw"/>
   <img src="/gfx/product_types/small/name_place_small.png" class="product_type_icon">
-  <img id="slide2" src="/products/<%= product._id %>/attachments/display-<%= product.attachments_order[1]%>" />
-  <img id="slide3" src="/products/<%= product._id %>/attachments/display-<%= product.attachments_order[2]%>" />
+    <img id="slide2" srcset="/products/<%= product._id %>/attachments/large-<%= product.attachments_order[1]%> 1080px,
+             /products/<%= product._id %>/attachments/medium-<%= product.attachments_order[1]%> 720px,
+             /products/<%= product._id %>/attachments/display-<%= product.attachments_order[1]%> 360px,
+             /products/<%= product._id %>/attachments/thumb-<%= product.attachments_order[1]%> 200px"
+     sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw,  (min-width: 320px) 100vw, 
+            100vw"/>
+              <img id="slide3" srcset="/products/<%= product._id %>/attachments/large-<%= product.attachments_order[2]%> 1080px,
+             /products/<%= product._id %>/attachments/medium-<%= product.attachments_order[2]%> 720px,
+             /products/<%= product._id %>/attachments/display-<%= product.attachments_order[2]%> 360px,
+             /products/<%= product._id %>/attachments/thumb-<%= product.attachments_order[2]%> 200px"
+     sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw,  (min-width: 320px) 100vw, 
+            100vw"/>
       
 <!-- 
 
@@ -70,8 +82,16 @@
   SLIDE 4 
 
 -->    
-  <img id="slide4" src="/products/<%= product._id %>/attachments/display-<%= product.attachments_order[3]%>" />
 
+  <img id="slide4" srcset="/products/<%= product._id %>/attachments/large-<%= product.attachments_order[3]%> 1080px,
+             /products/<%= product._id %>/attachments/medium-<%= product.attachments_order[3]%> 720px,
+             /products/<%= product._id %>/attachments/display-<%= product.attachments_order[3]%> 360px,
+             /products/<%= product._id %>/attachments/thumb-<%= product.attachments_order[3]%> 200px"
+     sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw,  (min-width: 320px) 100vw, 
+            100vw"/>
+
+
+    <div  id="customise_button" class="grey_button"><p style="font-size:1.4em;margin:0;padding:0;">CUSTOMISE</p></div>
 </div>
 </div>
 

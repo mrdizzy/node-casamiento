@@ -247,9 +247,12 @@ var StepView = Backbone.View.extend({
     this.listenTo(thisProduct, 'change:colour_1', this.changeColour)	
     this.listenTo(thisProduct, 'change:colour_2', this.changeColour2)
     var that = this;
+    $('#customise_button').click(function() {
+        that.downloadView();
+    })
     $('#add_another').click(function() {
       that.print();
-        $('#print_box').hide();
+    $('#print_box').hide();
     })
   },
   events: {     
@@ -287,6 +290,7 @@ var StepView = Backbone.View.extend({
   downloadView: function() {
     if(!this.show2DView) {
       this.presenter.show2DView();
+      
       this.show2DView = true;
     }
   },
@@ -383,6 +387,8 @@ var StepView = Backbone.View.extend({
     $('#image_container').fadeOut(function() { // hide 3D slides  
       $('#svgs').fadeIn()// display 2D customise image 
       // Calculate font size relative to container
+      $('#steps').fadeIn();
+      location.hash = "2Dview"// jumps to <div id=foo> or <a name="foo">
       var fontSize = $(".front_place_card").width() * 0.10; // 10% of container width
       $(".front_place_card").css('font-size', fontSize);
     }); 
