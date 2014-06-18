@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="dd.css" />
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="http://localhost:3000/javascripts/libraries/dropdown.js"></script>
+</head>
+<body>
+<h2>Hello</h2>
+<form>
+  <select name="webmenu" id="webmenu" style="width:50%;">
+    <option value="metroscript" data-image="metroscript.svg">Metroscript</option>
+    
+    <option value="metroscript" data-image="metroscript.svg">Alice</option>
+    
+    <option value="metroscript" data-image="metroscript.svg">John</option>
+  </select>
+</form>
+</body>
+
+<script>
+$(function() {
+  try {
+$("select").msDropDown();
+} catch(e) {
+alert(e.message);
+}
+})
+</script>
+</html>
