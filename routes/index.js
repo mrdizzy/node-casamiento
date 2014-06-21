@@ -9,7 +9,6 @@ module.exports = function(app){
   app.post("/search", require("./../controllers/search"))
   app.get("/svg/:id/:colours", require("./../controllers/svg").show)
   
-  app.resource("downloads", require("./../controllers/downloads"))
   app.resource("payments", require("./../controllers/payments"))
   app.resource("product_types", require("./../controllers/product_types"))
   app.resource("fonts", require("./../controllers/fonts"))

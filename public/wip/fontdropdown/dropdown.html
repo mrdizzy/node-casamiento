@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style type="text/css">
+.font_selector_container {
+ //position:relative;
+  width:70%
+}
+  .up_arrow_container { 
+    background-color: white;
+   // position:absolute;
+    width:100%;
+    top: -60px;
+  }
+  
+    .up_arrow { 
+    z-index:2;
+      height:60px;
+      line-height:60px;
+      text-align:center;
+      border:1px solid black;
+      border-bottom:0;
+      font-size:1em;
+      font-stretch:expanded;
+    }
+    
+  .fonts_table {
+    background-color:white;
+    border:1px solid black;
+    border-collapse:collapse;
+    z-index:1000;
+   // position:absolute;
+    width:100%;
+  }
+
+tr:hover { 
+  background-color:lightgrey;
+  cursor:pointer;
+}
+
+
+.up_arrow { display:none;}
+h2 { font-family:"Gara";font-weight:normal;}
+   
+   tr { 
+    height:60px
+   }
+   td { 
+   vertical-align:middle; 
+   font-family:'Arial'
+   }
+   #table_2 { display:none;}
+</style>
+</head>
+<body>
+
+
+<div id="test_selector" style="clear:both"></div>
+</body>
+
+<script>
+
+$(function() {
+
+var fonts = ["Metroscript", "TrajanPro", "MyriadProLight", "PFBodoniScript","Exmouth","CaslonPro", "SacramentoRegular", "EccentricStd"]
+
+  $container_div = $('<div></div>').addClass("font_selector_container");
+  $up_arrow_container = $('<div></div>').addClass("up_arrow_container").append($('<div></div>').addClass("up_arrow"));
+
+  $table_container = $('<div></div>').css("position", "relative")
+  
+  $container_div.append($up_arrow_container).append($table_container)
+  var grouped_fonts = inGroupsOf(fonts, 3)
+
+  
+  grouped_fonts.forEach(function(group) {
+
+    var $table = $('<table></table>').addClass("fonts_table");
+    group.forEach(function(font) {
+      var $tr = $('<tr data-image="' + font + '"></tr>').append("<td><img src='https://cloudant.com/db/mrdizzy/test_ebay/" + font + "/svg' /></td>").addClass("font_image").append("<td>" + font + "</td>").addClass("font_name");
+      $table.append($tr);
+    })
+    console.log(group)
+    $table_container.append($table)
+  })
+ 
+  
+  $('#test_selector').html($container_div)
+  var $head = $('head');
+
+  function loadFont(font) {      
+    $head.append("<style type='text/css'> @font-face { font-family:'" + font + "'; src: url('/fonts/"+ font + ".eot?') format('eot'), url('/fonts/" + font + ".woff') format('woff'); }</style>")
+  }
+
+
+var fontsLoaded = {}
+
+  $('tr').mouseover(function(e) {
+      var $target = $(e.currentTarget);
+      var font = $target.data('image')
+       if(font != undefined) {
+        if(fontsLoaded[font] == undefined) {
+          loadFont(font)
+          fontsLoaded[font] = true;
+        }        
+          $('#font').css('font-family', font)
+      }
+  })
+
+  $('.down_arrow').click(function(e) {
+    console.log("click")
+    $('.hidden_table').hide();
+    $('#table_2').show();
+  })
+  $('.small_table').mouseenter(function(e) {
+     $('.up_arrow').show();
+   $('.hidden_table').show()
+  })
+     
+  $('.wrapper').mouseleave(function(e) {
+    $('.up_arrow').hide();
+    $('.hidden_table').hide()
+  })
+   
+})
+
+ function inGroupsOf(arr, n){
+      var ret = [];
+      var group = [];
+      var len = arr.length;
+      var per = len * (n / len);
+
+      for (var i = 0; i < len; ++i) {
+        group.push(arr[i]);
+        if ((i + 1) % n == 0) {
+          ret.push(group);
+          group = [];
+        }
+      }
+      if (group.length) ret.push(group);
+      return ret;
+    };
+    
+</script>
+</html>
