@@ -45,6 +45,9 @@ app.configure(function(){
     var matchUrl = '/f';
     if(req.url.substring(0, matchUrl.length) === matchUrl) {
       res.setHeader("Access-Control-Allow-Origin", "*");
+    } else if(req.url.substring(0, "/fonts".length) === "/fonts") {
+    console.log("Yes")
+      res.setHeader("Access-Control-Allow-Origin", "*");
     }
     return next();
   });

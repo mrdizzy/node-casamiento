@@ -1,74 +1,4 @@
-<!doctype html>
-<html>
-<head>
-
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-<style type="text/css">
-
-.font_selector_container {
-  position:relative;
-  width:70%
-}
-  .up_arrow_container { 
-    z-index:10000;
-    height:60px;
-    top:-60px;
-    display:none;
-    position:absolute;
-    width:100%;
-  }
-  
-    .up_arrow { 
-      height:60px;
-      line-height:60px;
-      text-align:center;
-      border:1px solid black;
-      border-bottom:0;
-      font-size:1em;
-      font-stretch:expanded;
-    }
-    
-  .fonts_table {
-    text-align:center;
-    background-color:white;
-    border:1px solid black;
-    border-collapse:collapse;
-    z-index:100000;
-    position:absolute;
-    width:100%;
-  }
-  
-  #selected_font { position:relative;z-index:0;}
-
-  td { 
-    border-bottom:1px dotted lightgrey;
-    vertical-align:middle; 
-    font-family:'Arial'
-  }
-  tr { 
-    height:60px
-  }
-   tr:hover, .up_arrow:hover { 
-      background-color:lightgrey;
-      cursor:pointer;
-    }
-
-  td.font_name, td.font_description { width:50%;}
-  td.font_image { width:50%;}
-
-  h2 { font-family:"Gara";font-weight:normal;}
-     
-</style>
-</head>
-<body>
-
-  <div id="test_selector" style="width:50%;margin-top:100px;lear:both"></div>
-</body>
-
-<script>
-
-(function($) {
+;(function($) {
   $.fn.fontPicker = function(options) {
     var that = this;
     var settings = $.extend({},  $.fn.fontPicker.defaultOptions, options);
@@ -104,7 +34,8 @@
         var $tr = $('<tr data-image="' + font + '"></tr>').append("<td class='font_image'><img src='https://cloudant.com/db/mrdizzy/test_ebay/" + font + "/svg' /></td>").addClass("font_image").append("<td>" + font + "</td>").addClass("font_name");
         // Click on a font
         $tr.click(function(e) {
-        $up_arrow_container.hide()
+          that.trigger("fontpicker:selected", font)
+          $up_arrow_container.hide()
           $selected_image.attr("src", root_url + font + "/svg")
           $selected_font_name.text(font)
           tables[current_index].hide();
@@ -157,47 +88,6 @@
   }
   $.fn.fontPicker.defaultOptions ={
     fonts: ["Metroscript", "TrajanPro", "MyriadProLight", "PFBodoniScript","Exmouth","CaslonPro", "SacramentoRegular", "EccentricStd"],
-    in_groups_of: 3
+    in_groups_of: 4
   }
 }(jQuery))
-
-  $('#test_selector').fontPicker()
-  var $head = $('head');
-
-  function loadFont(font) {      
-    $head.append("<style type='text/css'> @font-face { font-family:'" + font + "'; src: url('/fonts/"+ font + ".eot?') format('eot'), url('/fonts/" + font + ".woff') format('woff'); }</style>")
-  }
-
-var fontsLoaded = {}
-
-  $('tr').mouseover(function(e) {
-      var $target = $(e.currentTarget);
-      var font = $target.data('image')
-       if(font != undefined) {
-        if(fontsLoaded[font] == undefined) {
-          loadFont(font)
-          fontsLoaded[font] = true;
-        }        
-          $('#font').css('font-family', font)
-      }
-  })
-
-function inGroupsOf(arr, n){
-  var ret = [];
-  var group = [];
-  var len = arr.length;
-  var per = len * (n / len);
-
-  for (var i = 0; i < len; ++i) {
-    group.push(arr[i]);
-    if ((i + 1) % n == 0) {
-      ret.push(group);
-      group = [];
-    }
-  }
-  if (group.length) ret.push(group);
-  return ret;
-};
-    
-</script>
-</html>

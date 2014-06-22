@@ -1,9 +1,8 @@
 <%- contentFor('inline_styles') %>
 
-  @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>') format('woff'); }
-  .half_container, .name, .guest { font-family:"<%= product.font %>"; }
-  
-<%- contentFor('main') %>
+  @font-face { font-family:"exmouth"; src: url('/fonts/Exmouth.eot?') format('eot'), url('/fonts/Exmouth.woff') format('woff') }
+  .guest { font-family:"exmouth" }
+  <%- contentFor('main') %>
 
 <% include partials/print_view.ejs %>  
   

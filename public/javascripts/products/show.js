@@ -246,6 +246,7 @@ var StepView = Backbone.View.extend({
     this.presenter = new StepsPresenter(thisProduct, this)
     this.listenTo(thisProduct, 'change:colour_1', this.changeColour)	
     this.listenTo(thisProduct, 'change:colour_2', this.changeColour2)
+    this.$head = $('head');
     var that = this;
     $('#customise_button').click(function() {
         that.downloadView();
@@ -261,12 +262,17 @@ var StepView = Backbone.View.extend({
     "mouseleave .spc": "hoverStepOff",      
     "click .texture": "updateTexture",  
     "click .weight": "updateWeight",  
+    "fontpicker:selected": "changeFont",
     "dizzy-cp:hoverColor #picker_1": "updateColour1",
     "dizzy-cp:hoverColor #picker_2": "updateColour2",
     "dizzy-cp:click #picker_1": "selectColour1",    
     "dizzy-cp:click #picker_2": "selectColour2",
     "click #plus_qty": "plusQty",
     "click #minus_qty": "minusQty"
+  },
+  changeFont: function(e, font) {   
+    this.$head.append("<style type='text/css'> @font-face { font-family:'" + font + "'; src: url('/fonts/"+ font + ".eot?') format('eot'), url('/fonts/" + font + ".woff') format('woff'); }</style>");
+    $('.guest').css('font-family', font)
   },
   print: function() {
     $('#add_another').fadeOut(function() {
@@ -368,12 +374,13 @@ var StepView = Backbone.View.extend({
     // Compile the steps template
     var result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter));     
       
-    // Create colour pickers
+    // Create colour pickers and font pickers
     var colours_1 = $("<div id='picker_1'></div>").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[0]});
     if(thisProduct.get("colours")[1]) {
       var colours_2 =$("<div id='picker_2'></div>").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[1]});
     }
     
+    var $font_picker = $("<div id='font_picker_steps'></div>").fontPicker();
     this.$el.html(result)
     
     // Input fields for guests
@@ -382,6 +389,7 @@ var StepView = Backbone.View.extend({
     }, this)
     $('.step').css("background-color", thisProduct.get("colours")[0]) 
     this.$('#colour_section_render').append(colours_1).append(colours_2);
+    this.$('#fonts').append($font_picker)
   },
   _render2DPreview: function() {
     $('#image_container').fadeOut(function() { // hide 3D slides  

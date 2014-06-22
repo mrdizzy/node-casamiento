@@ -1,0 +1,53 @@
+.font_selector_container {
+  position:relative;
+}
+  .up_arrow_container { 
+    z-index:10000;
+    height:60px;
+    top:-60px;
+    background-color:white;
+    display:none;
+    position:absolute;
+    width:100%;
+  }
+  
+    .up_arrow { 
+      height:60px;
+      line-height:60px;
+      text-align:center;
+      border:1px solid black;
+      border-bottom:0;
+      font-size:1em;
+      font-stretch:expanded;
+    }
+    
+  .fonts_table {
+    text-align:center;
+    background-color:white;
+    border:1px solid black;
+    border-collapse:collapse;
+    z-index:100000;
+    position:absolute;
+    width:100%;
+  }
+  
+  #selected_font { position:relative;z-index:0; border:1px solid transparent;}
+
+  #fonts td { 
+    border-bottom:1px dotted lightgrey;
+    vertical-align:middle; 
+    font-family:'Arial'
+  }
+  #fonts tr { 
+    height:60px
+  }
+   tr:hover, .up_arrow:hover { 
+      background-color:lightgrey;
+      cursor:pointer;
+    }
+
+  #fonts td.font_name, td.font_description { width:50%;}
+ #fonts  td.font_image { width:50%;}
+
+  h2 { font-family:"Gara";font-weight:normal;}
+     
