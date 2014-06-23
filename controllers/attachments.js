@@ -15,7 +15,3 @@ exports.show = function(req, res) {
     res.end();
   });
 }
-
-exports.destroy = function(req, res) {
- console.log("Body:", req.body); 
-};

@@ -1,42 +1,42 @@
 var express = require('express'),
-    http = require('http'),
-    compression = require('compression'), // gzip compression for static files
-    resource = require('express-resource'),
-    db = require('./config/db').test_ebay,
-    handlebars = require('express3-handlebars').create(),
-    partials = require('express-partials'),
-    expressLayouts = require('express-ejs-layouts');
+  http = require('http'),
+  compression = require('compression'), // gzip compression for static files
+  resource = require('express-resource'),
+  db = require('./config/db').test_ebay,
+  handlebars = require('express3-handlebars').create(),
+  partials = require('express-partials'),
+  expressLayouts = require('express-ejs-layouts');
 
 var app = express();
 var dir = __dirname;
 
 // Middleware for compiling and exposing javascript server-side templates to client side
 function exposeTemplates(req, res, next) {
-    // Uses the `ExpressHandlebars` instance to get the get the **precompiled**
-    // templates which will be shared with the client-side of the app.
-    handlebars.loadTemplates(dir + "/views/javascript_templates", {
-        precompiled: true
-    }, function (err, templates) {
-        if (err) { return next(err); }
+  // Uses the `ExpressHandlebars` instance to get the get the **precompiled**
+  // templates which will be shared with the client-side of the app.
+  handlebars.loadTemplates(dir + "/views/javascript_templates", {
+      precompiled: true
+  }, function (err, templates) {
+    if (err) { return next(err); }
 
-        // RegExp to remove the ".handlebars" extension from the template names.
-        var extRegex = new RegExp(handlebars.extname + '$');
+    // RegExp to remove the ".handlebars" extension from the template names.
+    var extRegex = new RegExp(handlebars.extname + '$');
 
-        // Creates an array of templates which are exposed via
-        // `res.locals.templates`.
-        templates = Object.keys(templates).map(function (name) {
-            return {
-                name    : name.replace(extRegex, ''),
-                template: templates[name]
-            };
-        });
-
-        // Exposes the templates during view rendering.
-        if (templates.length) {
-            res.locals.templates = templates;
-        }
-        next();
+    // Creates an array of templates which are exposed via
+    // `res.locals.templates`.
+    templates = Object.keys(templates).map(function (name) {
+      return {
+        name    : name.replace(extRegex, ''),
+        template: templates[name]
+      };
     });
+
+    // Exposes the templates during view rendering.
+    if (templates.length) {
+      res.locals.templates = templates;
+    }
+    next();
+  });
 }
 // Fonts need to be served with Access-Control-Allow-Origin set to * if
 // FireFox is to support cross-domain downloading of them (e.g. from an eBay listing)
@@ -61,9 +61,9 @@ app.configure(function() {
         layout: false
     });
     
-    // Compresses static files and res.json responses
+    // Compresses static files and res.json responses    
+    // app.use(compression()); // must be one of the first middlewares to compress effectively
     
-    //app.use(compression()); // must be one of the first middlewares to compress effectively
     app.use(express.cookieParser());
     app.use(express.favicon());
     app.use(expressLayouts)

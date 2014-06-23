@@ -1,19 +1,27 @@
 <%- contentFor('inline_styles') %>
 
   @font-face { font-family:"exmouth"; src: url('/fonts/Exmouth.eot?') format('eot'), url('/fonts/Exmouth.woff') format('woff') }
-  .guest { font-family:"exmouth" }
-  <%- contentFor('main') %>
+  .guest, .ui_half_container_guest { font-family:"exmouth" }
+  
+  
+  
+<%- contentFor('main') %>
 
 <% include partials/print_view.ejs %>  
   
+  
+  
 <%- contentFor('left') %>
 
-  <script type="text/javascript" src="/javascripts/libraries/jquery_form.js"></script>
-  <script type="text/javascript" src="/javascripts/products/show.js"></script>
   <script type="text/javascript" src="/javascripts/libraries/in_groups_of.js"></script>
+  <script type="text/javascript" src="/javascripts/libraries/jquery_form.js"></script>
+  
+  <!-- PRODUCTS JAVASCRIPT -->
+  <script type="text/javascript" src="/javascripts/products/initialize.js"></script>
+  <script type="text/javascript" src="/javascripts/products/models.js"></script>
+  <script type="text/javascript" src="/javascripts/products/views.js"></script>
 
-<% include partials/print.ejs %>
- <!-- PLACE CARD TEMPLATE FOR DUPLICATING AND PRINTING VIA JAVASCRIPT --> 
+ <!-- SVG VECTOR PLACE CARD TEMPLATE FOR DUPLICATING AND PRINTING VIA JAVASCRIPT --> 
  
   <script type="text/template" id="svg_place_card_template">
  
@@ -27,7 +35,8 @@
   
  </script>
  
-<div id="per_8_page_print"></div>
+ 
+ 
  
 <div id="product_container">
  
@@ -88,35 +97,41 @@
              /products/<%= product._id %>/attachments/thumb-<%= product.attachments_order[3]%> 200px"
      sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw,  (min-width: 320px) 100vw, 
             100vw"/>
-
-
-    <div  id="customise_button" class="grey_button"><p style="font-size:1.4em;margin:0;padding:0;">CUSTOMISE</p></div>
+    <div id="customise_button" class="grey_button"><p style="font-size:1.4em;margin:0;padding:0;">CUSTOMISE</p></div>
 </div>
 </div>
+
+
+
 
 <%- contentFor('right') %>
 
-  <div id="steps"></div>
-  
+<div id="steps"></div>
+
 <script type="text/javascript">
 
-  $('#send_to_print').click(function() {
-    $('#print_box').hide(function() {
-      window.print();
-      $('#add_another').show();
-    });
-  })
-  // Initialize templates
-  var templates = {}
-  <% templates.forEach(function(template) { %>
-    templates["<%= template.name %>"] = <%- template.template %>;
-  <% }) %>
-  
-  // Setup and initialization
-  var thisProduct = new Product(<%- JSON.stringify(product) %>);
+// Initialize templates
+var templates = {}
+<% templates.forEach(function(template) { %>
+  templates["<%= template.name %>"] = <%- template.template %>;
+<% }) %>
 
-  new StepView().render();
-  new DownloadView({el: '#product_container', model: thisProduct}).render();
-  new PrintView({el: '#per_8_page_print', model: thisProduct}).render();
+// Setup and initialization
+var thisProduct = new Product(<%- JSON.stringify(product) %>);
+var casamiento_fonts = <%- JSON.stringify(fonts) %>
+new StepView().render();
+new DownloadView({el: '#product_container', model: thisProduct}).render();
+new PrintView({el: '#per_8_page_print', model: thisProduct}).render();
 
+
+new UIPrintView({el: '#user_interface_print_view', model: thisProduct}).render();
+
+$('#ui_font_picker').fontPicker({fonts: casamiento_fonts, in_groups_of: 4})
+
+$('#send_to_print').click(function() {
+  $('#print_box').hide(function() {
+    window.print();
+    $('#add_another').show();
+  });
+})
 </script>

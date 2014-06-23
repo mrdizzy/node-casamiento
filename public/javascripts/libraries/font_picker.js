@@ -87,7 +87,7 @@
     return this;
   }
   $.fn.fontPicker.defaultOptions ={
-    fonts: ["Metroscript", "TrajanPro", "MyriadProLight", "PFBodoniScript","Exmouth","CaslonPro", "SacramentoRegular", "EccentricStd"],
+    fonts: ["Metroscript", "TrajanPro"],
     in_groups_of: 4
   }
 }(jQuery))

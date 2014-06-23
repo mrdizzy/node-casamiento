@@ -1,5 +1,16 @@
 var db = require('./../config/db').test_ebay,
-fs = require('fs');
+  fs = require('fs');
+
+// COUCHDB:
+// { _id: "TrajanPro",
+//   _attachments: { "svg", "eot", "woff"},
+//   type: "font"
+// }
+//   
+// CouchDB View: "all/fonts"
+// This view returns a list of fonts by using the { type: "font"} field. It also
+// uses the _id of the document and converts Camel Case into a spaced name (e.g.
+// AdobeCaslonPro into Adobe Caslon Pro).
 
 exports.new = function(req,res) {
   res.render('fonts/new', {layout:"admin_layout" });
@@ -12,15 +23,12 @@ exports.show = function(req, res) {
     res.write(chunk)
   });
   stream.on('end', function() {
-  console.log("ENDED")
     res.end();
   });
 }
 
 exports.index = function(req, res) {
-  db.view('all/type', {
-    key: "font"
-  }, function(error, docs) {
+  db.view('all/fonts', function(error, docs) {
     if (error) {
       console.log(error)
     }
@@ -49,9 +57,7 @@ exports.create = function(req, response) {
         if(woff_error) {
           console.log("Error saving woff", woff_error)
         } else {
-        
-        
-                console.log("Uploaded WOFF")
+        console.log("Uploaded WOFF")
             var writeStreamEot = db.saveAttachment(woff_resp, eot_data, function(eot_error, eot_resp) {       
               if(eot_error) {
                 console.log("Error saving eot" ,eot_error)
@@ -70,29 +76,13 @@ exports.create = function(req, response) {
               })
               
       readStreamSvg.pipe(writeStreamSvg);
-              
-              
-              
-              
               }
             })
             
             readStreamEot.pipe(writeStreamEot);
-        
-        
-        
-        
-        
-        
-        
-        
-        
-         
         }
       })
-      
-      readStreamWoff.pipe(writeStreamWoff);
-      
+      readStreamWoff.pipe(writeStreamWoff);      
     }
   });
 }

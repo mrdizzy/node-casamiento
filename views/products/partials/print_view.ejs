@@ -3,8 +3,7 @@
 </div>
 
 <div style="width:30%;margin-top:1.5em;float:left;">
-  <div id="font_picker"></div>
-  <script>$('#font_picker').fontPicker()</script>
+  <div id="ui_font_picker"></div>
 </div>
 
 <div style="width:10%;float:left;">
@@ -16,7 +15,7 @@
 <div style="width:30%;float:right;">
   <div style="width:33%;float:left;">
     <div style="width:54px;border:1px solid black;height:78px;">
-      <table style="width:100%;border-collapse:collapse;border:0;">
+      <table style="border-collapse:collapse;border:0;">
         <tr>
           <td style="width:50%;height:19px;border-bottom:1px dotted grey;border-right:1px dotted grey;"></td>      
           <td style="width:50%;height:19px;border-bottom:1px dotted grey;"></td>
@@ -70,3 +69,28 @@
 
 
 <div style="clear:both;"></div>
+
+<div id="user_interface_print_view" style="border:1px solid black;">
+    
+
+</div>
+ 
+
+<div style="clear:both;"></div>
+
+ 
+ 
+ <script type="text/template" id="ui_bitmap_place_card_template">
+ 
+  <div class="ui_single_place_card_container">
+    <div style="position:relative;">
+      <div class="ui_single_place_card_bitmap_container">
+        <%- product.divs[4] %>
+      </div>
+      <div class="ui_half_container"></div>
+      <div class="ui_half_container_guest">Mrs Lucy Smith</div>
+    </div>
+  </div>
+  
+</script>
+

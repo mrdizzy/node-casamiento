@@ -77,21 +77,12 @@ exports.destroy = function(req, res) {
 
 exports.show = function(req, res) {
   var id = req.params.product;
-  var cart_id = req.cookies.cart;
-  if (req.cookies.cart) {
-    db.get(req.cookies.cart, function(err, doc) {
-      getProduct(req, res,id,doc)
+  db.get(id, function(error, doc) {
+    doc.divs = prepareDivs(doc, "slide", "slide", "display", "colour");
+    db.view("all/fonts_by_id", function(error, fonts_response) {
+      res.render('products/show.ejs', {
+          locals: {fonts: fonts_response.toArray(), product: doc}
+      });
     })
-  } else {
-    getProduct(req, res, id)
-  }
+  });
 };
-
-function getProduct(req, res,id,cart) {
-    db.get(id, function(error, doc) {
-        doc.divs = prepareDivs(doc, "slide", "slide", "display", "colour");
-        res.render('products/show.ejs', {
-            locals: {product: doc}
-        });
-    });
-}
