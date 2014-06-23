@@ -1,3 +1,6 @@
+// This view is the user interface view for customising the place
+// cards and uses the bitmap representations
+
 var UIPlaceView = Backbone.View.extend({
   className: "ui_single_place_card_container",
   initialize: function() {
@@ -20,6 +23,8 @@ var UIPlaceView = Backbone.View.extend({
     this.$(".ui_half_container_guest").css('font-size', fontSize)
     
     this.$('.ui_half_container_guest input').val(this.model.get("name")).css("font-family", thisProduct.get("font"));
+    this.$('.slide').css("background-color", thisProduct.get("colour_1"))
+    this.$('.slide > div > div:not(.nocolor)').css("background-color", thisProduct.get("colour_2"));
     return this;
   }
 })
