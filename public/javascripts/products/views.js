@@ -17,9 +17,9 @@ var GuestView = Backbone.View.extend({
   },
   clearGuest: function() {
     if(this.first_clear) {
-      this.$('input').val("")
+      this.$('input').val("")      
+      this.first_clear = false;
     }
-    this.first_clear = false;
   },
   updateGuest: function() {
     this.model.set("name", this.$('input').val())
@@ -49,38 +49,6 @@ var PlaceView = Backbone.View.extend({
   }
 })
 
-var UIPlaceView = Backbone.View.extend({
- initialize: function() {
-    this.listenTo(this.model, 'change:name', this.render)	
-  },
-  render: function() {
-    this.$el.html($('#ui_bitmap_place_card_template').html());
-    // http://www.unitconversion.org/unit_converter/typography-ex.html
-    var fontSize = 395 * 0.10; // 10% of container width
-    this.$(".ui_half_container_guest").css('font-size', fontSize);
-    this.$('.ui_half_container_guest').text(this.model.get("name"))
-    return this;
-  }
-})
-
-var UIPrintView = Backbone.View.extend({
-  initialize: function() {
-    this.listenTo(thisProduct.get("guests"), 'add', this.render)    
-    this.listenTo(thisProduct.get("guests"), 'remove', this.render)
-  },
-  render: function() {
-    this.$el.empty();
-    var guests = thisProduct.get("guests");
-    guests.forEach(function(guest) {
-      var place_card = new UIPlaceView({model: guest}).render().el
-      this.$el.append(place_card);
-    }, this)
-    return this;          
-  } 
-}
-  
-)
-
 // This view is a container for the individual place card views 
 // At the  moment it re-renders every single place card when there is 
 // an additional or removal from the collection
@@ -99,7 +67,6 @@ var PrintView = Backbone.View.extend({
     return this;          
   } 
 })
-
 
 // 
 // PREVIEW VIEW
@@ -128,17 +95,21 @@ var StepView = Backbone.View.extend({
   el: '#steps',
   initialize: function() {
     _.bindAll(this, 'render')
+    this.print_view_off = true;
     this.presenter = new StepsPresenter(thisProduct, this)
     this.listenTo(thisProduct, 'change:colour_1', this.changeColour)	
     this.listenTo(thisProduct, 'change:colour_2', this.changeColour2)
-    this.$head = $('head');
+    this.listenTo(thisProduct, 'change:font', this.render)
+
     var that = this;
+    
+    // Move these into a main control panel View. They are event listeners
+    // for the buttons
+    $('#print_button').click(function() {
+      that.printYourself();
+    })
     $('#customise_button').click(function() {
         that.downloadView();
-    })
-    $('#add_another').click(function() {
-      that.print();
-    $('#print_box').hide();
     })
   },
   events: {     
@@ -155,9 +126,15 @@ var StepView = Backbone.View.extend({
     "click #plus_qty": "plusQty",
     "click #minus_qty": "minusQty"
   },
+  printYourself: function(e) {
+    if(this.print_view_off) {
+      var print_view = new UIPrintView({}).render().el;
+      $('body').html(print_view)
+      this.print_view_off = false;
+    }
+  },
   changeFont: function(e, font) {   
-    this.$head.append("<style type='text/css'> @font-face { font-family:'" + font + "'; src: url('/fonts/"+ font + ".eot?') format('eot'), url('/fonts/" + font + ".woff') format('woff'); }</style>");
-    $('.guest').css('font-family', font)
+    thisProduct.set("font", font)
   },
   print: function() {
     $('#add_another').fadeOut(function() {
@@ -200,6 +177,17 @@ var StepView = Backbone.View.extend({
       this.presenter.moveStep()
     }
   },
+  updateColour1: function(e, colour) {
+    this.downloadView();
+    $('.colour_1').css("background-color", colour)
+    $('.slide').css("background-color", colour)
+     thisProduct.set("colour_1", colour)
+  },
+  updateColour2: function(e, colour) {    
+    this.downloadView();
+    $('.slide > div > div:not(.nocolor)').css("background-color", colour);
+    thisProduct.set("colour_2", colour)
+  },
   plusQty: function(e) {
     this.presenter.updateQty(8)
   },
@@ -230,23 +218,17 @@ var StepView = Backbone.View.extend({
   hoverStepOff: function(e) {
     this.presenter.hoverStepOff($(e.currentTarget).index());   
   },
-  updateColour1: function(e, colour) {
-    this.downloadView();
-    $('.colour_1').css("background-color", colour)
-    $('.slide').css("background-color", colour)
-     thisProduct.set("colour_1", colour)
-  },
-  updateColour2: function(e, colour) {    
-    this.downloadView();
-    $('.slide > div > div:not(.nocolor)').css("background-color", colour);
-    thisProduct.set("colour_2", colour)
-  },
   
   
   //
   // RENDER METHODS
   //
   render: function() {
+    if(thisProduct.hasChanged("font")) {
+      var font = thisProduct.get("font")
+      appendFont(font);
+      $('.guest').css('font-family', font)
+    }
     if (this.render_2D_view)
       this._render2DPreview();
     else if(this.presenter.toggleStepOn) 
@@ -263,7 +245,6 @@ var StepView = Backbone.View.extend({
   },
   
   _renderFirstTime: function() {  
-    console.log("rendering first time")
     // Compile the steps template
     var result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter));     
       
@@ -328,3 +309,8 @@ var StepView = Backbone.View.extend({
     this.$('#guests').html(input_fields)
   }
 })
+
+var $head = $('head')
+function appendFont(font) {
+  $head.append("<style type='text/css'> @font-face { font-family:'" + font + "'; src: url('/fonts/"+ font + ".eot?') format('eot'), url('/fonts/" + font + ".woff') format('woff'); }</style>");
+}

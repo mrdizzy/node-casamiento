@@ -17,8 +17,8 @@
   <script type="text/javascript" src="/javascripts/libraries/jquery_form.js"></script>
   
   <!-- PRODUCTS JAVASCRIPT -->
-  <script type="text/javascript" src="/javascripts/products/initialize.js"></script>
-  <script type="text/javascript" src="/javascripts/products/models.js"></script>
+  <script type="text/javascript" src="/javascripts/products/models.js"></script>  
+  <script type="text/javascript" src="/javascripts/products/ui_print_views.js"></script>
   <script type="text/javascript" src="/javascripts/products/views.js"></script>
 
  <!-- SVG VECTOR PLACE CARD TEMPLATE FOR DUPLICATING AND PRINTING VIA JAVASCRIPT --> 
@@ -42,7 +42,7 @@
  
   <a id="2Dview" name="2Dview"></a>
   
-<% include partials/svg_preview %>
+<% include partials/flat_2D_bitmap_preview %>
     
 <div id="image_container">
 
@@ -98,7 +98,9 @@
      sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw,  (min-width: 320px) 100vw, 
             100vw"/>
     <div id="customise_button" class="grey_button"><p style="font-size:1.4em;margin:0;padding:0;">CUSTOMISE</p></div>
+    
 </div>
+    <div id="print_button" class="grey_button"><p style="font-size:1.4em;margin:0;padding:0;">PRINT YOURSELF  </p></div>
 </div>
 
 

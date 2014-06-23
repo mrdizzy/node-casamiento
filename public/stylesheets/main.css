@@ -496,28 +496,36 @@ input {
 /* UI PREVIEW FOR PRINTING
 ==================================== */  
 #user_interface_print_view {
-  width:844px;margin:0 auto;
+  width:844px;
+  margin:0 auto;
 }
-  .ui_single_place_card_container { 
-    width:420px;
-    float:left;
-    padding:0;
-  }
+  .page_break_3, .page_break_4 { display:none; }
   
-    .ui_single_place_card_bitmap_container {
-      position:absolute;
-      width:100%;
-      z-index:0;
+  #user_interface_print_view.up_3 {
+    width:422px;
+  }
+    .ui_single_place_card_container { 
+      width:420px;
+      float:left;
     }
+      .up_3 .ui_single_place_card_container {
+        float:none;
+      }
     
-    .ui_half_container, .ui_half_container_guest {
-      line-height:148px;
-      font-size:3em;
-      z-index:10000;
-      position:relative;
-      height:148px;
-      text-align:center;
-    }
+      .ui_single_place_card_bitmap_container {
+        position:absolute;
+        width:100%;
+        z-index:0;
+      }
+      
+      .ui_half_container, .ui_half_container_guest {
+        line-height:148px;
+        font-size:3em;
+        z-index:10000;
+        position:relative;
+        height:148px;
+        text-align:center;
+      }
     
 /* HIDDEN DIVS FOR PRINT
 ==================================== */  
