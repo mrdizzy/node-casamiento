@@ -18,9 +18,16 @@ var UIPlaceView = Backbone.View.extend({
   },
   render: function() {
     this.$el.html($('#ui_bitmap_place_card_template').html());
+    
     // http://www.unitconversion.org/unit_converter/typography-ex.html
-    var fontSize = 395 * 0.10; // 10% of container width
-    this.$(".ui_half_container_guest").css('font-size', fontSize)
+    
+      // hardcoded width of place card container
+      // using jQuery.width() will not work if display:none (element is hidden)
+     var fontSize = 420 * thisProduct.get("font_size"); // percentage of container width
+     
+     console.log("UI", fontSize)
+    
+    this.$(".ui_half_container_guest input").css('font-size', fontSize)
     
     this.$('.ui_half_container_guest input').val(this.model.get("name")).css("font-family", thisProduct.get("font"));
     this.$('.slide').css("background-color", thisProduct.get("colour_1"))

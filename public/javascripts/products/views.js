@@ -24,25 +24,6 @@ var GuestView = Backbone.View.extend({
   }
 })
 
-//
-// PLACE CARDS FOR PRINT
-//
-
-// This view handles each individual place card for printing
-var PlaceView = Backbone.View.extend({
-  initialize: function() {
-    this.listenTo(this.model, 'change:name', this.render)	
-  },
-  render: function() {
-    this.$el.html($('#svg_place_card_template').html());
-    // http://www.unitconversion.org/unit_converter/typography-ex.html
-    var fontSize = 395 * 0.10; // 10% of container width
-    this.$(".half_container").css('font-size', fontSize);
-    this.$('.print_guest').text(this.model.get("name"))
-    return this;
-  }
-})
-
 // This view is a container for the individual place card views 
 // At the  moment it re-renders every single place card when there is 
 // an additional or removal from the collection
@@ -55,8 +36,8 @@ var PrintView = Backbone.View.extend({
     this.$el.empty();
     var guests = thisProduct.get("guests");
     guests.forEach(function(guest) {
-      var place_card = new PlaceView({model: guest}).render().el
-      this.$el.append(place_card);
+   //   var place_card = new PlaceView({model: guest}).render().el
+   //   this.$el.append(place_card);
     }, this)
     return this;          
   } 
@@ -72,12 +53,16 @@ var DownloadView = Backbone.View.extend({
   },
   increaseFont: function() {
     var fontSize = $('.front_place_card').css('font-size').replace("px", "");
-    fontSize =  5 + parseInt(fontSize);
+    fontSize =  5 + parseInt(fontSize);    
+    var percentage_of_container_size = fontSize / $('.front_place_card').width();
+    thisProduct.set("font_size", percentage_of_container_size)
     $('.front_place_card').css('font-size',fontSize + "px");
   },
   decreaseFont: function() {
     var fontSize = $('.front_place_card').css('font-size').replace("px", "");
     fontSize =  parseInt(fontSize) - 5;
+    var percentage_of_container_size = fontSize / $('.front_place_card').width();
+    thisProduct.set("font_size", percentage_of_container_size)
     $('.front_place_card').css('font-size',fontSize + "px");
   },
   render: function() {
@@ -133,7 +118,6 @@ var StepView = Backbone.View.extend({
   changeFont: function(e, font) {   
     thisProduct.set("font_size", font.font_size)
     thisProduct.set("font", font.font)
-    console.log(thisProduct.get("font_size"))
   },
   print: function() {
     $('#add_another').fadeOut(function() {
@@ -226,7 +210,6 @@ var StepView = Backbone.View.extend({
     if(thisProduct.hasChanged("font")) {
       var font = thisProduct.get("font")
       appendFont(font);
-      console.log(thisProduct.get("font_size"))
       font_size = $(".front_place_card").width() * thisProduct.get("font_size"); 
       
       $('.guest').css('font-family', font)
