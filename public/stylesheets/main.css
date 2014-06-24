@@ -519,11 +519,10 @@ input {
       }
       
       .ui_half_container, .ui_half_container_guest {
-        line-height:148px;
-        font-size:3em;
         z-index:10000;
         position:relative;
         height:148px;
+        line-height:154px;
         text-align:center;
       }
     
