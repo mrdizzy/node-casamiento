@@ -31,13 +31,13 @@
       var $table = $('<table></table>').addClass("fonts_table").css("display", "none");
      
       group.forEach(function(font) {
-        var $tr = $('<tr data-image="' + font + '"></tr>').append("<td class='font_image'><img src='https://cloudant.com/db/mrdizzy/test_ebay/" + font + "/svg' /></td>").addClass("font_image").append("<td>" + font + "</td>").addClass("font_name");
+        var $tr = $('<tr data-image="' + font[0] + '"></tr>').append("<td class='font_image'><img src='https://cloudant.com/db/mrdizzy/test_ebay/" + font[0] + "/svg' /></td>").addClass("font_image").append("<td>" + font[0] + "</td>").addClass("font_name");
         // Click on a font
         $tr.click(function(e) {
-          that.trigger("fontpicker:selected", font)
+          that.trigger("fontpicker:selected", {font: font[0], font_size: font[1] })
           $up_arrow_container.hide()
-          $selected_image.attr("src", root_url + font + "/svg")
-          $selected_font_name.text(font)
+          $selected_image.attr("src", root_url + font[0] + "/svg")
+          $selected_font_name.text(font[0])
           tables[current_index].hide();
         })
         $table.append($tr)
@@ -61,8 +61,7 @@
     $container_div.mouseleave(function(e) {
       clicked_font = true;
       $up_arrow_container.hide();
-      tables[current_index].hide();
-      
+      tables[current_index].hide();      
     })
  
     // Move down
@@ -87,7 +86,7 @@
     return this;
   }
   $.fn.fontPicker.defaultOptions ={
-    fonts: ["Metroscript", "TrajanPro"],
+    fonts: [["Metroscript", 1], ["TrajanPro", 1]],
     in_groups_of: 4
   }
 }(jQuery))

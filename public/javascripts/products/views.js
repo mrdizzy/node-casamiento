@@ -1,12 +1,6 @@
 // 
 // GUEST VIEW
 // 
-var Guest = Backbone.Model.extend({})
- 
-var Guests = Backbone.Collection.extend({
-  model: Guest
-})
-
 var GuestView = Backbone.View.extend({  
   initialize: function() {
     this.first_clear = true;
@@ -85,6 +79,9 @@ var DownloadView = Backbone.View.extend({
     var fontSize = $('.front_place_card').css('font-size').replace("px", "");
     fontSize =  parseInt(fontSize) - 5;
     $('.front_place_card').css('font-size',fontSize + "px");
+  },
+  render: function() {
+    return this;
   }
 })
 
@@ -134,7 +131,9 @@ var StepView = Backbone.View.extend({
     }
   },
   changeFont: function(e, font) {   
-    thisProduct.set("font", font)
+    thisProduct.set("font_size", font.font_size)
+    thisProduct.set("font", font.font)
+    console.log(thisProduct.get("font_size"))
   },
   print: function() {
     $('#add_another').fadeOut(function() {
@@ -227,7 +226,11 @@ var StepView = Backbone.View.extend({
     if(thisProduct.hasChanged("font")) {
       var font = thisProduct.get("font")
       appendFont(font);
+      console.log(thisProduct.get("font_size"))
+      font_size = $(".front_place_card").width() * thisProduct.get("font_size"); 
+      
       $('.guest').css('font-family', font)
+      $('.front_place_card').css('font-size', font_size)
     }
     if (this.render_2D_view)
       this._render2DPreview();
@@ -272,7 +275,7 @@ var StepView = Backbone.View.extend({
       // Calculate font size relative to container
       $('#steps').fadeIn();
       location.hash = "2Dview"// jumps to <div id=foo> or <a name="foo">
-      var fontSize = $(".front_place_card").width() * 0.10; // 10% of container width
+      var fontSize = $(".front_place_card").width() * object_fonts[thisProduct.get("font")]; // 10% of container width
       $(".front_place_card").css('font-size', fontSize);
     }); 
   },  

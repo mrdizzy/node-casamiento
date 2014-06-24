@@ -1,7 +1,7 @@
 <%- contentFor('inline_styles') %>
 
-  @font-face { font-family:"exmouth"; src: url('/fonts/Exmouth.eot?') format('eot'), url('/fonts/Exmouth.woff') format('woff') }
-  .guest, .ui_half_container_guest { font-family:"exmouth" }
+  @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>.eot?') format('eot'), url('/fonts/<%= product.font %>.woff') format('woff') }
+  .guest, .ui_half_container_guest { font-family:"<%= product.font %>" }
   
   
   
@@ -17,7 +17,8 @@
   <script type="text/javascript" src="/javascripts/libraries/jquery_form.js"></script>
   
   <!-- PRODUCTS JAVASCRIPT -->
-  <script type="text/javascript" src="/javascripts/products/models.js"></script>  
+  <script type="text/javascript" src="/javascripts/products/models.js"></script> 
+  <script type="text/javascript" src="/javascripts/products/presenters.js"></script>   
   <script type="text/javascript" src="/javascripts/products/ui_print_views.js"></script>
   <script type="text/javascript" src="/javascripts/products/views.js"></script>
 
@@ -119,8 +120,13 @@ var templates = {}
 <% }) %>
 
 // Setup and initialization
-var thisProduct = new Product(<%- JSON.stringify(product) %>);
-var casamiento_fonts = <%- JSON.stringify(fonts) %>
+var thisProduct = new Product(<%- JSON.stringify(product) %>),
+  casamiento_fonts = <%- JSON.stringify(fonts) %>,
+  object_fonts = {};
+  casamiento_fonts.forEach(function(obj) {
+    object_fonts[obj[0]] = obj[1];
+  })
+      
 new StepView().render();
 new DownloadView({el: '#product_container', model: thisProduct}).render();
 new PrintView({el: '#per_8_page_print', model: thisProduct}).render();
