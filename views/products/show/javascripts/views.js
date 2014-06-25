@@ -228,24 +228,24 @@ var StepView = Backbone.View.extend({
   
   _renderFirstTime: function() {  
     // Compile the steps template
-    var result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter));     
+    var $result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter));     
       
     // Create colour pickers and font pickers
-    var colours_1 = result.find("#picker_1").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[0]});
+    var colours_1 = $result.find("#picker_1").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[0]});
     if(thisProduct.get("colours")[1]) {
-      var colours_2 =result.find('#picker_2').colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[1]});
+      var colours_2 =$result.find('#picker_2').colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[1]});
     }
     
     // Create font picker
-    result.find('#fonts').fontPicker({fonts: casamiento_fonts});
+    $result.find('#fonts').fontPicker({fonts: casamiento_fonts});
     
     // Input fields for guests
     thisProduct.get("guests").forEach(function(guest) {
-      result.find('#guests').append(new GuestView({model:guest}).render().el);
+      $result.find('#guests').append(new GuestView({model:guest}).render().el);
     }, this)
     
     $('.step').css("background-color", thisProduct.get("colours")[0]) // move to template
-    this.$el.html(result)
+    this.$el.html($result)
   },
     
   _render2DPreview: function() {
