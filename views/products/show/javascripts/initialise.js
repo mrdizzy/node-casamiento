@@ -27,6 +27,7 @@ $(function() {
   $('#print_button').click(function() {
      var print_view = new UIPrintView({}).render().el;
     $('body').html(print_view)
+    location.hash = "top_of_page"
   })
 })
 </script>
