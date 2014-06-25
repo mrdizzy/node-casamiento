@@ -11,7 +11,13 @@ var Guests = Backbone.Collection.extend({
 // PRODUCT MODEL
 // 
 var Product = Backbone.Model.extend({
-  initialize: function() {
+  defaults: {
+    quantity: 8,
+    guests: new Guests([{name: "First Guest"},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."}]),
+    total: 2.99
+  },
+  initialize: function() {  
+    this.textures = ["plain", "hammered", "linen"]
     this.on("change:quantity", this.calculatePrice)
     this.on("change:texture", this.calculatePrice)
     this.on("change:weight", this.calculatePrice)

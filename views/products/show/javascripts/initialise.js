@@ -1,11 +1,9 @@
 <script type="text/javascript">
-
 $(function() {
   // Render javascripts
-  <%= include models.js %>
-  <%= include presenters.js %>
-  <%= include ui_print_views.js %>
+  <%= include models.js %>  
   <%= include views.js %>
+  <%= include ui_print_views.js %>
 
   // Initialize templates
   var templates = {}
@@ -20,17 +18,15 @@ $(function() {
     casamiento_fonts.forEach(function(obj) {
       object_fonts[obj[0]] = obj[1];
     })
+    thisProduct.set("font_size", object_fonts[thisProduct.get("font")])
         
   new StepView().render();
   new DownloadView({el: '#product_container', model: thisProduct}).render();
   new PrintView({el: '#per_8_page_print', model: thisProduct}).render();
-  new UIPrintView({el: '#user_interface_print_view', model: thisProduct}).render();
 
-  $('#ui_font_picker').fontPicker({fonts: casamiento_fonts, in_groups_of: 4})
-
-  $('#send_to_print').click(function() {
-      window.print();
+  $('#print_button').click(function() {
+     var print_view = new UIPrintView({}).render().el;
+    $('body').html(print_view)
   })
-
 })
 </script>

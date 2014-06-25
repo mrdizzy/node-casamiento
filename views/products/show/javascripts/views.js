@@ -7,9 +7,8 @@ var GuestView = Backbone.View.extend({
     'focus input': 'clearGuest'
   },
   clearGuest: function() {
-    if(!this.model.hasChanged("name")) {
+    if(!this.model.hasChanged("name")) 
       this.$('input').val("")      
-    }
   },
   updateGuest: function() {
     this.model.set("name", this.$('input').val())
@@ -25,7 +24,7 @@ var GuestView = Backbone.View.extend({
 // an additional or removal from the collection
 var PrintView = Backbone.View.extend({
   initialize: function() {
-    this.listenTo(thisProduct.get("guests"), 'add', this.render)    
+   // this.listenTo(thisProduct.get("guests"), 'add', this.render)    
     this.listenTo(thisProduct.get("guests"), 'remove', this.render)
   },
   render: function() {
@@ -43,25 +42,48 @@ var PrintView = Backbone.View.extend({
 // PREVIEW VIEW
 // 
 var DownloadView = Backbone.View.extend({
+  initialize: function() {
+    this.listenTo(thisProduct, 'change:colour_1', this.activateView)
+    this.listenTo(thisProduct, 'change:colour_2', this.activateView)
+    this.listenTo(thisProduct, 'change:font', this.changeFont)    
+  },
   events: {
     'click #plus_font': 'increaseFont',
     'click #minus_font': 'decreaseFont'
   },
+  activateView: function() {
+    if(!this.first_time) {
+      $('#image_container').fadeOut(function() { // hide 3D slides  
+        $('#svgs').fadeIn()// display 2D customise image 
+        // Calculate font size relative to container
+        location.hash = "2Dview"// jumps to <div id=foo> or <a name="foo">
+        var fontSize = $(".front_place_card").width() * object_fonts[thisProduct.get("font")]; // 10% of container width
+        $(".front_place_card").css('font-size', fontSize);
+      }); 
+      this.first_time = true;
+    }
+  },
+  changeFont: function() {
+    var font = thisProduct.get("font")
+    appendFont(font);
+    font_size = $(".front_place_card").width() * thisProduct.get("font_size"); 
+    $('.guest').css('font-family', font)
+    $('.front_place_card').css('font-size', font_size)
+  },
   increaseFont: function() {
-    var fontSize = $('.front_place_card').css('font-size').replace("px", "");
-    fontSize =  5 + parseInt(fontSize);    
-    var percentage_of_container_size = fontSize / $('.front_place_card').width();
-    thisProduct.set("font_size", percentage_of_container_size)
-    $('.front_place_card').css('font-size',fontSize + "px");
+    this.adjustFontSize(5)
   },
   decreaseFont: function() {
-    var fontSize = $('.front_place_card').css('font-size').replace("px", "");
-    fontSize =  parseInt(fontSize) - 5;
-    var percentage_of_container_size = fontSize / $('.front_place_card').width();
-    thisProduct.set("font_size", percentage_of_container_size)
-    $('.front_place_card').css('font-size',fontSize + "px");
+   this.adjustFontSize(-5)
   },
-  render: function() {
+  adjustFontSize: function(amount) {
+    var font_size_no_units = $('.front_place_card').css('font-size').replace("px", "");
+    font_size_no_units =  amount + parseInt(font_size_no_units);    
+    var percentage_of_container_size = font_size_no_units / $('.front_place_card').width();
+    thisProduct.set("font_size", percentage_of_container_size)
+    $('.front_place_card').css('font-size',font_size_no_units + "px");
+  },
+  render: function() { 
     return this;
   }
 })
@@ -73,27 +95,13 @@ var StepView = Backbone.View.extend({
   el: '#steps',
   initialize: function() {
     _.bindAll(this, 'render')
-    this.print_view_off = true;
-    this.presenter = new StepsPresenter(thisProduct, this)
     this.listenTo(thisProduct, 'change:colour_1', this.changeColour)	
     this.listenTo(thisProduct, 'change:colour_2', this.changeColour2)
-    this.listenTo(thisProduct, 'change:font', this.render)
-
-    var that = this;
-    
-    // Move these into a main control panel View. They are event listeners
-    // for the buttons
-    $('#print_button').click(function() {
-      that.printYourself();
-    })
-    $('#customise_button').click(function() {
-        that.downloadView();
-    })
   },
   events: {     
     "click #buy": "checkout",        
-    "mouseenter .spc": "hoverStepOn",
-    "mouseleave .spc": "hoverStepOff",      
+    "mouseenter .spc": "hoverStep",
+    "mouseleave .spc": "hoverStep",     
     "click .texture": "updateTexture",  
     "click .weight": "updateWeight",  
     "fontpicker:selected": "changeFont",
@@ -103,13 +111,6 @@ var StepView = Backbone.View.extend({
     "dizzy-cp:click #picker_2": "selectColour2",
     "click #plus_qty": "plusQty",
     "click #minus_qty": "minusQty"
-  },
-  printYourself: function(e) {
-    if(this.print_view_off) {
-      var print_view = new UIPrintView({}).render().el;
-      $('body').html(print_view)
-      this.print_view_off = false;
-    }
   },
   changeFont: function(e, font) {   
     thisProduct.set("font_size", font.font_size)
@@ -134,14 +135,6 @@ var StepView = Backbone.View.extend({
       }
     })
   },
-  downloadView: function() {
-    if(!this.already_shown_2D) {
-      this.render_2D_view = true;
-      this.render();
-      this.render_2D_view = false;
-      this.already_shown_2D = true;
-    }
-  },
   checkout: function() {
     $.form('/payments', { 
       "L_PAYMENTREQUEST_0_AMT0": thisProduct.get("unit"), 
@@ -152,83 +145,69 @@ var StepView = Backbone.View.extend({
     }).submit();
   },
   selectColour1: function(e, colour) {
-    if(thisProduct.get("colours").length == 1) {
+    if(thisProduct.get("colours").length == 1) 
       this.presenter.moveStep()
-    }
   },
   updateColour1: function(e, colour) {
-    this.downloadView();
     $('.colour_1').css("background-color", colour)
     $('.slide').css("background-color", colour)
-     thisProduct.set("colour_1", colour)
+    thisProduct.set("colour_1", colour)
   },
   updateColour2: function(e, colour) {    
-    this.downloadView();
     $('.slide > div > div:not(.nocolor)').css("background-color", colour);
     thisProduct.set("colour_2", colour)
   },
   plusQty: function(e) {
-    this.presenter.updateQty(8)
+    this.updateQty(8)
   },
   minusQty: function(e) {
-    if(thisProduct.get("quantity") > 8) {
-      this.presenter.updateQty(-8)
+    if(thisProduct.get("quantity") > 8) 
+      this.updateQty(-8)
+  },
+  updateQty: function(number) {
+    var quantity = thisProduct.get("quantity") + number;
+    thisProduct.set("quantity", quantity);
+    var guests = thisProduct.get("guests")
+    if(number > 0) {
+      guests.add([{name: "..."}, {name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."}]) 
+    } else {
+      var silent = false;  
+      for(var i =0;  i < 8; i++) {  
+        if(i > 6) { silent = true; } 
+        guests.pop({silent: silent});
+      }
     }
+    thisProduct.set("guests", guests);
+    this.$('#qty').val(thisProduct.get("quantity"))
+    this.$('span#pound').text(that.presenter().pounds());
+    this.$('span#decimal').text("." + that.presenter().dec());
+    this._renderGuests()
   },
   updateTexture: function(e) {
-      this.presenter.updateTexture($(e.currentTarget).index())
-      if(this.presenter.currentStep < 3) {
-        this.presenter.moveStep();
-      }
+    var texture_selected = $(e.currentTarget)
+    this.model.set("texture", texture_selected.index());
+    this.$('.texture').removeClass("deselected");
+    texture_selected.addClass("selected");
   },
   updateWeight: function(e) {
-    this.presenter.updateWeight($(e.currentTarget).index())
-    if(this.presenter.currentStep < 4) {
-      this.presenter.moveStep();
-    }
   },
   
   // We use the index of the div to toggle it (index is its place within the hierarchy of other siblings obtained by the jquery.index() function), this breaks easily if other divs are added between or before steps. The first sibling
   // element is actually the img of the name place icon so this counts as index 0, then the first step is index 1. 
   // If we were to move the img then the first step would be index 0 so this would break things. 
-  hoverStepOn: function(e) {
-   this.presenter.hoverStepOn($(e.currentTarget).index());  
+  hoverStep: function(e) {
+    var step_index = $(e.currentTarget).index();
+    this.$('#step_' + step_index + " .step").fadeToggle()      
+    this.$('#step_' + step_index + " .chat-bubble").slideToggle()
+    this.$('#step_' + step_index).toggleClass('highlight')
   },
-  hoverStepOff: function(e) {
-    this.presenter.hoverStepOff($(e.currentTarget).index());   
-  },
-  
   
   //
   // RENDER METHODS
   //
   render: function() {
-    if(thisProduct.hasChanged("font")) {
-      var font = thisProduct.get("font")
-      appendFont(font);
-      font_size = $(".front_place_card").width() * thisProduct.get("font_size"); 
-      
-      $('.guest').css('font-family', font)
-      $('.front_place_card').css('font-size', font_size)
-    }
-    if (this.render_2D_view)
-      this._render2DPreview();
-    else if(this.presenter.toggleStepOn) 
-      this._renderEnterStep();
-    else if(this.presenter.toggleStepOff)
-      this._renderLeaveStep();
-    else if (this.presenter.changeTexture)
-     this._renderHighlightTexture();
-    else if (this.presenter.changeQty)   
-      this._renderQuantityChanged();
-    else 
-      this._renderFirstTime() 
-    return this;
-  },
-  
-  _renderFirstTime: function() {  
     // Compile the steps template
-    var $result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter));     
+    var $result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter()));     
       
     // Create colour pickers and font pickers
     var colours_1 = $result.find("#picker_1").colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[0]});
@@ -240,55 +219,36 @@ var StepView = Backbone.View.extend({
     $result.find('#fonts').fontPicker({fonts: casamiento_fonts});
     
     // Input fields for guests
-    thisProduct.get("guests").forEach(function(guest) {
-      $result.find('#guests').append(new GuestView({model:guest}).render().el);
-    }, this)
+    this._renderGuests($result.find('#guests'));
     
     $('.step').css("background-color", thisProduct.get("colours")[0]) // move to template
     this.$el.html($result)
+    return this;
   },
-    
-  _render2DPreview: function() {
-    $('#image_container').fadeOut(function() { // hide 3D slides  
-      $('#svgs').fadeIn()// display 2D customise image 
-      // Calculate font size relative to container
-      $('#steps').fadeIn();
-      location.hash = "2Dview"// jumps to <div id=foo> or <a name="foo">
-      var fontSize = $(".front_place_card").width() * object_fonts[thisProduct.get("font")]; // 10% of container width
-      $(".front_place_card").css('font-size', fontSize);
-    }); 
-  },  
-  
-  _renderEnterStep: function() {
-    this.$('#step_' + this.presenter.toggleStepOn + " .step").fadeIn()      
-    this.$('#step_' + this.presenter.toggleStepOn + " .chat-bubble").slideDown()
-    this.$('#step_' + this.presenter.toggleStepOn).addClass('highlight')
-    this.presenter.toggleStepOn = false;
-  },  
-  
-  _renderLeaveStep: function() {    
-      this.$('#step_' + this.presenter.toggleStepOff + " .step").fadeOut()      
-      this.$('#step_' + this.presenter.toggleStepOff + " .chat-bubble").slideUp()
-      this.$('#step_' + this.presenter.toggleStepOff).removeClass('highlight')
-      this.presenter.toggleStepOff = false;
-  },  
-  
-  _renderHighlightTexture: function() {
-    this.$('.texture').removeClass("selected")
-    var texture_changed = this.$('.texture').get(this.presenter.changeTexture) ;
-    $(texture_changed).toggleClass("selected"); 
-    this.presenter.changeTexture = false;
-  },
-  
-  _renderQuantityChanged: function() {
-    this.$('#qty').val(thisProduct.get("quantity"))
-    this.$('span#pound').text(this.presenter.pounds);
-    this.$('span#decimal').text("." + this.presenter.dec);
-    var input_fields = []
-    thisProduct.get("guests").forEach(function(guest) {
-      input_fields.push(new GuestView({model:guest}).render().el)
+  _renderGuests: function($element) {
+    var $element = $element || this.$('#guests')
+    var guests_html = []
+    thisProduct.get("guests").forEach(function(guest) {    
+      guests_html.push(new GuestView({model:guest}).render().el);
     })
-    this.$('#guests').html(input_fields)
+    $element.html(guests_html);
+  }, 
+    
+  presenter: function() {
+    var productJSON = thisProduct.toJSON();
+    var presented = _.extend(productJSON, {
+      guests: function() {
+        return(productJSON.guests.pluck("name"))
+      },
+      pounds: function() {
+      console.log("Presenter", this)
+        return productJSON.total.toString().split(".")[0]
+      },
+      dec: function() {
+        return productJSON.total.toString().split(".")[1]
+      }
+    });
+    return presented;
   }
 })
 
