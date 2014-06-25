@@ -2,17 +2,13 @@
 // GUEST VIEW
 // 
 var GuestView = Backbone.View.extend({  
-  initialize: function() {
-    this.first_clear = true;
-  },
   events: {
     "blur input": 'updateGuest',
     'focus input': 'clearGuest'
   },
   clearGuest: function() {
-    if(this.first_clear) {
+    if(!this.model.hasChanged("name")) {
       this.$('input').val("")      
-      this.first_clear = false;
     }
   },
   updateGuest: function() {
@@ -247,7 +243,7 @@ var StepView = Backbone.View.extend({
     thisProduct.get("guests").forEach(function(guest) {
       this.$('#guests').append(new GuestView({model:guest}).render().el);
     }, this)
-    $('.step').css("background-color", thisProduct.get("colours")[0]) 
+    $('.step').css("background-color", thisProduct.get("colours")[0]) // move to template
     this.$('#colour_section_render').append(colours_1).append(colours_2);
     this.$('#fonts').append($font_picker)
   },

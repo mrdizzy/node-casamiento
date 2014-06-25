@@ -80,7 +80,7 @@ exports.show = function(req, res) {
   db.get(id, function(error, doc) {
     doc.divs = prepareDivs(doc, "slide", "slide", "display", "colour");
     db.view("all/fonts_by_id_and_size", function(error, fonts_response) {
-      res.render('products/show.ejs', {
+      res.render('products/show/show.ejs', {
           locals: {fonts: fonts_response.toArray(), product: doc}
       });
     })
