@@ -12,7 +12,6 @@ exports.index = function(req, res) {
         counter++;
       })
       docs.place_cards = docs;
-       console.log(docs)
       res.render('products/index', {
         layout: 'layout',
         locals: docs
@@ -30,9 +29,7 @@ exports.update = exports.create = function(req, res) {
   }
   //var svg = new String(req.body.svg) // new String is used to "copy" the string as we are about to delete it in the next line
   if(req.body.svg) {
-  console.log("Yes there is")
-    var svg = req.body.svg.toString();
-    
+    var svg = req.body.svg.toString();    
     delete req["body"].svg;
   }
   db.save(id, rev, req.body, function(err, documents) {
@@ -42,7 +39,6 @@ exports.update = exports.create = function(req, res) {
       res.end();
     }
     else if(svg) {
-    console.log("Savin g svg")
       var svg_id = "svg__" + documents.id;
       db.get(svg_id, function(e, record) {
         if (record) {
@@ -54,8 +50,7 @@ exports.update = exports.create = function(req, res) {
               res.status(500);
               res.end();
             } else {
-              console.log("DONE")
-              
+              console.log("DONE")              
             }
           })
       })  
@@ -77,7 +72,8 @@ exports.destroy = function(req, res) {
 
 exports.show = function(req, res) {
   var id = req.params.product;
-  db.get(id, function(error, doc) {
+  db.view('all/products_without_attachments', { key: id }, function(error, result) {
+    var doc = result[0].value; // First record
     doc.divs = prepareDivs(doc, "slide", "slide", "display", "colour");
     db.view("all/fonts_by_id_and_size", function(error, fonts_response) {
       res.render('products/show/show.ejs', {

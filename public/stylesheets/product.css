@@ -199,6 +199,27 @@
       
 /* UI PREVIEW FOR PRINTING
 ==================================== */  
+#ui_print_logo_container {
+  width:20%;
+  float:left;
+}
+  #ui_print_logo {
+    width:150px;
+    border-right:1px solid black;
+  }
+  
+#ui_print_font_picker_container {
+  width:30%;
+  margin-top:2.5em;
+  float:left;
+  border-right:1px solid black;
+}
+#ui_printer_icon {
+  width:20%;
+  float:left;
+  text-align:center;
+  border-right:1px solid black;
+}
 #user_interface_print_view {
   width:844px;
   margin:0 auto;

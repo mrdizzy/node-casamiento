@@ -4,7 +4,7 @@ var UIPrintView = Backbone.View.extend({
   initialize: function() {
     _.bindAll(this, 'render')
     this.klass = "up_8";    
-    this.listenTo(thisProduct, 'change:font', this.render)
+    this.listenTo(thisProduct, 'change:font', this._renderFont)
    // this.listenTo(thisProduct.get("guests"), 'add', this.render)    
     //this.listenTo(thisProduct.get("guests"), 'remove', this.render)
   },
@@ -17,7 +17,12 @@ var UIPrintView = Backbone.View.extend({
     this.$('#user_interface_print_view').attr("class", "up_" + val)
   },
   changeFont: function(e, font) { 
-    thisProduct.set("font", font)
+    thisProduct.set("font", font.font)
+  },
+  _renderFont: function() {
+    var font = thisProduct.get("font");
+    appendFont(font);
+    this.$('.ui_half_container_guest input').css("font-family", font);
   },
   render: function() {
     // We use the html of the element as the template is stored in a <script>
@@ -29,7 +34,6 @@ var UIPrintView = Backbone.View.extend({
     var guests = thisProduct.get("guests");
     var counter = 1
     guests.forEach(function(guest) {
-
       var place_card = new UIPlaceView({model: guest}).render().el
       $container.append(place_card);
       if(counter == 3) {
@@ -45,14 +49,15 @@ var UIPrintView = Backbone.View.extend({
     
     // hardcoded width of place card container
     // using jQuery.width() will not work if display:none (element is hidden)
-    var fontSize = 420 * thisProduct.get("font_size"); // percentage of container width
      
-    $template.find(".ui_half_container_guest input").css('font-size', fontSize)
-    $template.find('.ui_half_container_guest input').css("font-family", thisProduct.get("font"));
     $template.find('.slide').css("background-color", thisProduct.get("colour_1"))
     $template.find('.slide > div > div:not(.nocolor)').css("background-color", thisProduct.get("colour_2"));
-    this.$el.append($template)   
-    this.$('#ui_font_picker').fontPicker({fonts:casamiento_fonts})
+    this.$el.append($template)    
+    var fontSize = 420 * thisProduct.get("font_size"); // percentage of container width
+   
+    this.$(".ui_half_container_guest input").css('font-size', fontSize)   
+    this._renderFont();
+    this.$('#ui_font_picker').fontPicker({fonts:casamiento_fonts, selected_font: thisProduct.get("font")})
     return this;          
   } 
 })

@@ -6,6 +6,7 @@
 
     var fonts = settings.fonts,
       grouped_fonts = inGroupsOf(fonts, settings.in_groups_of)  
+    var selected_font = settings.selected_font;
     var current_index = 0;
     var tables = []
 
@@ -19,8 +20,8 @@
     var root_url = "https://cloudant.com/db/mrdizzy/test_ebay/";
     var $selected_font = $('<table id="selected_font" class="fonts_table"></table>');
     $selected_row = $('<tr></tr>');
-    $selected_image = $('<img src="https://cloudant.com/db/mrdizzy/test_ebay/Metroscript/svg">')
-    $selected_font_name= $('<td class="font_name">Metroscript</td>');
+    $selected_image = $('<img src="https://cloudant.com/db/mrdizzy/test_ebay/' + selected_font + '/svg">')
+    $selected_font_name= $('<td class="font_name">'+ selected_font + '</td>');
     $selected_row.append($('<td class="font_image"></td>').append($selected_image));
     $selected_row.append($selected_font_name)
     $selected_font.append($selected_row)
@@ -87,6 +88,7 @@
   }
   $.fn.fontPicker.defaultOptions ={
     fonts: [["Metroscript", 1], ["TrajanPro", 1]],
+    selected: "Metroscript",
     in_groups_of: 4
   }
 }(jQuery))

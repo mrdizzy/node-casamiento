@@ -69,6 +69,7 @@ var DownloadView = Backbone.View.extend({
     font_size = $(".front_place_card").width() * thisProduct.get("font_size"); 
     $('.guest').css('font-family', font)
     $('.front_place_card').css('font-size', font_size)
+    this.activateView();
   },
   increaseFont: function() {
     this.adjustFontSize(5)
@@ -216,7 +217,7 @@ var StepView = Backbone.View.extend({
     }
     
     // Create font picker
-    $result.find('#fonts').fontPicker({fonts: casamiento_fonts});
+    $result.find('#fonts').fontPicker({fonts: casamiento_fonts, selected_font: thisProduct.get("font")});
     
     // Input fields for guests
     this._renderGuests($result.find('#guests'));
