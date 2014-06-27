@@ -5,10 +5,30 @@ var express = require('express'),
   db = require('./config/db').test_ebay,
   handlebars = require('express3-handlebars').create(),
   partials = require('express-partials'),
-  expressLayouts = require('express-ejs-layouts');
+  expressLayouts = require('express-ejs-layouts'),
+  assetManager = require('connect-assetmanager'),
+  Cacher = require("cacher");
+    var cacher = new Cacher();
 
 var app = express();
 var dir = __dirname;
+
+var assetManagerGroups = {
+    'css': 
+        {'route': /\/static\/css\/all\.css/
+        , 'path': __dirname + '/public/stylesheets/'
+        , 'dataType': 'css'
+        , 'files': [ 'color_picker.css', 'font_picker.css', 'main.css', 'responsive.css', 'product.css' ]
+    },
+    'js':
+        { 'route': /\/static\/javascripts\/all\.js/
+        , 'path': __dirname + '/public/javascripts/libraries/'
+        , 'dataType': 'javascript'
+        , 'files': [ 'picturefill.min.js','in_groups_of.js', 'color_picker.js', 'font_picker.js','jquery_form.js' ]
+    }
+};
+
+var assetsManagerMiddleware = assetManager(assetManagerGroups);
 
 // Middleware for compiling and exposing javascript server-side templates to client side
 function exposeTemplates(req, res, next) {
@@ -66,12 +86,18 @@ app.configure(function() {
     
     app.use(express.cookieParser());
     app.use(express.favicon());
-    app.use(expressLayouts)
+    app.use(expressLayouts);
+    
+    app.use(assetsManagerMiddleware);
+    
     app.use(express.logger('dev'));
     app.use(express.bodyParser({limit:'100mb'}));
     app.use(exposeTemplates); // exposes server side javascript templates to client side
-    app.use(app.router);
+    
     app.use(express.static(__dirname + '/public'));
+    
+    app.use(cacher.cache('seconds', 1000))
+    app.use(app.router);
 });
 
 app.configure('development', function() {
@@ -83,3 +109,15 @@ require('./routes')(app);
 http.createServer(app).listen((process.env.PORT || 3000), function() {
     console.log("Express server listening on port " + (process.env.PORT || 3000));
 });
+
+
+cacher.on("hit", function(key) {
+
+  console.log(key, "woohoo!")
+})
+cacher.on("miss", function(key) {
+  console.log("doh!")
+})
+cacher.on("error", function(key) {
+  console.log(err)
+})
