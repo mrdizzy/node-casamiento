@@ -1,8 +1,11 @@
 <%- contentFor('inline_styles') %>
 
-  @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>.eot?') format('eot'), url('/fonts/<%= product.font %>.woff') format('woff') }
-  .guest, .ui_half_container_guest { font-family:"<%= product.font %>" }
+ /* @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>.eot?') format('eot'), url('/fonts/<%= product.font %>.woff') format('woff') }
+  .guest, .ui_half_container_guest { font-family:"<%= product.font %>" } */
   
+  
+  @font-face { font-family:"Exmouth"; src: url('/fonts/Exmouth.eot?') format('eot'), url('/fonts/Exmouth.woff') format('woff') }
+  .guest, .ui_half_container_guest { font-family:"Exmouth" }
   
 <%- contentFor('main') %>
 

@@ -101,7 +101,7 @@ app.configure(function() {
     
     app.use(express.static(__dirname + '/public'));
     
-    app.use(cacher.cache('seconds', 1000))
+  // app.use(cacher.cache('seconds', 1000))
     app.use(app.router);
 });
 
