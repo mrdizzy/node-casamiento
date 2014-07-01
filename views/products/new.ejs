@@ -15,7 +15,6 @@
 
 
 <script type="text/javascript">
-
 _.templateSettings = {
   interpolate : /\{\{(.+?)\}\}/g
 };
@@ -27,8 +26,8 @@ $(function() {
         }
         });
         var counter = new Counter();
+        
     var ImageFormView = Backbone.View.extend({
-
             events: {
             'click .remove': 'destroy'
         },
@@ -36,8 +35,7 @@ $(function() {
             this.remove();
         },
         render: function() {
-               var template = $('#add_image_form').html(),
-               
+               var template = $('#add_image_form').html(),               
                compiled = _.template(template, { counter: this.model.get("value")});
               this.$el.html(compiled);
                return this;

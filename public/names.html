@@ -1,6 +1,7 @@
 <!doctype HTML>
 <html>
 <head>
+<style type="text/css"></style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>    
 
@@ -392,8 +393,45 @@ $(function() {
         parseAddresses(0,'invitations_template','download_invitations', 4)
         compileSheet();
     });
+  $('#comma_to_newline').click(function() {
+    var names = $('#names').val()
+    $('#names').val(turnCommaIntoNewline(names))
+   
+  })
+  $('#remove_numbers').click(function() {
+    var names = $('#names').val()
+    $('#names').val(removeNumbersAndDots(names))
+   
+  })
 
 });
+
+function turnCommaIntoNewline(names) {
+ var names = names.split(",");
+  for(var i = 0; i < names.length; i++) {
+   names[i] = names[i].trim();
+ }
+  $('#counter').text(names.length)
+ return names.join("\n")
+  
+}
+
+function trimNames(names) {
+ 
+ return names;
+}
+function removeNumbersAndDots(names) {
+  names = names.replace(/\d/g,'')
+  names = names.replace(/\./g,'')
+  names = names.split("\n")
+   for(var i = 0; i < names.length; i++) {
+   names[i] = names[i].trim();
+ }
+ names= _.compact(names);
+ $('#counter').text(names.length)
+  names = names.join("\n")
+  return names;
+}
 </script>
 
 
@@ -401,7 +439,8 @@ $(function() {
 
 <body>
 <h1>Original</h1>
-<textarea id="names">David
+<div id="counter"></div>
+<textarea id="names" rows="20">David
 Angel
 Tom
 Lucas
@@ -428,6 +467,8 @@ Jasmin
 </textarea>
 
 <input type="submit" id="button"></input>
+<div id="comma_to_newline" style="width:100px;background-color:grey;height:50px;border-radius:10px;color:white;font-size:14px;">Comma to newline</div>
+<div id="remove_numbers" style="width:100px;background-color:grey;height:50px;border-radius:10px;color:white;font-size:14px;">Remove numbers</div>
 
 <h1>Result</h1>
 

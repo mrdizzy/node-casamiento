@@ -7,17 +7,19 @@ var express = require('express'),
   partials = require('express-partials'),
   expressLayouts = require('express-ejs-layouts'),
   assetManager = require('connect-assetmanager'),
-  Cacher = require("cacher");
-    var cacher = new Cacher();
-
+  Cacher = require("cacher"); 
+    
+var cacher = new Cacher();
 var app = express();
-var dir = __dirname;
+var dir = __dirname; // The name of the directory that the currently executing script resides in.
 
+// We use the connect-assetmanager module to concatenate and serve javascript and CSS files.
 var assetManagerGroups = {
     'css': 
-        {'route': /\/static\/css\/all\.css/
+        { 'route': /\/static\/css\/all\.css/ // This is the name of the route that will create this file
         , 'path': __dirname + '/public/stylesheets/'
         , 'dataType': 'css'
+        // These files must be availble in the directory specified by path above
         , 'files': [ 'color_picker.css', 'font_picker.css', 'main.css', 'responsive.css', 'product.css' ]
     },
     'js':
@@ -25,15 +27,20 @@ var assetManagerGroups = {
         , 'path': __dirname + '/public/javascripts/libraries/'
         , 'dataType': 'javascript'
         , 'files': [ 'picturefill.min.js','in_groups_of.js', 'color_picker.js', 'font_picker.js','jquery_form.js' ]
-    }
+    },
+    'adminjs': 
+        {
+            'route': /\/static\/javascripts\/admin\.js/
+            , path: __dirname + '/public/javascripts/libraries/'
+            , dataType: 'javascript'
+            , files: [ "handlebars_helpers.js", "backbone_selection_view.js", 'backbone_syphon.js', 'attachments.js' ]
+        }
 };
-
-var assetsManagerMiddleware = assetManager(assetManagerGroups);
 
 // Middleware for compiling and exposing javascript server-side templates to client side
 function exposeTemplates(req, res, next) {
-  // Uses the `ExpressHandlebars` instance to get the get the **precompiled**
-  // templates which will be shared with the client-side of the app.
+  // Uses the handlebars instance, required at the top of this page, to read in the templates
+  // and precompile them to be shared with the client-side of the app. 
   handlebars.loadTemplates(dir + "/views/javascript_templates", {
       precompiled: true
   }, function (err, templates) {
@@ -42,8 +49,7 @@ function exposeTemplates(req, res, next) {
     // RegExp to remove the ".handlebars" extension from the template names.
     var extRegex = new RegExp(handlebars.extname + '$');
 
-    // Creates an array of templates which are exposed via
-    // `res.locals.templates`.
+    // Creates an array of templates which are exposed via res.locals.templates
     templates = Object.keys(templates).map(function (name) {
       return {
         name    : name.replace(extRegex, ''),
@@ -65,8 +71,7 @@ app.configure(function(){
     var matchUrl = '/f';
     if(req.url.substring(0, matchUrl.length) === matchUrl) {
       res.setHeader("Access-Control-Allow-Origin", "*");
-    } else if(req.url.substring(0, "/fonts".length) === "/fonts") {
-    console.log("Yes")
+    } else if(req.url.substring(0, "/fonts".length) === "/fonts") { // match /fonts as well as /f
       res.setHeader("Access-Control-Allow-Origin", "*");
     }
     return next();
@@ -88,7 +93,7 @@ app.configure(function() {
     app.use(express.favicon());
     app.use(expressLayouts);
     
-    app.use(assetsManagerMiddleware);
+    app.use(assetManager(assetManagerGroups)); // CSS and javascript files concatenated
     
     app.use(express.logger('dev'));
     app.use(express.bodyParser({limit:'100mb'}));
@@ -111,8 +116,8 @@ http.createServer(app).listen((process.env.PORT || 3000), function() {
 });
 
 
+// Testing of node cacher
 cacher.on("hit", function(key) {
-
   console.log(key, "woohoo!")
 })
 cacher.on("miss", function(key) {
