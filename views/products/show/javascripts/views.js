@@ -242,7 +242,6 @@ var StepView = Backbone.View.extend({
         return(productJSON.guests.pluck("name"))
       },
       pounds: function() {
-      console.log("Presenter", this)
         return productJSON.total.toString().split(".")[0]
       },
       dec: function() {
