@@ -19,25 +19,6 @@ var GuestView = Backbone.View.extend({
   }
 })
 
-// This view is a container for the individual place card views 
-// At the  moment it re-renders every single place card when there is 
-// an additional or removal from the collection
-var PrintView = Backbone.View.extend({
-  initialize: function() {
-   // this.listenTo(thisProduct.get("guests"), 'add', this.render)    
-    this.listenTo(thisProduct.get("guests"), 'remove', this.render)
-  },
-  render: function() {
-    this.$el.empty();
-    var guests = thisProduct.get("guests");
-    guests.forEach(function(guest) {
-   //   var place_card = new PlaceView({model: guest}).render().el
-   //   this.$el.append(place_card);
-    }, this)
-    return this;          
-  } 
-})
-
 // 
 // PREVIEW VIEW
 // 
@@ -242,7 +223,6 @@ var StepView = Backbone.View.extend({
         return(productJSON.guests.pluck("name"))
       },
       pounds: function() {
-      console.log("Presenter", this)
         return productJSON.total.toString().split(".")[0]
       },
       dec: function() {

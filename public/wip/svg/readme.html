@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<head>
+</head>
+<body>
+
+<h1>Layout</h1>
+
+ <div class="place_card_container" style="text-align:center;border:2px solid black;position:relative;width:600px;height:400px">
+  .place_card_container | relative
+    <div style="position: absolute; z-index:-5; margin-left:50px;width:500px;height:300px;border:2px dashed red;">.preview_image_container | absolute | z-index lowest | solid background colour
+      <div class="background_container" style="margin-left:150px;margin-top:70px;width:300px;height:150px;border:2px dotted green; position:absolute;"> .background_container | absolute 
+        <div style="background-color:#2e8b57;width:100%;height:50%"></div>
+      </div>
+      <div style="border:2px dashed blue; display:block;position:relative;z-index:100;">&lt;img&gt; display:block | .preview_image | relative | z-index medium</div>
+    
+      <div class="half"></div>
+      <input class="half" type="text" style="z-index:1000;width:100%;text-align:center;font-size:1.5em;margin:0 auto;background-color:transparent;display:block;" value="Mrs Lucy Smith"></input>
+  </div>
+</body>
+
+</html>

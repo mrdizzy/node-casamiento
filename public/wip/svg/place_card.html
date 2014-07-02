@@ -1,187 +1,49 @@
 <!doctype html>
 <html>
 <head>
+
+ <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style type="text/css">
+@font-face { font-family:"TP"; src: url('/f/t.eot?') format('eot'), url('/f/t.woff') format('woff'); }
+@font-face { font-family:"GaraI"; src: url('/f/GARAIT.eot?') format('eot'), url('/f/GARAIT.woff') format('woff'); }
 .container { position:relative;}
-body,html,div,img { padding:0;margin:0;border:0;display:block;}
-.container img { position:absolute;}
-.half_container { position:relative;text-align:center;width:105mm;height:37.125mm;line-height:37.125mm;font-size:2em;z-index:5;}
+body,html,div,img, input { padding:0;margin:0;border:0;display:block;}
+td input { font-family:'TP'}
 </style>
 </head>
 <body>
 <div style="width:210mm;height:297mm;">
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-    <div class="half_container"></div>
-    <div class="half_container">David</div>
+  <div id="left_column" style="width:70%"></div>
+  <div class="place_card_container" style="position:relative;width:70%;">
+      <img src="chess.svg" style="display:block;width:100%;position:absolute;z-index:-5;"/>
+    <table style="width:100%;border-collapse:collapse;border:0;padding:0;margin:0;">
+      <tr>
+        <td  style=""></td>
+      </tr>
+      <tr>
+        <td style="vertical-align:center;">
+          <input type="text" style="width:100%;text-align:center;font-size:2em;margin:0 auto;background-color:transparent;" value="Mrs Lucy Smith"></input>
+        </td>
+      </tr>
+    </table>
+    
   </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-    <div class="half_container"></div>
-    <div class="half_container">David</div>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-    <div class="half_container"></div>
-    <div class="half_container">David</div>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-    <div class="half_container"></div>
-    <div class="half_container">David</div>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-    <div class="half_container"></div>
-    <div class="half_container">David</div>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-    <div class="half_container"></div>
-    <div class="half_container">David</div>
-  </div>  
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
- </div>  
- 
-<div style="width:210mm;height:297mm;">
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>  
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
- </div> 
- 
-<div style="width:210mm;height:297mm;">
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>  
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
- </div> 
- 
-<div style="width:210mm;height:297mm;">
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>  
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
- </div> 
- 
-<div style="width:210mm;height:297mm;">
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>  
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
- </div> 
- 
-<div style="width:210mm;height:297mm;">
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>  
-  <div class="container" style="width:105mm;height:74.25mm;float:left;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
-  <div class="container" style="width:105mm;height:74.25mm;float:right;">
-    <img src="floral.svg" class="place_card_image" style="width:105mm;height:74.25mm"/>
-  </div>
- </div> 
+  
+  
+</div>
+
+<script>
+$(function() {
+  var width = ($('#left_column').width());
+  var height = 0.35357142857 * width;
+  $('td').css("height", height)
+
+  $('img').load(function() {
+  $('img').height(height*2)
+  alert($('.place_card_container').height())
+  })
+})
+</script>
  
 </body>
 </html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+
+ <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style type="text/css">
+@font-face { font-family:"TP"; src: url('/f/t.eot?') format('eot'), url('/f/t.woff') format('woff'); }
+@font-face { font-family:"GaraI"; src: url('/f/GARAIT.eot?') format('eot'), url('/f/GARAIT.woff') format('woff'); }
+.container { position:relative;}
+body,html,div,img, input { padding:0;margin:0;border:0;display:block;}
+input { font-family:'GaraI'}
+</style>
+</head>
+<body>
+
+<!-- We start with the place_card_container which is a wrapper around a whole individual place card. This needs to have its position set to relative (position:relative) as otherwise the z-index of child elements will not work. We choose relative as this does not remove the element from the flow, and providing we do not provide any co-ordinates it will stay in exactly the same position, therefore having the appearance of a normal element but enabling us to make use of z-index. 
+
+The first child element in the place_card_container is the preview_image_wrapper. This contains the solid backgrounds used to colour the transparent PNG, and also the transparent PNG itself. We position this absolutely and give it the lowest z-index of all the child elements as everything needs to be placed on top of it. 
+
+Within the preview_image_wrapper there is a background_container which will contain all the solid backgrounds to colour the transparent PNG. This needs to be positioned absolutely as we want to place the transparent PNG on top of it so the colours show through. The transparent PNG itself must have a high z-index set and it must also be given a position:relative otherwise the z-index will not work. We also display it as a block to avoid margin issues.
+
+Finally we close the preview_image_wrapper and move onto the two halfs. The first half is simply a container to allow us to position the bottom half. The bottom half is an input field set to display:block. We must set its dimensions and line-height must be set to a specific amount rather than a percentage. 
+-->
+
+
+
+<div style="width:210mm;height:297mm;">
+
+  <div id="test" style="width:200px"></div>
+
+  <div class="place_card_container" style="position:relative;">
+    <div style="position: absolute; z-index:-5; background-color: rgb(217, 144, 88);">
+      <div class="background_container" style="position:absolute;"> 
+        <div style="background-color:#2e8b57;width:100%;height:50%"></div>
+      </div>
+      <img src="http://www.casamiento.co.uk/products/damask-name_place/attachments/display-5" class="preview_image" style="display:block;position:relative;z-index:100;">
+    </div>
+    
+    <div class="half"></div>
+    <input class="half" type="text" style="z-index:1000;width:100%;text-align:center;font-size:1em;margin:0 auto;background-color:transparent;display:block;" value="Mrs Lucy Smith"></input>
+         
+  </div>
+  
+  <div class="place_card_container" style="position:relative;">
+    <div style="position: absolute; z-index:-5; background-color: rgb(217, 144, 88);">
+      <div class="background_container" style="position:absolute;"> 
+        <div style="background-color:#2e8b57;width:100%;height:50%"></div>
+      </div>
+      <img src="http://www.casamiento.co.uk/products/damask-name_place/attachments/display-5" class="preview_image" style="display:block;position:relative;z-index:100;">
+    </div>
+    
+    <div class="half"></div>
+    <input class="half" type="text" style="z-index:1000;width:100%;text-align:center;font-size:1em;margin:0 auto;background-color:transparent;display:block;" value="Mrs Lucy Smith"></input>
+         
+  </div>
+  
+  <div class="place_card_container" style="position:relative;">
+    <div style="position: absolute; z-index:-5; background-color: rgb(217, 144, 88);">
+      <div class="background_container" style="position:absolute;"> 
+        <div style="background-color:#2e8b57;width:100%;height:50%"></div>
+      </div>
+      <img src="http://www.casamiento.co.uk/products/damask-name_place/attachments/display-5" class="preview_image" style="display:block;position:relative;z-index:100;">
+    </div>
+    
+    <div class="half"></div>
+    <input class="half" type="text" style="z-index:1000;width:100%;text-align:center;font-size:1em;margin:0 auto;background-color:transparent;display:block;" value="Mrs Lucy Smith"></input>
+         
+  </div>
+  
+  
+</div>
+
+<script>
+$(function() {
+  
+  var width = $('#test').width(),
+    height = 0.70714285714 * width,
+    half_height = height / 2;
+    $('.background_container').width(width).height(height)
+    $('.preview_image').width(width).height(height)
+    
+   
+ $('.place_card_container').width(width);
+ $('.place_card_container').height(height);
+ $('.half').css('height', half_height);
+ 
+ //$('.half').css('line-height', half_height)
+})
+//top half 
+</script>
+ 
+</body>
+</html>
