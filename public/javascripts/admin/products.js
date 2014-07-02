@@ -43,7 +43,7 @@ var ProductView = Backbone.View.extend({
       $('#cpv').html(cpv.render().el)
   },
   render: function() {
-    this.$el.html(this.model.get("_id") + " <span class='destroy'>destroy</span>");
+    this.$el.html(this.model.get("_id") + " | <span class='destroy'>destroy</span>");
     return this;
   }
 });
@@ -76,7 +76,7 @@ var ProductsView = Backbone.View.extend({
       }).render().el
     this.$el.append(productview);
     }, this) 
-    this.$el.append("<a id='addnew'>Add new</a>")
+    this.$el.append("<p><a id='addnew'>Add new</a></p>")
     return this;
   }
 });

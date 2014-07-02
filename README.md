@@ -32,6 +32,12 @@ Arrays of tags must be in alphabetical order in order to match one another when 
 
 COUCHDB PRODUCT
 ===============
+Views. 
+
+all/products_without_attachments
+    -   is a view which renders all the standard fields of a product, but excludes the attachment stubs to save on bandwidth
+products/name_place 
+    -   is a view that splits the _id field using the hypen as a delimiter and then determines if the product is a place card using the value from the id, but ignoring all svg__product_name-place_card items
 
 attachments_order: this field is an array that determines the order of the attachments [1,4,3,5] means attachments will be displayed in that order.
 

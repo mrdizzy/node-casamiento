@@ -20,7 +20,7 @@ var GuestView = Backbone.View.extend({
 })
 
 // 
-// PREVIEW VIEW
+// 2D Bitmap View
 // 
 var DownloadView = Backbone.View.extend({
   initialize: function() {
