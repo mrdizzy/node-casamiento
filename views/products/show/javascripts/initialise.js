@@ -24,10 +24,5 @@ $(function() {
   new DownloadView({el: '#product_container', model: thisProduct});
  // new PrintView({el: '#per_8_page_print', model: thisProduct}).render();
 
-  $('#print_button').click(function() {
-     var print_view = new UIPrintView({}).render().el;
-    $('body').html(print_view)
-    location.hash = "top_of_page"
-  })
 })
 </script>

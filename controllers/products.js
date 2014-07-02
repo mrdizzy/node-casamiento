@@ -71,7 +71,6 @@ exports.destroy = function(req, res) {
 }
 
 exports.show = function(req, res) {
-console.log("Showing...... SHOWING SHOWING")
   var id = req.params.product;
   db.view('all/products_without_attachments', { key: id }, function(error, result) {
     var doc = result[0].value; // First record

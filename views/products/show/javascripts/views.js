@@ -27,6 +27,18 @@ var DownloadView = Backbone.View.extend({
     this.listenTo(thisProduct, 'change:colour_1', this.render)
     this.listenTo(thisProduct, 'change:colour_2', this.render)
   },
+  events: {
+      'click #print_button': 'printView',
+  },
+  printView: function() {
+    var $template = $(Handlebars.template(templates["user_interface_for_print"])());    
+    $('body').html($template)         
+    $('#ui_font_picker').fontPicker({fonts:casamiento_fonts, selected_font: thisProduct.get("font")})
+    var print_view = new UIPrintView({}).render().el;
+    $('#actual_cards').html(print_view)
+    
+    location.hash = "top_of_page"
+  },
   render: function() { 
     if(!this.first_time) {
       var width = $('#ruler').width();
@@ -68,25 +80,6 @@ var StepView = Backbone.View.extend({
     thisProduct.set("font_size", font.font_size)
     thisProduct.set("font", font.font)
   },
-  print: function() {
-    $('#add_another').fadeOut(function() {
-      $('#print_spinner').fadeIn()
-    });
-    
-    var images = $('img.place_card_image'),
-      counter = images.length,
-      i = 0,
-      hex = thisProduct.get("colours")[0].substring(1); // remove # from hexcode
-    $('img.place_card_image').attr("src", "/svg/" + thisProduct.get("_id") + "/" + hex); // url to pull new svg image
-    $('img.place_card_image').load(function() {
-      i++;
-      if(counter == i) {      
-        $('#print_spinner').hide(function() {                 
-          $('#print_box').fadeIn();  
-        }); 
-      }
-    })
-  },
   checkout: function() {
     $.form('/payments', { 
       "L_PAYMENTREQUEST_0_AMT0": thisProduct.get("unit"), 
@@ -97,8 +90,6 @@ var StepView = Backbone.View.extend({
     }).submit();
   },
   selectColour1: function(e, colour) {
-    if(thisProduct.get("colours").length == 1) 
-      this.presenter.moveStep()
   },
   updateColour1: function(e, colour) {
     thisProduct.set("colour_1", colour)
@@ -118,7 +109,7 @@ var StepView = Backbone.View.extend({
     thisProduct.set("quantity", quantity);
     var guests = thisProduct.get("guests")
     if(number > 0) {
-      guests.add([{name: "..."}, {name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."}]) 
+      guests.add([{},{},{},{},{},{},{},{}]) 
     } else {
       var silent = false;  
       for(var i =0;  i < 8; i++) {  
@@ -199,8 +190,3 @@ var StepView = Backbone.View.extend({
     return presented;
   }
 })
-
-var $head = $('head')
-function appendFont(font) {
-  $head.append("<style type='text/css'> @font-face { font-family:'" + font + "'; src: url('/fonts/"+ font + ".eot?') format('eot'), url('/fonts/" + font + ".woff') format('woff'); }</style>");
-}

@@ -1,12 +1,12 @@
 <%- contentFor('inline_styles') %>
   <% if (product.colours[1]) { %>
-  .colour_1 { background-color: <%= product.colours[0] %> }
-  .colour_2 { background-color: <%= product.colours[1] %> }
+    .colour_1 { background-color: <%= product.colours[0] %> }
+    .colour_2 { background-color: <%= product.colours[1] %> }
   <% } else { %> 
-  .colour_1, .colour_2 { background-color: <%= product.colours[0] %> }
+    .colour_1, .colour_2 { background-color: <%= product.colours[0] %> }
   <% } %>
   
- @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>.eot?') format('eot'), url('/fonts/<%= product.font %>.woff') format('woff') }  
+  @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>.eot?') format('eot'), url('/fonts/<%= product.font %>.woff') format('woff') }  
   
 <%- contentFor('main') %>
 
@@ -16,10 +16,9 @@
 
   <div id="product_container">
    
-  <a id="2Dview" name="2Dview"></a>
- 
   <div id="ruler" style="width:90%;margin:0 auto;"></div>  
   <div id="preview" style="margin:0 auto;width:90%;"></div>
+  
   <div id="image_container">
 
   <!-- 

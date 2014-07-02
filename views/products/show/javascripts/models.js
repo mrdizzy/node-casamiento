@@ -4,6 +4,9 @@
 var Guest = Backbone.Model.extend({})
  
 var Guests = Backbone.Collection.extend({
+    defaults: {
+        name: "Guest Name"
+    },
   model: Guest
 })
 
@@ -13,7 +16,7 @@ var Guests = Backbone.Collection.extend({
 var Product = Backbone.Model.extend({
   defaults: {
     quantity: 8,
-    guests: new Guests([{name: "First Guest"},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."}]),
+    guests: new Guests([{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."}]),
     total: 2.99
   },
   initialize: function() {  

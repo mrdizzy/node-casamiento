@@ -35,6 +35,7 @@
         var $tr = $('<tr data-image="' + font[0] + '"></tr>').append("<td class='font_image'><img src='https://cloudant.com/db/mrdizzy/test_ebay/" + font[0] + "/svg' /></td>").addClass("font_image").append("<td>" + font[0] + "</td>").addClass("font_name");
         // Click on a font
         $tr.click(function(e) {
+          appendFont(font[0]);
           that.trigger("fontpicker:selected", {font: font[0], font_size: font[1] })
           $up_arrow_container.hide()
           $selected_image.attr("src", root_url + font[0] + "/svg")
@@ -91,4 +92,9 @@
     selected: "Metroscript",
     in_groups_of: 4
   }
+
+  function appendFont(font) {
+    $('head').append("<style type='text/css'> @font-face { font-family:'" + font + "'; src: url('/fonts/"+ font + ".eot?') format('eot'), url('/fonts/" + font + ".woff') format('woff'); }</style>");
+  }
+  
 }(jQuery))
