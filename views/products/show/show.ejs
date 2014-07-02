@@ -1,11 +1,12 @@
 <%- contentFor('inline_styles') %>
-
- /* @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>.eot?') format('eot'), url('/fonts/<%= product.font %>.woff') format('woff') }
-  .guest, .ui_half_container_guest { font-family:"<%= product.font %>" } */
+  <% if (product.colours[1]) { %>
+  .colour_1 { background-color: <%= product.colours[0] %> }
+  .colour_2 { background-color: <%= product.colours[1] %> }
+  <% } else { %> 
+  .colour_1, .colour_2 { background-color: <%= product.colours[0] %> }
+  <% } %>
   
-  
-  @font-face { font-family:"Exmouth"; src: url('/fonts/Exmouth.eot?') format('eot'), url('/fonts/Exmouth.woff') format('woff') }
-  .guest, .ui_half_container_guest { font-family:"Exmouth" }
+ @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>.eot?') format('eot'), url('/fonts/<%= product.font %>.woff') format('woff') }  
   
 <%- contentFor('main') %>
 
@@ -16,9 +17,9 @@
   <div id="product_container">
    
   <a id="2Dview" name="2Dview"></a>
-  
-  <% include partials/flat_2D_bitmap_preview %>
-    
+ 
+  <div id="ruler" style="width:90%;margin:0 auto;"></div>  
+  <div id="preview" style="margin:0 auto;width:90%;"></div>
   <div id="image_container">
 
   <!-- 

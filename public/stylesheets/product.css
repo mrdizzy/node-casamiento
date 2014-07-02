@@ -16,6 +16,8 @@
     clear:both;
   }
     #description_container h6 { padding:1em;}
+    
+    #preview { display:none;}
 
 #product_section0 { margin-left:75%; }
 
@@ -92,7 +94,7 @@
         padding-right:10px;
       }
       
-      #minus_font, #plus_font {
+      .minus_font, .plus_font {
         display:inline-block;
         border: 1px solid black;
         font: normal 2.5em 'OS Light';
@@ -152,16 +154,6 @@
       }
 .preview .slide { width:100%; padding:0;margin:0;}
       
-  #svgs { display:none;}
-  
-    .svg_parent {  
-      width:85%;
-      margin:0 auto;
-      margin-top:0.75em;
-      margin-bottom:1em;
-      position:relative;
-    }
-    
       .crop_mark { 
        position:absolute;width:20px;height:20px;z-index:200000;
       }
@@ -229,26 +221,8 @@
   #user_interface_print_view.up_3 {
     width:422px;
   }
-    .ui_single_place_card_container { 
-      width:420px;
-      float:left;
-    }
       .up_3 .ui_single_place_card_container {
         float:none;
-      }
-    
-      .ui_single_place_card_bitmap_container {
-        position:absolute;
-        width:100%;
-        z-index:0;
-      }
-      
-      .ui_half_container, .ui_half_container_guest {
-        z-index:10000;
-        position:relative;
-        height:148px;
-        line-height:154px;
-        text-align:center;
       }
     
 /* HIDDEN DIVS FOR PRINT
@@ -273,18 +247,3 @@
     width:10.5cm;  height:7.425cm;
   }
   
-   
-    .single_place_card_container { padding:0;margin:0;
-    z-index:5;width:100%;height:7.245cm;text-align:center;position:absolute;
-    }
-      .half_container { 
-      height:3.7125cm;
-      padding:0;
-      margin:0;
-      line-height:3.7125cm;
-      }
-      .place_card_image { 
-        padding:0;margin:0;
-        width:100%;position:absolute;
-      }
-

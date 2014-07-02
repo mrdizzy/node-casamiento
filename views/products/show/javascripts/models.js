@@ -7,7 +7,7 @@ var Guests = Backbone.Collection.extend({
   model: Guest
 })
 
-// 
+//
 // PRODUCT MODEL
 // 
 var Product = Backbone.Model.extend({
@@ -28,11 +28,13 @@ var Product = Backbone.Model.extend({
     var colours = this.get("colours");
     colours[0] = this.get("colour_1");
     this.set("colours", colours)
+    $('.colour_1').css("background-color", colours[0]) // global colour change
   },
   updateColour2: function() {
     var colours = this.get("colours");
     colours[1] = this.get("colour_2");
-    this.set("colours", colours)
+    this.set("colours", colours);    
+    $('.colour_2').css("background-color", colours[1]) // global colour change
   },
   applyDiscounts: function(total) {
     var qty = this.get("quantity"),

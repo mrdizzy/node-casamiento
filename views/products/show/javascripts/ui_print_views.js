@@ -62,17 +62,49 @@ var UIPrintView = Backbone.View.extend({
   } 
 })
 
-var UIPlaceView = GuestView.extend({
-  className: "ui_single_place_card_container",
+var PlaceCardView = GuestView.extend({
   initialize: function() {
-    this.listenTo(this.model, 'change:name', this.updateName)	
+    this.listenTo(thisProduct, 'change:font', this.changeFont)   
+    this.listenTo(thisProduct, 'change:font', this.changeFont)
   },
-  updateName: function() {
-    this.$('input').val(this.model.get("name"))
+    events: {
+    'click .plus_font': 'increaseFont',
+    'click .minus_font': 'decreaseFont'
+  },  
+  changeFont: function() {
+    var font = thisProduct.get("font")
+    appendFont(font);
+    this.font_as_percentage_of_container = this.options.width * thisProduct.get("font_size");     
+    this.$('input').css('font-size', this.font_as_percentage_of_container +"px");
+    this.$('input').css('font-family', font)
+  },
+  increaseFont: function() {
+    this.adjustFontSize(5)
+  },
+  decreaseFont: function() {
+   this.adjustFontSize(-5)
+  },
+  adjustFontSize: function(amount) {
+    this.font_as_percentage_of_container =  amount + this.font_as_percentage_of_container;
+    this.$('input').css("font-size", this.font_as_percentage_of_container+"px") 
   },
   render: function() {
-    this.$el.html($(Handlebars.template(templates["bitmap_place_card"])(thisProduct.toJSON())));
-    this.updateName();
+  var that = this;
+    var width = this.options.width,
+        height = 0.70714285714 * width,
+        half_height = height / 2;
+    this.font_as_percentage_of_container = width * object_fonts[thisProduct.get("font")]; 
+
+    var compiled_template = Handlebars.template(templates["place_card"]);
+    var template = compiled_template({
+      half_height:half_height, 
+      font_family: thisProduct.get("font"),
+      font_size: that.font_as_percentage_of_container,
+      height:height, 
+      width: width, 
+      units:"px"
+    });
+    this.$el.html(template)
     return this;
   }
 })

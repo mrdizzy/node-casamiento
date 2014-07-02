@@ -24,48 +24,20 @@ var GuestView = Backbone.View.extend({
 // 
 var DownloadView = Backbone.View.extend({
   initialize: function() {
-    this.listenTo(thisProduct, 'change:colour_1', this.activateView)
-    this.listenTo(thisProduct, 'change:colour_2', this.activateView)
-    this.listenTo(thisProduct, 'change:font', this.changeFont)    
+    this.listenTo(thisProduct, 'change:colour_1', this.render)
+    this.listenTo(thisProduct, 'change:colour_2', this.render)
   },
-  events: {
-    'click #plus_font': 'increaseFont',
-    'click #minus_font': 'decreaseFont'
-  },
-  activateView: function() {
+  render: function() { 
     if(!this.first_time) {
-      $('#image_container').fadeOut(function() { // hide 3D slides  
-        $('#svgs').fadeIn()// display 2D customise image 
-        // Calculate font size relative to container
-        location.hash = "2Dview"// jumps to <div id=foo> or <a name="foo">
-        var fontSize = $(".front_place_card").width() * object_fonts[thisProduct.get("font")]; // 10% of container width
-        $(".front_place_card").css('font-size', fontSize);
+      var width = $('#ruler').width();
+      var place_card_el = new PlaceCardView({width:width}).render().el;
+      $('#image_container').fadeOut(function() { // hide 3D slides 
+        $('#preview').html(place_card_el) 
+        $('#preview').fadeIn()// display 2D customise image 
+        location.hash = "preview"// jumps to <div id=foo> or <a name="foo">
       }); 
       this.first_time = true;
     }
-  },
-  changeFont: function() {
-    var font = thisProduct.get("font")
-    appendFont(font);
-    font_size = $(".front_place_card").width() * thisProduct.get("font_size"); 
-    $('.guest').css('font-family', font)
-    $('.front_place_card').css('font-size', font_size)
-    this.activateView();
-  },
-  increaseFont: function() {
-    this.adjustFontSize(5)
-  },
-  decreaseFont: function() {
-   this.adjustFontSize(-5)
-  },
-  adjustFontSize: function(amount) {
-    var font_size_no_units = $('.front_place_card').css('font-size').replace("px", "");
-    font_size_no_units =  amount + parseInt(font_size_no_units);    
-    var percentage_of_container_size = font_size_no_units / $('.front_place_card').width();
-    thisProduct.set("font_size", percentage_of_container_size)
-    $('.front_place_card').css('font-size',font_size_no_units + "px");
-  },
-  render: function() { 
     return this;
   }
 })
@@ -77,8 +49,6 @@ var StepView = Backbone.View.extend({
   el: '#steps',
   initialize: function() {
     _.bindAll(this, 'render')
-    this.listenTo(thisProduct, 'change:colour_1', this.changeColour)	
-    this.listenTo(thisProduct, 'change:colour_2', this.changeColour2)
   },
   events: {     
     "click #buy": "checkout",        
@@ -131,12 +101,9 @@ var StepView = Backbone.View.extend({
       this.presenter.moveStep()
   },
   updateColour1: function(e, colour) {
-    $('.colour_1').css("background-color", colour)
-    $('.slide').css("background-color", colour)
     thisProduct.set("colour_1", colour)
   },
   updateColour2: function(e, colour) {    
-    $('.slide > div > div:not(.nocolor)').css("background-color", colour);
     thisProduct.set("colour_2", colour)
   },
   plusQty: function(e) {

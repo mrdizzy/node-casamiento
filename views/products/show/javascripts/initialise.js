@@ -21,8 +21,8 @@ $(function() {
     thisProduct.set("font_size", object_fonts[thisProduct.get("font")])
         
   new StepView().render();
-  new DownloadView({el: '#product_container', model: thisProduct}).render();
-  new PrintView({el: '#per_8_page_print', model: thisProduct}).render();
+  new DownloadView({el: '#product_container', model: thisProduct});
+ // new PrintView({el: '#per_8_page_print', model: thisProduct}).render();
 
   $('#print_button').click(function() {
      var print_view = new UIPrintView({}).render().el;
