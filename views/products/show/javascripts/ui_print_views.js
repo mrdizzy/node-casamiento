@@ -4,6 +4,7 @@
 // it remains consistent relative to its container 
 //  
 var PlaceCardView = GuestView.extend({
+  className: 'place_card_wrapper',
   initialize: function() {
     this.listenTo(thisProduct, 'change:font', this.renderFontFamily) 
     this.listenTo(this.model, 'change:font_size', this.renderFontSize) 
@@ -12,8 +13,10 @@ var PlaceCardView = GuestView.extend({
     // this is usually based on the value of some element already displayed 
     // in the DOM that can be accessed using jQuery.width()
     this.width = this.options.width;
-    this.height = 0.70714285714 * this.width; // 0.70714... is the ratio of 74.25mm to 105mm
-    this.half_height = this.height / 2;
+    this.units = this.options.units || "px"
+    this.font_adjust_buttons = this.options.font_adjust_buttons || true;
+    this.height = this.options.height || 0.70714285714 * this.width; // 0.70714... is the ratio of 74.25mm to 105mm
+    this.half_height = this.options.half_height || (this.height / 2);
   },
   events: {
     'click .plus_font': 'increaseFont',
@@ -46,9 +49,10 @@ var PlaceCardView = GuestView.extend({
       height: this.height, 
       half_height: this.half_height, 
       
+      font_adjust_buttons: this.font_adjust_buttons, 
       product: thisProduct.get("_id"),
       name: this.model ? this.model.get("name") : "Mr Guest Name",
-      units:"px"
+      units: this.units
     }));
     
     var colours = thisProduct.get("colours");
@@ -66,43 +70,82 @@ var PlaceCardView = GuestView.extend({
 // cards and uses the bitmap representations
 var UIPrintView = Backbone.View.extend({
   initialize: function() {
-    this.klass = "up_8";        
     this.width = $(document).width() / 2.3;
     this.guests = thisProduct.get("guests");
-    this.listenTo(thisProduct, 'change:font', this._renderFont)
    // this.listenTo(thisProduct.get("guests"), 'add', this.render)    
     //this.listenTo(thisProduct.get("guests"), 'remove', this.render)
   },
-  events: {    
-    "click input[type=radio]": "changeLayout"
-  },
-  changeLayout: function(e) {
-    var val = $(e.currentTarget).val()
-    this.$('#user_interface_print_view').attr("class", "up_" + val)
-  },
-  _renderFont: function() {
-    var font = thisProduct.get("font");
-    this.$('.ui_half_container_guest input').css("font-family", font);
-  },
   render: function() {
     var place_cards = [],
-      counter = 1
+      counter = 1;
       
     this.guests.forEach(function(guest) {
       var place_card = new PlaceCardView({model: guest, width: this.width}).render().el
       place_cards.push(place_card)
-     if(counter == 3) {
-       place_cards.push('<div style="border-top:1px dashed grey;clear:both" class="page_break_3"></div>')          
-     } else if (counter == 4) {          
-       place_cards.push('<div style="border-top:1px dashed grey;clear:both" class="page_break_4"></div>')
-     } else if (counter == 8) {
-       place_cards.push('<div style="border-top:1px dashed grey;clear:both" class="page_break_8"></div>')
+      if(counter == 3) {
+        place_cards.push('<div style="position:relative;border-top:1px dashed grey;clear:both" class="page_break_3"><div style="position:absolute;top:-20px;">Bottom of page 1</div></div>')          
+      } else if (counter == 4) {          
+        place_cards.push('<div style="position:relative;border-top:1px dashed grey;clear:both" class="page_break_4"><div style="position:absolute;top:-20px;">Bottom of page 1</div></div>')
+      } else if (counter == 8) {
+        place_cards.push('<div style="position:relative;border-top:1px dashed grey;clear:both" class="page_break_8"></div>')
        counter = 0;
-     }        
+      }        
       counter = counter + 1;
     }, this)
     
     this.$el.html(place_cards)
     return this;          
   } 
+})
+
+
+var SVGPrintView = Backbone.View.extend({
+ 
+  render: function() {
+    var place_cards = [];
+    this.collection.forEach(function(guest) {
+      var place_card = new PlaceCardView({
+        model: guest, 
+        width: 105, 
+        height: 74.25, 
+        font_adjust_buttons: false,
+        half_height: 37.125,
+        units: "mm"
+      }).render().el
+      place_cards.push(place_card)
+      
+    }, this)
+    this.$el.html(place_cards)
+    return this;
+  }
+  
+})
+var PrintUserInterfaceView = Backbone.View.extend({
+  events: {
+    "fontpicker:selected": "changeFont",
+    "click input[type=radio]": "changeLayout",
+    "click #ui_printer_icon": "printPage"
+  },
+  printPage: function(e) {
+  alert("print")
+    var result = new SVGPrintView({collection: thisProduct.get("guests")}).render().el;
+    $('body').html(result)
+  },
+  changeLayout: function(e) {
+    var val = $(e.currentTarget).val()
+    this.$('#actual_cards').attr("class", "up_" + val)
+  },
+  changeFont: function(e, font) { 
+    thisProduct.set("font", font.font)
+  },
+  render: function() {
+    var $template = $(Handlebars.template(templates["user_interface_for_print"])());         
+    $template.find('#ui_font_picker').fontPicker({fonts:casamiento_fonts, selected_font: thisProduct.get("font")})
+    var print_view = new UIPrintView({}).render().el;
+    $template.find('#actual_cards').append(print_view)
+    var width = ($(document).width() / 2.3)*2.01;
+    $template.find('#actual_cards').width(width);
+    this.$el.html($template)
+    return this;
+  }
 })

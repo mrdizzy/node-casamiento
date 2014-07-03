@@ -98,7 +98,8 @@
         display:inline-block;
         border: 1px solid black;
         font: normal 2.5em 'OS Light';
-        width:2em;
+        width:1.75em;
+        height:1.75em;
       }
 
       #qty { font-size:2em;font: normal 2em 'OS Light';color:black; }
@@ -129,29 +130,6 @@
         width:90px;
       }
       
-      #print_box {
-        box-shadow:10px 10px 0 0 lightgrey;
-        border-radius:10px;
-        display:none;
-        position: fixed;
-        z-index:100000;
-        top: 50%;
-        height:300px;
-        width:400px;
-        background-color:white;
-        border:1px solid black;
-        left: 50%;
-        margin-top: -150px;
-        margin-left: -200px;
-      }
-      #print_box .preview {  width:48px;
-      height:20px;
-      display:inline-block;
-      padding:0;
-      margin:0;
-      line-height:100%;
-      border:1px dotted black;
-      }
 .preview .slide { width:100%; padding:0;margin:0;}
       
       .crop_mark { 
@@ -212,18 +190,17 @@
   text-align:center;
   border-right:1px solid black;
 }
-#user_interface_print_view {
-  width:844px;
+#actual_cards { 
   margin:0 auto;
 }
+  .up_8 .place_card_wrapper { float:left; }
+  
+  .up_3 .place_card_wrapper {
+    float:none;
+  }
+      
   .page_break_3, .page_break_4 { display:none; }
   
-  #user_interface_print_view.up_3 {
-    width:422px;
-  }
-      .up_3 .ui_single_place_card_container {
-        float:none;
-      }
     
 /* HIDDEN DIVS FOR PRINT
 ==================================== */  

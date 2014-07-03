@@ -19,23 +19,6 @@ var GuestView = Backbone.View.extend({
   }
 })
 
-var PrintUserInterfaceView = Backbone.View.extend({
-  events: {
-    "fontpicker:selected": "changeFont"
-  },
-  changeFont: function(e, font) { 
-    thisProduct.set("font", font.font)
-  },
-  render: function() {
-    var $template = $(Handlebars.template(templates["user_interface_for_print"])());         
-    $template.find('#ui_font_picker').fontPicker({fonts:casamiento_fonts, selected_font: thisProduct.get("font")})
-    var print_view = new UIPrintView({}).render().el;
-    $template.find('#actual_cards').append(print_view)
-    this.$el.html($template)
-    return this
-  }
-})
-
 // 
 // 2D Bitmap View
 // 
