@@ -1,12 +1,18 @@
 // 
 // GUESTS MODEL
 // 
-var Guest = Backbone.Model.extend({})
+var Guest = Backbone.Model.extend({
+  defaults: {
+    name: "Guest Name",
+    font_size: object_fonts["<%= product.font %>"]
+  },
+  adjustFontSize: function(amount) {
+    var new_size = amount * this.get("font_size");
+    this.set("font_size", new_size)
+  }
+})
  
 var Guests = Backbone.Collection.extend({
-    defaults: {
-        name: "Guest Name"
-    },
   model: Guest
 })
 
@@ -16,7 +22,7 @@ var Guests = Backbone.Collection.extend({
 var Product = Backbone.Model.extend({
   defaults: {
     quantity: 8,
-    guests: new Guests([{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."},{name: "..."}]),
+    guests: new Guests([{},{},{},{},{},{},{},{}]),
     total: 2.99
   },
   initialize: function() {  

@@ -296,7 +296,11 @@ input {
 =========================== */
 
 .deselected { opacity:0.4; }
-  .deselected:hover, .selected { opacity: 1; cursor:pointer;}
+  .deselected:hover, .selected {
+    opacity: 1; 
+    cursor:pointer;
+  }
+  
 .shell { 
   background-image:url('/gfx/shell.png');
   background-repeat:no-repeat; 
@@ -325,9 +329,10 @@ input {
   display:none;
 }
 #product_container { text-align:center;}
+
 .grey_button {
-margin:1em;
-cursor:pointer;  display:inline-block;
+  margin:1em;
+  cursor:pointer;  display:inline-block;
   background-color:grey;
   padding:2em;
   color:white;

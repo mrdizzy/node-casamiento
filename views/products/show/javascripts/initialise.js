@@ -1,5 +1,10 @@
 <script type="text/javascript">
 $(function() {
+  var casamiento_fonts = <%- JSON.stringify(fonts) %>;
+  var object_fonts = {};
+  casamiento_fonts.forEach(function(obj) {
+    object_fonts[obj[0]] = obj[1];
+  })
   // Render javascripts
   <%= include models.js %>  
   <%= include views.js %>
@@ -12,16 +17,11 @@ $(function() {
   <% }) %>
 
   // Setup and initialization
-  var thisProduct = new Product(<%- JSON.stringify(product) %>),
-    casamiento_fonts = <%- JSON.stringify(fonts) %>,
-    object_fonts = {};
-    casamiento_fonts.forEach(function(obj) {
-      object_fonts[obj[0]] = obj[1];
-    })
+  var thisProduct = new Product(<%- JSON.stringify(product) %>);
+    
     thisProduct.set("font_size", object_fonts[thisProduct.get("font")])
         
   new StepView().render();
-  new DownloadView({el: '#product_container', model: thisProduct});
  // new PrintView({el: '#per_8_page_print', model: thisProduct}).render();
 
 })

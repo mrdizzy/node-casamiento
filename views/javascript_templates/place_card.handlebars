@@ -1,11 +1,11 @@
- <div style="text-align:center;">
-    <div class="minus_font deselected">-</div>
-    <div class="plus_font deselected">+</div>
-  </div>
+<div style="text-align:center;">
+  <div class="minus_font deselected">-</div>
+  <div class="plus_font deselected">+</div>
+</div>
 
 <div class="place_card_container" style="position:relative;width:{{width}}{{units}};height:{{height}}{{units}}">
 
-  <div style="position: absolute;z-index:100;width:{{width}}{{units}};height:{{height}}{{units}}" class="colour_1">
+  <div style="position: absolute;z-index:100;width:{{width}}{{units}};height:{{height}}{{units}};" class="colour_0">
   
     {{#if background}}
       <div class="background_wrapper" style="position:absolute;width:{{width}}{{units}};height:{{height}}{{units}}"> 
@@ -15,13 +15,13 @@
     {{/if}}
     
     {{#unless background}}    
-      <img src="http://www.casamiento.co.uk/products/{{product}}/attachments/display-5" class="colour_1 preview_image" style="width:{{width}}{{units}};height:{{height}}{{units}};display:block;position:relative;z-index:200;">
+      <img src="http://www.casamiento.co.uk/products/{{product}}/attachments/display-5" class="colour_0 preview_image" style="width:{{width}}{{units}};height:{{height}}{{units}};display:block;position:relative;z-index:200;">
     {{/unless}}
     
   </div>
   
   <div class="half" style="width:{{width}}{{units}};height:{{half_height}}{{units}}"></div>
   
-  <input class="half" type="text" style="width:{{width}}{{units}};height:{{half_height}}{{units}};margin:0;padding:0;border:0;position:relative;z-index:300;text-align:center;font-size:{{font_size}}px;font-family:{{font_family}};background-color:transparent;display:block;color:black;" value="Mrs Melanie Smith"></input>
+  <input class="half" type="text" style="width:{{width}}{{units}};height:{{half_height}}{{units}};margin:0;padding:0;border:0;position:relative;z-index:300;text-align:center;font-size:{{font_size}}px;font-family:{{font_family}};background-color:transparent;display:block;color:black;" value="{{name}}"></input>
        
 </div>
