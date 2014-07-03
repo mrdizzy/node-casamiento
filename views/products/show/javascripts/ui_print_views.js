@@ -14,7 +14,8 @@ var PlaceCardView = GuestView.extend({
     // in the DOM that can be accessed using jQuery.width()
     this.width = this.options.width;
     this.units = this.options.units || "px"
-    this.font_adjust_buttons = this.options.font_adjust_buttons || true;
+    this.font_adjust_buttons = this.options.font_adjust_buttons
+    this.svg = this.options.svg
     this.height = this.options.height || 0.70714285714 * this.width; // 0.70714... is the ratio of 74.25mm to 105mm
     this.half_height = this.options.half_height || (this.height / 2);
   },
@@ -26,7 +27,7 @@ var PlaceCardView = GuestView.extend({
     this.$('input').css('font-family', thisProduct.get("font"));
   },
   renderFontSize: function() {
-    this.$('input').css('font-size', this.calculateFontSize()+"px");
+    this.$('input').css('font-size', this.calculateFontSize()+ this.units);
   },
   calculateFontSize: function() {
     return this.width * this.model.get("font_size");    
@@ -48,6 +49,11 @@ var PlaceCardView = GuestView.extend({
       width: this.width, 
       height: this.height, 
       half_height: this.half_height, 
+      
+      svg: this.svg,
+      
+      
+      hex: thisProduct.get("colours")[0].substring(1),
       
       font_adjust_buttons: this.font_adjust_buttons, 
       product: thisProduct.get("_id"),
@@ -80,7 +86,7 @@ var UIPrintView = Backbone.View.extend({
       counter = 1;
       
     this.guests.forEach(function(guest) {
-      var place_card = new PlaceCardView({model: guest, width: this.width}).render().el
+      var place_card = new PlaceCardView({model: guest, width: this.width, font_adjust_buttons: true}).render().el
       place_cards.push(place_card)
       if(counter == 3) {
         place_cards.push('<div style="position:relative;border-top:1px dashed grey;clear:both" class="page_break_3"><div style="position:absolute;top:-20px;">Bottom of page 1</div></div>')          
@@ -100,20 +106,26 @@ var UIPrintView = Backbone.View.extend({
 
 
 var SVGPrintView = Backbone.View.extend({
- 
   render: function() {
     var place_cards = [];
+    var counter = 0;
     this.collection.forEach(function(guest) {
+        
       var place_card = new PlaceCardView({
         model: guest, 
         width: 105, 
         height: 74.25, 
         font_adjust_buttons: false,
         half_height: 37.125,
-        units: "mm"
+        units: "mm",
+        svg: true, 
       }).render().el
       place_cards.push(place_card)
-      
+      if (counter == 3) {
+          place_cards.push("<div class='page_break'></div>")
+          counter = 0;
+      }
+      counter = counter + 1;
     }, this)
     this.$el.html(place_cards)
     return this;
@@ -127,9 +139,8 @@ var PrintUserInterfaceView = Backbone.View.extend({
     "click #ui_printer_icon": "printPage"
   },
   printPage: function(e) {
-  alert("print")
     var result = new SVGPrintView({collection: thisProduct.get("guests")}).render().el;
-    $('body').html(result)
+    $('body').html('<div style="width:210mm;height:297mm">' + $(result).html() + "</div>")
   },
   changeLayout: function(e) {
     var val = $(e.currentTarget).val()

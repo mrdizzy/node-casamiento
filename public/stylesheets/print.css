@@ -1,15 +1,3 @@
 @media print {
-  #per_8_page_print { display:block;}
-  #page_container { margin:0;padding:0; }
-  #inner_page_container { margin:0;padding:0; }
-  body { margin:0;padding:0; }
-  #picker_1, #picker_2, #footer, #header_container, #images_container, #product_container, #steps, #product_section0, #print_box { display:none; }
-    .svg_parent {  
-      display:block;
-      margin:0 auto;
-      width:105mm;
-      height:74.25mm;
-      margin:0 auto;
-      position:relative;
-  }
+
 }
