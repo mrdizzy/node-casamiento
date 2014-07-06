@@ -1,6 +1,3 @@
-var ProductTypeSelectionView = SelectionView.extend({attributes: { name: "product_type"}}) 
-var ThemeSelectionView = SelectionView.extend({attributes: { name: "theme"}})
-
 var default_tags = ["victorian", "wallpaper", "damask", "contemporary", "pattern", "floral", "minimalistic", "geometric", "birds", "hearts", "vintage", "dots", "simple"];
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var AttachView = Backbone.View.Attachment.extend({
@@ -12,8 +9,8 @@ var AttachView = Backbone.View.Attachment.extend({
   tagName: "td",
   className: "attachment",
   render: function() {
-  if(this.model) {
-    this.$el.html(this.model.id + " - " + this.model.get("width") + "x" + this.model.get("height") + "<br/><img src='" + this.model.url() + "' width='120' height='90' />")
+    if(this.model) {
+        this.$el.html(this.model.id + " - " + this.model.get("width") + "x" + this.model.get("height") + "<br/><img src='" + this.model.url() + "' width='120' height='90' />")
     } else {
         this.$el.html("<div style='width:120px;height:90px;border:1px solid black;display:inline-block;'></div>")
     }
@@ -21,7 +18,7 @@ var AttachView = Backbone.View.Attachment.extend({
   }
 })
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Click on a product to select it, rendered by ProductsView below
 ////////////////////////////////////////////////////////////////
 var ProductView = Backbone.View.extend({
@@ -31,16 +28,14 @@ var ProductView = Backbone.View.extend({
   },
   // TODO: handle errors when destroying model on server
   delete: function() {
-    var that = this;
-    that.remove();
+    this.remove();
     this.model.destroy({success:function(model, response) {
     }})
   },
   // TODO: refactor to use events and an event listener when current product is changed
   select: function() {
-    var that = this
-       var cpv = new CurrentProductView({model:that.model, attachmentView: AttachView});
-      $('#cpv').html(cpv.render().el)
+    var cpv = new CurrentProductView({model:this.model, attachmentView: AttachView});
+    $('#cpv').html(cpv.render().el)
   },
   render: function() {
     this.$el.html(this.model.get("_id") + " | <span class='destroy'>destroy</span>");
@@ -49,7 +44,7 @@ var ProductView = Backbone.View.extend({
 });
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
 // A list of products--renders ProductView above for each product
 /////////////////////////////////////////////////////////
 
@@ -152,7 +147,6 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
      var index = $(e.currentTarget).index();
      var colours = this.model.get("colours");
      colours[index] = colour;
-     console.log(colour)
      this.model.set("colours", colours).trigger("change:colours")
   },
   sendForm: function(e) {
@@ -162,12 +156,14 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     var serialized = Backbone.Syphon.serialize(this);
     serialized.tags.sort();
     this.model.set(serialized)
-    this.model.save(this.model.attributes, {success: function(model, response, options) {
-      console.log("Success:", response)
-    }, 
-    error: function(model, xhr, options) {
-      console.log("error", model, xhr, options)
-    }})
+    this.model.save(this.model.attributes, {
+      success: function(model, response, options) {
+        console.log("Success:", response)
+      }, 
+      error: function(model, xhr, options) {
+        console.log("error", model, xhr, options)
+      }
+    })
   },
   render: function() {
     var modelToJSON = this.model.toJSON();
@@ -190,9 +186,6 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
         var picker = $('<div class="picker"></div>').colorPicker({default_color: this.model.get("colours")[i], colours_per_page: 32})
         this.$('#colour_picker').append(picker)
     }
-    
-    // Drop-down select-option menus for product and theme
-    this.$('form').append(theme_selection_view).append(product_type_selection_view)
     
     // Render product images with coloured background divs
     // attachments_order is an array of the attachments in order [1,2,3]

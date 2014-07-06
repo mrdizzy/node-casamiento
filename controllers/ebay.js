@@ -5,7 +5,6 @@ var db = require('./../config/db').test_ebay,
 // Route: /ebay/:id
 // This renders an ebay product view by looking in the /views/ebay/product_type folder for its template as different product types will need different rendering
 exports.show = function(req, res) {
-console.log("SHOW")
     var id = req.params.id,
     theme = id.split("-")[0],
     product_type = id.split("-")[1];

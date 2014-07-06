@@ -11,28 +11,30 @@
 <script type="text/template" id="current_product_form">
   <form>
     <div style="width:50%;float:left">
-      <h1>{{ id }}</h1>        
-      <p><label for="price">Name:</label> 
+      <p><label for="_id">ID:</label>
+      <input type="text" name="_id" value="{{_id}}"></input></p>        
+      
+      <p><label for="name">Name:</label> 
       <input type="text" name="name" value="{{name}}"></input></p>
    
-        <p><label for="price">Price:</label>
-        <input type="text" name="price" value="{{price}}"></input></p>
-       
-        <p><label for="font">Font:</label>
-        <input type="text" name="font" value="{{font}}"></input></p>        
-        
-        <p><label for="font_size">Font Size:</label>
-        <input type="text" name="font_size" value="{{font_size}}"></input></p>    
-        
-        <p><label for="description">Description:</label>
-        <textarea name="description">{{description}}</textarea></p>        
-        
-        <p><label for="svgupload">SVG:</label>
-        <input type="file" name="svgupload"></input><p>
-        
-        <p><label for="tags">Tags:</label>
-        <select name="tags" multiple="true" size="10">{{tags_for_select}}</select></p>
+      <p><label for="price">Price:</label>
+      <input type="text" name="price" value="{{price}}"></input></p>
+     
+      <p><label for="font">Font:</label>
+      <input type="text" name="font" value="{{font}}"></input></p>        
       
+      <p><label for="font_size">Font Size:</label>
+      <input type="text" name="font_size" value="{{font_size}}"></input></p>    
+      
+      <p><label for="description">Description:</label>
+      <textarea name="description">{{description}}</textarea></p>        
+      
+      <p><label for="svgupload">SVG:</label>
+      <input type="file" name="svgupload"></input><p>
+      
+      <p><label for="tags">Tags:</label>
+      <select name="tags" multiple="true" size="10">{{tags_for_select}}</select></p>
+    
     </div>
     
     <div style="width:50%;float:right" id="colour_picker"></div>
@@ -42,7 +44,7 @@
 </script>
 
 <!-- 
-  IMAGE BACKGROUNDS
+  IMAGE BACKGROUNDS TEMPLATE
 -->
   <script type="text/template" id="image_backgrounds">
     <div style="clear:both;width:500px;height:319px;background-image:url('new.png');" class="background_container first_colour">
@@ -69,17 +71,7 @@
 
 <script type="text/javascript">
   
-  var product_type_selection_view, theme_selection_view;
-  
   $(function() {    
-    // Populate product_types and themes for use in the SelectionView menus below
-    var product_types = new ProductTypes(<%- JSON.stringify(product_types) %>),
-    themes = new Themes(<%- JSON.stringify(themes) %>);
-       
-    // Selection view drop down menus
-    product_type_selection_view = new ProductTypeSelectionView({collection:product_types}).render().el    
-    theme_selection_view = new ThemeSelectionView({collection:themes}).render().el 
-      
     var products = new Products( <%- JSON.stringify(products) %>, {parse: true} );
     
     new ProductsView({
