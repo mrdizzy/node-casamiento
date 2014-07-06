@@ -50,9 +50,7 @@ var PlaceCardView = GuestView.extend({
       height: this.height, 
       half_height: this.half_height, 
       
-      svg: this.svg,
-      
-      
+      svg: this.svg,           
       hex: thisProduct.get("colours")[0].substring(1),
       
       font_adjust_buttons: this.font_adjust_buttons, 
@@ -76,7 +74,6 @@ var PlaceCardView = GuestView.extend({
 // cards and uses the bitmap representations
 var UIPrintView = Backbone.View.extend({
   initialize: function() {
-    this.width = $(document).width() / 2.3;
     this.guests = thisProduct.get("guests");
    // this.listenTo(thisProduct.get("guests"), 'add', this.render)    
     //this.listenTo(thisProduct.get("guests"), 'remove', this.render)
@@ -86,14 +83,19 @@ var UIPrintView = Backbone.View.extend({
       counter = 1;
       
     this.guests.forEach(function(guest) {
-      var place_card = new PlaceCardView({model: guest, width: this.width, font_adjust_buttons: true}).render().el
+      var place_card = new PlaceCardView({
+          model: guest, 
+          width: ($(document).width() / 2.3),
+          font_adjust_buttons: true
+      }).render().el
       place_cards.push(place_card)
+      
       if(counter == 3) {
-        place_cards.push('<div style="position:relative;border-top:1px dashed grey;clear:both" class="page_break_3"><div style="position:absolute;top:-20px;">Bottom of page 1</div></div>')          
+        place_cards.push('<div class="page_break_3"></div>')          
       } else if (counter == 4) {          
-        place_cards.push('<div style="position:relative;border-top:1px dashed grey;clear:both" class="page_break_4"><div style="position:absolute;top:-20px;">Bottom of page 1</div></div>')
+        place_cards.push('<div class="page_break_4"></div>')
       } else if (counter == 8) {
-        place_cards.push('<div style="position:relative;border-top:1px dashed grey;clear:both" class="page_break_8"></div>')
+        place_cards.push('<div class="page_break_8"></div>')
        counter = 0;
       }        
       counter = counter + 1;
@@ -106,6 +108,8 @@ var UIPrintView = Backbone.View.extend({
 
 
 var SVGPrintView = Backbone.View.extend({
+  id: "svg_print_wrapper",
+  className: "up_8",
   render: function() {
     var place_cards = [];
     var counter = 0;
@@ -140,7 +144,7 @@ var PrintUserInterfaceView = Backbone.View.extend({
   },
   printPage: function(e) {
     var result = new SVGPrintView({collection: thisProduct.get("guests")}).render().el;
-    $('body').html('<div style="width:210mm;height:297mm">' + $(result).html() + "</div>")
+    $('body').html(result)
   },
   changeLayout: function(e) {
     var val = $(e.currentTarget).val()
@@ -152,6 +156,7 @@ var PrintUserInterfaceView = Backbone.View.extend({
   render: function() {
     var $template = $(Handlebars.template(templates["user_interface_for_print"])());         
     $template.find('#ui_font_picker').fontPicker({fonts:casamiento_fonts, selected_font: thisProduct.get("font")})
+    
     var print_view = new UIPrintView({}).render().el;
     $template.find('#actual_cards').append(print_view)
     var width = ($(document).width() / 2.3)*2.01;

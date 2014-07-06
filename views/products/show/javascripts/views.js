@@ -33,11 +33,10 @@ var DownloadView = Backbone.View.extend({
   },  
   render: function() { 
     if(!this.first_time) {
-      var width = $('#ruler').width();
       var place_card_el = new PlaceCardView({
-        width: width, 
-        font_size: thisProduct.get("font_size"), 
-        model: thisProduct.get("guests").first()
+        width: ($(document).width() / 1.85), 
+        model: thisProduct.get("guests").first(),
+        font_adjust_buttons: true
       }).render().el;
       
       $('#image_container').fadeOut(function() { // hide 3D slides 
@@ -83,9 +82,6 @@ var ColourView = Backbone.View.extend({
 // 
 var StepView = Backbone.View.extend({ 
   el: '#steps',
-  initialize: function() {
-    _.bindAll(this, 'render')
-  },
   events: {     
     "click #buy": "checkout",        
     "mouseenter .spc": "hoverStep",

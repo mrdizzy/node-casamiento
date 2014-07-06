@@ -130,8 +130,6 @@
         width:90px;
       }
       
-.preview .slide { width:100%; padding:0;margin:0;}
-      
       .crop_mark { 
        position:absolute;width:20px;height:20px;z-index:200000;
       }
@@ -190,37 +188,34 @@
   text-align:center;
   border-right:1px solid black;
 }
+
 #actual_cards { 
   margin:0 auto;
+  margin-top:140px;
 }
   .up_8 .place_card_wrapper { float:left; }
   
   .up_3 .place_card_wrapper {
     float:none;
   }
-      
-  .page_break_3, .page_break_4 { display:none; }
+   .page_break_3, .page_break_4, .page_break_8 { 
+    position:relative;
+    border-top:1px dashed grey;
+    clear:both 
+  }
+    .page_break_3, .page_break_4 { display:none; }
   
     
 /* HIDDEN DIVS FOR PRINT
 ==================================== */  
-#per_8_page_print { 
-  width:210mm;
-  height:297mm; 
-  clear:both; 
-  display:none;
-}
-  .print_place_left_column_container {
-    padding:0;margin:0;
-    position:relative;
-    float:left;
-    width:10.5cm;  
-    height:7.425cm;
-  }
-  .print_place_right_column_container {
-    float:right;
-    padding:0;margin:0;
-    position:relative;
-    width:10.5cm;  height:7.425cm;
-  }
+
+
+@media print {
+  @page 8_per_page { size: 210mm 297mm }
   
+}
+
+
+#svg_print_wrapper.up_8 { page: 8_per_page;  }
+
+#svg_print_wrapper .place_card_wrapper { float:left;}

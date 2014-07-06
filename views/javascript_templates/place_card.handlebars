@@ -1,40 +1,34 @@
-{{#unless svg}}
 {{#if font_adjust_buttons}}
   <div class="font_size_adjust_buttons" style="text-align:center;">
     <div class="minus_font deselected">-</div>
     <div class="plus_font deselected">+</div>
   </div>
 {{/if}}
+
 <div class="place_card_container" style="position:relative;width:{{width}}{{units}};height:{{height}}{{units}}">
 
-  <div style="position: absolute;z-index:100;width:{{width}}{{units}};height:{{height}}{{units}};">
-    {{#if background}}
-      <div class="background_wrapper" style="position:absolute;width:{{width}}{{units}};height:{{height}}{{units}}" class="colour_0"> 
-        {{{background}}}
-      </div>
-      <img src="http://www.casamiento.co.uk/products/damask-name_place/attachments/display-5" class="preview_image" style="width:{{width}}{{units}};height:{{height}}{{units}};display:block;position:relative;z-index:200;">
-    {{/if}}
-    
-    {{#unless background}}    
-      <img src="http://www.casamiento.co.uk/products/{{product}}/attachments/display-5" class="colour_0 preview_image" style="width:{{width}}{{units}};height:{{height}}{{units}};display:block;position:relative;z-index:200;">
-    {{/unless}}
-    
-  </div>
+  {{#if svg}}
+    <img src="/svg/{{product}}/{{hex}}" style="z-index:200;position:absolute;display:block;width:{{width}}{{units}};height:{{height}};" />  
+  {{/if}}
+  
+  {{#unless svg}}
+    <div style="position: absolute;z-index:100;width:{{width}}{{units}};height:{{height}}{{units}};">
+      {{#if background}}
+        <div class="background_wrapper" style="position:absolute;width:{{width}}{{units}};height:{{height}}{{units}}" class="colour_0"> 
+          {{{background}}}
+        </div>
+        <img src="http://www.casamiento.co.uk/products/damask-name_place/attachments/display-5" class="preview_image" style="width:{{width}}{{units}};height:{{height}}{{units}};display:block;position:relative;z-index:200;">
+      {{/if}}
+      
+      {{#unless background}}    
+        <img src="http://www.casamiento.co.uk/products/{{product}}/attachments/display-5" class="colour_0 preview_image" style="width:{{width}}{{units}};height:{{height}}{{units}};display:block;position:relative;z-index:200;">
+      {{/unless}}
+      
+    </div>
+  {{/unless}}
   
   <div class="half" style="width:{{width}}{{units}};height:{{half_height}}{{units}}"></div>
   
   <input class="half" type="text" style="width:{{width}}{{units}};height:{{half_height}}{{units}};margin:0;padding:0;border:0;position:relative;z-index:300;text-align:center;font-size:{{font_size}}{{units}};font-family:{{font_family}};background-color:transparent;display:block;color:black;" value="{{name}}"></input>
        
 </div>
-
-{{/unless}}
-  
-{{#if svg}}
-  
-  <div class="place_card_container" style="position:relative;width:{{width}}{{units}};height:{{height}}{{units}};float:left">
-    <img src="/svg/{{product}}/{{hex}}" style="z-index:200;position:absolute;display:block;width:{{width}}{{units}};height:{{height}};" />  
-    <div class="half" style="width:{{width}}{{units}};height:{{half_height}}{{units}}"></div>
-    <input class="half" type="text" style="width:{{width}}{{units}};height:{{half_height}}{{units}};margin:0;padding:0;border:0;position:relative;z-index:300;text-align:center;font-size:{{font_size}}{{units}};font-family:{{font_family}};background-color:transparent;display:block;color:black;" value="{{name}}"></input>       
-  </div>
-  {{hex}}
- {{/if}}

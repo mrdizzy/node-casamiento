@@ -19,10 +19,9 @@ $(function() {
   // Setup and initialization
   var thisProduct = new Product(<%- JSON.stringify(product) %>);
     
-    thisProduct.set("font_size", object_fonts[thisProduct.get("font")])
+  thisProduct.set("font_size", object_fonts[thisProduct.get("font")])
         
   new StepView().render();
- // new PrintView({el: '#per_8_page_print', model: thisProduct}).render();
 
 })
 </script>

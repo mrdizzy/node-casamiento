@@ -9,16 +9,16 @@
 
 function handleHyphens(str) {
 
-  var pieces = str.split("-");
-  if (pieces[1]) {
-  pieces[1] = toTitleCase(pieces[1]);
-  }
-  str = pieces.join("-");
+ // var pieces = str.split("-");
+ // if (pieces[1]) {
+ // pieces[1] = toTitleCase(pieces[1]);
+ // }
+ // str = pieces.join("-");
   return str;
 }
 function toTitleCase(str)
 {
-str = str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+//str = str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     return str 
 }
 
