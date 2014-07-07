@@ -34,4 +34,24 @@
   <div style="width:50%;float:right" id="colour_picker"></div>
   <input type="submit" style="clear:both;">Submit</a>
 </form>
+
+
+
+<div id="background_customisation" style="clear:both;">
+{{#each divs}}
+  <div style="clear:both;position:relative;" class="background_container colour_0">
+    <img style="position:absolute;display:block;" src="/products/{{../_id}}/attachments/transparent_medium-{{@key}}" />
+    
+    
+    {{#is ../colours.length 2}}
+      <div class="background_wrapper">{{{this}}}</div>
+    {{/is}}
+  </div>
+
+  {{#is ../colours.length 2}}
+    <textarea rows="6" cols="80" class="change_background">{{this}}</textarea>
+    <div class="visual_div">{{{this}}}</div>
+  {{/is}}
+{{/each}}
+</div>
 <h3 style="clear:both">Attachments</h3>

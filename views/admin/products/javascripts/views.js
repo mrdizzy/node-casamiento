@@ -112,7 +112,6 @@ var BackgroundView = Backbone.View.extend({
   }
 })
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var CurrentProductView = Backbone.View.CouchDB.extend({
   initialize: function() {
@@ -161,10 +160,18 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   },
   render: function() {
     var modelToJSON = this.model.toJSON();   
+    var divs = {}
+    this.model.attachments_order.forEach(function(attachment) {
+       divs[attachment] = this.model.get("background-" + attachment)
+    }, this)
+    modelToJSON.divs = divs;
+    
     var html = Handlebars.template(templates["admin_current_product_form"])(modelToJSON); 
     
     this.$el.html(html);
     
+    this.$('.colour_0').css("background-color", this.model.get("colours")[0])       
+    this.$('.colour_1').css("background-color", this.model.get("colours")[1])
     var number_of_colours = this.model.get("colours").length;
     for(var i=0; i < number_of_colours; i++) {
         var picker = $('<div class="picker"></div>').colorPicker({default_color: this.model.get("colours")[i], colours_per_page: 32})
@@ -173,14 +180,14 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     
     // Render product images with coloured background divs
     // attachments_order is an array of the attachments in order [1,2,3]
-    this.model.attachments_order.forEach(function(attachment) {
-      var background_view = new BackgroundView({
-        model: this.model, 
-        attachment: attachment
-      })
-      var result = background_view.render().el
-      this.$el.append(result);
-    }, this)
+    //this.model.attachments_order.forEach(function(attachment) {
+    //  var background_view = new BackgroundView({
+    //    model: this.model, 
+    //    attachment: attachment
+    //  })
+    //  var result = background_view.render().el
+    //  this.$el.append(result);
+    //}, this)
     
     // Build attachments
     var attachments = this.buildAttachments({groupEl: 'tr'})
