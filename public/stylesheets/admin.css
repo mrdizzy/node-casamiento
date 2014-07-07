@@ -1,0 +1,10 @@
+html,body,div,img { 
+  padding:0;
+  margin:0;
+  border:0;
+}
+
+.background_container, .background_container img, .background_wrapper, .visual_div { 
+  width:500px;
+  height:319px;
+}
