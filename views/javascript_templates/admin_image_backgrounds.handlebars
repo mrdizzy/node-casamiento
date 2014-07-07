@@ -1,0 +1,9 @@
+<div style="clear:both;width:500px;height:319px;position:relative;" class="background_container colour_0">
+  <img style="position:absolute;display:block;width:500px;height:319px" src="{{url}}" />
+  {{#is number_of_colours 2}}<div style="width:500px;height:319px;" class="background_wrapper">{{{divs}}}</div>{{/is}}
+</div>
+
+{{#is number_of_colours 2}}
+  <textarea rows="6" cols="80" class="change_background">{{divs}}</textarea>
+  <div class="visual_div" style="width:500px;height:319px;">{{{ divs}}}</div>
+{{/is}}

@@ -3,7 +3,7 @@ var express = require('express'),
   compression = require('compression'), // gzip compression for static files
   resource = require('express-resource'),
   db = require('./config/db').test_ebay,
-  handlebars = require('express3-handlebars').create(),
+  exposeTemplates = require('./lib/middleware/expose_handlebars_to_client'),
   partials = require('express-partials'),
   expressLayouts = require('express-ejs-layouts'),
   assetManager = require('connect-assetmanager'),
@@ -37,33 +37,6 @@ var assetManagerGroups = {
         }
 };
 
-// Middleware for compiling and exposing javascript server-side templates to client side
-function exposeTemplates(req, res, next) {
-  // Uses the handlebars instance, required at the top of this page, to read in the templates
-  // and precompile them to be shared with the client-side of the app. 
-  handlebars.loadTemplates(dir + "/views/javascript_templates", {
-      precompiled: true
-  }, function (err, templates) {
-    if (err) { return next(err); }
-
-    // RegExp to remove the ".handlebars" extension from the template names.
-    var extRegex = new RegExp(handlebars.extname + '$');
-
-    // Creates an array of templates which are exposed via res.locals.templates
-    templates = Object.keys(templates).map(function (name) {
-      return {
-        name    : name.replace(extRegex, ''),
-        template: templates[name]
-      };
-    });
-
-    // Exposes the templates during view rendering.
-    if (templates.length) {
-      res.locals.templates = templates;
-    }
-    next();
-  });
-}
 // Fonts need to be served with Access-Control-Allow-Origin set to * if
 // FireFox is to support cross-domain downloading of them (e.g. from an eBay listing)
 app.configure(function(){

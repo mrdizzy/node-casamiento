@@ -1,61 +1,3 @@
-<style type="text/css">
-    
-    .attachment { text-align:center;}
-
-</style>
-
-<!-- 
-    PRODUCT FORM TEMPLATE
--->
-
-<script type="text/template" id="current_product_form">
-  <form>
-    <div style="width:50%;float:left">
-      <p><label for="_id">ID:</label>
-      <input type="text" name="_id" value="{{_id}}"></input></p>        
-      
-      <p><label for="name">Name:</label> 
-      <input type="text" name="name" value="{{name}}"></input></p>
-   
-      <p><label for="price">Price:</label>
-      <input type="text" name="price" value="{{price}}"></input></p>
-     
-      <p><label for="font">Font:</label>
-      <input type="text" name="font" value="{{font}}"></input></p>        
-      
-      <p><label for="font_size">Font Size:</label>
-      <input type="text" name="font_size" value="{{font_size}}"></input></p>    
-      
-      <p><label for="description">Description:</label>
-      <textarea name="description">{{description}}</textarea></p>        
-      
-      <p><label for="svgupload">SVG:</label>
-      <input type="file" name="svgupload"></input><p>
-      
-      <p><label for="tags">Tags:</label>
-      <select name="tags" multiple="true" size="10">{{tags_for_select}}</select></p>
-    
-    </div>
-    
-    <div style="width:50%;float:right" id="colour_picker"></div>
-    <input type="submit" style="clear:both;">Submit</a>
-  </form>
-  <h3 style="clear:both">Attachments</h3>
-</script>
-
-<!-- 
-  IMAGE BACKGROUNDS TEMPLATE
--->
-  <script type="text/template" id="image_backgrounds">
-    <div style="clear:both;width:500px;height:319px;background-image:url('new.png');" class="background_container first_colour">
-        <img style="width:500px;position:absolute;" src="{{url}}" />{{#is number_of_colours 2}}{{divs}}{{/is}}
-    </div>
-    {{#is number_of_colours 2}}
-      <textarea rows="5" cols="100" class="change_background">{{divs}}</textarea>
-    {{/is}}
-    <div class="visual_div" style="width:500px;height:319px;"></div>
-  </script>
-
 <div style="width:25%;float:left;">
     <div id="products_container">
       <h3>Products</h3>
@@ -68,10 +10,20 @@
   <div id="cpv"></div>
 </div>
 
-
 <script type="text/javascript">
+
+    // Initialize templates
+    var templates = {}
+    <% templates.forEach(function(template) { %>
+      templates["<%= template.name %>"] = <%- template.template %>;
+    <% }) %>
+  
+  // Render javascripts
+    <%- include javascripts/views.js %>  
+    <%- include javascripts/models.js %>
   
   $(function() {    
+
     var products = new Products( <%- JSON.stringify(products) %>, {parse: true} );
     
     new ProductsView({
@@ -80,7 +32,3 @@
       
   })
 </script>
-
-<script src="/javascripts/admin/products.js"></script>
-<script src="/javascripts/admin/themes.js"></script>
-<script src="/javascripts/admin/models.js"></script>

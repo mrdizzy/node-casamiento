@@ -93,16 +93,13 @@ var BackgroundView = Backbone.View.extend({
     this.model.set("background-" + this.attachment, val)
   },
   updateColours: function() {
-    this.$('.background_container').css("background-color",  this.model.get("colours")[0])       
-    this.$('.background_container div:not(.nocolor)').css("background-color", this.model.get("colours")[1])
+    this.$('.colour_0').css("background-color", this.model.get("colours")[0])       
+    this.$('.colour_1').css("background-color", this.model.get("colours")[1])
   },
   updateBackground: function(e, f,g) {
-      this.$('div div').remove();
-      var divs = this.model.get("background-" + this.attachment);
-      var compiled = _.template(divs);
-            var result = compiled({colour: this.model.get("colours")[1]});
-      this.$('div').append(result)  
-      this.$('div.visual_div').html(result)
+    var divs = this.model.get("background-" + this.attachment);
+    this.$('.background_wrapper').html(divs)  
+    this.$('.visual_div').html(divs)
   },
   render: function() {
     var attach_model = this.model.toJSON();
@@ -110,9 +107,10 @@ var BackgroundView = Backbone.View.extend({
     attach_model.current_attachment = this.attachment;
     attach_model.url = "/products/" +  attach_model._id + "/attachments/transparent_medium-" + attach_model.current_attachment
     attach_model.divs = attach_model["background-" + this.attachment]
+    
       // Render background-coloured image
-    var result = Handlebars.compile($('#image_backgrounds').html(), {noEscape: true})(attach_model);
-    this.$el.html(result)
+    var html = Handlebars.template(templates["admin_image_backgrounds"])(attach_model)  
+    this.$el.html(html)
     this.updateColours();
     return this
   }
@@ -166,21 +164,11 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     })
   },
   render: function() {
-    var modelToJSON = this.model.toJSON();
+    var modelToJSON = this.model.toJSON();   
+    var html = Handlebars.template(templates["admin_current_product_form"])(modelToJSON); 
     
-    // Prepare tags for view
-    var tags = this.model.get("tags");
-    var options_for_select = "";
-    default_tags.forEach(function(tag) {
-        if(_.contains(tags, tag)) {
-            options_for_select = options_for_select + "<option value='" + tag + "' selected='selected'>" + tag + "</option>";
-        } else {
-            options_for_select = options_for_select + "<option value='" + tag + "'>" + tag + "</option>";
-        }
-    })
-    modelToJSON.tags_for_select= options_for_select
-    var result = Handlebars.compile($('#current_product_form').html(),{noEscape: true})(modelToJSON);
-    this.$el.html(result);
+    this.$el.html(html);
+    
     var number_of_colours = this.model.get("colours").length;
     for(var i=0; i < number_of_colours; i++) {
         var picker = $('<div class="picker"></div>').colorPicker({default_color: this.model.get("colours")[i], colours_per_page: 32})
@@ -190,7 +178,10 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     // Render product images with coloured background divs
     // attachments_order is an array of the attachments in order [1,2,3]
     this.model.attachments_order.forEach(function(attachment) {
-      var background_view = new BackgroundView({model: this.model, attachment: attachment})
+      var background_view = new BackgroundView({
+        model: this.model, 
+        attachment: attachment
+      })
       var result = background_view.render().el
       this.$el.append(result);
     }, this)
@@ -203,3 +194,14 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     return this;
   }
 })
+
+//var tags = this.model.get("tags");
+   //var options_for_select = "";
+   //default_tags.forEach(function(tag) {
+   //    if(_.contains(tags, tag)) {
+   //        options_for_select = options_for_select + "<option value='" + tag + "' selected='selected'>" + tag + "</option>";
+   //    } else {
+   //        options_for_select = options_for_select + "<option value='" + tag + "'>" + tag + "</option>";
+   //    }
+   //})
+    //modelToJSON.tags_for_select= options_for_select
