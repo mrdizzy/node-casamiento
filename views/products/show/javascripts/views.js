@@ -82,11 +82,15 @@ var ColourView = Backbone.View.extend({
 // 
 var StepView = Backbone.View.extend({ 
   el: '#steps',
+  initialize: function() {
+      this.listenTo(thisProduct, 'change:quantity', this.renderQty)
+  },
   events: {     
     "click #buy": "checkout",        
     "mouseenter .spc": "hoverStep",
     "mouseleave .spc": "hoverStep",     
     "click .texture": "updateTexture",  
+    "blur #qty": "setQuantity",
     "click .weight": "updateWeight",  
     "fontpicker:selected": "changeFont",
     "click #plus_qty": "plusQty",
@@ -112,12 +116,22 @@ var StepView = Backbone.View.extend({
     if(thisProduct.get("quantity") > 8) 
       this.updateQty(-8)
   },
+  setQuantity: function(e) {
+    $field = $(e.currentTarget)
+    var value = $field.val();
+    var remainder = value % 8;
+    if(remainder > 0) {
+      var new_quantity = 8- remainder + parseInt(value);
+    }
+    thisProduct.set("quantity", new_quantity)
+  },
   updateQty: function(number) {
     thisProduct.adjustQuantity(number)
+  },
+  renderQty: function() {    
     this.$('#qty').val(thisProduct.get("quantity"))
     this.$('span#pound').text(thisProduct.get("pounds"));
     this.$('span#decimal').text("." + thisProduct.get("pence"));
-    this._renderGuests()
   },
   updateTexture: function(e) {
     var texture_selected = $(e.currentTarget)

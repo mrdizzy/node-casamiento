@@ -106,49 +106,25 @@ var UIPrintView = Backbone.View.extend({
   } 
 })
 
-
-var SVGPrintView = Backbone.View.extend({
-  id: "svg_print_wrapper",
-  className: "up_8",
-  render: function() {
-    var place_cards = [];
-    var counter = 0;
-    this.collection.forEach(function(guest) {
-        
-      var place_card = new PlaceCardView({
-        model: guest, 
-        width: 105, 
-        height: 74.25, 
-        font_adjust_buttons: false,
-        half_height: 37.125,
-        units: "mm",
-        svg: true, 
-      }).render().el
-      place_cards.push(place_card)
-      if (counter == 3) {
-          place_cards.push("<div class='page_break'></div>")
-          counter = 0;
-      }
-      counter = counter + 1;
-    }, this)
-    this.$el.html(place_cards)
-    return this;
-  }
-  
-})
 var PrintUserInterfaceView = Backbone.View.extend({
+  initialize: function() {
+    this.layout = 3
+  },
   events: {
     "fontpicker:selected": "changeFont",
     "click input[type=radio]": "changeLayout",
     "click #ui_printer_icon": "printPage"
   },
+  // Create the SVG print view
   printPage: function(e) {
-    var result = new SVGPrintView({collection: thisProduct.get("guests")}).render().el;
+    var result = new SVGPrintView({collection: thisProduct.get("guests"), layout: this.layout}).render().el;
     $('body').html(result)
+    $('body').css({border:0, padding:0,margin:0})
   },
   changeLayout: function(e) {
     var val = $(e.currentTarget).val()
     this.$('#actual_cards').attr("class", "up_" + val)
+    this.layout = val;
   },
   changeFont: function(e, font) { 
     thisProduct.set("font", font.font)
@@ -165,3 +141,36 @@ var PrintUserInterfaceView = Backbone.View.extend({
     return this;
   }
 })
+
+var SVGPrintView = Backbone.View.extend({
+  id: "svg_print_wrapper",
+  initialize: function() {
+    this.layout = this.options.layout;
+  },
+  render: function() {
+    var counter = 1;
+    var grouped_place_cards = inGroupsOf(this.collection.toArray(), this.layout)
+    var place_cards = []
+    grouped_place_cards.forEach(function(group) {
+
+      var $container = $('<div class="print_' + this.layout + '_up"></div>"');
+      group.forEach(function(guest) {
+        var place_card = new PlaceCardView({
+          model: guest, 
+          width: 105, 
+          height: 74.25, 
+          font_adjust_buttons: false,
+          half_height: 37.125,
+          units: "mm",
+          svg: true, 
+        }).render().el
+        $container.append(place_card)
+      })
+      $container.append("<div class='break'></div>")
+      this.$el.append($container)
+    }, this)
+      
+    return this;
+  }
+  
+}) 
