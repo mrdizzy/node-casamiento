@@ -55,7 +55,7 @@ var PlaceCardView = GuestView.extend({
       
       font_adjust_buttons: this.font_adjust_buttons, 
       product: thisProduct.get("_id"),
-      name: this.model ? this.model.get("name") : "Mr Guest Name",
+      name: this.model.get("name"),
       units: this.units
     }));
     
@@ -108,7 +108,7 @@ var UIPrintView = Backbone.View.extend({
 
 var PrintUserInterfaceView = Backbone.View.extend({
   initialize: function() {
-    this.layout = 3
+    this.layout = 8
   },
   events: {
     "fontpicker:selected": "changeFont",
@@ -118,8 +118,9 @@ var PrintUserInterfaceView = Backbone.View.extend({
   // Create the SVG print view
   printPage: function(e) {
     var result = new SVGPrintView({collection: thisProduct.get("guests"), layout: this.layout}).render().el;
-    $('body').html(result)
-    $('body').css({border:0, padding:0,margin:0})
+    $('#printsvg').html(result)
+    $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif")
+    window.print();
   },
   changeLayout: function(e) {
     var val = $(e.currentTarget).val()
