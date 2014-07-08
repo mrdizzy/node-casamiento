@@ -37,6 +37,13 @@ var Product = Backbone.Model.extend({
     this.updatePounds();
     this.updatePence();
   },
+  hex: function() {
+    if(this.get("colours").length == 2) {
+        return(this.get("colours")[0].substring(1) + "_" + thisProduct.get("colours")[1].substring(1));
+    } else {
+        return(this.get("colours")[0].substring(1))
+    }
+  },
   updateGuestNames: function() {
     this.set("guest_names", this.get("guests").pluck("name"))
   },

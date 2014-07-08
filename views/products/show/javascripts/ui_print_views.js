@@ -51,7 +51,7 @@ var PlaceCardView = GuestView.extend({
       half_height: this.half_height, 
       
       svg: this.svg,           
-      hex: thisProduct.get("colours")[0].substring(1),
+      hex: thisProduct.hex(),
       
       font_adjust_buttons: this.font_adjust_buttons, 
       product: thisProduct.get("_id"),
