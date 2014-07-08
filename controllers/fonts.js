@@ -18,10 +18,13 @@ exports.new = function(req,res) {
 
 exports.show = function(req, res) {
   var id = req.params.font;
+  console.log(req.format)
   var stream = db.getAttachment(id, req.format)
   if(req.format == 'woff') {
   res.contentType('application/font-woff');
-  } else {
+  } else if (req.format == 'svg') {
+    res.contentType('image/svg+xml')
+  }else {
     res.contentType('application/vnd.ms-fontobject')
   }
   stream.on("data", function(chunk) {

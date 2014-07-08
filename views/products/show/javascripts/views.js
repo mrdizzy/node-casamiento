@@ -32,6 +32,7 @@ var DownloadView = Backbone.View.extend({
     location.hash = "top_of_page"
   },  
   render: function() { 
+    var that = this;
     if(!this.first_time) {
       var place_card_el = new PlaceCardView({
         width: ($(document).width() / 1.85), 
@@ -40,8 +41,12 @@ var DownloadView = Backbone.View.extend({
       }).render().el;
       
       $('#image_container').fadeOut(function() { // hide 3D slides 
-        $('#preview').html(place_card_el).fadeIn()// display 2D customise image 
-        location.hash = "preview"// jumps to <div id=foo> or <a name="foo">
+        $('#preview').html(place_card_el).fadeIn(function() {
+            that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
+            that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
+         
+        })
+       // location.hash = "preview"// jumps to <div id=foo> or <a name="foo">
       }); 
       this.first_time = true;
     }
@@ -83,7 +88,8 @@ var ColourView = Backbone.View.extend({
 var StepView = Backbone.View.extend({ 
   el: '#steps',
   initialize: function() {
-      this.listenTo(thisProduct, 'change:quantity', this.renderQty)
+      this.listenTo(thisProduct, 'change:quantity', this.renderQtyAndPrice)
+      this.listenTo(thisProduct, 'change:guests', this._renderGuests)
   },
   events: {     
     "click #buy": "checkout",        
@@ -122,16 +128,18 @@ var StepView = Backbone.View.extend({
     var remainder = value % 8;
     if(remainder > 0) {
       var new_quantity = 8- remainder + parseInt(value);
+    } else if (remainder ==0) {
+        new_quantity = value;
     }
     thisProduct.set("quantity", new_quantity)
   },
   updateQty: function(number) {
     thisProduct.adjustQuantity(number)
   },
-  renderQty: function() {    
-    this.$('#qty').val(thisProduct.get("quantity"))
+  renderQtyAndPrice: function() {    
+    this.$('#qty').val(thisProduct.get("quantity"))       
     this.$('span#pound').text(thisProduct.get("pounds"));
-    this.$('span#decimal').text("." + thisProduct.get("pence"));
+    this.$('span#decimal').text("." + thisProduct.get("pence"));  
   },
   updateTexture: function(e) {
     var texture_selected = $(e.currentTarget)

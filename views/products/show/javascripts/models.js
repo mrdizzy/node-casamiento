@@ -29,6 +29,7 @@ var Product = Backbone.Model.extend({
   initialize: function() {  
     this.textures = ["plain", "hammered", "linen"]
     this.on("change:quantity", this.calculatePrice)
+    this.on("change:quantity", this.adjustGuests)
     this.on("change:texture", this.calculatePrice)
     this.on("change:weight", this.calculatePrice)
     this.on("change:colour_1", this.updateColour1)
@@ -40,9 +41,8 @@ var Product = Backbone.Model.extend({
   hex: function() {
     if(this.get("colours").length == 2) {
         return(this.get("colours")[0].substring(1) + "_" + thisProduct.get("colours")[1].substring(1));
-    } else {
-        return(this.get("colours")[0].substring(1))
     }
+    return(colour_0_without_hash)
   },
   updateGuestNames: function() {
     this.set("guest_names", this.get("guests").pluck("name"))
@@ -65,6 +65,9 @@ var Product = Backbone.Model.extend({
     this.set("colours", colours);    
     $('.colour_2').css("background-color", colours[1]) // global colour change
   },
+  adjustGuests: function() {
+    
+  },
   adjustQuantity: function(adjust_by) {      
     var quantity = this.get("quantity") + adjust_by;
     this.set("quantity", quantity);
@@ -79,6 +82,7 @@ var Product = Backbone.Model.extend({
       }
     }
     this.set("guests", guests);
+    this.trigger("change:guests")
   },
   applyDiscounts: function(total) {
     var qty = this.get("quantity"),
@@ -92,6 +96,7 @@ var Product = Backbone.Model.extend({
     return discount;
   },
   calculatePrice: function() {   
+  
     var qty = this.get("quantity"),
       total = this.get("price") * qty,
       texture = this.get("texture"),

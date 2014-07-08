@@ -243,7 +243,7 @@
 
 #actual_cards { 
   margin:0 auto;
-  margin-top:130px;
+  margin-top:140px;
 }
   .up_8 .place_card_wrapper { float:left; }
   
@@ -260,17 +260,19 @@
 /* HIDDEN DIVS FOR PRINT
 ==================================== */  
 #printsvg { display:none;}
+
 @media print {
-  #printsvg { display:block;}
+  
   body { 
-    padding:0;
-    margin:0;
-    border:0;
     width:210mm;
     height:297mm;
   }
-  #top_of_page, #control_panel { display:none;}
-
+  
+  #printsvg { display:block;}
+  
+  #top_of_page, #control_panel { 
+    display:none;
+  }
   .print_8_up {
     height:297mm;
     width:210mm;
@@ -290,7 +292,7 @@
     }
     .print_3_up .place_card_container {
       margin:0 auto;
-      border:1px dotted lightgrey;
+      border:1px dotted grey;
     }
     
   .break { page-break-after:always;}

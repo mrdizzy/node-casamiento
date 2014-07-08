@@ -17,10 +17,10 @@
     
     $container_div.append($up_arrow_container).append($table_container)
     
-    var root_url = "https://cloudant.com/db/mrdizzy/test_ebay/";
+    var root_url = "/fonts/";
     var $selected_font = $('<table id="selected_font" class="fonts_table"></table>');
     $selected_row = $('<tr></tr>');
-    $selected_image = $('<img src="https://cloudant.com/db/mrdizzy/test_ebay/' + selected_font + '/svg">')
+    $selected_image = $('<img src="/fonts/' + selected_font + '.svg">')
     $selected_font_name= $('<td class="font_name">'+ selected_font + '</td>');
     $selected_row.append($('<td class="font_image"></td>').append($selected_image));
     $selected_row.append($selected_font_name)
@@ -32,13 +32,13 @@
       var $table = $('<table></table>').addClass("fonts_table").css("display", "none");
      
       group.forEach(function(font) {
-        var $tr = $('<tr data-image="' + font[0] + '"></tr>').append("<td class='font_image'><img src='https://cloudant.com/db/mrdizzy/test_ebay/" + font[0] + "/svg' /></td>").addClass("font_image").append("<td>" + font[0] + "</td>").addClass("font_name");
+        var $tr = $('<tr data-image="' + font[0] + '"></tr>').append("<td class='font_image'><img src='/fonts/" + font[0] + ".svg' /></td>").addClass("font_image").append("<td>" + font[0] + "</td>").addClass("font_name");
         // Click on a font
         $tr.click(function(e) {
           appendFont(font[0]);
           that.trigger("fontpicker:selected", {font: font[0], font_size: font[1] })
           $up_arrow_container.hide()
-          $selected_image.attr("src", root_url + font[0] + "/svg")
+          $selected_image.attr("src", "/fonts/" + font[0] + ".svg")
           $selected_font_name.text(font[0])
           tables[current_index].hide();
         })
