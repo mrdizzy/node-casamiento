@@ -134,7 +134,7 @@ var StepView = Backbone.View.extend({
   hoverStep: function(e) {
     var step_index = $(e.currentTarget).index();
     this.$('#step_' + step_index + " .step").fadeToggle()      
-    this.$('#step_' + step_index + " .chat-bubble").slideToggle()
+    this.$('#step_' + step_index + " .tooltip-bubble").fadeToggle()
     this.$('#step_' + step_index).toggleClass('highlight')
   },
   
