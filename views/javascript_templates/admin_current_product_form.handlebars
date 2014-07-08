@@ -2,9 +2,6 @@
   <div style="width:50%;float:left">
     <p><label for="_id">ID:</label>
     <input type="text" name="_id" value="{{_id}}"></input></p>        
-    
-    <p><label for="name">Name:</label> 
-    <input type="text" name="name" value="{{name}}"></input></p>
  
     <p><label for="price">Price:</label>
     <input type="text" name="price" value="{{price}}"></input></p>
@@ -12,14 +9,11 @@
     <p><label for="font">Font:</label>
     <input type="text" name="font" value="{{font}}"></input></p>        
     
-    <p><label for="font_size">Font Size:</label>
-    <input type="text" name="font_size" value="{{font_size}}"></input></p>    
-    
     <p><label for="description">Description:</label>
     <textarea name="description">{{description}}</textarea></p>        
     
     <p><label for="svgupload">SVG:</label>
-    <input type="file" name="svgupload"></input><p>
+    <input type="file" name="svgupload"></input></p>
     
     <p><label for="tags">Tags:</label>
     
@@ -27,7 +21,7 @@
       {{#each tags}} 
         <option value="{{.}}" name="{{tag}}">{{.}}</option>
       {{/each}}
-      </select></p>
+    </select></p>
   
   </div>
   
@@ -35,23 +29,23 @@
   <input type="submit" style="clear:both;">Submit</a>
 </form>
 
-
-
 <div id="background_customisation" style="clear:both;">
+
 {{#each divs}}
   <div style="clear:both;position:relative;" class="background_container colour_0">
     <img style="position:absolute;display:block;" src="/products/{{../_id}}/attachments/transparent_medium-{{@key}}" />
     
-    
     {{#is ../colours.length 2}}
-      <div class="background_wrapper">{{{this}}}</div>
+      <div class="background_wrapper background-{{@key}}">{{{this}}}</div>
     {{/is}}
+    
   </div>
 
   {{#is ../colours.length 2}}
-    <textarea rows="6" cols="80" class="change_background">{{this}}</textarea>
-    <div class="visual_div">{{{this}}}</div>
+    <textarea data-id="{{@key}}" rows="6" cols="80" class="change_background">{{this}}</textarea>
+    <div class="visual_div background-{{@key}}">{{{this}}}</div>
   {{/is}}
+  
 {{/each}}
 </div>
 <h3 style="clear:both">Attachments</h3>

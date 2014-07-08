@@ -113,22 +113,10 @@ var StepView = Backbone.View.extend({
       this.updateQty(-8)
   },
   updateQty: function(number) {
-    var quantity = thisProduct.get("quantity") + number;
-    thisProduct.set("quantity", quantity);
-    var guests = thisProduct.get("guests")
-    if(number > 0) {
-      guests.add([{},{},{},{},{},{},{},{}]) 
-    } else {
-      var silent = false;  
-      for(var i =0;  i < 8; i++) {  
-        if(i > 6) { silent = true; } 
-        guests.pop({silent: silent});
-      }
-    }
-    thisProduct.set("guests", guests);
+    thisProduct.adjustQuantity(number)
     this.$('#qty').val(thisProduct.get("quantity"))
-    this.$('span#pound').text(that.presenter().pounds());
-    this.$('span#decimal').text("." + that.presenter().dec());
+    this.$('span#pound').text(thisProduct.get("pounds"));
+    this.$('span#decimal').text("." + thisProduct.get("pence"));
     this._renderGuests()
   },
   updateTexture: function(e) {
@@ -155,7 +143,7 @@ var StepView = Backbone.View.extend({
   //
   render: function() {
     // Compile the steps template
-    var $result = $(Handlebars.template(templates["products_show_step_through"])(this.presenter()));     
+    var $result = $(Handlebars.template(templates["products_show_step_through"])(thisProduct.toJSON()));     
       
     // Create colour pickers
     var colours = thisProduct.get("colours");
@@ -180,21 +168,5 @@ var StepView = Backbone.View.extend({
       guests_html.push(new GuestView({model:guest}).render().el);
     })
     $element.html(guests_html);
-  }, 
-    
-  presenter: function() {
-    var productJSON = thisProduct.toJSON();
-    var presented = _.extend(productJSON, {
-      guests: function() {
-        return(productJSON.guests.pluck("name"))
-      },
-      pounds: function() {
-        return productJSON.total.toString().split(".")[0]
-      },
-      dec: function() {
-        return productJSON.total.toString().split(".")[1]
-      }
-    });
-    return presented;
   }
 })

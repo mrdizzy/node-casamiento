@@ -167,12 +167,24 @@
       
 /* UI PREVIEW FOR PRINTING
 ==================================== */  
+#control_panel {
+  top:0;
+  left:0;
+  padding-top:0.5em;
+  position:fixed;
+  width:100%;
+  z-index:999999999;
+  border-bottom:1px solid black;
+  background-color:white;
+}
 #ui_print_logo_container {
   width:20%;
   float:left;
 }
   #ui_print_logo {
-    width:150px;
+    width:160px;
+    text-align:center;
+    padding-right:0.5em;
     border-right:1px solid black;
   }
   
@@ -208,11 +220,8 @@
     
 /* HIDDEN DIVS FOR PRINT
 ==================================== */  
-
-
 @media print {
   @page 8_per_page { size: 210mm 297mm }
-  
 }
 
 

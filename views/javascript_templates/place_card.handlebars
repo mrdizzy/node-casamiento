@@ -14,7 +14,7 @@
   {{#unless svg}}
     <div style="position: absolute;z-index:100;width:{{width}}{{units}};height:{{height}}{{units}};">
       {{#if background}}
-        <div class="background_wrapper" style="position:absolute;width:{{width}}{{units}};height:{{height}}{{units}}" class="colour_0"> 
+        <div class="background_wrapper colour_0" style="position:absolute;width:{{width}}{{units}};height:{{height}}{{units}}">
           {{{background}}}
         </div>
         <img src="http://www.casamiento.co.uk/products/damask-name_place/attachments/display-5" class="preview_image" style="width:{{width}}{{units}};height:{{height}}{{units}};display:block;position:relative;z-index:200;">
@@ -27,8 +27,6 @@
     </div>
   {{/unless}}
   
-  <div class="half" style="width:{{width}}{{units}};height:{{half_height}}{{units}}"></div>
-  
-  <input class="half" type="text" style="width:{{width}}{{units}};height:{{half_height}}{{units}};margin:0;padding:0;border:0;position:relative;z-index:300;text-align:center;font-size:{{font_size}}{{units}};font-family:{{font_family}};background-color:transparent;display:block;color:black;" value="{{name}}"></input>
+  <input class="half" type="text" style="width:{{width}}{{units}};padding:0;padding-top:{{half_height}}{{units}};height:{{half_height}}{{units}};margin:0;border:0;position:relative;z-index:300;text-align:center;font-size:{{font_size}}{{units}};font-family:{{font_family}};background-color:transparent;display:block;color:#000;" value="{{name}}"></input>
        
 </div>
