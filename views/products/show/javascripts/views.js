@@ -32,7 +32,6 @@ var DownloadView = Backbone.View.extend({
     location.hash = "top_of_page"
   },  
   render: function() { 
-    var that = this;
     if(!this.first_time) {
       var place_card_el = new PlaceCardView({
         width: ($(document).width() / 1.85), 
@@ -44,7 +43,6 @@ var DownloadView = Backbone.View.extend({
         $('#preview').html(place_card_el).fadeIn(function() {
             that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
             that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
-         
         })
        // location.hash = "preview"// jumps to <div id=foo> or <a name="foo">
       }); 
@@ -88,8 +86,8 @@ var ColourView = Backbone.View.extend({
 var StepView = Backbone.View.extend({ 
   el: '#steps',
   initialize: function() {
-      this.listenTo(thisProduct, 'change:quantity', this.renderQtyAndPrice)
-      this.listenTo(thisProduct, 'change:guests', this._renderGuests)
+    this.listenTo(thisProduct, 'change:quantity', this.renderQtyAndPrice)
+    this.listenTo(thisProduct, 'change:guests', this._renderGuests)
   },
   events: {     
     "click #buy": "checkout",        
@@ -132,6 +130,7 @@ var StepView = Backbone.View.extend({
         new_quantity = value;
     }
     thisProduct.set("quantity", new_quantity)
+    $field.val(new_quantity)
   },
   updateQty: function(number) {
     thisProduct.adjustQuantity(number)
