@@ -1,7 +1,12 @@
 {{#if font_adjust_buttons}}
-  <div class="font_size_adjust_buttons" style="text-align:center;">
-    <div class="minus_font deselected">-</div>
+  
+ <div class="font_baseline_adjust_buttons" style="text-align:center;">
+    <div class="up_baseline deselected">&#9650</div>
+    <div class="down_baseline deselected">&#9660</div>
+  </div>
+<div class="font_size_adjust_buttons" style="text-align:center;">
     <div class="plus_font deselected">+</div>
+    <div class="minus_font deselected">-</div>
   </div>
 {{/if}}
 
@@ -27,6 +32,6 @@
     </div>
   {{/unless}}
   
-  <input class="half" type="text" style="width:{{width}}{{units}};padding:0;padding-top:{{half_height}}{{units}};height:{{half_height}}{{units}};margin:0;border:0;position:relative;z-index:300;text-align:center;font-size:{{font_size}}{{units}};font-family:{{font_family}};background-color:transparent;display:block;color:#000;" value="{{name}}"></input>
+  <input class="half" type="text" style="width:{{width}}{{units}};padding:0;padding-top:{{top_half_height}}{{units}};height:{{bottom_half_height}}{{units}};margin:0;border:0;position:relative;z-index:300;text-align:center;font-size:{{font_size}}{{units}};font-family:{{font_family}};background-color:transparent;display:block;color:#000;" value="{{name}}"></input>
        
 </div>
