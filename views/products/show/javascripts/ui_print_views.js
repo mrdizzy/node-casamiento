@@ -110,26 +110,13 @@ var UIPrintView = Backbone.View.extend({
     this.guests = thisProduct.get("guests");
   },
   render: function() {
-    var place_cards = [],
-      counter = 1;
-      
-    this.guests.forEach(function(guest) {
+    var place_cards = this.guests.map(function(guest) {
       var place_card = new PlaceCardView({
           model: guest, 
           width: ($(document).width() / 2.3),
           font_adjust_buttons: true
       }).render().el
-      place_cards.push(place_card)
-      
-      if(counter == 3) {
-        place_cards.push('<div class="page_break_3"></div>')          
-      } else if (counter == 4) {          
-        place_cards.push('<div class="page_break_4"></div>')
-      } else if (counter == 8) {
-        place_cards.push('<div class="page_break_8"></div>')
-       counter = 0;
-      }        
-      counter = counter + 1;
+      return(place_card)
     }, this)
     
     this.$el.html(place_cards)

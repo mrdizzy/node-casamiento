@@ -1,5 +1,6 @@
 <script type="text/javascript">
 $(function() {
+location.hash = ""
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
   var object_fonts = {};
   casamiento_fonts.forEach(function(obj) {

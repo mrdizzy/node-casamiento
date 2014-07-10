@@ -1,6 +1,5 @@
-// 
 // GUEST VIEW
-// 
+////////////////////////////////////////////////////////////////////////////// 
 var GuestView = Backbone.View.extend({  
   events: {
     "blur input": 'updateGuest',
@@ -19,9 +18,8 @@ var GuestView = Backbone.View.extend({
   }
 })
 
-// 
 // 2D Bitmap View
-// 
+////////////////////////////////////////////////////////////////////////////// 
 var DownloadView = Backbone.View.extend({
   events: {
     'click #print_button': 'printView',
@@ -29,12 +27,12 @@ var DownloadView = Backbone.View.extend({
   printView: function() {
     var print_user_interface_view = new PrintUserInterfaceView({}).render().el
     $('body').html(print_user_interface_view)
-    location.hash = "top_of_page"
+    location.hash = "scroll_point"
   },  
   render: function() { 
     if(!this.first_time) {
       var place_card_el = new PlaceCardView({
-        width: ($(document).width() / 1.85), 
+        width: ($(document).width() / 1.9), 
         model: thisProduct.get("guests").first(),
         font_adjust_buttons: true
       }).render().el;
@@ -44,7 +42,6 @@ var DownloadView = Backbone.View.extend({
             that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
             that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
         })
-       // location.hash = "preview"// jumps to <div id=foo> or <a name="foo">
       }); 
       this.first_time = true;
     }
@@ -52,9 +49,8 @@ var DownloadView = Backbone.View.extend({
   }
 })
 
-// 
 // COLOUR VIEW
-// 
+////////////////////////////////////////////////////////////////////////////// 
 var DOWNLOAD_VIEW_INACTIVE = true;
 var ColourView = Backbone.View.extend({ 
   events: {
@@ -79,10 +75,9 @@ var ColourView = Backbone.View.extend({
     return this;
   }
 })
-
-// 
+ 
 // STEP VIEW
-// 
+////////////////////////////////////////////////////////////////////////////// 
 var StepView = Backbone.View.extend({ 
   el: '#steps',
   initialize: function() {
@@ -159,9 +154,8 @@ var StepView = Backbone.View.extend({
     this.$('#step_' + step_index).toggleClass('highlight')
   },
   
-  //
   // RENDER METHODS
-  //
+  ////////////////////////////////////////////////////////////////////////////// 
   render: function() {
     // Compile the steps template
     var $result = $(Handlebars.template(templates["products_show_step_through"])(thisProduct.toJSON()));     

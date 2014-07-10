@@ -17,7 +17,6 @@
   }
     #description_container h6 { padding:1em;}
     
-    #preview { display:none;}
 
 #product_section0 { margin-left:75%; }
 
@@ -174,6 +173,9 @@
         padding-top:0.25em;
         width:90px;
       }
+      #preview .place_card_wrapper { width:80%;margin:0 auto;}
+      #preview .place_card_wrapper .place_card_container { float:none;}
+      #preview .place_card_wrapper .place_card_container { margin:0 auto;}
       
 /* UI PREVIEW FOR PRINTING
 ==================================== */  
@@ -187,8 +189,8 @@
   border-bottom:1px solid black;
   background-color:white;
 }
-  #ui_print_logo_container {
-    width:20%;
+  #ui_logo_container {
+    width:18%;
     float:left;
   }
     #ui_print_logo {
@@ -199,17 +201,27 @@
     }
       
   #ui_print_font_picker_container {
-    width:25%;
+    width:27%;
     margin-top:2.5em;
     float:left;
     border-right:1px solid black;
   }
   #ui_printer_icon {
-    width:20%;
+    width:8%;
     float:left;
     text-align:center;
     border-right:1px solid black;
   }
+
+  #layout_icons_wrapper {
+    width:20%;
+    float:right;
+  }
+    .layout_icon_container {
+      text-align:center;
+      width:33%;
+      float:left;
+    }
 
 #actual_cards { 
   margin:0 auto;
@@ -218,21 +230,14 @@
   .place_card_wrapper { 
     position:relative;
     text-align:center;
-    margin:0 auto;
   }
-    .font_size_adjust_buttons {
+    .font_size_adjust_buttons, .font_baseline_adjust_buttons {
        display:inline-block;
       position:absolute;
         bottom:20px; width:65px;
-        
-      z-index:9999999999999999999999999;
     }
     .font_baseline_adjust_buttons {
-       display:inline-block;
-      position:absolute;
-        top:20px; 
-        width:65px;        
-      z-index:9999999999999999999999999;
+        top:20px;   
     }
     
     .place_card_wrapper:nth-child(odd) .font_size_adjust_buttons, .place_card_wrapper:nth-child(odd) .font_baseline_adjust_buttons{

@@ -24,5 +24,8 @@ module.exports = function(app){
 // Takes a request and parses the _rev and _id out of it
 function parseRevision(req, id, callback) {
     var id_split = id.split("--");
+    if(id_split[1] == "undefined") {
+      id_split[1] = undefined;
+    }
     callback(null, { rev: id_split[1], id: id_split[0]})
 }

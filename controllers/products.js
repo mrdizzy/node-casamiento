@@ -34,7 +34,7 @@ exports.update = exports.create = function(req, res) {
   }
   db.save(id, rev, req.body, function(err, documents) {
     if (err) {
-    console.log(err)
+    console.log("Error saving main product", err)
       res.status(500);
       res.end();
     }
@@ -46,7 +46,7 @@ exports.update = exports.create = function(req, res) {
         }
         db.save(svg_id,svg_rev, {_attachments: { svg: { 'Content-Type': "image/xml+svgz", data: svg}}}, function(anerror, done) {
             if (anerror) {
-              console.log("Error here",anerror)
+              console.log("Error saving attachment of SVG",anerror)
               res.status(500);
               res.end();
             } else {

@@ -23,8 +23,8 @@ exports.show = function(req, res) {
       // Make sure the regexes are in this order (blue first, then red), 
       // as for some reason altering these makes the regexes much slower!
       // We need to work out why!
-      .pipe(es.replace(/0000FF/g, colour_1)) // FF0000 is red
-      .pipe(es.replace(/FF0000/g, colour_2)) // 0000FF is blue      
+      .pipe(es.replace(/0000FF/g, colour_1)) // 0000FF is red
+      .pipe(es.replace(/FF0000/g, colour_2)) // FF0000 is blue      
       .pipe(zlib.createDeflate())
       .pipe(res)
   }
