@@ -8,6 +8,7 @@ var PlaceCardView = GuestView.extend({
   initialize: function() {
     this.listenTo(thisProduct, 'change:font', this.renderFontFamily) 
     this.listenTo(this.model, 'change:font_size', this.renderFontSize) 
+    this.listenTo(this.model, 'change:baseline', this._renderBaseline)
     
     // the width of this container is always passed to the view
     // this is usually based on the value of some element already displayed 
@@ -17,11 +18,14 @@ var PlaceCardView = GuestView.extend({
     this.font_adjust_buttons = this.options.font_adjust_buttons
     this.svg = this.options.svg
     this.height = this.options.height || 0.70714285714 * this.width; // 0.70714... is the ratio of 74.25mm to 105mm
-    this.half_height = this.options.half_height || (this.height / 2);
+    this.half_height = this.bottom_half_height = this.top_half_height = this.options.half_height || (this.height / 2);
+
   },
   events: {
     'click .plus_font': 'increaseFont',
-    'click .minus_font': 'decreaseFont'
+    'click .minus_font': 'decreaseFont',
+    'click .up_baseline': 'upBaseline',
+    'click .down_baseline': 'downBaseline'
   },  
   renderFontFamily: function() {    
     this.$('input').css('font-family', thisProduct.get("font"));
@@ -38,7 +42,33 @@ var PlaceCardView = GuestView.extend({
   decreaseFont: function() {
    this.model.adjustFontSize(0.95) // percentage decrease
   },
+  upBaseline: function() {
+    var baseline = this.model.get("baseline");
+    this.model.set("baseline", (baseline - 1))
+   console.log(this.model.get("baseline"))
+  },
+  downBaseline: function() {
+   var baseline = this.model.get("baseline");
+    this.model.set("baseline", (baseline + 1))
+      console.log(this.model.get("baseline"))
+  },
+  _renderBaseline: function() {
+    this.calculateBaselineOffset();
+    console.log(this.model.get("baseline"), this.top_half_height, this.bottom_half_height)
+    this.$('.half').css("padding-top", this.top_half_height)
+    this.$('.half').css("height", this.bottom_half_height)
+  },
+  calculateBaselineOffset: function() {
+    var baseline = (this.model.get("baseline") /100) * this.height;
+    if(this.model.get("baseline") == 0) {
+      this.top_half_height = this.bottom_half_height = this.half_height;
+    } 
+      this.top_half_height = this.half_height * 1 + baseline;
+      this.bottom_half_height = this.half_height  * 1 - baseline;
+    
+  },
   render: function() {   
+    this.calculateBaselineOffset();
     var compiled_template = Handlebars.template(templates["place_card"]);
     var $template = $(compiled_template({
       
@@ -48,7 +78,9 @@ var PlaceCardView = GuestView.extend({
       
       width: this.width, 
       height: this.height, 
-      half_height: this.half_height, 
+      bottom_half_height: this.bottom_half_height, 
+      top_half_height: this.top_half_height,
+      half_height: this.half_height,
       
       svg: this.svg,           
       hex: thisProduct.hex(),
@@ -73,10 +105,9 @@ var PlaceCardView = GuestView.extend({
 // This view is the user interface view for customising the place
 // cards and uses the bitmap representations
 var UIPrintView = Backbone.View.extend({
+  className: 'ui_print_view',
   initialize: function() {
     this.guests = thisProduct.get("guests");
-   // this.listenTo(thisProduct.get("guests"), 'add', this.render)    
-    //this.listenTo(thisProduct.get("guests"), 'remove', this.render)
   },
   render: function() {
     var place_cards = [],

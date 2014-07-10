@@ -58,36 +58,36 @@
   </head>
   <body>
       
-  <% transactions.forEach(function(t) { %>
-
+  <% for (var i =0; i< transactions.length; i++) { %>
+  <% var t = transactions[i] %>
     <% var total = 0; %>
     <div class="page" style=""><img src="/gfx/invoice_new.svg" style="position:absolute;width:100%;"/>
-      <textarea class="label"><%= t.SHIPTONAME %>
-        <%= t.SHIPTOSTREET %><% if (t.SHIPTOSTREET2) {  %>
-        <%= t.SHIPTOSTREET2%><% } %>
-        <%= t.SHIPTOCITY%>
-        <%= t.SHIPTOSTATE%>
-        <%= t.SHIPTOZIP%>
+      <textarea class="label" data-label="<%= i %>"><%= t.SHIPTONAME %>
+<%= t.SHIPTOSTREET %><% if (t.SHIPTOSTREET2) {  %>
+<%= t.SHIPTOSTREET2%><% } %>
+<%= t.SHIPTOCITY%>
+<%= t.SHIPTOSTATE%>
+<%= t.SHIPTOZIP%>
       </textarea>
      
-      <textarea class="delivery_address"><%= t.SHIPTONAME %>
-        <%= t.SHIPTOSTREET %>
-        <% if (t.SHIPTOSTREET2) {  %>
-        <%= t.SHIPTOSTREET2%>
-        <% } %>
-        <%= t.SHIPTOCITY%>
-        <%= t.SHIPTOSTATE%>
-        <%= t.SHIPTOZIP%>
+      <textarea id="delivery_address_<%= i %>" class="delivery_address"><%= t.SHIPTONAME %>
+<%= t.SHIPTOSTREET %>
+<% if (t.SHIPTOSTREET2) {  %>
+<%= t.SHIPTOSTREET2%>
+<% } %>
+<%= t.SHIPTOCITY%>
+<%= t.SHIPTOSTATE%>
+<%= t.SHIPTOZIP%>
       </textarea>
       
-      <textarea class="invoice_address"><%= t.SHIPTONAME %>
-        <%= t.SHIPTOSTREET %>
-        <% if (t.SHIPTOSTREET2) {  %>
-          <%= t.SHIPTOSTREET2%>
-        <% } %>
-        <%= t.SHIPTOCITY%>
-        <%= t.SHIPTOSTATE%>
-        <%= t.SHIPTOZIP%>
+      <textarea  id="invoice_address_<%= i %>" class="invoice_address"><%= t.SHIPTONAME %>
+<%= t.SHIPTOSTREET %>
+<% if (t.SHIPTOSTREET2) {  %>
+  <%= t.SHIPTOSTREET2%>
+<% } %>
+<%= t.SHIPTOCITY%>
+<%= t.SHIPTOSTATE%>
+<%= t.SHIPTOZIP%>
       </textarea>
      
       <p class="transaction_id"><%=  t.TRANSACTIONID %></p>
@@ -113,15 +113,16 @@
       <div class="total"><p><%= total.toFixed(2) %></p></div>
     </div>
 
-  <% }) %>
+  <% } %>
 
   </body>
 <script>
 $('.label').blur(function(e) {
-  var label = ($(e.currentTarget).val());
-  $('.delivery_address').val(label);
-  
-  $('.invoice_address').val(label);
+  var $el = $(e.currentTarget),
+   label = $el.val(),
+    id = $el.data("label")
+  $('#delivery_address_' + id).val(label);
+  $('#invoice_address_' + id).val(label);
 })
 </script>
 </html>

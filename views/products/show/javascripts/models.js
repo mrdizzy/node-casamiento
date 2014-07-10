@@ -2,6 +2,7 @@
 var Guest = Backbone.Model.extend({
   defaults: {
     name: "Guest Name",
+    baseline: 0,
     font_size: object_fonts["<%= product.font %>"]
   },
   adjustFontSize: function(amount) {
