@@ -25,24 +25,17 @@
 }
 .dizzycp-external_wrapper {
   margin:0 auto;
-  margin-top:10px;
-  height:50px;
-  width:300px;
   overflow:hidden;
 }
 .dizzycp-left_arrow { margin-left:50px;}
 
 .dizzycp-right_arrow { margin-right:50px;}
 .dizzycp-internal_wrapper{
-  width:300px;
-  height:150px
   overflow-y: hidden;
   overflow-x: scroll
 }
 .square { 
   float:left;
-  width:50px;
-  height:50px;
 }
 .dizzycp-scrollable_colours {
   height:100px;
@@ -66,6 +59,8 @@
 
   $.fn.colorPicker = function(options) {
  var that = this;
+ var container_width = this.width();
+ var swatch_width = container_width/6;
   var settings = $.extend({},  $.fn.colorPicker.defaultOptions, options);
   var colour_groups = inGroupsOf(Object.keys(settings.colour_list), settings.colours_per_page)
 
@@ -83,10 +78,10 @@
   $swatch.append($big_colour_square_frame).append($text_label_for_colour)   
     
   var number_of_colours = pairs.length;
-  var width_of_inside = 50 * number_of_colours;
+  var width_of_inside = swatch_width * number_of_colours;
   
-  var $external_wrapper = $('<div></div>').addClass('dizzycp-external_wrapper');
-  var $internal_wrapper = $('<div></div>').addClass('dizzycp-internal_wrapper')
+  var $external_wrapper = $('<div></div>').addClass('dizzycp-external_wrapper').width(container_width).css("height", swatch_width + "px");
+  var $internal_wrapper = $('<div></div>').addClass('dizzycp-internal_wrapper').width(container_width)
   var $scrollable_colours = $('<div></div>').addClass('dizzycp-scrollable_colours').css("width",width_of_inside + "px");
   $internal_wrapper.append($scrollable_colours)
   $external_wrapper.append($internal_wrapper)
@@ -97,7 +92,7 @@
   groups.forEach(function(group) {
     var $colour_div = $('<div id="panel_' + counter + '" style="float:left"></div>');
     group.forEach(function(colour) {
-      $colour_div.append('<div data-colour="' + colour[0] + '" style="background-color:' + colour[0] + '" class="square"></div>');
+      $colour_div.append('<div data-colour="' + colour[0] + '" style="width:' + swatch_width +'px;height:' + swatch_width + 'px;background-color:' + colour[0] + '" class="square"></div>');
     })
     colour_divs.push($colour_div)
     counter = counter + 1;
