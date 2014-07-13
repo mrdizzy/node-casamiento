@@ -3,30 +3,28 @@
 <head>
 <style type="text/css">
 
-.colour {
-  display:block;float:left;
-  padding:0;
-  border:0;
-  margin:0;
-  line-height:100px;
-  width:100px;
-  height:100px;
-}
 #arrow_left, #arrow_right {
   font-size:30px;
   float:left;
 }
 #wrapper {
-  height:100px;
-  width:200px;
+  height:50px;
+  width:300px;
   overflow:hidden;
 }
 #colours_squares {
-  width:100px;
+  width:300px;
   height:150px;
-  border:0;padding:0;margin:0;
+
   overflow-y: hidden;
   overflow-x: scroll
+}
+.square { 
+  float:left;
+  border-radius:15px;
+  margin-left:5px;
+  width:45px;
+  height:50px;
 }
 #inside {
   padding:0;border:0;margin:0;
@@ -38,8 +36,8 @@
 </head>
 <body>
 <div id="wrapper">
-<div id="colours_squares" style="width:200px;">
-    <div id="inside" style="width:10500px;height:100px;position:relative;">
+<div id="colours_squares">
+    <div id="inside" style="height:100px;position:relative;">
     </div>
 </div>
 </div>
@@ -49,36 +47,41 @@
 </body>
 <script>
 var pairs = _.pairs(colours)
-var groups = inGroupsOf(pairs)
+var groups = inGroupsOf(pairs, 6)
 
+  var number_of_colours = pairs.length;
+  var width_of_inside = 50 * number_of_colours;
+  console.log(width_of_inside)
+  $('#inside').css("width",width_of_inside + "px");
+  
+  var counter = 0;
   var colour_divs = []
 groups.forEach(function(group) {
-  var $colour_div = $('<div style="float:left"></div>');
+  var $colour_div = $('<div id="panel_' + counter + '" style="float:left"></div>');
   group.forEach(function(colour) {
-    $colour_div.append('<div style="display:block;float:left;width:50px;height:50px;background-color:' + colour[0] + '" class="square"></div>');
+    $colour_div.append('<div style="background-color:' + colour[0] + '" class="square"></div>');
   })
   colour_divs.push($colour_div)
+  counter = counter + 1;
 })
 console.log(colour_divs)
-
 $('#inside').html(colour_divs)
-var counter = 0;
-var width = $('#colour_0').width();
-console.log(width)
+ var counter = 0;
 $('#arrow_left').click(function() {
-console.log("left")
+
   counter = counter -1 ;
-  var position = $('#colour_' + counter).position();    
+  console.log(counter)
+  var position = $('#panel_' + counter).position().left;  
+  console.log(position) 
   $('#colours_squares').scrollLeft(position);
 })
 
 $('#arrow_right').click(function() {
-console.log("right")
   counter = counter +1 ;
   console.log(counter)
-  var position = $('#colour_' + counter).position().left;  
+  var position = $('#panel_' + counter).position().left;  
   console.log(position) 
-  $('#colours_squares').scrollLeft(position);
+  $('#colours_squares').animate({scrollLeft: position}, 100);
 })
 function inGroupsOf(arr, n){
   var ret = [];
