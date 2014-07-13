@@ -66,6 +66,12 @@
       tables[current_index].hide();      
     })
  
+     $container_div.click(function(e) {
+      clicked_font = true;
+      $up_arrow_container.hide();
+      tables[current_index].hide();      
+    })
+ 
     // Move down
     $down_arrow.click(function(e) {
       if(current_index < tables.length -1) {
