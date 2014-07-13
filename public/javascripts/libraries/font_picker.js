@@ -51,7 +51,7 @@
    $container_div.append($selected_font);
     
     // Enter and leave 
-    $selected_font.mouseenter(function(e) {
+    $selected_font.mouseover(function(e) {
       if(clicked_font) {
         $up_arrow_container.show();
         tables[current_index].append($down_arrow);
@@ -60,15 +60,6 @@
       }
     })
     
-    
-     $selected_font.click(function(e) {
-       if(clicked_font) {
-        $up_arrow_container.show();
-        tables[current_index].append($down_arrow);
-        tables[current_index].show();
-        clicked_font = false;
-      }   
-    })
   
     $container_div.mouseleave(function(e) {
       clicked_font = true;
