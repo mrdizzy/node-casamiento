@@ -43,6 +43,7 @@ var DownloadView = Backbone.View.extend({
           that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
           that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
         })
+        $('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
       }); 
       this.first_time = true;
     }

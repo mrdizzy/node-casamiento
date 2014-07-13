@@ -5,9 +5,9 @@
   float:left;
   width:75%; 
 }
-    #image_container .product_type_icon {
-        display:none;
-    }
+  #image_container .product_type_icon {
+      display:none;
+  }
   #slide1, #slide3 { 
     display:block; 
     float:left;
@@ -36,7 +36,26 @@
     clear:both;
   }
     #description_container h6 { padding:1em;}
+ 
+  #preview .place_card_wrapper { 
+    width:80%;
+    margin:0 auto;
+  }
+    #preview .place_card_wrapper .place_card_container { 
+      float:none; 
+      margin: 0 auto;
+    }
     
+    #print_button {
+      margin-left:11%;
+      padding:1em;
+    }
+      #print_button p {
+        font-size:1.4em; 
+        padding:0;
+        padding-top:0.5em; 
+        margin:0;
+      }
 #product_section0 { margin-left:75%; }
 
   #step_1 { border-top:1px dotted #000;}
@@ -180,10 +199,7 @@
       #paypal { 
         padding-top:0.25em;
         width:90px;
-      }
-      #preview .place_card_wrapper { width:80%;margin:0 auto;}
-      #preview .place_card_wrapper .place_card_container { float:none;}
-      #preview .place_card_wrapper .place_card_container { margin:0 auto;}
+      }              
       
 /* UI PREVIEW FOR PRINTING
 ==================================== */  
@@ -262,7 +278,6 @@
   .up_3 .place_card_wrapper {
     float:none;
   }
-    
 /* HIDDEN DIVS FOR PRINT
 ==================================== */  
 #printsvg { 
