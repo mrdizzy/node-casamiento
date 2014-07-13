@@ -77,8 +77,9 @@
         font: normal 1.1em "OS Light Italic";
         margin:10px auto;
         padding:10px;
+        top:-25px;
         position:absolute;
-        left:-350px;
+        left:-375px;
         text-align:center;
         width:350px;
       }

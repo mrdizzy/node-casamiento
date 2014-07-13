@@ -53,6 +53,9 @@ var DownloadView = Backbone.View.extend({
 ////////////////////////////////////////////////////////////////////////////// 
 var DOWNLOAD_VIEW_INACTIVE = true;
 var ColourView = Backbone.View.extend({ 
+  initialize: function() {
+    this.width = $('#steps').width();  
+  },
   events: {
     "dizzy-cp:hoverColor": "updateColour",
     "dizzy-cp:click": "changeColour"
@@ -71,7 +74,8 @@ var ColourView = Backbone.View.extend({
     thisProduct.set("colours", colours)
   },
   render: function() {
-    this.$el.colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[this.options.colour_index]});
+  var that = this;
+    this.$el.colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[this.options.colour_index], width:that.width});
     return this;
   }
 })
