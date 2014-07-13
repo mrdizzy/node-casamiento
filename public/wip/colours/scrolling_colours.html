@@ -16,13 +16,17 @@
   font-size:30px;
   float:left;
 }
+#wrapper {
+  height:100px;
+  width:100px;
+  overflow:hidden;
+}
 #colours_squares {
   width:100px;
-  height:100px;
+  height:150px;
   border:0;padding:0;margin:0;
   overflow-y: hidden;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: scroll;
+  overflow-x: scroll
 }
 #inside {
   padding:0;border:0;margin:0;
@@ -33,7 +37,8 @@
 <script src="colours.js"></script>    
 </head>
 <body>
-<div id="colours_squares">
+<div id="wrapper">
+<div id="colours_squares" style="width:100px;">
     <div id="inside" style="width:500px;height:100px;position:relative;">
       <div id="colour_0" class="colour" style="background-color:red;height:100px;"></div>      
       <div id="colour_1" class="colour"  style="background-color:orange;height:100px;"></div>      
@@ -41,6 +46,7 @@
       <div id="colour_3" class="colour"  style="background-color:green;height:100px;"></div>      
       <div id="oolour_4" class="colour"  style="background-color:blue;height:100px;"></div>
     </div>
+</div>
 </div>
 <div id="arrow_left">&larr;</div>
 <div id="arrow_right">&rarr;</div>
