@@ -59,6 +59,16 @@
         clicked_font = false;
       }
     })
+    
+    
+     $selected_font.click(function(e) {
+       if(clicked_font) {
+        $up_arrow_container.show();
+        tables[current_index].append($down_arrow);
+        tables[current_index].show();
+        clicked_font = false;
+      }   
+    })
   
     $container_div.mouseleave(function(e) {
       clicked_font = true;
@@ -66,11 +76,6 @@
       tables[current_index].hide();      
     })
  
-     $container_div.click(function(e) {
-      clicked_font = true;
-      $up_arrow_container.hide();
-      tables[current_index].hide();      
-    })
  
     // Move down
     $down_arrow.click(function(e) {
