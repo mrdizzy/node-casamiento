@@ -5,6 +5,9 @@
   float:left;
   width:75%; 
 }
+    #image_container .product_type_icon {
+        display:none;
+    }
   #slide1, #slide3 { 
     display:block; 
     float:left;
@@ -79,9 +82,9 @@
         padding:10px;
         top:-25px;
         position:absolute;
-        left:-375px;
+        left:-275px;
         text-align:center;
-        width:350px;
+        width:250px;
       }
     
       .tooltip-bubble-arrow {
@@ -89,9 +92,9 @@
         border-style: solid;
         border-width: 15px;
         height:0;
-        left:369px;
+        left:269px;
         position:absolute;
-        left:369px;
+        left:269px;
         top:15px;
         width:0;
       }
@@ -101,7 +104,7 @@
         border-style: solid;
         border-width: 15px;
         height:0;
-        left:370px;
+        left:270px;
         position:absolute;
         top:15px;
         width:0;
@@ -152,16 +155,15 @@
         padding-right:10px;
       }
       
-      .minus_font, .plus_font, .up_baseline,.down_baseline {
+      .minus_font, .plus_font, .up_baseline, .down_baseline {
         background-color:white;
         border-radius:5px;
         border: 1px solid black;
         display:inline-block;
         font: normal 2.5em 'OS Light';
-        height:60px;
-        line-height:60px;
+        
         margin-bottom:5px;
-        width:60px;
+        width:100%;
       }
 
       #qty { 
@@ -238,21 +240,21 @@
     text-align:center;
   }
     .font_size_adjust_buttons, .font_baseline_adjust_buttons {
-      bottom:20px; 
+      bottom:10%; 
       display:inline-block;
       position:absolute;
-      width:65px;
+      width:10%;
     }
     .font_baseline_adjust_buttons {
-      top:20px;   
+      top:10%;   
     }
     
     .place_card_wrapper:nth-child(odd) .font_size_adjust_buttons, .place_card_wrapper:nth-child(odd) .font_baseline_adjust_buttons{
-      left:-65px;
+      left:-11%;
     }
       
     .place_card_wrapper:nth-child(even) .font_size_adjust_buttons, .place_card_wrapper:nth-child(even) .font_baseline_adjust_buttons {
-      right:-65px;
+      right:-11%;
     }
   .place_card_container { float:right;}
   .up_8 .place_card_wrapper { float:left; }

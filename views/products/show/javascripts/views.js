@@ -33,15 +33,15 @@ var DownloadView = Backbone.View.extend({
     if(!this.first_time) {
     var that = this;
       var place_card_el = new PlaceCardView({
-        width: ($(document).width() / 1.9), 
+        width: ($('#image_container').width() / 1.1125), 
         model: thisProduct.get("guests").first(),
         font_adjust_buttons: true
       }).render().el;
       
       $('#image_container').fadeOut(function() { // hide 3D slides 
         $('#preview').html(place_card_el).fadeIn(function() {
-            that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
-            that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
+          that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
+          that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
         })
       }); 
       this.first_time = true;
