@@ -26,7 +26,7 @@
 .dizzycp-external_wrapper {
   margin:0 auto;
   margin-top:10px;
-  height:35px;
+  height:50px;
   width:300px;
   overflow:hidden;
 }
@@ -149,25 +149,23 @@
   })   
   this.html($wrapper)
 
-  
   function scrollColours(amount) {
     new_counter = new_counter + amount;  
     console.log($container_to_fade_in.find('#panel_' + new_counter).position())
     var position = $container_to_fade_in.find('#panel_' + new_counter).position().left;  
-    $internal_wrapper.animate({scrollLeft: position}, 200);
+    $internal_wrapper.animate({scrollLeft: position}, 100);
   }
-  
   return this;
 }
 
-    $.fn.colorPicker.defaultOptions ={
-            colours_per_page: 16,
-            colour_list: colours,
-            default_color: '#cd5c5c'
-        }
-        
-        
+$.fn.colorPicker.defaultOptions ={
+  colours_per_page: 16,
+  colour_list: colours,
+  default_color: '#cd5c5c'
+} 
+      
 })(jQuery)
+
 $('#new_colour_picker').colorPicker();
 </script>
 </html>
