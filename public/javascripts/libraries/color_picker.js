@@ -50,13 +50,21 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
 
   $container_to_fade_in.append($external_wrapper)
   
+  // Hover and click over swatches
   $container_to_fade_in.find('.square').mouseenter(function(e) {
-
     var $el = $(e.currentTarget);
     var hex = $el.data("colour");
     $text_label_for_colour.text(colours[hex])
       that.trigger('dizzy-cp:hoverColor', hex)
     $big_colour_square_swatch.css("background-color", hex)
+  })
+   $container_to_fade_in.find('.square').click(function(e) {
+   
+    var $el = $(e.currentTarget);
+    var hex = $el.data("colour");
+      that.trigger('dizzy-cp:click', hex)
+      
+        $container_to_fade_in.hide();
   })
   
   // compile containers

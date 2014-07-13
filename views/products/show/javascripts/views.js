@@ -31,6 +31,7 @@ var DownloadView = Backbone.View.extend({
   },  
   render: function() { 
     if(!this.first_time) {
+    var that = this;
       var place_card_el = new PlaceCardView({
         width: ($(document).width() / 1.9), 
         model: thisProduct.get("guests").first(),

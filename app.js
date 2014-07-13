@@ -20,7 +20,8 @@ var assetManagerGroups = {
         , 'path': __dirname + '/public/stylesheets/'
         , 'dataType': 'css'
         // These files must be availble in the directory specified by path above
-        , 'files': [ 'color_picker.css', 'font_picker.css', 'main.css', 'responsive.css', 'product.css' ]
+        // Make sure they are in the right order--stylesheets cascade! Reponsive last!
+        , 'files': [ 'color_picker.css', 'font_picker.css', 'main.css',  'product.css', 'responsive.css' ]
     },
     'js':
         { 'route': /\/static\/javascripts\/all\.js/
