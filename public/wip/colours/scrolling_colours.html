@@ -18,7 +18,7 @@
 }
 #wrapper {
   height:100px;
-  width:100px;
+  width:200px;
   overflow:hidden;
 }
 #colours_squares {
@@ -33,18 +33,13 @@
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>    
 <script src="colours.js"></script>    
 </head>
 <body>
 <div id="wrapper">
-<div id="colours_squares" style="width:100px;">
-    <div id="inside" style="width:500px;height:100px;position:relative;">
-      <div id="colour_0" class="colour" style="background-color:red;height:100px;"></div>      
-      <div id="colour_1" class="colour"  style="background-color:orange;height:100px;"></div>      
-      <div id="colour_2" class="colour"  style="background-color:yellow;height:100px;"></div>      
-      <div id="colour_3" class="colour"  style="background-color:green;height:100px;"></div>      
-      <div id="oolour_4" class="colour"  style="background-color:blue;height:100px;"></div>
+<div id="colours_squares" style="width:200px;">
+    <div id="inside" style="width:10500px;height:100px;position:relative;">
     </div>
 </div>
 </div>
@@ -53,9 +48,20 @@
 
 </body>
 <script>
-//for (var key in colours) {
-//  $('#inside').append('<div style="background-color:' + key + '" class="square"></div>')/
-//}
+var pairs = _.pairs(colours)
+var groups = inGroupsOf(pairs)
+
+  var colour_divs = []
+groups.forEach(function(group) {
+  var $colour_div = $('<div style="float:left"></div>');
+  group.forEach(function(colour) {
+    $colour_div.append('<div style="display:block;float:left;width:50px;height:50px;background-color:' + colour[0] + '" class="square"></div>');
+  })
+  colour_divs.push($colour_div)
+})
+console.log(colour_divs)
+
+$('#inside').html(colour_divs)
 var counter = 0;
 var width = $('#colour_0').width();
 console.log(width)
@@ -74,6 +80,22 @@ console.log("right")
   console.log(position) 
   $('#colours_squares').scrollLeft(position);
 })
+function inGroupsOf(arr, n){
+  var ret = [];
+  var group = [];
+  var len = arr.length;
+  var per = len * (n / len);
+
+  for (var i = 0; i < len; ++i) {
+    group.push(arr[i]);
+    if ((i + 1) % n == 0) {
+      ret.push(group);
+      group = [];
+    }
+  }
+  if (group.length) ret.push(group);
+  return ret;
+};
 </script>
 </html>
 
