@@ -27,7 +27,7 @@
 }
 .dizzycp-external_wrapper {
 margin:0 auto;
-  height:50px;
+  height:100px;
   width:300px;
   overflow:hidden;
 }
@@ -93,8 +93,8 @@ margin:0 auto;
   var number_of_colours = pairs.length;
   var width_of_inside = 50 * number_of_colours;
   var $external_wrapper = $('<div></div>').addClass('dizzycp-external_wrapper');
-  var $internal_wrapper = $('<div></div>').addClass('dizzycp-internal_wrapper').css("width",width_of_inside + "px");
-  var $scrollable_colours = $('<div></div>').addClass('dizzycp-scrollable_colours');
+  var $internal_wrapper = $('<div></div>').addClass('dizzycp-internal_wrapper')
+  var $scrollable_colours = $('<div></div>').addClass('dizzycp-scrollable_colours').css("width",width_of_inside + "px");
   $internal_wrapper.append($scrollable_colours)
   $external_wrapper.append($internal_wrapper)
   
