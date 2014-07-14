@@ -260,6 +260,7 @@
       display:inline-block;
       position:absolute;
       width:10%;
+      text-align:center;
     }
     .font_baseline_adjust_buttons {
       top:10%;   
@@ -269,10 +270,21 @@
       left:-11%;
     }
       
-    .place_card_wrapper:nth-child(even) .font_size_adjust_buttons, .place_card_wrapper:nth-child(even) .font_baseline_adjust_buttons {
+        .place_card_wrapper:nth-child(even) .font_size_adjust_buttons, .place_card_wrapper:nth-child(even) .font_baseline_adjust_buttons {
       right:-11%;
     }
   .place_card_container { float:right;}
+  input.half {
+    padding:0;
+    margin:0;
+    border:0;
+    position:relative;
+    z-index:300;
+    text-align:center;
+    background-color:transparent;
+    display:block;
+    color:#000;
+  }
   .up_8 .place_card_wrapper { float:left; }
   
   .up_3 .place_card_wrapper {

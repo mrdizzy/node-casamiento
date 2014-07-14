@@ -13,7 +13,9 @@ var PlaceCardView = GuestView.extend({
     'click .plus_font': 'increaseFont',
     'click .minus_font': 'decreaseFont',
     'click .up_baseline': 'upBaseline',
-    'click .down_baseline': 'downBaseline'
+    'click .down_baseline': 'downBaseline',    
+    "blur input": 'updateGuest',
+    'focus input': 'clearGuest'
   }, 
   increaseFont: function() {
     this.model.adjustFontSize(1.05) // percentage increase
@@ -83,8 +85,7 @@ var PlaceCardCollectionView = Backbone.View.extend({
       var $container = $('<div class="up_' + options.per_page + '"></div>"');
       group.forEach(function(guest) {
         var place_card = new PlaceCardView(_.extend({
-          model: guest,
-          font_adjust_buttons: options.font_adjust_buttons,
+          model: guest
         }, 
         options)).render().el
         $container.append(place_card)
@@ -119,8 +120,7 @@ var PrintControlPanelView = Backbone.View.extend({
     var result = new PlaceCardCollectionView({
       per_page: this.layout,
       svg: true,
-      width:105,
-      units: "mm"
+      width:(105 * 3.779527559) // convert 105mm to pixels
     }).render().el;
     $('#printsvg').html(result)
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif")
@@ -135,9 +135,7 @@ var PrintControlPanelView = Backbone.View.extend({
     
     var place_cards = new PlaceCardCollectionView({
       per_page: this.layout,
-      units: "px",
       width: ($(document).width() / 2.3),
-      font_adjust_buttons: true      
     }).render().el
     
     var width = ($(document).width() / 2.3)*2.01;

@@ -14,8 +14,7 @@ var PreviewView = Backbone.View.extend({
     var place_card_el = new PlaceCardView({
       width: ($('#image_container').width() / 1.1125), 
       model: thisProduct.get("guests").first(),
-      font_adjust_buttons: true,
-      units: "px"
+      font_adjust_buttons: true
     }).render().el;
     
     $('#image_container').fadeOut(function() { // hide 3D slides 

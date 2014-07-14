@@ -31,7 +31,20 @@
     width:100%;
   }
   
-  #selected_font { position:relative;z-index:0; border:1px solid transparent;}
+  #selected_font { 
+    position:relative;
+    z-index:0; 
+    border:1px solid transparent;
+  }
+  
+    #selected_font td.font_name {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    #selected_font td.font_image {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }    
 
   #fonts td { 
     border-bottom:1px dotted lightgrey;
@@ -47,16 +60,7 @@
     }
 
   #fonts td.font_name, td.font_description { width:50%;}
- #fonts  td.font_image { width:50%;}
+  #fonts td.font_image { width:50%;}
 
   h2 { font-family:"Gara";font-weight:normal;}
   
-  #selected_font td.font_name {
-border-top-right-radius: 10px;
-border-bottom-right-radius: 10px;
-}
-#selected_font td.font_image {
-border-top-left-radius: 10px;
-border-bottom-left-radius: 10px;
-}
-     
