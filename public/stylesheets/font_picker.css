@@ -50,4 +50,13 @@
  #fonts  td.font_image { width:50%;}
 
   h2 { font-family:"Gara";font-weight:normal;}
+  
+  #selected_font td.font_name {
+border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;
+}
+#selected_font td.font_image {
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
+}
      

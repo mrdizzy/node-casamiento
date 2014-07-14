@@ -298,27 +298,27 @@
   #top_of_page, #control_panel { 
     display:none;
   }
-  .print_4_up {
+  #printsvg .up_4 {
     height:210mm;
     width:297mm;
   }
   
-  .print_8_up {
+  #printsvg up_8 {
     height:297mm;
     width:210mm;
   }
-    .print_8_up .place_card_wrapper, .print_4_up .place_card_wrapper { 
+    #printsvg .up_8 .place_card_wrapper, #printsvg .up_4 .place_card_wrapper { 
       float:left; 
     }
-  .print_3_up { 
+  #print_svg .up_3 { 
     height:259.875mm;
     padding-top:37.125mm; 
     width:210mm;
   }
-    .print_3_up .place_card_wrapper {
+    #print_svg .up_3 .place_card_wrapper {
       float:none;
     }
-      .print_3_up .place_card_wrapper .place_card_container {
+      #print_svg .up_3 .place_card_wrapper .place_card_container {
         margin:0 auto;
         clear:both;
         float:none;

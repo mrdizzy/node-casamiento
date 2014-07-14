@@ -32,12 +32,8 @@ var PlaceCardView = GuestView.extend({
   },  
   calculateBaselineOffset: function() {
     var baseline = (this.model.get("baseline") /100) * this.presenter.height;
-    if(this.model.get("baseline") == 0) {
-      this.presenter.top_half_height = this.presenter.height / 2
-      this.presenter.bottom_half_height = this.presenter.height / 2
-    } 
-    this.presenter.top_half_height = (this.presenter.height / 2) * 1 + baseline;
-    this.presenter.bottom_half_height = (this.presenter.height / 2) * 1 - baseline;
+    this.presenter.top_half_height = (this.presenter.height / 2) + baseline;
+    this.presenter.bottom_half_height = (this.presenter.height / 2)  - baseline;
   },
   render: function() {   
     this.presenter = {
@@ -78,6 +74,29 @@ var PlaceCardView = GuestView.extend({
   }
 })
 
+var PlaceCardCollectionView = Backbone.View.extend({
+  render: function() {
+    var options = this.options;
+    var grouped_place_cards = inGroupsOf(thisProduct.get("guests").toArray(), options.per_page)
+    
+    grouped_place_cards.forEach(function(group) {
+      var $container = $('<div class="up_' + options.per_page + '"></div>"');
+      group.forEach(function(guest) {
+        var place_card = new PlaceCardView(_.extend({
+          model: guest,
+          font_adjust_buttons: options.font_adjust_buttons,
+        }, 
+        options)).render().el
+        $container.append(place_card)
+      })
+      $container.append("<div class='break'></div>")
+      this.$el.append($container)
+    }, this)
+      
+    return this;
+  }
+}) 
+
 var PrintControlPanelView = Backbone.View.extend({
   initialize: function() {
     this.layout = 8
@@ -103,55 +122,28 @@ var PrintControlPanelView = Backbone.View.extend({
       width:105,
       units: "mm"
     }).render().el;
-    var $wrapper = $('<div id="svg_print_wrapper"></div>').html(result)
-    $('body').html($wrapper)
+    $('#printsvg').html(result)
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif")
     window.print();
   },
   render: function() {
     var $template = $(Handlebars.template(templates["user_interface_for_print"])());         
     $template.find('#ui_font_picker').fontPicker({
-      fonts:casamiento_fonts, 
+      fonts: casamiento_fonts, 
       selected_font: thisProduct.get("font")
     })
     
-    var $print_view = $('<div class="ui_print_view"></div>');
     var place_cards = new PlaceCardCollectionView({
       per_page: this.layout,
       units: "px",
       width: ($(document).width() / 2.3),
       font_adjust_buttons: true      
     }).render().el
-    $print_view.html(place_cards)
     
     var width = ($(document).width() / 2.3)*2.01;
     
-    $template.find('#actual_cards').append($print_view)
-    $template.find('#actual_cards').width(width);
+    $template.find('#actual_cards').append(place_cards).width(width);
     this.$el.html($template)
     return this;
   }
 })
-
-var PlaceCardCollectionView = Backbone.View.extend({
-  render: function() {
-    var options = this.options;
-    var grouped_place_cards = inGroupsOf(thisProduct.get("guests").toArray(), options.per_page)
-    
-    grouped_place_cards.forEach(function(group) {
-      var $container = $('<div class="print_' + options.per_page + '_up"></div>"');
-      group.forEach(function(guest) {
-        var place_card = new PlaceCardView(_.extend({
-          model: guest,
-          font_adjust_buttons: options.font_adjust_buttons,
-        }, 
-        options)).render().el
-        $container.append(place_card)
-      })
-      $container.append("<div class='break'></div>")
-      this.$el.append($container)
-    }, this)
-      
-    return this;
-  }
-}) 
