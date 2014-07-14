@@ -19,20 +19,13 @@ var PlaceCardView = GuestView.extend({
     this.svg = this.options.svg
     this.height = this.options.height || 0.70714285714 * this.width; // 0.70714... is the ratio of 74.25mm to 105mm
     this.half_height = this.bottom_half_height = this.top_half_height = this.options.half_height || (this.height / 2);
-
   },
   events: {
     'click .plus_font': 'increaseFont',
     'click .minus_font': 'decreaseFont',
     'click .up_baseline': 'upBaseline',
     'click .down_baseline': 'downBaseline'
-  },  
-  renderFontFamily: function() {    
-    this.$('input').css('font-family', thisProduct.get("font"));
-  },
-  renderFontSize: function() {
-    this.$('input').css('font-size', this.calculateFontSize()+ this.units);
-  },
+  }, 
   calculateFontSize: function() {
     return this.width * this.model.get("font_size");    
   },
@@ -58,14 +51,19 @@ var PlaceCardView = GuestView.extend({
     this.$('.half').css("padding-top", this.top_half_height)
     this.$('.half').css("height", this.bottom_half_height)
   },
+  renderFontFamily: function() {    
+    this.$('input').css('font-family', thisProduct.get("font"));
+  },
+  renderFontSize: function() {
+    this.$('input').css('font-size', this.calculateFontSize()+ this.units);
+  },
   calculateBaselineOffset: function() {
     var baseline = (this.model.get("baseline") /100) * this.height;
     if(this.model.get("baseline") == 0) {
       this.top_half_height = this.bottom_half_height = this.half_height;
     } 
-      this.top_half_height = this.half_height * 1 + baseline;
-      this.bottom_half_height = this.half_height  * 1 - baseline;
-    
+    this.top_half_height = this.half_height * 1 + baseline;
+    this.bottom_half_height = this.half_height  * 1 - baseline;
   },
   render: function() {   
     this.calculateBaselineOffset();
@@ -135,7 +133,10 @@ var PrintUserInterfaceView = Backbone.View.extend({
   },
   // Create the SVG print view
   printPage: function(e) {
-    var result = new SVGPrintView({collection: thisProduct.get("guests"), layout: this.layout}).render().el;
+    var result = new SVGPrintView({
+      collection: thisProduct.get("guests"), 
+      layout: this.layout}
+    ).render().el;
     $('#printsvg').html(result)
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif")
     window.print();
@@ -150,7 +151,10 @@ var PrintUserInterfaceView = Backbone.View.extend({
   },
   render: function() {
     var $template = $(Handlebars.template(templates["user_interface_for_print"])());         
-    $template.find('#ui_font_picker').fontPicker({fonts:casamiento_fonts, selected_font: thisProduct.get("font")})
+    $template.find('#ui_font_picker').fontPicker({
+      fonts:casamiento_fonts, 
+      selected_font: thisProduct.get("font")
+    })
     
     var print_view = new UIPrintView({}).render().el;
     $template.find('#actual_cards').append(print_view)
@@ -167,11 +171,9 @@ var SVGPrintView = Backbone.View.extend({
     this.layout = this.options.layout;
   },
   render: function() {
-    var counter = 1;
     var grouped_place_cards = inGroupsOf(this.collection.toArray(), this.layout)
-    var place_cards = []
+    
     grouped_place_cards.forEach(function(group) {
-
       var $container = $('<div class="print_' + this.layout + '_up"></div>"');
       group.forEach(function(guest) {
         var place_card = new PlaceCardView({

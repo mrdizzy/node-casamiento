@@ -1,87 +1,33 @@
-// GUEST VIEW
-////////////////////////////////////////////////////////////////////////////// 
-var GuestView = Backbone.View.extend({  
-  events: {
-    "blur input": 'updateGuest',
-    'focus input': 'clearGuest'
-  },
-  clearGuest: function() {
-    if(!this.model.hasChanged("name")) 
-      this.$('input').val("")      
-  },
-  updateGuest: function() {
-    this.model.set("name", this.$('input').val())
-  },
-  render: function() { 
-    this.$el.html('<input type="text" name="guest" value="' + this.model.get("name") + '"></input>')
-    return this;
-  }
-})
-
 // 2D Bitmap View
 ////////////////////////////////////////////////////////////////////////////// 
-var DownloadView = Backbone.View.extend({
+var PreviewView = Backbone.View.extend({
   events: {
-    'click #print_button': 'printView',
+    'click #print_button': '_renderPrintView',
   },
-  printView: function() {
+  _renderPrintView: function() {
     var print_user_interface_view = new PrintUserInterfaceView({}).render().el
     $('body').html(print_user_interface_view)
     location.hash = "scroll_point"
   },  
   render: function() { 
-    if(!this.first_time) {
     var that = this;
-      var place_card_el = new PlaceCardView({
-        width: ($('#image_container').width() / 1.1125), 
-        model: thisProduct.get("guests").first(),
-        font_adjust_buttons: true
-      }).render().el;
-      
-      $('#image_container').fadeOut(function() { // hide 3D slides 
-        $('#preview').html(place_card_el).fadeIn(function() {
-          that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
-          that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
-        })
-        $('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
-      }); 
-      this.first_time = true;
-    }
+    var place_card_el = new PlaceCardView({
+      width: ($('#image_container').width() / 1.1125), 
+      model: thisProduct.get("guests").first(),
+      font_adjust_buttons: true
+    }).render().el;
+    
+    $('#image_container').fadeOut(function() { // hide 3D slides 
+      $('#preview').html(place_card_el).fadeIn(function() {
+        that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
+        that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
+      })
+      $('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
+    });
     return this;
   }
 })
 
-// COLOUR VIEW
-////////////////////////////////////////////////////////////////////////////// 
-var DOWNLOAD_VIEW_INACTIVE = true;
-var ColourView = Backbone.View.extend({ 
-  initialize: function() {
-    this.width = $('#steps').width();  
-  },
-  events: {
-    "dizzy-cp:hoverColor": "updateColour",
-    "dizzy-cp:click": "changeColour"
-  },
-  updateColour: function(e, colour) {
-    if(DOWNLOAD_VIEW_INACTIVE) {      
-      new DownloadView({el: '#product_container', model: thisProduct}).render();
-      DOWNLOAD_VIEW_INACTIVE = false;
-    }
-    this.changeColour(e, colour)
-  },
-  changeColour: function(e, colour) {  
-    $('.colour_' + this.options.colour_index).css("background-color", colour)
-    var colours = thisProduct.get("colours")
-    colours[this.options.colour_index] = colour
-    thisProduct.set("colours", colours)
-  },
-  render: function() {
-  var that = this;
-    this.$el.colorPicker({colours_per_page:12, default_color: thisProduct.get("colours")[this.options.colour_index], width:that.width});
-    return this;
-  }
-})
- 
 // STEP VIEW
 ////////////////////////////////////////////////////////////////////////////// 
 var StepView = Backbone.View.extend({ 
@@ -89,6 +35,8 @@ var StepView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(thisProduct, 'change:quantity', this.renderQtyAndPrice)
     this.listenTo(thisProduct, 'change:guests', this._renderGuests)
+    this.listenTo(thisProduct, 'change:colours', this._renderPreview)
+    this.listenTo(thisProduct, 'change:font', this._renderPreview)
   },
   events: {     
     "click #buy": "checkout",        
@@ -174,13 +122,22 @@ var StepView = Backbone.View.extend({
     }
     
     // Create font picker
-    $result.find('#fonts').fontPicker({fonts: casamiento_fonts, selected_font: thisProduct.get("font")});
+    $result.find('#fonts').fontPicker({
+      fonts: casamiento_fonts, 
+      selected_font: thisProduct.get("font")
+    });
     
     // Input fields for guests
     this._renderGuests($result.find('#guests'));
     
     this.$el.html($result)
     return this;
+  },  
+  _renderPreview: function() {
+    if(!this.DOWNLOAD_VIEW_ACTIVE) {      
+      new PreviewView({el: '#product_container', model: thisProduct}).render();
+      this.DOWNLOAD_VIEW_ACTIVE = true;
+    }  
   },
   _renderGuests: function($element) {
     var $element = $element || this.$('#guests')
@@ -191,3 +148,46 @@ var StepView = Backbone.View.extend({
     $element.html(guests_html);
   }
 })
+
+// COLOUR VIEW
+////////////////////////////////////////////////////////////////////////////// 
+var ColourView = Backbone.View.extend({ 
+  events: {
+    "dizzy-cp:hoverColor": "changeColour",
+    "dizzy-cp:click": "changeColour"
+  },
+  changeColour: function(e, colour) {  
+    $('.colour_' + this.options.colour_index).css("background-color", colour)
+    var colours = thisProduct.get("colours")
+    colours[this.options.colour_index] = colour
+    thisProduct.set("colours", colours).trigger("change:colours")
+  },
+  render: function() {
+    this.$el.colorPicker({
+      default_color: thisProduct.get("colours")[this.options.colour_index], 
+      width:$('#steps').width()
+    });
+    return this;
+  }
+})
+
+// GUEST VIEW
+////////////////////////////////////////////////////////////////////////////// 
+var GuestView = Backbone.View.extend({  
+  events: {
+    "blur input": 'updateGuest',
+    'focus input': 'clearGuest'
+  },
+  clearGuest: function() {
+    if(!this.model.hasChanged("name")) 
+      this.$('input').val("")      
+  },
+  updateGuest: function() {
+    this.model.set("name", this.$('input').val())
+  },
+  render: function() { 
+    this.$el.html('<input type="text" name="guest" value="' + this.model.get("name") + '"></input>')
+    return this;
+  }
+})
+
