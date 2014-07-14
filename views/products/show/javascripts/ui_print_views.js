@@ -104,7 +104,7 @@ var PrintControlPanelView = Backbone.View.extend({
       units: "mm"
     }).render().el;
     var $wrapper = $('<div id="svg_print_wrapper"></div>').html(result)
-    $('#printsvg').html($wrapper)
+    $('body').html($wrapper)
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif")
     window.print();
   },
