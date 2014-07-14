@@ -5,8 +5,8 @@ var PreviewView = Backbone.View.extend({
     'click #print_button': '_renderPrintView',
   },
   _renderPrintView: function() {
-    var print_user_interface_view = new PrintUserInterfaceView({}).render().el
-    $('body').html(print_user_interface_view)
+    var print_control_panel_view = new PrintControlPanelView({}).render().el
+    $('body').html(print_control_panel_view)
     location.hash = "scroll_point"
   },  
   render: function() { 
@@ -14,7 +14,8 @@ var PreviewView = Backbone.View.extend({
     var place_card_el = new PlaceCardView({
       width: ($('#image_container').width() / 1.1125), 
       model: thisProduct.get("guests").first(),
-      font_adjust_buttons: true
+      font_adjust_buttons: true,
+      units: "px"
     }).render().el;
     
     $('#image_container').fadeOut(function() { // hide 3D slides 

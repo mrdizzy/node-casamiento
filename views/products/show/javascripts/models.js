@@ -1,13 +1,17 @@
-////////////////////////////////////////////////////////////////
 var Guest = Backbone.Model.extend({
   defaults: {
     name: "Guest Name",
     baseline: 0,
-    font_size: object_fonts["<%= product.font %>"]
+    font_size: object_fonts["<%= product.font %>"],
+  },
+  upBaseline: function() {
+    this.set("baseline", (this.get("baseline") - 1))
+  },
+  downBaseline: function() {
+    this.set("baseline", (this.get("baseline") + 1))
   },
   adjustFontSize: function(amount) {
-    var new_size = amount * this.get("font_size");
-    this.set("font_size", new_size)
+    this.set("font_size", this.get("font_size") * amount)
   }
 })
  
