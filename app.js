@@ -21,13 +21,13 @@ var assetManagerGroups = {
         , 'dataType': 'css'
         // These files must be availble in the directory specified by path above
         // Make sure they are in the right order--stylesheets cascade! Reponsive last!
-        , 'files': [ 'color_picker.css', 'font_picker.css', 'main.css',  'product.css', 'responsive.css' ]
+        , 'files': [ 'new_color_picker.css', 'font_picker.css', 'main.css',  'product.css', 'responsive.css' ]
     },
     'js':
         { 'route': /\/static\/javascripts\/all\.js/
         , 'path': __dirname + '/public/javascripts/libraries/'
         , 'dataType': 'javascript'
-        , 'files': [ 'picturefill.min.js','in_groups_of.js', 'color_picker.js', 'font_picker.js','jquery_form.js' ]
+        , 'files': [ 'picturefill.min.js','in_groups_of.js', 'bew_color_picker.js', 'font_picker.js','jquery_form.js' ]
     },
     'adminjs': 
         {
