@@ -64,7 +64,8 @@
 .dizzycp-right_arrow { margin-right:50px;}
 .dizzycp-internal_wrapper{
   overflow-y: hidden;
-  overflow-x: scroll
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 .square { 
   float:left;

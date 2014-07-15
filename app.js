@@ -5,7 +5,7 @@ var express = require('express'),
   db = require('./config/db').test_ebay,
   exposeTemplates = require('./lib/middleware/expose_handlebars_to_client'),
   partials = require('express-partials'),
-  expressLayouts = require('express-ejs-layouts'),
+  expressLayouts = require('express-ejs-layouts');
   assetManager = require('connect-assetmanager');
   //Cacher = require("cacher"); 
     
