@@ -50,7 +50,7 @@ exports.create = function(req, response) {
   var woff_data = { name:"woff", "Content-Type":"application/font-woff"}
   var eot_data = { name: "eot", "Content-Type": "application/vnd.ms-fontobject"}
   var svg_data = { name: "svg", "Content-Type": "image/svg+xml"}
-  
+
   var readStreamWoff = fs.createReadStream(req.files.woff.path)  
   var readStreamEot = fs.createReadStream(req.files.eot.path)
   var readStreamSvg = fs.createReadStream(req.files.svg.path)
@@ -61,36 +61,17 @@ exports.create = function(req, response) {
     if(err) { 
       console.log(err)
     } else {
-      var writeStreamWoff = db.saveAttachment(res, woff_data, function(woff_error, woff_resp) {       
+    console.log(res)
+      db.saveAttachment(res, woff_data, function(woff_error, woff_resp) {       
         if(woff_error) {
           console.log("Error saving woff", woff_error)
         } else {
-        console.log("Uploaded WOFF")
-            var writeStreamEot = db.saveAttachment(woff_resp, eot_data, function(eot_error, eot_resp) {       
-              if(eot_error) {
-                console.log("Error saving eot" ,eot_error)
-              } else {
-              
-                console.log("Uploaded EOT")
-              
-               var writeStreamSvg = db.saveAttachment(eot_resp, svg_data, function(svg_error, svg_resp) {       
-                if(svg_error) {
-                  console.log("Error saving SVG")
-                } else {
-                console.log("Uploaded SVG")
-                  response.status(200)
-                  response.end()
-                }
-              })
-              
-      readStreamSvg.pipe(writeStreamSvg);
-              }
-            })
+          console.log("Uploaded WOFF")
             
-            readStreamEot.pipe(writeStreamEot);
         }
-      })
-      readStreamWoff.pipe(writeStreamWoff);      
+        console.log("saving woff")
+        //readStreamWoff.pipe(writeStreamWoff);      
+      }, readStreamWoff)
     }
   });
 }

@@ -97,16 +97,16 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
      colours[index] = colour;
      this.model.set("colours", colours).trigger("change:colours")
   },  
-  renderColours: function() {
-    this.$('.colour_0').css("background-color", this.model.get("colours")[0])       
-    this.$('.colour_1').css("background-color", this.model.get("colours")[1])
-  },    
   updateBackground: function(e) {  
     var $textarea = $(e.currentTarget),
       id = $textarea.data("id"),
       val = $textarea.val();
     this.model.set("background-" + id, val).trigger("change:background")
   },
+  renderColours: function() {
+    this.$('.colour_0').css("background-color", this.model.get("colours")[0])       
+    this.$('.colour_1').css("background-color", this.model.get("colours")[1])
+  },    
   renderBackground: function(e, f,g) {
     var changed_attributes = this.model.changedAttributes();
     for(var key in changed_attributes) {

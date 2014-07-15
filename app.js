@@ -1,15 +1,15 @@
 var express = require('express'),
   http = require('http'),
-  compression = require('compression'), // gzip compression for static files
+ // compression = require('compression'), // gzip compression for static files
   resource = require('express-resource'),
   db = require('./config/db').test_ebay,
   exposeTemplates = require('./lib/middleware/expose_handlebars_to_client'),
   partials = require('express-partials'),
   expressLayouts = require('express-ejs-layouts'),
-  assetManager = require('connect-assetmanager'),
-  Cacher = require("cacher"); 
+  assetManager = require('connect-assetmanager');
+  //Cacher = require("cacher"); 
     
-var cacher = new Cacher();
+//var cacher = new Cacher();
 var app = express();
 var dir = __dirname; // The name of the directory that the currently executing script resides in.
 
@@ -91,7 +91,7 @@ http.createServer(app).listen((process.env.PORT || 3000), function() {
 
 
 // Testing of node cacher
-cacher.on("hit", function(key) {
+/*cacher.on("hit", function(key) {
   console.log(key, "woohoo!")
 })
 cacher.on("miss", function(key) {
@@ -100,3 +100,4 @@ cacher.on("miss", function(key) {
 cacher.on("error", function(key) {
   console.log(err)
 })
+*/

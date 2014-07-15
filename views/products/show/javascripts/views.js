@@ -1,6 +1,9 @@
 // 2D Bitmap View
 ////////////////////////////////////////////////////////////////////////////// 
 var PreviewView = Backbone.View.extend({
+  initialize: function() {
+    $(window).on('resize', this.render)  
+  },
   events: {
     'click #print_button': '_renderPrintView',
   },
@@ -11,44 +14,42 @@ var PreviewView = Backbone.View.extend({
   },  
   render: function() { 
   var viewport = $(document).width();
-  var preview_place_card_width = ($('#image_container').width() / 1.1125);
+  var preview_place_card_width = ($('#ruler').width() / 1.1125);
   var preview_image_position = $('#product_container').offset()
+  
     // Fix the position of the preview image on "phablet" sized devices
     if(viewport > 500 && viewport < 801) {
-        
-        $('#preview').css({ position: "fixed", top: preview_image_position.top, left: preview_image_position.left})
-        mainRender();
+      $('#preview').css({ position: "fixed", top: preview_image_position.top, left: preview_image_position.left})
+      mainRender();
     } else if (viewport < 501) {
-    $('#preview').css({ position: "fixed", top: preview_image_position.top, left: preview_image_position.left})
-         var preview_height = 0.7071428571 * preview_place_card_width;
-         $('.right_column').css("padding-top", preview_height)
-        $('#page_container').fadeOut(250, function() {
-         
-         
-            mainRender();
-            
-            location.hash = "mobile_scroll";
-            $('#page_container').fadeIn(1250)
-        });
-        
-    } else {
+      $('#preview').css({ position: "fixed", top: preview_image_position.top, left: preview_image_position.left})
+      var preview_height = 0.7071428571 * preview_place_card_width;
+      $('.right_column').css("padding-top", preview_height)
+      $('#page_container').fadeOut(250, function() {
         mainRender();
+            
+        location.hash = "mobile_scroll";
+        $('#page_container').fadeIn(1250)
+      });  
+    } else {
+      mainRender();
     }
     var that = this;
     function mainRender() {
-    var place_card_el = new PlaceCardView({
-      width: preview_place_card_width, 
-      model: thisProduct.get("guests").first(),
-      font_adjust_buttons: true
-    }).render().el;
-    
-    $('#image_container').fadeOut(function() { // hide 3D slides 
-      $('#preview').html(place_card_el).fadeIn(function() {
-        that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
-        that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
-      })
-      //$('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
-    });
+    alert("rendering" + preview_place_card_width)
+      var place_card_el = new PlaceCardView({
+        width: preview_place_card_width, 
+        model: thisProduct.get("guests").first(),
+        font_adjust_buttons: true
+      }).render().el;
+      
+      $('#image_container').fadeOut(function() { // hide 3D slides 
+        $('#preview').html(place_card_el).fadeIn(function() {
+          that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
+          that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
+        })
+        //$('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
+      });
     }
     return this;
   }

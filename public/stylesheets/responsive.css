@@ -101,8 +101,12 @@
       clear:both;
     }
     
-    .svg_parent { width:85%; }
     .slide { width:100%;}
+    
+    #preview {
+      border-bottom:1px solid black;
+    } 
+    
     
     #description_container { float:none;width:90%;margin:0 auto;}
     
