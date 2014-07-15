@@ -8,6 +8,10 @@
   #image_container .product_type_icon {
       display:none;
   }
+  #preview {
+      z-index:9999999999999999999999999999999999999999999999999;
+      background-color:white;
+  }
   #slide1, #slide3 { 
     display:block; 
     float:left;

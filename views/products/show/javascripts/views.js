@@ -10,14 +10,34 @@ var PreviewView = Backbone.View.extend({
     location.hash = "scroll_point"
   },  
   render: function() { 
+  var viewport = $(document).width();
+  var preview_place_card_width = ($('#image_container').width() / 1.1125);
+  var preview_image_position = $('#product_container').offset()
     // Fix the position of the preview image on "phablet" sized devices
-    if($(document).width() > 500 && $(document).width() < 801) {
-        var preview_image_position = $('#product_container').offset()
+    if(viewport > 500 && viewport < 801) {
+        
         $('#preview').css({ position: "fixed", top: preview_image_position.top, left: preview_image_position.left})
+        mainRender();
+    } else if (viewport < 501) {
+    $('#preview').css({ position: "fixed", top: preview_image_position.top, left: preview_image_position.left})
+         var preview_height = 0.7071428571 * preview_place_card_width;
+         $('.right_column').css("padding-top", preview_height)
+        $('#page_container').fadeOut(250, function() {
+         
+         
+            mainRender();
+            
+            location.hash = "mobile_scroll";
+            $('#page_container').fadeIn(1250)
+        });
+        
+    } else {
+        mainRender();
     }
     var that = this;
+    function mainRender() {
     var place_card_el = new PlaceCardView({
-      width: ($('#image_container').width() / 1.1125), 
+      width: preview_place_card_width, 
       model: thisProduct.get("guests").first(),
       font_adjust_buttons: true
     }).render().el;
@@ -27,8 +47,9 @@ var PreviewView = Backbone.View.extend({
         that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
         that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
       })
-      $('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
+      //$('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
     });
+    }
     return this;
   }
 })
