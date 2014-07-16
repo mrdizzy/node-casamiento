@@ -9,6 +9,9 @@ var PlaceCardView = GuestView.extend({
     this.listenTo(this.model, 'change:font_size', this._renderFontSize) 
     this.listenTo(this.model, 'change:baseline', this._renderBaseline)
   },  
+  updateWidth: function(new_width) {
+    this.options.width = new_width;  
+  },
   events: {
     'click .plus_font': 'increaseFont',
     'click .minus_font': 'decreaseFont',

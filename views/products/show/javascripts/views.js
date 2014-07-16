@@ -2,7 +2,8 @@
 ////////////////////////////////////////////////////////////////////////////// 
 var PreviewView = Backbone.View.extend({
   initialize: function() {
-    $(window).on('resize', this.render)  
+    this.first_time = true;
+    $(window).bind("resize", _.bind(this.render, this));
   },
   events: {
     'click #print_button': '_renderPrintView',
@@ -13,6 +14,8 @@ var PreviewView = Backbone.View.extend({
     location.hash = "scroll_point"
   },  
   render: function() { 
+  
+    var that = this;
   var viewport = $(document).width();
   var preview_place_card_width = ($('#ruler').width() / 1.1125);
   var preview_image_position = $('#product_container').offset()
@@ -34,22 +37,33 @@ var PreviewView = Backbone.View.extend({
     } else {
       mainRender();
     }
-    var that = this;
+    console.log(this)
+    
     function mainRender() {
+    console.log(that)
+    if(that.first_time) {
+    
+      that.first_time = false;
     alert("rendering" + preview_place_card_width)
-      var place_card_el = new PlaceCardView({
+      that.place_card_el = new PlaceCardView({
         width: preview_place_card_width, 
         model: thisProduct.get("guests").first(),
         font_adjust_buttons: true
-      }).render().el;
+      })
+      console.log(that.place_card_el)
       
       $('#image_container').fadeOut(function() { // hide 3D slides 
-        $('#preview').html(place_card_el).fadeIn(function() {
+      
+        $('#preview').html(that.place_card_el.render().el).fadeIn(function() {
           that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
           that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
         })
-        //$('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
+        $('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
       });
+      } else {
+      console.log("Updating", that.place_card_el)
+          that.place_card_el.updateWidth(preview_place_card_width);
+          that.place_card_el.render();        }
     }
     return this;
   }
