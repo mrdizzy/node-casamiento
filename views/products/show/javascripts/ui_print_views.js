@@ -9,9 +9,6 @@ var PlaceCardView = GuestView.extend({
     this.listenTo(this.model, 'change:font_size', this._renderFontSize) 
     this.listenTo(this.model, 'change:baseline', this._renderBaseline)
   },  
-  updateWidth: function(new_width) {
-    this.options.width = new_width;  
-  },
   events: {
     'click .plus_font': 'increaseFont',
     'click .minus_font': 'decreaseFont',
@@ -20,6 +17,19 @@ var PlaceCardView = GuestView.extend({
     "blur input": 'updateGuest',
     'focus input': 'clearGuest'
   }, 
+  
+  updateWidth: function(new_width) {
+    this.presenter.width = new_width;  
+    this.presenter.height = (0.7071428571 * new_width)
+    this._renderBaseline();
+    this._renderFontSize();
+    this.$('.place_card_container').width(this.presenter.width).height(this.presenter.height);
+    this.$('img').css("width", this.presenter.width).css("height", this.presenter.height)
+
+    
+    this.$('.background_wrapper').css("width", this.presenter.width).css("height", this.presenter.height)
+    this.$('input').width(this.presenter.width)
+  },
   increaseFont: function() {
     this.model.adjustFontSize(1.05) // percentage increase
   },

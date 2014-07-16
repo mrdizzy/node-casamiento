@@ -63,7 +63,7 @@ var PreviewView = Backbone.View.extend({
       } else {
       console.log("Updating", that.place_card_el)
           that.place_card_el.updateWidth(preview_place_card_width);
-          that.place_card_el.render();        }
+       }
     }
     return this;
   }
