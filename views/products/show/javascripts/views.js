@@ -14,11 +14,10 @@ var PreviewView = Backbone.View.extend({
     location.hash = "scroll_point"
   },  
   render: function() { 
-  
     var that = this;
-  var viewport = $(document).width();
-  var preview_place_card_width = ($('#ruler').width() / 1.1125);
-  var preview_image_position = $('#product_container').offset()
+    var viewport = $(document).width();
+    var preview_place_card_width = ($('#ruler').width() / 1.1125);
+    var preview_image_position = $('#product_container').offset()
   
     // Fix the position of the preview image on "phablet" sized devices
     if(viewport > 500 && viewport < 801) {
@@ -35,22 +34,19 @@ var PreviewView = Backbone.View.extend({
         $('#page_container').fadeIn(1250)
       });  
     } else {
+     $('#preview').css({ position: "static"})
       mainRender();
     }
-    console.log(this)
-    
+    // We only render the view once, otherwis we update it
     function mainRender() {
-    console.log(that)
     if(that.first_time) {
     
       that.first_time = false;
-    alert("rendering" + preview_place_card_width)
       that.place_card_el = new PlaceCardView({
         width: preview_place_card_width, 
         model: thisProduct.get("guests").first(),
         font_adjust_buttons: true
       })
-      console.log(that.place_card_el)
       
       $('#image_container').fadeOut(function() { // hide 3D slides 
       
@@ -61,7 +57,6 @@ var PreviewView = Backbone.View.extend({
         $('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
       });
       } else {
-      console.log("Updating", that.place_card_el)
           that.place_card_el.updateWidth(preview_place_card_width);
        }
     }
