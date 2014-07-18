@@ -1,8 +1,7 @@
-// 2D Bitmap View
+// 2D Bitmap Preview View
 ////////////////////////////////////////////////////////////////////////////// 
 var PreviewView = Backbone.View.extend({
   initialize: function() {
-    this.first_time = true;
     $(window).bind("resize", _.bind(this.render, this));
   },
   events: {
@@ -11,39 +10,45 @@ var PreviewView = Backbone.View.extend({
   _renderPrintView: function() {
     var print_control_panel_view = new PrintControlPanelView({}).render().el
     $('body').html(print_control_panel_view)
-    location.hash = "scroll_point"
+    location.hash = "scroll_point" // Positions us at the top of the page
   },  
   render: function() { 
-    var that = this;
-    var viewport = $(document).width();
-    var preview_place_card_width = ($('#ruler').width() / 1.1125);
-    var preview_image_position = $('#product_container').offset()
+    this.viewport = $(document).width();
+    this.preview_place_card_width = ($('#ruler').width() / 1.1125);
+    this.preview_image_position = $('#product_container').offset()
   
+    if(this.viewport > 500 && this.viewport < 801) {
+      this._renderPhablet()
+    } else if (this.viewport < 501) {
+      this._renderSmartphone()      
+    } else {
+      this._renderPage();
+    }
+    return this;
+  },
+    _renderPhablet: function() {  
     // Fix the position of the preview image on "phablet" sized devices
-    if(viewport > 500 && viewport < 801) {
-      $('#preview').css({ position: "fixed", top: preview_image_position.top, left: preview_image_position.left})
-      mainRender();
-    } else if (viewport < 501) {
-      $('#preview').css({ position: "fixed", top: preview_image_position.top, left: preview_image_position.left})
-      var preview_height = 0.7071428571 * preview_place_card_width;
+    $('#preview').css({ top: this.preview_image_position.top, left: this.preview_image_position.left})
+    this._renderPage();
+  },  
+  _renderSmartphone: function(){
+    var that = this;
+    $('#preview').css({ top: this.preview_image_position.top, left: this.preview_image_position.left})
+      var preview_height = (0.7071428571 * this.preview_place_card_width);
       $('.right_column').css("padding-top", preview_height)
       $('#page_container').fadeOut(250, function() {
-        mainRender();
-            
+        that._renderPage();
         location.hash = "mobile_scroll";
         $('#page_container').fadeIn(1250)
       });  
-    } else {
-     $('#preview').css({ position: "static"})
-      mainRender();
-    }
-    // We only render the view once, otherwis we update it
-    function mainRender() {
-    if(that.first_time) {
-    
-      that.first_time = false;
-      that.place_card_el = new PlaceCardView({
-        width: preview_place_card_width, 
+  },
+  _renderPage: function() {
+    var that = this;
+    // We only render the view once, otherwise we update it
+    if(!this.already_rendered) {
+      this.already_rendered = true;
+      this.place_card_el = new PlaceCardView({
+        width: this.preview_place_card_width, 
         model: thisProduct.get("guests").first(),
         font_adjust_buttons: true
       })
@@ -56,11 +61,9 @@ var PreviewView = Backbone.View.extend({
         })
         $('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
       });
-      } else {
-          that.place_card_el.updateWidth(preview_place_card_width);
-       }
+    } else {
+      this.place_card_el.updateWidth(this.preview_place_card_width);
     }
-    return this;
   }
 })
 

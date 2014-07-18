@@ -138,6 +138,13 @@ input {
       padding:1em;      
       width:202px;
     }
+    #menu_lines {
+      float:right;
+      margin-right:20px;
+      width:20px;
+      padding-top:10px;
+      display:none;
+    }
     #slogan_container { height:50px;float:left;border-top:1px dashed grey;border-bottom:1px solid black;width:25%;text-align:center;}
     
     #dreams_slogan { 
