@@ -13,17 +13,34 @@ var PreviewView = Backbone.View.extend({
     location.hash = "scroll_point" // Positions us at the top of the page
   },  
   render: function() { 
-    this.viewport = $(document).width();
-    this.preview_place_card_width = ($('#ruler').width() / 1.1125);
-    this.preview_image_position = $('#product_container').offset()
+  var that = this;
+    if(!this.already_rendered) {
+      this.already_rendered = true;
+      this.place_card_el = new PlaceCardView({
+        model: thisProduct.get("guests").first()
+      })
+      
+      $('#image_container').fadeOut(function() { // hide 3D slides 
+      
+        $('#preview').html(that.place_card_el.render().el).fadeIn(function() {
+          that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
+          that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
+        })
+        $('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
+      })
+     
+      }
+   // this.viewport = $(document).width();
+    //this.preview_place_card_width = ($('#ruler').width() / 1.1125);
+    //this.preview_image_position = $('#product_container').offset()
   
-    if(this.viewport > 500 && this.viewport < 801) {
-      this._renderPhablet()
-    } else if (this.viewport < 501) {
-      this._renderSmartphone()      
-    } else {
-      this._renderPage();
-    }
+   //if(this.viewport > 500 && this.viewport < 801) {
+   //  this._renderPhablet()
+   //} else if (this.viewport < 501) {
+   //  this._renderSmartphone()      
+   //} else {
+   //  this._renderPage();
+   //}
     return this;
   },
     _renderPhablet: function() {  

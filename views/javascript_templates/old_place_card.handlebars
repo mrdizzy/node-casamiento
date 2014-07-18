@@ -1,0 +1,39 @@
+{{#unless svg}}
+  
+  <div class="font_baseline_adjust_buttons">
+    <div class="up_baseline deselected">&#9650</div>
+    <div class="down_baseline deselected">&#9660</div>
+  </div>
+  
+  <div class="font_size_adjust_buttons">
+    <div class="plus_font deselected">+</div>
+    <div class="minus_font deselected">-</div>
+  </div>
+  
+{{/unless}}
+
+<div class="place_card_container" style="position:relative;width:{{width}}px;height:{{height}}px">
+
+  {{#if svg}}
+    <img src="/svg/{{product}}/{{hex}}" style="z-index:200;position:absolute;display:block;width:{{width}}px;height:{{height}};" />  
+  {{/if}}
+  
+  {{#unless svg}}
+    <div class="background_image_wrapper" style="position: absolute;z-index:100;width:{{width}}px;height:{{height}}px;">
+      {{#if background}}
+        <div class="background_wrapper colour_0" style="position:absolute;width:{{width}}px;height:{{height}}px">
+          {{{background}}}
+        </div>
+        <img src="http://www.casamiento.co.uk/products/damask-name_place/attachments/display-5" class="preview_image" style="width:{{width}}px;height:{{height}}px;display:block;position:relative;z-index:200;">
+      {{/if}}
+      
+      {{#unless background}}    
+        <img src="http://www.casamiento.co.uk/products/{{product}}/attachments/display-5" class="colour_0 preview_image" style="width:{{width}}px;height:{{height}}px;display:block;position:relative;z-index:200;">
+      {{/unless}}
+      
+    </div>
+  {{/unless}}
+  
+  <input class="half" type="text" style="width:{{width}}px;padding-top:{{top_half_height}}px;height:{{bottom_half_height}}px;font-size:{{font_size}}px;font-family:{{font_family}};" value="{{name}}"></input>
+       
+</div>

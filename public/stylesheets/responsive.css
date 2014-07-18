@@ -145,7 +145,7 @@
     float:none;
     clear:both;
   }
-  #preview { position:fixed;}
+  #preview { }
   #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { 
     width:100%;
     float:none;

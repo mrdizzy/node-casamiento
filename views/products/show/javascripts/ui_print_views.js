@@ -3,7 +3,7 @@
 // This allows us to make sure that when the font size is changed
 // it remains consistent relative to its container 
 var PlaceCardView = GuestView.extend({
-  className: 'place_card_wrapper',
+  className: 'place_card_view',
   initialize: function() {
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily) 
     this.listenTo(this.model, 'change:font_size', this._renderFontSize) 
@@ -17,19 +17,6 @@ var PlaceCardView = GuestView.extend({
     "blur input": 'updateGuest',
     'focus input': 'clearGuest'
   }, 
-  
-  updateWidth: function(new_width) {
-    this.presenter.width = new_width;  
-    this.presenter.height = (0.7071428571 * new_width)
-    this._renderBaseline();
-    this._renderFontSize();
-    this.$('.place_card_container').width(this.presenter.width).height(this.presenter.height);
-    this.$('img').css("width", this.presenter.width).css("height", this.presenter.height)
-
-    
-    this.$('.background_wrapper').css("width", this.presenter.width).css("height", this.presenter.height)
-    this.$('input').width(this.presenter.width)
-  },
   increaseFont: function() {
     this.model.adjustFontSize(1.05) // percentage increase
   },
@@ -57,12 +44,7 @@ var PlaceCardView = GuestView.extend({
       hex: thisProduct.hex(),
       product: thisProduct.get("_id"),
       name: this.model.get("name"),
-      height: (0.7071428571 * this.options.width) // 0.70714... is the ratio of 74.25mm to 105mm
     }
-    // Copy options over to presenter
-    this.presenter = _.extend(this.presenter, this.options)
-    this.calculateBaselineOffset();
-    this.calculateFontSize();
   
     var compiled_template = Handlebars.template(templates["place_card"]);
     var $template = $(compiled_template(this.presenter));
