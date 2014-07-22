@@ -1,9 +1,6 @@
 // 2D Bitmap Preview View
 ////////////////////////////////////////////////////////////////////////////// 
 var PreviewView = Backbone.View.extend({
-  initialize: function() {
-    $(window).bind("resize", _.bind(this.render, this));
-  },
   events: {
     'click #print_button': '_renderPrintView',
   },
@@ -13,7 +10,7 @@ var PreviewView = Backbone.View.extend({
     location.hash = "scroll_point" // Positions us at the top of the page
   },  
   render: function() { 
-  var that = this;
+    var that = this;
     if(!this.already_rendered) {
       this.already_rendered = true;
       this.place_card_el = new PlaceCardView({
@@ -28,59 +25,8 @@ var PreviewView = Backbone.View.extend({
         })
         $('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
       })
-     
-      }
-   // this.viewport = $(document).width();
-    //this.preview_place_card_width = ($('#ruler').width() / 1.1125);
-    //this.preview_image_position = $('#product_container').offset()
-  
-   //if(this.viewport > 500 && this.viewport < 801) {
-   //  this._renderPhablet()
-   //} else if (this.viewport < 501) {
-   //  this._renderSmartphone()      
-   //} else {
-   //  this._renderPage();
-   //}
-    return this;
-  },
-    _renderPhablet: function() {  
-    // Fix the position of the preview image on "phablet" sized devices
-    $('#preview').css({ top: this.preview_image_position.top, left: this.preview_image_position.left})
-    this._renderPage();
-  },  
-  _renderSmartphone: function(){
-    var that = this;
-    $('#preview').css({ top: this.preview_image_position.top, left: this.preview_image_position.left})
-      var preview_height = (0.7071428571 * this.preview_place_card_width);
-      $('.right_column').css("padding-top", preview_height)
-      $('#page_container').fadeOut(250, function() {
-        that._renderPage();
-        location.hash = "mobile_scroll";
-        $('#page_container').fadeIn(1250)
-      });  
-  },
-  _renderPage: function() {
-    var that = this;
-    // We only render the view once, otherwise we update it
-    if(!this.already_rendered) {
-      this.already_rendered = true;
-      this.place_card_el = new PlaceCardView({
-        width: this.preview_place_card_width, 
-        model: thisProduct.get("guests").first(),
-        font_adjust_buttons: true
-      })
-      
-      $('#image_container').fadeOut(function() { // hide 3D slides 
-      
-        $('#preview').html(that.place_card_el.render().el).fadeIn(function() {
-          that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
-          that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
-        })
-        $('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
-      });
-    } else {
-      this.place_card_el.updateWidth(this.preview_place_card_width);
     }
+    return this;
   }
 })
 

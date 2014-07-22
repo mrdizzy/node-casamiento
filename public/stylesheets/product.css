@@ -168,17 +168,6 @@
         padding-left:10px;
         padding-right:10px;
       }
-      
-      .minus_font, .plus_font, .up_baseline, .down_baseline {
-        background-color:white;
-        border-radius:5px;
-        border: 1px solid black;
-        display:inline-block;
-        font: normal 200% 'OS Light';
-        
-        margin-bottom:5px;
-        width:100%;
-      }
 
       #qty { 
         color:black; 
@@ -199,9 +188,52 @@
 /* PLACE CARDS 
 ======================== */
 .place_card_view {
-    width:90%;
+    width:95%;
+    position:relative;
     margin:0 auto;
 }
+  #product_container .place_card_view {
+    float:right;
+  }
+  
+  .font_size_adjust_buttons, .font_baseline_adjust_buttons { 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor:pointer;
+    bottom:10%;
+    z-index:99999999999999999999999999999999999999999999999999999999999999999999999;    
+    position:absolute;
+    width:9%;
+    text-align:center;
+  }
+    .font_baseline_adjust_buttons {
+      top:10%;   
+    }
+    
+      .minus_font, .plus_font, .up_baseline, .down_baseline {
+        background-color:white;
+        opacity:1;
+        color:grey;
+        border-radius:5px;
+        border: 1px solid grey;
+        display:inline-block;
+        font: normal 200% 'OS Light';        
+        margin-bottom:5px;
+        width:100%;
+      }
+      
+    .place_card_view:nth-child(odd) .font_size_adjust_buttons, .place_card_view:nth-child(odd) .font_baseline_adjust_buttons{
+      left:-2%;
+    }
+      
+        .place_card_view:nth-child(even) .font_size_adjust_buttons, .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
+      right:-2%;
+    }
+      
 .place_card_wrapper {
     position: relative;
     width: 100%;
@@ -209,7 +241,8 @@
     padding-bottom: 70.714285714285714285714285714286%;
 }
 .place_card_wrapper img { 
-top:0;left:0;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
   position:absolute;
@@ -223,7 +256,7 @@ top:0;left:0;
   }
   
   .guest_wrapper {
-  width:100%;position:absolute;height:100%;z-index:1001
+    width:100%;position:absolute;height:100%;z-index:1001
   }
   input {
     padding:0;
@@ -290,41 +323,21 @@ top:0;left:0;
 
 #actual_cards { 
   margin:0 auto;
+  width:90%;
   margin-top:140px;
 }
-    .font_size_adjust_buttons, .font_baseline_adjust_buttons {
-    
-  -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor:pointer;
-      bottom:10%; 
-      display:inline-block;
-      position:absolute;
-      width:10%;
-      text-align:center;
-    }
-    .font_baseline_adjust_buttons {
-      top:10%;   
-    }
-    
-    .place_card_wrapper:nth-child(odd) .font_size_adjust_buttons, .place_card_wrapper:nth-child(odd) .font_baseline_adjust_buttons{
-      left:-11%;
-    }
-      
-        .place_card_wrapper:nth-child(even) .font_size_adjust_buttons, .place_card_wrapper:nth-child(even) .font_baseline_adjust_buttons {
-      right:-11%;
-    }
-  //.place_card_container { float:right;}
+
+#actual_cards .place_card_view {
+    width:50%;
+    float:left;
+}
+  /*.place_card_container { float:right;}
 
   .up_8 .place_card_wrapper { float:left; }
   
   .up_3 .place_card_wrapper {
     float:none;
-  }
+  }*/
   
 /* HIDDEN DIVS FOR PRINT
 ==================================== */  

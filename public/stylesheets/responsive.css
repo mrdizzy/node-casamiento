@@ -110,8 +110,10 @@
   .slide { width:100%;}
   
   #preview {
+  width:100%;
+  position:fixed;
     border-bottom:1px solid black;
-    position:fixed;
+    
   } 
   
   #description_container { float:none;width:90%;margin:0 auto;}
@@ -121,6 +123,10 @@
   
   #second_product_type_icon { display:none;}
   #print_button { display:none;}
+  #actual_cards .place_card_view {
+    width:100%;
+    float:none;
+}
 }
   
   /* PHABLET */
@@ -136,7 +142,10 @@
   }
   
   .chat-bubble { left:3em;}
-  .left_column { width:60% }
+  .left_column { 
+    width:60%; 
+    position:fixed;
+  }
   .right_column { margin-left:60%;}
   .chat-bubble { display:block;}
   
@@ -145,7 +154,6 @@
     float:none;
     clear:both;
   }
-  #preview { }
   #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { 
     width:100%;
     float:none;

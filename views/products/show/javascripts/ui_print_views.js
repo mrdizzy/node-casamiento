@@ -130,12 +130,9 @@ var PrintControlPanelView = Backbone.View.extend({
     
     var place_cards = new PlaceCardCollectionView({
       per_page: this.layout,
-      width: ($(document).width() / 2.3),
     }).render().el
     
-    var width = ($(document).width() / 2.3)*2.01;
-    
-    $template.find('#actual_cards').append(place_cards).width(width);
+    $template.find('#actual_cards').append(place_cards)
     this.$el.html($template)
     return this;
   }

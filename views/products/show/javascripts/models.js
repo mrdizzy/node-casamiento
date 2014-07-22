@@ -41,7 +41,7 @@ var Product = Backbone.Model.extend({
   },
   hex: function() {
     if(this.get("colours").length == 2) {
-        return(this.get("colours")[0].substring(1) + "_" + thisProduct.get("colours")[1].substring(1));
+      return(this.get("colours")[0].substring(1) + "_" + thisProduct.get("colours")[1].substring(1));
     }
     return(this.get("colours")[0].substring(1))
   },
