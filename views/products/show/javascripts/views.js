@@ -7,7 +7,7 @@ var PreviewView = Backbone.View.extend({
   _renderPrintView: function() {
     var print_control_panel_view = new PrintControlPanelView({}).render().el
     $('body').html(print_control_panel_view)
-    location.hash = "scroll_point" // Positions us at the top of the page
+    location.hash = "top_of_page" // Positions us at the top of the page
   },  
   render: function() { 
     var that = this;

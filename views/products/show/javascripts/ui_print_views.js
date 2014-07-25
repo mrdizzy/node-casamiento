@@ -37,17 +37,15 @@ var PlaceCardView = GuestView.extend({
     this.presenter.top_half_height = (this.presenter.height / 2) + baseline;
     this.presenter.bottom_half_height = (this.presenter.height / 2)  - baseline;
   },
-  render: function() {   
-    this.presenter = {
+  render: function() {     
+    var compiled_template = Handlebars.template(templates["place_card"]);
+    var $template = $(compiled_template({
       font_family: thisProduct.get("font"),   
-      background: thisProduct.get("background-5"),    
-      hex: thisProduct.hex(),
+      background: thisProduct.get("background-5"),  
+      svg: this.options.svg,
       product: thisProduct.get("_id"),
       name: this.model.get("name"),
-    }
-  
-    var compiled_template = Handlebars.template(templates["place_card"]);
-    var $template = $(compiled_template(this.presenter));
+    }));
   
     var colours = thisProduct.get("colours");
   
@@ -74,13 +72,15 @@ var PlaceCardView = GuestView.extend({
 var PlaceCardCollectionView = Backbone.View.extend({
   render: function() {
     var options = this.options;
+    console.log("SVG", options.svg)
     var grouped_place_cards = inGroupsOf(thisProduct.get("guests").toArray(), options.per_page)
     
     grouped_place_cards.forEach(function(group) {
       var $container = $('<div class="up_' + options.per_page + '"></div>"');
       group.forEach(function(guest) {
         var place_card = new PlaceCardView(_.extend({
-          model: guest
+          model: guest,
+          svg: options.svg
         }, 
         options)).render().el
         $container.append(place_card)
@@ -114,12 +114,22 @@ var PrintControlPanelView = Backbone.View.extend({
   printPage: function(e) {
     var result = new PlaceCardCollectionView({
       per_page: this.layout,
-      svg: true,
-      width:(105 * 3.779527559) // convert 105mm to pixels
+      svg: true
     }).render().el;
-    $('#printsvg').html(result)
-    $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif")
-    window.print();
+    $('#printsvg').html(result);    
+    $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
+    
+    var images  = this.$('#printsvg img'),
+      counter = images.length,
+      svg_url = thisProduct.get("_id") + "/" + thisProduct.hex();
+      
+    images.attr('src', "/svg/" + svg_url).load(function() {
+      counter--;
+      if(counter == 0) {      
+        window.print()        
+        $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
+      }
+    })
   },
   render: function() {
     var $template = $(Handlebars.template(templates["user_interface_for_print"])());         
