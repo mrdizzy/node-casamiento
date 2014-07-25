@@ -7,6 +7,8 @@ var PreviewView = Backbone.View.extend({
   _renderPrintView: function() {
     var print_control_panel_view = new PrintControlPanelView({}).render().el
     $('body').html(print_control_panel_view)
+    
+    thisProduct.trigger("render:font")
     location.hash = "top_of_page" // Positions us at the top of the page
   },  
   render: function() { 
@@ -14,7 +16,7 @@ var PreviewView = Backbone.View.extend({
     if(!this.already_rendered) {
       this.already_rendered = true;
       this.place_card_el = new PlaceCardView({
-        model: thisProduct.get("guests").first()
+        model: thisProduct.get("guests").first(), 
       })
       
       $('#image_container').fadeOut(function() { // hide 3D slides 
@@ -22,6 +24,7 @@ var PreviewView = Backbone.View.extend({
         $('#preview').html(that.place_card_el.render().el).fadeIn(function() {
           that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
           that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
+          thisProduct.trigger("render:font")
         })
         $('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
       })

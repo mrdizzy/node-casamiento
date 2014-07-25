@@ -5,6 +5,7 @@
 var PlaceCardView = GuestView.extend({
   className: 'place_card_view',
   initialize: function() {
+    this.listenTo(thisProduct, 'render:font', this._renderFontSize)
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily) 
     this.listenTo(this.model, 'change:font_size', this._renderFontSize) 
     this.listenTo(this.model, 'change:baseline', this._renderBaseline)
@@ -30,7 +31,8 @@ var PlaceCardView = GuestView.extend({
     this.model.downBaseline();
   },  
   calculateFontSize: function() {
-    this.presenter.font_size = this.presenter.width * this.model.get("font_size");
+  console.log(this.$el.width())
+    this.font_size = this.$el.width() * this.model.get("font_size");
   },  
   calculateBaselineOffset: function() {
     var baseline = (this.model.get("baseline") /100) * this.presenter.height;
@@ -65,14 +67,13 @@ var PlaceCardView = GuestView.extend({
   },
   _renderFontSize: function() {
     this.calculateFontSize();
-    this.$('input').css('font-size', this.presenter.font_size + "px");
+    this.$('input').css('font-size', this.font_size);
   }
 })
 
 var PlaceCardCollectionView = Backbone.View.extend({
   render: function() {
     var options = this.options;
-    console.log("SVG", options.svg)
     var grouped_place_cards = inGroupsOf(thisProduct.get("guests").toArray(), options.per_page)
     
     grouped_place_cards.forEach(function(group) {
@@ -117,8 +118,11 @@ var PrintControlPanelView = Backbone.View.extend({
       svg: true
     }).render().el;
     $('#printsvg').html(result);    
+    
+    thisProduct.trigger("render:font")
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
     
+    // Wait for SVG images to be loaded before printing
     var images  = this.$('#printsvg img'),
       counter = images.length,
       svg_url = thisProduct.get("_id") + "/" + thisProduct.hex();
