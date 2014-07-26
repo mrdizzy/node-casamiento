@@ -36,9 +36,10 @@ var PlaceCardView = GuestView.extend({
     this.font_size = width * this.model.get("font_size");
   },  
   calculateBaselineOffset: function() {
-    var baseline = (this.model.get("baseline") /100) * this.presenter.height;
-    this.presenter.top_half_height = (this.presenter.height / 2) + baseline;
-    this.presenter.bottom_half_height = (this.presenter.height / 2)  - baseline;
+    var height = this.options.svg ? 74.25 : this.$el.height();
+    var baseline = (this.model.get("baseline") /100) * height;
+    this.top_half_height = (height / 2) + baseline;
+    this.bottom_half_height = (height / 2)  - baseline;
   },
   render: function() {     
     var compiled_template = Handlebars.template(templates["place_card"]);
@@ -62,13 +63,15 @@ var PlaceCardView = GuestView.extend({
     this.$('input').css('font-family', thisProduct.get("font"));
   },
   _renderBaseline: function() {
+  var units = this.options.svg ? "mm" : "px"
     this.calculateBaselineOffset();
-    this.$('.half').css("padding-top", this.presenter.top_half_height)
-    this.$('.half').css("height", this.presenter.bottom_half_height)
+    this.$('.spacer').css("height", this.top_half_height + units)
+    this.$('input').css("height", this.bottom_half_height + units)
   },
   _renderFontSize: function() {
   var units = this.options.svg ? "mm" : "px"
     this.calculateFontSize();
+    this._renderBaseline();
     this.$('input').css('font-size', this.font_size + units);
   }
 })
