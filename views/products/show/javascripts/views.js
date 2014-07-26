@@ -18,10 +18,14 @@ var PreviewView = Backbone.View.extend({
       this.place_card_el = new PlaceCardView({
         model: thisProduct.get("guests").first(), 
       })
-      
+      var viewport_width = viewportSize.getWidth();
       $('#image_container').fadeOut(function() { // hide 3D slides 
-      
+      location.hash = "mobile_scroll" // Positions us at the top of the page
         $('#preview').html(that.place_card_el.render().el).fadeIn(function() {
+          if(viewport_width < 501) {
+              var height = that.place_card_el.$el.height();
+             $('.left_column').height(height)
+          }
           that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
           that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
           thisProduct.trigger("render:font")
