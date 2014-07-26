@@ -11,68 +11,66 @@
   
 <%- contentFor('left') %>
   <div id="product_container">
-  <div id="ruler"></div>
-  <div id="preview"></div>
+    <div id="preview"></div>
   
-  <div id="image_container">
+    <div id="image_container">
 
-  <!-- 
-    SLIDES 1 TO 3 
-  -->
+    <!-- 
+      SLIDES 1 TO 3 
+    -->
 
-    <img id="slide1" srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[0]%> 1080px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[0]%> 720px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[0]%> 360px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[0]%> 200px"
-       sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw, (min-width: 320px), 100vw"/>
-       
-    <img src="/gfx/product_types/small/name_place_small.png" class="product_type_icon">
-    
-    <img id="slide2" srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[1]%> 1080px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[1]%> 720px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[1]%> 360px,
-              http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[1]%> 200px"
-       sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw,  (min-width: 320px) 100vw, 
-              100vw"/>
-              
-    <img id="slide3" srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>//large-<%= product.attachments_order[2]%> 1080px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[2]%> 720px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[2]%> 360px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[2]%> 200px"
-       sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw,  (min-width: 320px) 100vw, 
-              100vw"/>
-        
-  <!-- 
-    PRODUCT NAME AND DESCRIPTION 
-  -->      
-        
-    <div id="product_name_container">
-      <h1 class="product_name"><%= product.name %></h1>
-      <div class="ornamental_line"></div>
-    </div>
+      <img id="slide1" srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[0]%> 1080px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[0]%> 720px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[0]%> 360px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[0]%> 200px"
+         sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw, (min-width: 320px), 100vw"/>
+         
+      <img src="/gfx/product_types/small/name_place_small.png" class="product_type_icon">
       
-    <div id="description_container">
-      <div class="shell"></div>
-      <h6>This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h6>
-    </div>
+      <img id="slide2" srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[1]%> 1080px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[1]%> 720px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[1]%> 360px,
+                http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[1]%> 200px"
+         sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw,  (min-width: 320px) 100vw, 
+                100vw"/>
+                
+      <img id="slide3" srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>//large-<%= product.attachments_order[2]%> 1080px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[2]%> 720px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[2]%> 360px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[2]%> 200px"
+         sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw,  (min-width: 320px) 100vw, 
+                100vw"/>
+          
+    <!-- 
+      PRODUCT NAME AND DESCRIPTION 
+    -->      
+          
+      <div id="product_name_container">
+        <h1 class="product_name"><%= product.name %></h1>
+        <div class="ornamental_line"></div>
+      </div>
+        
+      <div id="description_container">
+        <div class="shell"></div>
+        <h6>This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h6>
+      </div>
 
-  <!-- 
-    SLIDE 4 
-  -->    
+    <!-- 
+      SLIDE 4 
+    -->    
 
-    <img id="slide4" srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[3]%> 1080px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[3]%> 720px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[3]%> 360px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[3]%> 200px"
-       sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw,  (min-width: 320px) 100vw, 
-              100vw"/>
-              
-    <div id="customise_button" class="grey_button">
-      <p style="font-size:1.4em;margin:0;padding:0;">CUSTOMISE</p>
+      <img id="slide4" srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[3]%> 1080px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[3]%> 720px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[3]%> 360px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[3]%> 200px"
+         sizes="(min-width:1000px) 36vw,(min-width:720px) 50vw,  (min-width: 320px) 100vw, 
+                100vw"/>
+                
+      <div id="customise_button" class="grey_button">
+        <p style="font-size:1.4em;margin:0;padding:0;">CUSTOMISE</p>
+      </div>
+        
     </div>
-      
-  </div>
-  
   
   </div>
   

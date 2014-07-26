@@ -1,0 +1,201 @@
+.place_card_view {
+    width:91%;
+    position:relative;
+    margin:0 auto;
+}
+
+  #product_container .place_card_view {
+    float:right;
+  }
+
+  .font_size_adjust_buttons, .font_baseline_adjust_buttons { 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor:pointer;
+    bottom:15%;
+    z-index:99999999999999999999999999999999999999999999999999999999999999999999999;    
+    position:absolute;
+    width:9%;
+    text-align:center;
+  }
+    .font_baseline_adjust_buttons {
+      top:15%;   
+    }
+    
+      .minus_font, .plus_font, .up_baseline, .down_baseline {
+        background-color:white;
+        opacity:1;
+        color:grey;
+        border-radius:5px;
+        border: 1px solid grey;
+        display:inline-block;
+        font: normal 200% 'OS Light';        
+        margin-bottom:5px;
+        width:100%;
+      }
+    
+    .place_card_view:nth-child(odd) .font_size_adjust_buttons, 
+    .place_card_view:nth-child(odd) .font_baseline_adjust_buttons{
+      left:-7%;
+    }
+      
+    .place_card_view:nth-child(even) .font_size_adjust_buttons, 
+    .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
+      right:-7%;
+    }
+      
+.place_card_wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 70.714285714285714285714285714286%;
+}
+  .place_card_wrapper img { 
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index:1000;
+  }
+    .place_card_background_wrapper {
+      position:absolute;
+      width:100%;
+      height:100%;
+      z-index:999;
+    }
+    
+  .guest_wrapper {
+    width:100%;
+    position:absolute;
+    height:100%;
+    z-index:1001
+  }
+  
+  .place_card_wrapper  input {
+      padding:0;
+      margin:0;
+      border:0;
+      z-index:300;
+      position:absolute;
+      text-align:center;
+      background-color:transparent;
+      display:block;
+      color:#000;
+      width:100%;
+      font-size:180%;
+      height:50%;
+      line-height:100%;
+      font-family:"Adobe Caslon Pro";
+    }  
+  
+/* UI PREVIEW FOR PRINTING
+==================================== */  
+#control_panel {
+  background-color:white;
+  border-bottom:1px solid black;
+  left:0;
+  padding-top:0.5em;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:999999999;
+}
+  #ui_logo_container {
+    float:left;
+    width:18%;
+  }
+    #ui_print_logo {
+      border-right:1px solid black;
+      padding-right:0.5em;
+      text-align:center;
+      width:160px;
+    }
+      
+  #ui_print_font_picker_container {
+    border-right:1px solid black;
+    float:left;
+    margin-top:2.5em;
+    width:27%;
+  }
+  #ui_printer_icon {
+    border-right:1px solid black;
+    float:left;
+    text-align:center;
+    width:8%;
+  }
+
+  #layout_icons_wrapper {
+    float:right;
+    width:20%;
+  }
+    .layout_icon_container {
+      float:left;
+      text-align:center;
+      width:33%
+    }
+
+#actual_cards { 
+  margin:0 auto;
+  width:90%;
+  margin-top:140px;
+}
+
+#actual_cards .place_card_view {
+    width:50%;
+    float:left;
+}
+  
+/* HIDDEN DIVS FOR PRINT
+==================================== */  
+#printsvg { 
+  display:none; 
+}
+
+@media print {
+  
+  #printsvg { 
+    display:block;
+  }
+  
+  .place_card_view {
+    width:105mm;
+    height:74.25mm;
+  }
+  
+  #top_of_page, #control_panel { 
+    display:none;
+  }
+  #printsvg .up_4 {
+    height:210mm;
+    width:297mm;
+  }
+  
+  #printsvg .up_8 {
+    height:297mm;
+    width:210mm;
+  }
+    #printsvg .up_8 .place_card_view, #printsvg .up_4 .place_card_view { 
+      float:left; 
+    }
+  #print_svg .up_3 { 
+    height:259.875mm;
+    padding-top:37.125mm; 
+    width:210mm;
+  }
+    #print_svg .up_3 .place_card_view {
+      float:none;
+    }
+      #print_svg .up_3 .place_card_view {
+        margin:0 auto;
+        clear:both;
+        float:none;
+        border:1px dotted grey;
+      }
+    
+  .break { page-break-after:always;}
+}

@@ -31,8 +31,8 @@ var PlaceCardView = GuestView.extend({
     this.model.downBaseline();
   },  
   calculateFontSize: function() {
-  console.log(this.$el.width())
-    this.font_size = this.$el.width() * this.model.get("font_size");
+    var width = this.options.svg ? 105 : this.$el.width();
+    this.font_size = width * this.model.get("font_size");
   },  
   calculateBaselineOffset: function() {
     var baseline = (this.model.get("baseline") /100) * this.presenter.height;
@@ -66,8 +66,9 @@ var PlaceCardView = GuestView.extend({
     this.$('.half').css("height", this.presenter.bottom_half_height)
   },
   _renderFontSize: function() {
+  var units = this.options.svg ? "mm" : "px"
     this.calculateFontSize();
-    this.$('input').css('font-size', this.font_size);
+    this.$('input').css('font-size', this.font_size + units);
   }
 })
 
