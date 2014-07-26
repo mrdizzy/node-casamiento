@@ -88,9 +88,9 @@
     return this;
   }
   $.fn.fontPicker.defaultOptions ={
-    fonts: [["Metroscript", 1], ["TrajanPro", 1]],
-    selected: "Metroscript",
-    in_groups_of: 4
+    fonts: [["Metroscript", 1], ["TrajanPro", 1], ["CaslonPro", 1], ["EccentricStd", 1], ["MyriadProLight", 1], ["SacramentoRegular", 1], ["ChaparralItalic", 1], ["Exmouth", 1]],
+    selected_font: "Metroscript",
+    in_groups_of: 3
   }
 
   function appendFont(font) {
