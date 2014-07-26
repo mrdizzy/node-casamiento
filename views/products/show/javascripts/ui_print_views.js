@@ -5,10 +5,11 @@
 var PlaceCardView = GuestView.extend({
   className: 'place_card_view',
   initialize: function() {
-    this.listenTo(thisProduct, 'render:font', this._renderFontSize)
-    this.listenTo(thisProduct, 'change:font', this._renderFontFamily) 
-    this.listenTo(this.model, 'change:font_size', this._renderFontSize) 
-    this.listenTo(this.model, 'change:baseline', this._renderBaseline)
+    this.listenTo(thisProduct, 'render:font', this._renderFontSize);
+    this.listenTo(thisProduct, 'change:font', this._renderFontFamily);
+    this.listenTo(this.model, 'change:font_size', this._renderFontSize);
+    this.listenTo(this.model, 'change:baseline', this._renderBaseline);
+    $(window).bind("resize", _.bind(this._renderFontSize, this));
   },  
   events: {
     'click .plus_font': 'increaseFont',
