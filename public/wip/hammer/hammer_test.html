@@ -35,6 +35,9 @@ var amount = (ev.distance/100 * original_size) + original_size;
     font.css("font-size", amount + "px");
  // hammer.html(ev.distance)
 })
+hammertime.on('pinchend', function(ev) {
+  original_size = parseInt(font.css("font-size").split("px")[0])
+});
 </script>
 </body>
 </html>
