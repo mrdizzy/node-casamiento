@@ -6,24 +6,31 @@
 </head>
 <body>
 <div id="font" style="font-size:50px;text-align:center;">Hello Mary</div>
+<div id="hammer"></div>
 <script>
 var hammertime = new Hammer(document.getElementById('font'));
 var font = $('#font');
 
-hammertime.on('panright', function(ev) {
 var original_size = parseInt(font.css("font-size").split("px")[0])
-  var amount = (ev.distance/1000 * original_size) + original_size;
-
-  console.log(amount, original_size)
-    font.css("font-size", amount + "px");
-});
-hammertime.on('panleft', function(ev) {
-var original_size = parseInt(font.css("font-size").split("px")[0])
-  var amount = original_size - (ev.distance/1000 * original_size);
-
-  console.log(amount, original_size)
-    font.css("font-size", amount + "px");
-});
+//hammertime.on('panright', function(ev) {
+//  var amount = (ev.distance/100 * original_size) + original_size;
+//
+//  console.log(amount, original_size)
+//    font.css("padd", amount + "px");
+//});
+//hammertime.on('panend', function(ev) {
+//  original_size = parseInt(font.css("font-size").split("px")[0])
+//});
+//hammertime.on('panleft', function(ev) {
+//  var amount = original_size - (ev.distance/100 * original_size);
+//
+//  console.log(amount, original_size)
+//    font.css("font-size", amount + "px");
+//});
+hammertime.get("pinch").set({enable:true})
+hammertime.on('pinchin', function(ev) {
+  $('#hammer').html(ev.distance)
+})
 </script>
 </body>
 </html>
