@@ -90,7 +90,7 @@
     })  
     
     // Enter big swatch    
-    $big_colour_square_frame.mouseenter(function() {   
+    $big_colour_square_frame.on('mouseenter click', function() {   
         $static_container.addClass("dizzycp-container_selected")
         $container_to_fade_in.addClass("dizzycp-container_selected")
         $container_to_fade_in.fadeIn();
