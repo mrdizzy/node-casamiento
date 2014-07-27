@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="/javascripts/libraries/hammer.js"></script>
+</head>
+<body>
+<div id="font" style="font-size:50px;text-align:center;">Hello Mary</div>
+<script>
+var hammertime = new Hammer(document.getElementById('font'));
+var font = $('#font');
+
+hammertime.on('panright', function(ev) {
+var original_size = parseInt(font.css("font-size").split("px")[0])
+  var amount = (ev.distance/1000 * original_size) + original_size;
+
+  console.log(amount, original_size)
+    font.css("font-size", amount + "px");
+});
+hammertime.on('panleft', function(ev) {
+var original_size = parseInt(font.css("font-size").split("px")[0])
+  var amount = original_size - (ev.distance/1000 * original_size);
+
+  console.log(amount, original_size)
+    font.css("font-size", amount + "px");
+});
+</script>
+</body>
+</html>
