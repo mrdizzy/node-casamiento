@@ -28,8 +28,12 @@ var original_size = parseInt(font.css("font-size").split("px")[0])
 //    font.css("font-size", amount + "px");
 //});
 hammertime.get("pinch").set({enable:true})
-hammertime.on('pinchin', function(ev) {
-  hammer.html(ev.distance)
+hammertime.on('pinchout', function(ev) {
+var amount = (ev.distance/100 * original_size) + original_size;
+
+  console.log(amount, original_size)
+    font.css("font-size", amount + "px");
+ // hammer.html(ev.distance)
 })
 </script>
 </body>
