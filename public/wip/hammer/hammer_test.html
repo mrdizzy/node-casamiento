@@ -10,7 +10,7 @@
 <script>
 var hammertime = new Hammer(document.getElementById('font'));
 var font = $('#font');
-
+var hammer = $('#hammer')
 var original_size = parseInt(font.css("font-size").split("px")[0])
 //hammertime.on('panright', function(ev) {
 //  var amount = (ev.distance/100 * original_size) + original_size;
@@ -29,7 +29,7 @@ var original_size = parseInt(font.css("font-size").split("px")[0])
 //});
 hammertime.get("pinch").set({enable:true})
 hammertime.on('pinchin', function(ev) {
-  $('#hammer').html(ev.distance)
+  hammer.html(ev.distance)
 })
 </script>
 </body>
