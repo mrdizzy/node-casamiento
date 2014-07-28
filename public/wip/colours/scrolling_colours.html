@@ -2,198 +2,239 @@
 <html>
 <head>
 
-<meta name="viewport" content="initial-scale=1, user-scalable=no">
+  <meta name="viewport" content="initial-scale=1, user-scalable=no">
+      
+  <style type="text/css">
+    .dizzycp-static_container { 
+      background-color:white;
+    }
     
-<style type="text/css">
-.dizzycp-static_container { 
-  border:1px solid transparent; 
-  border-bottom:0;
-  background-color:white;
-}
-.dizzycp-swatch_container { 
-  text-align:center;
-}
-.dizzycp-big_colour_square_frame { 
-  cursor:pointer;
-  display:inline-block;
-  border:1px solid lightgrey;
-  width:40px;
-  height:40px;
-  padding:2px; 
-  border-radius:25px;
-}
-.dizzycp-big_colour_square_swatch {
-  width:36px; 
-  height:36px;
-  margin:2px; 
-  border-radius:20px;
-}
-.dizzycp-text_label_for_colour { 
-  color:black;
-  padding-top:0.25em;
-  padding-bottom:0.25em;
-  font:normal 1.2em 'OS';
-  text-transform:uppercase;
-  letter-spacing:0.05em;
-}
+    .dizzycp-container_to_fade_in {
+      display:none; 
+      position:absolute; 
+      z-index:1;
+      border-bottom:1px solid black;
+    }
+    
+      .dizzycp-swatch_container { 
+        text-align:center;
+      }
+      
+        .dizzycp-big_colour_square_frame { 
+          cursor:pointer;
+          display:inline-block;
+          border:1px solid lightgrey;
+          width:40px;
+          height:40px;
+          padding:2px; 
+          border-radius:25px;
+        }
+          .dizzycp-big_colour_square_swatch {
+            width:36px; 
+            height:36px;
+            margin:2px; 
+            border-radius:20px;
+          }
+        .dizzycp-text_label_for_colour { 
+          color:black;
+          padding-top:0.25em;
+          padding-bottom:0.25em;
+          font:normal 1.2em 'OS';
+          text-transform:uppercase;
+          letter-spacing:0.05em;
+        }
 
-.dizzycp-container_to_fade_in {
-  width:100%;
-  background-color:white;
-  display:none; 
-  position:absolute; 
-  border:1px solid transparent;
-  border-top:0;
-  z-index:1;
-}
+  .dizzycp-external_wrapper {
+    margin:0 auto;
+    overflow:hidden;
+  }
+  .dizzycp-left_arrow { 
+    margin-left:50px; 
+    float:left;
+    font-size:50px;
+  }
+  .dizzycp-right_arrow { 
+    margin-right:50px; 
+    float:right;
+    font-size:50px;
+  }
+  .dizzycp-internal_wrapper{
+    overflow-y: hidden;
+    overflow-x: scroll
+  }
+  .square { 
+    float:left;
+  }
+  .dizzycp-scrollable_colours {
+    height:100px;
+    position:relative;
+  }
+  </style>
 
-.dizzycp-selected { border: 1px solid black;}
-.dizzycp-container_selected { border-color:black;border-style:dotted}
-
-</style>
-<style type="text/css">
-
-#arrow_left, #arrow_right {
-  font-size:30px;
-  float:left;
-}
-.dizzycp-external_wrapper {
-  margin:0 auto;
-  overflow:hidden;
-}
-.dizzycp-left_arrow { margin-left:50px;}
-
-.dizzycp-right_arrow { margin-right:50px;}
-.dizzycp-internal_wrapper{
-  overflow-y: hidden;
-  overflow-x: scroll
-}
-.square { 
-  float:left;
-}
-.dizzycp-scrollable_colours {
-  height:100px;
-  position:relative;
-}
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>    
-<script src="/javascripts/libraries/in_groups_of.js"></script>    
-<script src="colours.js"></script>    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>    
+  <script src="/javascripts/libraries/in_groups_of.js"></script>    
+  <script src="colours.js"></script>    
 </head>
 
 <body>
-
-<div id="new_colour_picker"></div>
-
+  <div style="width:30%;float:left"></div>
+  <div style="width:70%;float:right;">
+      <div style="border-left:1px solid black">
+       <div id="new_colour_picker"></div>
+       <ul>
+       <li>The milennium is here</li.
+       <li>Lucy is not the mother</li>
+       <li>Take me away</li>
+       <li>Keep the border growing</li>
+       <li>Princess Diana never knew Google</li>
+       <li>1997 is 17 years ago</li>
+       </ul>
+      </div>
+      
+  </div>
+   
+  </div>
 </body>
 
 <script>
+
 ;(function($) {
 
   $.fn.colorPicker = function(options) {
- var that = this;
- var container_width = this.width();
- var swatch_width = container_width/6;
-  var settings = $.extend({},  $.fn.colorPicker.defaultOptions, options);
-  var colour_groups = inGroupsOf(Object.keys(settings.colour_list), settings.colours_per_page)
+    var that = this;
+    var settings = $.extend({}, $.fn.colorPicker.defaultOptions, options);
 
-  var pairs = _.pairs(colours)
-  var groups = inGroupsOf(pairs, 6)
+    var container_width = settings.width || this.width();
+    var swatch_width = container_width / settings.colours_per_page;
+    var pairs = _.pairs(colours)
+    var groups = inGroupsOf(pairs, settings.colours_per_page)
 
- //static container
-  var $static_container = $('<div></div>').addClass('dizzycp-static_container')
-  var $text_label_for_colour = $('<div>' + settings.colour_list[settings.default_color] + '</div>').addClass("dizzycp-text_label_for_colour")
-  var $big_colour_square_frame = $('<div></div>').addClass('dizzycp-big_colour_square_frame')
-  var $big_colour_square_swatch = $('<div></div>').css("background-color", settings.default_color).addClass('dizzycp-big_colour_square_swatch')
+    //static container
+    var $static_container = $('<div></div>').addClass('dizzycp-static_container')
+    var $text_label_for_colour = $('<div>' + settings.colour_list[settings.default_color] + '</div>').addClass("dizzycp-text_label_for_colour")
+    var $big_colour_square_frame = $('<div></div>').addClass('dizzycp-big_colour_square_frame')
+    var $big_colour_square_swatch = $('<div></div>').css("background-color", settings.default_color).addClass('dizzycp-big_colour_square_swatch')
   
-  $big_colour_square_frame.append($big_colour_square_swatch)
-  var $swatch = $('<div></div>').addClass("dizzycp-swatch_container")
-  $swatch.append($big_colour_square_frame).append($text_label_for_colour)   
+    $big_colour_square_frame.append($big_colour_square_swatch)
+    var $swatch = $('<div></div>').addClass("dizzycp-swatch_container")
+    $swatch.append($big_colour_square_frame).append($text_label_for_colour)   
     
-  var number_of_colours = pairs.length;
-  var width_of_inside = swatch_width * number_of_colours;
+    var number_of_colours = pairs.length;
+    var width_of_inside = swatch_width * number_of_colours;
   
-  var $external_wrapper = $('<div></div>').addClass('dizzycp-external_wrapper').width(container_width).css("height", swatch_width + "px");
-  var $internal_wrapper = $('<div></div>').addClass('dizzycp-internal_wrapper').width(container_width)
-  var $scrollable_colours = $('<div></div>').addClass('dizzycp-scrollable_colours').css("width",width_of_inside + "px");
-  $internal_wrapper.append($scrollable_colours)
-  $external_wrapper.append($internal_wrapper)
+    var $external_wrapper = $('<div></div>').addClass('dizzycp-external_wrapper').width(container_width).css("height", swatch_width + "px");
+    var $internal_wrapper = $('<div></div>').addClass('dizzycp-internal_wrapper').width(container_width)
+    var $scrollable_colours = $('<div></div>').addClass('dizzycp-scrollable_colours').css("width",width_of_inside + "px");
+    $internal_wrapper.append($scrollable_colours)
+    $external_wrapper.append($internal_wrapper)
   
-  var counter = 0;
-  var colour_divs = []
+    var counter = 0;
+    var colour_divs = []
   
-  groups.forEach(function(group) {
-    var $colour_div = $('<div id="panel_' + counter + '" style="float:left"></div>');
-    group.forEach(function(colour) {
-      $colour_div.append('<div data-colour="' + colour[0] + '" style="width:' + swatch_width +'px;height:' + swatch_width + 'px;background-color:' + colour[0] + '" class="square"></div>');
+    groups.forEach(function(group) {
+      var $colour_div = $('<div id="panel_' + counter + '" style="float:left"></div>');
+      group.forEach(function(colour) {
+        $colour_div.append('<div data-colour="' + colour[0] + '" style="width:' + swatch_width +'px;height:' + swatch_width + 'px;background-color:' + colour[0] + '" class="square"></div>');
+      })
+      colour_divs.push($colour_div)
+      counter = counter + 1;
     })
-    colour_divs.push($colour_div)
-    counter = counter + 1;
-  })
-    
-  $scrollable_colours.html(colour_divs)
+      
+    $scrollable_colours.html(colour_divs)
    
-  // container to fade in
-  var $container_to_fade_in = $static_container.clone().addClass("dizzycp-container_to_fade_in")
+    // container to fade in
+    var $container_to_fade_in = $static_container.clone().addClass("dizzycp-container_to_fade_in")
 
-  $container_to_fade_in.append($external_wrapper)
-  
-  $container_to_fade_in.find('.square').mouseenter(function(e) {
-    var $el = $(e.currentTarget);
-    var hex = $el.data("colour");
-    $text_label_for_colour.text(colours[hex])
-    $big_colour_square_swatch.css("background-color", hex)
-  })
+    $container_to_fade_in.append($external_wrapper)
+    
+    // Hover and click over swatches
+    $container_to_fade_in.find('.square').mouseenter(function(e) {
+      var $el = $(e.currentTarget);
+      var hex = $el.data("colour");
+      $text_label_for_colour.text(colours[hex])
+        that.trigger('dizzy-cp:hoverColor', hex)
+      $big_colour_square_swatch.css("background-color", hex)
+    })
+    
+    $container_to_fade_in.find('.square').click(function(e) {
+      var $el = $(e.currentTarget);
+      var hex = $el.data("colour");
+      that.trigger('dizzy-cp:click', hex)
+      $container_to_fade_in.hide();
+    })
   
   // compile containers
   $static_container.append($swatch)
 
-  var new_counter = 0;
-  
   var $wrapper = $('<div></div>').append($static_container).append($container_to_fade_in)
   $wrapper.css("position", "relative")
   
   // Arrows 
-  $left_arrow = $('<div class="dizzycp-left_arrow"style="float:left;font-size:50px;">&laquo;</div>').click(function() {
+  $left_arrow = $('<div class="dizzycp-left_arrow">&laquo;</div>').click(function() {
     scrollColours(-1)
   });
-  $right_arrow = $('<div  class="dizzycp-right_arrow" style="float:right;font-size:50px;">&raquo;</div>').click(function() {
+  $right_arrow = $('<div  class="dizzycp-right_arrow">&raquo;</div>').click(function() {
     scrollColours(1)
   });;
+  
   $container_to_fade_in.append($left_arrow).append($right_arrow)
   
-     // Enter big swatch    
-  $big_colour_square_frame.mouseenter(function() {   
-      $static_container.addClass("dizzycp-container_selected")
-      $container_to_fade_in.addClass("dizzycp-container_selected")
-        $container_to_fade_in.fadeIn();
+  // SELECT DEFAULT PANEL
+  var pointer = 0;
+  var panel_counter = 0;
+  var selected_counter = 0;
+  var default_panel;
+  groups.forEach(function(colour_group) {
+    for (var i=0; i < colour_group.length; i++) {
+
+      var result = colour_group[i][0].indexOf(settings.default_color)
+      if(result > -1) {
+        default_panel = $container_to_fade_in.find('#panel_' + panel_counter)
+        selected_counter = panel_counter;
+        break;
+      }
+    }
+    panel_counter = panel_counter + 1;
+  })
+
+  var first_time = true;
+  
+   // Enter big swatch    
+  $big_colour_square_frame.on('mouseenter click', function() {       
+    $static_container.addClass("dizzycp-container_selected")
+    $container_to_fade_in.addClass("dizzycp-container_selected")
+    $container_to_fade_in.fadeIn();
+    if(first_time) {    
+      $internal_wrapper.scrollLeft(default_panel.position().left);
+      first_time = false;
+    }
   })
     
-    // Leave wrapper
-  $wrapper.mouseleave(function() {  
-    $static_container.removeClass("dizzycp-container_selected")
-    $container_to_fade_in.removeClass("dizzycp-container_selected")  
-    $container_to_fade_in.fadeOut();
-  })   
-  this.html($wrapper)
-
-  function scrollColours(amount) {
-    new_counter = new_counter + amount;  
-    console.log($container_to_fade_in.find('#panel_' + new_counter).position())
-    var position = $container_to_fade_in.find('#panel_' + new_counter).position().left;  
-    $internal_wrapper.animate({scrollLeft: position}, 100);
+      // Leave wrapper
+    $wrapper.mouseleave(function() {  
+      $static_container.removeClass("dizzycp-container_selected")
+      $container_to_fade_in.removeClass("dizzycp-container_selected")  
+      $container_to_fade_in.fadeOut();
+    })   
+    this.html($wrapper)
+   
+    function scrollColours(amount) {
+    console.log(panel_counter)
+      selected_counter = selected_counter + amount;  
+      var position = $container_to_fade_in.find('#panel_' + selected_counter).position().left;  
+      $internal_wrapper.animate({scrollLeft: position}, 100);
+    }
+    return this;
   }
-  return this;
-}
 
-$.fn.colorPicker.defaultOptions ={
-  colours_per_page: 16,
-  colour_list: colours,
-  default_color: '#cd5c5c'
-} 
+  $.fn.colorPicker.defaultOptions ={
+    colours_per_page: 7,
+    colour_list: colours,
+    default_color: '#cd5c5c'
+  } 
       
-})(jQuery)
+})(jQuery)  
 
 $('#new_colour_picker').colorPicker();
 </script>
