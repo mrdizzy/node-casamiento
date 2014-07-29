@@ -18,10 +18,10 @@ var PlaceCardView = GuestView.extend({
     'click .down_baseline': 'downBaseline',    
     "blur input": 'updateGuest',
     'focus input': 'clearGuest',
-   'panright': 'upBaseline',
-   'panleft': 'downBaseline',
-   'pinchin': 'decreaseFont',
-   'pinchout': 'increaseFont'
+   'panup': 'upBaseline',
+   'pandown': 'downBaseline',
+   'panright': 'decreaseFont',
+   'panleft': 'increaseFont'
   }, 
   increaseFont: function() {
     this.model.adjustFontSize(1.05) // percentage increase
