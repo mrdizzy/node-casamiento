@@ -17,11 +17,7 @@ var PlaceCardView = GuestView.extend({
     'click .up_baseline': 'upBaseline',
     'click .down_baseline': 'downBaseline',    
     "blur input": 'updateGuest',
-    'focus input': 'clearGuest',
-   'panup': 'upBaseline',
-   'pandown': 'downBaseline',
-   'panright': 'decreaseFont',
-   'panleft': 'increaseFont'
+    'focus input': 'clearGuest'
   }, 
   increaseFont: function() {
     this.model.adjustFontSize(1.05) // percentage increase
@@ -61,7 +57,6 @@ var PlaceCardView = GuestView.extend({
       $template.find('.colour_' + i).css("background-color", colours[i])
     }
     this.$el.html($template)
-    this.$el.hammer()
     return this;
   },
   _renderFontFamily: function() {    

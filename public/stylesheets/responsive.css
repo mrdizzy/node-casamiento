@@ -120,6 +120,9 @@
     border-bottom:1px solid black;
   } 
   
+  .button_inside { 
+    border-radius:7px;
+  }
   #description_container { float:none;width:90%;margin:0 auto;}
   
   #slide5 .shell { display:none;}
@@ -132,6 +135,10 @@
     float:none;
   }
   
+    .place_card_view:nth-child(even) .font_size_adjust_buttons, 
+    .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
+      left:-7%;
+    }
 }
   
   /* PHABLET */
@@ -167,6 +174,9 @@
   }
   #slide5 .shell { display:none;}
   
+  .button_inside { 
+    border-radius:7px;
+  }
     .texture { 
       display:block; 
     }

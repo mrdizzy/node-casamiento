@@ -8,6 +8,22 @@
     float:right;
   }
 
+.button_wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+}
+  .button_inside { 
+    text-align:center;
+    border:1px solid black;
+    border-radius:10px;
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index:1000;
+  }
+  
   .font_size_adjust_buttons, .font_baseline_adjust_buttons { 
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -26,17 +42,6 @@
       top:15%;   
     }
     
-      .minus_font, .plus_font, .up_baseline, .down_baseline {
-        background-color:white;
-        opacity:1;
-        color:grey;
-        border-radius:5px;
-        border: 1px solid grey;
-        display:inline-block;
-        font: normal 200% 'OS Light';        
-        margin-bottom:5px;
-        width:100%;
-      }
     
     .place_card_view:nth-child(odd) .font_size_adjust_buttons, 
     .place_card_view:nth-child(odd) .font_baseline_adjust_buttons{
