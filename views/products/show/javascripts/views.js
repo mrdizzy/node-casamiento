@@ -7,7 +7,14 @@ var PreviewView = Backbone.View.extend({
   _renderPrintView: function() {
     var print_control_panel_view = new PrintControlPanelView({}).render().el
     $('body').html(print_control_panel_view)
-    
+    var $colour_pickers = $('#colour_swatches')
+      
+    // Create colour pickers
+    var colours = thisProduct.get("colours");
+    for(var i=0; i < colours.length; i++) {
+      $colour_pickers.append(new ColourView({colour_index: i, width: $colour_pickers.width()}).render().el)
+    }
+
     thisProduct.trigger("render:font")
     location.hash = "top_of_page" // Positions us at the top of the page
   },  
@@ -127,7 +134,7 @@ var StepView = Backbone.View.extend({
     var colours = thisProduct.get("colours");
     var $colour_wrapper = $result.find("#colour_section_render")
     for(var i=0; i < colours.length; i++) {
-      $colour_wrapper.append(new ColourView({colour_index: i}).render().el)
+      $colour_wrapper.append(new ColourView({colour_index: i, width:$('#steps').width()}).render().el)
     }
     
     // Create font picker
@@ -172,9 +179,10 @@ var ColourView = Backbone.View.extend({
     thisProduct.set("colours", colours).trigger("change:colours")
   },
   render: function() {
+  var that = this;
     this.$el.colorPicker({
       default_color: thisProduct.get("colours")[this.options.colour_index], 
-      width:$('#steps').width()
+      width:that.options.width
     });
     return this;
   }

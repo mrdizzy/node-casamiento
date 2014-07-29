@@ -106,7 +106,11 @@ var PrintControlPanelView = Backbone.View.extend({
   events: {
     "fontpicker:selected": "changeFont",
     "click input[type=radio]": "changeLayout",
-    "click #ui_printer_icon": "printPage"
+    "click #ui_printer_icon": "printPage",
+    "click #menu_lines": "showPanel"
+  },
+  showPanel: function() {
+    $('#control_panel').show();  
   },
   changeLayout: function(e) {
     var val = $(e.currentTarget).val()
@@ -146,7 +150,6 @@ var PrintControlPanelView = Backbone.View.extend({
       fonts: casamiento_fonts, 
       selected_font: thisProduct.get("font")
     })
-    
     var place_cards = new PlaceCardCollectionView({
       per_page: this.layout,
     }).render().el

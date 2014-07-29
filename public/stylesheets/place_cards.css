@@ -7,22 +7,6 @@
   #product_container .place_card_view {
     float:right;
   }
-
-.button_wrapper {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%;
-}
-  .button_inside { 
-    text-align:center;
-    border:1px solid black;
-    border-radius:10px;
-    width:100%;
-    height:100%;
-    position:absolute;
-    z-index:1000;
-  }
   
   .font_size_adjust_buttons, .font_baseline_adjust_buttons { 
     -webkit-touch-callout: none;
@@ -32,25 +16,40 @@
     -ms-user-select: none;
     user-select: none;
     cursor:pointer;
-    bottom:15%;
-    z-index:99999999999999999999999999999999999999999999999999999999999999999999999;    
+    bottom:14%;
+    z-index:9999;    
     position:absolute;
-    width:9%;
+    width:11%;
     text-align:center;
   }
     .font_baseline_adjust_buttons {
-      top:15%;   
+      top:14%;   
     }
-    
     
     .place_card_view:nth-child(odd) .font_size_adjust_buttons, 
     .place_card_view:nth-child(odd) .font_baseline_adjust_buttons{
-      left:-7%;
+      left:-9%;
     }
+
+        .button_wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+        }
+          .button_inside { 
+            text-align:center;
+            border:1px solid black;
+            border-radius:10px;
+            width:100%;
+            height:100%;
+            position:absolute;
+            z-index:1000;
+          }
       
     .place_card_view:nth-child(even) .font_size_adjust_buttons, 
     .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
-      right:-7%;
+      right:-9%;
     }
       
 .place_card_wrapper {
@@ -112,38 +111,43 @@
 }
   #ui_logo_container {
     float:left;
-    width:18%;
+    width:17%;
   }
     #ui_print_logo {
       border-right:1px solid black;
       padding-right:0.5em;
       text-align:center;
-      width:160px;
+      width:100%;
     }
       
-  #ui_print_font_picker_container {
-    border-right:1px solid black;
+  #ui_print_colour_picker_container {
     float:left;
-    margin-top:2.5em;
-    width:27%;
+    width:42%;
   }
   #ui_printer_icon {
     border-right:1px solid black;
     float:left;
     text-align:center;
-    width:8%;
+    width:10%;
   }
 
   #layout_icons_wrapper {
     float:right;
-    width:20%;
+    width:30%;
   }
     .layout_icon_container {
       float:left;
       text-align:center;
       width:33%
     }
-
+#ui_global_font {
+    width:30%;
+    float:left;
+    text-align:right;
+}
+  #ui_print_font_picker_container {
+  }
+        
 #actual_cards { 
   margin:0 auto;
   width:90%;

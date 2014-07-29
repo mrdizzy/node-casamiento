@@ -18,7 +18,7 @@
     $container_div.append($up_arrow_container).append($table_container)
     
     var root_url = "/fonts/";
-    var $selected_font = $('<table id="selected_font" class="fonts_table"></table>');
+    var $selected_font = $('<table class="selected_font" class="fonts_table"></table>');
     $selected_row = $('<tr></tr>');
     $selected_image = $('<img src="/fonts/' + selected_font + '.svg">')
     $selected_font_name= $('<td class="font_name">'+ selected_font + '</td>');

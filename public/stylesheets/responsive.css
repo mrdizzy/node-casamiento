@@ -42,7 +42,6 @@
       float:none;
       width:100%; 
     }
-    
 }
 
 /* Phablet 
@@ -121,8 +120,9 @@
   } 
   
   .button_inside { 
-    border-radius:7px;
+    border-radius:0;
   }
+  
   #description_container { float:none;width:90%;margin:0 auto;}
   
   #slide5 .shell { display:none;}
@@ -139,6 +139,22 @@
     .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
       left:-7%;
     }
+    
+  
+  #control_panel {
+      display:none;
+      position: fixed;
+      top:0;
+      left:0;
+      background-color:white;
+      border-right:1px solid black;
+      width:75%;
+      z-index:999999999999999999999999999999999999999;
+      height:100%;
+  }
+  #ui_logo_container, #ui_global_font { display:none; }
+  
+  #ui_print_colour_picker_container,#ui_printer_icon,#layout_icons_wrapper, #ui_guests, #ui_print_font_picker_container { float:none; clear:both; width:100%;}
 }
   
   /* PHABLET */
@@ -175,7 +191,7 @@
   #slide5 .shell { display:none;}
   
   .button_inside { 
-    border-radius:7px;
+    border-radius:0;
   }
     .texture { 
       display:block; 

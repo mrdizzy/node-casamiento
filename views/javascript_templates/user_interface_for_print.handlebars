@@ -1,13 +1,18 @@
 <div id="printsvg"></div>
 <div id="top_of_page" style="margin:0;padding:0;">
+ <div id="menu_lines" style="float:left;display:block;">
+            <div style="width:18px;border-color:black;border-style:solid;border-top:1px;"></div>
+            <div style="width:18px;border-color:black;border-style:solid;border-top:1px;margin-top:5px;"></div>
+            <div style="width:18px;border-color:black;border-style:solid;border-top:1px;margin-top:5px;"></div>
+            </div>
   <div id="control_panel">
-  
+  <div id="control_panel_top_row">
     <div id="ui_logo_container">
       <img src="http://www.casamiento.co.uk/gfx/logo/cas.png" id="ui_print_logo">
     </div>
 
-    <div id="ui_print_font_picker_container">
-      <div id="ui_font_picker"></div>
+    <div id="ui_print_colour_picker_container">
+      <div id="colour_swatches"></div>
     </div>
 
     <div id="ui_printer_icon">
@@ -75,7 +80,28 @@
           </div>
       </div>
     </div>
-    <div style="border-top:1px solid black;margin-top;0.5em;clear:both;text-align:center;font-family:'OS';font-size:1.6em;"><table style="background-color:transparent;margin:0 auto;border-collapse:collapse;width:432px;"><td style="text-align:center;vertical-align:center;width:32px;"><img src="/gfx/chrome.png" style="width:40px;margin-top:5px;" /></td><td style="width:392px;" >We strongly recommend using Chrome</td></table></div>
+   
+    <div style="clear:both"></div>
+    </div>
+    <div id="control_panel_bottom_row" style="padding:10px;border-top:1px solid black;clear:both;">
+      <div id="ui_guests" style="clear:both;width:30%;float:left;">
+        <img src="/gfx/guests.png" style="width:30px"/> <input type="text" style="width:80%" value="Guest name"></input>
+      </div>
+      <div id="ui_global_font">
+        <table style="width:100%">
+         <tr>
+         <td style="width:25%"> <img src="/gfx/font_increase.svg"/></td>
+        <td  style="width:25%">  <img src="/gfx/font_decrease.svg"/></td>
+        <td  style="width:25%"> <img src="/gfx/baseline_up.svg"/></td>
+        <td  style="width:25%"> <img src="/gfx/baseline_down.svg"/></td>
+        </tr>
+        </table>
+      </div>
+ 
+      <div id="ui_print_font_picker_container" style="width:40%;float:left;">
+        <div id="ui_font_picker"></div>
+      </div>
+    </div>
   </div>
 
   <div style="clear:both;border-top:1px solid black;margin-top:0.5em;margin-bottom:0.5em;"></div>
