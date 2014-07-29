@@ -62,7 +62,6 @@ var PlaceCardView = GuestView.extend({
     }
     this.$el.html($template)
     this.$el.hammer()
-    this.$el.data("hammer").get('pinch').set({ enable: true });
     return this;
   },
   _renderFontFamily: function() {    
