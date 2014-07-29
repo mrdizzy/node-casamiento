@@ -62,7 +62,6 @@ var PlaceCardView = GuestView.extend({
     }
     this.$el.html($template)
     this.$el.hammer()
-    this.$el.data("hammer").get('pan').set({ direction: Hammer.DIRECTION_ALL });
     return this;
   },
   _renderFontFamily: function() {    
