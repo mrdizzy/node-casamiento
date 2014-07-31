@@ -27,11 +27,11 @@ var PreviewView = Backbone.View.extend({
       })
       var viewport_width = viewportSize.getWidth();
       $('#image_container').fadeOut(function() { // hide 3D slides 
-      location.hash = "mobile_scroll" // Positions us at the top of the page
+        location.hash = "mobile_scroll" // Positions us at the top of the page
         $('#preview').html(that.place_card_el.render().el).fadeIn(function() {
           if(viewport_width < 501) {
-              var height = that.place_card_el.$el.height();
-             $('.left_column').height(height)
+            var height = that.place_card_el.$el.height();
+            $('.left_column').height(height)
           }
           that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
           that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
@@ -179,7 +179,7 @@ var ColourView = Backbone.View.extend({
     thisProduct.set("colours", colours).trigger("change:colours")
   },
   render: function() {
-  var that = this;
+    var that = this;
     this.$el.colorPicker({
       default_color: thisProduct.get("colours")[this.options.colour_index], 
       width:that.options.width

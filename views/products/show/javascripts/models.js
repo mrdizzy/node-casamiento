@@ -19,8 +19,8 @@ var Guests = Backbone.Collection.extend({
   model: Guest
 })
 
-////////////////////////////////////////////////////////////////
 var Product = Backbone.Model.extend({
+////////////////////////////////////////////////////////////////
   defaults: {
     quantity: 8,
     guests: new Guests([{},{},{},{},{},{},{},{}]),

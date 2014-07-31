@@ -13,7 +13,6 @@
       height:42px;
       position:fixed;
       width:100%;
-      margin:0 auto;
     }
     #header_wrapper {
       height:43px;
@@ -37,7 +36,6 @@
       .right_column { 
         margin:0;
         float:none; 
-        clear:both;
         width:100%;
       }
         .chat-bubble { display:block;}
@@ -101,7 +99,6 @@
   @media all and (min-width: 320px) and (max-width: 500px) {
 
     .left_welcome_column, .right_welcome_column { 
-      clear:both;
       float:none;
       width:100%;
     }
@@ -117,14 +114,8 @@
   */
   @media all and (min-width: 320px) and (max-width: 500px) {
 
-    #slide1, #slide2, #slide3, #slide4, #slide5, #slide6, #product_name_container { 
-      width:100%; 
-      margin:0 auto;
-      float:none;
-      clear:both;
-    }
-    
-    .slide { width:100%;}
+    .slide { width:100%; }
+      .slide .shell, #second_product_type_icon { display:none; }
     
     #preview {
       width:100%;
@@ -132,16 +123,15 @@
       border-bottom:1px solid black;
     } 
     
+    #description_container { 
+      float:none;
+      width:90%;
+      margin:0 auto;
+    }
+    
     .button_inside { 
       border-radius:0;
     }
-    
-    #description_container { float:none;width:90%;margin:0 auto;}
-    
-    #slide5 .shell { display:none;}
-    #slide5 h6 { width:95%; padding:0;margin:0 auto;}
-    
-    #second_product_type_icon { display:none;}
     #print_button { display:none;}
     #actual_cards .place_card_view {
       width:100%;
@@ -190,17 +180,10 @@
     .right_column { margin-left:60%;}
     .chat-bubble { display:block;}
     
-    #slide1, #slide2, #slide3, #slide4, #slide5, #slide6,#product_name_container { 
+    .slide, #product_name_container { 
       width:100%;
       float:none;
-      clear:both;
     }
-    #slide1 img, #slide2 img, #slide3 img, #slide4 img, #slide5 img, #slide6 img  { 
-      width:100%;
-      float:none;
-      clear:both;
-    }
-    #slide5 .shell { display:none;}
     
      .tooltip-bubble,  .tooltip-bubble-arrow, .tooltip-bubble-arrow-border { 
       width:0;

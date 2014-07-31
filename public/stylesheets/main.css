@@ -145,7 +145,14 @@ input {
       padding-top:10px;
       display:none;
     }
-    #slogan_container { height:50px;float:left;border-top:1px dashed grey;border-bottom:1px solid black;width:25%;text-align:center;}
+    #slogan_container { 
+      height:50px;
+      float:left;
+      border-top:1px dashed grey;
+      border-bottom:1px solid black;
+      width:25%;
+      text-align:center;
+    }
     
     #dreams_slogan { 
       padding-top:0.25em;
@@ -159,6 +166,8 @@ input {
       font: 1.2em normal 'OS Light Italic';
       width:24.75%;
     }
+    
+    
     /* Navigation */
     
     #designs { 
@@ -332,11 +341,6 @@ input {
 }
 .clearfix { clear:both; }
 
-#customise_button {
-  display:none;
-}
-#product_container { text-align:center;}
-
 .grey_button {
   margin:1em;
   cursor:pointer;  display:inline-block;
@@ -347,4 +351,5 @@ input {
 }
 
   .grey_button:hover { 
-  background-color:black;}
+    background-color:black;
+  }
