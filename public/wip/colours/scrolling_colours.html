@@ -48,6 +48,15 @@
     margin:0 auto;
     overflow:hidden;
   }
+  .dizzycp-left_arrow, .dizzycp-right_arrow {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+  }
   .dizzycp-left_arrow { 
     margin-left:50px; 
     float:left;
@@ -60,10 +69,12 @@
   }
   .dizzycp-internal_wrapper{
     overflow-y: hidden;
-    overflow-x: scroll
+    overflow-x: scroll;    
+    -webkit-overflow-scrolling: touch;
   }
   .square { 
     float:left;
+    cursor: pointer;
   }
   .dizzycp-scrollable_colours {
     height:100px;
@@ -123,11 +134,21 @@
     var number_of_colours = pairs.length;
     var width_of_inside = swatch_width * number_of_colours;
   
-    var $external_wrapper = $('<div></div>').addClass('dizzycp-external_wrapper').width(container_width).css("height", swatch_width + "px");
+    var $external_wrapper = $('<div></div>').addClass('dizzycp-external_wrapper').css("height", swatch_width + "px");
     var $internal_wrapper = $('<div></div>').addClass('dizzycp-internal_wrapper').width(container_width)
     var $scrollable_colours = $('<div></div>').addClass('dizzycp-scrollable_colours').css("width",width_of_inside + "px");
     $internal_wrapper.append($scrollable_colours)
     $external_wrapper.append($internal_wrapper)
+  
+    $(window).resize(function() {
+      var new_width = that.width();
+      var swatch_width = new_width/settings.colours_per_page;
+      var width_of_inside = swatch_width * number_of_colours;
+      $external_wrapper.css("height", swatch_width + "px");
+      $internal_wrapper.width(new_width);
+      $scrollable_colours.width(width_of_inside)
+      $('.square').css({height: swatch_width + "px", width: swatch_width + "px"})
+    });
   
     var counter = 0;
     var colour_divs = []

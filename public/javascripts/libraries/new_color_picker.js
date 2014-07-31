@@ -4,12 +4,12 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
 
   $.fn.colorPicker = function(options) {
     var that = this;
-    var settings = $.extend({},  $.fn.colorPicker.defaultOptions, options);
+    var settings = $.extend({}, $.fn.colorPicker.defaultOptions, options);
 
     var container_width = settings.width || this.width();
-    var swatch_width = container_width / 6;
+    var swatch_width = container_width / settings.colours_per_page;
     var pairs = _.pairs(colours)
-    var groups = inGroupsOf(pairs, 6)
+    var groups = inGroupsOf(pairs, settings.colours_per_page)
 
     //static container
     var $static_container = $('<div></div>').addClass('dizzycp-static_container')
@@ -24,11 +24,21 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     var number_of_colours = pairs.length;
     var width_of_inside = swatch_width * number_of_colours;
   
-    var $external_wrapper = $('<div></div>').addClass('dizzycp-external_wrapper').width(container_width).css("height", swatch_width + "px");
+    var $external_wrapper = $('<div></div>').addClass('dizzycp-external_wrapper').css("height", swatch_width + "px");
     var $internal_wrapper = $('<div></div>').addClass('dizzycp-internal_wrapper').width(container_width)
     var $scrollable_colours = $('<div></div>').addClass('dizzycp-scrollable_colours').css("width",width_of_inside + "px");
     $internal_wrapper.append($scrollable_colours)
     $external_wrapper.append($internal_wrapper)
+  
+    $(window).resize(function() {
+      var new_width = that.width();
+      var swatch_width = new_width/settings.colours_per_page;
+      var width_of_inside = swatch_width * number_of_colours;
+      $external_wrapper.css("height", swatch_width + "px");
+      $internal_wrapper.width(new_width);
+      $scrollable_colours.width(width_of_inside)
+      $('.square').css({height: swatch_width + "px", width: swatch_width + "px"})
+    });
   
     var counter = 0;
     var colour_divs = []
@@ -72,10 +82,10 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
   $wrapper.css("position", "relative")
   
   // Arrows 
-  $left_arrow = $('<div class="dizzycp-left_arrow"style="float:left;font-size:50px;">&laquo;</div>').click(function() {
+  $left_arrow = $('<div class="dizzycp-left_arrow">&laquo;</div>').click(function() {
     scrollColours(-1)
   });
-  $right_arrow = $('<div  class="dizzycp-right_arrow" style="float:right;font-size:50px;">&raquo;</div>').click(function() {
+  $right_arrow = $('<div  class="dizzycp-right_arrow">&raquo;</div>').click(function() {
     scrollColours(1)
   });;
   
@@ -130,7 +140,7 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
   }
 
   $.fn.colorPicker.defaultOptions ={
-    colours_per_page: 16,
+    colours_per_page: 7,
     colour_list: colours,
     default_color: '#cd5c5c'
   } 

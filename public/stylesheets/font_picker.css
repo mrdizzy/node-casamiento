@@ -21,21 +21,22 @@
       font-stretch:expanded;
     }
     
-  .fonts_table {
+  table.selected_font { 
+    position:relative;
+    z-index:0;     
+    border-collapse:collapse;
+  }
+  
+  table.fonts_table {
     text-align:center;
     background-color:white;
     border:1px solid black;
     border-collapse:collapse;
+    border-spacing:0;
     z-index:100000;
     position:absolute;
     width:100%;
-  }
-  
-  .selected_font { 
-    position:relative;
-    z-index:0; 
-    border:1px solid transparent;
-  }
+  }  
   
     .selected_font td.font_name {
       text-align:center;
@@ -61,8 +62,8 @@
       cursor:pointer;
     }
 
- /td.font_name, td.font_description { width:50%;}
-  td.font_image { width:50%;}
+ td.font_name, td.font_description { width:40%;}
+  td.font_image { width:60%;}
 
   h2 { font-family:"Gara";font-weight:normal;}
   
