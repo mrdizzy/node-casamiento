@@ -3,7 +3,6 @@
 
 $(function() {
   FastClick.attach(document.body);
-  location.hash = ""
   
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
   var object_fonts = {};
@@ -26,6 +25,35 @@ $(function() {
     
   thisProduct.set("font_size", object_fonts[thisProduct.get("font")])
         
-  new StepView().render();
+  var step_view = new StepView();
+  var preview_view = new PreviewView({el: '#product_container', model: thisProduct})
+  // Router
+  var AppRouter = Backbone.Router.extend({
+        routes: {
+            "preview": "previewRoute", 
+            "print": "print",
+            "": "defaultRoute"
+        }
+    });
+    
+    // Initiate the router
+    var app_router = new AppRouter;
+
+    app_router.on('route:defaultRoute', function(actions) {       
+      step_view.render();
+    })
+    
+    app_router.on('route:previewRoute', function() {
+    alert('preview')
+      step_view._renderPreview();
+    })
+    
+    app_router.on('route:print', function() {
+      preview_view._renderPrintView();
+    })
+
+    // Start Backbone history a necessary step for bookmarkable URL's
+    Backbone.history.start();      
+ 
 
 })

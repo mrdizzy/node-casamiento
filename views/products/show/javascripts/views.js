@@ -16,7 +16,7 @@ var PreviewView = Backbone.View.extend({
     }
 
     thisProduct.trigger("render:font")
-    location.hash = "top_of_page" // Positions us at the top of the page
+    //location.hash = "top_of_page" // Positions us at the top of the page
   },  
   render: function() { 
     var that = this;
@@ -27,7 +27,7 @@ var PreviewView = Backbone.View.extend({
       })
       var viewport_width = viewportSize.getWidth();
       $('#image_container').fadeOut(function() { // hide 3D slides 
-        location.hash = "mobile_scroll" // Positions us at the top of the page
+        //location.hash = "mobile_scroll" // Positions us at the top of the page
         $('#preview').html(that.place_card_el.render().el).fadeIn(function() {
           if(viewport_width < 501) {
             var height = that.place_card_el.$el.height();
@@ -151,7 +151,7 @@ var StepView = Backbone.View.extend({
   },  
   _renderPreview: function() {
     if(!this.DOWNLOAD_VIEW_ACTIVE) {      
-      new PreviewView({el: '#product_container', model: thisProduct}).render();
+      preview_view.render();
       this.DOWNLOAD_VIEW_ACTIVE = true;
     }  
   },
