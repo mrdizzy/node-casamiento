@@ -19,27 +19,13 @@ var PreviewView = Backbone.View.extend({
     //location.hash = "top_of_page" // Positions us at the top of the page
   },  
   render: function() { 
-    var that = this;
-    if(!this.already_rendered) {
-      this.already_rendered = true;
-      this.place_card_el = new PlaceCardView({
-        model: thisProduct.get("guests").first(), 
-      })
-      var viewport_width = viewportSize.getWidth();
-      $('#image_container').fadeOut(function() { // hide 3D slides 
-        //location.hash = "mobile_scroll" // Positions us at the top of the page
-        $('#preview').html(that.place_card_el.render().el).fadeIn(function() {
-          if(viewport_width < 501) {
-            var height = that.place_card_el.$el.height();
-            $('.left_column').height(height)
-          }
-          that.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
-          that.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
-          thisProduct.trigger("render:font")
-        })
-        $('#preview').append('<div id="print_button" style="text-align:center;" class="grey_button"><img src="/gfx/printer_flame.svg" style="width:45px;" /><p>PRINT YOURSELF  </p></div>')
-      })
-    }
+    var place_card_view = new PlaceCardView({
+      model: thisProduct.get("guests").first(), 
+    }).render().el
+    
+    this.$el.html(place_card_view)
+    this.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
+    this.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
     return this;
   }
 })
@@ -51,8 +37,6 @@ var StepView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(thisProduct, 'change:quantity', this.renderQtyAndPrice)
     this.listenTo(thisProduct, 'change:guests', this._renderGuests)
-    this.listenTo(thisProduct, 'change:colours', this._renderPreview)
-    this.listenTo(thisProduct, 'change:font', this._renderPreview)
   },
   events: {     
     "click #buy": "checkout",        
@@ -61,13 +45,8 @@ var StepView = Backbone.View.extend({
     "click .texture": "updateTexture",  
     "blur #qty": "setQuantity",
     "click .weight": "updateWeight",  
-    "fontpicker:selected": "changeFont",
     "click #plus_qty": "plusQty",
     "click #minus_qty": "minusQty"
-  },
-  changeFont: function(e, font) {   
-    thisProduct.set("font_size", font.font_size)
-    thisProduct.set("font", font.font)
   },
   checkout: function() {
     $.form('/payments', { 
@@ -123,38 +102,15 @@ var StepView = Backbone.View.extend({
     this.$('#step_' + step_index + " .tooltip-bubble").fadeToggle()
     this.$('#step_' + step_index).toggleClass('highlight')
   },
-  
-  // RENDER METHODS
-  ////////////////////////////////////////////////////////////////////////////// 
   render: function() {
     // Compile the steps template
     var $result = $(Handlebars.template(templates["products_show_step_through"])(thisProduct.toJSON()));     
-      
-    // Create colour pickers
-    var colours = thisProduct.get("colours");
-    var $colour_wrapper = $result.find("#colour_section_render")
-    for(var i=0; i < colours.length; i++) {
-      $colour_wrapper.append(new ColourView({colour_index: i, width:$('#steps').width()}).render().el)
-    }
     
-    // Create font picker
-    $result.find('#fonts').fontPicker({
-      fonts: casamiento_fonts, 
-      selected_font: thisProduct.get("font")
-    });
-    
-    // Input fields for guests
-    this._renderGuests($result.find('#guests'));
+    this._renderGuests($result.find('#guests'));  // Input fields for guests
     
     this.$el.html($result)
     return this;
   },  
-  _renderPreview: function() {
-    if(!this.DOWNLOAD_VIEW_ACTIVE) {      
-      preview_view.render();
-      this.DOWNLOAD_VIEW_ACTIVE = true;
-    }  
-  },
   _renderGuests: function($element) {
     var $element = $element || this.$('#guests')
     var guests_html = []
@@ -173,6 +129,7 @@ var ColourView = Backbone.View.extend({
     "dizzy-cp:click": "changeColour"
   },
   changeColour: function(e, colour) {  
+  console.log("changing")
     $('.colour_' + this.options.colour_index).css("background-color", colour)
     var colours = thisProduct.get("colours")
     colours[this.options.colour_index] = colour

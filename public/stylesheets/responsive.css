@@ -38,7 +38,6 @@
         float:none; 
         width:100%;
       }
-        .chat-bubble { display:block;}
 
       #footer .genesis_collection, 
       #footer .castello_collection, 
@@ -57,11 +56,6 @@
       width:100%;
       border:0;
       margin:0;
-      padding:0;
-    }
-    #page_container_casamiento { 
-      border:0; 
-      margin:0; 
       padding:0;
     }
     #logo {

@@ -25,8 +25,52 @@ $(function() {
     
   thisProduct.set("font_size", object_fonts[thisProduct.get("font")])
         
-  var step_view = new StepView();
-  var preview_view = new PreviewView({el: '#product_container', model: thisProduct})
+  var CoordinatorView = Backbone.View.extend({
+  el:  '#inner_page_container',
+    initialize: function() {
+      this.listenTo(thisProduct, 'change:colours', this._renderPreview)
+      this.listenTo(thisProduct, 'change:font', this._renderPreview)
+    },
+    events: 
+    { 
+      "fontpicker:selected": "changeFont"
+    },
+    changeFont: function(e, font) {   
+      thisProduct.set("font_size", font.font_size)
+      thisProduct.set("font", font.font)
+    },
+    render: function() {
+      var step_view = new StepView().render().el;
+      this.$('.right_column').html(step_view)
+      
+       // Create colour pickers
+      var colours = thisProduct.get("colours");
+      var $colour_wrapper = $('.right_column').find("#colour_section_render")
+      for(var i=0; i < colours.length; i++) {
+        $colour_wrapper.append(new ColourView({colour_index: i, width:$('.right_column').width()}).render().el)
+      }
+      // Create font picker
+      this.$('.right_column').find('#fonts').fontPicker({
+        fonts: casamiento_fonts, 
+        selected_font: thisProduct.get("font")
+      });
+    },
+    _renderPreview: function() {
+      var viewport_width = viewportSize.getWidth();
+      //if(viewport_width < 501) {
+      //  var height = that.place_card_el.$el.height();
+      //  $('.left_column').height(height)
+      //}
+      var preview_view = new PreviewView().render().el
+      $('.left_column').fadeOut(function() {
+        $('.left_column').html(preview_view).show();      
+          thisProduct.trigger("render:font")
+      })
+    }
+  })      
+        
+  var coordinator_view = new CoordinatorView();
+  
   // Router
   var AppRouter = Backbone.Router.extend({
         routes: {
@@ -40,12 +84,11 @@ $(function() {
     var app_router = new AppRouter;
 
     app_router.on('route:defaultRoute', function(actions) {       
-      step_view.render();
+      coordinator_view.render();
     })
     
     app_router.on('route:previewRoute', function() {
-    alert('preview')
-      step_view._renderPreview();
+      coordinator_view._renderPreview();
     })
     
     app_router.on('route:print', function() {

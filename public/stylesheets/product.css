@@ -1,10 +1,5 @@
 .product_type_icon { width:130px; }
   
-  #preview {
-      z-index:9999999999999999999999999999999999999999999999999;
-      background-color:white;
-  }
-  
   #image_container .product_type_icon {
       display:none;
   }
