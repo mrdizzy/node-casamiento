@@ -1,6 +1,3 @@
-/*! viewportSize | Author: Tyson Matanich, 2013 | License: MIT */
-(function(n){n.viewportSize={},n.viewportSize.getHeight=function(){return t("Height")},n.viewportSize.getWidth=function(){return t("Width")};var t=function(t){var f,o=t.toLowerCase(),e=n.document,i=e.documentElement,r,u;return n["inner"+t]===undefined?f=i["client"+t]:n["inner"+t]!=i["client"+t]?(r=e.createElement("body"),r.id="vpw-test-b",r.style.cssText="overflow:scroll",u=e.createElement("div"),u.id="vpw-test-d",u.style.cssText="position:absolute;top:-1000px",u.innerHTML="<style>@media("+o+":"+i["client"+t]+"px){body#vpw-test-b div#vpw-test-d{"+o+":7px!important}}<\/style>",r.appendChild(u),i.insertBefore(r,e.head),f=u["offset"+t]==7?i["client"+t]:n["inner"+t],i.removeChild(r)):f=n["inner"+t],f}})(this);
-
 $(function() {
   FastClick.attach(document.body);
   
@@ -26,23 +23,26 @@ $(function() {
   thisProduct.set("font_size", object_fonts[thisProduct.get("font")])
         
   var CoordinatorView = Backbone.View.extend({
-  el:  '#inner_page_container',
+    el: '#inner_page_container',
     initialize: function() {
-      this.listenTo(thisProduct, 'change:colours', this._renderPreview)
-      this.listenTo(thisProduct, 'change:font', this._renderPreview)
+      this.context = 0; // 0 = Main page, 1 = PreviewPage, 2 = PrintUI
+      this.listenTo(thisProduct, 'change:colours', this._renderPreviewOnColourOrFontChange)
+      this.listenTo(thisProduct, 'change:font', this._renderPreviewOnColourOrFontChange)
     },
-    events: 
-    { 
+    events: { 
+      "click #print_button": "_renderPrintView",
       "fontpicker:selected": "changeFont"
     },
-    changeFont: function(e, font) {   
-      thisProduct.set("font_size", font.font_size)
-      thisProduct.set("font", font.font)
+    _renderPreviewOnColourOrFontChange: function() {
+       if(this.context != 2) {
+         app_router.navigate('preview');
+         this._renderPreview();
+       }
     },
     render: function() {
+      this.steps_rendered = true;
       var step_view = new StepView().render().el;
       this.$('.right_column').html(step_view)
-      
        // Create colour pickers
       var colours = thisProduct.get("colours");
       var $colour_wrapper = $('.right_column').find("#colour_section_render")
@@ -56,16 +56,62 @@ $(function() {
       });
     },
     _renderPreview: function() {
-      var viewport_width = viewportSize.getWidth();
-      //if(viewport_width < 501) {
-      //  var height = that.place_card_el.$el.height();
-      //  $('.left_column').height(height)
-      //}
-      var preview_view = new PreviewView().render().el
-      $('.left_column').fadeOut(function() {
-        $('.left_column').html(preview_view).show();      
-          thisProduct.trigger("render:font")
-      })
+      if(!this.steps_rendered) 
+        this.render();
+      
+      if (!this.preview_rendered) {
+        this.place_card_view = new PlaceCardView({
+          model: thisProduct.get("guests").first(), 
+        }).render()
+        
+        var viewport_width = viewportSize.getWidth();
+        //if(viewport_width < 501) {
+        //  var height = that.place_card_el.$el.height();
+        //  $('.left_column').height(height)
+        //
+        this.$('#preview').html(this.place_card_view.el);        
+        this.$('#preview').append("<a id='print_button'>Print</a>")     
+        this.preview_rendered = true;
+      }
+      
+      if (this.context == 2) { // Print UI
+        $('#print_ui').hide()
+        $('#inner_page_container').show()
+      }
+      if (this.context == 0) {
+        this.$('#product_container').hide()        
+        this.$('#preview').show(); 
+      }         
+      this.context = 1;
+      thisProduct.trigger("render:font")     
+    },
+    _renderPrintView: function() {
+      if(!this.printview_rendered) {
+        var print_control_panel_view = new PrintControlPanelView({}).render().el
+        $('#print_ui').html(print_control_panel_view)        
+        $('#print_ui').show();
+        thisProduct.trigger("render:font")
+        var $colour_pickers = $('#colour_swatches')
+        
+        // Create colour pickers
+        var colours = thisProduct.get("colours");
+        for(var i=0; i < colours.length; i++) {
+          $colour_pickers.append(new ColourView({
+            colour_index: i, 
+            width: $colour_pickers.width()
+          }).render().el)
+        }
+        this.printview_rendered = true;
+      } else if(this.context == 1) {
+        $('#inner_page_container').hide();        
+        $('#print_ui').show();
+      }
+      this.context = 2;      
+      app_router.navigate('print');
+    },
+    changeFont: function(e, font) {   
+      thisProduct.set("font_size", font.font_size)
+      thisProduct.set("font", font.font)
     }
   })      
         
@@ -73,31 +119,20 @@ $(function() {
   
   // Router
   var AppRouter = Backbone.Router.extend({
-        routes: {
-            "preview": "previewRoute", 
-            "print": "print",
-            "": "defaultRoute"
-        }
-    });
+    routes: {
+      "preview": function() {
+        coordinator_view._renderPreview();
+      },
+      "print": function() {
+        coordinator_view._renderPrintView();
+      }, 
+      "": function(actions) {       
+        coordinator_view.render();
+      }
+    }
+  });
     
-    // Initiate the router
-    var app_router = new AppRouter;
-
-    app_router.on('route:defaultRoute', function(actions) {       
-      coordinator_view.render();
-    })
-    
-    app_router.on('route:previewRoute', function() {
-
-      coordinator_view._renderPreview();
-    })
-    
-    app_router.on('route:print', function() {
-      preview_view._renderPrintView();
-    })
-
-    // Start Backbone history a necessary step for bookmarkable URL's
-    Backbone.history.start();      
- 
-
+  // Initiate the router
+  var app_router = new AppRouter;
+  Backbone.history.start();      
 })

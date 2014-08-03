@@ -111,8 +111,9 @@
     .slide { width:100%; }
       .slide .shell, #second_product_type_icon { display:none; }
     
-    #preview {
-      width:100%;
+    .left_column .place_card_view {
+      z-index:10;
+      width:95%;
       position:fixed;
       border-bottom:1px solid black;
     } 

@@ -9,6 +9,7 @@ var PlaceCardView = GuestView.extend({
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);
     this.listenTo(this.model, 'change:font_size', this._renderFontSize);
     this.listenTo(this.model, 'change:baseline', this._renderBaseline);
+    this.units = this.options.svg ? "mm" : "px"
     $(window).bind("resize", _.bind(this._renderFontSize, this));
   },  
   events: {
@@ -63,16 +64,14 @@ var PlaceCardView = GuestView.extend({
     this.$('input').css('font-family', thisProduct.get("font"));
   },
   _renderBaseline: function() {
-  var units = this.options.svg ? "mm" : "px"
     this.calculateBaselineOffset();
-    this.$('.spacer').css("height", this.top_half_height + units)
-    this.$('input').css("height", this.bottom_half_height + units)
+    this.$('.spacer').css("height", this.top_half_height + this.units)
+    this.$('input').css("height", this.bottom_half_height + this.units)
   },
   _renderFontSize: function() {
-  var units = this.options.svg ? "mm" : "px"
     this.calculateFontSize();
     this._renderBaseline();
-    this.$('input').css('font-size', this.font_size + units);
+    this.$('input').css('font-size', this.font_size + this.units);
   }
 })
 

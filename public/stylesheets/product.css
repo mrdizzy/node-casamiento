@@ -1,6 +1,6 @@
 .product_type_icon { width:130px; }
   
-  #image_container .product_type_icon {
+  #product_container .product_type_icon {
       display:none;
   }
   .slide { 

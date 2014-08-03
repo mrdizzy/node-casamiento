@@ -1,39 +1,6 @@
-// 2D Bitmap Preview View
-////////////////////////////////////////////////////////////////////////////// 
-var PreviewView = Backbone.View.extend({
-  events: {
-    'click #print_button': '_renderPrintView',
-  },
-  _renderPrintView: function() {
-    var print_control_panel_view = new PrintControlPanelView({}).render().el
-    $('body').html(print_control_panel_view)
-    var $colour_pickers = $('#colour_swatches')
-      
-    // Create colour pickers
-    var colours = thisProduct.get("colours");
-    for(var i=0; i < colours.length; i++) {
-      $colour_pickers.append(new ColourView({colour_index: i, width: $colour_pickers.width()}).render().el)
-    }
-
-    thisProduct.trigger("render:font")
-    //location.hash = "top_of_page" // Positions us at the top of the page
-  },  
-  render: function() { 
-    var place_card_view = new PlaceCardView({
-      model: thisProduct.get("guests").first(), 
-    }).render().el
-    
-    this.$el.html(place_card_view)
-    this.$('.colour_0').css("background-color", thisProduct.get("colours")[0]);
-    this.$('.colour_1').css("background-color", thisProduct.get("colours")[1]);
-    return this;
-  }
-})
-
 // STEP VIEW
 ////////////////////////////////////////////////////////////////////////////// 
 var StepView = Backbone.View.extend({ 
-  el: '#steps',
   initialize: function() {
     this.listenTo(thisProduct, 'change:quantity', this.renderQtyAndPrice)
     this.listenTo(thisProduct, 'change:guests', this._renderGuests)
@@ -129,7 +96,6 @@ var ColourView = Backbone.View.extend({
     "dizzy-cp:click": "changeColour"
   },
   changeColour: function(e, colour) {  
-  console.log("changing")
     $('.colour_' + this.options.colour_index).css("background-color", colour)
     var colours = thisProduct.get("colours")
     colours[this.options.colour_index] = colour
