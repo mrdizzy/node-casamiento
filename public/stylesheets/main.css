@@ -49,7 +49,16 @@ h2 {
   margin-bottom:0.5em; 
   }
   
-  .place_square_2 h2, .place_square_3 h2, .place_square_5 h2, .place_square_6 h2,.place_square_8 h2, .place_square_9 h2, .place_square_11 h2, .place_square_12 h2 { font-size:1.2em; }
+  .place_square_2 h2, 
+  .place_square_3 h2, 
+  .place_square_5 h2, 
+  .place_square_6 h2,
+  .place_square_8 h2, 
+  .place_square_9 h2, 
+  .place_square_11 h2, 
+  .place_square_12 h2 { 
+    font-size:1.2em; 
+  }
   
   #search_results h2 { font-size:1.2em; letter-spacing:0.1em;}
   
@@ -166,67 +175,15 @@ body {
       font: 1.2em normal 'OS Light Italic';
       width:24.75%;
     }
-    
-    
-    /* Navigation */
-    
-    #designs { 
-      background-color:white;
-      border:1px solid black;
-      border-bottom-left-radius:15px;
-      border-bottom-right-radius:15px;
-      border-top:0;
-      box-shadow:7px 7px 0px lightgrey;
-      display:none;
-      left:0;
-      margin:0 auto;
-      position:absolute;
-      right:0;
-      width:75%;
-      z-index:5000;
+            
+      #browse div {
+        padding-top:15px;
+        height:35px;
+        border-left:1px dotted grey;
+        border-right:1px dotted grey;
+        text-align:center;
       }
-        
-      #navigation_selected_tags {  
-       float:left;
-       text-align:center;   
-       width:33%;
-      }
-    
-       .tag { 
-        border-radius:15px;
-        display:inline-block;
-        background-color:#EEE;
-        color:#000;
-        font:1em normal 'OS';
-        padding:0.5em;
-      }
-      
-        .tag_close {
-          display:inline-block;
-          border-radius:10px;
-          width:20px;
-          height:20px;
-          color:white;
-          background-color:darkgrey;
-          font:1em normal 'OS';
-          text-align:center;
-        }
-      
-      #navigation_options { 
-        border-left:1px solid grey;
-        float:left;
-        padding-left:1em;
-        text-align:left;
-        width:65%;
-      }
-      #browse div:hover { background-color:#EEE;}
-      #browse div { padding-top:15px;height:35px;border-left:1px dotted grey;border-right:1px dotted grey;text-align:center;}
        
-      #search_results img { width: 100%;}
-      .search { border-radius:10px;}
-     
-      .search_image { border:1px solid transparent;}
-      .search_image:hover { opacity:0.85; border:1px solid grey; border-radius: 10px;}
     .left_column { 
       float:left; 
       width:70%; 
@@ -293,12 +250,21 @@ body {
     text-decoration:underline; 
   }
   
-  .place_square_2, .place_square_3, .place_square_5, .place_square_6, .place_square_8, .place_square_9, .place_square_11, .place_square_12 { 
+  .place_square_2, 
+  .place_square_3, 
+  .place_square_5, 
+  .place_square_6, 
+  .place_square_8, 
+  .place_square_9, 
+  .place_square_11, 
+  .place_square_12 { 
     float:left;
     width:49.25%; 
   }
     
-  .place_square_4, .place_square_7, .place_square_10 { 
+  .place_square_4, 
+  .place_square_7, 
+  .place_square_10 { 
     float:left;
     width:100%; 
   }
@@ -312,6 +278,7 @@ body {
 =========================== */
 
 .deselected { opacity:0.4; }
+
   .deselected:hover, .selected {
     opacity: 1; 
     cursor:pointer;
@@ -339,11 +306,11 @@ body {
   text-align:center;
   display:none;
 }
-.clearfix { clear:both; }
 
 .grey_button {
   margin:1em;
-  cursor:pointer;  display:inline-block;
+  cursor:pointer;  
+  display:inline-block;
   background-color:grey;
   padding:2em;
   color:white;
