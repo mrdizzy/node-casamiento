@@ -40,7 +40,6 @@ $(function() {
        }
     },
     render: function() {
-      this.steps_rendered = true;
       var step_view = new StepView().render().el;
       this.$('.right_column').html(step_view)
        // Create colour pickers
@@ -54,60 +53,57 @@ $(function() {
         fonts: casamiento_fonts, 
         selected_font: thisProduct.get("font")
       });
+      
+      this.place_card_view = new PlaceCardView({
+        model: thisProduct.get("guests").first(), 
+      }).render()
+       
+      var viewport_width = viewportSize.getWidth();
+      //if(viewport_width < 501) {
+      //  var height = that.place_card_el.$el.height();
+      //  $('.left_column').height(height)
+      //
+      this.$('#preview').html(this.place_card_view.el);        
+      this.$('#preview').append("<a id='print_button'>Print</a>")     
+      
+      var print_control_panel_view = new PrintControlPanelView({}).render().el
+      $('#print_ui').html(print_control_panel_view)        
+      var $colour_pickers = $('#colour_swatches')
+
+      // Create colour pickers
+      var colours = thisProduct.get("colours");
+      for(var i=0; i < colours.length; i++) {
+        $colour_pickers.append(new ColourView({
+          colour_index: i, 
+          width: $colour_pickers.width()
+        }).render().el)
+      }
+      thisProduct.trigger("render:font")     
+      $('#print_ui').hide();
+      $('#preview').hide()
+      this.rendered = true;
     },
     _renderPreview: function() {
-      if(!this.steps_rendered) 
+      if(!this.rendered) 
         this.render();
-      
-      if (!this.preview_rendered) {
-        this.place_card_view = new PlaceCardView({
-          model: thisProduct.get("guests").first(), 
-        }).render()
-        
-        var viewport_width = viewportSize.getWidth();
-        //if(viewport_width < 501) {
-        //  var height = that.place_card_el.$el.height();
-        //  $('.left_column').height(height)
-        //
-        this.$('#preview').html(this.place_card_view.el);        
-        this.$('#preview').append("<a id='print_button'>Print</a>")     
-        this.preview_rendered = true;
-      }
-      
-      if (this.context == 2) { // Print UI
-        $('#print_ui').hide()
-        $('#inner_page_container').show()
-      }
-      if (this.context == 0) {
-        this.$('#product_container').hide()        
-        this.$('#preview').show(); 
-      }         
+      $('#print_ui').hide();
+      $('#inner_page_container').show();
+      $('#product_container').hide()
+      $('#preview').show();
+      thisProduct.trigger("render:font")
+
+      app_router.navigate("preview")
       this.context = 1;
-      thisProduct.trigger("render:font")     
     },
     _renderPrintView: function() {
-      if(!this.printview_rendered) {
-        var print_control_panel_view = new PrintControlPanelView({}).render().el
-        $('#print_ui').html(print_control_panel_view)        
-        $('#print_ui').show();
-        thisProduct.trigger("render:font")
-        var $colour_pickers = $('#colour_swatches')
-        
-        // Create colour pickers
-        var colours = thisProduct.get("colours");
-        for(var i=0; i < colours.length; i++) {
-          $colour_pickers.append(new ColourView({
-            colour_index: i, 
-            width: $colour_pickers.width()
-          }).render().el)
-        }
-        this.printview_rendered = true;
-      } else if(this.context == 1) {
-        $('#inner_page_container').hide();        
-        $('#print_ui').show();
-      }
-      this.context = 2;      
-      app_router.navigate('print');
+     if(!this.rendered) 
+        this.render();
+      $('#inner_page_container').hide();
+      $('#print_ui').show();           
+      thisProduct.trigger("render:font")      
+      app_router.navigate("print")
+      this.context = 2;
+      
     },
     changeFont: function(e, font) {   
       thisProduct.set("font_size", font.font_size)
