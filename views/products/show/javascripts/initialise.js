@@ -44,7 +44,7 @@ $(function() {
     })
     
     app_router.on('route:previewRoute', function() {
-    alert('preview')
+    step_view.render();
       step_view._renderPreview();
     })
     
