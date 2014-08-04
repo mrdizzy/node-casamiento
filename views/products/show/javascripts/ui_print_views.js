@@ -126,8 +126,7 @@ var PrintControlPanelView = Backbone.View.extend({
   },  
   // Create the SVG print view
   printPage: function(e) {
-     
-      alert(window.print)
+     window.print();
     var result = new PlaceCardCollectionView({
       per_page: this.layout,
       svg: true
