@@ -103,7 +103,6 @@ $(function() {
       thisProduct.trigger("render:font")      
       app_router.navigate("print")
       this.context = 2;
-      
     },
     changeFont: function(e, font) {   
       thisProduct.set("font_size", font.font_size)
@@ -118,6 +117,11 @@ $(function() {
     routes: {
       "preview": function() {
         coordinator_view._renderPreview();
+      },
+      "preview/colour1/:colour1": function(colour_1) {
+        coordinator_view._renderPreview();
+        thisProduct.set("colour_1", "#" + colour_1)  
+        app_router.navigate("preview/colour1/" + colour_1)
       },
       "print": function() {
         coordinator_view._renderPrintView();
