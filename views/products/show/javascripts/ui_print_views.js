@@ -5,6 +5,7 @@
 var PlaceCardView = GuestView.extend({
   className: 'place_card_view',
   initialize: function() {
+    this.listenTo(this.model, "change:name", this._renderName)
     this.listenTo(thisProduct, 'render:font', this._renderFontSize);
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);
     this.listenTo(this.model, 'change:font_size', this._renderFontSize);
@@ -63,6 +64,9 @@ var PlaceCardView = GuestView.extend({
   _renderFontFamily: function() {    
     this.$('input').css('font-family', thisProduct.get("font"));
   },
+  _renderName: function() {
+    this.$('input').val(this.model.get("name"))  
+  },
   _renderBaseline: function() {
     this.calculateBaselineOffset();
     this.$('.spacer').css("height", this.top_half_height + this.units)
@@ -118,6 +122,7 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   changeFont: function(e, font) { 
     thisProduct.set("font", font.font)
+    thisProduct.save();
   },  
   // Create the SVG print view
   printPage: function(e) {

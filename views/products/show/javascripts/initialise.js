@@ -19,7 +19,7 @@ $(function() {
 
   // Setup and initialization
   var thisProduct = new Product(<%- JSON.stringify(product) %>);
-    
+  thisProduct.fetch()    
   thisProduct.set("font_size", object_fonts[thisProduct.get("font")])
         
   var CoordinatorView = Backbone.View.extend({
@@ -34,8 +34,8 @@ $(function() {
       "fontpicker:selected": "changeFont"
     },
     _renderPreviewOnColourOrFontChange: function() {
-       if(this.context != 2) {
-         app_router.navigate('preview');
+       if(this.context == 0) {
+         app_router.navigate('flat_preview');
          this._renderPreview();
        }
     },
@@ -107,6 +107,7 @@ $(function() {
     changeFont: function(e, font) {   
       thisProduct.set("font_size", font.font_size)
       thisProduct.set("font", font.font)
+      thisProduct.save();
     }
   })      
         

@@ -42,9 +42,11 @@ var StepView = Backbone.View.extend({
     }
     thisProduct.set("quantity", new_quantity)
     $field.val(new_quantity)
+    thisProduct.save()
   },
   updateQty: function(number) {
     thisProduct.adjustQuantity(number)
+    thisProduct.save()
   },
   renderQtyAndPrice: function() {    
     this.$('#qty').val(thisProduct.get("quantity"))       
@@ -100,6 +102,7 @@ var ColourView = Backbone.View.extend({
     var colours = thisProduct.get("colours")
     colours[this.options.colour_index] = colour
     thisProduct.set("colours", colours).trigger("change:colours")
+    thisProduct.save();
   },
   render: function() {
     var that = this;
@@ -116,6 +119,9 @@ var ColourView = Backbone.View.extend({
 // GUEST VIEW
 ////////////////////////////////////////////////////////////////////////////// 
 var GuestView = Backbone.View.extend({  
+  initialize: function() {
+    this.listenTo(this.model, "change:name", this.render)  
+  },
   events: {
     "blur input": 'updateGuest',
     'focus input': 'clearGuest'
@@ -125,9 +131,12 @@ var GuestView = Backbone.View.extend({
       this.$('input').val("")      
   },
   updateGuest: function() {
-    this.model.set("name", this.$('input').val())
+  console.log("Updated")
+   var name = this.$('input').val()
+    this.model.set("name", name)
   },
   render: function() { 
+  console.log("Rendering")
     this.$el.html('<input type="text" name="guest" value="' + this.model.get("name") + '"></input>')
     return this;
   }

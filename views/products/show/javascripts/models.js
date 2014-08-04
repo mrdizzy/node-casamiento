@@ -21,6 +21,9 @@ var Guests = Backbone.Collection.extend({
 
 var Product = Backbone.Model.extend({
 ////////////////////////////////////////////////////////////////
+  urlRoot: '/products',
+  idAttribute: "_id",
+  localStorage: new Backbone.LocalStorage("CasamientoProducts"),
   defaults: {
     quantity: 8,
     guests: new Guests([{},{},{},{},{},{},{},{}]),
@@ -58,13 +61,16 @@ var Product = Backbone.Model.extend({
     var colours = this.get("colours");
     colours[0] = this.get("colour_0");
     this.set("colours", colours)
-    $('.colour_0').css("background-color", colours[0]) // global colour change
+    $('.colour_0').css("background-color", colours[0]) // global colour change  
+    thisProduct.save();  
   },
   updateColour1: function() {
     var colours = this.get("colours");
     colours[1] = this.get("colour_1");
     this.set("colours", colours);    
     $('.colour_1').css("background-color", colours[1]) // global colour change
+    alert("saving")
+    
   },
   adjustGuests: function() {
     var adjustment = this.get("quantity") - this.previous("quantity"),
@@ -118,5 +124,9 @@ var Product = Backbone.Model.extend({
     this.set("total", total)    
     this.updatePounds();
     this.updatePence();
+  },
+  parse: function(response) {
+    response.guests = new Guests(response.guests)
+    return response;
   }
 });
