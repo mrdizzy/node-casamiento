@@ -4,11 +4,12 @@ var StepView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(thisProduct, 'change:quantity', this.renderQtyAndPrice)
     this.listenTo(thisProduct, 'change:guests', this._renderGuests)
+    this.current_step = 1;
   },
   events: {     
     "click #buy": "checkout",        
-    "mouseenter .spc": "hoverStep",
-    "mouseleave .spc": "hoverStep",     
+    "mouseenter .spc": "hoverOver",
+    "mouseleave .spc": "hoverOut",     
     "click .texture": "updateTexture",  
     "blur #qty": "setQuantity",
     "click .weight": "updateWeight",  
@@ -65,11 +66,19 @@ var StepView = Backbone.View.extend({
   // We use the index of the div to toggle it (index is its place within the hierarchy of other siblings obtained by the jquery.index() function), this breaks easily if other divs are added between or before steps. The first sibling
   // element is actually the img of the name place icon so this counts as index 0, then the first step is index 1. 
   // If we were to move the img then the first step would be index 0 so this would break things. 
-  hoverStep: function(e) {
+  hoverOver: function(e) {
     var step_index = $(e.currentTarget).index();
-    this.$('#step_' + step_index + " .step").fadeToggle()      
+    this.$('#step_' + step_index + " .step").css("background-color", thisProduct.get("colours")[0])      
     this.$('#step_' + step_index + " .tooltip-bubble").fadeToggle()
     this.$('#step_' + step_index).toggleClass('highlight')
+  },
+  hoverOut: function(e) {
+    var step_index = $(e.currentTarget).index();
+    if(step_index != this.current_step) {
+      this.$('#step_' + step_index + " .step").css("background-color", "#BBB") 
+    }
+    
+    this.$('#step_' + step_index + " .tooltip-bubble").fadeToggle()
   },
   render: function() {
     // Compile the steps template

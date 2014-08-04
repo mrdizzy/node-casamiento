@@ -46,6 +46,7 @@
 
     .step { 
       border-bottom-left-radius:10px;
+      background-color:#BBB;
       color:white;
       text-align:center;
       float:right;
