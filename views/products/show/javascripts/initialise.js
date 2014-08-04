@@ -16,11 +16,16 @@ $(function() {
   <% templates.forEach(function(template) { %>
     templates["<%= template.name %>"] = <%- template.template %>;
   <% }) %>
-
+  
   // Setup and initialization
-  var thisProduct = new Product(<%- JSON.stringify(product) %>);
-  thisProduct.fetch()    
-  thisProduct.set("font_size", object_fonts[thisProduct.get("font")])
+  var thisProduct = new Product();   
+  
+  thisProduct.fetch({success:function(resp) {
+    console.log("succcess")
+  }, error: function(resp) {
+    console.log("Error")
+  }})  
+  
         
   var CoordinatorView = Backbone.View.extend({
     el: '#inner_page_container',
@@ -118,6 +123,7 @@ $(function() {
     routes: {
       "flat_preview": function() {
         coordinator_view._renderPreview();
+        thisProduct.trigger("change:colours")
       },    
       "flat_preview/colour0/:colour0": function(colour_0) {
         coordinator_view._renderPreview();

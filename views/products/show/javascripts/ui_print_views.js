@@ -126,6 +126,8 @@ var PrintControlPanelView = Backbone.View.extend({
   },  
   // Create the SVG print view
   printPage: function(e) {
+     
+      alert(window.print)
     var result = new PlaceCardCollectionView({
       per_page: this.layout,
       svg: true
@@ -142,7 +144,7 @@ var PrintControlPanelView = Backbone.View.extend({
       
     images.attr('src', "/svg/" + svg_url).load(function() {
       counter--;
-      if(counter == 0) {      
+      if(counter == 0) {   
         window.print()        
         $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
       }

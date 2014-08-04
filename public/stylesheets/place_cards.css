@@ -144,12 +144,12 @@
         clear:both;width:30%;float:left;
     }
 #ui_global_font {
-    width:30%;
+    width:50%;
     float:left;
     text-align:right;
 }
   #ui_print_font_picker_container {
-  width:40%;float:left;
+  width:50%;float:left;
   }
         
 #actual_cards { 

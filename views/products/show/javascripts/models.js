@@ -24,11 +24,14 @@ var Product = Backbone.Model.extend({
   urlRoot: '/products',
   idAttribute: "_id",
   localStorage: new Backbone.LocalStorage("CasamientoProducts"),
-  defaults: {
-    quantity: 8,
-    guests: new Guests([{},{},{},{},{},{},{},{}]),
-    total: 3.97,
-    price: 0.10 
+  defaults: function() {
+    var defaults = <%- JSON.stringify(product) %>
+    defaults.quantity = 8
+    defaults.font_size = object_fonts[defaults.font]
+    defaults.guests = new Guests([{},{},{},{},{},{},{},{}])
+    defaults.total = 3.97,
+    defaults.price = 0.10
+    return defaults;
   },
   initialize: function() {  
     this.textures = ["plain", "hammered", "linen"]

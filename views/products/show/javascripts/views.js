@@ -74,7 +74,8 @@ var StepView = Backbone.View.extend({
   render: function() {
     // Compile the steps template
     var $result = $(Handlebars.template(templates["products_show_step_through"])(thisProduct.toJSON()));     
-    
+    $result.find(".colour_0").css("background-color", thisProduct.get("colours")[0])    
+    $result.find(".colour_1").css("background-color", thisProduct.get("colours")[1])
     this._renderGuests($result.find('#guests'));  // Input fields for guests
     
     this.$el.html($result)
