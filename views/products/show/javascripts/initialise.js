@@ -24,8 +24,7 @@ $(function() {
     console.log("succcess")
   }, error: function(resp) {
     console.log("Error")
-  }})  
-  
+  }})    
         
   var CoordinatorView = Backbone.View.extend({
     el: '#inner_page_container',
@@ -47,6 +46,7 @@ $(function() {
     render: function() {
       var step_view = new StepView().render().el;
       this.$('.right_column').html(step_view)
+      
        // Create colour pickers
       var colours = thisProduct.get("colours");
       var $colour_wrapper = $('.right_column').find("#colour_section_render")
