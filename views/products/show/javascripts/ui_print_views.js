@@ -126,13 +126,13 @@ var PrintControlPanelView = Backbone.View.extend({
   },  
   // Create the SVG print view
   printPage: function(e) {
-     window.print();
+    
     var result = new PlaceCardCollectionView({
       per_page: this.layout,
       svg: true
     }).render().el;
     $('#printsvg').html(result);    
-    
+     window.print();
     thisProduct.trigger("render:font")
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
     
