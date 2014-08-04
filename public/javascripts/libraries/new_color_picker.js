@@ -7,16 +7,26 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     var settings = $.extend({}, $.fn.colorPicker.defaultOptions, options);
 
     var container_width = settings.width || this.width();
+    var index = settings.index;
+    var listen_to = settings.listen_to
     var swatch_width = container_width / settings.colours_per_page;
     var pairs = _.pairs(colours)
     var groups = inGroupsOf(pairs, settings.colours_per_page)
 
     //static container
     var $static_container = $('<div></div>').addClass('dizzycp-static_container')
-    var $text_label_for_colour = $('<div>' + settings.colour_list[settings.default_color] + '</div>').addClass("dizzycp-text_label_for_colour")
+    var $text_label_for_colour = this.$text_label_for_colour = $('<div>' + settings.colour_list[settings.default_color] + '</div>').addClass("dizzycp-text_label_for_colour")
     var $big_colour_square_frame = $('<div></div>').addClass('dizzycp-big_colour_square_frame')
-    var $big_colour_square_swatch = $('<div></div>').css("background-color", settings.default_color).addClass('dizzycp-big_colour_square_swatch')
-  
+    var $big_colour_square_swatch = this.$big_colour_square_swatch = $('<div></div>').css("background-color", settings.default_color).addClass('dizzycp-big_colour_square_swatch')
+    
+    if(listen_to) {
+      listen_to.on("change:colours", function() {
+        var new_colour = listen_to.get("colours")[index];
+        $big_colour_square_swatch.css("background-color", new_colour)
+        $text_label_for_colour.text(colours[new_colour])
+      })
+    }
+    
     $big_colour_square_frame.append($big_colour_square_swatch)
     var $swatch = $('<div></div>').addClass("dizzycp-swatch_container")
     $swatch.append($big_colour_square_frame).append($text_label_for_colour)   
@@ -132,7 +142,6 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     this.html($wrapper)
    
     function scrollColours(amount) {
-    console.log(panel_counter)
       selected_counter = selected_counter + amount;  
       var position = $container_to_fade_in.find('#panel_' + selected_counter).position().left;  
       $internal_wrapper.animate({scrollLeft: position}, 100);
@@ -145,5 +154,6 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     colour_list: colours,
     default_color: '#cd5c5c'
   } 
+  
       
 })(jQuery)  

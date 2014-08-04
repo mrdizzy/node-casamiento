@@ -92,7 +92,7 @@ $(function() {
       $('#preview').show();
       thisProduct.trigger("render:font")
 
-      app_router.navigate("preview")
+      app_router.navigate("flat_preview")
       this.context = 1;
     },
     _renderPrintView: function() {
@@ -115,14 +115,14 @@ $(function() {
   // Router
   var AppRouter = Backbone.Router.extend({
     routes: {
-      "preview": function() {
+      "flat_preview": function() {
         coordinator_view._renderPreview();
-      },
-      "preview/colour1/:colour1": function(colour_1) {
+      },    
+      "flat_preview/colour0/:colour0": function(colour_0) {
         coordinator_view._renderPreview();
-        thisProduct.set("colour_1", "#" + colour_1)  
-        app_router.navigate("preview/colour1/" + colour_1)
-      },
+        thisProduct.set("colour_0", "#" + colour_0).trigger("change:colours")
+        app_router.navigate("flat_preview/colour0/" + colour_0)
+      },  
       "print": function() {
         coordinator_view._renderPrintView();
       }, 

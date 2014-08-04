@@ -33,8 +33,8 @@ var Product = Backbone.Model.extend({
     this.on("change:quantity", this.adjustGuests)
     this.on("change:texture", this.calculatePrice)
     this.on("change:weight", this.calculatePrice)
+    this.on("change:colour_0", this.updateColour0)
     this.on("change:colour_1", this.updateColour1)
-    this.on("change:colour_2", this.updateColour2)
     this.updateGuestNames();
     this.updatePounds();
     this.updatePence();
@@ -54,17 +54,17 @@ var Product = Backbone.Model.extend({
   updatePence: function() {
    this.set("pence", this.get("total").toString().split(".")[1])
   },
+  updateColour0: function() {
+    var colours = this.get("colours");
+    colours[0] = this.get("colour_0");
+    this.set("colours", colours)
+    $('.colour_0').css("background-color", colours[0]) // global colour change
+  },
   updateColour1: function() {
     var colours = this.get("colours");
-    colours[0] = this.get("colour_1");
-    this.set("colours", colours)
-    $('.colour_1').css("background-color", colours[0]) // global colour change
-  },
-  updateColour2: function() {
-    var colours = this.get("colours");
-    colours[1] = this.get("colour_2");
+    colours[1] = this.get("colour_1");
     this.set("colours", colours);    
-    $('.colour_2').css("background-color", colours[1]) // global colour change
+    $('.colour_1').css("background-color", colours[1]) // global colour change
   },
   adjustGuests: function() {
     var adjustment = this.get("quantity") - this.previous("quantity"),

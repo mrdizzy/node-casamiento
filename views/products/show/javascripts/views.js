@@ -105,6 +105,8 @@ var ColourView = Backbone.View.extend({
     var that = this;
     this.$el.colorPicker({
       default_color: thisProduct.get("colours")[this.options.colour_index], 
+      listen_to: thisProduct,
+      index: this.options.colour_index,
       width:that.options.width
     });
     return this;
