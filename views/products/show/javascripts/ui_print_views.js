@@ -114,6 +114,7 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   showPanel: function() {
     $('#control_panel').show();  
+    thisProduct.trigger("rerender")
   },
   changeLayout: function(e) {
     var val = $(e.currentTarget).val()

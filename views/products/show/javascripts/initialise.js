@@ -80,6 +80,7 @@ $(function() {
       for(var i=0; i < colours.length; i++) {
         $colour_pickers.append(new ColourView({
           colour_index: i, 
+          listen_to: thisProduct,
           width: $colour_pickers.width()
         }).render().el)
       }
@@ -95,7 +96,7 @@ $(function() {
       $('#inner_page_container').show();
       $('#product_container').hide()
       $('#preview').show();
-      thisProduct.trigger("render:font")
+      thisProduct.trigger("render:font").trigger("rerender")
 
       app_router.navigate("flat_preview")
       this.context = 1;
@@ -105,7 +106,7 @@ $(function() {
         this.render();
       $('#inner_page_container').hide();
       $('#print_ui').show();           
-      thisProduct.trigger("render:font")      
+      thisProduct.trigger("render:font").trigger("rerender")      
       app_router.navigate("print")
       this.context = 2;
     },
@@ -123,7 +124,6 @@ $(function() {
     routes: {
       "flat_preview": function() {
         coordinator_view._renderPreview();
-        thisProduct.trigger("change:colours")
       },    
       "flat_preview/colour0/:colour0": function(colour_0) {
         coordinator_view._renderPreview();

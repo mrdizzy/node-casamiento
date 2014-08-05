@@ -25,6 +25,7 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
         $big_colour_square_swatch.css("background-color", new_colour)
         $text_label_for_colour.text(colours[new_colour])
       })
+      listen_to.on("rerender", handleResize)
     }
     
     $big_colour_square_frame.append($big_colour_square_swatch)
@@ -40,16 +41,19 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     $internal_wrapper.append($scrollable_colours)
     $external_wrapper.append($internal_wrapper)
   
-    $(window).resize(function() {
+    $(window).resize(handleResize);
+    
+    
+    function handleResize() {
       var new_width = that.width();
       var swatch_width = new_width/settings.colours_per_page;
       var width_of_inside = swatch_width * number_of_colours;
       $external_wrapper.css("height", swatch_width + "px");
       $internal_wrapper.width(new_width);
       $scrollable_colours.width(width_of_inside)
-      $('.square').css({height: swatch_width + "px", width: swatch_width + "px"})
-    });
-  
+      $external_wrapper.find('.square').css({height: swatch_width + "px", width: swatch_width + "px"})
+    }
+    
     var counter = 0;
     var colour_divs = []
   

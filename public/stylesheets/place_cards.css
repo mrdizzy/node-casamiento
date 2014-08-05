@@ -19,7 +19,7 @@
     bottom:14%;
     z-index:9999;    
     position:absolute;
-    width:11%;
+    width:8%;
     text-align:center;
   }
     .font_baseline_adjust_buttons {
@@ -40,7 +40,6 @@
           .button_inside { 
             text-align:center;
             border:1px solid black;
-            border-radius:10px;
             width:100%;
             height:100%;
             position:absolute;
