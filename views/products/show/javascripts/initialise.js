@@ -64,10 +64,11 @@ $(function() {
       }).render()
        
       var viewport_width = viewportSize.getWidth();
-      //if(viewport_width < 501) {
-      //  var height = that.place_card_el.$el.height();
-      //  $('.left_column').height(height)
-      //
+      if(viewport_width < 501) {
+        var height = this.place_card_el.$el.height();
+        alert(height)
+        $('.left_column').height(height)
+      }
       this.$('#preview').html(this.place_card_view.el);        
       this.$('#preview').append("<a id='print_button'>Print</a>")     
       
