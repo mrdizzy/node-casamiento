@@ -38,10 +38,10 @@ $(function() {
       "fontpicker:selected": "changeFont"
     },
     _renderPreviewOnColourOrFontChange: function() {
-       if(this.context == 0) {
-         app_router.navigate('flat_preview');
-         this._renderPreview();
-       }
+      if(this.context == 0) { // Main page
+        app_router.navigate('flat_preview');
+        this._renderPreview();
+      }
     },
     render: function() {
       var step_view = new StepView().render().el;
@@ -68,7 +68,8 @@ $(function() {
       //  var height = that.place_card_el.$el.height();
       //  $('.left_column').height(height)
       //
-      this.$('#preview').html(this.place_card_view.el);        
+      this.$('#preview').html(this.place_card_view.el);
+      this.$('#preview').append('<div class="place_card_wrapper" id="mobile_spacer"></div>'); // Mobile responsive spacer      
       this.$('#preview').append("<a id='print_button'>Print</a>")     
       
       var print_control_panel_view = new PrintControlPanelView({}).render().el
@@ -80,8 +81,7 @@ $(function() {
       for(var i=0; i < colours.length; i++) {
         $colour_pickers.append(new ColourView({
           colour_index: i, 
-          listen_to: thisProduct,
-          width: $colour_pickers.width()
+          listen_to: thisProduct
         }).render().el)
       }
       thisProduct.trigger("render:font")     
@@ -96,7 +96,7 @@ $(function() {
       $('#inner_page_container').show();
       $('#product_container').hide()
       $('#preview').show();
-      thisProduct.trigger("render:font").trigger("rerender")
+      thisProduct.trigger("render:font");
 
       app_router.navigate("flat_preview")
       this.context = 1;
@@ -124,10 +124,11 @@ $(function() {
     routes: {
       "flat_preview": function() {
         coordinator_view._renderPreview();
+        thisProduct.trigger("rerender") 
       },    
       "flat_preview/colour0/:colour0": function(colour_0) {
         coordinator_view._renderPreview();
-        thisProduct.set("colour_0", "#" + colour_0).trigger("change:colours")
+        thisProduct.updateColour(0, "#" + colour_0)
         app_router.navigate("flat_preview/colour0/" + colour_0)
       },  
       "print": function() {

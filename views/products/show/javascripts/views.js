@@ -83,8 +83,6 @@ var StepView = Backbone.View.extend({
   render: function() {
     // Compile the steps template
     var $result = $(Handlebars.template(templates["products_show_step_through"])(thisProduct.toJSON()));     
-    $result.find(".colour_0").css("background-color", thisProduct.get("colours")[0])    
-    $result.find(".colour_1").css("background-color", thisProduct.get("colours")[1])
     this._renderGuests($result.find('#guests'));  // Input fields for guests
     
     this.$el.html($result)
@@ -108,11 +106,7 @@ var ColourView = Backbone.View.extend({
     "dizzy-cp:click": "changeColour"
   },
   changeColour: function(e, colour) {  
-    $('.colour_' + this.options.colour_index).css("background-color", colour)
-    var colours = thisProduct.get("colours")
-    colours[this.options.colour_index] = colour
-    thisProduct.set("colours", colours).trigger("change:colours")
-    thisProduct.save();
+    thisProduct.updateColour(this.options.colour_index, colour)
   },
   render: function() {
     var that = this;
@@ -137,16 +131,15 @@ var GuestView = Backbone.View.extend({
     'focus input': 'clearGuest'
   },
   clearGuest: function() {
-    if(!this.model.hasChanged("name")) 
-      this.$('input').val("")      
+    if(!this.not_first_time) 
+      this.$('input').val("")     
+    this.not_first_time = true; 
   },
   updateGuest: function() {
-  console.log("Updated")
    var name = this.$('input').val()
     this.model.set("name", name)
   },
   render: function() { 
-  console.log("Rendering")
     this.$el.html('<input type="text" name="guest" value="' + this.model.get("name") + '"></input>')
     return this;
   }

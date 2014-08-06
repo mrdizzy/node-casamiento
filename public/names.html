@@ -9,11 +9,12 @@
 
 function handleHyphens(str) {
 
- // var pieces = str.split("-");
- // if (pieces[1]) {
- // pieces[1] = toTitleCase(pieces[1]);
- // }
- // str = pieces.join("-");
+  var pieces = str.split("-");
+  if (pieces[1]) {
+  pieces[1] = toTitleCase(pieces[1]);
+  }
+  str = pieces.join("-");
+  console.log(pieces[1])
   return str;
 }
 function toTitleCase(str)
