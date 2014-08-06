@@ -26,6 +26,8 @@
       padding-top:0.5em; 
       margin:0;
     }
+    
+  #mobile_spacer { display:none; }
 
   #step_1 { border-top:1px dotted #000;}
   .spec { display:inline-block; }

@@ -29,87 +29,41 @@ $(function() {
   var CoordinatorView = Backbone.View.extend({
     el: '#inner_page_container',
     initialize: function() {
-      this.context = 0; // 0 = Main page, 1 = PreviewPage, 2 = PrintUI
-      this.listenTo(thisProduct, 'change:colours', this._renderPreviewOnColourOrFontChange)
-      this.listenTo(thisProduct, 'change:font', this._renderPreviewOnColourOrFontChange)
+      this.listenTo(thisProduct, 'change:colours', this._renderPreview)
+      this.listenTo(thisProduct, 'change:font', this._renderPreview)
     },
     events: { 
       "click #print_button": "_renderPrintView",
       "fontpicker:selected": "changeFont"
     },
-    _renderPreviewOnColourOrFontChange: function() {
-       if(this.context == 0) {
-         app_router.navigate('flat_preview');
-         this._renderPreview();
-       }
-    },
-    render: function() {
-      var step_view = new StepView().render().el;
-      this.$('.right_column').html(step_view)
-      
-       // Create colour pickers
-      var colours = thisProduct.get("colours");
-      var $colour_wrapper = $('.right_column').find("#colour_section_render")
-      for(var i=0; i < colours.length; i++) {
-        $colour_wrapper.append(new ColourView({colour_index: i, width:$('.right_column').width()}).render().el)
-      }
-      // Create font picker
-      this.$('.right_column').find('#fonts').fontPicker({
-        fonts: casamiento_fonts, 
-        selected_font: thisProduct.get("font")
-      });
-      
-      this.place_card_view = new PlaceCardView({
-        model: thisProduct.get("guests").first(), 
-      }).render()
-       
-      var viewport_width = viewportSize.getWidth();
-      if(viewport_width < 501) {
-        var height = this.place_card_el.$el.height();
-        alert(height)
-        $('.left_column').height(height)
-      }
-      this.$('#preview').html(this.place_card_view.el);        
-      this.$('#preview').append("<a id='print_button'>Print</a>")     
-      
-      var print_control_panel_view = new PrintControlPanelView({}).render().el
-      $('#print_ui').html(print_control_panel_view)        
-      var $colour_pickers = $('#colour_swatches')
+    _renderPreview: function() {  
+      if (Backbone.history.fragment != "print") {
+        if(!this.preview_rendered) {
+          this.place_card_view = new PlaceCardView({
+            model: thisProduct.get("guests").first()
+          }).render()
+           
+          this.$('#preview').html(this.place_card_view.el).append('<div class="place_card_wrapper" id="mobile_spacer"></div>'); // Mobile responsive spacer      
+          this.$('#preview').append("<a id='print_button'>Print</a>")  
+          thisProduct.trigger("render:font");
 
-      // Create colour pickers
-      var colours = thisProduct.get("colours");
-      for(var i=0; i < colours.length; i++) {
-        $colour_pickers.append(new ColourView({
-          colour_index: i, 
-          listen_to: thisProduct,
-          width: $colour_pickers.width()
-        }).render().el)
+          this.preview_rendered = true;
+        }
+        app_router.navigate("flat_preview")
+        $('#inner_page_container').show();
+        $('#print_ui').hide();  
+        
+        thisProduct.trigger("render:font").trigger("rerender") 
       }
-      thisProduct.trigger("render:font")     
-      $('#print_ui').hide();
-      $('#preview').hide()
-      this.rendered = true;
-    },
-    _renderPreview: function() {
-      if(!this.rendered) 
-        this.render();
-      $('#print_ui').hide();
-      $('#inner_page_container').show();
-      $('#product_container').hide()
-      $('#preview').show();
-      thisProduct.trigger("render:font").trigger("rerender")
-
-      app_router.navigate("flat_preview")
-      this.context = 1;
     },
     _renderPrintView: function() {
-     if(!this.rendered) 
-        this.render();
+      if(!this.print_view_rendered) {
+        var print_control_panel_view = new PrintControlPanelView({}).render().$el
+      }         
       $('#inner_page_container').hide();
-      $('#print_ui').show();           
+      $('#print_ui').show();  
       thisProduct.trigger("render:font").trigger("rerender")      
       app_router.navigate("print")
-      this.context = 2;
     },
     changeFont: function(e, font) {   
       thisProduct.set("font_size", font.font_size)
@@ -119,23 +73,25 @@ $(function() {
   })      
         
   var coordinator_view = new CoordinatorView();
+  var step_view = new StepView().render()
   
   // Router
   var AppRouter = Backbone.Router.extend({
     routes: {
       "flat_preview": function() {
         coordinator_view._renderPreview();
+        thisProduct.trigger("rerender") 
       },    
       "flat_preview/colour0/:colour0": function(colour_0) {
         coordinator_view._renderPreview();
-        thisProduct.set("colour_0", "#" + colour_0).trigger("change:colours")
+        thisProduct.updateColour(0, "#" + colour_0)
         app_router.navigate("flat_preview/colour0/" + colour_0)
       },  
       "print": function() {
         coordinator_view._renderPrintView();
       }, 
       "": function(actions) {       
-        coordinator_view.render();
+        coordinator_view._renderStepView();
       }
     }
   });

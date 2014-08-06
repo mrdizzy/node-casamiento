@@ -1,5 +1,6 @@
 .place_card_view {
-    width:91%;
+    width:95%;
+    float:right;
     position:relative;
     margin:0 auto;
 }
@@ -28,7 +29,7 @@
     
     .place_card_view:nth-child(odd) .font_size_adjust_buttons, 
     .place_card_view:nth-child(odd) .font_baseline_adjust_buttons{
-      left:-9%;
+      left:-4%;
     }
 
         .button_wrapper {
@@ -48,7 +49,7 @@
       
     .place_card_view:nth-child(even) .font_size_adjust_buttons, 
     .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
-      right:-9%;
+      right:-4%;
     }
       
 .place_card_wrapper {

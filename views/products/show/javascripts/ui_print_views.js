@@ -103,17 +103,29 @@ var PlaceCardCollectionView = Backbone.View.extend({
 }) 
 
 var PrintControlPanelView = Backbone.View.extend({
+  el: '#print_ui',
   initialize: function() {
     this.layout = 8
+    $(window).on("resize", this.testForMobile);
+    this.testForMobile();
+  },
+  testForMobile: function() {
+    if(viewportSize.getWidth() < 501) {
+    console.log(this)
+      this.mobile = true;
+    } else {
+      this.mobile = false;
+    }
   },
   events: {
     "fontpicker:selected": "changeFont",
+    "dizzy-cp:click": "togglePanel",
     "click input[type=radio]": "changeLayout",
     "click #ui_printer_icon": "printPage",
-    "click #menu_lines": "showPanel"
+    "click #menu_lines": "togglePanel"
   },
-  showPanel: function() {
-    $('#control_panel').show();  
+  togglePanel: function() {
+    $('#control_panel').toggle();  
     thisProduct.trigger("rerender")
   },
   changeLayout: function(e) {
@@ -123,6 +135,9 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   changeFont: function(e, font) { 
     thisProduct.set("font", font.font)
+    if(this.mobile) {
+        this.togglePanel();
+    }
     thisProduct.save();
   },  
   // Create the SVG print view
@@ -133,7 +148,6 @@ var PrintControlPanelView = Backbone.View.extend({
       svg: true
     }).render().el;
     $('#printsvg').html(result);    
-     window.print();
     thisProduct.trigger("render:font")
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
     
@@ -151,7 +165,15 @@ var PrintControlPanelView = Backbone.View.extend({
     })
   },
   render: function() {
-    var $template = $(Handlebars.template(templates["user_interface_for_print"])());         
+    var $template = $(Handlebars.template(templates["user_interface_for_print"])()); 
+    var colours = thisProduct.get("colours") 
+    for(var i=0; i < colours.length; i++) {
+      $template.find('#ui_print_colour_picker_container').colorPicker({
+        default_color: colours[i], 
+        listen_to: thisProduct,
+        index: i
+      });
+    }       
     $template.find('#ui_font_picker').fontPicker({
       fonts: casamiento_fonts, 
       selected_font: thisProduct.get("font")

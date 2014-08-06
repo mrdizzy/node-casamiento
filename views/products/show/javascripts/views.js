@@ -1,6 +1,7 @@
 // STEP VIEW
 ////////////////////////////////////////////////////////////////////////////// 
 var StepView = Backbone.View.extend({ 
+  el: '.right_column',
   initialize: function() {
     this.listenTo(thisProduct, 'change:quantity', this.renderQtyAndPrice)
     this.listenTo(thisProduct, 'change:guests', this._renderGuests)
@@ -81,10 +82,19 @@ var StepView = Backbone.View.extend({
     this.$('#step_' + step_index + " .tooltip-bubble").fadeToggle()
   },
   render: function() {
-    // Compile the steps template
     var $result = $(Handlebars.template(templates["products_show_step_through"])(thisProduct.toJSON()));     
-    $result.find(".colour_0").css("background-color", thisProduct.get("colours")[0])    
-    $result.find(".colour_1").css("background-color", thisProduct.get("colours")[1])
+    var colours = thisProduct.get("colours");
+    for(var i=0; i < colours.length; i++) {
+      $result.find('#colour_section_render').colorPicker({
+        default_color: colours[i], 
+        listen_to: thisProduct,
+        index: i
+      });
+    }
+    $result.find('#fonts').fontPicker({
+      fonts: casamiento_fonts, 
+      selected_font: thisProduct.get("font")
+    });
     this._renderGuests($result.find('#guests'));  // Input fields for guests
     
     this.$el.html($result)
@@ -100,32 +110,6 @@ var StepView = Backbone.View.extend({
   }
 })
 
-// COLOUR VIEW
-////////////////////////////////////////////////////////////////////////////// 
-var ColourView = Backbone.View.extend({ 
-  events: {
-    "dizzy-cp:hoverColor": "changeColour",
-    "dizzy-cp:click": "changeColour"
-  },
-  changeColour: function(e, colour) {  
-    $('.colour_' + this.options.colour_index).css("background-color", colour)
-    var colours = thisProduct.get("colours")
-    colours[this.options.colour_index] = colour
-    thisProduct.set("colours", colours).trigger("change:colours")
-    thisProduct.save();
-  },
-  render: function() {
-    var that = this;
-    this.$el.colorPicker({
-      default_color: thisProduct.get("colours")[this.options.colour_index], 
-      listen_to: thisProduct,
-      index: this.options.colour_index,
-      width:that.options.width
-    });
-    return this;
-  }
-})
-
 // GUEST VIEW
 ////////////////////////////////////////////////////////////////////////////// 
 var GuestView = Backbone.View.extend({  
@@ -137,16 +121,15 @@ var GuestView = Backbone.View.extend({
     'focus input': 'clearGuest'
   },
   clearGuest: function() {
-    if(!this.model.hasChanged("name")) 
-      this.$('input').val("")      
+    if(!this.not_first_time) 
+      this.$('input').val("")     
+    this.not_first_time = true; 
   },
   updateGuest: function() {
-  console.log("Updated")
    var name = this.$('input').val()
     this.model.set("name", name)
   },
   render: function() { 
-  console.log("Rendering")
     this.$el.html('<input type="text" name="guest" value="' + this.model.get("name") + '"></input>')
     return this;
   }
