@@ -1,5 +1,7 @@
 TODO
 
+Make a model to control the subviews?
+
   / admin
   
   * Add 'add colour' button to enable 2 colour designs
@@ -12,14 +14,15 @@ TODO
     /product_page
    * Stop clicking on left and right arrows of colour picker affecting counter and preventing scrolling when reaching either end 
   * Remove dotted line at bottom of font selector
-  * Fix product page font-selector as it is not showing top arrow and also does not display selected font correctly
+  * Fix product page font-selector as it is not showing top arrow and also does not display selected font correctly when you have navigated to #print and back to #flat_preview again
   * Highlight each step after completion
   * Allow selection of texture
   * Allow selection of thickness
   * When rendering a route, make sure that fonts are loaded properly  
-  * Choose new printer icon for PRINT YOURSELF button
+  * Make design of PRINT YOURSELF button button
+  * Choose how to implement PRINT YOURSELF button on smartphone view
   * Display PayPal button
-  * Fix display of name place cards buttons on left hand side
+  * Fix display of name place cards buttons on left hand side on smartphone main product page view
   * When quantity has been changed, another 8 guests are added on page reload of #flat_preview. Figure out whatt is causing this and fix it
   * When moving to the print page, if any new guests have been added there will not be place cards for them
   * Make thisProduct save on change of guest name
@@ -32,12 +35,11 @@ TODO
   * Card thickness will change based on texture selected
   * Improve product descriptions
   * Show clickable product tags
-  * Simplify CouchDB views so that backgrounds 1-5 are in an array... need to investigate further
   * Tooltips for + and - and baseline shift
   * Change Font images to fit neatly in fonts menu
   * Show spinner while images load
   * Show related designs on product page
-  * When the quantity enter field is clicked make it empty. Store it's previous value. If no new value is entered then revert to the previous value
+  * When the quantity enter field is clicked make it empty. Store it's previous value. If no new value is entered or it is Not a Number then revert to the previous value
   * If mobile browser, post names to new controller when printer icon clicked and save in database with new id, then render with id to make completely unique page for sharing with google cloud print
  
 

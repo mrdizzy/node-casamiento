@@ -308,13 +308,17 @@ body {
 }
 
 .grey_button {
-  margin:1em;
+  padding:0;
+  padding-right:1.5em;
+  padding-left:1.5em;
   cursor:pointer;  
+  text-align:center;
   display:inline-block;
   background-color:grey;
-  padding:2em;
+ 
   color:white;
-  border-radius:10px;
+  border-top-left-radius:20px;
+  border-bottom-right-radius:20px;
 }
 
   .grey_button:hover { 

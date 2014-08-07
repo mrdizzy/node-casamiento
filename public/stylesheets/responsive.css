@@ -5,7 +5,10 @@
   ////////////////////////////////////////////////////////////////////////////////////////////
   */
   @media all and (min-width: 320px) and (max-width: 500px) {
-
+    body { 
+      background-color:white;
+      background-image:none;
+    }
     #header_container {
       border-bottom:1px solid black;
       background-color:white;
@@ -134,26 +137,33 @@
       border-radius:0;
     }
     #print_button { display:none;}
-    #actual_cards .place_card_view {
+    #actual_cards {
       width:100%;
-      float:none;
+      margin:0;
     }
-    
-      .place_card_view:nth-child(even) .font_size_adjust_buttons, 
-      .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
-        left:-7%;
+    #actual_cards .place_card_view {
+      width:95%;
+      float:right;
+    }    
+      
+    .place_card_view:nth-child(odd) .font_size_adjust_buttons, 
+    .place_card_view:nth-child(odd) .font_baseline_adjust_buttons,
+    .place_card_view:nth-child(even) .font_size_adjust_buttons, 
+    .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
+        right:0;
+        left:-4.5%;
       }
       
     #control_panel {
-        display:none;
-        position: fixed;
-        top:0;
-        left:0;
-        background-color:white;
-        border-right:1px solid black;
-        width:75%;
-        z-index:999999999999999999999999999999999999999;
-        height:100%;
+      display:none;
+      position: fixed;
+      top:0;
+      left:0;
+      background-color:white;
+      border-right:1px solid black;
+      width:75%;
+      z-index:999999999999999999999999999999999999999;
+      height:100%;
     }
     #ui_logo_container, #ui_global_font { display:none; }
     

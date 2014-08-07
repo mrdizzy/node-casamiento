@@ -89,7 +89,10 @@ var StepView = Backbone.View.extend({
     this.$el.html($result)
     var colours = thisProduct.get("colours");
     for(var i=0; i < colours.length; i++) {
-      $result.find('#colour_section_render').colorPicker({
+      var $div = $('<div></div>')
+      $result.find('#colour_section_render').append($div)
+      
+      $div.colorPicker({
         default_color: colours[i], 
         listen_to: thisProduct,
         index: i
@@ -122,9 +125,8 @@ var GuestView = Backbone.View.extend({
     'focus input': 'clearGuest'
   },
   clearGuest: function() {
-    if(!this.not_first_time) 
+    if(this.model.get("name") == "Guest Name") 
       this.$('input').val("")     
-    this.not_first_time = true; 
   },
   updateGuest: function() {
    var name = this.$('input').val()

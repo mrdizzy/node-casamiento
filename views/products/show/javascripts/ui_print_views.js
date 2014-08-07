@@ -8,6 +8,11 @@ var PlaceCardView = GuestView.extend({
     this.listenTo(this.model, "change:name", this._renderName)
     this.listenTo(thisProduct, 'render:font', this._renderFontSize);
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);
+    this.listenTo(thisProduct, 'global:baseline_up', this.upBaseline);
+    this.listenTo(thisProduct, 'global:baseline_down', this.downBaseline);
+    
+    this.listenTo(thisProduct, 'global:font_increase', this.increaseFont);
+    this.listenTo(thisProduct, 'global:font_decrease', this.decreaseFont);
     this.listenTo(this.model, 'change:font_size', this._renderFontSize);
     this.listenTo(this.model, 'change:baseline', this._renderBaseline);
     this.units = this.options.svg ? "mm" : "px"
@@ -106,15 +111,17 @@ var PrintControlPanelView = Backbone.View.extend({
   el: '#print_ui',
   initialize: function() {
     this.layout = 8
-    $(window).on("resize", this.testForMobile);
+    $(window).on("resize", this.testForMobile.bind(this));
     this.testForMobile();
   },
   testForMobile: function() {
     if(viewportSize.getWidth() < 501) {
-    console.log(this)
-      this.mobile = true;
+      this.mobile = true
+      
+      $('#control_panel').hide();
     } else {
       this.mobile = false;
+      $('#control_panel').show();
     }
   },
   events: {
@@ -122,11 +129,29 @@ var PrintControlPanelView = Backbone.View.extend({
     "dizzy-cp:click": "togglePanel",
     "click input[type=radio]": "changeLayout",
     "click #ui_printer_icon": "printPage",
-    "click #menu_lines": "togglePanel"
+    "click #menu_lines": "togglePanel",
+    "click .global_baseline_up": "baselineUp",
+    "click .global_baseline_down": "baselineDown",
+    "click .global_font_increase": "fontIncrease",
+        "click .global_font_decrease": "fontDecrease"
   },
   togglePanel: function() {
-    $('#control_panel').toggle();  
-    thisProduct.trigger("rerender")
+    if(this.mobile) {
+        $('#control_panel').toggle();
+        thisProduct.trigger("rerender")
+    }
+  },
+  fontIncrease: function() {
+          thisProduct.trigger("global:font_increase")  
+  },
+  fontDecrease: function() {
+          thisProduct.trigger("global:font_decrease")  
+  },
+  baselineUp: function() {
+    thisProduct.trigger("global:baseline_up")  
+  },
+  baselineDown: function() {
+      thisProduct.trigger("global:baseline_down")
   },
   changeLayout: function(e) {
     var val = $(e.currentTarget).val()
@@ -135,9 +160,7 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   changeFont: function(e, font) { 
     thisProduct.set("font", font.font)
-    if(this.mobile) {
-        this.togglePanel();
-    }
+    this.togglePanel();
     thisProduct.save();
   },  
   // Create the SVG print view

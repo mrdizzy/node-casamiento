@@ -25,7 +25,13 @@ $(function() {
   }, error: function(resp) {
     console.log("Error")
   }})    
-        
+  
+  // Takes care of rendering the sub views
+  // It is important to make the divs that will contain the html 
+  // of rendered views visible first, then add the html to them
+  // as the widths of certain elements must be visible in order
+  // to calculate dynamic widths for the colour picker, for example
+  
   var CoordinatorView = Backbone.View.extend({
     el: '#inner_page_container',
     initialize: function() {
@@ -44,22 +50,22 @@ $(function() {
           }).render()
            
           this.$('#preview').html(this.place_card_view.el).append('<div class="place_card_wrapper" id="mobile_spacer"></div>'); // Mobile responsive spacer      
-          this.$('#preview').append("<a id='print_button'>Print</a>")  
-          thisProduct.trigger("render:font");
-
+          this.$('#preview').append("<div style='text-align:center'><div class='grey_button' id='print_button' style='margin:0 auto;text-align:center'><img src='/gfx/printers/printer39_white.svg' style='width:50px' /><p style='font-size:1.4em'>PRINT YOURSELF</p></div></div>")  
           this.preview_rendered = true;
         }
         app_router.navigate("flat_preview")
         $('#inner_page_container').show();
         $('#print_ui').hide();        
+        
+        thisProduct.trigger("render:font");
       }
     },
-    _renderPrintView: function() {
+    _renderPrintView: function() {    
+      $('#inner_page_container').hide();
+      $('#print_ui').show();  
       if(!this.print_view_rendered) {
         var print_control_panel_view = new PrintControlPanelView({}).render().$el
-      }         
-      $('#inner_page_container').hide();
-      $('#print_ui').show();   
+      }          
       app_router.navigate("print")
     },
     changeFont: function(e, font) {   
