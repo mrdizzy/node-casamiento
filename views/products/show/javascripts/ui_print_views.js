@@ -166,6 +166,11 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   render: function() {
     var $template = $(Handlebars.template(templates["user_interface_for_print"])()); 
+    
+    this.$el.html($template)
+    var place_cards = new PlaceCardCollectionView({
+      per_page: this.layout,
+    }).render().el
     var colours = thisProduct.get("colours") 
     for(var i=0; i < colours.length; i++) {
       $template.find('#ui_print_colour_picker_container').colorPicker({
@@ -178,12 +183,8 @@ var PrintControlPanelView = Backbone.View.extend({
       fonts: casamiento_fonts, 
       selected_font: thisProduct.get("font")
     })
-    var place_cards = new PlaceCardCollectionView({
-      per_page: this.layout,
-    }).render().el
-    
     $template.find('#actual_cards').append(place_cards)
-    this.$el.html($template)
+    thisProduct.trigger("render:font")
     return this;
   }
 })

@@ -83,6 +83,10 @@ var StepView = Backbone.View.extend({
   },
   render: function() {
     var $result = $(Handlebars.template(templates["products_show_step_through"])(thisProduct.toJSON()));     
+    
+    this._renderGuests($result.find('#guests'));  // Input fields for guests
+    
+    this.$el.html($result)
     var colours = thisProduct.get("colours");
     for(var i=0; i < colours.length; i++) {
       $result.find('#colour_section_render').colorPicker({
@@ -95,9 +99,6 @@ var StepView = Backbone.View.extend({
       fonts: casamiento_fonts, 
       selected_font: thisProduct.get("font")
     });
-    this._renderGuests($result.find('#guests'));  // Input fields for guests
-    
-    this.$el.html($result)
     return this;
   },  
   _renderGuests: function($element) {

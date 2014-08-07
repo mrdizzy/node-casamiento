@@ -51,9 +51,7 @@ $(function() {
         }
         app_router.navigate("flat_preview")
         $('#inner_page_container').show();
-        $('#print_ui').hide();  
-        
-        thisProduct.trigger("render:font").trigger("rerender") 
+        $('#print_ui').hide();        
       }
     },
     _renderPrintView: function() {
@@ -61,8 +59,7 @@ $(function() {
         var print_control_panel_view = new PrintControlPanelView({}).render().$el
       }         
       $('#inner_page_container').hide();
-      $('#print_ui').show();  
-      thisProduct.trigger("render:font").trigger("rerender")      
+      $('#print_ui').show();   
       app_router.navigate("print")
     },
     changeFont: function(e, font) {   
@@ -80,7 +77,6 @@ $(function() {
     routes: {
       "flat_preview": function() {
         coordinator_view._renderPreview();
-        thisProduct.trigger("rerender") 
       },    
       "flat_preview/colour0/:colour0": function(colour_0) {
         coordinator_view._renderPreview();
@@ -90,8 +86,8 @@ $(function() {
       "print": function() {
         coordinator_view._renderPrintView();
       }, 
+      // TODO: Render main page properly here
       "": function(actions) {       
-        coordinator_view._renderStepView();
       }
     }
   });
