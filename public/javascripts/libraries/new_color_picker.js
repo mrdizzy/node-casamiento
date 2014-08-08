@@ -74,11 +74,11 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     $container_to_fade_in.append($external_wrapper)
     
     // Hover and click over swatches
-    $container_to_fade_in.find('.square').mouseenter(function(e) {
+    $container_to_fade_in.find('.square').mouseover(function(e) {
       var $el = $(e.currentTarget);
       var hex = $el.data("colour");
       $text_label_for_colour.text(colours[hex])
-        that.trigger('dizzy-cp:hoverColor', hex)
+        //that.trigger('dizzy-cp:hoverColor', hex)
         listen_to.updateColour(index, hex)
       $big_colour_square_swatch.css("background-color", hex)
     })
@@ -87,7 +87,7 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
       var $el = $(e.currentTarget);
       var hex = $el.data("colour");
       $text_label_for_colour.text(colours[hex])
-      that.trigger('dizzy-cp:click', hex)
+     // that.trigger('dizzy-cp:click', hex)
       listen_to.updateColour(index, hex)
       $container_to_fade_in.hide();
     })
