@@ -217,6 +217,90 @@ body {
       float:left; 
       text-align:center; 
     }
+
+ /* Smartphone */
+@media all and (min-width: 320px) and (max-width: 500px) {
+  body { 
+    background-color:white;
+    background-image:none;
+  }
+  #header_container {
+    border-bottom:1px solid black;
+    background-color:white;
+    z-index:9999999999999999999999999999999999999999999;
+    height:42px;
+    position:fixed;
+    width:100%;
+  }
+  #header_wrapper {
+    height:43px;
+  }
+    #logo { 
+      display:block;
+      width:115px;
+      padding:0.2em;
+      margin:0 auto;
+    }
+    #menu_lines { display:block;}
+    #slogan_container { 
+      display:none;
+    }
+    
+    .nav_link { display:none; }
+    
+    #inner_page_container { width:100%;}
+    
+    .left_column, 
+    .right_column { 
+      margin:0;
+      float:none; 
+      width:100%;
+    }
+
+    #footer .genesis_collection, 
+    #footer .castello_collection, 
+    .footer_seperator { 
+      float:none;
+      width:100%; 
+    }
+}
+
+  /* Phablet */
+  @media all and (min-width: 501px) and (max-width: 800px) {
+  
+    #inner_page_container { 
+      width:100%;
+      border:0;
+      margin:0;
+      padding:0;
+    }
+    #logo {
+      width:145px;
+      padding:0.5em;
+      margin-left:0.5em;
+    }
+    #menu_lines {
+      display:block;
+      padding-top:15px;
+    }
+    #header_container { 
+      z-index:999999999999999999999999999999999999999999; 
+      position:fixed; 
+      background-color:white; 
+      width:100%; 
+      top:0;
+      left:0;
+      height:57px;
+      border-bottom:1px solid black;
+    }
+    #header_wrapper { 
+      height:58px; 
+      background-color:white;
+    }
+    .navigation { display:none;}
+    
+}  
+    
 /* WELCOME PAGE 
 =================================== */
 
@@ -273,6 +357,16 @@ body {
     margin-bottom:0;
     padding:0.25em;
   }
+
+/* Smartphone */
+@media all and (min-width: 320px) and (max-width: 500px) {
+
+  .left_welcome_column, .right_welcome_column { 
+    float:none;
+    width:100%;
+  }
+  
+}  
 
 /* GLOBAL CLASSES
 =========================== */

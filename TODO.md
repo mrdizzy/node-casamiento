@@ -5,9 +5,12 @@ Make a model to control the subviews?
   / admin
   
   * Add 'add colour' button to enable 2 colour designs
+  * Fix adding transparent images to existing products
+  * Disable editing of existing product ID 
   * Fix colour picker not displaying
+  * Add font selector
+  * Add default baseline for font
   * Move JavaScript templates into directory with their dependencies
-  * Make sure you can create a new product with an id - automatically add name_place to the id and make it uneditable if it is an existing product
   * Create price tiers for products rather than individually entering price of each product
 
 
@@ -19,8 +22,7 @@ Make a model to control the subviews?
   * Allow selection of texture
   * Allow selection of thickness
   * When rendering a route, make sure that fonts are loaded properly  
-  * Make design of PRINT YOURSELF button button
-  * Choose how to implement PRINT YOURSELF button on smartphone view
+  * Choose better icon for PRINT YOURSELF button
   * Display PayPal button
   * Fix display of name place cards buttons on left hand side on smartphone main product page view
   * When quantity has been changed, another 8 guests are added on page reload of #flat_preview. Figure out whatt is causing this and fix it
@@ -45,7 +47,9 @@ Make a model to control the subviews?
 
    /responsive
    Mobile:
-   * Main product page will not display correctly on first load
+   * Main product page will not display correctly on first load   
+   * Choose how to implement PRINT YOURSELF button on smartphone view
+   * Adjust landscape display of product page on smartphone
 
    /print UI page
 * When showing two colours, make them adjacent on control panel
@@ -56,7 +60,6 @@ Make a model to control the subviews?
  * Format control panel responsively
   * Update layout icons so that they show "PORTRAIT" and "LANDSCAPE" next to the icons and also format the icons correctly
   * Panel for mobile browsers
-
 
 
   /invoices

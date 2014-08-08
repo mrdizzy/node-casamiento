@@ -4,7 +4,10 @@ html,body,div,img {
   border:0;
 }
 
-.background_container, .background_container img, .background_wrapper, .visual_div { 
+.background_container, 
+.background_container img, 
+.background_wrapper, 
+.visual_div { 
   width:500px;
   height:319px;
 }

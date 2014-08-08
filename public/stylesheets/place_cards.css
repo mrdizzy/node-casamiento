@@ -1,13 +1,9 @@
 .place_card_view {
-    width:95%;
-    float:right;
-    position:relative;
-    margin:0 auto;
+  width:100%;
+  float:right;
+  position:relative;
+  margin:0 auto;
 }
-
-  #product_container .place_card_view {
-    float:right;
-  }
   
   .font_size_adjust_buttons, .font_baseline_adjust_buttons { 
     -webkit-touch-callout: none;
@@ -20,7 +16,7 @@
     bottom:14%;
     z-index:9999;    
     position:absolute;
-    width:8%;
+    width:7%;    
     text-align:center;
   }
     .font_baseline_adjust_buttons {
@@ -29,76 +25,87 @@
     
     .place_card_view:nth-child(odd) .font_size_adjust_buttons, 
     .place_card_view:nth-child(odd) .font_baseline_adjust_buttons{
-      left:-4%;
-    }
-
-        .button_wrapper {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 100%;
-        }
-          .button_inside { 
-            text-align:center;
-            border:1px solid black;
-            border-top-left-radius: 10px;
-            border-bottom-right-radius:10px;
-            width:100%;
-            height:100%;
-            position:absolute;
-            z-index:1000;
-          }
-      
-    .place_card_view:nth-child(even) .font_size_adjust_buttons, 
-    .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
-      right:-4%;
-    }
-      
-.place_card_wrapper {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 70.714285714285714285714285714286%;
-}
-  .place_card_wrapper img { 
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    position:absolute;
-    z-index:1000;
-  }
-    .place_card_background_wrapper {
-      position:absolute;
-      width:100%;
-      height:100%;
-      z-index:999;
+     left:1%;
     }
     
-  .guest_wrapper {
-    width:100%;
-    position:absolute;
-    height:100%;
-    z-index:1001
+    .place_card_view:nth-child(even) .font_size_adjust_buttons, 
+    .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
+     right:2%;
+    }
+
+      .button_wrapper {
+          position: relative;
+          width: 100%;
+          height: 0;
+          padding-bottom: 100%;
+      }
+        .button_inside { 
+          text-align:center;
+          border:1px solid black;
+          border-top-left-radius: 10px;
+          border-bottom-right-radius:10px;
+          width:100%;
+          height:100%;
+          position:absolute;
+          z-index:1000;
+        }
+        
+  .place_card_wrapper {
+    position: relative;
+    width: 95%;
+    float:right;
+    height: 0;
+    padding-bottom: 70.714285714285714285714285714286%;
   }
-  
-  .place_card_wrapper  input {
-      padding:0;
-      margin:0;
-      border:0;
-      z-index:300;
-      position:absolute;
-      text-align:center;
-      background-color:transparent;
-      display:block;
-      color:#000;
+    .place_card_wrapper img { 
+      top:0;
+      left:0;
       width:100%;
-      font-size:180%;
-      height:50%;
-      line-height:100%;
-      font-family:"Adobe Caslon Pro";
-    }  
-  
+      height:100%;
+      position:absolute;
+      z-index:1000;
+    }
+      .place_card_background_wrapper {
+        position:absolute;
+        width:100%;
+        height:100%;
+        z-index:999;
+      }
+      
+    .guest_wrapper {
+      width:100%;
+      position:absolute;
+      height:100%;
+      z-index:1001
+    }
+    
+      .guest_wrapper  input {
+        padding:0;
+        margin:0;
+        border:0;
+        z-index:300;
+        position:absolute;
+        text-align:center;
+        background-color:transparent;
+        display:block;
+        color:#000;
+        width:100%;
+        font-size:180%;
+        height:50%;
+        line-height:100%;
+        font-family:"Adobe Caslon Pro";
+      }  
+      
+/* Smartphone */
+@media all and (min-width: 320px) and (max-width: 500px) {  
+/* ----------------------------------------------------------------------------- */    
+    .button_inside { 
+      border-top-left-radius:7px;      
+      border-bottom-right-radius:7px;
+    }
+ 
+}    
+    
 /* UI PREVIEW FOR PRINTING
 ==================================== */  
 #control_panel {
@@ -143,20 +150,23 @@
       width:33%
     }
     #ui_guests {
-        clear:both;width:30%;float:left;
+      clear:both;
+      width:30%;
+      float:left;
     }
 #ui_global_font {
-    width:50%;
-    float:left;
-    text-align:right;
+  width:50%;
+  float:left;
+  text-align:right;
 }
   #ui_print_font_picker_container {
-  width:50%;float:left;
+    width:50%;
+    float:left;
   }
         
 #actual_cards { 
   margin:0 auto;
-  width:90%;
+  width:100%;
   margin-top:140px;
 }
 
@@ -165,52 +175,53 @@
     float:left;
 }
   
+.place_card_view:nth-child(even) .place_card_wrapper {
+    float:left;
+}
+  
+/* Smartphone */
+@media all and (min-width: 320px) and (max-width: 500px) {  
+/* ----------------------------------------------------------------------------- */    
+  #control_panel {
+    display:none;
+    position: fixed;
+    top:0;
+    left:0;
+    background-color:white;
+    border-right:1px solid black;
+    width:75%;
+    z-index:999999999999999999999999999999999999999;
+    height:100%;
+  }
+  #ui_logo_container, #ui_global_font { display:none; }
+  
+  #ui_print_colour_picker_container,
+  #ui_printer_icon,
+  #layout_icons_wrapper, 
+  #ui_guests, 
+  #ui_print_font_picker_container { 
+    float:none; 
+    clear:both;
+    width:100%;
+  }
+  #actual_cards {
+    width:100%;
+    margin:0;
+  }
+  
+  #actual_cards .place_card_view { 
+
+  width:100%;
+  }
+   
+#actual_cards .place_card_view:nth-child(even) .place_card_wrapper {
+    float:right;
+}
+    
+}
+  
 /* HIDDEN DIVS FOR PRINT
 ==================================== */  
 #printsvg { 
   display:none; 
-}
-
-@media print {
-  
-  #printsvg { 
-    display:block;
-  }
-  
-  .place_card_view {
-    width:105mm;
-    height:74.25mm;
-  }
-  
-  #top_of_page, #control_panel { 
-    display:none;
-  }
-  #printsvg .up_4 {
-    height:210mm;
-    width:297mm;
-  }
-  
-  #printsvg .up_8 {
-    height:297mm;
-    width:210mm;
-  }
-    #printsvg .up_8 .place_card_view, #printsvg .up_4 .place_card_view { 
-      float:left; 
-    }
-  #print_svg .up_3 { 
-    height:259.875mm;
-    padding-top:37.125mm; 
-    width:210mm;
-  }
-    #print_svg .up_3 .place_card_view {
-      float:none;
-    }
-      #print_svg .up_3 .place_card_view {
-        margin:0 auto;
-        clear:both;
-        float:none;
-        border:1px dotted grey;
-      }
-    
-  .break { page-break-after:always;}
 }

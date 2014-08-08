@@ -1,0 +1,43 @@
+@media print {
+  
+  #printsvg { 
+    display:block;
+  }
+  
+  .place_card_view {
+    width:105mm;
+    height:74.25mm;
+  }
+  
+  #top_of_page, #control_panel { 
+    display:none;
+  }
+  #printsvg .up_4 {
+    height:210mm;
+    width:297mm;
+  }
+  
+  #printsvg .up_8 {
+    height:297mm;
+    width:210mm;
+  }
+    #printsvg .up_8 .place_card_view, #printsvg .up_4 .place_card_view { 
+      float:left; 
+    }
+  #print_svg .up_3 { 
+    height:259.875mm;
+    padding-top:37.125mm; 
+    width:210mm;
+  }
+    #print_svg .up_3 .place_card_view {
+      float:none;
+    }
+      #print_svg .up_3 .place_card_view {
+        margin:0 auto;
+        clear:both;
+        float:none;
+        border:1px dotted grey;
+      }
+    
+  .break { page-break-after:always;}
+}
