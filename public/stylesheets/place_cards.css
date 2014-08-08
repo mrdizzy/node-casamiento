@@ -205,18 +205,21 @@
     width:100%;
   }
   #actual_cards {
-    width:100%;
     margin:0;
   }
   
   #actual_cards .place_card_view { 
-
-  width:100%;
+    width:100%;
   }
    
-#actual_cards .place_card_view:nth-child(even) .place_card_wrapper {
-    float:right;
-}
+  #actual_cards .place_card_view:nth-child(even) .place_card_wrapper {
+      float:right;
+  }
+  
+  .place_card_view:nth-child(even) .font_size_adjust_buttons, 
+  .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
+   left:1%;
+  }
     
 }
   

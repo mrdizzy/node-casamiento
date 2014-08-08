@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>    
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/javascripts/libraries/in_groups_of.js"></script>
+<script src="/javascripts/libraries/new_color_picker.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/new_color_picker.css">
+</head>
+<body>
+<div id="new_colour"></div>
+
+<script>
+$(function() {
+  $('#new_colour').colorPicker({ default_color: "#000", 
+        listen_to: {on:function() {}, updateColour:function() {}},
+        index: 0});
+})
+</script>
+</body>
+</html>
