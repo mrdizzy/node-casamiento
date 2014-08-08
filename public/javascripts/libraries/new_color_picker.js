@@ -86,7 +86,7 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     $container_to_fade_in.find('.square').click(function(e) {
       var $el = $(e.currentTarget);
       var hex = $el.data("colour");
-      text_label_for_colour.text(colours[hex])
+      $text_label_for_colour.text(colours[hex])
       that.trigger('dizzy-cp:click', hex)
       listen_to.updateColour(index, hex)
       $container_to_fade_in.hide();
