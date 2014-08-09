@@ -120,19 +120,44 @@
 }
   #ui_logo_container {
     float:left;
-    width:17%;
+    width:20%;
+    text-align:center;
   }
     #ui_print_logo {
-      border-right:1px solid black;
-      padding-right:0.5em;
       text-align:center;
-      width:100%;
+      width:80%;
     }
       
   #ui_print_colour_picker_container {
     float:left;
-    width:42%;
+    text-align:center;
+    width:39%;
   }
+  
+    .colour_picker_wrapper {
+       width:100%;
+       margin:0 auto;   
+    }
+    
+    .colour_picker_wrapper .dizzycp-static_container { 
+      padding-bottom:15px;
+      clear:both;
+    }
+      .colour_picker_wrapper .dizzycp-swatch_container { 
+        text-align:left;
+      }
+      
+      .colour_picker_wrapper .dizzycp-big_colour_square_frame { 
+        margin-left:40px;
+        float:left;
+      }
+      
+        .colour_picker_wrapper  .dizzycp-text_label_for_colour { 
+          text-align:left;
+          margin-left:95px;
+          padding-top:12px;
+        }
+
   #ui_printer_icon {
     border-right:1px solid black;
     float:left;
@@ -149,20 +174,44 @@
       text-align:center;
       width:33%
     }
-    #ui_guests {
-      clear:both;
-      width:30%;
-      float:left;
-    }
-#ui_global_font {
-  width:50%;
-  float:left;
-  text-align:right;
+    
+#control_panel_bottom_row {
+  padding-top:4px;
+  padding-bottom:2px;
+  border-top:1px solid black;
+  clear:both;
 }
-  #ui_print_font_picker_container {
+      
+  #ui_global_font {
     width:50%;
     float:left;
+    text-align:right;
   }
+    .global_font_increase, 
+    .global_font_decrease,
+    .global_baseline_up,
+    .global_baseline_down {
+      border:1px solid #AAA;
+      opacity:0.5;
+      border-bottom-right-radius:12px;
+      border-top-left-radius:12px;
+      width:18%;
+      margin-right:5%;
+      padding:2%;
+      text-align:center;
+    }
+    .global_baseline_down {
+      margin:0;
+    }
+    
+    #ui_global_font:hover {
+    background-color:none;
+    }
+    
+    #ui_print_font_picker_container {
+      width:50%;
+      float:left;
+    }
         
 #actual_cards { 
   margin:0 auto;

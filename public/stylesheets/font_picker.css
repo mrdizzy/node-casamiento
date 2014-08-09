@@ -57,7 +57,7 @@
   #fonts tr, #ui_font_picker tr { 
     height:50px
   }
-   tr:hover, .up_arrow:hover { 
+.font_selector_container tr:hover, .up_arrow:hover { 
       background-color:lightgrey;
       cursor:pointer;
     }
