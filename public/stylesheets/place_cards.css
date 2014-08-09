@@ -204,6 +204,15 @@
       margin:0;
     }
     
+    
+    .global_font_increase:hover, 
+    .global_font_decrease:hover,
+    .global_baseline_up:hover,
+    .global_baseline_down:hover {
+      opacity:1;
+      cursor:pointer;
+    }
+    
     #ui_global_font:hover {
     background-color:none;
     }
@@ -270,6 +279,73 @@
    left:1%;
   }
     
+}
+  
+/* Phablet */
+@media all and (min-width: 501px) and (max-width: 800px) {  
+/* ----------------------------------------------------------------------------- */    
+
+  .colour_picker_wrapper  .dizzycp-text_label_for_colour { 
+  letter-spacing:0;
+          padding-top:8px;
+          margin-left:80px;
+    font-size:1em;
+  }
+   .colour_picker_wrapper  .dizzycp-big_colour_square_frame { 
+         
+          width:31px;
+          height:31px;
+          padding:0; 
+          border-radius:25px;
+        }
+ .colour_picker_wrapper   .dizzycp-big_colour_square_swatch {
+            width:27px; 
+            height:27px;
+            margin:2px; 
+            border-radius:20px;
+          }
+ 
+ 
+    .colour_picker_wrapper .dizzycp-static_container { 
+      padding-bottom:5px;
+      clear:both;
+    }
+    
+   .global_font_increase, 
+    .global_font_decrease,
+    .global_baseline_up,
+    .global_baseline_down {
+      border:1px solid #AAA;
+      opacity:0.5;
+      border-bottom-right-radius:12px;
+      border-top-left-radius:12px;
+      width:18%;
+      padding:2%;
+      margin-right:3%;  
+      text-align:center;
+    }
+    
+    .global_font_increase img, 
+    .global_font_decrease img,
+    .global_baseline_up img,
+    .global_baseline_down img {
+      width:35%;
+    }
+    #ui_font_picker tr { 
+    height:40px
+  }
+   td.font_name, td.font_description { display:none; }
+ td.font_image { width:100%; }
+     .selected_font td.font_image {
+     border-radius:0;
+      border-top-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }    
+    
+    
+#actual_cards { 
+  margin-top:100px;
+}
 }
   
 /* HIDDEN DIVS FOR PRINT

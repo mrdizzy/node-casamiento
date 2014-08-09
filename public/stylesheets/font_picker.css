@@ -37,17 +37,6 @@
     position:absolute;
     width:100%;
   }  
-  
-    .selected_font td.font_name {
-      text-align:center;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-    }
-    .selected_font td.font_image {
-      text-align:center;
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
-    }    
 
   #fonts td, #ui_font_picker td { 
     border-bottom:1px dotted lightgrey;
@@ -57,6 +46,20 @@
   #fonts tr, #ui_font_picker tr { 
     height:50px
   }
+  
+  
+    .selected_font td.font_name {
+      text-align:center;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;      
+      border-bottom:0;
+    }
+    .selected_font td.font_image {
+     border-bottom:0;
+      text-align:center;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }    
 .font_selector_container tr:hover, .up_arrow:hover { 
       background-color:lightgrey;
       cursor:pointer;

@@ -32,7 +32,7 @@
       var $table = $('<table></table>').addClass("fonts_table").css("display", "none");
      
       group.forEach(function(font) {
-        var $tr = $('<tr data-image="' + font[0] + '"></tr>').append("<td class='font_image'><img src='/fonts/" + font[0] + ".svg' /></td>").addClass("font_image").append("<td>" + font[0] + "</td>").addClass("font_name");
+        var $tr = $('<tr data-image="' + font[0] + '"></tr>').append("<td class='font_image'><img src='/fonts/" + font[0] + ".svg' /></td>").addClass("font_image").append("<td class='font_name'>" + font[0] + "</td>")
         // Click on a font
         $tr.click(function(e) {
           appendFont(font[0]);
