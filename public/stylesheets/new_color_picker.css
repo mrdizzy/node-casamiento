@@ -6,7 +6,7 @@
       display:none; 
       position:absolute; 
       z-index:99999999999999999999999999999999999999999999999999999;
-      border-bottom:1px solid black;
+      border:1px dotted black;
     }
     
       .dizzycp-swatch_container { 

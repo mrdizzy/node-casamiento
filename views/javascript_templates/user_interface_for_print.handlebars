@@ -1,14 +1,10 @@
 <div id="printsvg"></div>
 
-<div id="top_of_page" style="margin:0;padding:0;">
-  <div id="menu_lines" style="float:left;display:block;">
-    <div style="width:18px;border-color:black;border-style:solid;border-top:1px;"></div>
-    <div style="width:18px;border-color:black;border-style:solid;border-top:1px;margin-top:5px;"></div>
-    <div style="width:18px;border-color:black;border-style:solid;border-top:1px;margin-top:5px;"></div>
-  </div>
+<div id="top_of_page" style="margin:0;padding:0;position:relative;">
+  
   
   <div id="control_panel">
-  
+   <div id="mobile_panel_section">
     <div id="control_panel_top_row">
       <div id="ui_logo_container">
         <img src="http://www.casamiento.co.uk/gfx/logo/cas.png" id="ui_print_logo">
@@ -85,25 +81,25 @@
    
       <div style="clear:both"></div>
     </div>
-    
-    <div id="control_panel_bottom_row">
       
-      <div id="ui_global_font">
-        <table id="global_font_buttons" style="width:80%;margin:0 auto;">
-         <tr>
-            <td class="global_font_increase"><img src="/gfx/font_increase.svg"/></td>
-            <td class="global_font_decrease"><img src="/gfx/font_decrease.svg"/></td>
-            <td class="global_baseline_up"><img src="/gfx/baseline_up.svg"/></td>
-            <td class="global_baseline_down"><img src="/gfx/baseline_down.svg"/></td>
-          </tr>
-        </table>
-      </div>
- 
       <div id="ui_print_font_picker_container">
         <div id="ui_font_picker" style="width:80%;"></div>
-      </div>
-      <div style="clear:both"></div>
+      </div>      
+      
     </div>
+    <div id="ui_global_font">
+      <div class="global_font_increase"><img src="/gfx/font_increase.svg"/></div>
+      <div class="global_font_decrease"><img src="/gfx/font_decrease.svg"/></div>
+      <div class="global_baseline_up"><img src="/gfx/baseline_up.svg"/></div>
+      <div class="global_baseline_down"><img src="/gfx/baseline_down.svg"/></div>     
+    </div>
+    
+    <div id="menu_lines" style="float:left;z-index:99999999999999999999999999999999">
+      <div style="width:18px;border-color:black;border-style:solid;border-top:1px;"></div>
+      <div style="width:18px;border-color:black;border-style:solid;border-top:1px;margin-top:5px;"></div>
+      <div style="width:18px;border-color:black;border-style:solid;border-top:1px;margin-top:5px;"></div>
+    </div>
+    <div style="clear:both"></div>
   </div>
 
   <div style="clear:both;border-top:1px solid black;margin-top:0.5em;margin-bottom:0.5em;"></div>
