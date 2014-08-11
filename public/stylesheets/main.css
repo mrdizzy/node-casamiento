@@ -418,3 +418,11 @@ body {
   .grey_button:hover { 
     background-color:black;
   }
+  
+ .menu_line {
+   width:18px;
+   border-color:black;
+   border-style:solid;
+   border-top:1px;
+   margin-bottom:5px;
+ }
