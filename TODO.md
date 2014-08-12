@@ -43,7 +43,8 @@ Make a model to control the subviews?
   * Change Font images to fit neatly in fonts menu
   * Show spinner while images load
   * Show related designs on product page
-  * When the quantity enter field is clicked make it empty. Store it's previous value. If no new value is entered or it is Not a Number then revert to the previous value
+  * Quantity step description, explaining the "snap to 8" feature
+  * Stop flat preview name place card from using one of the guest names. Stick with "Guest Name" and make it uneditable.
   * If mobile browser, post names to new controller when printer icon clicked and save in database with new id, then render with id to make completely unique page for sharing with google cloud print
  
 
@@ -51,17 +52,15 @@ Make a model to control the subviews?
    Mobile:
    * Main product page will not display correctly on first load   
    * Choose how to implement PRINT YOURSELF button on smartphone view
-   * Adjust landscape display of product page on smartphone
+   * Adjust landscape display of product page on smaller smartphones
 
    /print UI page
-* When showing two colours, make them adjacent on control panel
-* Make the global baseline and font size buttons functional
-* Remove dotted line from bottom of font selector 
-* Space global baseline/font buttons appropriately
-* Add global reset font/baseline button 
- * Format control panel responsively
+   * Global font adjust buttons are not properly implemented as they jump to ever-increasing percentages when moving back and forth to #flat_preview
+  * Remove dotted line from bottom of font selector 
+  * Add global reset font/baseline button 
+  * Format control panel responsively
   * Update layout icons so that they show "PORTRAIT" and "LANDSCAPE" next to the icons and also format the icons correctly
-  * Panel for mobile browsers
+  * Remove logo from panel for mobile browsers
 
 
   /invoices

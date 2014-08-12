@@ -13,6 +13,7 @@ var StepView = Backbone.View.extend({
     "mouseleave .spc": "hoverOut",     
     "click .texture": "updateTexture",  
     "blur #qty": "setQuantity",
+    "focus #qty": "clearQuantity",
     "click .weight": "updateWeight",  
     "click #plus_qty": "plusQty",
     "click #minus_qty": "minusQty"
@@ -33,18 +34,25 @@ var StepView = Backbone.View.extend({
     if(thisProduct.get("quantity") > 8) 
       this.updateQty(-8)
   },
+  clearQuantity: function(e) {
+    $(e.currentTarget).val("")
+  },
   setQuantity: function(e) {
     $field = $(e.currentTarget)
     var value = $field.val();
-    var remainder = value % 8;
-    if(remainder > 0) {
-      var new_quantity = 8- remainder + parseInt(value);
-    } else if (remainder ==0) {
-        new_quantity = value;
+    if(isNaN(value) || value == false || value < 1) {
+      $field.val(thisProduct.get("quantity"))
+    } else {
+      var remainder = value % 8;
+      if(remainder > 0) {
+        var new_quantity = 8- remainder + parseInt(value);
+      } else if (remainder ==0) {
+          new_quantity = value;
+      }
+      thisProduct.set("quantity", new_quantity)
+      $field.val(new_quantity)
+      thisProduct.save()
     }
-    thisProduct.set("quantity", new_quantity)
-    $field.val(new_quantity)
-    thisProduct.save()
   },
   updateQty: function(number) {
     thisProduct.adjustQuantity(number)
