@@ -23,7 +23,7 @@ Make a model to control the subviews?
   * Allow selection of thickness
   * When rendering a route, make sure that fonts are loaded properly  
   * Choose better icon for PRINT YOURSELF button
-  * Display PayPal button
+  * Style PayPal button prpperly
   * Fix display of name place cards buttons on left hand side on smartphone main product page view
   * When quantity has been changed, another 8 guests are added on page reload of #flat_preview. Figure out whatt is causing this and fix it
   * When moving to the print page, if any new guests have been added there will not be place cards for them
