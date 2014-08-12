@@ -15,6 +15,8 @@ Make a model to control the subviews?
 
 
     /product_page
+    * page doesn't render properly on first time -- no steps rendered -- due to localstorage
+    * Global font adjustments do not work on first place card properly -- it increases in size/basleine in a bigger proportion to the others depending on how many times it has been rendered
    * Stop clicking on left and right arrows of colour picker affecting counter and preventing scrolling when reaching either end 
   * Remove dotted line at bottom of font selector
   * Fix product page font-selector as it is not showing top arrow and also does not display selected font correctly when you have navigated to #print and back to #flat_preview again

@@ -118,10 +118,10 @@ var PrintControlPanelView = Backbone.View.extend({
     if(viewportSize.getWidth() < 501) {
       this.mobile = true
       
-      $('#control_panel').hide();
+      $('#mobile_panel_section').hide();
     } else {
       this.mobile = false;
-      $('#control_panel').show();
+      $('#mobile_panel_section').show();
     }
   },
   events: {
@@ -137,7 +137,7 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   togglePanel: function() {
     if(this.mobile) {
-        $('#control_panel').toggle();
+        $('#mobile_panel_section').toggle();
         thisProduct.trigger("rerender")
     }
   },
@@ -189,14 +189,18 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   render: function() {
     var $template = $(Handlebars.template(templates["user_interface_for_print"])()); 
-    
     this.$el.html($template)
+    var $colour_picker_container = $template.find('#ui_print_colour_picker_container');
+    
     var place_cards = new PlaceCardCollectionView({
       per_page: this.layout,
     }).render().el
+    
     var colours = thisProduct.get("colours") 
     for(var i=0; i < colours.length; i++) {
-      $template.find('#ui_print_colour_picker_container').colorPicker({
+      var $div = $('<div class="colour_picker_wrapper"></div>');
+      $colour_picker_container.append($div);
+      $div.colorPicker({
         default_color: colours[i], 
         listen_to: thisProduct,
         index: i

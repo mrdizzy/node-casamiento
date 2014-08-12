@@ -1,0 +1,304 @@
+#control_panel {
+  background-color:white;
+  border-bottom:1px solid black; 
+  padding-top:0.5em;
+  position:fixed; 
+  top:0;
+  width:100%;
+  z-index:999999999;
+}
+  #ui_logo_container {
+    float:left;
+    width:20%;
+    text-align:center;
+  }
+    #ui_print_logo {
+      text-align:center;
+      width:80%;
+    }
+      
+  #ui_print_colour_picker_container {
+    float:left;
+    text-align:center;
+    width:30%;
+  }
+  
+    .colour_picker_wrapper {
+       width:100%;
+       margin:0 auto;   
+    }
+    
+    .colour_picker_wrapper .dizzycp-static_container { 
+      padding-bottom:15px;
+      clear:both;
+    }
+      .colour_picker_wrapper .dizzycp-swatch_container { 
+        text-align:left;
+      }
+      
+      .colour_picker_wrapper .dizzycp-big_colour_square_frame { 
+        margin-left:40px;
+        float:left;
+      }
+      
+        .colour_picker_wrapper  .dizzycp-text_label_for_colour { 
+          text-align:left;
+          margin-left:95px;
+          padding-top:12px;
+        }
+
+  #ui_printer_icon {
+    float:left;
+    text-align:center;
+    width:20%;
+  }
+
+  #layout_icons_wrapper {
+    float:right;
+    text-align:center;
+    width:30%;
+  }
+    .layout_icon_container {
+      display:inline-block;
+      width:15%;
+      margin-right:8%;
+    }
+    
+    .layout_icon_table {
+      border-collapse:collapse;      
+    }
+    
+      .layout_icon_table td {
+        width:50%;height:13px;border-bottom:1px dotted grey;
+      }
+      
+      .layout_icon_table tr td:first-child {
+        border-right:1px dotted grey;
+      }
+      .layout_icon_table tr td:last-child {
+      }
+      
+      .layout_icon_table tr:last-child td {
+        border-bottom:0;
+      }
+      
+    #up_4_icon, #up_3_icon {
+      width:50%;
+      margin:0 auto;
+    }
+    
+    #up_4_icon td {
+      border:1px dotted black;
+    }
+    
+#control_panel_bottom_row {
+  padding-top:4px;
+  padding-bottom:2px;
+  border-top:1px solid black;
+  clear:both;
+}
+
+  #ui_global_font {
+    width:45%;
+    float:left;
+    padding-left:5%;
+    text-align:center;
+  }
+    #ui_global_font div {
+      border:1px solid #AAA;
+      opacity:0.5;
+      display:inline-block;
+      border-bottom-right-radius:12px;
+      border-top-left-radius:12px;
+      width:60px;      
+      height:45px;
+      margin-right:2%;
+      background-size: 25px 25px;
+    }
+      #ui_global_font div:hover {
+        opacity:1;
+        cursor:pointer;
+      }
+      
+      .global_font_increase {
+        background: url('/gfx/font_increase.svg') no-repeat center; 
+      } 
+       .global_font_decrease {
+        background: url('/gfx/font_decrease.svg') no-repeat center; 
+      } 
+       .global_baseline_up {
+        background: url('/gfx/baseline_up.svg') no-repeat center; 
+      } 
+       .global_baseline_down {
+        background: url('/gfx/baseline_down.svg') no-repeat center; 
+      } 
+    
+    #ui_print_font_picker_container {
+      width:50%;
+      float:right;
+    }
+    
+      .selected_font td.font_image {
+        border-radius:0;
+        border-top-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+      }    
+        
+#actual_cards { 
+  margin:0 auto;
+  width:100%;
+  margin-top:140px;
+}
+
+  #actual_cards .place_card_view {
+      width:50%;
+      float:left;
+  }
+  
+.place_card_view:nth-child(even) .place_card_wrapper {
+    float:left;
+}
+  
+/* Smartphone */
+@media all and (min-width: 320px) and (max-width: 500px) {  
+/* ----------------------------------------------------------------------------- */    
+  #mobile_panel_section {
+    display:none;
+    position: fixed;
+    background-color:white;
+    border-right:1px solid black;
+    width:75%;
+    z-index:999999999999999999999999999999999999999;
+    height:100%;
+  }
+    
+  #menu_lines {
+    display:block;
+    float:right;
+    width:10%;
+  }
+
+  #menu_lines:hover {
+    cursor:pointer;
+  }
+
+  #ui_global_font {
+    padding:0;
+    padding-bottom:0.5em;
+    width:60%;
+  }
+
+    #ui_global_font div {
+      width:45px;
+      height:35px;
+      background-size:20px;
+    }
+        
+  #ui_logo_container,   
+  #ui_print_colour_picker_container,
+  #ui_printer_icon,
+  #layout_icons_wrapper, 
+  #ui_print_font_picker_container { 
+    float:none; 
+    clear:both;
+    width:100%;
+  }
+  #actual_cards {
+    margin-top:0;
+  }
+  
+    #actual_cards .place_card_view { 
+      width:100%;
+    }
+     
+    #actual_cards .place_card_view:nth-child(even) .place_card_wrapper {
+        float:right;
+    }
+    
+  .place_card_view:nth-child(even) .font_size_adjust_buttons, 
+  .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
+    left:1%;
+  }
+    
+}
+  
+/* Phablet */
+@media all and (min-width: 501px) and (max-width: 800px) {  
+/* ----------------------------------------------------------------------------- */    
+  #control_panel {
+    padding-top:0.2em;
+  }
+  #menu_lines {
+    display:none;
+  }
+  .colour_picker_wrapper .dizzycp-static_container { 
+    padding-bottom:5px;
+    clear:both;
+  }
+  
+  .colour_picker_wrapper .dizzycp-big_colour_square_frame { 
+    width:31px;
+    height:31px;
+    padding:0; 
+    border-radius:25px;
+  }
+    .colour_picker_wrapper .dizzycp-big_colour_square_swatch {
+      width:27px; 
+      height:27px;
+      margin:2px; 
+      border-radius:20px;
+    }
+
+  .colour_picker_wrapper .dizzycp-text_label_for_colour { 
+    letter-spacing:0;
+    padding-top:8px;
+    margin-left:80px;
+    font-size:1em;
+  }
+  
+  #layout_icons_wrapper {
+    float:right;
+    width:30%;
+  }
+    .layout_icon_container {
+      float:left;
+      margin:0 auto;
+      text-align:center;
+      width:35px;
+      margin-right:5%;
+    }
+    
+      .layout_icon_table td {
+        width:50%;height:8px;border-bottom:1px dotted grey;
+      }
+    
+    #ui_global_font div {
+      width:45px;
+      height:25px;
+      line-height:25px;
+      background-size: 18px 18px;
+    }
+    #ui_font_picker tr { 
+      height:40px
+    }
+    
+  td.font_name, td.font_description { display:none; }
+ 
+  td.font_image { width:100%; }
+   
+  .selected_font td.font_image {
+    border-radius:0;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }    
+    
+  #actual_cards { 
+    margin-top:100px;
+  }
+}
+  
+/* HIDDEN DIVS FOR PRINT
+==================================== */  
+#printsvg { 
+  display:none; 
+}
