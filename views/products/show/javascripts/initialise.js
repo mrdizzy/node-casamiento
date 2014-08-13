@@ -83,16 +83,18 @@ $(function() {
     routes: {
       "flat_preview": function() {
         coordinator_view._renderPreview();
+        appendFont(thisProduct.get("font"))
       },    
       "flat_preview/colour0/:colour0": function(colour_0) {
         coordinator_view._renderPreview();
         thisProduct.updateColour(0, "#" + colour_0)
         app_router.navigate("flat_preview/colour0/" + colour_0)
+        appendFont(thisProduct.get("font"))
       },  
       "print": function() {
         coordinator_view._renderPrintView();
+        appendFont(thisProduct.get("font"))
       }, 
-      // TODO: Render main page properly here
       "": function(actions) {       
       }
     }
@@ -101,4 +103,9 @@ $(function() {
   // Initiate the router
   var app_router = new AppRouter;
   Backbone.history.start();      
+  
+  function appendFont(font) {
+  $('head').append("<style type='text/css'> @font-face { font-family:'" + font + "'; src: url('/fonts/"+ font + ".eot?') format('eot'), url('/fonts/" + font + ".woff') format('woff'); }</style>");
+  }
+  
 })

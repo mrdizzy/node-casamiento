@@ -6,9 +6,6 @@
     <p><label for="price">Price:</label>
     <input type="text" name="price" value="{{price}}"></input></p>
    
-    <p><label for="font">Font:</label>
-    <input type="text" name="font" value="{{font}}"></input></p>        
-    
     <p><label for="description">Description:</label>
     <textarea name="description">{{description}}</textarea></p>        
     
@@ -25,11 +22,18 @@
   
   </div>
   
-  <div style="width:50%;float:right" id="colour_picker"></div>
+  <div id="colour_picker"></div>
   <input type="submit" style="clear:both;">Submit</a>
 </form>
 
 <div id="background_customisation" style="clear:both;">
+
+<h2>CUSTOMISE FONTS</H2>
+
+  
+  <div id="font_picker_wrapper"></div>
+<div id="place_card"></div>
+</hr>
 
 {{#each divs}}
   <div style="clear:both;position:relative;" class="background_container colour_0">
