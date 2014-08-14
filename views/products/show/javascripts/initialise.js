@@ -55,9 +55,7 @@ $(function() {
         }
         app_router.navigate("flat_preview")
         $('#inner_page_container').show();
-        $('#print_ui').hide();        
-        
-        thisProduct.trigger("render:font");
+        $('#print_ui').hide();                
       }
       
         thisProduct.trigger("render:font");
@@ -66,10 +64,11 @@ $(function() {
       $('#inner_page_container').hide();
       $('#print_ui').show();  
       if(!this.print_view_rendered) {
-        var print_control_panel_view = new PrintControlPanelView({}).render().$el        
-        thisProduct.trigger("render:font");
+        var print_control_panel_view = new PrintControlPanelView({}).render().$el    
         this.print_view_rendered = true;
       }          
+          
+      thisProduct.trigger("render:font");
       app_router.navigate("print")
     },
     changeFont: function(e, font) {   

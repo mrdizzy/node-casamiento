@@ -15,6 +15,7 @@ Make a model to control the subviews?
 /product_page
 --------------------------------------------------------------------------
   * Stop crashing on wrong id
+  * Use picturefill() to call picturefill on elements 
   * page doesn't render properly on first time -- no steps rendered -- due to localstorage
   * Fix product page font-selector as it is not showing top arrow and also does not display selected font correctly when you have navigated to #print and back to #flat_preview again
   * Highlight each step after completion

@@ -137,12 +137,6 @@
       width:50%;
       float:right;
     }
-    
-      .selected_font td.font_image {
-        border-radius:0;
-        border-top-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-      }    
         
 #actual_cards { 
   margin:0 auto;
