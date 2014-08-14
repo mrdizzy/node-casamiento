@@ -7,11 +7,10 @@ Make a model to control the subviews?
   * Add 'add colour' button to enable 2 colour designs
   * Fix adding transparent images to existing products
   * Disable editing of existing product ID 
-  * Fix colour picker not displaying
-  * Add font selector
-  * Add default baseline for font
+  * Allow selecting of default font, baseline and size via GUI
   * Move JavaScript templates into directory with their dependencies
   * Create price tiers for products rather than individually entering price of each product
+  * Remove svgupload field form data field form 
 
 
     /product_page
@@ -59,7 +58,6 @@ Make a model to control the subviews?
   * Remove dotted line from bottom of font selector 
   * Add global reset font/baseline button 
   * Format control panel responsively
-  * Update layout icons so that they show "PORTRAIT" and "LANDSCAPE" next to the icons and also format the icons correctly
   * Remove logo from panel for mobile browsers
 
 
