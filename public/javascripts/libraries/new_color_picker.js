@@ -8,7 +8,7 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
 
     var container_width = settings.width || this.width();
 
-    var index = settings.index;
+    var index = settings.index; // The index number of this colour selector, to differentiate it from other colour selectors on the page
     var listen_to = settings.listen_to
     var swatch_width = container_width / settings.colours_per_page;
     var pairs = _.pairs(colours)
@@ -19,7 +19,8 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     var $text_label_for_colour = this.$text_label_for_colour = $('<div>' + settings.colour_list[settings.default_color] + '</div>').addClass("dizzycp-text_label_for_colour")
     var $big_colour_square_frame = $('<div></div>').addClass('dizzycp-big_colour_square_frame')
     var $big_colour_square_swatch = this.$big_colour_square_swatch = $('<div></div>').css("background-color", settings.default_color).addClass('dizzycp-big_colour_square_swatch')
-    
+   
+    // Used to listen to other colour selectors on the same page with the same index, to keep them in sync with one another as we cannot maintain state from this plugin 
     if(listen_to) {
       listen_to.on("change:colours", function() {
         var new_colour = listen_to.get("colours")[index];
@@ -54,9 +55,8 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     $internal_wrapper.append($scrollable_colours)
     $external_wrapper.append($internal_wrapper)
   
-    
-    var counter = 0;
-    var colour_divs = []
+    var counter = 0,
+      colour_divs = []
   
     groups.forEach(function(group) {
       var $colour_div = $('<div id="panel_' + counter + '" style="float:left"></div>');
@@ -109,10 +109,14 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
   $container_to_fade_in.append($left_arrow).append($right_arrow)
   
   // SELECT DEFAULT PANEL
-  var pointer = 0;
-  var panel_counter = 0;
-  var selected_counter = 0;
-  var default_panel;
+  var pointer = 0,
+    panel_counter = 0, // The number of individual colour panels
+    selected_counter = 0,
+    default_panel, 
+    first_time = true;
+  
+  // Search for the default selected colour, and counter the number
+  // of panels in the process  
   groups.forEach(function(colour_group) {
     for (var i=0; i < colour_group.length; i++) {
 
@@ -125,8 +129,6 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     }
     panel_counter = panel_counter + 1;
   })
-
-  var first_time = true;
   
    // Enter big swatch    
   $big_colour_square_frame.on('mouseenter click', function() {       
@@ -140,19 +142,22 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     }
   })
     
-      // Leave wrapper
-    $wrapper.mouseleave(function() {  
-      $static_container.removeClass("dizzycp-container_selected")
-      $container_to_fade_in.removeClass("dizzycp-container_selected")  
-      $container_to_fade_in.fadeOut();
-    })   
-    this.html($wrapper)
+  // Leave wrapper
+  $wrapper.mouseleave(function() {  
+    $static_container.removeClass("dizzycp-container_selected")
+    $container_to_fade_in.removeClass("dizzycp-container_selected")  
+    $container_to_fade_in.fadeOut();
+  })   
+  this.html($wrapper)
    
-    function scrollColours(amount) {
-      selected_counter = selected_counter + amount;  
-      var position = $container_to_fade_in.find('#panel_' + selected_counter).position().left;  
+  function scrollColours(amount) {
+    var new_counter = selected_counter + amount;
+    if(new_counter > -1 && new_counter < panel_counter) {
+      selected_counter = new_counter;
+       var position = $container_to_fade_in.find('#panel_' + selected_counter).position().left;  
       $internal_wrapper.animate({scrollLeft: position}, 100);
     }
+  }
     return this;
   }
 
@@ -161,6 +166,5 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     colour_list: colours,
     default_color: '#cd5c5c'
   } 
-  
       
 })(jQuery)  

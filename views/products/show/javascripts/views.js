@@ -115,6 +115,7 @@ var StepView = Backbone.View.extend({
   _renderGuests: function($element) {
     var $element = $element || this.$('#guests')
     var guests_html = []
+    console.log(thisProduct.get("guests"))
     thisProduct.get("guests").forEach(function(guest) {    
       guests_html.push(new GuestView({model:guest}).render().el);
     })

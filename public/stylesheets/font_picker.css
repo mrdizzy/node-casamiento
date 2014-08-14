@@ -45,8 +45,7 @@
   }
   #fonts tr, #ui_font_picker tr { 
     height:50px
-  }
-  
+  }  
   
     .selected_font td.font_name {
       text-align:center;
@@ -60,6 +59,10 @@
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
     }    
+    
+  #fonts .selected_font td, #ui_font_picker .selected_font td {
+    border-bottom:0; 
+  }
 .font_selector_container tr:hover, .up_arrow:hover { 
       background-color:lightgrey;
       cursor:pointer;

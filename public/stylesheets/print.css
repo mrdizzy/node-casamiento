@@ -1,4 +1,6 @@
 @media print {
+
+body { background-image:none;}
   
   #printsvg { 
     display:block;

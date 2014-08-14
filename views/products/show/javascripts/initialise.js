@@ -19,7 +19,7 @@ $(function() {
   
   // Setup and initialization
   var thisProduct = new Product();   
-  
+  console.log(window.localStorage)
   thisProduct.fetch({success:function(resp) {
     console.log("succcess")
   }, error: function(resp) {
@@ -59,12 +59,16 @@ $(function() {
         
         thisProduct.trigger("render:font");
       }
+      
+        thisProduct.trigger("render:font");
     },
     _renderPrintView: function() {    
       $('#inner_page_container').hide();
       $('#print_ui').show();  
       if(!this.print_view_rendered) {
-        var print_control_panel_view = new PrintControlPanelView({}).render().$el
+        var print_control_panel_view = new PrintControlPanelView({}).render().$el        
+        thisProduct.trigger("render:font");
+        this.print_view_rendered = true;
       }          
       app_router.navigate("print")
     },

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+
+<script src="/javascripts/libraries/canvas_resize.js"></script>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+
+    <div id="test"></div>
+<script>
+var img, canvas, resized;
+    img = new Image;
+    img.onload = function(){
+      canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+      resized = document.createElement('canvas');
+      resized.width = 500;
+      resized.height = 319;
+      // see lib/canvas_resize for window.canvasResize = function(){...}
+      canvasResize(canvas, resized);
+      
+    $('#test').append(resized)
+    var url = resized.toDataURL("image/jpeg", 1)
+    console.log(url)
+      // resized will now be a properly resized version of canvas
+    }
+
+    img.src = '/products/beautiful-name_place/attachments/large-2';
+    </script>
+</body>
+</html>

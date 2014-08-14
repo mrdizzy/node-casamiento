@@ -1,9 +1,10 @@
 var Guest = Backbone.Model.extend({
   defaults: {
     name: "Guest Name",
-    baseline: <%= product.baseline %>,
+    baseline: (<%= product.baseline %> || 0),
     font_size: "<%= product.font_size %>"
   },
+  // TODO: upBaseline and downBaseline should be consolidated into one adjustBaseline function
   upBaseline: function() {
     this.set("baseline", (this.get("baseline") - 1))
   },
@@ -29,17 +30,19 @@ var Product = Backbone.Model.extend({
     defaults.quantity = 8
     defaults.font_size = object_fonts[defaults.font]
     defaults.guests = new Guests([{},{},{},{},{},{},{},{}])
-    defaults.total = 3.97,
+    defaults.total = 3.97
     defaults.price = 0.10
     return defaults;
+  },
+  stale: ['attachments_order', 'divs'],
+  toJSON: function() {
+    return _.omit(this.attributes, this.stale);
   },
   initialize: function() {  
     this.textures = ["plain", "hammered", "linen"]
     this.on("change:quantity", this.calculatePrice)
-    this.on("change:quantity", this.adjustGuests)
     this.on("change:texture", this.calculatePrice)
     this.on("change:weight", this.calculatePrice)
-    this.updateGuestNames();
     this.updatePounds();
     this.updatePence();
   },
@@ -48,9 +51,6 @@ var Product = Backbone.Model.extend({
       return(this.get("colours")[0].substring(1) + "_" + thisProduct.get("colours")[1].substring(1));
     }
     return(this.get("colours")[0].substring(1))
-  },
-  updateGuestNames: function() {
-    this.set("guest_names", this.get("guests").pluck("name"))
   },
   updatePounds: function() {  
     this.set("pounds", this.get("total").toString().split(".")[0])
@@ -84,6 +84,7 @@ var Product = Backbone.Model.extend({
   adjustQuantity: function(adjust_by) {      
     var quantity = this.get("quantity") + adjust_by;
     this.set("quantity", quantity)
+    this.adjustGuests();
   },
   applyDiscounts: function(total) {
     var qty = this.get("quantity"),
