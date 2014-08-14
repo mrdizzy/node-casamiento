@@ -30,7 +30,7 @@ $(function() {
   // It is important to make the divs that will contain the html 
   // of rendered views visible first, then add the html to them
   // as the widths of certain elements must be visible in order
-  // to calculate dynamic widths for the colour picker, for example
+  // to calculate dynamic widths (for the colour picker, for example)
   
   var CoordinatorView = Backbone.View.extend({
     el: '#inner_page_container',
