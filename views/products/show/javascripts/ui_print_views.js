@@ -45,6 +45,8 @@ var PlaceCardView = GuestView.extend({
   calculateBaselineOffset: function() {
     var height = this.options.svg ? 74.25 : this.$el.height();
     var baseline = (this.model.get("baseline") /100) * height;
+
+
     this.top_half_height = (height / 2) + baseline;
     this.bottom_half_height = (height / 2)  - baseline;
   },
@@ -175,11 +177,12 @@ var PrintControlPanelView = Backbone.View.extend({
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
     
     // Wait for SVG images to be loaded before printing
-    var images  = this.$('#printsvg img'),
+    var images  = $('#printsvg img'),
       counter = images.length,
       svg_url = thisProduct.get("_id") + "/" + thisProduct.hex();
       
     images.attr('src', "/svg/" + svg_url).load(function() {
+    console.log(counter)
       counter--;
       if(counter == 0) {   
         window.print()        
