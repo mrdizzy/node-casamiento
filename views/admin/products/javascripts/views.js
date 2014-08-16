@@ -81,11 +81,11 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     'click .addmore': 'addAttachment',
     "fontpicker:selected": "changeFont"
   },
-   changeFont: function(e, font) {   
-
-      this.model.set("font_size", 0.08)
-      this.model.set("font", font.font)
-    },
+  changeFont: function(e, font) {   
+  alert("changing font")
+    this.model.set("font_size", 0.08)
+    this.model.set("font", font.font)
+  },
   prepareSVG: function(e) {
    var that = this,
    file = e.currentTarget.files[0],
@@ -140,6 +140,7 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   },
   render: function() {
     var modelToJSON = this.model.toJSON();   
+    modelToJSON.isNew = this.model.isNew();
     modelToJSON.divs = {}
     this.model.attachments_order.map(function(attachment) {
         modelToJSON.divs[attachment] = this.model.get("background-" + attachment)

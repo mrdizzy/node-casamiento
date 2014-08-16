@@ -6,11 +6,10 @@ Make a model to control the subviews?
 --------------------------------------------------------------------------
   * Add 'add colour' button to enable 2 colour designs
   * Fix adding transparent images to existing products
-  * Disable editing of existing product ID 
   * Allow selecting of default font, baseline and size via GUI
   * Move JavaScript templates into directory with their dependencies
   * Create price tiers for products rather than individually entering price of each product
-  * Remove svgupload field form data field form 
+  * Remove svgupload field form data field form (make it stale)
 
 /product_page
 --------------------------------------------------------------------------

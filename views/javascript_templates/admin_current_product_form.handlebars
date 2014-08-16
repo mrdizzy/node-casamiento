@@ -1,7 +1,7 @@
 <form>
   <div style="width:50%;float:left">
     <p><label for="_id">ID:</label>
-    <input type="text" name="_id" value="{{_id}}"></input></p>        
+    <input type="text" name="_id" {{#unless isNew}} disabled {{/unless}} value="{{_id}}"></input></p>        
  
     <p><label for="price">Price:</label>
     <input type="text" name="price" value="{{price}}"></input></p>

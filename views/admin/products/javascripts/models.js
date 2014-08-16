@@ -1,6 +1,6 @@
 var Product = Backbone.Model.CouchDB.extend({
   urlRoot: "/products",
-  defaults: { "type": "product", font_size: "0.08", baseline: 0 },
+  defaults: { "type": "product", font_size: "0.08", baseline: 0, "font": "Metroscript" },
   attachment_types: ["thumb", "display","medium","large","transparent_display", "transparent_medium", "transparent_large"],
   updateColour: function(index, colour) {
     var colours = this.get("colours");
@@ -8,7 +8,7 @@ var Product = Backbone.Model.CouchDB.extend({
     this.set("colours", colours)
     this.trigger("change:colours")
   },
-   upBaseline: function() {
+  upBaseline: function() {
     this.set("baseline", (this.get("baseline") - 1))
   },
   downBaseline: function() {

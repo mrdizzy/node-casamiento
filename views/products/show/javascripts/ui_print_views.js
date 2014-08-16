@@ -1,18 +1,21 @@
-// Each font has a size value such as 0.12 or 0.08 and this value
-// is the size of the font as a percentage of the container width. 
-// This allows us to make sure that when the font size is changed
-// it remains consistent relative to its container 
+/* 
+  This view takes svg as an option. When svg is set to true, 
+  it uses absolute measurements rather than relative measurements
+  Each font has a size value such as 0.12 or 0.08 and this value
+  is the size of the font as a percentage of the container width. 
+  This allows us to make sure that when the font size is changed
+  it remains consistent relative to its container 
+*/
 var PlaceCardView = GuestView.extend({
   className: 'place_card_view',
   initialize: function() {
-    this.listenTo(this.model, "change:name", this._renderName)
-    this.listenTo(thisProduct, 'render:font', this._renderFontSize);
-    this.listenTo(thisProduct, 'change:font', this._renderFontFamily);
+    this.listenTo(thisProduct, 'global:rerenderfont', this._renderFontSize);
     this.listenTo(thisProduct, 'global:baseline_up', this.upBaseline);
-    this.listenTo(thisProduct, 'global:baseline_down', this.downBaseline);
-    
+    this.listenTo(thisProduct, 'global:baseline_down', this.downBaseline);    
     this.listenTo(thisProduct, 'global:font_increase', this.increaseFont);
-    this.listenTo(thisProduct, 'global:font_decrease', this.decreaseFont);
+    this.listenTo(thisProduct, 'global:font_decrease', this.decreaseFont);     
+    this.listenTo(thisProduct, 'change:font', this._renderFontFamily);   
+    this.listenTo(this.model, "change:name", this._renderName)
     this.listenTo(this.model, 'change:font_size', this._renderFontSize);
     this.listenTo(this.model, 'change:baseline', this._renderBaseline);
     this.units = this.options.svg ? "mm" : "px"
@@ -38,17 +41,25 @@ var PlaceCardView = GuestView.extend({
   downBaseline: function() {
     this.model.downBaseline();
   },  
-  calculateFontSize: function() {
+  calculateFontSize: function() { // Element must be visible for width() to work
     var width = this.options.svg ? 105 : this.$el.width();
     this.font_size = width * this.model.get("font_size");
-  },  
-  calculateBaselineOffset: function() {
+  },    
+  calculateBaselineOffset: function() { // Element must be visible for height() to work
     var height = this.options.svg ? 74.25 : this.$el.height();
     var baseline = (this.model.get("baseline") /100) * height;
-
-
     this.top_half_height = (height / 2) + baseline;
     this.bottom_half_height = (height / 2)  - baseline;
+  },  
+  _renderBaseline: function() {
+    this.calculateBaselineOffset();
+    this.$('.spacer').css("height", this.top_half_height + this.units)
+    this.$('input').css("height", this.bottom_half_height + this.units)
+  },  
+  _renderFontSize: function() {
+    this.calculateFontSize();
+    this._renderBaseline();
+    this.$('input').css('font-size', this.font_size + this.units);
   },
   render: function() {     
     var compiled_template = Handlebars.template(templates["place_card"]);
@@ -73,16 +84,6 @@ var PlaceCardView = GuestView.extend({
   },
   _renderName: function() {
     this.$('input').val(this.model.get("name"))  
-  },
-  _renderBaseline: function() {
-    this.calculateBaselineOffset();
-    this.$('.spacer').css("height", this.top_half_height + this.units)
-    this.$('input').css("height", this.bottom_half_height + this.units)
-  },
-  _renderFontSize: function() {
-    this.calculateFontSize();
-    this._renderBaseline();
-    this.$('input').css('font-size', this.font_size + this.units);
   }
 })
 
@@ -118,8 +119,7 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   testForMobile: function() {
     if(viewportSize.getWidth() < 501) {
-      this.mobile = true
-      
+      this.mobile = true      
       $('#mobile_panel_section').hide();
     } else {
       this.mobile = false;
@@ -135,7 +135,7 @@ var PrintControlPanelView = Backbone.View.extend({
     "click .global_baseline_up": "baselineUp",
     "click .global_baseline_down": "baselineDown",
     "click .global_font_increase": "fontIncrease",
-        "click .global_font_decrease": "fontDecrease"
+    "click .global_font_decrease": "fontDecrease"
   },
   togglePanel: function() {
     if(this.mobile) {
@@ -144,16 +144,16 @@ var PrintControlPanelView = Backbone.View.extend({
     }
   },
   fontIncrease: function() {
-          thisProduct.trigger("global:font_increase")  
+    thisProduct.trigger("global:font_increase")  
   },
   fontDecrease: function() {
-          thisProduct.trigger("global:font_decrease")  
+    thisProduct.trigger("global:font_decrease")  
   },
   baselineUp: function() {
     thisProduct.trigger("global:baseline_up")  
   },
   baselineDown: function() {
-      thisProduct.trigger("global:baseline_down")
+    thisProduct.trigger("global:baseline_down")
   },
   changeLayout: function(e) {
     var val = $(e.currentTarget).val()
@@ -166,14 +166,13 @@ var PrintControlPanelView = Backbone.View.extend({
     thisProduct.save();
   },  
   // Create the SVG print view
-  printPage: function(e) {
-    
+  printPage: function(e) {    
     var result = new PlaceCardCollectionView({
       per_page: this.layout,
       svg: true
     }).render().el;
     $('#printsvg').html(result);    
-    thisProduct.trigger("render:font")
+    thisProduct.trigger("global:rerenderfont")
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
     
     // Wait for SVG images to be loaded before printing
@@ -182,7 +181,6 @@ var PrintControlPanelView = Backbone.View.extend({
       svg_url = thisProduct.get("_id") + "/" + thisProduct.hex();
       
     images.attr('src', "/svg/" + svg_url).load(function() {
-    console.log(counter)
       counter--;
       if(counter == 0) {   
         window.print()        
@@ -214,7 +212,7 @@ var PrintControlPanelView = Backbone.View.extend({
       selected_font: thisProduct.get("font")
     })
     $template.find('#actual_cards').append(place_cards)
-    thisProduct.trigger("render:font")
+    thisProduct.trigger("global:rerenderfont")
     return this;
   }
 })

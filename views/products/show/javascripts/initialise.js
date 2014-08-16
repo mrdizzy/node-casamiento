@@ -19,7 +19,6 @@ $(function() {
   
   // Setup and initialization
   var thisProduct = new Product();   
-  console.log(window.localStorage)
   thisProduct.fetch({success:function(resp) {
     console.log("succcess")
   }, error: function(resp) {
@@ -58,7 +57,7 @@ $(function() {
         $('#print_ui').hide();                
       }
       
-        thisProduct.trigger("render:font");
+        thisProduct.trigger("global:rerenderfont");
     },
     _renderPrintView: function() {    
       $('#inner_page_container').hide();
@@ -68,7 +67,7 @@ $(function() {
         this.print_view_rendered = true;
       }          
           
-      thisProduct.trigger("render:font");
+      thisProduct.trigger("render:rerenderfont");
       app_router.navigate("print")
     },
     changeFont: function(e, font) {   
