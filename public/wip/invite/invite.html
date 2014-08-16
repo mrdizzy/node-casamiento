@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+  <head>
+  
+	
+	<style type="text/css">
+	
+	
+	#control_panel {
+		border:1px solid black;
+	
+	  width:25%;
+	}
+	
+	#invitation_wrapper {
+	position: relative;
+	height:0;
+	padding-bottom: 141.42857142857142857142857142857%;
+	}
+	#invitation { position:relative;}
+	
+	</style>
+	
+	
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>    
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+
+
+    <script type="text/template" id="template">
+	  <div id="wrapper">
+		  <div id="control_panel">
+			  <ul>
+				<li id="add_field">Add field</li>
+				<li id="up">Move up</li>
+				<li id="down">Move down</li>
+				<li id="justify_left">Justify Left</li>
+				<li id="justify_right">Justify Right</li>
+				<li id="justify_center">Justify Center</li>
+			  </ul>
+		  </div>
+		  <div style="width:50%">
+		  <div id="invitation_wrapper"><div id="invitation"><img src="/wip/svg/bop.svg" style="z-index:-1;display:block;position:absolute;width:100%;"/></div></div>
+		  </div>
+	  </div>
+	</script>
+
+</head>
+
+<body>
+<div id="container"></div>
+
+<script>
+  
+  
+  var Wrapper = Backbone.Model.extend({
+	
+  })
+  
+  var wrapper = new Wrapper()
+  
+  var Field = Backbone.Model.extend({
+	  defaults: {
+		"text-align": "center",
+		"padding-top": "0%",
+		"padding-bottom": "0%",
+		"padding-left": "10%",
+		"padding-right": "10%",
+		"font-size": "0.08",
+	  },
+	  styles: function() {
+	  	var styles = this.pairs();
+		var results = ""
+		styles.forEach(function(style) {
+			results = results + style[0] + ":" + style[1] + ";"
+		})
+		return results;
+	  }
+  	
+  })  
+  var FieldView = Backbone.View.extend({
+  	  initialize: function() {
+	  this.listenTo(wrapper, "change:width", this.resizeWindow)
+	  	this.listenTo(this.model, "change:padding-top", this.setToppadding)
+		this.listenTo(this.model, "change:text-align", this.setTextAlign)
+	  },
+	  setTextAlign: function() {
+	  	this.$el.css("text-align", this.model.get("text-align"))
+	  },
+	  setToppadding: function() {
+	  	this.$el.css("padding-top", this.model.get("padding-top"))
+	  },
+	  resizeWindow: function() {
+	  	this.calculateFontSize();
+		
+		this.$el.css("font-size", this.font_size)
+	  },
+	  events: {
+		"click": "selected"
+	  },
+	  selected: function() {
+		this.model.set("selected", true)
+		this.$el.addClass('selected')
+	  },
+	  calculateFontSize: function() { // Element must be visible for width() to work
+
+		var width = wrapper.get("width");
+			  console.log(width)
+		this.font_size = width * this.model.get("font-size");
+     },    
+	render: function() {
+	    this.$el.html("Lorem ipsum")
+		this.calculateFontSize()
+		this.$el.css("font-size", this.font_size)
+		return this;
+	}
+	
+  })
+  
+  var Container = Backbone.Collection.extend({
+	model: Field
+  })
+  
+  
+  var container = new Container()
+  
+  
+  var ContainerView = Backbone.View.extend({
+    el: "#container",
+    initialize: function() {
+	
+	$(window).bind("resize", _.bind(this.windowResize, this));
+      this.listenTo(container, "add", this.fieldAdded)  	
+	  this.listenTo(container, "change:selected", this.selectField)
+    },
+	selectField: function(e) {
+		this.selected_field = e;
+	},
+	windowResize:function() {
+		var width = this.$('#invitation').width();
+		wrapper.set("width", width)
+	},
+    events: {
+		"click #add_field": "addField",
+		"click #up": "moveFieldUp",
+		"click #down": "moveFieldDown",
+		"click #justify_left": "justifyLeft",
+		"click #justify_center": "justifyCenter",
+		"click #justify_right": "justifyRight"
+	},
+	justifyLeft: function() {
+		this.selected_field.set("text-align", "left")
+	},
+	justifyCenter: function() {
+		this.selected_field.set("text-align", "center")
+	},
+	justifyRight: function() {
+		this.selected_field.set("text-align", "right")
+	},
+	moveFieldUp: function() {		
+		var padding_top = this.selected_field.get("padding-top");
+		padding_top = padding_top.slice(0, -1);
+		padding_top = parseInt(padding_top) -1;	
+		this.selected_field.set("padding-top", padding_top + "%")
+	},
+	moveFieldDown: function() {
+		var padding_top = this.selected_field.get("padding-top");
+		padding_top = padding_top.slice(0, -1);
+		padding_top = parseInt(padding_top) + 1;	
+		this.selected_field.set("padding-top", padding_top + "%")
+	},
+	addField: function() {
+		container.add({text_align:"center"})
+	},
+	fieldAdded: function(e, v) {
+	this.render();
+		console.log(e, v)
+	},
+ 	render: function() {
+	var that = this;
+  		var template = $('#template').html();
+		
+		this.$el.html(template)
+		var $invitation = this.$('#invitation');
+		
+		this.model.set("width", $invitation.width())
+		this.collection.forEach(function(field) {
+			var field_view = new FieldView({model: field, attributes: { style: field.styles() }})
+			$invitation.append(field_view.render().el)			
+		})
+		
+		
+		return this;
+ 	}
+  	
+  })
+  
+  var container_view = new ContainerView({collection:container, model:wrapper})
+ container_view.render()
+
+</script>
+
+</body>
+
+</html>
