@@ -5,7 +5,9 @@
 	
 	<style type="text/css">
 	
-	
+	div {text-rendering: optimizeLegibility; }
+	@font-face { font-family:"MyriadProLight"; src: url('/fonts/MyriadProLight.eot?') format('eot'), url('/fonts/MyriadProLight.woff') format('woff'); }
+		div { font-family: "MyriadProLight"}
 	#control_panel {
 		border:1px solid black;
 	
@@ -33,11 +35,14 @@
 		  <div id="control_panel">
 			  <ul>
 				<li id="add_field">Add field</li>
+				<li id="add_block_field">Add BLOCK field</li>
+				<li id="add_block_line">Add BLOCK line</li>
 				<li id="up">Move up</li>
 				<li id="down">Move down</li>
 				<li id="justify_left">Justify Left</li>
 				<li id="justify_right">Justify Right</li>
 				<li id="justify_center">Justify Center</li>
+				<li id="justify_justify">Justify Justify</li>
 			  </ul>
 		  </div>
 		  <div style="width:50%">
@@ -67,7 +72,7 @@
 		"padding-bottom": "0%",
 		"padding-left": "10%",
 		"padding-right": "10%",
-		"font-size": "0.08",
+		"font-size": "0.04"
 	  },
 	  styles: function() {
 	  	var styles = this.pairs();
@@ -84,6 +89,8 @@
 	  this.listenTo(wrapper, "change:width", this.resizeWindow)
 	  	this.listenTo(this.model, "change:padding-top", this.setToppadding)
 		this.listenTo(this.model, "change:text-align", this.setTextAlign)
+		
+		this.listenTo(this.model, "change:lines", this.render)
 	  },
 	  setTextAlign: function() {
 	  	this.$el.css("text-align", this.model.get("text-align"))
@@ -110,7 +117,16 @@
 		this.font_size = width * this.model.get("font-size");
      },    
 	render: function() {
-	    this.$el.html("Lorem ipsum")
+	  if (this.model.get("type") == 'block') {
+	    var result = []
+		this.model.get("lines").forEach(function(line) {
+			result.push("<span contenteditable>" + line + "</span>")
+		})
+		var result = result.join(" <img src='bullet.svg' style='width:3%' /> ")
+		this.$el.html(result)
+		} else {
+	      this.$el.html("Lorem ipsum")
+		}
 		this.calculateFontSize()
 		this.$el.css("font-size", this.font_size)
 		return this;
@@ -143,11 +159,15 @@
 	},
     events: {
 		"click #add_field": "addField",
+		"click #add_block_field": "addBlockField",
+		"click #add_block_line": "addBlockLine",
 		"click #up": "moveFieldUp",
 		"click #down": "moveFieldDown",
 		"click #justify_left": "justifyLeft",
 		"click #justify_center": "justifyCenter",
-		"click #justify_right": "justifyRight"
+		"click #justify_right": "justifyRight",
+		
+		"click #justify_justify": "justifyJustify"
 	},
 	justifyLeft: function() {
 		this.selected_field.set("text-align", "left")
@@ -157,6 +177,9 @@
 	},
 	justifyRight: function() {
 		this.selected_field.set("text-align", "right")
+	},
+		justifyJustify: function() {
+		this.selected_field.set("text-align", "justify")
 	},
 	moveFieldUp: function() {		
 		var padding_top = this.selected_field.get("padding-top");
@@ -172,6 +195,15 @@
 	},
 	addField: function() {
 		container.add({text_align:"center"})
+	},
+	addBlockLine: function() {
+		var lines = this.selected_field.get("lines");
+		lines.push("New Line");
+		this.selected_field.set("lines", lines);
+		this.selected_field.trigger("change:lines")
+	},
+	addBlockField: function() {
+		container.add({text_align:"center", type: "block", lines: ["Line 1", "Line 2", "Line 3", "Line 4"]})
 	},
 	fieldAdded: function(e, v) {
 	this.render();
