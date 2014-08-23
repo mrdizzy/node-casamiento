@@ -27,11 +27,11 @@ var Product = Backbone.Model.extend({
   localStorage: new Backbone.LocalStorage("CasamientoProducts"),
   defaults: function() {
     var defaults = <%- JSON.stringify(product) %>
-    defaults.quantity = 8
-    defaults.font_size = object_fonts[defaults.font]
-    defaults.guests = new Guests([{},{},{},{},{},{},{},{}])
-    defaults.total = 3.97
-    defaults.price = 0.10
+    defaults.quantity = 8;
+    defaults.font_size = 1;
+    defaults.guests = new Guests([{},{},{},{},{},{},{},{}]);
+    defaults.total = 3.97;
+    defaults.price = 0.10;
     return defaults;
   },
   stale: ['attachments_order', 'divs'],
