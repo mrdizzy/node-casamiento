@@ -57,7 +57,7 @@
     height: 0;
     padding-bottom: 70.714285714285714285714285714286%;
   }
-    .place_card_wrapper img { 
+    .place_card_wrapper img.place_card_image { 
       top:0;
       left:0;
       width:100%;
@@ -78,7 +78,10 @@
       height:100%;
       z-index:1001
     }
+    .font_spinner { 
     
+        background: url('/gfx/spinner.gif') no-repeat center; 
+    }
       .guest_wrapper  input {
         padding:0;
         margin:0;

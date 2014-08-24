@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+  #big_font { font-size: 3em;}
+  #spinner { display:none}
+  </style>
+</head>
+<body>
+
+    <link rel="stylesheet" href="/stylesheets/font_picker.css" />  
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="font_loader.js"></script>
+        <script type="text/javascript" src="/javascripts/libraries/in_groups_of.js"></script>
+    <script type="text/javascript" src="/javascripts/libraries/new_font_picker.js"></script>
+    <div style="width:60%;float:left"><div id="big_font"><div id="show_font">HERE IS A BIG FONT</div><div id="spinner"><img src="/gfx/spinner.gif" /></div></div></div>
+    <div style="float:right;width:40%">
+    <div id="font_picker"></div></div>
+    
+    <script>
+    $('#font_picker').fontPicker();
+    $('#font_picker').on("fontpicker:selected", function(e, font) {
+      $('#spinner').show();
+      $('#show_font').hide().css("font-family", font);
+    }).on("fontpicker:fontloaded", function(e, font) {
+      $('#spinner').hide();
+      $('#show_font').show();
+    })
+    </script>
+</body>
+</html>

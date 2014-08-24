@@ -128,6 +128,7 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   events: {
     "fontpicker:selected": "changeFont",
+    "fontpicker:fontloaded": "loadFont",
     "dizzy-cp:click": "togglePanel",
     "click input[type=radio]": "changeLayout",
     "click #ui_printer_icon": "printPage",
@@ -160,8 +161,14 @@ var PrintControlPanelView = Backbone.View.extend({
     this.$('#actual_cards').attr("class", "up_" + val)
     this.layout = val;
   },
+  loadFont: function(e, font) {
+    $('.font_spinner').hide();
+    $('.guest_name').show()  
+  },
   changeFont: function(e, font) { 
-    thisProduct.set("font", font.font)
+    thisProduct.set("font", font)
+    $('.font_spinner').show();
+    $('.guest_name').hide()  
     this.togglePanel();
     thisProduct.save();
   },  
