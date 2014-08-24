@@ -103,7 +103,7 @@ $(function() {
   });
     
   // Initiate the router
-  var app_router = new AppRouter;
+  new AppRouter;
   Backbone.history.start();      
   
   function appendFont(font) {
