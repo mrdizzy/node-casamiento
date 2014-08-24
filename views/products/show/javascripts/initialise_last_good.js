@@ -31,17 +31,6 @@ $(function() {
   var CoordinatorView = Backbone.View.extend({
     el: '#inner_page_container',
     initialize: function() {
-      this.current_view = "main";
-      this.step_view = new StepView().render();
-      this.place_card_view = new PlaceCardView({
-        model: thisProduct.get("guests").first()
-      }).render()
-      this.product_container_view = this.$('#product_container')
-      this.flat_preview_view = this.$('#flat_preview')
-      this.flat_preview_view.html(this.place_card_view.el).append('<div class="place_card_wrapper" id="mobile_spacer"></div>').append("<div style='text-align:center'><div class='grey_button' id='print_button' style='margin:0 auto;padding:0;padding-bottom:1em;padding-left:3em;padding-right:3em;border-top-left-radius:30px;border-bottom-right-radius:30px;text-align:center'><img src='/gfx/printers/file19.svg' style='line-height:0.5em;width:55px;margin:0;padding:0;' /><p style='margin:0;padding:0;line-height:0.5em;font-size:1.4em'>PRINT YOURSELF</p></div></div>").hide();
-      
-      this.print_control_panel_view = new PrintControlPanelView({}).render().$el.hide(); 
-        
       this.listenTo(thisProduct, 'change:colours', this._renderPreview)
       this.listenTo(thisProduct, 'change:font', this._renderPreview)
     },
@@ -49,21 +38,33 @@ $(function() {
       "click #print_button": "_renderPrintView",
       "fontpicker:selected": "changeFont"
     },
-    _renderPreview: function() {
-      if(this.current_view != "preview") {         
+    _renderPreview: function() {  
+      if (Backbone.history.fragment != "print") {
+        if(!this.preview_rendered) {
+          this.place_card_view = new PlaceCardView({
+            model: thisProduct.get("guests").first()
+          }).render()
+           
+          this.$('#preview').html(this.place_card_view.el).append('<div class="place_card_wrapper" id="mobile_spacer"></div>'); // Mobile responsive spacer      
+          this.$('#preview').append("<div style='text-align:center'><div class='grey_button' id='print_button' style='margin:0 auto;padding:0;padding-bottom:1em;padding-left:3em;padding-right:3em;border-top-left-radius:30px;border-bottom-right-radius:30px;text-align:center'><img src='/gfx/printers/file19.svg' style='line-height:0.5em;width:55px;margin:0;padding:0;' /><p style='margin:0;padding:0;line-height:0.5em;font-size:1.4em'>PRINT YOURSELF</p></div></div>")  
+          this.preview_rendered = true;
+        }
         app_router.navigate("flat_preview")
-        this.current_view = "preview"
-        this.product_container_view.hide();        
-        this.flat_preview_view.show();
-        this.print_control_panel_view.hide();
+        $('#inner_page_container').show();
+        $('#print_ui').hide();                
       }
+      
+      thisProduct.trigger("global:rerenderfont");
     },
     _renderPrintView: function() {    
-      if(this.current_view != "print") {
-        $('#inner_page_container').hide();
-        this.print_control_panel_view.show();               
-        this.flat_preview_view.hide();              
-      }      
+      $('#inner_page_container').hide();
+      $('#print_ui').show();  
+      if(!this.print_view_rendered) {
+        var print_control_panel_view = new PrintControlPanelView({}).render().$el    
+        this.print_view_rendered = true;
+      }          
+          
+      thisProduct.trigger("render:rerenderfont");
       app_router.navigate("print")
     },
     changeFont: function(e, font) {   
@@ -74,6 +75,7 @@ $(function() {
   })      
         
   var coordinator_view = new CoordinatorView();
+  var step_view = new StepView().render()
   
   // Router
   var AppRouter = Backbone.Router.extend({
@@ -85,6 +87,7 @@ $(function() {
       "flat_preview/colour0/:colour0": function(colour_0) {
         coordinator_view._renderPreview();
         thisProduct.updateColour(0, "#" + colour_0)
+        app_router.navigate("flat_preview/colour0/" + colour_0)
         $.appendFont(thisProduct.get("font"))
       },  
       "print": function() {
@@ -97,7 +100,7 @@ $(function() {
   });
     
   // Initiate the router
-  new AppRouter;
+  var app_router = new AppRouter;
   Backbone.history.start();      
   
 })

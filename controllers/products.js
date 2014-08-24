@@ -75,8 +75,8 @@ exports.show = function(req, res) {
   db.view('all/products_without_attachments', { key: id }, function(error, result) {
     var doc = result[0].value; // First record
     doc.divs = prepareDivs(doc, "slide", "slide", "display", "colour");
-    db.view("all/fonts_by_id_and_size", function(error, fonts_response) {
-      res.render('products/show/show.ejs', {
+    db.view("all/fonts_by_id", function(error, fonts_response) {
+      res.render('products/show/show.ejs', {     
           locals: {fonts: fonts_response.toArray(), product: doc}
       });
     })

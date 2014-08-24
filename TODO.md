@@ -13,34 +13,38 @@ Make a model to control the subviews?
 
 /product_page
 --------------------------------------------------------------------------
+  * Make colour picker infinite so it scrolls back to the beginning again
+  * After colour has been changed, make sure related colour pickers automatically show new default colour panel that contains the hues closest to new selected
+  
   * Stop crashing on wrong id
-  * Use picturefill() to call picturefill on elements 
-  * page doesn't render properly on first time -- no steps rendered -- due to localstorage
-  * Fix product page font-selector as it is not showing top arrow and also does not display selected font correctly when you have navigated to #print and back to #flat_preview again
-  * Highlight each step after completion
+  
+  * Use picturefill() to call picturefill on elements   
   * Call picturefill on images to render appropriate resolutions
+  
+  * page doesn't render properly on first time -- no steps rendered -- due to localstorage
+  * Highlight each step after completion
   * Allow selection of texture
   * Allow selection of thickness
   * Choose better icon for PRINT YOURSELF button
   * Style PayPal button prpperly
-  * Fix display of name place cards buttons on left hand side on smartphone main product page view
-  * When moving to the print page, if any new guests have been added there will not be place cards for them
-  * Make thisProduct save on change of guest name
-  * After colour has been changed, make sure related colour pickers automatically show new default colour panel that contains the hues closest to new selected
-
-  * make font selector directly change the font and size of thisProduct rather than in the view
-
   * Make step descriptions more verbose
   * Product format step description needs to be written
   * Card thickness will change based on texture selected
   * Improve product descriptions
-  * Show clickable product tags
-  * Tooltips for + and - and baseline shift
-  * Change Font images to fit neatly in fonts menu
-  * Show spinner while images load
-  * Show related designs on product page
   * Quantity step description, explaining the "snap to 8" feature
-  * Stop flat preview name place card from using one of the guest names. Stick with "Guest Name" and make it uneditable.
+  * Show related designs on product page
+  * Show spinner while images load
+  * Show clickable product tags
+  
+  * Fix product page font-selector as it is not showing top arrow and also does not display selected font correctly when you have navigated to #print and back to #flat_preview again  
+  * make font selector directly change the font and size of thisProduct rather than in the view
+  * Change Font images to fit neatly in fonts menu
+   
+  * When moving to the print page, if any new guests have been added there will not be place cards for them
+  * Make thisProduct save on change of guest name
+
+  * Tooltips for + and - and baseline shift
+  * Stop flat preview name place card from using one of the guest names. Stick with "Guest Name" and make it uneditable
   * If mobile browser, post names to new controller when printer icon clicked and save in database with new id, then render with id to make completely unique page for sharing with google cloud print
  
 
