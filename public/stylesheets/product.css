@@ -19,6 +19,22 @@
   #mobile_spacer { 
     display:none; 
   }
+  
+  #print_button {
+  clear:both;
+  width:18%;
+    text-align:center;
+    display:none;
+    margin:0 auto;
+    
+  padding:1em;
+    line-height:120%;
+    border-top-left-radius:30px;
+    border-bottom-right-radius:30px;
+    text-align:center;
+    line-height:100%;
+    font: normal 1.6em "OS";
+  }
 
   #step_1 { 
     border-top:1px dotted #000; 

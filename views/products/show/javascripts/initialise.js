@@ -25,7 +25,7 @@ $(function() {
       var place_card_view = new PlaceCardView({
         model: thisProduct.get("guests").first()
       }).render()
-      this.$el.html(place_card_view.el).append('<div class="place_card_wrapper" id="mobile_spacer"></div>').append("<div style='text-align:center'><div class='grey_button' id='print_button' style='margin:0 auto;padding:0;padding-bottom:1em;padding-left:3em;padding-right:3em;border-top-left-radius:30px;border-bottom-right-radius:30px;text-align:center'><img src='/gfx/printers/file19.svg' style='line-height:0.5em;width:55px;margin:0;padding:0;' /><p style='margin:0;padding:0;line-height:0.5em;font-size:1.4em'>PRINT YOURSELF</p></div></div>")
+      this.$el.html(place_card_view.el)
       return this;
     }
   })
@@ -70,13 +70,13 @@ $(function() {
         this.flat_preview_view.fadeIn(1000);
         this.print_control_panel_view.hide();
         if(viewportSize.getWidth() < 501) {
-        $('body').hide()
-         $('body').animate({
-        scrollTop: $('body').offset().top
-    }, 0); 
-    $('body').fadeIn(1000);
-             
+          $('body').hide()
+          $('body').animate({
+            scrollTop: $('body').offset().top
+          }, 0); 
+          $('body').fadeIn(1000);   
         }
+        $('#print_button').show();
         thisProduct.trigger("global:rerenderfont")
       }    
     },
