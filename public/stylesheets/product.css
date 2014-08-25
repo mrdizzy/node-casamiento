@@ -181,14 +181,16 @@
     #second_product_type_icon { 
       display:none; 
     }
-
+    
   .left_column .place_card_view {
+    background-color:white;
     z-index:10;
     width:100%;
     position:fixed;
     border-bottom:1px solid black;
   }   
   #mobile_spacer {
+    z-index:100000000000000000000000000000000000000000;
     width: 95%;
     display:block;
     height: 0;

@@ -25,7 +25,7 @@ $(function() {
       var place_card_view = new PlaceCardView({
         model: thisProduct.get("guests").first()
       }).render()
-      this.$el.html(place_card_view.el)
+      this.$el.html(place_card_view.el).append('<div class="place_card_wrapper" id="mobile_spacer"></div>')
       return this;
     }
   })

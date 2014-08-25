@@ -57,6 +57,17 @@
     height: 0;
     padding-bottom: 70.714285714285714285714285714286%;
   }
+    
+    .font_spinner {  
+      height:50%;
+      top:50%;
+      display:none;
+      width:100%;
+      background: url('/gfx/spinner.gif') no-repeat center center; 
+      position:absolute;
+      z-index:1000000000000000000000000000000000000000;     
+    }
+    
     .place_card_wrapper .place_card_image { 
       top:0;
       left:0;
@@ -78,17 +89,7 @@
       height:100%;
       z-index:1001
     }
-    .font_spinner {  
-    height:50%;
-    top:50%;
-    display:none;
-     width:100%;
-        background: url('/gfx/spinner.gif') no-repeat center center; 
-        
-        position:absolute;
-        z-index:1000000000000000000000000000000000000000;
-     
-    }
+    
       .guest_wrapper  input {
         padding:0;
         margin:0;

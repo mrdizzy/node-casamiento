@@ -21,7 +21,7 @@ Make a model to control the subviews?
   * Use picturefill() to call picturefill on elements   
   * Call picturefill on images to render appropriate resolutions
   
-  * page doesn't render properly on first time -- no steps rendered -- due to localstorage
+  * when rendered for the first time with memory of previous product specs, change colours for 3d images
   * Highlight each step after completion
   * Allow selection of texture
   * Allow selection of thickness
@@ -51,7 +51,6 @@ Make a model to control the subviews?
 /responsive
 --------------------------------------------------------------------------
   Mobile:
-  * Main product page will not display correctly on first load   
   * Choose how to implement PRINT YOURSELF button on smartphone view
   * Adjust landscape display of product page on smaller smartphones
 

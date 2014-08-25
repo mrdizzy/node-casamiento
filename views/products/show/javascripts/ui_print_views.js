@@ -8,12 +8,8 @@
 */
 var PlaceCardView = GuestView.extend({
   className: 'place_card_view',
-  initialize: function() {
-    this.listenTo(thisProduct, 'global:rerenderfont', this._renderFontSize);
-    this.listenTo(thisProduct, 'global:baseline_up', this.upBaseline);
-    this.listenTo(thisProduct, 'global:baseline_down', this.downBaseline);    
-    this.listenTo(thisProduct, 'global:font_increase', this.increaseFont);
-    this.listenTo(thisProduct, 'global:font_decrease', this.decreaseFont);     
+  initialize: function() {      
+    this.listenTo(thisProduct, 'global:rerenderfont', this._renderFontSize); 
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);   
     this.listenTo(this.model, "change:name", this._renderName)
     this.listenTo(this.model, 'change:font_size', this._renderFontSize);
@@ -45,6 +41,7 @@ var PlaceCardView = GuestView.extend({
     var width = this.options.svg ? 105 : this.$el.width();
    
     this.font_size = width * this.model.get("font_size");
+    
   },    
   calculateBaselineOffset: function() { // Element must be visible for height() to work
     var height = this.options.svg ? 74.25 : this.$el.height();
@@ -58,10 +55,11 @@ var PlaceCardView = GuestView.extend({
     this.$('input').css("height", this.bottom_half_height + this.units)
   },  
   _renderFontSize: function() {
-  console.log("Rendering font")
     this.calculateFontSize();
     this._renderBaseline();
+    console.log(this.model.get("font_size"), this.font_size, this.units)
     this.$('input').css('font-size', this.font_size + this.units);
+    
   },
   render: function() {     
     var compiled_template = Handlebars.template(templates["place_card"]);
@@ -147,16 +145,16 @@ var PrintControlPanelView = Backbone.View.extend({
     }
   },
   fontIncrease: function() {
-    thisProduct.trigger("global:font_increase")  
+    thisProduct.get("guests").invoke('adjustFontSize',1.05)
   },
-  fontDecrease: function() {
-    thisProduct.trigger("global:font_decrease")  
+  fontDecrease: function() {    
+    thisProduct.get("guests").invoke('adjustFontSize',0.95)
   },
-  baselineUp: function() {
-    thisProduct.trigger("global:baseline_up")  
+  baselineUp: function() {   
+    thisProduct.get("guests").invoke('upBaseline')
   },
   baselineDown: function() {
-    thisProduct.trigger("global:baseline_down")
+    thisProduct.get("guests").invoke('downBaseline')
   },
   changeLayout: function(e) {
     var val = $(e.currentTarget).val()
@@ -182,7 +180,7 @@ var PrintControlPanelView = Backbone.View.extend({
     }).render().el;
     $('#printsvg').html(result);    
     
-        thisProduct.trigger("global:rerenderfont")
+    thisProduct.trigger("global:rerenderfont")
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
     
     // Wait for SVG images to be loaded before printing
