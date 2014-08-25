@@ -15,7 +15,7 @@ $(function() {
   // Setup and initialization
   var thisProduct = new Product();   
   thisProduct.fetch({success:function(resp) {
-    console.log("succcess")
+   $.updateFont(thisProduct.get("font"), {trigger: function(){}})
   }, error: function(resp) {
     console.log("Error")
   }})    
@@ -64,19 +64,21 @@ $(function() {
       thisProduct.save();
     },
     _renderPreview: function() {
-      if(this.current_view != "preview") {         
-        app_router.navigate("flat_preview")
-        this.current_view = "preview"
-        this.product_container_view.hide();        
+      if(this.current_view != "preview") {     
+        this.current_view = "preview"      
         this.flat_preview_view.show();
+        this.product_container_view.hide();
         this.print_control_panel_view.hide();
-      }
+        thisProduct.trigger("global:rerenderfont")
+      }    
+      app_router.navigate("flat_preview")
     },
     _renderPrintView: function() {    
       if(this.current_view != "print") {
         $('#inner_page_container').hide();
         this.print_control_panel_view.show();               
-        this.flat_preview_view.hide();              
+        this.flat_preview_view.hide();             
+        thisProduct.trigger("global:rerenderfont")         
       }      
       app_router.navigate("print")
     }
@@ -89,16 +91,13 @@ $(function() {
     routes: {
       "flat_preview": function() {
         coordinator_view._renderPreview();
-        $.appendFont(thisProduct.get("font"))
       },    
-      "flat_preview/colour0/:colour0": function(colour_0) {
-        coordinator_view._renderPreview();
+      "flat_preview/colour0/:colour0": function(colour_0) {      
         thisProduct.updateColour(0, "#" + colour_0)
-        $.updateFont(thisProduct.get("font"))
+        coordinator_view._renderPreview();
       },  
       "print": function() {
         coordinator_view._renderPrintView();
-        $.updateFont(thisProduct.get("font"))
       }, 
       "": function(actions) {       
       }

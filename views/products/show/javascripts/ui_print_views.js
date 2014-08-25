@@ -43,6 +43,7 @@ var PlaceCardView = GuestView.extend({
   },  
   calculateFontSize: function() { // Element must be visible for width() to work
     var width = this.options.svg ? 105 : this.$el.width();
+   
     this.font_size = width * this.model.get("font_size");
   },    
   calculateBaselineOffset: function() { // Element must be visible for height() to work
@@ -57,6 +58,7 @@ var PlaceCardView = GuestView.extend({
     this.$('input').css("height", this.bottom_half_height + this.units)
   },  
   _renderFontSize: function() {
+  console.log("Rendering font")
     this.calculateFontSize();
     this._renderBaseline();
     this.$('input').css('font-size', this.font_size + this.units);
@@ -218,7 +220,6 @@ var PrintControlPanelView = Backbone.View.extend({
       selected_font: thisProduct.get("font")
     })
     $template.find('#actual_cards').append(place_cards)
-    thisProduct.trigger("global:rerenderfont")
     return this;
   }
 })
