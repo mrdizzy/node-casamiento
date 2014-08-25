@@ -1,7 +1,6 @@
 $(function() {
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
   
-  // Render javascripts
   <%= include models.js %>  
   <%= include views.js %>
   <%= include ui_print_views.js %>
@@ -22,7 +21,7 @@ $(function() {
   
   var FlatPreviewView = Backbone.View.extend({
     el: '#flat_preview',
-    render:function() {
+    render: function() {
       var place_card_view = new PlaceCardView({
         model: thisProduct.get("guests").first()
       }).render()
@@ -65,13 +64,21 @@ $(function() {
     },
     _renderPreview: function() {
       if(this.current_view != "preview") {     
-        this.current_view = "preview"      
-        this.flat_preview_view.show();
-        this.product_container_view.hide();
+        this.current_view = "preview"    
+        
+        this.product_container_view.hide();  
+        this.flat_preview_view.fadeIn(1000);
         this.print_control_panel_view.hide();
+        if(viewportSize.getWidth() < 501) {
+        $('body').hide()
+         $('body').animate({
+        scrollTop: $('body').offset().top
+    }, 0); 
+    $('body').fadeIn(1000);
+             
+        }
         thisProduct.trigger("global:rerenderfont")
       }    
-      app_router.navigate("flat_preview")
     },
     _renderPrintView: function() {    
       if(this.current_view != "print") {

@@ -1,18 +1,24 @@
 @media print {
-
-body { background-image:none;}
+  
+  body { background-image:none; }
   
   #printsvg { 
     display:block;
   }
   
   .place_card_view {
+  padding:0;margin:0;
     width:105mm;
+    float:left;
     height:74.25mm;
   }
   
+  .place_card_wrapper { 
+  width:100%;
+  }
+  
   #top_of_page, #control_panel { 
-    display:none;
+   display:none; 
   }
   #printsvg .up_4 {
     height:210mm;
@@ -42,4 +48,6 @@ body { background-image:none;}
       }
     
   .break { page-break-after:always;}
+  
 }
+

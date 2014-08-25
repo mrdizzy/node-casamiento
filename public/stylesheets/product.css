@@ -94,7 +94,6 @@
       }
 
     .chat-bubble { 
-      display:none; 
       font: normal 1.1em "OS Light Italic"; 
       margin:10px auto;
     }
@@ -173,14 +172,18 @@
     position:fixed;
     border-bottom:1px solid black;
   }   
-  
+  #mobile_spacer {
+    width: 95%;
+    display:block;
+    height: 0;
+    padding-bottom: 70.714285714285714285714285714286%;
+  }
+  .right_column {clear:both; }
   #description_container { 
     float:none;
     width:90%;
     margin:0 auto;
   }
-
-  #mobile_spacer { display:block;}
 
   #print_button { display:none; }
 

@@ -57,7 +57,7 @@
     height: 0;
     padding-bottom: 70.714285714285714285714285714286%;
   }
-    .place_card_wrapper img.place_card_image { 
+    .place_card_wrapper .place_card_image { 
       top:0;
       left:0;
       width:100%;

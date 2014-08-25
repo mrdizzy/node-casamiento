@@ -78,7 +78,6 @@ var StepView = Backbone.View.extend({
   hoverOver: function(e) {
     var step_index = $(e.currentTarget).index();
     this.$('#step_' + step_index + " .step").css("background-color", thisProduct.get("colours")[0])      
-    this.$('#step_' + step_index + " .tooltip-bubble").fadeToggle()
     this.$('#step_' + step_index).toggleClass('highlight')
   },
   hoverOut: function(e) {
@@ -86,8 +85,6 @@ var StepView = Backbone.View.extend({
     if(step_index != this.current_step) {
       this.$('#step_' + step_index + " .step").css("background-color", "#BBB") 
     }
-    
-    this.$('#step_' + step_index + " .tooltip-bubble").fadeToggle()
   },
   render: function() {
     var $result = $(Handlebars.template(templates["products_show_step_through"])(thisProduct.toJSON()));     

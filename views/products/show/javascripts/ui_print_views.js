@@ -181,6 +181,7 @@ var PrintControlPanelView = Backbone.View.extend({
       svg: true
     }).render().el;
     $('#printsvg').html(result);    
+    thisProduct.trigger("global:rerenderfont")
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
     
     // Wait for SVG images to be loaded before printing
