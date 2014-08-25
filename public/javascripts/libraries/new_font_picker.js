@@ -102,6 +102,6 @@ $.updateFont = function(font, obj) {
       // One of the fonts was loaded
       obj.trigger("fontpicker:fontloaded", fontFamily)
     }
-  }, 3000);
+  }, null);
   fontLoader.loadFonts();
 }
