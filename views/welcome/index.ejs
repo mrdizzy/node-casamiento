@@ -1,63 +1,163 @@
 
-
 <%- contentFor('inline_styles') %>
+.navigation { display:none }
+.dialog_center {
+  display:none;
+  background-color:white;
+  border:1px solid black;
+  position: fixed;
+  z-index:10000;
+  left: 50%;
+  top: 50%;
+  text-align:center;
+  transform: translate(-50%, -50%); /* Yep! */
+  width: 75%;
+  height: 79%;
+}
 
-.left_column { width:73%; }
-.right_column { margin-left: 73%; } 
+#header_wrapper img { width:160px; }
+#header_wrapper { border-bottom:1px solid black; }
+#inner_page_container { width:95%; }
+#left, #right { font-size:5em; color:grey;cursor:pointer; }
+#left:hover, #right:hover { color:black; }
+<% for(var i =0; i< 12; i++) { %>
+  #welcome_place_<%=i%> .colour_1 { background-color: <%=place_cards[i].colours[1] %>}
+<% } %>
+.left_column { width:65%; }
+.right_column { margin-left: 65%; } 
 
+.left_column,.right_column { width:80%;clear:both;float:none; margin:0 auto;}
+h5 { text-align:center;
+color:#000;font-family:'Gara';line-height:1.2em;
+font-style:normal;
+font-weight:normal;
+font-size:2.8em;
+letter-spacing:0;
+padding-top:0.25em;padding-bottom:0;border-bottom:0;margin:0;}
+p { 
+text-align:center;
+  padding-left:0.2em;
+  margin-right:0.1em;
+  font-family:'OS';
+  font-size:1.2em;
+  letter-spacing:0;
+  line-height:1.5em;
+}
+h3 { font-family:'Gara'; font-variant:normal;text-transform:none;letter-spacing:0;font-size:2em;border:0;}
+<%- contentFor('main') %>
+<link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="/javascripts/libraries/colour_lookup.js"></script>
+<div class="dialog_center">
+<h5>First time? Watch this quick screencast&hellip;</h5>
+<img src="/gfx/tutorials/tutorial_4.gif" style=""/></div>
 
 <%- contentFor('left') %>
-
-  <% for (var i = 0; i < 15; i++) { %>
-  <% if (place_cards[i]) { %>
+<div style="position:relative;">
+<div id="left" style="position:absolute;left:-10%;z-index:10000009;">&laquo;</div><div id="right" style="position:absolute;right:-10%;">&raquo;</div>
+</div>
+<div id="scroll_clipper" style="overflow:hidden;border-left:1px dotted grey;border-right:1px dotted grey;border-bottom:1px solid black;">
+<div id="scroll_wrapper" style="padding-bottom:50px;overflow-y: hidden;overflow-x: scroll;">
+<div style="width:100000px;">
+<% for (var i =0; i< 12;i++) { %>
+<% var place_card = place_cards[i] %>
+    <div  id="welcome_place_<%= i %>" class="welcome_place_card_container" style="float:left;">
+        <div style="width:60%;float:left;">
+        
+          <div style="position:relative;width:100%;">
   
-  <div class="welcome_page_product">
+            <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= place_card.colours[0] %>" class="colour_0">
+              <%- place_card["background-" +place_card.attachments_order[0] ] %>
+            </div>
+            <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[0] %>" style="position:relative;display:block;width:100%;z-index:6"/>
+          </div>
+        
+        
+             <h1 class="product_name"><%= place_card.name %></h1><div class="ornamental_line"></div>
+        </div>
+        <div style="margin-left:60%;">
+            <div style="position:relative;width:100%;">
   
-  <div style="position:relative">
-  <div class="customise" style="display:none;position:absolute;z-index:1000000;text-align:center;width:100%;margin-top:8em;"><div style="margin-left:15%;display:inline-block;font: normal 1.2em 'OS Light';width:100px;background-color:white;color:black;padding:15px;border-radius:30px;padding-bottom:1.75em;padding-top:1.5;text-align:center;"><img src="/gfx/customise.png" style="padding-top:0.3em;width:40px;"><br/><a href="/products/<%= place_cards[i]._id %>" style="color:black;">CUSTOMISE THIS DESIGN</a></div>
-    </div></div>
-    <div style="width:60%;float:left;clear:both;"><%- place_cards[i].divs[0] %>
-    
-      <h2 class="caz"><a href="/products/<%= place_cards[i]._id %>"><%= place_cards[i].name%></a></h2>
-      
-      <div class="ornamental_line"></div>	
-    </div>	
-    <div style="width:39%;float:right;"><%- place_cards[i].divs[1] %> 
-    
-    <!-- COLOURS --> 
-    <% for(var j=0; j < place_cards[i].colours.length; j++) { %>
-      <div id="colour_<%=i %>_<%= j %>" style="position:relative;z-index:<%= (30000 +(0 -j)) %>;padding-top:1em;"></div>
-      <script>$('#colour_<%=i%>_<%=j%>').colorPicker({default_color: '<%= place_cards[i].colours[j] %>'}).on('dizzy-cp:hoverColor', function(e, colour) {
-      <% if(j == 1) { %>      
-        $('.slide_<%= i %> > div > div:not(.nocolor)').css("background-color", colour)
-      <% } else { %> 
-        $('.slide_<%= i %>').css("background-color", colour)
-      <% } %>
-  });
-      </script>
+            <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= place_card.colours[0] %>" class="colour_0">
+              <%- place_card["background-" +place_card.attachments_order[1] ] %>
+            </div>
+            <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[1] %>" style="position:relative;display:block;width:100%;z-index:6"/>
+          </div>
+        </div>
+        <div style="text-align:center;padding-top:0.5em;">
+        <div style="display:inline-block;">
+        <div class="dizzycp-big_colour_square_frame"><div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[0] %>;"></div></div><div class="dizzycp-text_label_for_colour"><script>
+        document.write(colour_lookup["<%= place_card.colours[0] %>"])</script></div>
+        </div>
+        
+        <% if (place_card.colours[1])  {%>
+        <div style="display:inline-block;margin-left:10px;padding-left:10px;">
+        <div class="dizzycp-big_colour_square_frame"><div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[1] %>;"></div></div><div class="dizzycp-text_label_for_colour"><script>
+        document.write(colour_lookup["<%= place_card.colours[1] %>"])</script></div>
+        </div>        
+        <% } %>
+        </div>
+            <div style="margin-left:60%;">
+           <div style="position:relative;width:100%;">
   
-    <% } %>
-    
-    <%- place_cards[i].divs[2] %> 
-  </div>
-  
-    <div style="clear:both;border-bottom:1px double black;height:1px;"></div>
+            <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= place_card.colours[0] %>" class="colour_0">
+              <%- place_card["background-" +place_card.attachments_order[2] ] %>
+            </div>
+            <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[2] %>" style="position:relative;display:block;width:100%;z-index:6"/>
+          </div>
+        </div>
     </div>
-    
     <% } %>
-  <% } %>
+    </div>
+</div>
+</div>
 
+<script>
+$(function() {
+  var counter = 0;
+  
+  var element_width = $('.left_column').width();
+  console.log(element_width)
+  $('.welcome_place_card_container').width(element_width)
+  
+  $(window).bind('resize', function() {
+    
+  var element_width = $('.left_column').width();
+  console.log(element_width)
+  $('.welcome_place_card_container').width(element_width)
+  })
+  window.setInterval(function() {
+     counter = counter + element_width
+    $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
+  }, 3000)
+  $('#right').click(function() {
+  
+   counter = counter + element_width
+    $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
+   
+  })
+   $('#left').click(function() {
+       counter = counter - element_width;
+    $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
+
+  })
+  
+  var height = $('#scroll_wrapper').height();
+  $('#scroll_clipper').height(height-15)
+})
+</script>
 <%- contentFor('right') %>
 
-<div id="welcome_column">  
-  <div class="spc" style="padding:0.2em;">
-    <h5 style="font-size:2.8em;padding-top:0.75em;padding-bottom:0;border-bottom:0;"><span style="letter-spacing:0.15em; font-size:0.9em;font-variant:small-caps;"> IMPRESS</span> your guests with personalised place cards&hellip;</h5>
-     
+    <h5>Place cards you can personalise and print straight from your browser&hellip;</h5>
     <div class="shell"></div>
       
-    <p class="first"><span style="letter-spacing:0.2em; font-size:1em;font-family:Gara';font-variant:small-caps">YOUR GUESTS</span>, will love seeing their names individually printed on our elegant freestanding place cards&hellip; </p>
+    <p>Your guests will love seeing their names individually printed on our elegant freestanding place cards&hellip; </p>
     
     <p>&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs below are bound to compliment your theme&hellip;</p>
+    
+    
+
+<img src="/gfx/tutorials/tutorial_4.gif" style="margin-top:0.5em;border:1px solid grey;border-bottom:1px solid grey;"/>
 
     <h3>Save time &amp; hassle&hellip;</h3>
     
@@ -71,57 +171,4 @@
     
     <span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
     
-  </div>
    
-  <div class="spc">
-    <div style="margin-bottom:0.5em;height:2em;">
-      <div style="float:left"><h4>Choose your colour</h4></div>
-      <div class="step">STEP 1</div>
-    </div>
-      
-    <div class="chat-bubble">Choose from hundreds of colours! Click the colour below each design on  this page to watch the image change so you can see exactly what your design will look like! Use the left and right arrows on each palette to move backwards and forwards between all the hues.</div>
-  </div>
-  
- <!-- 
-    THICKNESS 
- -->
- 
-  <div class="spc">
-    <div style="margin-bottom:0.5em;height:3em;">
-      <div style="float:left"><h4>Choose Thickness</h4></div>
-      <div class="step">STEP 2</div>  
-    </div>
-
-    <div class="chat-bubble">Decide how thick your cards will be. Thinner card is cheaper but thicker card gives for an expensive feel 
-    </div>
-  <br/>
-    <div class="weight">
-       <div class="weight_line"></div>
-       <p>250gsm</p>
-    </div>
-      
-    <div class="weight">
-      <div class="weight_line" style="border-top:10px solid black;"></div>
-      <p>300gsm</p>
-    </div>
-  </div>
-
-  <div class="spc">
-    <div style="margin-bottom:0.5em;height:3em;">
-      <div style="float:left"><h4>Send guest names</h4></div>
-      <div class="step">STEP 3</div>  
-    </div>
-
-    <div class="chat-bubble">Send us an eBay message or email us with a list of your guest names, after making your purchase!
-    </div>
-  </div>
-</div>
-
-<script>
-$('.welcome_page_product').mouseenter(function() {
-    $('.customise').fadeIn();
-})
-$('.welcome_page_product').mouseleave(function() {
-    $('.customise').fadeOut();
-})
-</script>

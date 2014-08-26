@@ -1,0 +1,57 @@
+
+<div id="scroll_clipper" style="width:680px;overflow:hidden;">
+<div id="scroll_wrapper" style="width:680px;padding-bottom:50px;overflow-y: hidden;overflow-x: scroll;">
+<div style="width:100000px;">
+<% for (var i =10; i< 15;i++) { %>
+<% var place_card = place_cards[i] %>
+    <div  id="welcome_place_<%= i %>" class="welcome_place_card_container" style="width:680px;float:left;">
+        <div style="width:60%;float:left;">
+        
+          <div style="position:relative;width:100%;">
+  
+            <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= place_card.colours[0] %>" class="colour_0">
+              <%- place_card["background-" +place_card.attachments_order[0] ] %>
+            </div>
+            <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[0] %>" style="position:relative;display:block;width:100%;z-index:6"/>
+          </div>
+        
+        
+             <h1 class="product_name"><%= place_card.name %></h1><div class="ornamental_line"></div>
+        </div>
+        <div style="margin-left:60%;">
+            <div style="position:relative;width:100%;">
+  
+            <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= place_card.colours[0] %>" class="colour_0">
+              <%- place_card["background-" +place_card.attachments_order[1] ] %>
+            </div>
+            <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[1] %>" style="position:relative;display:block;width:100%;z-index:6"/>
+          </div>
+        </div>
+        <div style="text-align:center;padding-top:0.5em;">
+        <div style="display:inline-block;">
+        <div class="dizzycp-big_colour_square_frame"><div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[0] %>;"></div></div><div class="dizzycp-text_label_for_colour"><script>
+        document.write(colour_lookup["<%= place_card.colours[0] %>"])</script></div>
+        </div>
+        
+        <% if (place_card.colours[1])  {%>
+        <div style="display:inline-block;margin-left:10px;padding-left:10px;">
+        <div class="dizzycp-big_colour_square_frame"><div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[1] %>;"></div></div><div class="dizzycp-text_label_for_colour"><script>
+        document.write(colour_lookup["<%= place_card.colours[1] %>"])</script></div>
+        </div>        
+        <% } %>
+        </div>
+            <div style="margin-left:60%;">
+           <div style="position:relative;width:100%;">
+  
+            <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= place_card.colours[0] %>" class="colour_0">
+              <%- place_card["background-" +place_card.attachments_order[2] ] %>
+            </div>
+            <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[2] %>" style="position:relative;display:block;width:100%;z-index:6"/>
+          </div>
+        </div>
+    </div>
+    <% } %>
+    </div>
+</div>
+</div>
+<p id="left" style="float:left;">&laquo;</p><p id="right" style="float:right;">&raquo;

@@ -12,7 +12,7 @@ module.exports = function(app){
         counter++;
       })
       docs.place_cards = docs;
-      res.render('welcome/index_2_old', {
+      res.render('welcome/index', {
         layout: 'layout',
         locals: docs
       });
