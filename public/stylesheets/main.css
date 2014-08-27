@@ -407,7 +407,7 @@ body {
   cursor:pointer;  
   text-align:center;
   display:inline-block;
-  background-color:grey;
+  background-color:#AAA;
  
   color:white;
   border-top-left-radius:20px;

@@ -21,19 +21,15 @@
   }
   
   #print_button {
-  clear:both;
-  width:18%;
     text-align:center;
-    display:none;
-    margin:0 auto;
-    
+    margin:0 auto;    
+    width:70%;
   padding:1em;
-    line-height:120%;
     border-top-left-radius:30px;
     border-bottom-right-radius:30px;
     text-align:center;
-    line-height:100%;
     font: normal 1.6em "OS";
+    margin-bottom:0.5em;
   }
 
   #step_1 { 
@@ -203,7 +199,7 @@
     margin:0 auto;
   }
 
-  #print_button { display:none; }
+  #print_button {width:60%; }
 
 }
   
