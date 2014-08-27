@@ -4,6 +4,9 @@
   <% } %>
   #headline_welcome { display:none; }
   @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>.eot?') format('eot'), url('/fonts/<%= product.font %>.woff') format('woff') }  
+
+
+<%- contentFor('middle') %>
   
 <%- contentFor('main') %>
   

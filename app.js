@@ -21,13 +21,13 @@ var assetManagerGroups = {
         , 'dataType': 'css'
         // These files must be availble in the directory specified by path above
         // Make sure they are in the right order--stylesheets cascade! Reponsive last!
-        , 'files': [ 'new_color_picker.css', 'font_picker.css', 'main.css',  'product.css', 'place_cards.css', 'ui_print.css', 'print.css' ]
+        , 'files': [ 'new_color_picker.css', 'font_picker.css', 'main.css',  'product.css', 'place_cards.css', 'ui_print.css', 'print.css', 'welcome.css' ]
     },
     'js':
         { 'route': /\/static\/javascripts\/all\.js/
         , 'path': __dirname + '/public/javascripts/libraries/'
         , 'dataType': 'javascript'
-        , 'files': [ 'localstorage.min.js', 'viewport.js','fastclick.js', 'picturefill.min.js','in_groups_of.js', 'font_loader.js', 'new_font_picker.js','new_color_picker.js','jquery_form.js' ]
+        , 'files': [ 'localstorage.min.js', 'viewport.js','fastclick.js', 'picturefill.min.js','in_groups_of.js', 'font_loader.js', 'new_font_picker.js','new_color_picker.js','jquery_form.js', 'jquery.slides.min.js' ]
     },
     'adminjs': 
         {
