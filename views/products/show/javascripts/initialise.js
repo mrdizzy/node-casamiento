@@ -46,8 +46,8 @@ $(function() {
       this.product_container_view = this.$('#product_container')      
       this.flat_preview_view = new FlatPreviewView().render().$el.hide();      
       this.print_control_panel_view = new PrintControlPanelView({}).render().$el.hide();         
-      this.listenTo(thisProduct, 'change:colours', this._renderPreview)
-      this.listenTo(thisProduct, 'change:font', this._renderPreview)
+      this.listenTo(thisProduct, 'change:colours', this._renderPreviewAfterMain)
+      this.listenTo(thisProduct, 'change:font', this._renderPreviewAfterMain)
     },
     events: {
       "click #print_button": "_renderPrintView",
@@ -64,10 +64,16 @@ $(function() {
       thisProduct.set("font", font)
       thisProduct.save();
     },
+    _renderPreviewAfterMain: function() {
+      if(this.current_view != "print") {  
+        this._renderPreview()
+      }  
+    },
     _renderPreview: function() {
-      if(this.current_view != "preview") {     
+      if(this.current_view != "preview") {   
+     
         this.current_view = "preview"    
-        
+        $('#inner_page_container').show();
         this.product_container_view.hide();  
         this.flat_preview_view.fadeIn(1000);
         this.print_control_panel_view.hide();
@@ -85,9 +91,10 @@ $(function() {
     _renderPrintView: function() {    
       if(this.current_view != "print") {
         $('#inner_page_container').hide();
-        this.print_control_panel_view.show();               
+        this.print_control_panel_view.fadeIn(1000);               
         this.flat_preview_view.hide();             
-        thisProduct.trigger("global:rerenderfont")         
+        thisProduct.trigger("global:rerenderfont")     
+        this.current_view = "print"    
       }      
       app_router.navigate("print")
     }
@@ -98,11 +105,23 @@ $(function() {
   // Router
   var AppRouter = Backbone.Router.extend({
     routes: {
-      "flat_preview": function() {
+      "preview_place_card": function() {
         coordinator_view._renderPreview();
       },    
-      "flat_preview/colour0/:colour0": function(colour_0) {      
+      "preview_place_card/colour0/:colour0": function(colour_0) {      
         thisProduct.updateColour(0, "#" + colour_0)
+        coordinator_view._renderPreview();
+      },  
+      "preview_place_card/colour0/:colour0/colour1/:colour1": function(colour_0, colour_1) {      
+        thisProduct.updateColour(0, "#" + colour_0);
+        thisProduct.updateColour(1, "#" + colour_1)
+        coordinator_view._renderPreview();
+      },  
+      "preview_place_card/colour0/:colour0/colour1/:colour1/font/:font": function(colour_0, colour_1, font) {      
+        thisProduct.updateColour(0, "#" + colour_0);
+        thisProduct.updateColour(1, "#" + colour_1)
+        thisProduct.set("font", font)
+        $.updateFont(font, {trigger: function(){}})
         coordinator_view._renderPreview();
       },  
       "print": function() {

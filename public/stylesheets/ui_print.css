@@ -113,7 +113,6 @@
       width:60px;      
       height:45px;
       margin-right:2%;
-      background-size: 25px 25px;
     }
       #ui_global_font div:hover {
         opacity:1;
@@ -122,9 +121,11 @@
       
       .global_font_increase {
         background: url('/gfx/font_increase.svg') no-repeat center; 
+      
       } 
        .global_font_decrease {
         background: url('/gfx/font_decrease.svg') no-repeat center; 
+       
       } 
        .global_baseline_up {
         background: url('/gfx/baseline_up.svg') no-repeat center; 
