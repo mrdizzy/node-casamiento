@@ -21,7 +21,6 @@ Make a model to control the subviews?
   * Use picturefill() to call picturefill on elements   
   * Call picturefill on images to render appropriate resolutions
   
-  * when rendered for the first time with memory of previous product specs, change colours for 3d images
   * Highlight each step after completion
   * Allow selection of texture
   * Allow selection of thickness
@@ -44,6 +43,7 @@ Make a model to control the subviews?
   * Make thisProduct save on change of guest name
 
   * Tooltips for + and - and baseline shift
+  * On internet explorer the global font adjust buttons are not displaying properly (stretched)
   * Stop flat preview name place card from using one of the guest names. Stick with "Guest Name" and make it uneditable
   * If mobile browser, post names to new controller when printer icon clicked and save in database with new id, then render with id to make completely unique page for sharing with google cloud print
  
