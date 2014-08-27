@@ -3,6 +3,10 @@
 <% for(var i =0; i< 12; i++) { %>
   #welcome_place_<%=i%> .colour_1 { background-color: <%=place_cards[i].colours[1] %>}
 <% } %>
+#inner_page_container { width:95%; 
+  background-image:url('/gfx/background_wiggle.svg');  
+  }
+  
 <%- contentFor('middle') %>
 
 <script type="text/javascript" src="/javascripts/libraries/colour_lookup.js"></script>

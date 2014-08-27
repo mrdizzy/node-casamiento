@@ -13,65 +13,12 @@
 #header_wrapper, #footer {
 background-color:white; 
 }
-#header_wrapper img { 
-  width:160px; 
-}
+
 #header_wrapper { 
   border-bottom:1px solid black; 
 }
-#inner_page_container { width:95%; 
-  background-image:url('/gfx/background_wiggle.svg');  
-  }
 
-.left_column,.right_column { 
-  width:80%;
-  border-left:1px dotted grey;
-  border-right:1px dotted grey;
-  clear:both;
-  float:none; 
-  margin:0 auto;
-}
 
-h5 { 
-  text-align:center;
-  color:#000;
-  font-family:'GaraI';
-  line-height:1.2em;
-  font-style:normal;
-  font-weight:normal;
-  font-size:3.88em;
-  letter-spacing:0;
-  padding-top:0.25em;
-  padding-bottom:0;
-  border-bottom:0;
-  margin:0;
-  margin-left:1em;
-  margin-right:1em;
-}
-
-p { 
-  padding-left:0.2em;
-  margin-right:1em;
-  font-family:'OS Light';
-  text-align:left;
-  font-size:1.2em;
-  font-weight:normal;
-  margin-left:1em;
-  text-rendering: optimizeLegibility;
-  letter-spacing:0;
-  line-height:1.5em;
-}
-
-h3 { 
-  font-family:'GaraI'; 
-  font-variant:normal;
-  text-transform:none;
-  letter-spacing:0;
-  font-size:2.8em;
-  border:0;
-  padding:0;
-  margin:0;
-}
 #welcome_arrow_container {
   position:relative;
  
@@ -95,8 +42,7 @@ h3 {
   
   #scroll_wrapper {
 	padding-bottom:50px;
-	overflow-y: hidden;
-	
+	overflow-y: hidden;	
 	-webkit-overflow-scrolling: touch;
 	overflow-x: scroll;
   }
