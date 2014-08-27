@@ -1,4 +1,3 @@
-
 <%- contentFor('inline_styles') %>
 .navigation { display:none }
 .dialog_center {
@@ -16,32 +15,53 @@
 }
 
 #headline_welcome { 
-font-family:"GaraI";font-size:2.2em;float:right;margin-top:0.5em;
+  float:right;
+  margin-top:0.5em;
 }
+#header_wrapper, #footer {
+background-color:white; 
+}
+#header_wrapper img { 
+  width:160px; 
+}
+#header_wrapper { 
+  border-bottom:1px solid black; 
+}
+#inner_page_container { width:95%; 
+  background-image:url('/gfx/background_wiggle.svg');  
+  }
 
-#header_wrapper img { width:160px; }
-#header_wrapper { border-bottom:1px solid black; }
-#inner_page_container { width:95%; }
-#left, #right { font-size:5em; color:grey;cursor:pointer; }
-#left:hover, #right:hover { color:black; }
 <% for(var i =0; i< 12; i++) { %>
   #welcome_place_<%=i%> .colour_1 { background-color: <%=place_cards[i].colours[1] %>}
 <% } %>
-.left_column { width:65%; }
-.right_column { margin-left: 65%; } 
 
-.left_column,.right_column { width:80%;clear:both;float:none; margin:0 auto;}
-h5 { text-align:center;
-color:#000;font-family:'GaraI';line-height:1.2em;
-font-style:normal;
+.left_column,.right_column { 
+  width:80%;
+  border-left:1px dotted grey;
+  border-right:1px dotted grey;
+  clear:both;
+  float:none; 
+  margin:0 auto;
+}
 
-font-weight:normal;
-font-size:3.88em;
-letter-spacing:0;
-padding-top:0.25em;padding-bottom:0;border-bottom:0;margin:0;
-margin-left:1em;margin-right:1em;}
+h5 { 
+  text-align:center;
+  color:#000;
+  font-family:'GaraI';
+  line-height:1.2em;
+  font-style:normal;
+  font-weight:normal;
+  font-size:3.88em;
+  letter-spacing:0;
+  padding-top:0.25em;
+  padding-bottom:0;
+  border-bottom:0;
+  margin:0;
+  margin-left:1em;
+  margin-right:1em;
+}
+
 p { 
-
   padding-left:0.2em;
   margin-right:1em;
   font-family:'OS Light';
@@ -54,52 +74,116 @@ p {
   line-height:1.5em;
 }
 
-h3 { font-family:'GaraI'; font-variant:normal;text-transform:none;letter-spacing:0;font-size:2.8em;border:0;padding:0;margin:0;}
+h3 { 
+  font-family:'GaraI'; 
+  font-variant:normal;
+  text-transform:none;
+  letter-spacing:0;
+  font-size:2.8em;
+  border:0;
+  padding:0;
+  margin:0;
+}
+#welcome_arrow_container {
+  position:relative;
+}
+  
+  #left, #right { 
+    font-size:5em; 
+    position:absolute;
+    color:grey;
+    cursor:pointer; 
+  }
+  #left { left:-10%; }
+  #right { right:-10%; }
+  #left:hover, #right:hover { color:black; }
+  
+  #scroll_clipper {
+    overflow:hidden;
+    border-bottom:1px solid black;
+  }
+  
+  #scroll_wrapper {
+    padding-bottom:50px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+  .welcome_place_card_container {
+    float:left;
+  }
+  
+  .welcome_slide_container {
+    width:60%;
+    float:left;
+  }
+    .welcome_place_card_container img {
+    position:relative;display:block;width:100%;z-index:6
+    }
+  
+  .welcome_background_container {
+    position:relative;
+    width:100%;
+  }
+  .welcome_background {
+    position:absolute;
+    width:100%;
+    height:100%;
+    z-index:0;
+  }
+
 <%- contentFor('main') %>
-<link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
 <script type="text/javascript" src="/javascripts/libraries/colour_lookup.js"></script>
-<div class="dialog_center">
-<h5>First time? Watch this quick screencast&hellip;</h5>
-<img src="/gfx/tutorials/tutorial_4.gif" style=""/></div>
 
 <%- contentFor('left') %>
-<div style="position:relative;">
-<div id="left" style="position:absolute;left:-10%;z-index:10000009;">&laquo;</div><div id="right" style="position:absolute;right:-10%;">&raquo;</div>
+
+<div id="welcome_arrow_container">
+  <div id="left">&laquo;</div>
+  <div id="right">&raquo;</div>
 </div>
-<div id="scroll_clipper" style="overflow:hidden;border-left:1px dotted grey;border-right:1px dotted grey;border-bottom:1px solid black;">
-<div id="scroll_wrapper" style="padding-bottom:50px;overflow-y: hidden;overflow-x: scroll;">
-<div style="width:100000px;">
-<% for (var i =0; i< 12;i++) { %>
-<% var place_card = place_cards[i] %>
-    <div  id="welcome_place_<%= i %>" class="welcome_place_card_container" style="float:left;">
-        <div style="width:60%;float:left;">
+
+<div id="scroll_clipper">
+
+  <div id="scroll_wrapper">
+    <div style="width:100000px;">
+      <% for (var i =0; i< 12;i++) { %>
+        <% var place_card = place_cards[i] %>
+          <div id="welcome_place_<%= i %>" class="welcome_place_card_container">
+            <div class="welcome_slide_container">
         
-          <div style="position:relative;width:100%;">
+              <div class="welcome_background_container">
   
-            <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= place_card.colours[0] %>" class="colour_0">
-              <%- place_card["background-" +place_card.attachments_order[0] ] %>
-            </div>
-            <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[0] %>" style="position:relative;display:block;width:100%;z-index:6"/>
+                <div class="welcome_background colour_0" style="background-color:<%= place_card.colours[0] %>">
+                  <%- place_card["background-" +place_card.attachments_order[0] ] %>
+              </div>
+              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0] %>"/>
+            </div>        
+        
+            <h1 class="product_name"><%= place_card.name %></h1>
+            <div class="ornamental_line"></div>
+        
           </div>
-        
-        
-             <h1 class="product_name"><%= place_card.name %></h1><div class="ornamental_line"></div>
-        </div>
-        <div style="margin-left:60%;">
-            <div style="position:relative;width:100%;">
+          
+          <div style="margin-left:60%;">
+            <div class="welcome_background_container">
   
-            <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= place_card.colours[0] %>" class="colour_0">
-              <%- place_card["background-" +place_card.attachments_order[1] ] %>
+              <div style="background-color:<%= place_card.colours[0] %>" class="welcome_background colour_0">
+                <%- place_card["background-" +place_card.attachments_order[1] ] %>
+              </div>
+              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1] %>" />
             </div>
-            <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[1] %>" style="position:relative;display:block;width:100%;z-index:6"/>
           </div>
-        </div>
-        <div style="text-align:center;padding-top:0.5em;">
-        <div style="display:inline-block;">
-        <div class="dizzycp-big_colour_square_frame"><div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[0] %>;"></div></div><div class="dizzycp-text_label_for_colour"><script>
-        document.write(colour_lookup["<%= place_card.colours[0] %>"])</script></div>
-        </div>
+          <div style="text-align:center;padding-top:0.5em;">
+            <div style="display:inline-block;">
+              <div class="dizzycp-big_colour_square_frame">
+                <div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
+              </div>
+              <div class="dizzycp-text_label_for_colour">
+                <script>
+                  document.write(colour_lookup["<%= place_card.colours[0] %>"])
+                </script>
+              </div>
+            </div>
         
         <% if (place_card.colours[1])  {%>
         <div style="display:inline-block;margin-left:10px;padding-left:10px;">
@@ -109,12 +193,12 @@ h3 { font-family:'GaraI'; font-variant:normal;text-transform:none;letter-spacing
         <% } %>
         </div>
             <div style="margin-left:60%;">
-           <div style="position:relative;width:100%;">
+           <div class="welcome_background_container">
   
-            <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= place_card.colours[0] %>" class="colour_0">
+            <div style="background-color:<%= place_card.colours[0] %>" class="welcome_background colour_0">
               <%- place_card["background-" +place_card.attachments_order[2] ] %>
             </div>
-            <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[2] %>" style="position:relative;display:block;width:100%;z-index:6"/>
+            <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2] %>" / >
           </div>
         </div>
     </div>
@@ -122,42 +206,6 @@ h3 { font-family:'GaraI'; font-variant:normal;text-transform:none;letter-spacing
     </div>
 </div>
 </div>
-
-<script>
-$(function() {
-  var counter = 0;
-  
-  var element_width = $('.left_column').width();
-  console.log(element_width)
-  $('.welcome_place_card_container').width(element_width)
-  
-  $(window).bind('resize', function() {
-    
-  var element_width = $('.left_column').width();
-  console.log(element_width)
-  $('.welcome_place_card_container').width(element_width)
-  })
-  window.setInterval(function() {
-     counter = counter + element_width
-    $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
-  }, 3000)
-  $('#right').click(function() {
-  
-   counter = counter + element_width
-    $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
-   
-  })
-   $('#left').click(function() {
-       counter = counter - element_width;
-    $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
-
-  })
-  
-  var height = $('#scroll_wrapper').height();
-  $('#scroll_clipper').height(height-50)
-})
-</script>
-<%- contentFor('right') %>
 
     <h5>Place cards you can personalise and print straight from your browser&hellip;</h5>
     <div class="shell"></div>
@@ -168,8 +216,8 @@ $(function() {
     
     
 <div style="position:relative;border-top:1px dotted black;border-bottom:1px dotted black;padding:1em;margin:1em;">
-<img src="/gfx/tutorials/tutorial_4.gif" style="margin:0 auto;display:block;position:absolute;width:66%;left:17%;top:11%;"/>
-<img src="/gfx/desktop_screen_wide.svg" style="margin:0 auto;width:75%;display:block;"/>
+<img src="/gfx/tutorials/tutorial_4.gif" style="margin:0 auto;display:block;position:absolute;width:76.75%;left:11.5%;top:11.25%;"/>
+<img src="/gfx/desktop_screen_wide.svg" style="margin:0 auto;width:87%;display:block;"/>
 </div>
 
     <h3>Save time &amp; hassle&hellip;</h3>
@@ -185,3 +233,45 @@ $(function() {
     <span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
     
    
+<%- contentFor('right') %>
+
+<script>
+$(function() {
+  var counter = 0;
+  var single_counter = 0;
+  var element_width = $('.left_column').width();
+  $('.welcome_place_card_container').width(element_width)
+  
+  $(window).bind('resize', function() {   
+    var element_width = $('.left_column').width();
+    $('.welcome_place_card_container').width(element_width)
+    var height = $('#scroll_wrapper').height();
+    $('#scroll_clipper').height(height-50)
+  })
+  
+  var interval_id = window.setInterval(function() {
+    if (single_counter < 11) {
+    counter = counter + element_width
+    $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
+    single_counter++;
+    } else {
+      clearInterval(interval_id);
+    }
+  }, 3000)
+  
+  $('#right').click(function() {
+  single_counter++;
+    counter = counter + element_width
+    $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
+  })
+  $('#left').click(function() {
+  single_counter--;
+    counter = counter - element_width;
+    $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
+  })
+  
+  var height = $('#scroll_wrapper').height();
+  $('#scroll_clipper').height(height-50)
+})
+</script>
+
