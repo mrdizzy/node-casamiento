@@ -120,7 +120,9 @@
   $(function() {
   
     var counter = 0,
-      single_counter = 0;
+      location = 0;
+      single_counter = 0,
+      number_of_slides = <%= place_cards.length %>;
         
     // Slide width and height
     var element_width = $('#welcome_column').width();    
@@ -139,9 +141,17 @@
     })
     
     var interval_id = window.setInterval(function() {
-      if (single_counter < <%= place_cards.length %>) {
-        counter = counter + element_width
-        $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
+      var current_scroll_location = $('#scroll_wrapper').scrollLeft();
+      var total_width = number_of_slides * element_width;
+      var location = current_scroll_location / element_width
+
+
+       var location = Math.round(location);
+       location = location * element_width;
+       console.log(location)
+      if (single_counter < number_of_slides) {
+        location = location + element_width;
+        $('#scroll_wrapper').animate({scrollLeft: location}, 500);
         single_counter++;
       } else {
         clearInterval(interval_id);
@@ -150,13 +160,13 @@
     
     $('#right').click(function() {
       single_counter++;
-      counter = counter + element_width
-      $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
+      location= location + element_width
+      $('#scroll_wrapper').animate({scrollLeft: location}, 500);
     })
     $('#left').click(function() {
       single_counter--;
-      counter = counter - element_width;
-      $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
+       location= location - element_width
+      $('#scroll_wrapper').animate({scrollLeft: location}, 500);
     })
     
   })
