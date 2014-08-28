@@ -149,22 +149,22 @@
        var location = Math.round(location);
        location = location * element_width;
        console.log(location)
-      if (single_counter < number_of_slides) {
+      //if (single_counter < number_of_slides) {
         location = location + element_width;
         $('#scroll_wrapper').animate({scrollLeft: location}, 500);
         single_counter++;
-      } else {
-        clearInterval(interval_id);
-      }
-    }, 3000)
+      //} else {
+       // clearInterval(interval_id);
+      //}
+    }, 5000)
     
     $('#right').click(function() {
-      single_counter++;
+     // single_counter++;
       location= location + element_width
       $('#scroll_wrapper').animate({scrollLeft: location}, 500);
     })
     $('#left').click(function() {
-      single_counter--;
+      //single_counter--;
        location= location - element_width
       $('#scroll_wrapper').animate({scrollLeft: location}, 500);
     })
