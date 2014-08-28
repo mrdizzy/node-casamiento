@@ -15,7 +15,7 @@ Make a model to control the subviews?
 --------------------------------------------------------------------------
   * Make colour picker infinite so it scrolls back to the beginning again
   * After colour has been changed, make sure related colour pickers automatically show new default colour panel that contains the hues closest to new selected
-  
+  * Scroll bar disappears after rendering flat_preview
   * Stop crashing on wrong id
   
   * Use picturefill() to call picturefill on elements   

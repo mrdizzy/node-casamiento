@@ -51,12 +51,10 @@ var StepView = Backbone.View.extend({
       }
       thisProduct.set("quantity", new_quantity)
       $field.val(new_quantity)
-      thisProduct.save()
     }
   },
   updateQty: function(number) {
     thisProduct.adjustQuantity(number)
-    thisProduct.save()
   },
   renderQtyAndPrice: function() {    
     this.$('#qty').val(thisProduct.get("quantity"))       

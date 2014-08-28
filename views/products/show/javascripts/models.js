@@ -34,7 +34,7 @@ var Product = Backbone.Model.extend({
     defaults.price = 0.10;
     return defaults;
   },
-  stale: ['attachments_order', 'divs'],
+  stale: ['attachments_order', 'divs', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5'],
   toJSON: function() {
     return _.omit(this.attributes, this.stale);
   },
@@ -43,9 +43,21 @@ var Product = Backbone.Model.extend({
     this.on("change:quantity", this.calculatePrice)
     this.on("change:texture", this.calculatePrice)
     this.on("change:weight", this.calculatePrice)
-    this.on("change", this.save)
+    this.on("change:font", this.saveProduct)
+    this.on("change:colours", this.saveProduct)    
+    this.on("change:quantity", this.saveProduct)
+    this.on("change:guests", this.saveProduct)
+    console.log(this.toJSON())
+    this.listenTo(this.get("guests"), "change", this.saveProduct)
     this.updatePounds();
     this.updatePence();
+  },
+  saveProduct: function() {
+    this.save();  
+    console.log(this.shareURL())
+  },
+  shareURL: function() {
+    return("/products/" + this.id + "#preview_place_card/colour0/" + this.get("colours")[0] + "/colour1/" + this.get("colours")[1] + "/font/" + this.get("font"))  
   },
   hex: function() {
     if(this.get("colours").length == 2) {

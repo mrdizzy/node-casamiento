@@ -85,6 +85,7 @@ $(function() {
         }
         $('#print_button').show();
         thisProduct.trigger("global:rerenderfont")
+        app_router.navigate("preview_place_card")
       }    
     },
     _renderPrintView: function() {    
