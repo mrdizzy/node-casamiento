@@ -150,12 +150,11 @@
        location = location * element_width;
        console.log(location)
       //if (single_counter < number_of_slides ) {
-      if((location > current_scroll_location) || (location == 0)) {
+      if((location > current_scroll_location) && (location != 0)) {
        
-         location = location + element_width;
-        } else {
-        
         location = location - element_width;
+        } else {
+         location = location + element_width;
         }
         $('#scroll_wrapper').animate({scrollLeft: location}, 500);
         single_counter++;
