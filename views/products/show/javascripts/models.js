@@ -57,10 +57,16 @@ var Product = Backbone.Model.extend({
     console.log(this.shareURL())
   },
   shareURL: function() {
-    return("http://www.casamiento.co.uk/products/" + 
+    if (this.get("colours")[1]) {
+        return ("http://www.casamiento.co.uk/products/" + 
     this.id + "/#preview_place_card/c0/" + this.get("colours")[0].substr(1)+ 
     "/c1/" + this.get("colours")[1].substr(1) + 
-    "/f/" + this.get("font"))  
+    "/font/" + this.get("font"))  
+    } else {
+        return ("http://www.casamiento.co.uk/products/" + 
+    this.id + "/#preview_place_card/c0/" + this.get("colours")[0].substr(1)+ 
+    "/font/" + this.get("font"))  
+    }
   },
   hex: function() {
     if(this.get("colours").length == 2) {
