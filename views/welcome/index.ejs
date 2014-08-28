@@ -144,18 +144,17 @@
       var current_scroll_location = $('#scroll_wrapper').scrollLeft();
       var total_width = number_of_slides * element_width;
       var location = current_scroll_location / element_width
-
-
-       var location = Math.round(location);
-       location = location * element_width;
-       console.log(location)
+      
+     if(current_scroll_location % element_width=== 0) {
+     location = location * element_width;
+       location = location + element_width;
+     } else {
+     
+     var location = Math.round(location);
+     location = location * element_width;
+     }
       //if (single_counter < number_of_slides ) {
-      if((location > current_scroll_location) && (location != 0)) {
-       
-        location = location - element_width;
-        } else {
-         location = location + element_width;
-        }
+     
         $('#scroll_wrapper').animate({scrollLeft: location}, 500);
         single_counter++;
       //} else {
