@@ -62,7 +62,6 @@ $(function() {
       this.$('.font_spinner').show();
       this.$('.guest_name').hide()    
       thisProduct.set("font", font)
-      thisProduct.save();
     },
     _renderPreview: function() {
       if(this.current_view != "preview") {     

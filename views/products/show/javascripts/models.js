@@ -43,6 +43,7 @@ var Product = Backbone.Model.extend({
     this.on("change:quantity", this.calculatePrice)
     this.on("change:texture", this.calculatePrice)
     this.on("change:weight", this.calculatePrice)
+    this.on("change", this.save)
     this.updatePounds();
     this.updatePence();
   },
@@ -64,7 +65,6 @@ var Product = Backbone.Model.extend({
     this.set("colours", colours)
     this.trigger("change:colours")
     $('.colour_' + index).css("background-color", colour) // global colour change  
-    thisProduct.save();  
   },
   adjustGuests: function() {
     var adjustment = this.get("quantity") - this.previous("quantity"),

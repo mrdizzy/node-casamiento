@@ -191,6 +191,7 @@ var PrintControlPanelView = Backbone.View.extend({
     images.attr('src', "/svg/" + svg_url).load(function() {
       counter--;
       if(counter == 0) {   
+      console.log("printing!")
         window.print()        
         $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
       }
