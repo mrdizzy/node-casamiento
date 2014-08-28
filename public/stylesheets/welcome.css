@@ -1,3 +1,12 @@
+
+  #inner_page_container { 
+	width:95%; 
+	margin:0 auto; 
+	border-left: 1px dotted grey; 
+	border-right: 1px dotted grey;
+	background-image:url('/gfx/background_wiggle.svg');  
+   }
+
 #welcome_column{
 	width:80%; 
 	background-color:white;
@@ -68,3 +77,11 @@ background-color:white;
 	height:100%;
 	z-index:0;
   }
+@media all and (min-width: 320px) and (max-width: 500px) {
+ #inner_page_container, #welcome_column { width:100%;}
+ 
+ h1.product_name { font-size:2em;}
+  #welcome_column h5 {
+  	font-size:3em;
+  }
+}

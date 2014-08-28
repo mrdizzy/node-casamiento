@@ -1,147 +1,165 @@
 <%- contentFor('inline_styles') %>
 
-<% for(var i =0; i< 12; i++) { %>
-  #welcome_place_<%=i%> .colour_1 { background-color: <%=place_cards[i].colours[1] %>}
-<% } %>
-#inner_page_container { width:95%; 
-  background-image:url('/gfx/background_wiggle.svg');  
-  }
-  
+  <% for(var i = 0; i < place_cards.length; i++) { %>
+    #welcome_place_<%=i%> .colour_1 { background-color: <%=place_cards[i].colours[1] %>}
+  <% } %>
+
+    
 <%- contentFor('middle') %>
 
-<script type="text/javascript" src="/javascripts/libraries/colour_lookup.js"></script>
-<div id="welcome_arrow_container">
-  <div id="left">&laquo;</div>
-  <div id="right">&raquo;</div>
-</div>
-
-<div id="scroll_clipper">
-
-  <div id="scroll_wrapper">
-    <div style="width:100000px;">
-      <% for (var i =0; i< 12;i++) { %>
-        <% var place_card = place_cards[i] %>
-          <div id="welcome_place_<%= i %>" class="welcome_place_card_container">
-            <div class="welcome_slide_container">
-        
-              <div class="welcome_background_container">
+  <script type="text/javascript" src="/javascripts/libraries/colour_lookup.js"></script>
   
-                <div class="welcome_background colour_0" style="background-color:<%= place_card.colours[0] %>">
-                  <%- place_card["background-" +place_card.attachments_order[0] ] %>
+  <div id="welcome_arrow_container">
+    <div id="left">&laquo;</div>
+    <div id="right">&raquo;</div>
+  </div>
+
+  <div id="scroll_clipper">
+
+    <div id="scroll_wrapper">
+      <div style="width:100000px;">
+        <%  for (var i = 0; i < place_cards.length; i++) { %>
+          <% var place_card = place_cards[i] %>
+            <div id="welcome_place_<%= i %>" class="welcome_place_card_container">
+              <div class="welcome_slide_container">
+          
+                <div class="welcome_background_container">
+    
+                  <div class="welcome_background colour_0" style="background-color:<%= place_card.colours[0] %>">
+                    <%- place_card["background-" +place_card.attachments_order[0] ] %>
+                  </div>
+                  
+                  <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0] %>"/>
+                </div>        
+          
+              <h1 class="product_name"><%= place_card.name %></h1>
+              <div class="ornamental_line"></div>
+          
+            </div>
+            
+            <div style="margin-left:60%;">
+              <div class="welcome_background_container">
+    
+                <div style="background-color:<%= place_card.colours[0] %>" class="welcome_background colour_0">
+                  <%- place_card["background-" +place_card.attachments_order[1] ] %>
+                </div>
+                <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1] %>" />
               </div>
-              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0] %>"/>
+            </div>
+            <div style="text-align:center;padding-top:0.5em;">
+              <div style="display:inline-block;">
+                <div class="dizzycp-big_colour_square_frame">
+                  <div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
+                </div>
+                <div class="dizzycp-text_label_for_colour">
+                  <script>
+                    document.write(colour_lookup["<%= place_card.colours[0] %>"])
+                  </script>
+                </div>
+              </div>
+          
+          <% if (place_card.colours[1])  {%>
+            <div style="display:inline-block;margin-left:10px;padding-left:10px;">
+              <div class="dizzycp-big_colour_square_frame">
+                <div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[1] %>;"></div>
+              </div>
+              
+              <div class="dizzycp-text_label_for_colour">
+                <script>document.write(colour_lookup["<%= place_card.colours[1] %>"])</script>
+              </div>
             </div>        
-        
-            <h1 class="product_name"><%= place_card.name %></h1>
-            <div class="ornamental_line"></div>
-        
+          <% } %>
           </div>
           
           <div style="margin-left:60%;">
             <div class="welcome_background_container">
-  
-              <div style="background-color:<%= place_card.colours[0] %>" class="welcome_background colour_0">
-                <%- place_card["background-" +place_card.attachments_order[1] ] %>
-              </div>
-              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1] %>" />
-            </div>
-          </div>
-          <div style="text-align:center;padding-top:0.5em;">
-            <div style="display:inline-block;">
-              <div class="dizzycp-big_colour_square_frame">
-                <div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
-              </div>
-              <div class="dizzycp-text_label_for_colour">
-                <script>
-                  document.write(colour_lookup["<%= place_card.colours[0] %>"])
-                </script>
-              </div>
-            </div>
-        
-        <% if (place_card.colours[1])  {%>
-        <div style="display:inline-block;margin-left:10px;padding-left:10px;">
-        <div class="dizzycp-big_colour_square_frame"><div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[1] %>;"></div></div><div class="dizzycp-text_label_for_colour"><script>
-        document.write(colour_lookup["<%= place_card.colours[1] %>"])</script></div>
-        </div>        
-        <% } %>
-        </div>
-            <div style="margin-left:60%;">
-           <div class="welcome_background_container">
-  
+    
             <div style="background-color:<%= place_card.colours[0] %>" class="welcome_background colour_0">
               <%- place_card["background-" +place_card.attachments_order[2] ] %>
             </div>
-            <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2] %>" / >
+              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2] %>" / >
+            </div>
           </div>
         </div>
-    </div>
-    <% } %>
-    </div>
-</div>
-</div>
+      <% } %>
+      </div>
+  </div>
+  </div>
 
-    <h5>Place cards you can personalise and print straight from your browser&hellip;</h5>
-    <div class="shell"></div>
+      <h5>Place cards you can personalise and print straight from your browser&hellip;</h5>
+      <div class="shell"></div>
+        
+      <p><span style="font-family:Gara;font-size:1.5em;font-variant:small-caps;letter-spacing:0.14em;">Your guests will</span>  love seeing their names individually printed on our elegant freestanding place cards&hellip; </p>
       
-    <p><span style="font-family:Gara;font-size:1.5em;font-variant:small-caps;letter-spacing:0.14em;">Your guests will</span>  love seeing their names individually printed on our elegant freestanding place cards&hellip; </p>
-    
-    <p>&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs below are bound to compliment your theme&hellip;</p>
-    
-    
-<div style="position:relative;border-top:1px dotted black;border-bottom:1px dotted black;padding:1em;margin:1em;">
-<img src="/gfx/tutorials/tutorial_4.gif" style="position: absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;width:76.25%;top:11%;max-width:682px;"/>
-<img src="/gfx/desktop_screen_wide.svg" style="max-width:745px;margin:0 auto;width:87%;display:block;"/>
-</div>
+      <p>&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs below are bound to compliment your theme&hellip;</p>
+      
+      
+  <div style="position:relative;border-top:1px dotted black;border-bottom:1px dotted black;padding:1em;margin:1em;">
+  <img src="/gfx/tutorials/tutorial_4.gif" style="position: absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;width:76.25%;top:11%;max-width:682px;"/>
+  <img src="/gfx/desktop_screen_wide.svg" style="max-width:745px;margin:0 auto;width:87%;display:block;"/>
+  </div>
 
-    <h3>Save time &amp; hassle&hellip;</h3>
-        <div class="shell"></div>
+    <h5>Save yourself time, stress and hassle&hellip;</h5>
+    
+    <div class="shell"></div>
+        
     <p>They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.</p>
     
     <p>Place your order today!</p>
    
-    <p style="margin:0;padding:0;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/></p>
+    <p style="margin:0;padding:0;text-align:center;">
+      <img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/>
+    </p>
      
     <p style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
     
     <span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
+      
+  <script>
+  
+  $(function() {
+  
+    var counter = 0,
+      single_counter = 0;
+        
+    // Slide width and height
+    var element_width = $('#welcome_column').width();    
+    $('.welcome_place_card_container').width(element_width)  
     
-<script>
-$(function() {
-  var counter = 0;
-  var single_counter = 0;
-  var element_width = $('#welcome_column').width();
-  $('.welcome_place_card_container').width(element_width)
-  
-  $(window).bind('resize', function() {   
-    var element_width = $('#welcome_column').width();
-    $('.welcome_place_card_container').width(element_width)
-    var height = $('#scroll_wrapper').height();
+    var height = $('#scroll_wrapper').height();  
     $('#scroll_clipper').height(height-50)
+    
+    $(window).bind('resize', function() {   
+      counter = 0;
+      element_width = $('#welcome_column').width();
+      $('.welcome_place_card_container').width(element_width)
+      var height = $('#scroll_wrapper').height();
+      $('#scroll_clipper').height(height-50)
+      $('#scroll_wrapper').animate({scrollLeft: 0}, 0);
+    })
+    
+    var interval_id = window.setInterval(function() {
+      if (single_counter < <%= place_cards.length %>) {
+        counter = counter + element_width
+        $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
+        single_counter++;
+      } else {
+        clearInterval(interval_id);
+      }
+    }, 3000)
+    
+    $('#right').click(function() {
+      single_counter++;
+      counter = counter + element_width
+      $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
+    })
+    $('#left').click(function() {
+      single_counter--;
+      counter = counter - element_width;
+      $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
+    })
+    
   })
   
-  var interval_id = window.setInterval(function() {
-    if (single_counter < 11) {
-    counter = counter + element_width
-    $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
-    single_counter++;
-    } else {
-      clearInterval(interval_id);
-    }
-  }, 3000)
-  
-  $('#right').click(function() {
-  single_counter++;
-    counter = counter + element_width
-    $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
-  })
-  $('#left').click(function() {
-  single_counter--;
-    counter = counter - element_width;
-    $('#scroll_wrapper').animate({scrollLeft: counter}, 500);
-  })
-  
-  var height = $('#scroll_wrapper').height();
-  $('#scroll_clipper').height(height-50)
-})
-</script>
+  </script>
 
