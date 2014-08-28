@@ -21,11 +21,9 @@ Make a model to control the subviews?
   * Use picturefill() to call picturefill on elements   
   * Call picturefill on images to render appropriate resolutions
   
-  * when rendered for the first time with memory of previous product specs, change colours for 3d images
   * Highlight each step after completion
   * Allow selection of texture
   * Allow selection of thickness
-  * Choose better icon for PRINT YOURSELF button
   * Style PayPal button prpperly
   * Make step descriptions more verbose
   * Product format step description needs to be written
@@ -36,7 +34,11 @@ Make a model to control the subviews?
   * Show spinner while images load
   * Show clickable product tags
   
+  * Add Facebook, Twitter, Google+ and PinIt like buttons
+  
   * Fix product page font-selector as it is not showing top arrow and also does not display selected font correctly when you have navigated to #print and back to #flat_preview again  
+  * Font picker UI is a little too high up and overlaps nav bar on UI page
+  * Font picker name description text is unformatted
   * make font selector directly change the font and size of thisProduct rather than in the view
   * Change Font images to fit neatly in fonts menu
    
@@ -44,6 +46,14 @@ Make a model to control the subviews?
   * Make thisProduct save on change of guest name
 
   * Tooltips for + and - and baseline shift
+  * Crop marks for printing
+  * Make clearer print icon button
+  
+  * Remove massive X from IE input fields
+  
+  * Save after editing guests and moving input fields
+
+  * Global font adjust buttons could render better
   * Stop flat preview name place card from using one of the guest names. Stick with "Guest Name" and make it uneditable
   * If mobile browser, post names to new controller when printer icon clicked and save in database with new id, then render with id to make completely unique page for sharing with google cloud print
  
@@ -51,7 +61,6 @@ Make a model to control the subviews?
 /responsive
 --------------------------------------------------------------------------
   Mobile:
-  * Choose how to implement PRINT YOURSELF button on smartphone view
   * Adjust landscape display of product page on smaller smartphones
 
   /print UI page
