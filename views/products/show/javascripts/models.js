@@ -57,7 +57,10 @@ var Product = Backbone.Model.extend({
     console.log(this.shareURL())
   },
   shareURL: function() {
-    return("/products/" + this.id + "#preview_place_card/colour0/" + this.get("colours")[0] + "/colour1/" + this.get("colours")[1] + "/font/" + this.get("font"))  
+    return("http://www.casamiento.co.uk/products/" + 
+    this.id + "/#preview_place_card/c0/" + this.get("colours")[0].substr(1)+ 
+    "/c1/" + this.get("colours")[1].substr(1) + 
+    "/f/" + this.get("font"))  
   },
   hex: function() {
     if(this.get("colours").length == 2) {
