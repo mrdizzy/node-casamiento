@@ -17,19 +17,26 @@
   <div id="scroll_clipper">
 
     <div id="scroll_wrapper">
-      <div style="width:100000px;">
+      <div id="scroll_container">
         <%  for (var i = 0; i < place_cards.length; i++) { %>
           <% var place_card = place_cards[i] %>
             <div id="welcome_place_<%= i %>" class="welcome_place_card_container">
-              <div class="welcome_slide_container">
-          
+              <div class="welcome_slide_container" style="position:relative">
+          <div style="position: absolute;top:5%;left: 75%;z-index:999999999999999999999999999">
+        <div style="position: relative;  padding-top:15px;  width:115px;height:95px;border-bottom-left-radius: 20px; border-top-right-radius: 20px;background-color:white;opacity:0.85;text-align:center;font:normal 1.2em 'OS'">
+           <img src="/gfx/customise.svg" style="width:50px;display:inline;"/><br/><a href="/products/<%= place_card._id %>">CUSTOMISE THIS DESIGN</a>
+        </div>
+    </div>
                 <div class="welcome_background_container">
     
                   <div class="welcome_background colour_0" style="background-color:<%= place_card.colours[0] %>">
                     <%- place_card["background-" +place_card.attachments_order[0] ] %>
                   </div>
-                  
-                  <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0] %>"/>
+                   <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[0]%> 2000px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0]%> 1000px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[0]%> 750px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 500px"
+         sizes="(min-width:801px) 40.2vw,(min-width:500px) 40.2vw, (min-width: 320px), 60vw" />
                 </div>        
           
               <h1 class="product_name"><a href="/products/<%= place_card._id %>"><%= place_card.name %></a></h1>
@@ -43,7 +50,11 @@
                 <div style="background-color:<%= place_card.colours[0] %>" class="welcome_background colour_0">
                   <%- place_card["background-" +place_card.attachments_order[1] ] %>
                 </div>
-                <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1] %>" />
+                <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[1]%> 2000px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[1]%> 1000px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[1]%> 750px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 500px"
+         sizes="(min-width:801px) 30.4vw,(min-width:500px) 30.4vw, (min-width: 320px), 40vw" />
               </div>
             </div>
             <div style="text-align:center;padding-top:0.5em;">
@@ -77,7 +88,11 @@
             <div style="background-color:<%= place_card.colours[0] %>" class="welcome_background colour_0">
               <%- place_card["background-" +place_card.attachments_order[2] ] %>
             </div>
-              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2] %>" / >
+                  <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[2]%> 2000px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[2]%> 1000px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[2]%> 750px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2]%> 500px"
+         sizes="(min-width:801px) 30.4vw,(min-width:500px) 30.4vw, (min-width: 320px), 40vw" />
             </div>
           </div>
         </div>
@@ -120,16 +135,23 @@
   $(function() {
   
     var counter = 0,
-      location = 0;
+      location = 0,
+      height = 0,
       single_counter = 0,
       number_of_slides = <%= place_cards.length %>;
         
     // Slide width and height
-    var element_width = $('#welcome_column').width();    
+    var element_width = $('#welcome_column').width();  
+    $('#scroll_container').width(element_width*number_of_slides)  
     $('.welcome_place_card_container').width(element_width)  
     
-    var height = $('#scroll_wrapper').height();  
+    
+    $('#welcome_place_1 img').load(function() {
+    
+   height = $('#scroll_wrapper').height(); 
+   console.log(height);
     $('#scroll_clipper').height(height-50)
+    }) 
     
     $(window).bind('resize', function() {   
       counter = 0;
