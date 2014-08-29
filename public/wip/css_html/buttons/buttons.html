@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- 
+  This HTML and CSS creates a responsive div which is square in shape and 
+  uses an image which is vertically and horizontally aligned centrally in the middle
+  of the box. IE8 ignores backgorund-size so this does not work
+--> 
+<html>
+<head>
+<style type="text/css">
+
+.button_wrapper {
+    position: relative;
+    width: 20%;
+    height: 0;
+    padding-bottom: 20%;
+}
+  .button_inside { 
+
+    line-height:100%;
+    text-align:center;
+
+    border:1px solid black;
+    border-radius:10px;
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index:1000;
+    background-image:url('/gfx/chrome.png');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:25% 25%;
+  }
+</style>
+</head>
+<body>
+<div  class="button_wrapper">
+<div class="button_inside"></div>
+</div>
+</body>
+</html>
