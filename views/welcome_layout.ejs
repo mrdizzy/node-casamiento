@@ -9,16 +9,7 @@
     <link rel="shortcut icon" href="/favicon.ico" />   
     
     <link rel="stylesheet" href="/static/css/all.css" />     
-    
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    
-    <script src="/javascripts/libraries/picturefill.min.js"></script>
-    <script src="/javascripts/libraries/fastclick.js"></script>
-    <script>
-      $(function() {    
-        FastClick.attach(document.body);  
-      })
-    </script>
+   
 
     <style type="text/css">
         <%- inline_styles %>
@@ -48,5 +39,23 @@
     </div>
     
     <div style="clear:both;"></div>
+     
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
+<script type="text/javascript" src="/javascripts/libraries/jquery.slides.min.js"></script>
+    <script src="/javascripts/libraries/picturefill.min.js"></script>
+    <script src="/javascripts/libraries/fastclick.js"></script>
+    <script>
+      $(function() {    
+        FastClick.attach(document.body);  
+        
+  $("#slides_container").slidesjs({
+        width: 360,
+        height: 230
+
+      })
+      
+      })
+    </script>
   </body>
 </html>
