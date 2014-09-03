@@ -13,9 +13,9 @@
           <% var place_card = place_cards[i] %>
             <div id="welcome_place_<%= i %>" class="welcome_place_card_container">
               <div class="welcome_slide_container" style="position:relative">
-              
+                <% if (place_card.colours[1]) { %>
                 <div class="welcome_background_container">
-    
+                  
                   <div class="welcome_background colour_0" style="background-color:<%= place_card.colours[0] %>">
                     <%- place_card["background-" +place_card.attachments_order[0] ] %>
                   </div>
@@ -27,11 +27,17 @@
                   sizes="(min-width:801px) 40.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 60vw, 100VW" />
                   
                 </div>        
-           
-          
+                <% } else { %>
+                 <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[0]%> 2000px,
+                  http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0]%> 1000px,
+                  http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[0]%> 750px,
+                  http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 500px"
+                  sizes="(min-width:801px) 40.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 60vw, 100VW" style="background-color:<%= place_card.colours[0] %>"/>
+                  <% } %>
             </div>
             
             <div style="margin-left:60%;">
+            <% if (place_card.colours[1]) { %>
               <div class="welcome_background_container">
     
                 <div style="background-color:<%= place_card.colours[0] %>" class="welcome_background colour_0">
@@ -45,10 +51,20 @@
          sizes="(min-width:500px) 10.4vw, (min-width: 320px) 30.4vw, 100vm" />
          
               </div>
+              
+                <% } else { %>
+                
+                <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[1]%> 2000px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[1]%> 1000px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[1]%> 750px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 500px"
+         sizes="(min-width:500px) 10.4vw, (min-width: 320px) 30.4vw, 100vm" style="background-color:<%= place_card.colours[0] %>"/>
+          <% } %>
             </div>
             
           
           <div style="margin-left:60%;">
+            <% if (place_card.colours[1]) { %>
             <div class="welcome_background_container">
     
             <div style="background-color:<%= place_card.colours[0] %>" class="welcome_background colour_0">
@@ -60,6 +76,13 @@
                  http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2]%> 500px"
          sizes="(min-width:500px) 10.4vw, (min-width: 320px) 30.4vw, 100vw" />
             </div>
+            <% } else { %>
+             <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[2]%> 2000px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[2]%> 1000px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[2]%> 750px,
+                 http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2]%> 500px"
+         sizes="(min-width:500px) 10.4vw, (min-width: 320px) 30.4vw, 100vw" style="background-color:<%= place_card.colours[0] %>"/>
+         <% } %>
           </div>
         </div>
       <% } %>
