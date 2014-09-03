@@ -7,7 +7,7 @@
     
 <%- contentFor('middle') %>
 
-
+      
       <div id="slides_container">
         <%  for (var i = 0; i < place_cards.length; i++) { %>
           <% var place_card = place_cards[i] %>
@@ -20,19 +20,21 @@
                     <%- place_card["background-" +place_card.attachments_order[0] ] %>
                   </div>
                   
+        <a href="/products/<%= place_card._id %>">
                   <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[0]%> 2000px,
                   http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0]%> 1000px,
                   http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[0]%> 750px,
                   http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 500px"
-                  sizes="(min-width:801px) 40.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 60vw, 100VW" />
+                  sizes="(min-width:801px) 40.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 60vw, 100VW" /></a>
                   
                 </div>        
                 <% } else { %>
+        <a href="/products/<%= place_card._id %>">
                  <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[0]%> 2000px,
                   http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0]%> 1000px,
                   http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[0]%> 750px,
                   http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 500px"
-                  sizes="(min-width:801px) 40.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 60vw, 100VW" style="background-color:<%= place_card.colours[0] %>"/>
+                  sizes="(min-width:801px) 40.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 60vw, 100VW" style="background-color:<%= place_card.colours[0] %>"/></a>
                   <% } %>
             </div>
             
@@ -44,21 +46,23 @@
                   <%- place_card["background-" +place_card.attachments_order[1] ] %>
                 </div>
                 
+        <a href="/products/<%= place_card._id %>">
                 <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[1]%> 2000px,
                  http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[1]%> 1000px,
                  http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[1]%> 750px,
                  http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 500px"
-         sizes="(min-width:500px) 10.4vw, (min-width: 320px) 30.4vw, 100vm" />
+         sizes="(min-width:500px) 10.4vw, (min-width: 320px) 30.4vw, 100vm" /></a>
          
               </div>
               
                 <% } else { %>
                 
+        <a href="/products/<%= place_card._id %>">
                 <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/large-<%= place_card.attachments_order[1]%> 2000px,
                  http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[1]%> 1000px,
                  http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[1]%> 750px,
                  http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 500px"
-         sizes="(min-width:500px) 10.4vw, (min-width: 320px) 30.4vw, 100vm" style="background-color:<%= place_card.colours[0] %>"/>
+         sizes="(min-width:500px) 10.4vw, (min-width: 320px) 30.4vw, 100vm" style="background-color:<%= place_card.colours[0] %>"/></a>
           <% } %>
             </div>
             
@@ -85,6 +89,7 @@
          <% } %>
           </div>
         </div>
+       
       <% } %>
       </div>
 

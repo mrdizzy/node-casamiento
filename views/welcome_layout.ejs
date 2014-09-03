@@ -12,6 +12,7 @@
    
 
     <style type="text/css">
+    #slides_container { border-bottom:1px dotted grey; }
         <%- inline_styles %>
     </style>
     
@@ -51,15 +52,17 @@
         
   $("#slides_container").slidesjs({
         width: 360,
-        height: 230,
+        height: 183,
         play: {
-      active: true,
+      active: false,auto: true,
         // [boolean] Generate the play and stop buttons.
         // You cannot use your own buttons. Sorry.
       effect: "slide",
         // [string] Can be either "slide" or "fade".
       interval: 5000
-      }
+      },pagination: {
+      active: false
+    }, navigation: { active: false }
 
       })
       
