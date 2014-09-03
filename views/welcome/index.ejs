@@ -4,9 +4,11 @@
     #welcome_place_<%=i%> .colour_1 { background-color: <%=place_cards[i].colours[1] %>}
   <% } %>
 
+      
     
 <%- contentFor('middle') %>
 
+  <script type="text/javascript" src="/javascripts/libraries/colour_lookup.js"></script>
       
       <div id="slides_container">
         <%  for (var i = 0; i < place_cards.length; i++) { %>
@@ -36,6 +38,17 @@
                   http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 500px"
                   sizes="(min-width:801px) 40.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 60vw, 100VW" style="background-color:<%= place_card.colours[0] %>"/></a>
                   <% } %>
+                  <div style="text-align:center;padding-top:0.5em;">
+              <div style="display:inline-block;">
+                <div class="dizzycp-big_colour_square_frame">
+                  <div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
+                </div>
+                <div class="dizzycp-text_label_for_colour">  <script>
+                    document.write(colour_lookup["<%= place_card.colours[0] %>"])
+                  </script>
+                </div>
+              </div>
+              </div>
             </div>
             
             <div style="margin-left:60%;">
@@ -121,6 +134,4 @@
     <p style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
     
     <span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
-      
-  <script type="text/javascript" src="/javascripts/libraries/colour_lookup.js"></script>
   
