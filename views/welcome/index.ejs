@@ -6,22 +6,25 @@
 
         
 .dizzycp-big_colour_square_frame { 
-    width:31px;
-    height:31px;
+    width:23px;
+    height:23px;
     padding:0; 
+    margin-left:20px;
+    float:left;
     border-radius:25px;
   }
    .dizzycp-big_colour_square_swatch {
-      width:27px; 
-      height:27px;
+      width:19px; 
+      height:19px;
       margin:2px; 
       border-radius:20px;
     }
 
  .dizzycp-text_label_for_colour { 
     letter-spacing:0;
-    padding-top:8px;
-    margin-left:80px;
+    float:left;
+    padding-top:5px;
+    margin-left:8px;
     font-size:1em;
   }
     
@@ -57,20 +60,31 @@
                   http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 500px"
                   sizes="(min-width:801px) 40.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 60vw, 100VW" style="background-color:<%= place_card.colours[0] %>"/></a>
                   <% } %>
-                  <div style="text-align:center;padding-top:0.5em;">
-              <div>
+              <div style="padding-top:1px;">
                 <div class="dizzycp-big_colour_square_frame">
                   <div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
                 </div>
-                <div class="dizzycp-text_label_for_colour">  <script>
+                <div class="dizzycp-text_label_for_colour">  
+                  <script>
                     document.write(colour_lookup["<%= place_card.colours[0] %>"])
                   </script>
                 </div>
               </div>
+              <% if (place_card.colours[1]) { %>
+                 <div style="clear:both;">
+                <div class="dizzycp-big_colour_square_frame">
+                  <div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[1] %>;"></div>
+                </div>
+                <div class="dizzycp-text_label_for_colour">  
+                  <script>
+                    document.write(colour_lookup["<%= place_card.colours[1] %>"])
+                  </script>
+                </div>
               </div>
-            </div>
+              <% } %>
+              </div>
             
-            <div style="margin-left:60%;">
+            <div style="margin-left:55%;">
             <% if (place_card.colours[1]) { %>
               <div class="welcome_background_container">
     
@@ -99,7 +113,7 @@
             </div>
             
           
-          <div style="margin-left:60%;">
+          <div style="margin-left:55%;">
             <% if (place_card.colours[1]) { %>
             <div class="welcome_background_container">
     

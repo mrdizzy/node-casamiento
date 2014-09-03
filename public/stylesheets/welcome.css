@@ -24,7 +24,7 @@ background-color:white;
 }
 
 #header_wrapper { 
-  border-bottom:1px solid black; 
+ border-bottom:0;
 }
 
 
@@ -44,23 +44,13 @@ background-color:white;
   #right { right:-10%; }
   #left:hover, #right:hover { color:black; }
   
-  #scroll_clipper {
-	overflow:hidden;
-	border-bottom:1px solid black;
-  }
-  
-  #scroll_wrapper {
-	padding-bottom:50px;
-	overflow-y: hidden;	
-	-webkit-overflow-scrolling: touch;
-	overflow-x: scroll;
-  }
+		#slides_container { border-bottom:3px double grey; }
   .welcome_place_card_container {
 	float:left;
   }
   
   .welcome_slide_container {
-	width:60%;
+	width:55%;
 	float:left;
   }
 	.welcome_place_card_container img {
