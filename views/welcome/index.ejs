@@ -4,7 +4,26 @@
     #welcome_place_<%=i%> .colour_1 { background-color: <%=place_cards[i].colours[1] %>}
   <% } %>
 
-      
+        
+.dizzycp-big_colour_square_frame { 
+    width:31px;
+    height:31px;
+    padding:0; 
+    border-radius:25px;
+  }
+   .dizzycp-big_colour_square_swatch {
+      width:27px; 
+      height:27px;
+      margin:2px; 
+      border-radius:20px;
+    }
+
+ .dizzycp-text_label_for_colour { 
+    letter-spacing:0;
+    padding-top:8px;
+    margin-left:80px;
+    font-size:1em;
+  }
     
 <%- contentFor('middle') %>
 
@@ -39,7 +58,7 @@
                   sizes="(min-width:801px) 40.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 60vw, 100VW" style="background-color:<%= place_card.colours[0] %>"/></a>
                   <% } %>
                   <div style="text-align:center;padding-top:0.5em;">
-              <div style="display:inline-block;">
+              <div>
                 <div class="dizzycp-big_colour_square_frame">
                   <div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
                 </div>
