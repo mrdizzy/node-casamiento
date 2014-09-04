@@ -18,39 +18,29 @@
 	table { font-size:inherit;font:100%;width:100%; }
 	pre, code, kbd, samp, tt { font-family:monospace;*font-size:108%;line-height:100%; }
 
-@font-face { font-family:"GaraI"; src: url('/f/GARAIT.eot?') format('eot'), url('/f/gggg.woff') format('woff'); }
-
-	#welcome_column p { 
-		padding-left:0.2em;
-		margin-right:1em;
-		font-family:'OS Light';
-		text-align:left;
-		font-size:1em;
-		font-weight:normal;
-		margin-left:1em;
-		line-height:1.5em;
-	}
- #welcome_column h3 {
-		font-family:'GaraI'; 
-		font-variant:normal;
-		text-transform:none;
-		font-size:2.8em;
-	}
+	@font-face { font-family:"GaraI"; src: url('/f/GARAIT.eot?') format('eot'), url('/f/gggg.woff') format('woff'); }
+	@font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 
 	#welcome_column h5 { 
-		font: normal 2.5em "GaraI";
+		font: normal 3.88em "GaraI";
 		text-align:center;
 		color:#000;
-		font-family:'GaraI';
 		line-height:1.2em;
-		font-style:normal;
-		font-weight:normal;
-		font-size:3.88em;
 		padding-top:0.25em;
 		margin-left:1em;
 		margin-right:1em;
 	}
 	
+	#welcome_column p { 
+		padding-left:0.2em;
+		margin-right:1em;
+		font-family:'OS Light';
+		font-size:1em;
+		font-weight:normal;
+		margin-left:1em;
+		line-height:1.5em;
+	}
+
 /* HEADER AND FOOTER
 ==================================== */
 body {
@@ -59,26 +49,25 @@ body {
 
 	#inner_page_container { 
 		background-color:#fff; 
-	width:95%; 
-	margin:0 auto; 
-	border-left: 1px dotted grey; 
-	border-right: 1px dotted grey;
-	background-image:url('/gfx/background_wiggle.svg');  
+		width:95%; 
+		margin:0 auto; 
+		border-left: 1px dotted grey; 
+		border-right: 1px dotted grey;
+		background-image:url('/gfx/background_wiggle.svg');  
 	}  
 	 
 		#logo { 
 			display:block;
-			margin-left:3em;
+			margin-left:1em;
 			padding:1em;      
 			width:202px;
 		}
 		
 		#dreams_slogan { 
 			width:150px;
-			margin-right:5%;
 		}
 		
-#welcome_column{
+#welcome_column {
 	width:80%; 
 	background-color:#fff;
 	margin:0 auto;
@@ -89,6 +78,10 @@ body {
 #headline_welcome { 
   float:right;
   margin-top:0.5em;
+}
+#header_container {
+	
+		border-bottom:1px solid #000;
 }
 #header_wrapper, #footer {
 background-color:#fff; 
@@ -119,9 +112,12 @@ background-color:#fff;
 		font-size:1em;
 	}
 	
-		#slides_container { border-bottom:3px double grey; display:none;}
+		#slides_container { 
+		  border-bottom:3px double grey; 
+			display:none;
+	  }
   .welcome_place_card_container {
-	float:left;
+	  float:left;
   }
   
   .welcome_slide_container {
@@ -129,20 +125,22 @@ background-color:#fff;
 	float:left;
   }
 	.welcome_place_card_container img {
-	position:relative;display:block;width:100%;z-index:6
+	  position:relative;
+		display:block;
+		width:100%;
+		z-index:6
 	}
   
   .welcome_background_container {
-	position:relative;
-	width:100%;
+	  position:relative;
+	  width:100%;
   }
-  .welcome_background {
-	position:absolute;
-	width:100%;
-	height:100%;
-	z-index:0;
-  }
-	
+		.welcome_background {
+			position:absolute;
+			width:100%;
+			height:100%;
+			z-index:0;
+		}
 
 .shell { 
 	background-image:url('/gfx/bullets/wiggle.svg');
@@ -163,7 +161,7 @@ background-color:#fff;
 		background-image:none;
 	} 
 	
-	#welcome_column { width:100%;}
+	#welcome_column { width:100%; }
  
 	#welcome_column h5 {
 		font-size:3em;
@@ -175,7 +173,6 @@ background-color:#fff;
 	}
 	
 	#header_container {
-		border-bottom:1px solid #000;
 		background-color:#fff;
 		z-index:20;
 		height:39px;
@@ -186,7 +183,6 @@ background-color:#fff;
 			height:39px;
 		}
 		#logo { 
-			display:block;
 			width:115px;
 			padding:0.2em;
 			margin:0 auto;
@@ -202,4 +198,17 @@ background-color:#fff;
 			float:none;
 			width:100%; 
 		}
+}
+
+	
+/* Phablet */
+@media all and (min-width: 501px) and (max-width: 800px) {  
+/* ----------------------------------------------------------------------------- */    
+
+		#logo { 
+			width:160px;
+		}
+	#welcome_column h5 {
+		font-size:3.5em;
+	}
 }

@@ -6,8 +6,6 @@
 
 <%- contentFor('middle') %>
 
-  <script>var colour_lookup = {}</script>
-      
        <img id="slides_spinner" src="/gfx/spinner.gif" style="display:block;margin:0 auto;margin-top:50px;margin-bottom:50px;"/>
  
       <div id="slides_container">
@@ -43,9 +41,7 @@
                   <div class="welcome_colour_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
                 </div>
                 <div class="welcome_colour_label">  
-                  <script>
-                    document.write(colour_lookup["<%= place_card.colours[0] %>"])
-                  </script>
+                   <%= place_card.colour_0 %>    
                 </div>
               </div>
               <% if (place_card.colours[1]) { %>
@@ -53,10 +49,8 @@
                 <div class="welcome_colour_frame">
                   <div class="welcome_colour_swatch" style="background-color: <%= place_card.colours[1] %>;"></div>
                 </div>
-                <div class="welcome_colour_label">  
-                  <script>
-                    document.write(colour_lookup["<%= place_card.colours[1] %>"])
-                  </script>
+                <div class="welcome_colour_label"> 
+                  <%= place_card.colour_1 %>                
                 </div>
               </div>
               <% } %>
