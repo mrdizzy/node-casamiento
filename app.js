@@ -22,7 +22,7 @@ var assetManagerGroups = {
         // These files must be availble in the directory specified by path above
         // Make sure they are in the right order--stylesheets cascade! Reponsive last!
         , 'files': [ 'new_color_picker.css', 'font_picker.css', 'main.css',  'product.css', 'place_cards.css', 'ui_print.css', 'print.css' ]
-    }
+    },
     'js':
         { 'route': /\/static\/javascripts\/all\.js/
         , 'path': __dirname + '/public/javascripts/libraries/'
