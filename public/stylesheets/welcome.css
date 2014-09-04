@@ -26,19 +26,18 @@
 		text-align:center;
 		color:#000;
 		line-height:1.2em;
-		padding-top:0.25em;
-		margin-left:1em;
-		margin-right:1em;
+		margin-left:0.5em;
+		margin-right:0.5em;
 	}
 	
 	#welcome_column p { 
-		padding-left:0.2em;
 		margin-right:1em;
 		font-family:'OS Light';
-		font-size:1em;
+		font-size:1.2em;
 		font-weight:normal;
 		margin-left:1em;
-		line-height:1.5em;
+		padding-bottom:20px;
+		line-height:1.75em;
 	}
 
 /* HEADER AND FOOTER
@@ -107,8 +106,8 @@ background-color:#fff;
 		text-transform:uppercase;
 		float:left;
 		font-family: 'OS Light';
-		padding-top:5px;
-		margin-left:8px;
+		padding-top:4px;
+		margin-left:4px;
 		font-size:1em;
 	}
 	
@@ -147,9 +146,8 @@ background-color:#fff;
 	background-repeat:no-repeat; 
 	background-position:center;
 	background-size:24px 17px;
+	margin-bottom:20px;
 	height:17px;
-	padding-top:1em;
-	padding-bottom:1em;
 }
 
 /* RESPONSIVE
@@ -164,7 +162,7 @@ background-color:#fff;
 	#welcome_column { width:100%; }
  
 	#welcome_column h5 {
-		font-size:3em;
+		font-size:3.5em;
 	}
 	
   #inner_page_container { 
