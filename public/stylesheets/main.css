@@ -48,19 +48,6 @@ h2 {
   margin-bottom:0.5em; 
   }
   
-  .place_square_2 h2, 
-  .place_square_3 h2, 
-  .place_square_5 h2, 
-  .place_square_6 h2,
-  .place_square_8 h2, 
-  .place_square_9 h2, 
-  .place_square_11 h2, 
-  .place_square_12 h2 { 
-    font-size:1.2em; 
-  }
-  
-  #search_results h2 { font-size:1.2em; letter-spacing:0.1em;}
-  
 h3 { 
   font:normal 1.3em Gara;
   letter-spacing:0.1em;
@@ -71,17 +58,7 @@ h3 {
   padding-bottom:1em; 
   text-transform:uppercase
 }
-  #welcome_column h3 {
-    
-  font-family:'GaraI'; 
-  font-variant:normal;
-  text-transform:none;
-  letter-spacing:0;
-  font-size:2.8em;
-  border:0;
-  padding:0;
-  margin:0;
-  }
+ 
 h4 { 
   font: normal 0.9em "OS Condensed"; 
   letter-spacing:0.01em;   
@@ -92,24 +69,6 @@ h5 {
   font: bold 0.85em "OS Light", sans-serif; 
   padding-bottom: 10px; 
 }
-  #welcome_column h5 { 
-    font: normal 2.5em "GaraI";
-    text-align:center;
-    color:#000;
-    font-family:'GaraI';
-    line-height:1.2em;
-    font-style:normal;
-    font-weight:normal;
-    font-size:3.88em;
-    letter-spacing:0;
-    padding-top:0.25em;
-    padding-bottom:0;
-    border-bottom:0;
-    margin:0;
-    margin-left:1em;
-    margin-right:1em;
-  }
-  
 h6 { 
   font-size:20px; 
   text-align:justify; 
@@ -126,19 +85,6 @@ p {
   padding:0; 
   margin-bottom:1.5em;
 }
-  #welcome_column p { 
-  padding-left:0.2em;
-  margin-right:1em;
-  font-family:'OS Light';
-  text-align:left;
-  font-size:1.2em;
-  font-weight:normal;
-  margin-left:1em;
-  text-rendering: optimizeLegibility;
-  letter-spacing:0;
-  line-height:1.5em;
-
-  }
   
 .pound_sign, .decimal { font-size:1.6em; position:relative;top:-8px;}
 .number {  font-size:2.4em;  }

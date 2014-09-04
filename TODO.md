@@ -5,7 +5,7 @@ Make a model to control the subviews?
 /admin
 --------------------------------------------------------------------------
   * Add 'add colour' button to enable 2 colour designs
-  * Fix adding transparent images to existing products
+  * Fix adding images to existing products
   * Allow selecting of default font, baseline and size via GUI
   * Move JavaScript templates into directory with their dependencies
   * Create price tiers for products rather than individually entering price of each product
@@ -33,6 +33,8 @@ Make a model to control the subviews?
   * Show related designs on product page
   * Show spinner while images load
   * Show clickable product tags
+  
+  * Update all images for existing products: Damask, Birds of Paradise, Birds of Spiral, Simplicity, Together Forever, Chess, Ornamental, Paisley, Wild Vintage, Guilloche, FLORAL, Rose, Foliage, Borders, Acorn, Garden of Life (16)
   
   * Add Facebook, Twitter, Google+ and PinIt like buttons
   

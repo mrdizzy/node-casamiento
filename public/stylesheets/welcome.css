@@ -1,10 +1,88 @@
+/* YAHOO RESET =========================================== */
+	html {color:#000;background:#FFF;}
+	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+	fieldset,img {border:0;}
+	address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+	li{list-style:none;}
+	caption,th{text-align:left;}
+	h1,h2,h3,h4,h5,h6{font: normal 100%/2 Georgia, serif; letter-spacing:-0.05em; margin: 0.3em 0 0.3em; }
+	q:before,q:after{content:'';}
+	abbr,acronym{border:0;font-variant:normal;}
+	sup{vertical-align:text-top;}
+	sub{vertical-align:text-bottom;}
+	input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+	input,textarea,select{*font-size:100%;}legend{color:#000;}del,ins{text-decoration:none;}
 
-  #inner_page_container { 
+	body { font:13px/1.5 "Arial","Helvetica",sans-serif;*font-size:small;*font:x-small;color:#000; }
+	select, input, button, textarea { font:99% arial,helvetica,clean,sans-serif; }
+	table { font-size:inherit;font:100%;width:100%; }
+	pre, code, kbd, samp, tt { font-family:monospace;*font-size:108%;line-height:100%; }
+
+@font-face { font-family:"GaraI"; src: url('/f/GARAIT.eot?') format('eot'), url('/f/GARAIT.woff') format('woff'); }
+@font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
+@font-face { font-family:"Gara"; src: url('/f/GARA.eot?') format('eot'), url('/f/GARA.woff') format('woff'); }
+
+	#welcome_column p { 
+		padding-left:0.2em;
+		margin-right:1em;
+		font-family:'OS Light';
+		text-align:left;
+		font-size:1em;
+		font-weight:normal;
+		margin-left:1em;
+		line-height:1.5em;
+	}
+ #welcome_column h3 {
+		font-family:'GaraI'; 
+		font-variant:normal;
+		text-transform:none;
+		font-size:2.8em;
+	}
+	
+	
+	#welcome_column h5 { 
+		font: normal 2.5em "GaraI";
+		text-align:center;
+		color:#000;
+		font-family:'GaraI';
+		line-height:1.2em;
+		font-style:normal;
+		font-weight:normal;
+		font-size:3.88em;
+		padding-top:0.25em;
+		margin-left:1em;
+		margin-right:1em;
+	}
+	
+/* HEADER AND FOOTER
+==================================== */
+body {
+	background-image:url('/gfx/backgrounds/grey_header.png');  
+}
+
+	#inner_page_container { 
+		background-color:#fff; 
+
 	width:95%; 
 	margin:0 auto; 
 	border-left: 1px dotted grey; 
 	border-right: 1px dotted grey;
 	background-image:url('/gfx/background_wiggle.svg');  
+	}  
+	 
+		#logo { 
+			display:block;
+			margin-left:3em;
+			padding:1em;      
+			width:202px;
+		}
+		
+		#dreams_slogan { 
+			width:150px;
+		}
+		
+#inner_page_container { 
+	
    }
 
 #welcome_column{
@@ -23,28 +101,31 @@
 background-color:white; 
 }
 
-#header_wrapper { 
- border-bottom:0;
-}
+  .welcome_colour_frame { 
+		width:23px;
+		height:23px;
+		padding:0; 
+		margin-left:20px;
+		float:left;
+		border: 1px solid lightgrey;
+		border-radius:25px;
+	}
+	 .welcome_colour_swatch {
+			width:19px; 
+			height:19px;
+			margin:2px; 
+			border-radius:20px;
+		}
 
-
-#welcome_arrow_container {
-  position:relative;
- 
-}
-  
-  #left, #right { 
-	font-size:5em; 
-	position:absolute;
-	color:grey;
-	background-color:white;
-	cursor:pointer; 
-  }
-  #left { left:-10%; }
-  #right { right:-10%; }
-  #left:hover, #right:hover { color:black; }
-  
-		#slides_container { border-bottom:3px double grey; }
+ .welcome_colour_label { 
+		text-transform:uppercase;
+		float:left;
+		font-family: 'OS Light';
+		padding-top:5px;
+		margin-left:8px;
+		font-size:1em;
+	}
+		#slides_container { border-bottom:3px double grey; display:none;}
   .welcome_place_card_container {
 	float:left;
   }
@@ -70,8 +151,61 @@ background-color:white;
 @media all and (min-width: 320px) and (max-width: 500px) {
  #inner_page_container, #welcome_column { width:100%;}
  
- h1.product_name { font-size:2em;}
   #welcome_column h5 {
   	font-size:3em;
-  }
+  
+}
+
+
+.shell { 
+	background-image:url('/gfx/bullets/wiggle.svg');
+	background-repeat:no-repeat; 
+	background-position:center;
+	background-size:24px 17px;
+	height:17px;
+	padding-top:1em;
+	padding-bottom:1em;
+}
+
+/* RESPONSIVE
+==================================== */
+
+ /* Smartphone */
+@media all and (min-width: 320px) and (max-width: 500px) {
+	body { 
+		background-image:none;
+	}
+  #inner_page_container { 
+	background-image:none;  
+	width:100%;}
+	
+	#header_container {
+		border-bottom:1px solid black;
+		background-color:white;
+		z-index:20;
+		height:39px;
+		position:fixed;
+		width:100%;
+	}
+		#header_wrapper {
+			height:39px;
+		}
+		#logo { 
+			display:block;
+			width:115px;
+			padding:0.2em;
+			margin:0 auto;
+		}
+		#dreams_slogan { 
+			width:130px;
+		}
+		#menu_lines { display:block;}
+
+
+		#footer .genesis_collection, 
+		#footer .castello_collection, 
+		.footer_seperator { 
+			float:none;
+			width:100%; 
+		}
 }

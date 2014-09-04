@@ -4,30 +4,6 @@
     #welcome_place_<%=i%> .colour_1 { background-color: <%=place_cards[i].colours[1] %>}
   <% } %>
 
-        
-.dizzycp-big_colour_square_frame { 
-    width:23px;
-    height:23px;
-    padding:0; 
-    margin-left:20px;
-    float:left;
-    border-radius:25px;
-  }
-   .dizzycp-big_colour_square_swatch {
-      width:19px; 
-      height:19px;
-      margin:2px; 
-      border-radius:20px;
-    }
-
- .dizzycp-text_label_for_colour { 
-    letter-spacing:0;
-    float:left;
-    padding-top:5px;
-    margin-left:8px;
-    font-size:1em;
-  }
-    
 <%- contentFor('middle') %>
 
   <script type="text/javascript" src="/javascripts/libraries/colour_lookup.js"></script>
@@ -61,10 +37,10 @@
                   sizes="(min-width:801px) 40.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 60vw, 100VW" style="background-color:<%= place_card.colours[0] %>"/></a>
                   <% } %>
               <div style="padding-top:1px;">
-                <div class="dizzycp-big_colour_square_frame">
-                  <div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
+                <div class="welcome_colour_frame">
+                  <div class="welcome_colour_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
                 </div>
-                <div class="dizzycp-text_label_for_colour">  
+                <div class="welcome_colour_label">  
                   <script>
                     document.write(colour_lookup["<%= place_card.colours[0] %>"])
                   </script>
@@ -72,10 +48,10 @@
               </div>
               <% if (place_card.colours[1]) { %>
                  <div style="clear:both;">
-                <div class="dizzycp-big_colour_square_frame">
-                  <div class="dizzycp-big_colour_square_swatch" style="background-color: <%= place_card.colours[1] %>;"></div>
+                <div class="welcome_colour_frame">
+                  <div class="welcome_colour_swatch" style="background-color: <%= place_card.colours[1] %>;"></div>
                 </div>
-                <div class="dizzycp-text_label_for_colour">  
+                <div class="welcome_colour_label">  
                   <script>
                     document.write(colour_lookup["<%= place_card.colours[1] %>"])
                   </script>
@@ -110,8 +86,7 @@
                  http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 500px"
          sizes="(min-width:500px) 10.4vw, (min-width: 320px) 30.4vw, 100vm" style="background-color:<%= place_card.colours[0] %>"/></a>
           <% } %>
-            </div>
-            
+            </div>            
           
           <div style="margin-left:55%;">
             <% if (place_card.colours[1]) { %>
