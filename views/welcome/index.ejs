@@ -11,7 +11,7 @@
        <img id="slides_spinner" src="/gfx/spinner.gif" style="display:block;margin:0 auto;margin-top:50px;margin-bottom:50px;"/>
  
       <div id="slides_container">
-        <% for (var i = 0; i <2; i++) { %>
+        <% for (var i = 0; i < place_cards.length; i++) { %>
           <% var place_card = place_cards[i] %>
             <div id="welcome_place_<%= i %>" class="welcome_place_card_container">
               <div class="welcome_slide_container" style="position:relative">
