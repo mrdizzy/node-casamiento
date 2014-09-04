@@ -101,7 +101,7 @@ var StepView = Backbone.View.extend({
         index: i
       });
     }
-    $result.find('#fonts').fontPicker({
+    this.$el.find('#fonts').fontPicker({
       fonts: casamiento_fonts, 
       selected_font: thisProduct.get("font")
     });
