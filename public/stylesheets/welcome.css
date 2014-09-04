@@ -20,6 +20,7 @@
 
 	@font-face { font-family:"GaraI"; src: url('/f/GARAIT.eot?') format('eot'), url('/f/gggg.woff') format('woff'); }
 	@font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
+	@font-face { font-family:"Gara"; src: url('/f/OSL.eot?') format('eot'), url('/f/GARA.woff') format('woff'); }
 
 	#welcome_column h5 { 
 		font: normal 3.88em "GaraI";
@@ -31,13 +32,14 @@
 	}
 	
 	#welcome_column p { 
+	letter-spacing:0;
 		margin-right:1em;
 		font-family:'OS Light';
 		font-size:1.2em;
 		font-weight:normal;
 		margin-left:1em;
 		padding-bottom:20px;
-		line-height:1.75em;
+		line-height:1.7em;
 	}
 
 /* HEADER AND FOOTER
@@ -159,16 +161,16 @@ background-color:#fff;
 		background-image:none;
 	} 
 	
+	#inner_page_container { 
+		background-image:none;  
+		width:100%;
+	}
 	#welcome_column { width:100%; }
  
 	#welcome_column h5 {
 		font-size:3.5em;
 	}
 	
-  #inner_page_container { 
-	  background-image:none;  
-	  width:100%;
-	}
 	
 	#header_container {
 		background-color:#fff;
@@ -200,13 +202,25 @@ background-color:#fff;
 
 	
 /* Phablet */
-@media all and (min-width: 501px) and (max-width: 800px) {  
+@media all and (min-width: 501px) and (max-width: 900px) {  
 /* ----------------------------------------------------------------------------- */    
-
+	body { 
+		background-image:none;
+	} 
+	
+	#inner_page_container { 
+		background-image:none;  
+		width:100%;
+	}
 		#logo { 
 			width:160px;
 		}
+#welcome_column {
+width:90%;
+}
 	#welcome_column h5 {
-		font-size:3.5em;
+	margin-left:1em;
+	margin-right:1em;
+		font-size:4em;
 	}
 }
