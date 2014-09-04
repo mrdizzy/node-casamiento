@@ -40,32 +40,32 @@
     
     <div style="clear:both;"></div>
      
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     
-<script type="text/javascript" src="/javascripts/libraries/jquery.slides.min.js"></script>
-    <script src="/javascripts/libraries/picturefill.min.js"></script>
-    <script src="/javascripts/libraries/fastclick.js"></script>
-    <script>
-      $(function() {    
-        FastClick.attach(document.body);  
-        
-  $("#slides_container").slidesjs({
-        width: 360,
-        height: 207,
-        play: {
-      active: false,auto: true,
-        // [boolean] Generate the play and stop buttons.
-        // You cannot use your own buttons. Sorry.
-      effect: "slide",
-        // [string] Can be either "slide" or "fade".
-      interval: 5000
-      },pagination: {
-      active: false
-    }, navigation: { active: false }
-
-      })
-      
-      })
-    </script>
   </body>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/javascripts/libraries/jquery.slides.min.js"></script>
+  <script type="text/javascript" src="/javascripts/libraries/picturefill.min.js"></script>
+  <script>
+  $(function() {              
+    $("#slides_container").slidesjs({
+      width: 360,
+      height: 207,
+      play: {
+        active: false,
+        auto: true,        
+        interval: 5000
+      },
+      pagination: {
+        active: false
+      }, 
+      callback: {
+        loaded: function(n) {
+          $('#slides_spinner').hide();
+        }
+      },
+      navigation: { 
+        active: false }
+      })
+    })
+  </script>
 </html>

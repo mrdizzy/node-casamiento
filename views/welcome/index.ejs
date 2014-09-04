@@ -6,10 +6,12 @@
 
 <%- contentFor('middle') %>
 
-  <script type="text/javascript" src="/javascripts/libraries/colour_lookup.js"></script>
+  <script>var colour_lookup = {}</script>
       
+       <img id="slides_spinner" src="/gfx/spinner.gif" style="display:block;margin:0 auto;margin-top:50px;margin-bottom:50px;"/>
+ 
       <div id="slides_container">
-        <%  for (var i = 0; i < place_cards.length; i++) { %>
+        <% for (var i = 0; i <2; i++) { %>
           <% var place_card = place_cards[i] %>
             <div id="welcome_place_<%= i %>" class="welcome_place_card_container">
               <div class="welcome_slide_container" style="position:relative">
@@ -123,8 +125,8 @@
       
       
   <div style="position:relative;border-top:1px dotted black;border-bottom:1px dotted black;padding:1em;margin:1em;">
-  <img src="/gfx/tutorials/tutorial_4.gif" style="position: absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;width:76.25%;top:11%;max-width:682px;"/>
-  <img src="/gfx/desktop_screen_wide.svg" style="max-width:745px;margin:0 auto;width:87%;display:block;"/>
+    <img src="/gfx/tutorials/tutorial_4.gif" style="position: absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;width:76.25%;top:11%;max-width:682px;"/>
+    <img src="/gfx/desktop_screen_wide.svg" style="max-width:745px;margin:0 auto;width:87%;display:block;"/>
   </div>
 
     <h5>Save yourself time, stress and hassle&hellip;</h5>

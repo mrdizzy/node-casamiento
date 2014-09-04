@@ -1,6 +1,7 @@
 TODO
 
 Make a model to control the subviews?
+Set cache expires header on non-changing assets: branding, images, fonts
 
 /admin
 --------------------------------------------------------------------------
