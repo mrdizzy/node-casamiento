@@ -3,6 +3,14 @@ TODO
 Make a model to control the subviews?
 Set cache expires header on non-changing assets: branding, images, fonts
 
+/all
+
+* Add dashed line menu button to reveal navigation: browse, about, contact
+
+/welcome 
+
+* Add navigation << >> and * * * * * for desktop view
+
 /admin
 --------------------------------------------------------------------------
   * Add 'add colour' button to enable 2 colour designs
@@ -14,21 +22,25 @@ Set cache expires header on non-changing assets: branding, images, fonts
 
 /product_page
 --------------------------------------------------------------------------
-  * Make colour picker infinite so it scrolls back to the beginning again
   * After colour has been changed, make sure related colour pickers automatically show new default colour panel that contains the hues closest to new selected
+  * Stop flat preview name place card from using one of the guest names. Stick with "Mr. Guest Name" and make it uneditable
   * Scroll bar disappears after rendering flat_preview
-  * Stop crashing on wrong id
+  * Stop crashing on wrong id  
+  * Style PayPal button prpperly  
+  * When moving to the print page, if any new guests have been added there will not be place cards for them
+  * Make thisProduct save on change of guest name
+  * Tooltip over guest name on print page to show it can be edited
+  * Global font reset button
   
-  * Use picturefill() to call picturefill on elements   
-  * Call picturefill on images to render appropriate resolutions
+  * Use picturefill() to call picturefill on elements after javascript view renders
+  * Make javascripts in an external file to reduce overhead and allow caching  
   
   * Highlight each step after completion
   * Allow selection of texture
   * Allow selection of thickness
-  * Style PayPal button prpperly
-  * Make step descriptions more verbose
-  * Product format step description needs to be written
   * Card thickness will change based on texture selected
+  * Make step descriptions more verbose
+  * Remove product format step - add it to top with name place showing size
   * Improve product descriptions
   * Quantity step description, explaining the "snap to 8" feature
   * Show related designs on product page
@@ -39,38 +51,29 @@ Set cache expires header on non-changing assets: branding, images, fonts
   
   * Add Facebook, Twitter, Google+ and PinIt like buttons
   
-  * Fix product page font-selector as it is not showing top arrow and also does not display selected font correctly when you have navigated to #print and back to #flat_preview again  
-  * Font picker UI is a little too high up and overlaps nav bar on UI page
+  * Fix product page font-selector as it does not display selected font correctly when you have navigated to #print and back to #flat_preview again  
+  
   * Font picker name description text is unformatted
   * make font selector directly change the font and size of thisProduct rather than in the view
   * Change Font images to fit neatly in fonts menu
-   
-  * When moving to the print page, if any new guests have been added there will not be place cards for them
-  * Make thisProduct save on change of guest name
 
-  * Tooltips for + and - and baseline shift
   * Crop marks for printing
   * Make clearer print icon button
   
-  * Remove massive X from IE input fields
-  
-  * Save after editing guests and moving input fields
-
-  * Global font adjust buttons could render better
-  * Stop flat preview name place card from using one of the guest names. Stick with "Guest Name" and make it uneditable
   * If mobile browser, post names to new controller when printer icon clicked and save in database with new id, then render with id to make completely unique page for sharing with google cloud print
- 
+  * Make colour picker infinite so it scrolls back to the beginning again
+
+/print UI page
+  * Font does not display on print UI page when moving back and forwards between the preview page
+  * Add global reset font/baseline button 
+  * Format control panel responsively
+  * Remove logo from panel for mobile browsers
+  * Font picker UI is a little too high up and overlaps nav bar on UI page
 
 /responsive
 --------------------------------------------------------------------------
   Mobile:
   * Adjust landscape display of product page on smaller smartphones
-
-  /print UI page
-  * Font does not display on print UI page when moving back and forwards between the preview page
-  * Add global reset font/baseline button 
-  * Format control panel responsively
-  * Remove logo from panel for mobile browsers
 
 /invoices
 --------------------------------------------------------------------------
