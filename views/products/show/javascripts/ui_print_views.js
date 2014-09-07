@@ -87,6 +87,8 @@ var PlaceCardView = GuestView.extend({
   }
 })
 
+// Used to render collections of place cards for both print view and 
+// UI preview view
 var PlaceCardCollectionView = Backbone.View.extend({
   render: function() {
     var options = this.options;
@@ -102,8 +104,9 @@ var PlaceCardCollectionView = Backbone.View.extend({
         options)).render().el
         $container.append(place_card)
       })
-      $container.append("<div class='break'></div>")
+     
       this.$el.append($container)
+     this.$el.append("<div class='break'></div>")
     }, this)
       
     return this;

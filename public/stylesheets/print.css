@@ -23,8 +23,10 @@
    display:none; 
   }
   #printsvg .up_4 {
-    height:210mm;
-    width:297mm;
+    height:148.5mm;
+    margin:0 auto;
+    padding-top:15mm;
+    width:210mm;
   }
   
   #printsvg .up_8 {
@@ -34,15 +36,16 @@
     #printsvg .up_8 .place_card_view, #printsvg .up_4 .place_card_view { 
       float:left; 
     }
-  #print_svg .up_3 { 
-    height:259.875mm;
-    padding-top:37.125mm; 
-    width:210mm;
+  #printsvg .up_3 { 
+  margin:0 auto;
+  padding-top:15mm;
+    height:222.75mm;
+    width:105mm;
   }
-    #print_svg .up_3 .place_card_view {
+    #printsvg .up_3 .place_card_view {
       float:none;
     }
-      #print_svg .up_3 .place_card_view {
+      #printsvg .up_3 .place_card_view {
         margin:0 auto;
         clear:both;
         float:none;

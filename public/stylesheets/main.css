@@ -312,19 +312,18 @@ body {
 }
 
 .grey_button {
-  padding:0;
-  padding-right:1.5em;
-  padding-left:1.5em;
-  cursor:pointer;  
   text-align:center;
-  display:inline-block;
-  background-color:#AAA;
- 
+  margin:0 auto;    
+  width:70%;
+  padding:1em;
+  border-top-left-radius:30px;
+  border-bottom-right-radius:30px;
+  text-align:center;
+  font: normal 1.6em "OS";
+  margin-bottom:0.5em; 
   color:white;
-  border-top-left-radius:20px;
-  border-bottom-right-radius:20px;
+  background-color:#AAA  
 }
-
   .grey_button:hover { 
     background-color:black;
   }

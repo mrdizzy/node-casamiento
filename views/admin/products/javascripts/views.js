@@ -76,13 +76,13 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   events: { 
     'change input[name=svgupload]': 'prepareSVG',      
     'dizzy-cp:hoverColor': 'updateColours',  
+    'click #add_second_colour': 'addSecondColour',
     'blur .change_background': 'updateBackground',
     'click input[type=submit]': 'sendForm',
     'click .addmore': 'addAttachment',
     "fontpicker:selected": "changeFont"
   },
   changeFont: function(e, font) {   
-  alert("changing font")
     this.model.set("font_size", 0.08)
     this.model.set("font", font.font)
   },
@@ -122,6 +122,11 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     }
     this.renderColours();
   },
+  addSecondColour: function() {
+   var colours = this.model.get("colours");
+   colours[1] = "#cd5c5c";
+   this.render();
+  },
   sendForm: function(e) {
     e.preventDefault();
     // Backbone.Syphon serializes a Backbone view into a JavaScript object. See:
@@ -153,13 +158,13 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     
     var number_of_colours = this.model.get("colours").length;
     for(var i=0; i < number_of_colours; i++) {
-      var $picker = $('<div class="picker"></div>')
-      this.$('#font_picker_wrapper').fontPicker({
-      selected_font: this.model.get("font")
-    });
+      var $picker = $('<div class="picker"></div>')     
       this.$('#colour_picker').append($picker)
       $picker.colorPicker({width: this.$('#colour_picker').width(), index: i, default_color: this.model.get("colours")[i], colours_per_page: 10, listen_to: this.model})
     }
+     this.$('#font_picker_wrapper').fontPicker({
+      selected_font: this.model.get("font")
+    });
    var place_card = new PlaceCardView({model: this.model}).render()
    this.$('#place_card').html(place_card.el)
    place_card._renderFontSize();

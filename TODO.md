@@ -26,11 +26,8 @@ Set cache expires header on non-changing assets: branding, images, fonts
   * Stop flat preview name place card from using one of the guest names. Stick with "Mr. Guest Name" and make it uneditable
   * Scroll bar disappears after rendering flat_preview
   * Stop crashing on wrong id  
-  * Style PayPal button prpperly  
   * When moving to the print page, if any new guests have been added there will not be place cards for them
   * Make thisProduct save on change of guest name
-  * Tooltip over guest name on print page to show it can be edited
-  * Global font reset button
   
   * Use picturefill() to call picturefill on elements after javascript view renders
   * Make javascripts in an external file to reduce overhead and allow caching  
@@ -66,9 +63,10 @@ Set cache expires header on non-changing assets: branding, images, fonts
 /print UI page
   * Font does not display on print UI page when moving back and forwards between the preview page
   * Add global reset font/baseline button 
-  * Format control panel responsively
-  * Remove logo from panel for mobile browsers
-  * Font picker UI is a little too high up and overlaps nav bar on UI page
+  * Global navigation buttons are not vertically aligned properly
+  * Top of place cards on mobile print are obscured by the fixed global menu
+  * Add close button for side panel
+  * Tooltip over guest name on print page to show it can be edited
 
 /responsive
 --------------------------------------------------------------------------
