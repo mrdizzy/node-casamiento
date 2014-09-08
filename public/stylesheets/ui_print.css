@@ -135,7 +135,7 @@
       width:50%;
       float:left;
   }
-  
+  .up_8, .up_4, .up_3 { position:relative;}
 .place_card_view:nth-child(even) .place_card_wrapper {
     float:left;
 }
