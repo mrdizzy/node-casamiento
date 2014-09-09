@@ -1,59 +1,124 @@
 @media print {
   
   body { background-image:none; }
-  
+ 
   #printsvg { 
     display:block;
   }
-  .place_card_image { 
-  display:block;
+  
+    .crop_marks { 
+      display:block;
+      position:absolute;
+      z-index:10005; 
+      height:100%;
+      width:100%;
+    }
+
+    .vertical_crop_mark, 
+    .horizontal_crop_mark {
+      position: absolute; 
+    }
+
+    .vertical_crop_mark {
+      height:10mm;  
+      border-left:1px dashed lightgrey;
+    }
+
+    .horizontal_crop_mark {
+      width:10mm;
+      border-bottom:1px dashed lightgrey;
+    }
+    /* ----------------------------------------------------------------------------- */    
+      .crop_top_bottom_left {
+        left:-10mm;
       }
+      .crop_top_bottom_right {
+        right:-10mm;
+      }
+      .crop_top_top_left {
+        top:-10mm;
+        height:10mm;
+      }  
+      .crop_top_top_right {
+        top:-10mm;
+        right:0;
+      }
+    /* ----------------------------------------------------------------------------- */    
+      .crop_horizontal_left {
+        left:-10mm; 
+      }  
+      .crop_horizontal_right {
+        right:-10mm; 
+      }
+    /* ----------------------------------------------------------------------------- */    
+      .crop_bottom_top_left {
+        bottom:0;
+        left:-10mm;
+      }
+      .crop_bottom_top_right {
+        bottom:0;
+        right:-10mm;
+      }
+      .crop_bottom_bottom_left {
+        bottom:-10mm;
+      }
+      .crop_bottom_bottom_right {
+        bottom:-10mm;
+        right:0;
+      }
+  
+    #printsvg .up_4 {
+      height:148.5mm;
+      margin:0 auto; 
+      position:relative;
+      padding-top:15mm;
+      width:210mm;
+    }
+    #printsvg .up_3 { 
+      margin:0 auto;
+      position:relative;
+      padding-top:15mm;
+      height:222.75mm;
+      width:105mm;
+    }  
+      #printsvg .up_3 .place_card_view {
+        float:none;
+        margin:0 auto;
+        clear:both;
+        float:none;
+      }
+    
+    #printsvg .up_8 {
+      height:296.8mm; /* slightly less than 297 to avoid blank sheets as height is dodgy */
+      width:210mm;
+      position:relative;
+    } 
+      
+    #printsvg .up_8 .place_card_view, 
+    #printsvg .up_4 .place_card_view { 
+      float:left; 
+    }
+  
+  .place_card_image { 
+    display:block;
+  }
+  
   .place_card_view {
-  padding:0;margin:0;
+    padding:0;
+    margin:0;
     width:105mm;
     float:left;
     height:74.25mm;
   }
   
   .place_card_wrapper { 
-  width:100%;
+    width:100%;
   }
   
   #top_of_page, #control_panel { 
    display:none; 
   }
-  #printsvg .up_4 {
-    height:148.5mm;
-    margin:0 auto; 
-    position:relative;
-    padding-top:15mm;
-    width:210mm;
-  }
-  #printsvg .up_3 { 
-    margin:0 auto;
-    position:relative;
-    padding-top:15mm;
-    height:222.75mm;
-    width:105mm;
-  }
-    #printsvg .up_3 .place_card_view {
-      float:none;
-    }
-      #printsvg .up_3 .place_card_view {
-        margin:0 auto;
-        clear:both;
-        float:none;
-      }
-    
-  #printsvg .up_8 {
-    height:296.8mm; /* slightly less than 297 to avoid blank sheets as height is dodgy */
-    margin:0 auto;
-    width:210mm;
-     position:relative;
-  }
-    #printsvg .up_8 .place_card_view, #printsvg .up_4 .place_card_view { 
-      float:left; 
-    }
+  
   .break { page-break-after:always;}
   
 }
