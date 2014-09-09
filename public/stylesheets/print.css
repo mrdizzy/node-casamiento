@@ -24,21 +24,15 @@
   }
   #printsvg .up_4 {
     height:148.5mm;
-    margin:0 auto;
+    margin:0 auto; 
+    position:relative;
     padding-top:15mm;
     width:210mm;
   }
-  
-  #printsvg .up_8 {
-    height:296.8mm; /* slightly less than 297 to avoid blank sheets as height is dodgy */
-    width:210mm;
-  }
-    #printsvg .up_8 .place_card_view, #printsvg .up_4 .place_card_view { 
-      float:left; 
-    }
   #printsvg .up_3 { 
-  margin:0 auto;
-  padding-top:15mm;
+    margin:0 auto;
+    position:relative;
+    padding-top:15mm;
     height:222.75mm;
     width:105mm;
   }
@@ -49,9 +43,17 @@
         margin:0 auto;
         clear:both;
         float:none;
-        border:1px dotted grey;
       }
     
+  #printsvg .up_8 {
+    height:296.8mm; /* slightly less than 297 to avoid blank sheets as height is dodgy */
+    margin:0 auto;
+    width:210mm;
+     position:relative;
+  }
+    #printsvg .up_8 .place_card_view, #printsvg .up_4 .place_card_view { 
+      float:left; 
+    }
   .break { page-break-after:always;}
   
 }

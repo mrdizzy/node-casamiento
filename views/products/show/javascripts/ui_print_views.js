@@ -116,10 +116,6 @@ var PlaceCardCollectionView = Backbone.View.extend({
        
        $container.append('<div class="crop_bottom_top_left horizontal_crop_mark"></div><div class="crop_bottom_top_right horizontal_crop_mark"></div><div class="crop_bottom_bottom_left vertical_crop_mark"></div><div class="crop_bottom_bottom_right vertical_crop_mark"></div>')
        }
-        else if (options.per_page == 8) {
-       
-       
-       }
        group.forEach(function(guest) {
         var place_card = new PlaceCardView(_.extend({
           model: guest,
