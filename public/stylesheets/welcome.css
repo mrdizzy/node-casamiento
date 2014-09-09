@@ -55,25 +55,40 @@ body {
 		border-right: 1px dotted grey;
 		background-image:url('/gfx/background_wiggle.svg');  
 	}  
-	 
-		#logo { 
+	  #header_wrapper {
+				text-align:center;
+	    background-color:#fff; 
+			border-bottom:1px solid black;
+    }
+			#logo { 
+				display:block;
+				float:left;
+				margin-left:1em;
+				padding:1em; 
+				max-width:202px;
+			}
+			
+			#browse {
+			display:inline-block;
+			font: normal 1.4em 'OS Light';
+			}
+				
+			#dreams_slogan { 
+			margin-top:25px;
+			margin-right:30px;
+			float:right;
 			display:block;
-			margin-left:1em;
-			padding:1em;      
-			width:202px;
+				width:150px;
+			}
+
+				
+		#welcome_column {
+			width:80%; 
+			background-color:#fff;
+			margin:0 auto;
+			border-left:1px dotted #000;
+			border-right: 1px dotted #000;
 		}
-		
-		#dreams_slogan { 
-			width:150px;
-		}
-		
-#welcome_column {
-	width:80%; 
-	background-color:#fff;
-	margin:0 auto;
-	border-left:1px dotted #000;
-	border-right: 1px dotted #000;
-}
 
 #slides_spinner {
 	display:block;
@@ -82,14 +97,8 @@ body {
 	margin-bottom:50px;
 }
 
-#headline_welcome { 
-  float:right;
-  margin-top:0.5em;
-}
-#header_container {	
-		border-bottom:1px solid #000;
-}
-#header_wrapper, #footer {
+
+#footer {
   background-color:#fff; 
 }
 
@@ -173,56 +182,57 @@ body {
 		background-image:none;  
 		width:100%;
 	}
-	#welcome_column { width:100%; }
- 
-	#welcome_column h5 {
-		font-size:3.5em;
-	}
-	
-	#header_container {
-		background-color:#fff;
-		z-index:20;
-		height:39px;
-		position:fixed;
-		width:100%;
-	}
-		#header_wrapper {
-			height:39px;
-		}
-		#logo { 
-			width:115px;
-			padding:0.2em;
-			margin:0 auto;
-		}
-		#dreams_slogan { 
-			width:130px;
-		}
-		#menu_lines { display:block;}
-  .welcome_colour_frame { 
-		width:23px;
-		height:23px;
-		padding:0; 
-		margin-left:20px;
-		border-radius:25px;
-	}
-	 .welcome_colour_swatch {
-			width:19px; 
-			height:19px;
-			margin:2px; 
-			border-radius:20px;
+		#welcome_column { width:100%; }
+	 
+		#welcome_column h5 {
+			font-size:3.5em;
 		}
 		
- .welcome_colour_label { 
-		padding-top:4px;
-		margin-left:4px;
-		font-size:1em;
-	}
-		#footer .genesis_collection, 
-		#footer .castello_collection, 
-		.footer_seperator { 
-			float:none;
-			width:100%; 
+		#header_container {
+			background-color:#fff;
+			z-index:20;
+			height:39px;
+			position:fixed;
+			width:100%;
 		}
+			#header_wrapper {
+				height:39px;
+			}
+			#logo { 
+				width:115px;
+				padding:0.2em;
+				margin:0 auto;
+			}
+			#dreams_slogan { 
+				width:130px;
+			}
+			#menu_lines { display:block;}
+			
+		.welcome_colour_frame { 
+			width:23px;
+			height:23px;
+			padding:0; 
+			margin-left:20px;
+			border-radius:25px;
+		}
+		 .welcome_colour_swatch {
+				width:19px; 
+				height:19px;
+				margin:2px; 
+				border-radius:20px;
+			}
+			
+		.welcome_colour_label { 
+			padding-top:4px;
+			margin-left:4px;
+			font-size:1em;
+		}
+			#footer .genesis_collection, 
+			#footer .castello_collection, 
+			.footer_seperator { 
+				float:none;
+				width:100%; 
+			}
 }
 
 	

@@ -99,7 +99,7 @@ var PlaceCardCollectionView = Backbone.View.extend({
     // Add crop marks
       var $container = $('<div class="up_' + options.per_page + '"></div>"');
       if (options.per_page == 3) {
-       $container.html('<div class="crop_marks up_' + options.per_page + '_crop_marks"><div class="horizontal_crop_mark crop_top_bottom_left"></div><div class="horizontal_crop_mark crop_top_bottom_right"></div><div class="crop_top_top_left vertical_crop_mark"></div><div class="crop_top_top_right vertical_crop_mark"></div></div>')
+       $container.html('<div class="crop_marks"><div class="horizontal_crop_mark crop_top_bottom_left"></div><div class="horizontal_crop_mark crop_top_bottom_right"></div><div class="crop_top_top_left vertical_crop_mark"></div><div class="crop_top_top_right vertical_crop_mark"></div></div>')
        
        $container.append('<div class="crop_horizontal_left horizontal_crop_mark" style="top:52.125mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:89.25mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:126.375mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:163.5mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:200.625mm;"></div>')
        
@@ -108,10 +108,17 @@ var PlaceCardCollectionView = Backbone.View.extend({
        $container.append('<div class="crop_bottom_top_left horizontal_crop_mark"></div><div class="crop_bottom_top_right horizontal_crop_mark"></div><div class="crop_bottom_bottom_left vertical_crop_mark"></div><div class="crop_bottom_bottom_right vertical_crop_mark"></div>')
        }
        else if (options.per_page == 4) {
-           $container.html('<div class="crop_marks up_' + options.per_page + '_crop_marks"><div class="horizontal_crop_mark crop_top_bottom_left"></div><div class="horizontal_crop_mark crop_top_bottom_right"></div><div class="crop_top_top_left vertical_crop_mark"></div><div class="crop_top_top_right vertical_crop_mark"></div></div>')
+           $container.html('<div class="crop_marks"><div class="horizontal_crop_mark crop_top_bottom_left"></div><div class="horizontal_crop_mark crop_top_bottom_right"></div><div class="crop_top_top_left vertical_crop_mark"></div><div class="crop_top_top_right vertical_crop_mark"></div></div>')
        
+       
+       $container.append('<div class="crop_horizontal_left horizontal_crop_mark" style="top:52.125mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:89.25mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:126.375mm;"></div>')
+       $container.append('<div class="crop_horizontal_right horizontal_crop_mark" style="top:52.125mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:89.25mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:126.375mm;"></div>')
        
        $container.append('<div class="crop_bottom_top_left horizontal_crop_mark"></div><div class="crop_bottom_top_right horizontal_crop_mark"></div><div class="crop_bottom_bottom_left vertical_crop_mark"></div><div class="crop_bottom_bottom_right vertical_crop_mark"></div>')
+       }
+        else if (options.per_page == 8) {
+       
+       
        }
        group.forEach(function(guest) {
         var place_card = new PlaceCardView(_.extend({

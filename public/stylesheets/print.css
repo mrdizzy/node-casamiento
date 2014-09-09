@@ -29,8 +29,6 @@
     width:210mm;
   }
   
-  .outline { display:none; }
-  
   #printsvg .up_8 {
     height:296.8mm; /* slightly less than 297 to avoid blank sheets as height is dodgy */
     width:210mm;
@@ -51,6 +49,7 @@
         margin:0 auto;
         clear:both;
         float:none;
+        border:1px dotted grey;
       }
     
   .break { page-break-after:always;}
