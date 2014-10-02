@@ -1,6 +1,6 @@
 var express = require('express'),
   http = require('http'),
- // compression = require('compression'), // gzip compression for static files
+  compression = require('compression'), // gzip compression for static files
   resource = require('express-resource'),
   db = require('./config/db').test_ebay,
   exposeTemplates = require('./lib/middleware/expose_handlebars_to_client'),
@@ -27,7 +27,7 @@ var assetManagerGroups = {
         { 'route': /\/static\/javascripts\/all\.js/
         , 'path': __dirname + '/public/javascripts/libraries/'
         , 'dataType': 'javascript'
-        , 'files': [ 'localstorage.min.js', 'viewport.js','fastclick.js', 'picturefill.min.js','in_groups_of.js', 'font_loader.js', 'new_font_picker.js','new_color_picker.js','jquery_form.js' ]
+        , 'files': [ 'localstorage.min.js', 'viewport.js','fastclick.js', 'picturefill.min.js','in_groups_of.js', 'font_loader.js', 'new_font_picker.js','new_color_picker.js','jquery_form.js', 'jquery.slides.min.js' ]
     },
     'adminjs': 
         {
@@ -61,7 +61,7 @@ app.configure(function() {
     });
     
     // Compresses static files and res.json responses    
-    // app.use(compression()); // must be one of the first middlewares to compress effectively
+     app.use(compression()); // must be one of the first middlewares to compress effectively
     
     app.use(express.cookieParser());
     app.use(express.favicon());

@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+  
+    <meta name="viewport" content="initial-scale=1, user-scalable=no">
+    
+    <title>Casamiento</title>
+   
+    <link rel="shortcut icon" href="/favicon.ico" />   
+    
+    <link rel="stylesheet" href="/stylesheets/welcome.css" />     
+   
+    <style type="text/css">
+        <%- inline_styles %>
+    </style>
+    
+  </head>
+
+  <body>
+    
+    <div id="inner_page_container">
+      <div id="header_wrapper">
+        
+          <img src="/gfx/logo/casamiento_gry.svg" id="logo">   
+          <div id="browse" style="margin-top:15px;height:50px;line-height:50px;border-left:1px solid black;padding-left:10px;">
+            <img src="/gfx/browse/open182.svg" style="margin:0;padding:0;width:40px;vertical-align:middle" />
+            BROWSE DESIGNS
+          </div>
+          <img src="/gfx/logo/drms.svg" id="dreams_slogan">   
+                    
+          <div style="clear:both;"></div>
+     
+      </div>
+      <div id="welcome_column"><%- middle %></div>
+    
+    <div id="footer">
+      <div class="genesis_collection"><img src="/gfx/logo/gen_compact.png" style="width:160px"/></div>
+      <div class="footer_seperator"><img src="/gfx/three_across.png" style="width:60px"/></div>
+      <div class="castello_collection"><img src="/gfx/logo/castello.png" style="width:250px;" /></div>
+    </div>
+    
+    <div style="clear:both;"></div>
+     
+    
+  </body>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/javascripts/libraries/jquery.slides.min.js"></script>
+  <script type="text/javascript" src="/javascripts/libraries/picturefill.min.js"></script>
+  <script>
+  $(function() {              
+    $("#slides_container").slidesjs({
+      width: 360,
+      height: 207,
+      play: {
+        active: false,
+        auto: true,        
+        interval: 5000
+      },
+      pagination: {
+        active: false
+      }, 
+      callback: {
+        loaded: function(n) {
+          $('#slides_spinner').hide();
+        }
+      },
+      navigation: { 
+        active: false }
+      })
+    })
+  </script>
+</html>

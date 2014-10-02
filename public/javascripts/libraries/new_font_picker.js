@@ -9,18 +9,16 @@
       current_index = 0,
       tables = [],
       clicked_font = true,
-
-    $container_div = $('<div></div>').addClass("font_selector_container");
-    $up_arrow_container = $('<div></div>').addClass("up_arrow_container").append($('<div></div>').addClass("up_arrow").html("&#9650"));
-
-    $table_container = $('<div></div>').css("position", "relative")
+      $container_div = $('<div></div>').addClass("font_selector_container");
+    var $up_arrow_container = $('<div></div>').addClass("up_arrow_container").append($('<div></div>').addClass("up_arrow").html("&#9650"));
+    var $table_container = $('<div></div>').css("position", "relative")
     
     $container_div.append($up_arrow_container).append($table_container)
     
     var $selected_font = $('<table class="selected_font" class="fonts_table"></table>');
-    $selected_row = $('<tr></tr>');
-    $selected_image = $('<img src="/fonts/' + selected_font + '.svg">')
-    $selected_font_name= $('<td class="font_name">'+ selected_font + '</td>');
+    var $selected_row = $('<tr></tr>');
+    var $selected_image = $('<img src="/fonts/' + selected_font + '.svg">')
+    var $selected_font_name= $('<td class="font_name">'+ selected_font + '</td>');
     $selected_row.append($('<td class="font_image"></td>').append($selected_image));
     $selected_row.append($selected_font_name)
     $selected_font.append($selected_row)
@@ -51,11 +49,11 @@
     
     // Enter
     $selected_font.click(function(e) {
-        $up_arrow_container.show();
+        
         tables[current_index].append($down_arrow);
         tables[current_index].show();
-        clicked_font = false;
-    
+        $up_arrow_container.show();
+        clicked_font = false;    
     })
   
     // Move down

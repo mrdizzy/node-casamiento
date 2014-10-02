@@ -24,7 +24,7 @@
     text-align:center;
     margin:0 auto;    
     width:70%;
-  padding:1em;
+    padding:1em;
     border-top-left-radius:30px;
     border-bottom-right-radius:30px;
     text-align:center;
@@ -61,7 +61,7 @@
       color:white;
       text-align:center;
       float:right;
-      font:1em normal 'OS Light';
+      font: normal 1em 'OS Light';
       padding:0.25em;
       width:40%;
     }
@@ -159,6 +159,13 @@
       font: normal 1.2em "OS";
       padding:0.25em; 
       text-align:center;
+    }
+  
+    #buy {
+      clear:both;
+      font-size:1.2em;
+      width:60%;
+      padding:0.25em;
     }
       #paypal { 
         padding-top:0.25em;

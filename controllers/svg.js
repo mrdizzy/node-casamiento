@@ -15,8 +15,8 @@ exports.show = function(req, res) {
   // We get the attachment and decompress it using zlib, then use the event-stream
   // library to replace instances of the colours and pipe it back to the response
   // after recompressing it
+  res.set("Content-Encoding", "gzip")
   res.set("Content-Type", "image/svg+xml")
-  res.set("Content-Encoding", "deflate")
   if(colour_2) {
     db.getAttachment("svg__" + id, "svg")
       .pipe(zlib.createGunzip())
@@ -25,14 +25,14 @@ exports.show = function(req, res) {
       // We need to work out why!
       .pipe(es.replace(/0000FF/g, colour_1)) // 0000FF is red
       .pipe(es.replace(/FF0000/g, colour_2)) // FF0000 is blue      
-      .pipe(zlib.createDeflate())
+      .pipe(zlib.createGzip())
       .pipe(res)
   }
   else {
     db.getAttachment("svg__" + id, "svg")
       .pipe(zlib.createGunzip())
       .pipe(es.replace(/FF0000/g, colour_1)) // FF0000 is red
-      .pipe(zlib.createDeflate())
+      .pipe(zlib.createGzip())
       .pipe(res)
   }
 }

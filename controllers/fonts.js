@@ -1,5 +1,6 @@
 var db = require('./../config/db').test_ebay,
-  fs = require('fs');
+  fs = require('fs'),
+  zlib = require('zlib');
 
 // COUCHDB:
 // { _id: "TrajanPro",
@@ -18,21 +19,28 @@ exports.new = function(req,res) {
 
 exports.show = function(req, res) {
   var id = req.params.font;
-  console.log(req.format)
   var stream = db.getAttachment(id, req.format)
   if(req.format == 'woff') {
-  res.contentType('application/font-woff');
+    res.header('Cache-Control', 'max-age=3600')
+    res.setHeader('Expires', new Date(Date.now() + 345600000).toUTCString())
+    res.contentType('application/font-woff');
+    stream.pipe(res)
   } else if (req.format == 'svg') {
     res.contentType('image/svg+xml')
-  }else {
+    res.set("Content-Encoding", "gzip")
+    stream.pipe(zlib.createGzip()).pipe(res)
+  } else {
     res.contentType('application/vnd.ms-fontobject')
+    res.set("Content-Encoding", "gzip")
+    stream.pipe(zlib.createGzip()).pipe(res)
   }
-  stream.on("data", function(chunk) {
-    res.write(chunk)
-  });
-  stream.on('end', function() {
-    res.end();
-  });
+  
+// stream.on("data", function(chunk) {
+//   res.write(chunk)
+// });
+// stream.on('end', function() {
+//   res.end();
+// });
 }
 
 exports.index = function(req, res) {

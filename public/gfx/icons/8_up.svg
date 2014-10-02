@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  version="1.1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 width="76" height="106" viewBox="-0.64 -0.1 76 106" enable-background="new -0.64 -0.1 76 106" xml:space="preserve">
+<defs>
+</defs>
+<rect x="0.5" y="0.5" fill="#FFFFFF" stroke="#000000" width="73.94" height="104.58"/>
+<polyline fill="#FFFFFF" stroke="#000000" stroke-dasharray="3" points="37.47,0.5 37.47,26.64 0.5,26.64 "/>
+<line fill="#FFFFFF" stroke="#000000" stroke-dasharray="3" x1="74.5" y1="26.64" x2="37.53" y2="26.64"/>
+<polyline fill="#FFFFFF" stroke="#000000" stroke-dasharray="3" points="37.47,26.64 37.47,52.79 0.5,52.79 "/>
+<line fill="#FFFFFF" stroke="#000000" stroke-dasharray="3" x1="74.5" y1="52.79" x2="37.53" y2="52.79"/>
+<polyline fill="#FFFFFF" stroke="#000000" stroke-dasharray="3" points="74.5,78.93 37.53,78.93 37.53,52.79 "/>
+<polyline fill="#FFFFFF" stroke="#000000" stroke-dasharray="3" points="0.5,78.93 37.47,78.93 37.47,105.08 "/>
+</svg>

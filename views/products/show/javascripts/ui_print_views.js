@@ -87,14 +87,41 @@ var PlaceCardView = GuestView.extend({
   }
 })
 
+// Used to render collections of place cards for both print view and 
+// UI preview view
 var PlaceCardCollectionView = Backbone.View.extend({
   render: function() {
     var options = this.options;
     var grouped_place_cards = inGroupsOf(thisProduct.get("guests").toArray(), options.per_page)
     
     grouped_place_cards.forEach(function(group) {
+    
+    // Add crop marks
       var $container = $('<div class="up_' + options.per_page + '"></div>"');
-      group.forEach(function(guest) {
+      if ((options.per_page == 3) && options.svg) {
+       $container.html('<div class="crop_marks"><div class="horizontal_crop_mark crop_top_bottom_left"></div><div class="horizontal_crop_mark crop_top_bottom_right"></div><div class="crop_top_top_left vertical_crop_mark"></div><div class="crop_top_top_right vertical_crop_mark"></div></div>')
+       
+       $container.append('<div class="crop_horizontal_left horizontal_crop_mark" style="top:52.125mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:89.25mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:126.375mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:163.5mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:200.625mm;"></div>')
+       
+       $container.append('<div class="crop_horizontal_right horizontal_crop_mark" style="top:52.125mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:89.25mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:126.375mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:163.5mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:200.625mm;"></div>')
+       
+       $container.append('<div class="crop_bottom_top_left horizontal_crop_mark"></div><div class="crop_bottom_top_right horizontal_crop_mark"></div><div class="crop_bottom_bottom_left vertical_crop_mark"></div><div class="crop_bottom_bottom_right vertical_crop_mark"></div>')
+       }
+       else if ((options.per_page == 4) && options.svg) {
+           $container.html('<div class="crop_marks"><div class="horizontal_crop_mark crop_top_bottom_left"></div><div class="horizontal_crop_mark crop_top_bottom_right"></div><div class="crop_top_top_left vertical_crop_mark"></div><div class="crop_top_top_right vertical_crop_mark"></div></div>')
+       
+       
+       $container.append('<div class="crop_horizontal_left horizontal_crop_mark" style="top:52.125mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:89.25mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:126.375mm;"></div>')
+       $container.append('<div class="crop_horizontal_right horizontal_crop_mark" style="top:52.125mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:89.25mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:126.375mm;"></div>')
+       
+       $container.append('<div class="crop_bottom_top_left horizontal_crop_mark"></div><div class="crop_bottom_top_right horizontal_crop_mark"></div><div class="crop_bottom_bottom_left vertical_crop_mark"></div><div class="crop_bottom_bottom_right vertical_crop_mark"></div>')
+       
+       } else if ((options.per_page == 8) && options.svg) {
+        $container.html('<div style="z-index:1001;width:10%;left:45%;height:12.5%;position:absolute;border-bottom:1px dashed lightgrey;"></div><div style="z-index:1001;width:10%;left:45%;height:25%;position:absolute;border-bottom:1px solid lightgrey;"></div><div style="z-index:1001;width:10%;left:45%;height:37.5%;position:absolute;border-bottom:1px dashed lightgrey;"></div><div style="z-index:1001;width:10%;left:45%;height:50%;position:absolute;border-bottom:1px solid lightgrey;"></div><div style="z-index:1001;width:10%;left:45%;height:62.5%;position:absolute;border-bottom:1px dashed lightgrey;"></div><div style="z-index:1001;width:10%;left:45%;height:75%;position:absolute;border-bottom:1px solid lightgrey;"></div><div style="z-index:1001;width:10%;left:45%;height:87.5%;position:absolute;border-bottom:1px dashed lightgrey;"></div>')
+          
+        $container.append('<div style="z-index:1001;height:2.5%;left:50%;position:absolute;border-left:1px solid lightgrey;"></div><div style="z-index:1001;height:5%;top:22.5%;left:50%;position:absolute;border-left:1px solid lightgrey;"></div><div style="z-index:1001;height:5%;top:47.5%;left:50%;position:absolute;border-left:1px solid lightgrey;"></div><div style="z-index:1001;height:5%;top:72.5%;left:50%;position:absolute;border-left:1px solid lightgrey;"></div><div style="z-index:1001;height:2.5%;bottom:0;left:50%;position:absolute;border-left:1px solid lightgrey;"></div>')
+       }
+       group.forEach(function(guest) {
         var place_card = new PlaceCardView(_.extend({
           model: guest,
           svg: options.svg
@@ -102,8 +129,9 @@ var PlaceCardCollectionView = Backbone.View.extend({
         options)).render().el
         $container.append(place_card)
       })
-      $container.append("<div class='break'></div>")
+     
       this.$el.append($container)
+     this.$el.append("<div class='break'></div>")
     }, this)
       
     return this;
@@ -184,13 +212,14 @@ var PrintControlPanelView = Backbone.View.extend({
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
     
     // Wait for SVG images to be loaded before printing
-    var images  = $('#printsvg img'),
+    var images  = $('#printsvg img.place_card_image'),
       counter = images.length,
       svg_url = thisProduct.get("_id") + "/" + thisProduct.hex();
       
     images.attr('src', "/svg/" + svg_url).load(function() {
       counter--;
       if(counter == 0) {   
+      console.log("printing!")
         window.print()        
         $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
       }

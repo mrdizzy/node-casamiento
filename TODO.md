@@ -1,11 +1,20 @@
 TODO
 
 Make a model to control the subviews?
+Set cache expires header on non-changing assets: branding, images, fonts
+
+/all
+
+* Add dashed line menu button to reveal navigation: browse, about, contact
+
+/welcome 
+
+* Add navigation << >> and * * * * * for desktop view
 
 /admin
 --------------------------------------------------------------------------
   * Add 'add colour' button to enable 2 colour designs
-  * Fix adding transparent images to existing products
+  * Fix adding images to existing products
   * Allow selecting of default font, baseline and size via GUI
   * Move JavaScript templates into directory with their dependencies
   * Create price tiers for products rather than individually entering price of each product
@@ -13,52 +22,56 @@ Make a model to control the subviews?
 
 /product_page
 --------------------------------------------------------------------------
-  * Make colour picker infinite so it scrolls back to the beginning again
   * After colour has been changed, make sure related colour pickers automatically show new default colour panel that contains the hues closest to new selected
+  * Stop flat preview name place card from using one of the guest names. Stick with "Mr. Guest Name" and make it uneditable
+  * Scroll bar disappears after rendering flat_preview
+  * Stop crashing on wrong id  
+  * When moving to the print page, if any new guests have been added there will not be place cards for them
+  * Make thisProduct save on change of guest name
   
-  * Stop crashing on wrong id
+  * Use picturefill() to call picturefill on elements after javascript view renders
+  * Make javascripts in an external file to reduce overhead and allow caching  
   
-  * Use picturefill() to call picturefill on elements   
-  * Call picturefill on images to render appropriate resolutions
-  
-  * when rendered for the first time with memory of previous product specs, change colours for 3d images
   * Highlight each step after completion
   * Allow selection of texture
   * Allow selection of thickness
-  * Choose better icon for PRINT YOURSELF button
-  * Style PayPal button prpperly
-  * Make step descriptions more verbose
-  * Product format step description needs to be written
   * Card thickness will change based on texture selected
+  * Make step descriptions more verbose
+  * Remove product format step - add it to top with name place showing size
   * Improve product descriptions
   * Quantity step description, explaining the "snap to 8" feature
   * Show related designs on product page
   * Show spinner while images load
   * Show clickable product tags
   
-  * Fix product page font-selector as it is not showing top arrow and also does not display selected font correctly when you have navigated to #print and back to #flat_preview again  
+  * Update all images for existing products: Damask, Birds of Paradise, Birds of Spiral, Simplicity, Together Forever, Chess, Ornamental, Paisley, Wild Vintage, Guilloche, FLORAL, Rose, Foliage, Borders, Acorn, Garden of Life (16)
+  
+  * Add Facebook, Twitter, Google+ and PinIt like buttons
+  
+  * Fix product page font-selector as it does not display selected font correctly when you have navigated to #print and back to #flat_preview again  
+  
+  * Font picker name description text is unformatted
   * make font selector directly change the font and size of thisProduct rather than in the view
   * Change Font images to fit neatly in fonts menu
-   
-  * When moving to the print page, if any new guests have been added there will not be place cards for them
-  * Make thisProduct save on change of guest name
 
-  * Tooltips for + and - and baseline shift
-  * Stop flat preview name place card from using one of the guest names. Stick with "Guest Name" and make it uneditable
+  * Crop marks for printing
+  * Make clearer print icon button
+  
   * If mobile browser, post names to new controller when printer icon clicked and save in database with new id, then render with id to make completely unique page for sharing with google cloud print
- 
+  * Make colour picker infinite so it scrolls back to the beginning again
+
+/print UI page
+  * Font does not display on print UI page when moving back and forwards between the preview page
+  * Add global reset font/baseline button 
+  * Global navigation buttons are not vertically aligned properly
+  * Top of place cards on mobile print are obscured by the fixed global menu
+  * Add close button for side panel
+  * Tooltip over guest name on print page to show it can be edited
 
 /responsive
 --------------------------------------------------------------------------
   Mobile:
-  * Choose how to implement PRINT YOURSELF button on smartphone view
   * Adjust landscape display of product page on smaller smartphones
-
-  /print UI page
-  * Font does not display on print UI page when moving back and forwards between the preview page
-  * Add global reset font/baseline button 
-  * Format control panel responsively
-  * Remove logo from panel for mobile browsers
 
 /invoices
 --------------------------------------------------------------------------

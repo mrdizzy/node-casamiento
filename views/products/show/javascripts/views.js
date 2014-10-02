@@ -51,12 +51,10 @@ var StepView = Backbone.View.extend({
       }
       thisProduct.set("quantity", new_quantity)
       $field.val(new_quantity)
-      thisProduct.save()
     }
   },
   updateQty: function(number) {
     thisProduct.adjustQuantity(number)
-    thisProduct.save()
   },
   renderQtyAndPrice: function() {    
     this.$('#qty').val(thisProduct.get("quantity"))       
@@ -103,7 +101,7 @@ var StepView = Backbone.View.extend({
         index: i
       });
     }
-    $result.find('#fonts').fontPicker({
+    this.$el.find('#fonts').fontPicker({
       fonts: casamiento_fonts, 
       selected_font: thisProduct.get("font")
     });
