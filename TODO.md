@@ -15,7 +15,6 @@ Set cache expires header on non-changing assets: branding, images, fonts
 --------------------------------------------------------------------------
   * Add 'add colour' button to enable 2 colour designs
   * Fix adding images to existing products
-  * Allow selecting of default font, baseline and size via GUI
   * Move JavaScript templates into directory with their dependencies
   * Create price tiers for products rather than individually entering price of each product
   * Remove svgupload field form data field form (make it stale)

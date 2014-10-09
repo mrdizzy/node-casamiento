@@ -69,6 +69,7 @@ var ProductsView = Backbone.View.extend({
 var CurrentProductView = Backbone.View.CouchDB.extend({
   el: '#cpv',
   initialize: function() {
+    this.place_card_view = new PlaceCardView({model: this.model})
     this.model.on("sync", this.render, this)
     this.model.on("change:colours", this.renderColours, this) 
     this.model.on("change:background", this.renderBackground, this)
@@ -84,7 +85,7 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   },
   changeFont: function(e, font) {   
     this.model.set("font_size", 0.08)
-    this.model.set("font", font.font)
+    this.model.set("font", font)
   },
   prepareSVG: function(e) {
    var that = this,
@@ -165,7 +166,7 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
      this.$('#font_picker_wrapper').fontPicker({
       selected_font: this.model.get("font")
     });
-   var place_card = new PlaceCardView({model: this.model}).render()
+   var place_card = this.place_card_view.render()
    this.$('#place_card').html(place_card.el)
    place_card._renderFontSize();
     // Build attachments
@@ -180,7 +181,6 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
 var PlaceCardView = Backbone.View.extend({
   className: 'place_card_view',
   initialize: function() {
-    this.listenTo(this.model, 'render:font', this._renderFontSize);
     this.listenTo(this.model, 'change:font', this._renderFontFamily);
     this.listenTo(this.model, 'change:font_size', this._renderFontSize);
     this.listenTo(this.model, 'change:baseline', this._renderBaseline);
@@ -246,9 +246,10 @@ var PlaceCardView = Backbone.View.extend({
     this.$('input').css('font-size', this.font_size + this.units);
   }
 })
-  function appendFont(font) {
+
+function appendFont(font) {
   $('head').append("<style type='text/css'> @font-face { font-family:'" + font + "'; src: url('/fonts/"+ font + ".eot?') format('eot'), url('/fonts/" + font + ".woff') format('woff'); }</style>");
-  }
+}
    //var options_for_select = "";
    //default_tags.forEach(function(tag) {
    //    if(_.contains(tags, tag)) {

@@ -2,6 +2,11 @@ var db = require('./../config/db').test_ebay,
   zlib = require('zlib'),
   es = require('event-stream');
   
+// This controller has one function, to pull a compressed SVG out of the 
+// database and to replace the colours with the user defined colours
+// by decompressing it and using a global find-and-replace. We use the 
+// event-stream module to replace the strings using streams.
+  
 exports.show = function(req, res) {
   var id = req.params.id,
     colours = req.params.colours;
@@ -17,7 +22,7 @@ exports.show = function(req, res) {
   // after recompressing it
   res.set("Content-Encoding", "gzip")
   res.set("Content-Type", "image/svg+xml")
-  if(colour_2) {
+  if(colour_2) { // two colour SVGs
     db.getAttachment("svg__" + id, "svg")
       .pipe(zlib.createGunzip())
       // Make sure the regexes are in this order (blue first, then red), 
