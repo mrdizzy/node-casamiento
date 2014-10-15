@@ -18,27 +18,35 @@
 	table { font-size:inherit;font:100%;width:100%; }
 	pre, code, kbd, samp, tt { font-family:monospace;*font-size:108%;line-height:100%; }
 
+@font-face { font-family:"TP"; src: url('/f/t.eot?') format('eot'), url('/f/t.woff') format('woff'); }
 	@font-face { font-family:"GaraI"; src: url('/f/GARAIT.eot?') format('eot'), url('/f/gggg.woff') format('woff'); }
 	@font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 	@font-face { font-family:"Gara"; src: url('/f/OSL.eot?') format('eot'), url('/f/GARA.woff') format('woff'); }
 
 	#welcome_column h5 { 
-		font: normal 3.88em "GaraI";
+	font-family:'TP';font-size:3em;letter-spacing:0.03em;line-height:1.5em;margin-top:0.5em;
+	
 		text-align:center;
+		font-weight:normal;
 		color:#000;
-		line-height:1.2em;
 		margin-left:0.5em;
 		margin-right:0.5em;
 	}
 	
-	#welcome_column p { 
+	#welcome_column p, ul { 
 		margin-right:1em;
-		font-family:'OS Light';
-		font-size:1.2em;
+		font-family:'Josefin Slab';
+		font-size:1.4em;
 		font-weight:normal;
 		margin-left:1em;
 		padding-bottom:20px;
-		line-height:1.7em;
+		line-height:1.4em;
+	}
+	
+	li {
+	margin-left:2.5em;
+	margin-top:0.25em;
+		list-style-type: disc;
 	}
 
 /* HEADER AND FOOTER
@@ -49,7 +57,7 @@ body {
 
 	#inner_page_container { 
 		background-color:#fff; 
-		width:95%; 
+		width:97%; 
 		margin:0 auto; 
 		border-left: 1px dotted grey; 
 		border-right: 1px dotted grey;
@@ -83,7 +91,7 @@ body {
 
 				
 		#welcome_column {
-			width:80%; 
+			width:90%; 
 			background-color:#fff;
 			margin:0 auto;
 			border-left:1px dotted #000;
@@ -204,7 +212,7 @@ body {
 				margin:0 auto;
 			}
 			#dreams_slogan { 
-				width:130px;
+				width:140px;
 			}
 			#menu_lines { display:block;}
 			
@@ -254,8 +262,7 @@ body {
 			width:90%;
 		}
 		#welcome_column h5 {
-		  margin-left:1em;
-		  margin-right:1em;
-			font-size:5em;
+		 
+			font-size:2.1em;
 		}
 }
