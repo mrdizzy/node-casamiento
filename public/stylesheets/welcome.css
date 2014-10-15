@@ -36,7 +36,8 @@
 		margin-right:0.5em;
 	}
 	
-	#welcome_column p { 
+	
+	p { 
 		margin-right:1em;
 		font-family:'Josefin Slab';
 		font-size:1.4em;
@@ -57,6 +58,15 @@
 		margin-right:0.5em;
 	}
 
+	p.bullet_text {
+		font-family:'TP';
+		letter-spacing:0.3em;
+		padding-bottom:0.4em;
+		margin-bottom:0;
+		font-size:1.2em;
+		border-bottom:1px  dotted black;
+		margin-bottom:1em;
+	}
 /* HEADER AND FOOTER
 ==================================== */
 body {
@@ -176,7 +186,7 @@ body {
 	}
 	
 	.hex {
-		margin-top:8px;
+		margin-top:6px;
 		margin-left:30px;
 		width:60px;
 		height:50px;
@@ -297,7 +307,7 @@ body {
 		}
 		#welcome_column h5 {
 		 
-			font-size:2.2em;
+			font-size:2.4em;
 			line-height:1.5em;
 		}
 		#welcome_column h6 {
