@@ -24,8 +24,11 @@
 	@font-face { font-family:"Gara"; src: url('/f/OSL.eot?') format('eot'), url('/f/GARA.woff') format('woff'); }
 
 	#welcome_column h5 { 
-	font-family:'TP';font-size:3em;letter-spacing:0.03em;line-height:1.5em;margin-top:0.5em;
-	
+	font-family:'TP';
+	font-size:3em;
+	letter-spacing:0.03em;
+	line-height:1.5em;
+	margin-top:0.5em;	
 		text-align:center;
 		font-weight:normal;
 		color:#000;
@@ -33,7 +36,7 @@
 		margin-right:0.5em;
 	}
 	
-	#welcome_column p, ul { 
+	#welcome_column p { 
 		margin-right:1em;
 		font-family:'Josefin Slab';
 		font-size:1.4em;
@@ -43,10 +46,15 @@
 		line-height:1.4em;
 	}
 	
-	li {
-	margin-left:2.5em;
-	margin-top:0.25em;
-		list-style-type: disc;
+	#welcome_column h6 {
+		font-family:'GaraI';
+		font-weight:normal;
+		font-size:3em;
+		text-align:center;
+		line-height:1.2em;
+		letter-spacing:0.0005em;
+		margin-left:0.5em;
+		margin-right:0.5em;
 	}
 
 /* HEADER AND FOOTER
@@ -91,7 +99,7 @@ body {
 
 				
 		#welcome_column {
-			width:90%; 
+			width:85%; 
 			background-color:#fff;
 			margin:0 auto;
 			border-left:1px dotted #000;
@@ -167,6 +175,26 @@ body {
 		font-size:1.2em;
 	}
 	
+	.hex {
+		margin-top:8px;
+		margin-left:30px;
+		width:60px;
+		height:50px;
+		background-image:url('/gfx/hex.svg');
+		background-repeat:no-repeat;
+		background-size:100%;
+		text-align:center;
+		line-height:45px;
+		color:white;
+		float:left;
+		font-size:2.4em;
+		font-weight:600;
+		font-style:italic;
+		font-family:'Josefin Slab';
+	}
+	.how_to_bullet_container {
+		margin-left:80px;
+	}
 .shell { 
 	background-image:url('/gfx/bullets/wiggle.svg');
 	background-repeat:no-repeat; 
@@ -251,6 +279,13 @@ body {
 		background-image:none;
 	} 
 	
+	.hex { 
+		width:50px;
+		height:50px;
+		}
+	.how_to_bullet_container {
+		margin-left:70px;
+	}
 	#inner_page_container { 
 		width:100%;
 	}
@@ -258,10 +293,20 @@ body {
 			width:160px;
 		}
 		#welcome_column {
-			width:92%;
+			width:96%;
 		}
 		#welcome_column h5 {
 		 
-			font-size:2.1em;
+			font-size:2.2em;
+			line-height:1.5em;
+		}
+		#welcome_column h6 {
+			
+		margin-left:0.2em;
+		margin-right:0.2em;
+		}
+		.shell {
+			margin-bottom:35px;
+			margin-top:15px;
 		}
 }
