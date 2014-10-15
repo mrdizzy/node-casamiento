@@ -252,14 +252,13 @@ body {
 	} 
 	
 	#inner_page_container { 
-		background-image:none;  
 		width:100%;
 	}
 		#logo { 
 			width:160px;
 		}
 		#welcome_column {
-			width:90%;
+			width:92%;
 		}
 		#welcome_column h5 {
 		 
