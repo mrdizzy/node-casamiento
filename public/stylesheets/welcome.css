@@ -127,7 +127,7 @@ body {
 		padding:1em;
 	}
 	.slidesjs-previous:before {
-		content: ' \00ab'
+		content: '\00ab '
 	}
 	.slidesjs-next {	
 		margin-left:7em;	
@@ -366,4 +366,16 @@ body {
 		margin-left:6em;	
 	}
 
+	.welcome_colour_frame { 
+		width:32px;
+		height:32px;
+	}
+		.welcome_colour_swatch {
+			width:26px; 
+			height:26px;
+		}
+	.welcome_colour_label { 
+		padding-top:10px;
+	margin-left:5px;
+		}
 }
