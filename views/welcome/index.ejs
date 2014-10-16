@@ -8,34 +8,8 @@
 
 <%- contentFor('middle') %>
 
-      <div style="width:40%;float:left;">
-      <h5>Place cards you can personalise and print straight from your browser&hellip;</h5>
+      <div id="slides_column">
       
-      <div class="shell"></div>
-      
-      <p>Your guests will love seeing their names individually printed on our elegant freestanding place cards&hellip;
-      </p>
-      
-      <p>&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs below are bound to compliment your theme&hellip;</p>
-      
-      <h6>Save yourself time, stress and hassle&hellip;</h6>
-    
-      <div class="shell"></div>
-        
-      <p>They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.</p>
-    
-      <p>Place your order today!</p>
-     
-      <p style="margin:0;padding:0;text-align:center;">
-        <img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/>
-      </p>
-     
-      <p style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
-    
-      <span style="font-style:italic;font-size:1.2em;">Lead Designer</span></p>
-      </div>
-  
-      <div style="margin-left:40%;border-left:1px dotted black;">
        <img id="slides_spinner" src="/gfx/spinner.gif" />
  
      <div id="slides_container">
@@ -55,7 +29,7 @@
                http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[0]%> 750px,
                http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 500px,
                http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 400px"
-               sizes="(min-width:801px) 40.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 55vw, 100VW" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %><% } %>"/>
+               sizes="(min-width:901px) 27.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 55vw, 100VW" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %><% } %>"/>
               </a>
               
            <% if (place_card.colours[1]) { %> 
@@ -131,7 +105,7 @@
       
      <% } %>
      </div>
-     <div style="border-top:3px double grey;position:relative;top:-2.55em;margin-bottom:2em"></div>
+     <div id="slide_separator"></div>
     
        <h6>How it works&hellip;</h6>
    
@@ -168,5 +142,34 @@
         <img src="/gfx/tutorials/tutorial_4.gif" style="position: absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;width:86.25%;top:11%;max-width:682px;"/>
         <img src="/gfx/desktop_screen_wide.svg" style="margin:0 auto;width:100%;display:block;"/>
       </div>
+      </div>
+  
+      <div id="description_column">
+      
+      
+      <h5>Place cards you can personalise and print straight from your browser&hellip;</h5>
+      
+      <div class="shell"></div>
+      
+      <p>Your guests will love seeing their names individually printed on our elegant freestanding place cards&hellip;
+      </p>
+      
+      <p>&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs below are bound to compliment your theme&hellip;</p>
+      
+      <h6>Save yourself time, stress and hassle&hellip;</h6>
+    
+      <div class="shell"></div>
+        
+      <p>They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.</p>
+    
+      <p>Place your order today!</p>
+     
+      <p style="margin:0;padding:0;text-align:center;">
+        <img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/>
+      </p>
+     
+      <p style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
+    
+      <span style="font-style:italic;font-size:1.2em;">Lead Designer</span></p>
     </div>
     <div style="clear:both"></div>
