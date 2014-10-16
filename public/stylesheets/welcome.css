@@ -18,57 +18,42 @@
 	table { font-size:inherit;font:100%;width:100%; }
 	pre, code, kbd, samp, tt { font-family:monospace;*font-size:108%;line-height:100%; }
 
-@font-face { font-family:"TP"; src: url('/f/t.eot?') format('eot'), url('/f/t.woff') format('woff'); }
 	@font-face { font-family:"GaraI"; src: url('/f/garamonditalic.eot?') format('eot'), url('/f/garamonditalic.woff') format('woff'); }
 	@font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 
 	#welcome_column h5 { 
-	font-family:'GaraI';
-	font-size:4.4em;
-	font-weight:normal;
-	letter-spacing:-0.01em;
-	line-height:1.2em;
-	margin-top:0.5em;	
-		text-align:center;
-		font-weight:normal;
-		color:#000;
-		margin-left:0.25em;
-		margin-right:0.25em;
+	  font: normal 4.4em/1.2em 'GaraI', serif;
+    letter-spacing:-0.01em;
+	  margin-top:0.5em;	
+	  text-align:center;
+	  color:#000;
+	  margin-left:0.25em;
+	  margin-right:0.25em;
 	}
-	
-	
-	p { 
-		margin-right:1em;
-		font-family:'Josefin Slab';
-		font-size:1.4em;
-		font-weight:normal;
-		margin-left:1em;
-		padding-bottom:20px;
-		line-height:1.4em;
-	}
-	
+		
 	#welcome_column h6 {
-		font-family:'GaraI';
-		font-weight:normal;
-		font-size:3em;
+		font: normal 3em/1.2em 'GaraI', serif;
 		text-align:center;
-		line-height:1.2em;
 		letter-spacing:0.0005em;
 		margin-left:0.5em;
 		margin-right:0.5em;
 	}
-
-	p.bullet_text {
-		font-family:'Josefin Slab';
-		letter-spacing:0em;
-		padding-bottom:0.4em;
-		margin-bottom:0;
-		font-size:1.8em;
-		font-weight:500;
-		font-style:italic;
-		border-bottom:1px  dotted black;
-		margin-bottom:0.75em;
+	
+	p { 
+	  font: normal 1.4em/1.4em 'Josefin Slab', sans-serif;
+		margin-right:1em;
+		margin-left:1em;
+		padding-bottom:20px;
 	}
+
+		p.bullet_text {
+			padding-bottom:0.4em;
+			font-size:1.8em;
+			font-style:italic;
+			border-bottom:1px  dotted black;
+			margin-bottom:0.75em;
+		}
+	
 /* HEADER AND FOOTER
 ==================================== */
 body {
@@ -118,22 +103,70 @@ body {
 			border-right: 1px dotted #000;
 		}
 
-#slides_spinner {
-	display:block;
-	margin:0 auto;
-	margin-top:50px;
-	margin-bottom:50px;
-}
-
-
 #footer {
   background-color:#fff; 
 }
+	#slides_spinner {
+		display:block;
+		margin:0 auto;
+		margin-top:50px;
+		margin-bottom:50px;
+	}
 
-		#slides_container { 
-		  border-bottom:3px double grey; 
-			display:none;
-	  }
+	#slides_container { 
+		display:none;
+	}
+
+	.slidesjs-previous, .slidesjs-next {
+		color:#000;
+		margin-top:-0.4em;
+		font: normal 1.2em 'OS Light';
+		text-transform: uppercase;
+		display:inline-block;
+		position:absolute;
+		padding:1em;
+	}
+	.slidesjs-previous:before {
+		content: ' \00ab'
+	}
+	.slidesjs-next {	
+		margin-left:7em;	
+	}
+		.slidesjs-next:after {
+			content: ' \00bb'
+		}
+
+	.slidesjs-pagination {
+		margin: 10px 0 10px;
+		float: right;
+		list-style: none;
+	}
+
+		.slidesjs-pagination li {
+			float: left;
+			margin: 0 7px;
+		}
+
+		.slidesjs-pagination li a {
+			display: block;
+			width: 13px;
+			height: 0;
+			padding-top: 13px;
+			background-image: url(/gfx/page_circle.png);
+			background-position: 0 0;
+			float: left;
+			overflow: hidden;
+		}
+
+		.slidesjs-pagination li a.active,
+		.slidesjs-pagination li a:hover.active {
+			background-position: 0 -13px
+		}
+
+		.slidesjs-pagination li a:hover {
+			background-position: 0 -26px
+		}
+		
   .welcome_place_card_container {
 	  float:left;
   }
@@ -142,8 +175,8 @@ body {
 	  margin-left:55%;
 	}
   .welcome_slide_container {
-	width:55%;
-	float:left;
+	  width:55%;
+	  float:left;
   }
 	.welcome_place_card_container img {
 	  position:relative;
@@ -293,10 +326,11 @@ body {
 	} 
 	
 	.hex { 
-	margin-top:5px;
+	  margin-top:5px;
 		width:50px;
 		height:50px;
-		}
+		line-height:42px;
+  }
 	.how_to_bullet_container {
 		margin-left:70px;
 	}
@@ -316,11 +350,20 @@ body {
 		}
 		#welcome_column h6 {
 			font-size:2.6em;
-		margin-left:0.2em;
-		margin-right:0.2em;
+		  margin-left:0.2em;
+		  margin-right:0.2em;
 		}
 		.shell {
 			margin-bottom:35px;
 			margin-top:15px;
 		}
+		.slidesjs-pagination li {
+			float: left;
+			margin: 0 3px;
+		}	
+		
+		.slidesjs-next {	
+		margin-left:6em;	
+	}
+
 }
