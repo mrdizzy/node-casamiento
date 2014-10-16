@@ -19,21 +19,21 @@
 	pre, code, kbd, samp, tt { font-family:monospace;*font-size:108%;line-height:100%; }
 
 @font-face { font-family:"TP"; src: url('/f/t.eot?') format('eot'), url('/f/t.woff') format('woff'); }
-	@font-face { font-family:"GaraI"; src: url('/f/GARAIT.eot?') format('eot'), url('/f/gggg.woff') format('woff'); }
+	@font-face { font-family:"GaraI"; src: url('/f/garamonditalic.eot?') format('eot'), url('/f/garamonditalic.woff') format('woff'); }
 	@font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
-	@font-face { font-family:"Gara"; src: url('/f/OSL.eot?') format('eot'), url('/f/GARA.woff') format('woff'); }
 
 	#welcome_column h5 { 
-	font-family:'TP';
-	font-size:3em;
-	letter-spacing:0.03em;
-	line-height:1.5em;
+	font-family:'GaraI';
+	font-size:4.4em;
+	font-weight:normal;
+	letter-spacing:-0.01em;
+	line-height:1.2em;
 	margin-top:0.5em;	
 		text-align:center;
 		font-weight:normal;
 		color:#000;
-		margin-left:0.5em;
-		margin-right:0.5em;
+		margin-left:0.25em;
+		margin-right:0.25em;
 	}
 	
 	
@@ -59,13 +59,15 @@
 	}
 
 	p.bullet_text {
-		font-family:'TP';
-		letter-spacing:0.3em;
+		font-family:'Josefin Slab';
+		letter-spacing:0em;
 		padding-bottom:0.4em;
 		margin-bottom:0;
-		font-size:1.2em;
+		font-size:1.8em;
+		font-weight:500;
+		font-style:italic;
 		border-bottom:1px  dotted black;
-		margin-bottom:1em;
+		margin-bottom:0.75em;
 	}
 /* HEADER AND FOOTER
 ==================================== */
@@ -164,10 +166,11 @@ body {
 	.welcome_colour_frame { 
 		width:37px;
 		height:37px;
-		margin-left:20%;
+		margin-left:5%;
 		float:left;
 		border: 1px solid lightgrey;
 		border-radius:25px;
+		margin-top:5px;
 	}
 		.welcome_colour_swatch {
 			width:31px; 
@@ -180,7 +183,7 @@ body {
 		text-transform:uppercase;
 		float:left;
 		font-family: 'OS Light';
-		padding-top:8px;
+		padding-top:12px;
 		margin-left:7px;
 		font-size:1.2em;
 	}
@@ -194,12 +197,12 @@ body {
 		background-repeat:no-repeat;
 		background-size:100%;
 		text-align:center;
-		line-height:43px;
+		line-height:46px;
 		color:white;
 		float:left;
 		font-size:2.4em;
 		font-weight:700;
-		font-style:normal;
+		font-style:italic;
 		font-family:'Josefin Slab';
 	}
 	.how_to_bullet_container {
@@ -307,9 +310,9 @@ body {
 			width:96%;
 		}
 		#welcome_column h5 {
-		 
-			font-size:2.6em;
-			line-height:1.5em;
+		   margin-left:2%;margin-right:2%;
+			font-size:3.4em;
+			line-height:1.4em;
 		}
 		#welcome_column h6 {
 			font-size:2.6em;
