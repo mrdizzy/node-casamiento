@@ -127,7 +127,7 @@ body {
 		padding:1em;
 	}
 	.slidesjs-previous:before {
-		content: '\00ab '
+		content: '\00ab  '
 	}
 	.slidesjs-next {	
 		margin-left:7em;	
