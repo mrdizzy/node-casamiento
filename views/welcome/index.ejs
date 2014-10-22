@@ -27,8 +27,7 @@
              <a href="/products/<%= place_card._id %>">
                <img width="50" height="90"srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0]%> 1000px,
                http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[0]%> 750px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 500px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/small-<%= place_card.attachments_order[0]%> 400px"
+               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 500px"
                sizes="(min-width:901px) 27.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 55vw, 100vw" <% if (!place_card.colours[1]) { %>style="border:1px solid black;background-color:<%= place_card.colours[0] %><% } %>"/>
               </a>
               
@@ -70,7 +69,7 @@
             http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[1]%> 750px,
             http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 500px,
             http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 400px,
-            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 345x"
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 345px"
             sizes="(min-width:500px) 10.4vw, (min-width: 320px) 45vw, 100vw" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %>"<% } %>/>
            </a>
            
@@ -93,7 +92,7 @@
             http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[2]%> 750px,
             http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2]%> 500px,
             http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2]%> 400px,
-            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2]%> 345x"
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2]%> 345px"
             sizes="(min-width:500px) 10.4vw, (min-width: 320px) 45vw, 100vw" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %>"<% } %>/>
            </a>
            
