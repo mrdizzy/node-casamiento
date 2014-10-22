@@ -131,6 +131,7 @@ Backbone.View.Attachment = Backbone.View.extend({
     // binary data of the attachment and trigger an event on the parent model to 
     // say the file has loaded into the browser successfully
     this.el.addEventListener('drop', function(e) {
+    
       e.preventDefault();
       var file = e.dataTransfer.files[0];
 
