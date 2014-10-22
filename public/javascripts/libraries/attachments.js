@@ -48,14 +48,36 @@ Backbone.Model.CouchDB = Backbone.Model.extend({
   // wire we need to parse them out into a separate Backbone collection
   // and make each attachment a Backbone model
   parse: function(resp) {
+  var attachment_types = this.attachment_types;
     var resp = _.clone(resp)
-    var parsed_attachments = _.map(resp._attachments, function(value, key, list) {
-      return {
-        id: key,
-        content_type: list[key].content_type
-      }
-    }, this)
-    this._attachments.reset(parsed_attachments)
+    var results = []
+    resp.attachments_order.forEach(function(number) {
+      var number = parseInt(number) 
+        attachment_types.forEach(function(type) {
+        var id = type + "-" + number;
+        if(resp._attachments[id]) {
+            var attachment = {
+                id: id,
+                content_type: resp._attachments[id].content_type
+            }
+        } else { // Handle empty attachments that do not exist in the database
+            var attachment = {
+                id: id,
+                content_type: ""
+            }
+        }
+        results.push(attachment)
+      })
+
+    })
+   // var parsed_attachments = _.map(resp._attachments, function(value, key, list) {
+   // 
+   //   return {
+   //     id: key,
+   //     content_type: list[key].content_type
+   //   }
+   // }, this)
+    this._attachments.reset(results)
     this.attachments_order = resp.attachments_order
     return resp;
   },

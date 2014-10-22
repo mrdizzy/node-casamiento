@@ -20,11 +20,7 @@
 
 	@font-face { font-family:"GaraI"; src: url('/f/garamonditalic.eot?') format('eot'), url('/f/garamonditalic.woff') format('woff'); }
 	@font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
-#slides_column {
-	
-	width:60%;
-	float:left;
-}
+
 
 #menu_lines {
 	display:none;
@@ -121,6 +117,10 @@ body {
 			border-left:1px dotted #000;
 			border-right: 1px dotted #000;
 		}
+#slides_column {	
+	width:60%;
+	float:left;
+}
 
 #footer {
   background-color:#fff; 
