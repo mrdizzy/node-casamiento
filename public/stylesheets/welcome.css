@@ -269,6 +269,27 @@ body {
 	height:17px;
 }
 
+		#footer { 
+			border-left: 1px dotted #939598;      
+			border-top: 1px solid #939598;
+			border-right: 1px dotted #939598; 
+			clear:both; 
+			height:60px; 
+			margin: 0 auto; 
+			padding-top:10px; 
+		}
+	
+			.footer_seperator {  
+				text-align:center; 
+				padding-top:1em;  
+				float:left;  
+				width:20%; 
+			}
+		#footer .genesis_collection, #footer .castello_collection { 
+			width:40%; 
+			float:left; 
+			text-align:center; 
+		}
 /* RESPONSIVE
 ==================================== */
 
