@@ -65,7 +65,12 @@
          <% } %>
             
            <a href="/products/<%= place_card._id %>">
-            <img src="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[1]%>" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %>"<% } %>/>
+            <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[1]%> 1000px,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[1]%> 750px,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 500px,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 400px,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 345px"
+            sizes="(min-width:500px) 10.4vw, (min-width: 320px) 45vw, 100vm" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %>"<% } %>/>
            </a>
            
             <% if (place_card.colours[1]) { %>
