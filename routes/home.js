@@ -4,7 +4,7 @@ var _ = require('underscore'),
     
 module.exports = function(app){
   app.get("/", function(req, res) {
-    db.get(["birds_of_paradise_spirals-name_place","wild_vintage-name_place"], function(err, docs) {
+    db.get(["birds_of_paradise_spirals-name_place","beautiful-name_place","damask-name_place","wild_vintage-name_place"], function(err, docs) {
       docs = docs.toArray();  
       docs.forEach(function(card) {
       console.log(card)
