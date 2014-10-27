@@ -10,8 +10,10 @@ var db = require('./../config/db').test_ebay,
 exports.show = function(req, res) {
   var id = req.params.id,
     colours = req.params.colours;
+    if(colours) {
   var colour_1 =  colours.split("_")[0] || colours;
   var colour_2 =  colours.split("_")[1];
+
   // The gzipped version is stored in CouchDB. The gzipped version is NOT 
   // created in Illustrator using its own compressed version, rather a normal 
   // SVG file is created and then gzipped using 7Zip software to create the 
@@ -33,11 +35,15 @@ exports.show = function(req, res) {
       .pipe(zlib.createGzip())
       .pipe(res)
   }
-  else {
+  else if (colour_1){
     db.getAttachment("svg__" + id, "svg")
       .pipe(zlib.createGunzip())
       .pipe(es.replace(/FF0000/g, colour_1)) // FF0000 is red
       .pipe(zlib.createGzip())
       .pipe(res)
+  } 
+  }else {
+     res.set("Content-Type", "image/svg+xml")
+     db.getAttachment("svg__" + id, "svg").pipe(zlib.createGunzip()).pipe(res)
   }
 }

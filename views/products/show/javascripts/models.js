@@ -69,10 +69,19 @@ var Product = Backbone.Model.extend({
     }
   },
   hex: function() {
-    if(this.get("colours").length == 2) {
-      return(this.get("colours")[0].substring(1) + "_" + thisProduct.get("colours")[1].substring(1));
-    }
+  var monochromatic = this.get("monochromatic")
+
+    if(monochromatic) { // Handle shades of grey
+        var first_shade = monochromatic[0]
+        var rgb = $('.colour_0').css("background-color");
+        var hex = this._rgb_to_hex(rgb, first_shade/100)
+        return(this.get("colours")[0].substring(1) + "_" + hex.substring(1));
+    } else {
+      if(this.get("colours").length == 2) {
+        return(this.get("colours")[0].substring(1) + "_" + thisProduct.get("colours")[1].substring(1));
+      }
     return(this.get("colours")[0].substring(1))
+    }
   },
   updatePounds: function() {  
     this.set("pounds", this.get("total").toString().split(".")[0])
@@ -117,6 +126,17 @@ var Product = Backbone.Model.extend({
       discount = (15/100) * total
     }
     return discount;
+  },
+  _rgb_to_hex: function(rgb, percentage){
+    rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+    rgb[1] = rgb[1] - (percentage * rgb[1]);
+    rgb[2] = rgb[2] - (percentage * rgb[2]);
+    rgb[3] = rgb[3] - (percentage * rgb[3]);
+
+    return (rgb && rgb.length === 4) ? "#" +
+      ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+      ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+      ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   },
   calculatePrice: function() {   
     var qty = this.get("quantity"),
