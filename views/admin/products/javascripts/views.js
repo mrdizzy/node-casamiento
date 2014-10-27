@@ -7,7 +7,7 @@ var AttachView = Backbone.View.Attachment.extend({
   className: "attachment",
   render: function() {
     if(this.model) {
-        this.$el.html(this.model.id + " - " + this.model.get("width") + "x" + this.model.get("height") + "<br/><img src='" + this.model.url() + "' width='120' height='90' />")
+        this.$el.html(this.model.id + " - " + this.model.get("width") + "x" + this.model.get("height") + "(" + this.model.get("size") +"K)" + "<br/><img src='" + this.model.url() + "' width='120' height='90' />")
     } else {
         this.$el.html("<div style='width:120px;height:90px;border:1px solid black;display:inline-block;'></div>")
     }
