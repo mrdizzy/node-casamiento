@@ -223,12 +223,15 @@
 }
 .chat-bubble { display:block;}
 
-.slide, #product_name_container { 
+.slide, 
+#product_name_container { 
   width:100%;
   float:none;
 }
 
- .tooltip-bubble,  .tooltip-bubble-arrow, .tooltip-bubble-arrow-border { 
+.tooltip-bubble, 
+.tooltip-bubble-arrow, 
+.tooltip-bubble-arrow-border { 
   width:0;
   height:0;
   overflow:hidden; 

@@ -20,9 +20,10 @@
   
 /* Typography
 ==================================== */
-@font-face { font-family:"Gara"; src: url('/f/GARA.eot?') format('eot'), url('/f/GARA.woff') format('woff'); }
+@font-face { font-family:"Gara"; src: url('/f/garamond.eot?') format('eot'), url('/f/garamond.woff') format('woff'); }
+@font-face { font-family:"GaraI"; src: url('/f/garamonditalic.eot?') format('eot'), url('/f/garamonditalic.woff') format('woff'); }
 @font-face { font-family:"TP"; src: url('/f/t.eot?') format('eot'), url('/f/t.woff') format('woff'); }
-@font-face { font-family:"GaraI"; src: url('/f/GARAIT.eot?') format('eot'), url('/f/GARAIT.woff') format('woff'); }
+
 @font-face { font-family:"OS"; src: url('/f/OSReg.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OS Light Italic"; src: url('/f/OSLI.eot?') format('eot'), url('/f/OSLI.woff') format('woff'); }

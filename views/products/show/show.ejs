@@ -5,104 +5,105 @@
   #headline_welcome { display:none; }
   @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>.eot?') format('eot'), url('/fonts/<%= product.font %>.woff') format('woff') }  
 
-
 <%- contentFor('middle') %>
   
 <%- contentFor('main') %>
-  
-  <script type="text/javascript">
-    <% include javascripts/initialise.js %>
-  </script>  
   
   <div id="print_ui"></div>
 
 <%- contentFor('left') %>
 
-  <div id="preview">
+<div id="preview">
   <div id="flat_preview"></div>
   <div id="product_container">
  
-    <!-- 
-      SLIDES 1 TO 3 
-    -->
+<!---------------------------------------- 
+  SLIDES 1 TO 3 
+------------------------------------------>
     <div class="slide">
-   <div style="position:relative;width:100%;">
-  
-    <div style="position:absolute;width:100%;height:100%;z-index:0;" class="colour_0">
-       <%- product["background-" +product.attachments_order[0] ] %>
-       </div>
-    <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[0]%> 2000w,
-                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[0]%> 1000w,
-                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[0]%> 750w,
-                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[0]%> 500w"
-         sizes="(min-width:801px) 33.95vw,(min-width:500px) 58.2vw, (min-width: 320px), 100vw"/ style="position:relative;display:block;width:100%;z-index:6"/>
-  </div>
-  </div>
-    <img src="/gfx/product_types/small/name_place_small.png" class="product_type_icon">
-      
-    <div class="slide">
-   <div style="position:relative;width:100%;">
-  
-    <div style="position:absolute;width:100%;height:100%;z-index:0;" class="colour_0">
-       <%- product["background-" +product.attachments_order[1] ] %>
-       </div>
-    <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[1]%> 2000px,
-                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[1]%> 1000w,
-                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[1]%> 750w,
-                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[1]%> 500w"
-         sizes="(min-width:801px) 33.95vw,(min-width:500px) 58.2vw, (min-width: 320px), 100vw"/ style="position:relative;display:block;width:100%;z-index:6"/>
-  </div>
-  </div>
-                
-  <div class="slide">
-   <div style="position:relative;width:100%;">
-  
-    <div style="position:absolute;width:100%;height:100%;z-index:0;" class="colour_0">
-       <%- product["background-" +product.attachments_order[2] ] %>
-       </div>
-    <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[2]%> 2000w,
-                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[2]%> 1000w,
-                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[2]%> 750w,
-                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[2]%> 500w"
-         sizes="(min-width:801px) 33.95vw,(min-width:500px) 58.2vw, (min-width: 320px), 100vw"/ style="position:relative;display:block;width:100%;z-index:6"/>
-  </div>
-  </div>
-          
-    <!-- 
-      PRODUCT NAME AND DESCRIPTION 
-    -->      
-      <div class="slide">
-        <div id="product_name_container">
-          <h1 class="product_name"><%= product.name %></h1>
-          <div class="ornamental_line"></div>
-        </div>
-          
-      </div>
+      <div style="position:relative;width:100%;">
     
-      <div id="description_container">
-        <div class="shell"></div>
-        <h6>This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h6>
+        <div style="position:absolute;width:100%;height:100%;z-index:0;" class="colour_0">
+          <%- product["background-" +product.attachments_order[0] ] %>
+        </div>
+        <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[0]%> 2000w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[0]%> 1000w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[0]%> 750w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[0]%> 500w"
+          sizes="(min-width:801px) 33.95vw, (min-width:500px) 58.2vw, (min-width: 320px), 100vw" style="position:relative;display:block;width:100%;z-index:6"/>
       </div>
+    </div>
+    
+    <img src="/gfx/product_types/small/name_place_small.png" class="product_type_icon">
+        
+    <div class="slide">
+      <div style="position:relative;width:100%;">
+    
+        <div style="position:absolute;width:100%;height:100%;z-index:0;" class="colour_0">
+          <%- product["background-" +product.attachments_order[1] ] %>
+        </div>
+        <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[1]%> 2000px,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[1]%> 1000w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[1]%> 750w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[1]%> 500w"
+          sizes="(min-width:801px) 33.95vw,(min-width:500px) 58.2vw, (min-width: 320px), 100vw" style="position:relative;display:block;width:100%;z-index:6"/>
+      </div>
+    </div>
+                  
+    <div class="slide">
+      <div style="position:relative;width:100%;">
+    
+        <div style="position:absolute;width:100%;height:100%;z-index:0;" class="colour_0">
+          <%- product["background-" +product.attachments_order[2] ] %>
+        </div>
+        <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[2]%> 2000w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[2]%> 1000w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[2]%> 750w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[2]%> 500w"
+          sizes="(min-width:801px) 33.95vw,(min-width:500px) 58.2vw, (min-width: 320px), 100vw"/ style="position:relative;display:block;width:100%;z-index:6"/>
+      </div>
+    </div>
+    
+<!---------------------------------------------
+  PRODUCT NAME AND DESCRIPTION 
+-------------------------------------->      
+    <div class="slide">
+      <div id="product_name_container">
+        <h1 class="product_name"><%= product.name %></h1>
+        <div class="ornamental_line"></div>
+      </div>      
+    </div>
       
-    <!-- 
-      SLIDE 4 
-    -->    
+    <div id="description_container">
+      <div class="shell"></div>
+      <h6>This simple, elegant collection is optionally adorned with a paper wrap and accompanying envelope, finished with a monogram bearing the names of you and your partner. A traditional, serif typeface emphasises the importance of your special day with authority and prestige.</h6>
+    </div>
+    
+<!------------------------------ 
+  SLIDE 4 
+---------------------------------->    
 
     <div class="slide">
-   <div style="position:relative;width:100%;">
-  
-    <div style="position:absolute;width:100%;height:100%;z-index:0;" class="colour_0">
-       <%- product["background-" +product.attachments_order[3] ] %>
-       </div>
-    <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[3]%> 2000w,
-                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[3]%> 1000w,
-                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[3]%> 750w,
-                 http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[3]%> 500w"
-         sizes="(min-width:801px) 33.95vw,(min-width:500px) 58.2vw, (min-width: 320px), 100vw"/ style="position:relative;display:block;width:100%;z-index:6"/>
-  </div>
-  </div>
-  
+      <div style="position:relative;width:100%;">
+    
+        <div style="position:absolute;width:100%;height:100%;z-index:0;" class="colour_0">
+          <%- product["background-" +product.attachments_order[3] ] %>
+        </div>
+        <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/large-<%= product.attachments_order[3]%> 2000w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-<%= product.attachments_order[3]%> 1000w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-<%= product.attachments_order[3]%> 750w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-<%= product.attachments_order[3]%> 500w"
+          sizes="(min-width:801px) 33.95vw,(min-width:500px) 58.2vw, (min-width: 320px), 100vw"/ style="position:relative;display:block;width:100%;z-index:6"/>
+      </div>
+    </div>
+    
   </div>
 </div>
 
 <%- contentFor('right') %>
+
+
+  <script type="text/javascript">
+    <% include javascripts/initialise.js %>
+  </script>  
+  

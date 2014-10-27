@@ -47,41 +47,37 @@ var Product = Backbone.Model.extend({
     this.on("change:colours", this.saveProduct)    
     this.on("change:quantity", this.saveProduct)
     this.on("change:guests", this.saveProduct)
-    console.log(this.toJSON())
     this.listenTo(this.get("guests"), "change", this.saveProduct)
     this.updatePounds();
     this.updatePence();
   },
   saveProduct: function() {
     this.save();  
-    console.log(this.shareURL())
   },
   shareURL: function() {
     if (this.get("colours")[1]) {
-        return ("http://www.casamiento.co.uk/products/" + 
-    this.id + "/#preview_place_card/c0/" + this.get("colours")[0].substr(1)+ 
-    "/c1/" + this.get("colours")[1].substr(1) + 
-    "/font/" + this.get("font"))  
+      return ("http://www.casamiento.co.uk/products/" + 
+        this.id + "/#preview_place_card/c0/" + this.get("colours")[0].substr(1) + 
+        "/c1/" + this.get("colours")[1].substr(1) + 
+        "/font/" + this.get("font"))  
     } else {
-        return ("http://www.casamiento.co.uk/products/" + 
-    this.id + "/#preview_place_card/c0/" + this.get("colours")[0].substr(1)+ 
-    "/font/" + this.get("font"))  
+      return ("http://www.casamiento.co.uk/products/" + 
+        this.id + "/#preview_place_card/c0/" + this.get("colours")[0].substr(1) + 
+        "/font/" + this.get("font"))  
     }
   },
-  hex: function() {
-  var monochromatic = this.get("monochromatic")
-
+  hex: function() { // This provides a URL for calling the /svg function with the appropriate hex values
+    var monochromatic = this.get("monochromatic")
     if(monochromatic) { // Handle shades of grey
-        var first_shade = monochromatic[0]
-        var rgb = $('.colour_0').css("background-color");
-        var hex = this._rgb_to_hex(rgb, first_shade/100)
-        return(this.get("colours")[0].substring(1) + "_" + hex.substring(1));
-    } else {
-      if(this.get("colours").length == 2) {
-        return(this.get("colours")[0].substring(1) + "_" + thisProduct.get("colours")[1].substring(1));
-      }
-    return(this.get("colours")[0].substring(1))
+      var first_shade = monochromatic[0]
+      var rgb = $('.colour_0').css("background-color");
+      var hex = this._rgb_to_hex(rgb, first_shade/100)
+      return(this.get("colours")[0].substring(1) + "_" + hex.substring(1));
+    } 
+    if(this.get("colours").length == 2) {
+      return(this.get("colours")[0].substring(1) + "_" + thisProduct.get("colours")[1].substring(1));
     }
+    return(this.get("colours")[0].substring(1))
   },
   updatePounds: function() {  
     this.set("pounds", this.get("total").toString().split(".")[0])
@@ -104,7 +100,7 @@ var Product = Backbone.Model.extend({
         guests.add({}, {silent:true});
       }
     } else if(adjustment < 0) {
-        adjustment = adjustment * -1;
+      adjustment = adjustment * -1;
       for(var i =0;  i < adjustment; i++) {
         guests.pop({silent:true});
       }
@@ -116,7 +112,7 @@ var Product = Backbone.Model.extend({
     this.set("quantity", quantity)
     this.adjustGuests();
   },
-  applyDiscounts: function(total) {
+  _applyDiscounts: function(total) {
     var qty = this.get("quantity"),
       discount = 0;
     if((qty > 32) && (qty < 96)) {
@@ -126,17 +122,6 @@ var Product = Backbone.Model.extend({
       discount = (15/100) * total
     }
     return discount;
-  },
-  _rgb_to_hex: function(rgb, percentage){
-    rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
-    rgb[1] = rgb[1] - (percentage * rgb[1]);
-    rgb[2] = rgb[2] - (percentage * rgb[2]);
-    rgb[3] = rgb[3] - (percentage * rgb[3]);
-
-    return (rgb && rgb.length === 4) ? "#" +
-      ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
-      ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
-      ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   },
   calculatePrice: function() {   
     var qty = this.get("quantity"),
@@ -151,7 +136,7 @@ var Product = Backbone.Model.extend({
     } else if (texture == "linen") {
       total = ((25/100) * total) + total
     }
-    var discount = this.applyDiscounts(total)
+    var discount = this._applyDiscounts(total)
     total = total - discount;
     var unit_cost = (total/qty).toFixed(2);
     this.set("unit", unit_cost);
@@ -164,5 +149,21 @@ var Product = Backbone.Model.extend({
   parse: function(response) {
     response.guests = new Guests(response.guests)
     return response;
+  },
+  // Designs can have colours that are a darker shade of a main colour. This is implemented
+  // using a transparent PNG that has a black tint (100% pure black that has an opacity of between
+  // 1% and 99%). In order to translate the colour to an RBG value so that we can process the SVG
+  // file, we must dim the R, G and B value in the RGB colour by the percentage of the tint.
+  // We then convert it back to hex so that the svg URL can be called and the file processed
+  _rgb_to_hex: function(rgb, percentage){
+    rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+    rgb[1] = rgb[1] - (percentage * rgb[1]);
+    rgb[2] = rgb[2] - (percentage * rgb[2]);
+    rgb[3] = rgb[3] - (percentage * rgb[3]);
+
+    return (rgb && rgb.length === 4) ? "#" +
+      ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+      ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+      ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   }
 });

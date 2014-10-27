@@ -14,9 +14,9 @@ $(function() {
   // Setup and initialization
   var thisProduct = new Product();   
   thisProduct.fetch({success:function(resp) {
-   $.updateFont(thisProduct.get("font"), {trigger: function(){}})
-   $('.colour_0').css("background-color", thisProduct.get("colours")[0])   
-   $('.colour_1').css("background-color", thisProduct.get("colours")[1])
+    $.updateFont(thisProduct.get("font"), {trigger: function(){}})
+    $('.colour_0').css("background-color", thisProduct.get("colours")[0])   
+    $('.colour_1').css("background-color", thisProduct.get("colours")[1])
   }, error: function(resp) {
     console.log("Error")
   }})    
