@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  version="1.1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+preserveAspectRatio="none" viewBox="0.05 0.05 298 210" enable-background="new 0.05 0.05 298 210" xml:space="preserve">
+<defs>
+</defs>
+<polyline fill="none" stroke="#C8C8C8" stroke-width="0.1" points="0.05,26.22 0.05,0.05 26.22,0.05 "/>
+<polyline fill="none" stroke="#C8C8C8" stroke-width="0.1" points="26.22,210.52 0.05,210.52 0.05,184.36 "/>
+<line fill="none" stroke="#C8C8C8" stroke-width="0.1" x1="0.05" y1="105.29" x2="26.22" y2="105.29"/>
+<polyline fill="none" stroke="#C8C8C8" stroke-width="0.1" points="297.69,184.36 297.69,210.52 271.52,210.52 "/>
+<polyline fill="none" stroke="#C8C8C8" stroke-width="0.1" points="271.52,0.05 297.69,0.05 297.69,26.22 "/>
+<line fill="none" stroke="#C8C8C8" stroke-width="0.1" x1="297.69" y1="105.29" x2="271.52" y2="105.29"/>
+</svg>
