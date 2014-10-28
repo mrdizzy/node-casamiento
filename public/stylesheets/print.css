@@ -1,7 +1,10 @@
+
 @media print {
   
   body { background-image:none; }
- 
+ @page
+{
+}
   #printsvg { 
     display:block;
   }
@@ -77,7 +80,6 @@
     #printsvg .up_3 { 
       margin:0 auto;
       position:relative;
-      padding-top:15mm;
       height:222.75mm;
       width:105mm;
     }  
