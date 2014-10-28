@@ -1,6 +1,5 @@
 var db = require('./../config/db').test_ebay,
   _ = require('underscore'),  
-    prepareDivs = require('./../lib/prepare_divs'),
     zlib = require('zlib');
 
 exports.index = function(req, res) {
