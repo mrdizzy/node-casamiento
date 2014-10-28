@@ -4,6 +4,7 @@
   body { background-image:none; }
  @page
 {
+margin:0;
 }
   #printsvg { 
     display:block;
