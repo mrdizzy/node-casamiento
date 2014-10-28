@@ -98,7 +98,7 @@ var PlaceCardCollectionView = Backbone.View.extend({
     
     // Add crop marks
       var $container = $('<div class="up_' + options.per_page + '"></div>"');
-      if ((options.per_page == 3) && options.svg) {
+     /* if ((options.per_page == 3) && options.svg) {
        $container.html('<div class="crop_marks"><div class="horizontal_crop_mark crop_top_bottom_left"></div><div class="horizontal_crop_mark crop_top_bottom_right"></div><div class="crop_top_top_left vertical_crop_mark"></div><div class="crop_top_top_right vertical_crop_mark"></div></div>')
        
        $container.append('<div class="crop_horizontal_left horizontal_crop_mark" style="top:52.125mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:89.25mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:126.375mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:163.5mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:200.625mm;"></div>')
@@ -121,6 +121,7 @@ var PlaceCardCollectionView = Backbone.View.extend({
           
         $container.append('<div style="z-index:1001;height:2.5%;left:50%;position:absolute;border-left:1px solid lightgrey;"></div><div style="z-index:1001;height:5%;top:22.5%;left:50%;position:absolute;border-left:1px solid lightgrey;"></div><div style="z-index:1001;height:5%;top:47.5%;left:50%;position:absolute;border-left:1px solid lightgrey;"></div><div style="z-index:1001;height:5%;top:72.5%;left:50%;position:absolute;border-left:1px solid lightgrey;"></div><div style="z-index:1001;height:2.5%;bottom:0;left:50%;position:absolute;border-left:1px solid lightgrey;"></div>')
        }
+       */
        group.forEach(function(guest) {
         var place_card = new PlaceCardView(_.extend({
           model: guest,

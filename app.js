@@ -8,34 +8,33 @@ var express = require('express'),
   expressLayouts = require('express-ejs-layouts');
   assetManager = require('connect-assetmanager');
   //Cacher = require("cacher"); 
-    
-//var cacher = new Cacher();
+  //var cacher = new Cacher();
+  
 var app = express();
 var dir = __dirname; // The name of the directory that the currently executing script resides in.
 
 // We use the connect-assetmanager module to concatenate and serve javascript and CSS files.
 var assetManagerGroups = {
-    'css': 
-        { 'route': /\/static\/css\/all\.css/ // This is the name of the route that will create this file
-        , 'path': __dirname + '/public/stylesheets/'
-        , 'dataType': 'css'
-        // These files must be availble in the directory specified by path above
-        // Make sure they are in the right order--stylesheets cascade! Reponsive last!
-        , 'files': [ 'new_color_picker.css', 'font_picker.css', 'main.css',  'product.css', 'place_cards.css', 'ui_print.css', 'print.css' ]
-    },
-    'js':
-        { 'route': /\/static\/javascripts\/all\.js/
-        , 'path': __dirname + '/public/javascripts/libraries/'
-        , 'dataType': 'javascript'
-        , 'files': [ 'localstorage.min.js', 'viewport.js','fastclick.js', 'picturefill.min.js','in_groups_of.js', 'font_loader.js', 'new_font_picker.js','new_color_picker.js','jquery_form.js', 'jquery.slides.min.js' ]
-    },
-    'adminjs': 
-        {
-            'route': /\/static\/javascripts\/admin\.js/
-            , path: __dirname + '/public/javascripts/libraries/'
-            , dataType: 'javascript'
-            , files: [ "handlebars_helpers.js", "backbone_selection_view.js", 'backbone_syphon.js', 'attachments.js' ]
-        }
+  'css': { 
+    route: /\/static\/css\/all\.css/, // This is the name of the route that will create this file
+    path: __dirname + '/public/stylesheets/',
+    dataType: 'css',
+    // These files must be availble in the directory specified by path above
+    // Make sure they are in the right order--stylesheets cascade! Reponsive last!
+    files: [ 'new_color_picker.css', 'font_picker.css', 'main.css',  'product.css', 'place_cards.css', 'ui_print.css', 'print.css' ]
+  },
+  'js': { 
+    route: /\/static\/javascripts\/all\.js/,
+    path: __dirname + '/public/javascripts/libraries/',
+    dataType: 'javascript',
+    files: [ 'localstorage.min.js', 'viewport.js', 'fastclick.js', 'picturefill.min.js', 'in_groups_of.js', 'font_loader.js', 'new_font_picker.js','new_color_picker.js', 'jquery_form.js', 'jquery.slides.min.js' ]
+  },
+  'adminjs': {
+      route: /\/static\/javascripts\/admin\.js/,
+      path: __dirname + '/public/javascripts/libraries/',
+      dataType: 'javascript',
+      files: [ "handlebars_helpers.js", "backbone_selection_view.js", 'backbone_syphon.js', 'attachments.js' ]
+  }
 };
 
 // Fonts need to be served with Access-Control-Allow-Origin set to * if
@@ -43,9 +42,9 @@ var assetManagerGroups = {
 app.configure(function(){
   app.use(function(req, res, next) {
     var matchUrl = '/f';
-    if(req.url.substring(0, matchUrl.length) === matchUrl) {
+    if (req.url.substring(0, matchUrl.length) === matchUrl) {
       res.setHeader("Access-Control-Allow-Origin", "*");
-    } else if(req.url.substring(0, "/fonts".length) === "/fonts") { // match /fonts as well as /f
+    } else if (req.url.substring(0, "/fonts".length) === "/fonts") { // match /fonts as well as /f
       res.setHeader("Access-Control-Allow-Origin", "*");
     }
     return next();

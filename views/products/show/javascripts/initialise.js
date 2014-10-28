@@ -15,6 +15,8 @@ $(function() {
   var thisProduct = new Product();   
   thisProduct.fetch({success:function(resp) {
     $.updateFont(thisProduct.get("font"), {trigger: function(){}})
+    
+    // Globally change colours according to those saved in localStorage
     $('.colour_0').css("background-color", thisProduct.get("colours")[0])   
     $('.colour_1').css("background-color", thisProduct.get("colours")[1])
   }, error: function(resp) {

@@ -6,18 +6,30 @@ var db = require('./../config/db').test_ebay,
 exports.index = function(req, res) {
   db.view('products/name_place', function(err, docs) {
     docs = docs.toArray();
-    var counter = 0;
-      docs.forEach(function(place) {
-        place.divs = prepareDivs(place, "search", "search", "display", "colour");
-        counter++;
-      })
-      docs.place_cards = docs;
-      res.render('products/index', {
-        layout: 'layout',
-        locals: docs
-      });
+    docs.forEach(function(place) {
+      place.divs = prepareDivs(place, "search", "search", "display", "colour");
+    })
+    docs.place_cards = docs;
+    res.render('products/index', {
+      layout: 'layout',
+      locals: docs
     });
+  });
 }
+
+exports.show = function(req, res) {
+  var id = req.params.product;
+  db.view('all/products_without_attachments', { key: id }, function(error, docs) {
+    db.view("all/fonts_by_id", function(error, fonts_response) {
+      res.render('products/show/show.ejs', {     
+        locals: {
+          fonts: fonts_response.toArray(), 
+          product: docs[0].value // First record   
+        }
+      });
+    })
+  });
+};
 
 exports.update = exports.create = function(req, res) {
   if(req.product) {
@@ -69,16 +81,3 @@ exports.destroy = function(req, res) {
     }
   })
 }
-
-exports.show = function(req, res) {
-  var id = req.params.product;
-  db.view('all/products_without_attachments', { key: id }, function(error, result) {
-    var doc = result[0].value; // First record
-    doc.divs = prepareDivs(doc, "slide", "slide", "display", "colour");
-    db.view("all/fonts_by_id", function(error, fonts_response) {
-      res.render('products/show/show.ejs', {     
-          locals: {fonts: fonts_response.toArray(), product: doc}
-      });
-    })
-  });
-};
