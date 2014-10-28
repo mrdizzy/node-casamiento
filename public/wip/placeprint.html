@@ -1,0 +1,379 @@
+<html>
+<head>
+<style type="text/css">
+.place_card_view {
+  width:100%;
+  float:right;
+  position:relative;
+  margin:0 auto;
+}
+  
+  .font_size_adjust_buttons, .font_baseline_adjust_buttons { 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor:pointer;
+    bottom:14%;
+    z-index:9999;    
+    position:absolute;
+    width:7%;    
+    text-align:center;
+  }
+    .font_baseline_adjust_buttons {
+      top:14%;   
+    }
+    
+    .place_card_view:nth-child(odd) .font_size_adjust_buttons, 
+    .place_card_view:nth-child(odd) .font_baseline_adjust_buttons{
+     left:1%;
+    }
+    
+    .place_card_view:nth-child(even) .font_size_adjust_buttons, 
+    .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
+     right:2%;
+    }
+
+      .button_wrapper {
+          position: relative;
+          width: 100%;
+          height: 0;
+          padding-bottom: 100%;
+      }
+        .button_inside { 
+          text-align:center;
+          border:1px solid black;
+          border-top-left-radius: 10px;
+          border-bottom-right-radius:10px;
+          width:100%;
+          height:100%;
+          position:absolute;
+          z-index:1000;
+        }
+        
+  .place_card_wrapper {
+    position: relative;
+    width: 95%;
+    float:right;
+    height: 0;
+    padding-bottom: 70.714285714285714285714285714286%;
+  }
+    
+    .font_spinner {  
+      height:50%;
+      top:50%;
+      display:none;
+      width:100%;
+      background: url('/gfx/spinner.gif') no-repeat center center; 
+      position:absolute;
+      z-index:1000000000000000000000000000000000000000;     
+    }
+    
+    .place_card_wrapper .place_card_image { 
+      top:0;
+      left:0;
+      display:block;
+      width:100%;
+      height:100%;
+      position:absolute;
+      z-index:1000;
+    }
+      .place_card_background_wrapper {
+        position:absolute;
+        width:100%;
+        height:100%;
+        z-index:999;
+      }
+      
+    .guest_wrapper {
+      width:100%;
+      position:absolute;
+      height:100%;
+      z-index:1001
+    }
+    
+      .guest_wrapper  input {
+        padding:0;
+        margin:0;
+        border:0;
+        z-index:300;
+        position:absolute;
+        text-align:center;
+        background-color:transparent;
+        display:block;
+        width:100%;
+        height:50%;
+        line-height:100%;
+      }  
+      
+      .guest_wrapper input::-ms-clear { /* Remove massive X from IE input field */
+        width : 0;
+        height: 0;
+       }
+              
+/* Smartphone */
+@media all and (min-width: 320px) and (max-width: 500px) {  
+/* ----------------------------------------------------------------------------- */    
+    .button_inside { 
+      border-top-left-radius:7px;      
+      border-bottom-right-radius:7px;
+    }
+ 
+}    
+    
+
+@media print {
+  
+  body { background-image:none; }
+ @page
+{
+}
+  #printsvg { 
+    display:block;
+  }
+  
+    .crop_marks { 
+      display:block;
+      position:absolute;
+      z-index:10005; 
+      height:100%;
+      width:100%;
+    }
+
+    .vertical_crop_mark, 
+    .horizontal_crop_mark {
+      position: absolute; 
+    }
+
+    .vertical_crop_mark {
+      height:10mm;  
+      border-left:1px dashed lightgrey;
+    }
+
+    .horizontal_crop_mark {
+      width:10mm;
+      border-bottom:1px dashed lightgrey;
+    }
+    /* ----------------------------------------------------------------------------- */    
+      .crop_top_bottom_left {
+        left:-10mm;
+      }
+      .crop_top_bottom_right {
+        right:-10mm;
+      }
+      .crop_top_top_left {
+        top:-10mm;
+        height:10mm;
+      }  
+      .crop_top_top_right {
+        top:-10mm;
+        right:0;
+      }
+    /* ----------------------------------------------------------------------------- */    
+      .crop_horizontal_left {
+        left:-10mm; 
+      }  
+      .crop_horizontal_right {
+        right:-10mm; 
+      }
+    /* ----------------------------------------------------------------------------- */    
+      .crop_bottom_top_left {
+        bottom:0;
+        left:-10mm;
+      }
+      .crop_bottom_top_right {
+        bottom:0;
+        right:-10mm;
+      }
+      .crop_bottom_bottom_left {
+        bottom:-10mm;
+      }
+      .crop_bottom_bottom_right {
+        bottom:-10mm;
+        right:0;
+      }
+  
+    #printsvg .up_4 {
+      height:148.5mm;
+      margin:0 auto; 
+      position:relative;
+      padding-top:15mm;
+      width:210mm;
+    }
+    #printsvg .up_3 { 
+      margin:0 auto;
+      position:relative;
+      height:222.75mm;
+      width:105mm;
+    }  
+      #printsvg .up_3 .place_card_view {
+        float:none;
+        margin:0 auto;
+        clear:both;
+        float:none;
+      }
+    
+    #printsvg .up_8 {
+      height:296.8mm; /* slightly less than 297 to avoid blank sheets as height is dodgy */
+      width:210mm;
+      position:relative;
+    } 
+      
+    #printsvg .up_8 .place_card_view, 
+    #printsvg .up_4 .place_card_view { 
+      float:left; 
+    }
+  
+  .place_card_image { 
+    display:block;
+  }
+  
+  .place_card_view {
+    padding:0;
+    margin:0;
+    width:105mm;
+    float:left;
+    height:74.25mm;
+  }
+  
+  .place_card_wrapper { 
+    width:100%;
+  }
+  
+  #top_of_page, #control_panel { 
+   display:none; 
+  }
+  
+  .break { page-break-after:always;}
+  
+}
+
+
+</style>
+</head>
+<body>
+<div id="printsvg"><div><div class="up_8"><div class="place_card_view"><div class="place_card_wrapper">
+
+ 
+  
+    <img src="/svg/christmas_lines-name_place/4166f5_2d47ab" style="width:100%;height:100%" class="place_card_image">  
+  
+  
+  
+  
+  <div class="guest_wrapper">
+    <div class="spacer" style="height: 37.125mm;"></div>
+   
+    <input type="text" class="guest_name" style="font-family: PoorRichard; height: 37.125mm; font-size: 8.4mm;" value="Guest Name">
+  </div>
+       
+</div></div><div class="place_card_view"><div class="place_card_wrapper">
+
+ 
+  
+    <img src="/svg/christmas_lines-name_place/4166f5_2d47ab" style="width:100%;height:100%" class="place_card_image">  
+  
+  
+  
+  
+  <div class="guest_wrapper">
+    <div class="spacer" style="height: 37.125mm;"></div>
+   
+    <input type="text" class="guest_name" style="font-family: PoorRichard; height: 37.125mm; font-size: 8.4mm;" value="Guest Name">
+  </div>
+       
+</div></div><div class="place_card_view"><div class="place_card_wrapper">
+
+ 
+  
+    <img src="/svg/christmas_lines-name_place/4166f5_2d47ab" style="width:100%;height:100%" class="place_card_image">  
+  
+  
+  
+  
+  <div class="guest_wrapper">
+    <div class="spacer" style="height: 37.125mm;"></div>
+   
+    <input type="text" class="guest_name" style="font-family: PoorRichard; height: 37.125mm; font-size: 8.4mm;" value="Guest Name">
+  </div>
+       
+</div></div><div class="place_card_view"><div class="place_card_wrapper">
+
+ 
+  
+    <img src="/svg/christmas_lines-name_place/4166f5_2d47ab" style="width:100%;height:100%" class="place_card_image">  
+  
+  
+  
+  
+  <div class="guest_wrapper">
+    <div class="spacer" style="height: 37.125mm;"></div>
+   
+    <input type="text" class="guest_name" style="font-family: PoorRichard; height: 37.125mm; font-size: 8.4mm;" value="Guest Name">
+  </div>
+       
+</div></div><div class="place_card_view"><div class="place_card_wrapper">
+
+ 
+  
+    <img src="/svg/christmas_lines-name_place/4166f5_2d47ab" style="width:100%;height:100%" class="place_card_image">  
+  
+  
+  
+  
+  <div class="guest_wrapper">
+    <div class="spacer" style="height: 37.125mm;"></div>
+   
+    <input type="text" class="guest_name" style="font-family: PoorRichard; height: 37.125mm; font-size: 8.4mm;" value="Guest Name">
+  </div>
+       
+</div></div><div class="place_card_view"><div class="place_card_wrapper">
+
+ 
+  
+    <img src="/svg/christmas_lines-name_place/4166f5_2d47ab" style="width:100%;height:100%" class="place_card_image">  
+  
+  
+  
+  
+  <div class="guest_wrapper">
+    <div class="spacer" style="height: 37.125mm;"></div>
+   
+    <input type="text" class="guest_name" style="font-family: PoorRichard; height: 37.125mm; font-size: 8.4mm;" value="Guest Name">
+  </div>
+       
+</div></div><div class="place_card_view"><div class="place_card_wrapper">
+
+ 
+  
+    <img src="/svg/christmas_lines-name_place/4166f5_2d47ab" style="width:100%;height:100%" class="place_card_image">  
+  
+  
+  
+  
+  <div class="guest_wrapper">
+    <div class="spacer" style="height: 37.125mm;"></div>
+   
+    <input type="text" class="guest_name" style="font-family: PoorRichard; height: 37.125mm; font-size: 8.4mm;" value="Guest Name">
+  </div>
+       
+</div></div><div class="place_card_view"><div class="place_card_wrapper">
+
+ 
+  
+    <img src="/svg/christmas_lines-name_place/4166f5_2d47ab" style="width:100%;height:100%" class="place_card_image">  
+  
+  
+  
+  
+  <div class="guest_wrapper">
+    <div class="spacer" style="height: 37.125mm;"></div>
+   
+    <input type="text" class="guest_name" style="font-family: PoorRichard; height: 37.125mm; font-size: 8.4mm;" value="Guest Name">
+  </div>
+       
+</div></div></div><div class="break"></div></div></div>
+
+</body>
