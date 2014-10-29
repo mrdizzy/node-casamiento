@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html>
+<head>
+<style type="text/css">
+html,body,div { padding:0;border:0;margin:0;text-align:center;}
+body { width:210mm;}
+@page {
+  size:A4;
+  margin:0;
+  padding:0;
+}
+@media print {
+  @page
+{size:A4;
+margin:0;
+padding:0;
+}
+}
+.a_page {
+
+  page-break-after:always;
+}
+</style>
+</head>
+<body>
+<div class="a_page">
+
+<div style="width:50mm;height:10mm;background-color:yellow">10mm</div>
+<div style="width:100mm;height:10mm;margin:0 auto;background-color:pink">100mm</div>
+
+<div style="width:75mm;height:40mm;margin:0 auto;background-color:pink">75mm</div>
+<div style="width:200mm;height:70mm;margin:0 auto;background-color:lightgrey">200mm</div>
+</div>
+<div class="a_page">
+<div style="width:100mm;height:10mm;margin:0 auto;background-color:pink">100mm</div>
+
+<div style="width:75mm;height:40mm;margin:0 auto;background-color:pink">75mm</div>
+<div style="width:190mm;height:70mm;margin:0 auto;background-color:lightgrey">190mm</div>
+</div>
+<div class="a_page">
+<div style="width:100mm;height:10mm;margin:0 auto;background-color:pink"></div>
+
+<div style="width:75mm;height:40mm;margin:0 auto;background-color:pink">40mm</div>
+<div style="width:190mm;height:70mm;margin:0 auto;background-color:lightgrey"></div>
+</div>
+
+
+<div class="a_page" style="height:297mm">
+<div style="width:100mm;height:10mm;margin:0 auto;background-color:pink"></div>
+
+<div style="width:75mm;height:40mm;margin:0 auto;background-color:pink">40mm</div>
+<div style="width:190mm;height:70mm;margin:0 auto;background-color:lightgrey"></div>
+</div>
+</body>
+</html>
