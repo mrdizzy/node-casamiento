@@ -1,21 +1,16 @@
 <!doctype html>
 <html>
 <head>
-<script>
-alert(navigator.userAgent)
-</script>
 <style type="text/css">
 
 div,html,body {margin:0;padding:0;}
 
 body { 
+width:210mm;
 }
 
 .group{
   page-break-after:always;
-  border:1px solid black;
-  height:260mm;
-  
 }
 
 @page {
@@ -204,4 +199,14 @@ body {
     </div>
   </div>
 </div>
+
+
+<script>
+var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
+if(isiPad) {
+ $('head').append("<style type='text/css'>.place_card_view { width:116mm; height:82mm; }</style>");
+ }
+</script>
+
 </body>
