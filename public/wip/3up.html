@@ -2,7 +2,7 @@
 <html>
 <head>
 <script>
-alert(navigator.userAgent)
+
 </script>
 <style type="text/css">
 
@@ -208,6 +208,7 @@ width:210mm;
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
 if(isiPad) {
+alert("It's an ipad")
  $('head').append("<style type='text/css'>.place_card_view { width:136mm; height:82mm; }</style>");
  }
 </script>
