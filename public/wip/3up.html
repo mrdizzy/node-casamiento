@@ -1,9 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<script>
-
-</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <style type="text/css">
 
 div,html,body {margin:0;padding:0;}
@@ -203,15 +201,17 @@ body {
 </div>
 
 
+
+</body>
+
 <script>
+$(function() {})
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
 if(isiPad) {
 
+ $('head').append(".place_card_view { width:150mm;height:87mm;}</style>");
  } else {
    
- $('head').append("<style type='text/css'>body { width:210mm}</style>");
  }
 </script>
-
-</body>
