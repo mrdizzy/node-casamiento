@@ -20,12 +20,12 @@ width:210mm;
   margin:0;
   padding:0;
   width:100%;
+  
 }
     
     #printsvg .up_8 { 
       margin:0 auto;
       position:relative;
-      width:210mm;
     }  
       
   .place_card_view {
@@ -90,7 +90,7 @@ width:210mm;
       }  
       
       .up_8 .place_card_view {
-           float:left; 
+           float:none; 
       }
       
       .guest_wrapper input::-ms-clear { /* Remove massive X from IE input field */
@@ -105,7 +105,8 @@ width:210mm;
   @media print {
     
 .group {
-width:210mm;
+margin:0 auto;
+width:105mm;
 height:297mm;
 float:none;
 position:relative;
@@ -139,10 +140,29 @@ page-break-before:always;
           </div>       
         </div>
       </div>
+      <div class="place_card_view">
+        <div class="place_card_wrapper">
+          <img src="/gfx/left_crop.svg" style="width:100%;height:100%" class="svg_left_crop">  
+          <img src="/svg/beautiful-name_place/873260" style="width:100%;height:100%" class="place_card_image">  
+          <div class="guest_wrapper">
+            <div class="spacer" style="height: 37.125mm;"></div>           
+            <input type="text" class="guest_name" style="font-family: TrajanPro; height: 37.125mm; font-size: 7.20195mm;" value="David">
+          </div>       
+        </div>
+      </div> 
+      <div class="place_card_view">
+        <div class="place_card_wrapper">
+          <img src="/gfx/left_crop.svg" style="width:100%;height:100%" class="svg_left_crop">  
+          <img src="/svg/beautiful-name_place/873260" style="width:100%;height:100%" class="place_card_image">  
+          <div class="guest_wrapper">
+            <div class="spacer" style="height: 37.125mm;"></div>           
+            <input type="text" class="guest_name" style="font-family: TrajanPro; height: 37.125mm; font-size: 7.20195mm;" value="David">
+          </div>       
+        </div>
+      </div> 
     </div>
-    
-    
     <div class="group">
+      
       <div class="place_card_view">
         <div class="place_card_wrapper">
           <img src="/gfx/left_crop.svg" style="width:100%;height:100%" class="svg_left_crop">  
@@ -173,26 +193,8 @@ page-break-before:always;
           </div>       
         </div>
       </div> 
-      <div class="place_card_view">
-        <div class="place_card_wrapper">
-          <img src="/gfx/left_crop.svg" style="width:100%;height:100%" class="svg_left_crop">  
-          <img src="/svg/beautiful-name_place/873260" style="width:100%;height:100%" class="place_card_image">  
-          <div class="guest_wrapper">
-            <div class="spacer" style="height: 37.125mm;"></div>           
-            <input type="text" class="guest_name" style="font-family: TrajanPro; height: 37.125mm; font-size: 7.20195mm;" value="David">
-          </div>       
-        </div>
-      </div> 
-      <div class="place_card_view">
-        <div class="place_card_wrapper">
-          <img src="/gfx/left_crop.svg" style="width:100%;height:100%" class="svg_left_crop">  
-          <img src="/svg/beautiful-name_place/873260" style="width:100%;height:100%" class="place_card_image">  
-          <div class="guest_wrapper">
-            <div class="spacer" style="height: 37.125mm;"></div>           
-            <input type="text" class="guest_name" style="font-family: TrajanPro; height: 37.125mm; font-size: 7.20195mm;" value="David">
-          </div>       
-        </div>
-      </div> 
+      </div>
+      <div class="group">
       <div class="place_card_view">
         <div class="place_card_wrapper">
           <img src="/gfx/left_crop.svg" style="width:100%;height:100%" class="svg_left_crop">  
