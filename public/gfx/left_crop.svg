@@ -11,7 +11,7 @@
 </defs>
 <polyline fill="none" stroke="#000000" stroke-width="0.15" points="0.08,26.24 0.08,0.08 26.24,0.08 "/>
 <polyline fill="none" stroke="#000000" stroke-width="0.15" points="26.24,210.55 0.08,210.55 0.08,184.38 "/>
-<line fill="none" stroke="#969696" stroke-width="0.25" stroke-dasharray="2" x1="0.08" y1="105.31" x2="297.71" y2="105.31"/>
+<line fill="none" stroke="#AFAFAF" stroke-width="0.25" stroke-dasharray="2" x1="0.08" y1="105.31" x2="297.71" y2="105.31"/>
 <polyline fill="none" stroke="#000000" stroke-width="0.15" points="297.71,184.38 297.71,210.55 271.55,210.55 "/>
 <polyline fill="none" stroke="#000000" stroke-width="0.15" points="271.55,0.08 297.71,0.08 297.71,26.24 "/>
 </svg>
