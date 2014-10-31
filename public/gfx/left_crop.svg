@@ -6,13 +6,12 @@
 	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
 ]>
 <svg  version="1.1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-	 width="298" height="210" viewBox="0.13 0.13 298 210" enable-background="new 0.13 0.13 298 210" xml:space="preserve">
+	 width="298" height="210" viewBox="0.08 0.08 298 210" enable-background="new 0.08 0.08 298 210" xml:space="preserve">
 <defs>
 </defs>
-<polyline fill="none" stroke="#000000" stroke-width="0.25" points="0.13,26.29 0.13,0.13 26.29,0.13 "/>
-<polyline fill="none" stroke="#000000" stroke-width="0.25" points="26.29,210.6 0.13,210.6 0.13,184.43 "/>
-<line fill="none" stroke="#000000" stroke-width="0.25" x1="0.13" y1="105.36" x2="26.29" y2="105.36"/>
-<polyline fill="none" stroke="#000000" stroke-width="0.25" points="297.76,184.43 297.76,210.6 271.6,210.6 "/>
-<polyline fill="none" stroke="#000000" stroke-width="0.25" points="271.6,0.13 297.76,0.13 297.76,26.29 "/>
-<line fill="none" stroke="#000000" stroke-width="0.25" x1="297.76" y1="105.36" x2="271.6" y2="105.36"/>
+<polyline fill="none" stroke="#000000" stroke-width="0.15" points="0.08,26.24 0.08,0.08 26.24,0.08 "/>
+<polyline fill="none" stroke="#000000" stroke-width="0.15" points="26.24,210.55 0.08,210.55 0.08,184.38 "/>
+<line fill="none" stroke="#969696" stroke-width="0.25" stroke-dasharray="2" x1="0.08" y1="105.31" x2="297.71" y2="105.31"/>
+<polyline fill="none" stroke="#000000" stroke-width="0.15" points="297.71,184.38 297.71,210.55 271.55,210.55 "/>
+<polyline fill="none" stroke="#000000" stroke-width="0.15" points="271.55,0.08 297.71,0.08 297.71,26.24 "/>
 </svg>
