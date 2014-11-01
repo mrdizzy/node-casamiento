@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<style type="text/css">
+/* Works well on Ipad Chrome and Safari for a 3-up portrait printout
+	 Do not use page-break-after: always as this crashes chrome cloud print
+	 whereas page-break-before:always; does not seem to 
+	 The sizes are larger than 105mm and 74.25mm by 15% as the iPad seems
+	 to add margins when printing from the browser */
+	 
+div,html,body {margin:0;padding:0;}
+
+@page {
+	margin:0;
+	size:A4;
+	padding:0;
+}
+body { 
+width:210mm;
+}
+.up_8 { 
+			margin:0 auto;
+			position:relative;
+		}  
+			
+	.place_card_view {
+		margin-left:50mm;
+		width:150mm;
+		
+		position:relative;
+		height:200mm;
+	}		
+	
+	@media print {
+		
+.group {
+padding-top:10mm;
+margin:0 auto;
+width:210mm;
+height:286.99mm;
+page-break-before:always;
+}
+@page {
+	margin:0;
+	size:A4;
+	padding:0;
+}
+
+	}
+
+</style>
+
+</head>
+
+<body>
+	<div class="up_8">
+		<div class="group">
+			<div class="place_card_view">			
+			<div style="width:100%;height:100%;border:1px solid black;position:relative;">
+			</div>
+			
+		</div>
+		
+		<div class="group">
+			<div class="place_card_view">			
+			
+			<div style="width:100%;height:100%;border:1px solid black;position:relative;">
+			</div> 
+			
+	
+		</div>
+		
+		<div class="group">
+			<div class="place_card_view">			
+			
+			<div style="width:100%;height:100%;border:1px solid black;position:relative;">
+			</div> 
+			
+	
+		</div>
+		<div class="group">
+			<div class="place_card_view">			
+			
+			<div style="width:100%;height:100%;border:1px solid black;position:relative;">
+			</div> 
+			
+	
+		</div>
+		<div class="group">
+			<div class="place_card_view">			
+			
+			<div style="width:100%;height:100%;border:1px solid black;position:relative;">
+			</div> 
+			
+	
+		</div>
+	</div>
+
+</body>
+
+<script>
+$(function() {
+var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
+if(isiPad) {
+
+// $('head').append("<style type='text/css'>.place_card_view { width:150mm;height:87mm;}</style>");
+ } else {
+	 
+ }
+</script>
+</html>
