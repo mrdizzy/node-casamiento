@@ -3,7 +3,12 @@
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <style type="text/css">
-
+/* Works well on Ipad Chrome and Safari for a 3-up portrait printout
+   Do not use page-break-after: always as this crashes chrome cloud print
+   whereas page-break-before:always; does not seem to 
+   The sizes are larger than 105mm and 74.25mm by 15% as the iPad seems
+   to add margins when printing from the browser */
+   
 div,html,body {margin:0;padding:0;}
 
 body { 
