@@ -2,105 +2,213 @@
 <html>
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<style type="text/css">
-/* Works well on Ipad Chrome and Safari for a 3-up portrait printout
-	 Do not use page-break-after: always as this crashes chrome cloud print
-	 whereas page-break-before:always; does not seem to 
-	 The sizes are larger than 105mm and 74.25mm by 15% as the iPad seems
-	 to add margins when printing from the browser */
-	 
-div,html,body {margin:0;padding:0;}
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+<script src="/javascripts/libraries/in_groups_of.js"></script>
 
-@page {
-	margin:0;
-	size:A4;
-	padding:0;
+<style type="text/css">
+/* Works on Ipad for a 8-up portrait printout
+	 Do not use page-break-after: always as this crashes chrome cloud print
+	 whereas page-break-before:always; does not seem to */
+	 
+div,html,body {
+  margin:0;
+  padding:0;
 }
-body { 
-width:210mm;
+
+#panel {
+	position:fixed;
+	width:100%;
+	z-index:1500;
+	background-color:white;
+	height:20mm;
+	border-bottom:1px solid black;
 }
-.up_8 { 
-			margin:0 auto;
-			position:relative;
-		}  
+
+#container { 
+	margin:0 auto;
+	position:relative;
+}  
+
+#container.up3, #container.up8 {
+	width:210mm;
+}
+
+#container.up4 {
+	width:297mm;
+}
+
 			
 	.place_card_view {
-		margin-left:50mm;
-		width:150mm;
-		
+		margin:0 auto;
+		width:105mm;
+		height:74.25mm;	
 		position:relative;
-		height:200mm;
+		float:left;
 	}		
-	
-	@media print {
+			.up8 .place_card_view {
+				float:left;
+			}
+			.up3 .place_card_view { 
+			  float:none;
+			}  
+			
+		.place_card_image { 
+			display:block;
+			width:100%;
+			height:100%
+		}
+		.guest {
+			position:absolute;
+			margin-top:37.125mm;
+			height:37.125mm;
+			width:105mm;
+			z-index:1000;
+			line-height:37.125mm;
+			text-align:center;
+			font-size:2em;
+	  }
 		
-.group {
-padding-top:10mm;
-margin:0 auto;
-width:210mm;
-height:286.99mm;
-page-break-before:always;
-}
+		.cas_print_logo {
+			display:none;
+		}
+
 @page {
 	margin:0;
 	size:A4;
 	padding:0;
 }
 
+@media print {
+
+.cas_print_logo {
+	  display:block;
+		margin-top:10mm;
+		padding:1mm;
+		border:1px solid black;
+		width:35mm;
+		clear:both;
+		margin:0 auto;
+}
+  .up8 .cas_print_logo {
+		display:none;
 	}
+	#panel {
+		display:none;
+	}
+	
+	.group, .group_landscape {
+		margin:0 auto;		
+		width:210mm;
+		page-break-before:always;
+	}
+	.group {
+		height:286.99mm;
+	}
+	.group_landscape {
+	  padding-top:10mm;
+		height:199mm;		
+	}
+	
+	
+	@page {
+		margin:0;
+		size:A4;
+		padding:0;
+	}
+}
 
 </style>
 
 </head>
 
 <body>
-	<div class="up_8">
-		<div class="group">
-			<div class="place_card_view">			
-			<div style="width:100%;height:100%;border:1px solid black;position:relative;">
-			</div>
-			
-		</div>
-		
-		<div class="group">
-			<div class="place_card_view">			
-			
-			<div style="width:100%;height:100%;border:1px solid black;position:relative;">
-			</div> 
-			
+  <div id="panel">
+	  <a id="three">3 per page</a> | 		
+		<a id="four">4 per page</a> | 
+		<a id="eight">8 per page</a> 
+	</div>
+	<div id="container">
 	
-		</div>
-		
-		<div class="group">
-			<div class="place_card_view">			
-			
-			<div style="width:100%;height:100%;border:1px solid black;position:relative;">
-			</div> 
-			
 	
-		</div>
-		<div class="group">
-			<div class="place_card_view">			
-			
-			<div style="width:100%;height:100%;border:1px solid black;position:relative;">
-			</div> 
-			
-	
-		</div>
-		<div class="group">
-			<div class="place_card_view">			
-			
-			<div style="width:100%;height:100%;border:1px solid black;position:relative;">
-			</div> 
-			
-	
-		</div>
 	</div>
 
 </body>
 
 <script>
 $(function() {
+var RenderModel = Backbone.Model.extend({})
+
+var render_model = new RenderModel({per_page: 8, width: 105, height:74.25})
+
+var PanelView = Backbone.View.extend({
+	el: '#panel',
+	events: {
+		'click #three': 'threeUp',
+		'click #four': 'fourUp',
+		'click #eight': 'eightUp'
+	},
+	threeUp: function() {
+	  this.model.set("per_page", 3)		
+	 $('head').append("<style type='text/css'>@page { size: portrait }</style>");
+	},
+	fourUp: function() {
+	 this.model.set("per_page", 4)
+	 $('head').append("<style type='text/css'>@page { size: landscape }</style>");
+	},
+	eightUp: function() {
+		this.model.set("per_page", 8)
+	 $('head').append("<style type='text/css'>@page { size: portrait }</style>");
+	}
+})
+
+var PlaceCardCollectionView = Backbone.View.extend({
+	el: '#container',
+	initialize: function() {
+		this.listenTo(this.model, 'change:per_page', this.render)
+	},
+	render: function() {
+  	var model = this.model;
+	  this.$el.removeClass().addClass('up' + this.model.get("per_page"));
+	  var groups = inGroupsOf(this.collection, this.model.get("per_page"));
+		var html = "";
+		var group_class = "group"
+		if(this.model.get("per_page") == 4) {
+			group_class = "group_landscape"
+		} 
+		groups.forEach(function(guests) {		
+		
+		  html = html + '<div class="' + group_class + '">'
+			guests.forEach(function(guest) {
+        html = html + 
+				  '<div class="place_card_view" style="width:' +
+					  model.get("width") +
+					  'mm;height:' +
+					  model.get("height") +
+					  '">' +			
+				    '<div class="guest" contenteditable="true">' +
+					    guest + 
+					  '</div>' +
+				    '<img src="/svg/christmas_lines-name_place/324ab2_23337c" class="place_card_image">' +
+			    '</div>'
+			})
+			html = html + '<img src="/gfx/logo/casamiento_black.svg" class="cas_print_logo" />'
+			html = html + "</div>"			
+		})
+		$('#container').html(html);
+		return this;
+	}
+})
+
+var place_cards = new PlaceCardCollectionView({
+  model: render_model,
+	collection: ["David", "Janine", "Lewis", "Memphis", "Jackie","Holly", "Shriley", "Davina", "Helena", "Alexis", "Debbie", "Julianna", "Sarah"]
+})
+
+place_cards.render();
+
+new PanelView({model: render_model});
+
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
 if(isiPad) {
@@ -109,5 +217,6 @@ if(isiPad) {
  } else {
 	 
  }
+ })
 </script>
 </html>
