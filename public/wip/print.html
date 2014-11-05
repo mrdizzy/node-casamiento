@@ -11,8 +11,6 @@
 	 Do not use page-break-after: always as this crashes chrome cloud print
 	 whereas page-break-before:always; does not seem to */
 	 
-
-	 
 div,html,body {
   margin:0;
   padding:0;
@@ -59,7 +57,7 @@ div,html,body {
 			width:100%;
 			height:100%
 		}
-		.guest, .guest_ipad {
+		.guest {
 			position:absolute;
 			margin-top:37.125mm;
 			height:37.125mm;
@@ -68,27 +66,21 @@ div,html,body {
 			line-height:37.125mm;
 			text-align:center;
 			font-size:2em;
-	  }
+	  }		
 		
-		.guest_ipad {
-	    width: 120.75mm;
-			margin-top:42.69375mm;
-			height:85.3875mm;
-			line-height:37.125mm;
-		}
+	.group, .group_landscape { 
+		margin:0 auto;		
+		width:210mm;
+		page-break-before:always;
+	}
+	.group {
+		height:286.99mm;
+	}
+	.group_landscape {
+		padding-top:10mm;
+		height:199mm;		
+	}
 		
-		.cas_print_logo {
-			display:none;
-		}
-
-@page {
-	margin:0;
-	size:A4;
-	padding:0;
-}
-
-@media print {
-
 	.cas_print_logo {
 			display:block;
 			margin-top:10mm;
@@ -101,21 +93,40 @@ div,html,body {
 		.up8 .cas_print_logo {
 			display:none;
 		}
+		
+/* iPad
+//////////////////////////////// */
+
+body.ipad #four, body.ipad #eight { display:none;}
+	 
+body.ipad .guest {
+	width: 120.75mm;
+	margin-top:42.69375mm;
+	height:85.3875mm;
+	line-height:37.125mm;
+}
+
+body.ipad .place_card_view {
+	width:120.75mm;
+	height:85.3875mm;
+}
+
+body.ipad .group {
+	width:126mm;
+  height:280mm;
+}
+
+@page {
+	margin:0;
+	size:A4;
+	padding:0;
+}
+
+@media print {
+
+		
 	#panel {
 		display:none;
-	}
-	
-	.group, .group_landscape { 
-		margin:0 auto;		
-		width:210mm;
-		page-break-before:always;
-	}
-	.group {
-		height:286.99mm;
-	}
-	.group_landscape {
-	  padding-top:10mm;
-		height:199mm;		
 	}
 	
 	@page {
@@ -130,7 +141,11 @@ div,html,body {
 </head>
 
 <body>
-  <div id="panel"></div>
+  <div id="panel">
+	  <a id="three">3 per page</a> 
+		<a id="four">4 per page</a>
+		<a id="eight">8 per page</a>
+ </div>
 	
 	<div id="container"></div>
 
@@ -151,14 +166,17 @@ $(function() {
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
 if (isiPad) {
-	var height = 85.3875;
-	var width = 120.75;
-	var guest_class = "guest_ipad"
-} else {
-	var height = 74.25;
-	var width = 105;
-	var guest_class = "guest"
+  this.$('body').addClass("ipad")
 }
+
+	//var height = 85.3875;
+//	var width = 120.75;
+//	var guest_class = "guest_ipad"
+
+	//var height = 74.25;
+	//var width = 105;
+//	var guest_class = "guest"
+
 
 var RenderModel = Backbone.Model.extend({
 	initialize: function() {
@@ -170,7 +188,7 @@ var RenderModel = Backbone.Model.extend({
 	}
 })
 
-var render_model = new RenderModel({width: width, height:height})
+var render_model = new RenderModel()
 
 var PanelView = Backbone.View.extend({
 	el: '#panel',
@@ -190,16 +208,6 @@ var PanelView = Backbone.View.extend({
 	eightUp: function() {
 		this.model.set("per_page", 8)
 	 $('head').append("<style type='text/css'>@page { size: portrait }</style>");
-	},
-	render: function() {
-		var html = "";
-		html = html + '<a id="three">3 per page</a>'
-    if (!isiPad) {
-			html = html + '<a id="four">4 per page</a> |' +
-			  '<a id="eight">8 per page</a>';
-		}
-		this.$el.html(html);
-		return this;
 	}
 })
 
@@ -222,12 +230,8 @@ var PlaceCardCollectionView = Backbone.View.extend({
 		  html = html + '<div class="' + group_class + '">'
 			guests.forEach(function(guest) {
         html = html + 
-				  '<div class="place_card_view" style="width:' +
-					  model.get("width") +
-					  'mm;height:' +
-					  model.get("height") +
-					  '">' +			
-				    '<div class="' + guest_class+ '" contenteditable="true">' +
+				  '<div class="place_card_view">' +			
+				    '<div class="guest" contenteditable="true">' +
 					    guest + 
 					  '</div>' +
 				    '<img src="/svg/christmas_lines-name_place/324ab2_23337c" class="place_card_image">' +
@@ -248,7 +252,9 @@ var place_cards = new PlaceCardCollectionView({
 
 place_cards.render();
 
-new PanelView({model: render_model}).render();
+new PanelView({model: render_model})
+
+})
 
 </script>
 </html>
