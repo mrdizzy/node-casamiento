@@ -114,6 +114,7 @@
 }
   
 @media print {
+body { width:210mm;}
   #printsvg { 
   width:210mm;
     display:block;
