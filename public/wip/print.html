@@ -93,7 +93,18 @@ div,html,body {
 		.up8 .cas_print_logo {
 			display:none;
 		}
+		 .svg_left_crop {
+			top:0;
+			left:0;
+			display:block;
+			padding:0;
+			margin:0;
+			width:100%;
+			height:100%;
+			position:absolute;
+			z-index:10010;
 		
+		}
 /* iPad
 //////////////////////////////// */
 
@@ -221,6 +232,7 @@ var PlaceCardCollectionView = Backbone.View.extend({
 			guests.forEach(function(guest) {
         html = html + 
 				  '<div class="place_card_view">' +			
+					'<img src="/gfx/left_crop.svg" style="width:100%;height:100%" class="svg_left_crop">' + 
 				    '<div class="guest" contenteditable="true">' +
 					    guest + 
 					  '</div>' +
