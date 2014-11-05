@@ -160,9 +160,17 @@ if (isiPad) {
 	var guest_class = "guest"
 }
 
-var RenderModel = Backbone.Model.extend({})
+var RenderModel = Backbone.Model.extend({
+	initialize: function() {
+		if(isiPad) {
+			this.set("per_page", 3)
+		} else {
+			this.set("per_page", 8)
+		}
+	}
+})
 
-var render_model = new RenderModel({per_page: 8, width: width, height:height})
+var render_model = new RenderModel({width: width, height:height})
 
 var PanelView = Backbone.View.extend({
 	el: '#panel',
@@ -242,13 +250,5 @@ place_cards.render();
 
 new PanelView({model: render_model}).render();
 
-
-if(isiPad) {
-
-// $('head').append("<style type='text/css'>.place_card_view { width:150mm;height:87mm;}</style>");
- } else {
-	 
- }
- })
 </script>
 </html>
