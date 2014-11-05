@@ -97,7 +97,7 @@ div,html,body {
 /* iPad
 //////////////////////////////// */
 
-body.ipad #four, body.ipad #eight { display:none;}
+body.ipad #panel #four, body.ipad #panel #eight { display:none;}
 	 
 body.ipad .guest {
 	width: 120.75mm;
@@ -168,15 +168,6 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
 if (isiPad) {
   this.$('body').addClass("ipad")
 }
-
-	//var height = 85.3875;
-//	var width = 120.75;
-//	var guest_class = "guest_ipad"
-
-	//var height = 74.25;
-	//var width = 105;
-//	var guest_class = "guest"
-
 
 var RenderModel = Backbone.Model.extend({
 	initialize: function() {
