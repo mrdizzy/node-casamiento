@@ -115,6 +115,7 @@
   
 @media print {
   #printsvg { 
+  width:210mm;
     display:block;
   }
   #top_of_page, #control_panel { display:none;}
