@@ -97,21 +97,21 @@ div,html,body {
 /* iPad
 //////////////////////////////// */
 
-body.ipad #panel #four, body.ipad #panel #eight { display:none;}
+.ipad #four, .ipad  #eight { display:none;}
 	 
-body.ipad .guest {
+.ipad .guest {
 	width: 120.75mm;
 	margin-top:42.69375mm;
 	height:85.3875mm;
 	line-height:37.125mm;
 }
 
-body.ipad .place_card_view {
+.ipad .place_card_view {
 	width:120.75mm;
 	height:85.3875mm;
 }
 
-body.ipad .group {
+.ipad .group {
 	width:126mm;
   height:280mm;
 }
@@ -141,6 +141,7 @@ body.ipad .group {
 </head>
 
 <body>
+<div id="format">
   <div id="panel">
 	  <a id="three">3 per page</a> 
 		<a id="four">4 per page</a>
@@ -148,7 +149,7 @@ body.ipad .group {
  </div>
 	
 	<div id="container"></div>
-
+</div>
 </body>
 
 <script>
@@ -164,7 +165,9 @@ body.ipad .group {
 $(function() {
 
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
-
+if(isiPad) {
+	$('#format').addClass('ipad')
+}
 var RenderModel = Backbone.Model.extend({
 	initialize: function() {
 		if(isiPad) {
