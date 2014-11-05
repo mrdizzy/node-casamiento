@@ -129,8 +129,10 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
     render: function() {
       if(isiPad) {
         var width = 120.75;        
+        var height = 85.3875;
       } else {
         var width = 105;
+        var height = 74.25;
       }
       var font_size = 
       this.$el.removeClass().addClass('up' + this.options.per_page);
@@ -147,6 +149,7 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
       groups.forEach(function(guests) {		        
         html = html + '<div class="' + group_class + '">'
         guests.forEach(function(guest) {
+          guest.calculateBaselineOffset(height);
           html = html + 
             '<div class="print_place_card_view">' +			
               '<img src="/gfx/left_crop.svg" class="svg_left_crop">' + 
@@ -154,7 +157,10 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
                 thisProduct.get("font") + 
                 ';font-size:' +
                   (width * guest.get("font_size")) +
-                'mm">' +
+                'mm;margin-top:' +
+                guest.top_half_height + 'mm;height:' +
+                guest.bottom_half_height + 'mm;line-height:' +
+                guest.bottom_half_height + 'mm;">' +
                 guest.get("name") + 
               '</div>' +
               '<img src="" class="place_card_image">' +
@@ -281,3 +287,4 @@ var PrintControlPanelView = Backbone.View.extend({
     return this;
   }
 })
+

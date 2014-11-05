@@ -13,6 +13,11 @@ var Guest = Backbone.Model.extend({
   },
   adjustFontSize: function(amount) {
     this.set("font_size", this.get("font_size") * amount)
+  },
+  calculateBaselineOffset: function(height) {
+    var baseline = (this.get("baseline") /100) * height;
+    this.top_half_height = (height / 2) + baseline;
+    this.bottom_half_height = height - this.top_half_height;
   }
 })
  

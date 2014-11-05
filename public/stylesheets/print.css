@@ -57,7 +57,7 @@
     height:286.99mm;
   }
  #printsvg  .group_landscape {
-    padding-top:10mm;
+    padding-top:5mm;
     height:199mm;		
   }
     
@@ -92,9 +92,6 @@
    
 #printsvg.ipad .guest {
   width: 120.75mm;
-  margin-top:42.69375mm;
-  height:85.3875mm;
-  line-height:42.69375mm;
 }
 
 #printsvg.ipad .print_place_card_view {
@@ -122,6 +119,7 @@
     display:block;
   }
   #top_of_page, #control_panel { display:none;}
+  
   body { background-image:none; }
   
   @page {
