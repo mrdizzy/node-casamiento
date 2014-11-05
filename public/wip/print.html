@@ -11,6 +11,8 @@
 	 Do not use page-break-after: always as this crashes chrome cloud print
 	 whereas page-break-before:always; does not seem to */
 	 
+
+	 
 div,html,body {
   margin:0;
   padding:0;
@@ -38,7 +40,6 @@ div,html,body {
 	width:297mm;
 }
 
-			
 	.place_card_view {
 		margin:0 auto;
 		width:105mm;
@@ -81,23 +82,23 @@ div,html,body {
 
 @media print {
 
-.cas_print_logo {
-	  display:block;
-		margin-top:10mm;
-		padding:1mm;
-		border:1px solid black;
-		width:35mm;
-		clear:both;
-		margin:0 auto;
-}
-  .up8 .cas_print_logo {
-		display:none;
+	.cas_print_logo {
+			display:block;
+			margin-top:10mm;
+			padding:1mm;
+			border:1px solid black;
+			width:35mm;
+			clear:both;
+			margin:0 auto;
 	}
+		.up8 .cas_print_logo {
+			display:none;
+		}
 	#panel {
 		display:none;
 	}
 	
-	.group, .group_landscape {
+	.group, .group_landscape { 
 		margin:0 auto;		
 		width:210mm;
 		page-break-before:always;
@@ -109,7 +110,6 @@ div,html,body {
 	  padding-top:10mm;
 		height:199mm;		
 	}
-	
 	
 	@page {
 		margin:0;
@@ -123,20 +123,26 @@ div,html,body {
 </head>
 
 <body>
-  <div id="panel">
-	  <a id="three">3 per page</a> | 		
-		<a id="four">4 per page</a> | 
-		<a id="eight">8 per page</a> 
-	</div>
-	<div id="container">
+  <div id="panel"></div>
 	
-	
-	</div>
+	<div id="container"></div>
 
 </body>
 
 <script>
+// The #container element contains the individual .group elements. We change the 
+// class on the #container element to 3up, 4up or 8up based on the number per page
+// This then causes the CSS of the group and place card elements to change. 
+// We cannot change the @page rule so we have to "overwrite" it by adding to the head
+// when we want to specify landscape mode
+
+// Landscape pages are grouped using the class .group_landscape rather than 
+// .group
+
 $(function() {
+
+var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
 var RenderModel = Backbone.Model.extend({})
 
 var render_model = new RenderModel({per_page: 8, width: 105, height:74.25})
@@ -159,6 +165,16 @@ var PanelView = Backbone.View.extend({
 	eightUp: function() {
 		this.model.set("per_page", 8)
 	 $('head').append("<style type='text/css'>@page { size: portrait }</style>");
+	},
+	render: function() {
+		var html = "";
+		html = html + '<a id="three">3 per page</a>'
+    if (!isiPad) {
+			html = html + '<a id="four">4 per page</a> |' +
+			  '<a id="eight">8 per page</a>';
+		}
+		this.$el.html(html);
+		return this;
 	}
 })
 
@@ -207,9 +223,8 @@ var place_cards = new PlaceCardCollectionView({
 
 place_cards.render();
 
-new PanelView({model: render_model});
+new PanelView({model: render_model}).render();
 
-var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
 if(isiPad) {
 
