@@ -91,6 +91,7 @@ $(function() {
       }    
     },
     _renderPrintView: function() {    
+    
       if(this.current_view != "print") {
         $('#inner_page_container').hide();
         this.print_control_panel_view.fadeIn(1000);               

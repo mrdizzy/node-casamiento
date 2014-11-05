@@ -108,7 +108,7 @@ var PlaceCardCollectionView = Backbone.View.extend({
         options)).render().el
         $container.append(place_card)
       })
-     
+      
       this.$el.append($container)
       if (counter != grouped_place_cards.length) {
      this.$el.append("<div class='break'></div>")
@@ -119,6 +119,44 @@ var PlaceCardCollectionView = Backbone.View.extend({
   }
 }) 
 
+
+var PrintPlaceCardCollectionView = Backbone.View.extend({
+    render: function() {
+      this.$el.removeClass().addClass('up' + this.options.per_page);
+      var groups = inGroupsOf(this.collection, this.options.per_page);
+      var html = "";
+      var group_class = "group"
+      if(this.options.per_page == 4) {
+        group_class = "group_landscape"        
+        $('head').append("<style type='text/css'>@page { size: landscape }</style>");
+      } 
+      else {        
+       $('head').append("<style type='text/css'>@page { size: portrait }</style>");
+      }
+      groups.forEach(function(guests) {		        
+        html = html + '<div class="' + group_class + '">'
+        guests.forEach(function(guest) {
+          html = html + 
+            '<div class="print_place_card_view">' +			
+              '<img src="/gfx/left_crop.svg" class="svg_left_crop">' + 
+              '<div class="guest" contenteditable="true">' +
+                guest.get("name") + 
+              '</div>' +
+              '<img src="" class="place_card_image">' +
+            '</div>'
+        })
+        html = html + '<img src="/gfx/logo/casamiento_black.svg" class="cas_print_logo" />'
+        html = html + "</div>"			
+      })
+      this.$el.html(html);
+      return this;
+    }
+})
+
+var isiPad = navigator.userAgent.match(/iPad/i) != null;
+if(isiPad) {
+  $('#printsvg').addClass('ipad')
+}
 var PrintControlPanelView = Backbone.View.extend({
   el: '#print_ui',
   initialize: function() {
@@ -183,9 +221,9 @@ var PrintControlPanelView = Backbone.View.extend({
   },  
   // Create the SVG print view
   printPage: function(e) {    
-    var result = new PlaceCardCollectionView({
+    var result = new PrintPlaceCardCollectionView({
       per_page: this.layout,
-      svg: true
+      collection: thisProduct.get("guests").toArray()
     }).render().el;
     $('#printsvg').html(result);    
     
@@ -200,7 +238,6 @@ var PrintControlPanelView = Backbone.View.extend({
     images.attr('src', "/svg/" + svg_url).load(function() {
       counter--;
       if(counter == 0) {   
-      console.log("printing!")
         window.print()        
         $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
       }
