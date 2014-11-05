@@ -88,21 +88,22 @@
 /* iPad
 //////////////////////////////// */
 
-.ipad #four, .ipad  #eight { display:none;}
+#printsvg.ipad #four, .ipad  #eight { display:none;}
    
-.ipad .guest {
+#printsvg.ipad .guest {
   width: 120.75mm;
+  background-color:red;
   margin-top:42.69375mm;
   height:85.3875mm;
   line-height:42.69375mm;
 }
 
-.ipad .print_place_card_view {
+#printsvg.ipad .print_place_card_view {
   width:120.75mm;
   height:85.3875mm;
 }
 
-.ipad .group {
+#printsvg.ipad .group {
   width:126mm;
   height:280mm;
 }

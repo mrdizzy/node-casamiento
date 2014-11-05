@@ -154,7 +154,7 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
 })
 
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
-if(isiPad) {
+if(!isiPad) {
   $('#printsvg').addClass('ipad')
 }
 var PrintControlPanelView = Backbone.View.extend({
