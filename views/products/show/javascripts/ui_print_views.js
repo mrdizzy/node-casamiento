@@ -120,8 +120,19 @@ var PlaceCardCollectionView = Backbone.View.extend({
 }) 
 
 
+var isiPad = navigator.userAgent.match(/iPad/i) != null;
+if(isiPad) {
+  $('#printsvg').addClass('ipad')
+}
+
 var PrintPlaceCardCollectionView = Backbone.View.extend({
     render: function() {
+      if(isiPad) {
+        var width = 120.75;        
+      } else {
+        var width = 105;
+      }
+      var font_size = 
       this.$el.removeClass().addClass('up' + this.options.per_page);
       var groups = inGroupsOf(this.collection, this.options.per_page);
       var html = "";
@@ -139,7 +150,11 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
           html = html + 
             '<div class="print_place_card_view">' +			
               '<img src="/gfx/left_crop.svg" class="svg_left_crop">' + 
-              '<div class="guest" contenteditable="true">' +
+              '<div class="guest" contenteditable="true" style="font-family:' +
+                thisProduct.get("font") + 
+                ';font-size:' +
+                  (width * guest.get("font_size")) +
+                'mm">' +
                 guest.get("name") + 
               '</div>' +
               '<img src="" class="place_card_image">' +
@@ -153,10 +168,6 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
     }
 })
 
-var isiPad = navigator.userAgent.match(/iPad/i) != null;
-if(isiPad) {
-  $('#printsvg').addClass('ipad')
-}
 var PrintControlPanelView = Backbone.View.extend({
   el: '#print_ui',
   initialize: function() {
