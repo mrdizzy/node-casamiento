@@ -165,10 +165,6 @@ $(function() {
 
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
-if (isiPad) {
-  this.$('body').addClass("ipad")
-}
-
 var RenderModel = Backbone.Model.extend({
 	initialize: function() {
 		if(isiPad) {
