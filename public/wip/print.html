@@ -59,7 +59,7 @@ div,html,body {
 			width:100%;
 			height:100%
 		}
-		.guest {
+		.guest, .guest_ipad {
 			position:absolute;
 			margin-top:37.125mm;
 			height:37.125mm;
@@ -69,6 +69,13 @@ div,html,body {
 			text-align:center;
 			font-size:2em;
 	  }
+		
+		.guest_ipad {
+	    width: 120.75mm;
+			margin-top:42.69375mm;
+			height:85.3875mm;
+			line-height:37.125mm;
+		}
 		
 		.cas_print_logo {
 			display:none;
@@ -143,9 +150,19 @@ $(function() {
 
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
+if (isiPad) {
+	var height = 85.3875;
+	var width = 120.75;
+	var guest_class = "guest_ipad"
+} else {
+	var height = 74.25;
+	var width = 105;
+	var guest_class = "guest"
+}
+
 var RenderModel = Backbone.Model.extend({})
 
-var render_model = new RenderModel({per_page: 8, width: 105, height:74.25})
+var render_model = new RenderModel({per_page: 8, width: width, height:height})
 
 var PanelView = Backbone.View.extend({
 	el: '#panel',
@@ -202,7 +219,7 @@ var PlaceCardCollectionView = Backbone.View.extend({
 					  'mm;height:' +
 					  model.get("height") +
 					  '">' +			
-				    '<div class="guest" contenteditable="true">' +
+				    '<div class="' + guest_class+ '" contenteditable="true">' +
 					    guest + 
 					  '</div>' +
 				    '<img src="/svg/christmas_lines-name_place/324ab2_23337c" class="place_card_image">' +
