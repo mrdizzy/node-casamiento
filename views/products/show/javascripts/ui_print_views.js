@@ -125,6 +125,8 @@ if(isiPad) {
   $('#printsvg').addClass('ipad')
 }
 
+// This view loops through each guest and creates an SVG place 
+// card for printing. 
 var PrintPlaceCardCollectionView = Backbone.View.extend({
     render: function() {
       if(isiPad) {
@@ -150,21 +152,18 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
         html = html + '<div class="' + group_class + '">'
         guests.forEach(function(guest) {
           guest.calculateBaselineOffset(height);
-          html = html + 
-            '<div class="print_place_card_view">' +			
-              '<img src="/gfx/left_crop.svg" class="svg_left_crop">' + 
-              '<div class="guest" contenteditable="true" style="font-family:' +
-                thisProduct.get("font") + 
-                ';font-size:' +
-                  (width * guest.get("font_size")) +
-                'mm;margin-top:' +
-                guest.top_half_height + 'mm;height:' +
-                guest.bottom_half_height + 'mm;line-height:' +
-                guest.bottom_half_height + 'mm;">' +
-                guest.get("name") + 
-              '</div>' +
-              '<img src="" class="place_card_image">' +
-            '</div>'
+            var compiled_template = Handlebars.template(templates["print_place_card"]) 
+            var $template = $(compiled_template({
+              font: thisProduct.get("font"),  
+              name: guest.get("name"),
+              height:height,
+              width: width,
+              font_size: (width * guest.get("font_size")),
+              margin_top: guest.top_half_height,
+              guest_height: guest.bottom_half_height,
+              line_height: guest.bottom_half_height
+            }));  
+          html = html + $template.html(); // /html() only returns INNER html so we have added a wrapping div in template
         })
         html = html + '<img src="/gfx/logo/casamiento_black.svg" class="cas_print_logo" />'
         html = html + "</div>"			

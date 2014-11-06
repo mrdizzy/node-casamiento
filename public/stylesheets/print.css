@@ -4,7 +4,6 @@
   padding:0;
  }
  
- 
 #printsvg #container { 
   margin:0 auto;
   position:relative;
@@ -20,32 +19,25 @@
 
   #printsvg .print_place_card_view {
     margin:0 auto;
-    width:105mm;
-    height:74.25mm;	
     position:relative;
     float:left;
   }		
-   #printsvg    .up8 .print_place_card_view {
+   #printsvg .up8 .print_place_card_view {
         float:left;
       }
-    #printsvg   .up3 .print_place_card_view { 
+    #printsvg .up3 .print_place_card_view { 
         float:none;
       }  
       
-   #printsvg  .place_card_image { 
+   #printsvg .place_card_image { 
       display:block;
       width:100%;
       height:100%
     }
-  #printsvg   .guest {
+  #printsvg .guest {
       position:absolute;
-      margin-top:37.125mm;
-      height:37.125mm;
-      width:105mm;
       z-index:1000;
-      line-height:37.125mm;
       text-align:center;
-      font-size:2em;
     }		
     
  #printsvg  .group, .group_landscape { 
@@ -58,10 +50,10 @@
   }
  #printsvg  .group_landscape {
     padding-top:5mm;
-    height:199mm;		
+    height:180mm;		
   }
     
- #printsvg  .cas_print_logo {
+ #printsvg .cas_print_logo {
       display:block;
       margin-top:10mm;
       padding:1mm;
@@ -70,10 +62,10 @@
       clear:both;
       margin:0 auto;
   }
-  #printsvg   .up8 .cas_print_logo {
+  #printsvg .up8 .cas_print_logo {
       display:none;
     }
-   #printsvg   .svg_left_crop {
+   #printsvg .svg_left_crop {
       top:0;
       left:0;
       display:block;
@@ -90,14 +82,6 @@
 
 #printsvg.ipad #four, .ipad  #eight { display:none;}
    
-#printsvg.ipad .guest {
-  width: 120.75mm;
-}
-
-#printsvg.ipad .print_place_card_view {
-  width:120.75mm;
-  height:85.3875mm;
-}
 
 #printsvg.ipad .group {
   width:126mm;
@@ -111,9 +95,7 @@
 }
   
 @media print {
-  body { 
-    width:210mm;
-  }
+ 
   #printsvg { 
     width:210mm;
     display:block;
