@@ -1,4 +1,5 @@
 var Guest = Backbone.Model.extend({
+////////////////////////////////////////////////////////////////
   defaults: {
     name: "Guest Name",
     baseline: (<%= product.baseline %> || 0),
@@ -22,6 +23,7 @@ var Guest = Backbone.Model.extend({
 })
  
 var Guests = Backbone.Collection.extend({
+////////////////////////////////////////////////////////////////
   model: Guest
 })
 

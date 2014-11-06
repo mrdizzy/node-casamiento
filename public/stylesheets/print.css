@@ -48,12 +48,13 @@
     /* Grouping 
     /////////////////////////// */
     
- #printsvg .group, .group_landscape { 
+ #printsvg .group, 
+ #printsvg .group_landscape { 
     margin:0 auto;		
     width:210mm;
     page-break-before:always;
   }
- #printsvg  group {
+ #printsvg .group {
     height:286.99mm;
   }
  #printsvg .group_landscape {
@@ -72,7 +73,7 @@
   }
   #printsvg .up8 .cas_print_logo {
       display:none;
-    }
+  }
    #printsvg .svg_left_crop {
       top:0;
       left:0;
@@ -89,7 +90,7 @@
 //////////////////////////////// */
 
 #printsvg.ipad #four, 
-#printsvg.ipad #eight { display:none;}
+#printsvg.ipad #eight { display:none; }
 
 #printsvg.ipad .group {
   width:126mm;

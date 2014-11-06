@@ -52,7 +52,7 @@
           float:left;
         }
         
-        .colour_picker_wrapper  .dizzycp-text_label_for_colour { 
+        .colour_picker_wrapper .dizzycp-text_label_for_colour { 
           text-align:left;
           margin-left:95px;
           padding-top:12px;
@@ -150,11 +150,11 @@
     border-right:1px solid black;
     width:75%;
     z-index:999999999999999999999999999999999999999;
-    height:100%;
-    
-      box-shadow:7px 7px 0 0 lightgrey;
+    height:100%;    
+    box-shadow:7px 7px 0 0 lightgrey;
   }
-    #ui_print_logo { display:none; }
+  
+  #ui_print_logo { display:none; }
     
   #menu_lines {
     display:block;

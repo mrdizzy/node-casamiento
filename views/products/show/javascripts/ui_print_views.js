@@ -1,3 +1,8 @@
+/* Test for iPad */
+var isiPad = navigator.userAgent.match(/iPad/i) != null;
+if(isiPad) 
+  $('#printsvg').addClass('ipad')
+  
 /* 
   This view takes svg as an option. When svg is set to true, 
   it uses absolute measurements rather than relative measurements
@@ -14,7 +19,6 @@ var PlaceCardView = GuestView.extend({
     this.listenTo(this.model, "change:name", this._renderName)
     this.listenTo(this.model, 'change:font_size', this._renderFontSize);
     this.listenTo(this.model, 'change:baseline', this._renderBaseline);
-    this.units = this.options.svg ? "mm" : "px"
     $(window).bind("resize", _.bind(this._renderFontSize, this));
   },  
   events: {
@@ -38,35 +42,30 @@ var PlaceCardView = GuestView.extend({
     this.model.downBaseline();
   },  
   calculateFontSize: function() { // Element must be visible for width() to work
-    var width = this.options.svg ? 105 : this.$el.width();
-   
-    this.font_size = width * this.model.get("font_size");
+    this.font_size = this.$el.width() * this.model.get("font_size");
     
   },    
   calculateBaselineOffset: function() { // Element must be visible for height() to work
-    var height = this.options.svg ? 74.25 : this.$el.height();
+    var height = this.$el.height();
     var baseline = (this.model.get("baseline") /100) * height;
     this.top_half_height = (height / 2) + baseline;
     this.bottom_half_height = (height / 2)  - baseline;
   },  
   _renderBaseline: function() {
     this.calculateBaselineOffset();
-    this.$('.spacer').css("height", this.top_half_height + this.units)
-    this.$('input').css("height", this.bottom_half_height + this.units)
+    this.$('.spacer').css("height", this.top_half_height + "px")
+    this.$('input').css("height", this.bottom_half_height + "px")
   },  
   _renderFontSize: function() {
     this.calculateFontSize();
     this._renderBaseline();
-    console.log(this.model.get("font_size"), this.font_size, this.units)
-    this.$('input').css('font-size', this.font_size + this.units);
-    
+    this.$('input').css('font-size', this.font_size + "px");    
   },
   render: function() {     
     var compiled_template = Handlebars.template(templates["place_card"]);
     var $template = $(compiled_template({
       font_family: thisProduct.get("font"),   
       background: thisProduct.get("background-5"),  
-      svg: this.options.svg,
       product: thisProduct.get("_id"),
       name: this.model.get("name"),
     }));
@@ -94,83 +93,72 @@ var PlaceCardCollectionView = Backbone.View.extend({
     var options = this.options;
     var grouped_place_cards = inGroupsOf(thisProduct.get("guests").toArray(), options.per_page)
     var counter = 0;
-    console.log("Grouped place cards length", grouped_place_cards.length)
     grouped_place_cards.forEach(function(group) {
-     counter= counter + 1;
-    // Add crop marks
+      counter= counter + 1;
+      
       var $container = $('<div class="up_' + options.per_page + '"></div>"');
    
        group.forEach(function(guest) {
         var place_card = new PlaceCardView(_.extend({
-          model: guest,
-          svg: options.svg
+          model: guest
         }, 
         options)).render().el
         $container.append(place_card)
       })
       
       this.$el.append($container)
-      if (counter != grouped_place_cards.length) {
-     this.$el.append("<div class='break'></div>")
-     }
+      if (counter != grouped_place_cards.length)
+        this.$el.append("<div class='break'></div>")
     }, this)
       
     return this;
   }
 }) 
 
-
-var isiPad = navigator.userAgent.match(/iPad/i) != null;
-if(isiPad) {
-  $('#printsvg').addClass('ipad')
-}
-
 // This view loops through each guest and creates an SVG place 
 // card for printing. 
 var PrintPlaceCardCollectionView = Backbone.View.extend({
-    render: function() {
-      if(isiPad) {
-        var width = 120.75;        
-        var height = 85.3875;
-      } else {
-        var width = 105;
-        var height = 74.25;
-      }
-      var font_size = 
-      this.$el.removeClass().addClass('up' + this.options.per_page);
-      var groups = inGroupsOf(this.collection, this.options.per_page);
-      var html = "";
-      var group_class = "group"
-      if(this.options.per_page == 4) {
-        group_class = "group_landscape"        
-        $('head').append("<style type='text/css'>@page { size: landscape }</style>");
-      } 
-      else {        
-       $('head').append("<style type='text/css'>@page { size: portrait }</style>");
-      }
-      groups.forEach(function(guests) {		        
-        html = html + '<div class="' + group_class + '">'
-        guests.forEach(function(guest) {
-          guest.calculateBaselineOffset(height);
-            var compiled_template = Handlebars.template(templates["print_place_card"]) 
-            var $template = $(compiled_template({
-              font: thisProduct.get("font"),  
-              name: guest.get("name"),
-              height:height,
-              width: width,
-              font_size: (width * guest.get("font_size")),
-              margin_top: guest.top_half_height,
-              guest_height: guest.bottom_half_height,
-              line_height: guest.bottom_half_height
-            }));  
-          html = html + $template.html(); // /html() only returns INNER html so we have added a wrapping div in template
-        })
-        html = html + '<img src="/gfx/logo/casamiento_black.svg" class="cas_print_logo" />'
-        html = html + "</div>"			
-      })
-      this.$el.html(html);
-      return this;
+  render: function() {
+    if(isiPad) {
+      var width = 120.75;        
+      var height = 85.3875;
+    } else {
+      var width = 105;
+      var height = 74.25;
     }
+    this.$el.removeClass().addClass('up' + this.options.per_page);
+    var groups = inGroupsOf(this.collection, this.options.per_page);
+    var html = "";
+    var group_class = "group"
+    if(this.options.per_page == 4) {
+      group_class = "group_landscape"        
+      $('head').append("<style type='text/css'>@page { size: landscape }</style>");
+    } 
+    else {        
+     $('head').append("<style type='text/css'>@page { size: portrait }</style>");
+    }
+    groups.forEach(function(guests) {		        
+      html = html + '<div class="' + group_class + '">'
+      guests.forEach(function(guest) {
+        guest.calculateBaselineOffset(height);
+        var compiled_template = Handlebars.template(templates["print_place_card"]) 
+        var $template = $(compiled_template({
+          font: thisProduct.get("font"),  
+          name: guest.get("name"),
+          height:height,
+          width: width,
+          font_size: (width * guest.get("font_size")),
+          margin_top: guest.top_half_height,
+          guest_height: guest.bottom_half_height
+        }));  
+        html = html + $template.html(); // /html() only returns INNER html so we have added a wrapping div in template
+      })
+      html = html + '<img src="/gfx/logo/casamiento_black.svg" class="cas_print_logo" />'
+      html = html + "</div>"			
+    })
+    this.$el.html(html);
+    return this;
+  }
 })
 
 var PrintControlPanelView = Backbone.View.extend({
@@ -203,8 +191,8 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   togglePanel: function() {
     if(this.mobile) {
-        $('#mobile_panel_section').toggle();
-        thisProduct.trigger("rerender")
+      $('#mobile_panel_section').toggle();
+      thisProduct.trigger("rerender")
     }
   },
   fontIncrease: function() {

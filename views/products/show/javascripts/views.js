@@ -28,11 +28,11 @@ var StepView = Backbone.View.extend({
     }).submit();
   },
   plusQty: function(e) {
-    this.updateQty(8)
+    thisProduct.adjustQuantity(8)
   },
   minusQty: function(e) {
     if(thisProduct.get("quantity") > 8) 
-      this.updateQty(-8)
+      thisProduct.adjustQuantity(-8)
   },
   clearQuantity: function(e) {
     $(e.currentTarget).val("")
@@ -46,15 +46,12 @@ var StepView = Backbone.View.extend({
       var remainder = value % 8;
       if(remainder > 0) {
         var new_quantity = 8- remainder + parseInt(value);
-      } else if (remainder ==0) {
+      } else if (remainder == 0) {
           new_quantity = value;
       }
       thisProduct.set("quantity", new_quantity)
       $field.val(new_quantity)
     }
-  },
-  updateQty: function(number) {
-    thisProduct.adjustQuantity(number)
   },
   renderQtyAndPrice: function() {    
     this.$('#qty').val(thisProduct.get("quantity"))       
@@ -110,7 +107,6 @@ var StepView = Backbone.View.extend({
   _renderGuests: function($element) {
     var $element = $element || this.$('#guests')
     var guests_html = []
-    console.log(thisProduct.get("guests"))
     thisProduct.get("guests").forEach(function(guest) {    
       guests_html.push(new GuestView({model:guest}).render().el);
     })
