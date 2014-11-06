@@ -4,51 +4,59 @@
   padding:0;
  }
  
-#printsvg #container { 
-  margin:0 auto;
-  position:relative;
-}  
-
-#printsvg #container.up3, #printsvg #container.up8 {
+#printsvg { 
   width:210mm;
+  display:block;
 }
 
-#printsvg #container.up4 {
-  width:297mm;
-}
-
-  #printsvg .print_place_card_view {
+  #printsvg #container { 
     margin:0 auto;
     position:relative;
-    float:left;
-  }		
-   #printsvg .up8 .print_place_card_view {
-        float:left;
-      }
-    #printsvg .up3 .print_place_card_view { 
-        float:none;
-      }  
-      
-   #printsvg .place_card_image { 
+  }  
+
+  #printsvg #container.up3, #printsvg #container.up8 {
+    width:210mm;
+  }
+
+  #printsvg #container.up4 {
+    width:297mm;
+  }
+
+    #printsvg .print_place_card_view {
+      margin:0 auto;
+      position:relative;
+      float:left;
+    }		
+     #printsvg .up8 .print_place_card_view {
+          float:left;
+        }
+      #printsvg .up3 .print_place_card_view { 
+          float:none;
+        }  
+        
+    #printsvg .place_card_image { 
       display:block;
       width:100%;
       height:100%
     }
-  #printsvg .guest {
+    #printsvg .guest {
       position:absolute;
       z-index:1000;
       text-align:center;
     }		
     
- #printsvg  .group, .group_landscape { 
+    /* Grouping 
+    /////////////////////////// */
+    
+ #printsvg .group, .group_landscape { 
     margin:0 auto;		
     width:210mm;
     page-break-before:always;
   }
- #printsvg  .group {
+ #printsvg  group {
     height:286.99mm;
   }
- #printsvg  .group_landscape {
+ #printsvg .group_landscape {
     padding-top:5mm;
     height:180mm;		
   }
@@ -74,14 +82,14 @@
       width:100%;
       height:100%;
       position:absolute;
-      z-index:10010;
-    
+      z-index:10010;    
     }
+    
 /* iPad
 //////////////////////////////// */
 
-#printsvg.ipad #four, .ipad  #eight { display:none;}
-   
+#printsvg.ipad #four, 
+#printsvg.ipad #eight { display:none;}
 
 #printsvg.ipad .group {
   width:126mm;
@@ -93,14 +101,13 @@
   size:A4;
   padding:0;
 }
-  
+
+/* Print
+//////////////////////////////// */
 @media print {
  
-  #printsvg { 
-    width:210mm;
-    display:block;
-  }
-  #top_of_page, #control_panel { display:none;}
+  #top_of_page, 
+  #control_panel { display:none; }
   
   body { background-image:none; }
   
@@ -111,4 +118,3 @@
   }
  
 }
-
