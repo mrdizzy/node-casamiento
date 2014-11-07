@@ -235,7 +235,6 @@ var PlaceCardCollectionView = Backbone.View.extend({
 		if(this.model.get("per_page") == 4) {
 			group_class = "group_landscape"
 		} 
-		var counter = 0;
 		groups.forEach(function(guests) {		
 		// page breaks for ipad which can only print 3 per page anyway
 		if (isiPad) {

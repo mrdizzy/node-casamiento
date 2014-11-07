@@ -1,5 +1,7 @@
 /* Test for iPad */
+var isWindowsChrome = navigator.userAgent.match(/Chrome/i) != null;
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
 if(isiPad) 
   $('#printsvg').addClass('ipad')
   
@@ -126,19 +128,35 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
       var width = 105;
       var height = 74.25;
     }
-    this.$el.removeClass().addClass('up' + this.options.per_page);
-    var groups = inGroupsOf(this.collection, this.options.per_page);
+    var options = this.options;
+    this.$el.removeClass().addClass('up' + options.per_page);
+    var groups = inGroupsOf(this.collection, options.per_page);
     var html = "";
     var group_class = "group"
-    if(this.options.per_page == 4) {
+    
+    
+    if(options.per_page == 4) {
       group_class = "group_landscape"        
-      $('head').append("<style type='text/css'>@page { size: landscape }</style>");
+      $('head').append("<style type='text/css'>@page { size: A4 landscape }</style>");
     } 
     else {        
-     $('head').append("<style type='text/css'>@page { size: portrait }</style>");
+     $('head').append("<style type='text/css'>@page { size: A4 portrait }</style>");
     }
-    groups.forEach(function(guests) {		        
-      html = html + '<div class="' + group_class + '">'
+    groups.forEach(function(guests) {		            	
+        // page breaks for ipad which can only print 3 per page anyway
+        if (isiPad) {
+          html = html + '<div class="' + group_class + '" style="page-break-before:always;">'
+        }
+        // only apply page breaks when there are less than 8 per page, OR if the browser is Chrome
+        // for Windows
+        else {
+          if(options.per_page != 8 || isWindowsChrome) {			 	
+            html = html + '<div class="' + group_class + '" style="page-break-after:always;">'
+          } else {
+            html = html + '<div class="' + group_class + '">'
+          }
+        }
+    
       guests.forEach(function(guest) {
         guest.calculateBaselineOffset(height);
         var compiled_template = Handlebars.template(templates["print_place_card"]) 
@@ -164,7 +182,7 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
 var PrintControlPanelView = Backbone.View.extend({
   el: '#print_ui',
   initialize: function() {
-    this.layout = 8
+    this.layout = 3
     $(window).on("resize", this.testForMobile.bind(this));
     this.testForMobile();
   },

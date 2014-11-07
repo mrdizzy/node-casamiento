@@ -1,49 +1,35 @@
-@page {
-  margin:0;
-  size:A4;
-  padding:0;
- }
- 
-#printsvg { 
+#printsvg #container { 
+  margin:0 auto;
+  position:relative;
+}  
+
+#printsvg #container.up3, 
+#printsvg #container.up8 {
   width:210mm;
-  display:block;
 }
 
-  #printsvg #container { 
+#printsvg #container.up4 {
+  width:297mm;
+}
+
+  #printsvg .print_place_card_view {
     margin:0 auto;
     position:relative;
-  }  
-
-  #printsvg #container.up3, #printsvg #container.up8 {
-    width:210mm;
-  }
-
-  #printsvg #container.up4 {
-    width:297mm;
-  }
-
-    #printsvg .print_place_card_view {
-      margin:0 auto;
-      position:relative;
+  }		
+    #printsvg .up8 .print_place_card_view {
       float:left;
-    }		
-     #printsvg .up8 .print_place_card_view {
-          float:left;
-        }
-      #printsvg .up3 .print_place_card_view { 
-          float:none;
-        }  
-        
-    #printsvg .place_card_image { 
-      display:block;
-      width:100%;
-      height:100%
     }
-    #printsvg .guest {
-      position:absolute;
-      z-index:1000;
-      text-align:center;
-    }		
+      
+  #printsvg .place_card_image { 
+    display:block;
+    width:100%;
+    height:100%
+  }
+  #printsvg .guest {
+    position:absolute;
+    z-index:1000;
+    text-align:center;
+  }		
     
     /* Grouping 
     /////////////////////////// */
@@ -52,10 +38,6 @@
  #printsvg .group_landscape { 
     margin:0 auto;		
     width:210mm;
-    page-break-before:always;
-  }
- #printsvg .group {
-    height:286.99mm;
   }
  #printsvg .group_landscape {
     padding-top:5mm;
@@ -97,25 +79,17 @@
   height:280mm;
 }
 
-@page {
-  margin:0;
-  size:A4;
-  padding:0;
-}
-
 /* Print
 //////////////////////////////// */
 @media print {
- 
+   
+  #printsvg { 
+    width:210mm;
+    display:block;
+  }
   #top_of_page, 
   #control_panel { display:none; }
   
   body { background-image:none; }
   
-  @page {
-    margin:0;
-    size:A4;
-    padding:0;
-  }
- 
 }

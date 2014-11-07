@@ -18,7 +18,7 @@ var Guest = Backbone.Model.extend({
   calculateBaselineOffset: function(height) {
     var baseline = (this.get("baseline") /100) * height;
     this.top_half_height = (height / 2) + baseline;
-    this.bottom_half_height = height - this.top_half_height;
+    this.bottom_half_height = height - this.top_half_height - 1;
   }
 })
  
