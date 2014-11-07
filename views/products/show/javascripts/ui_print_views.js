@@ -1,7 +1,3 @@
-/* Test for iPad */
-var isWindowsChrome = navigator.userAgent.match(/Chrome/i) != null;
-var isiPad = navigator.userAgent.match(/iPad/i) != null;
-
 if(isiPad) 
   $('#printsvg').addClass('ipad')
   
@@ -44,8 +40,7 @@ var PlaceCardView = GuestView.extend({
     this.model.downBaseline();
   },  
   calculateFontSize: function() { // Element must be visible for width() to work
-    this.font_size = this.$el.width() * this.model.get("font_size");
-    
+    this.font_size = this.$el.width() * this.model.get("font_size");    
   },    
   calculateBaselineOffset: function() { // Element must be visible for height() to work
     var height = this.$el.height();
@@ -100,7 +95,7 @@ var PlaceCardCollectionView = Backbone.View.extend({
       
       var $container = $('<div class="up_' + options.per_page + '"></div>"');
    
-       group.forEach(function(guest) {
+      group.forEach(function(guest) {
         var place_card = new PlaceCardView(_.extend({
           model: guest
         }, 
@@ -132,8 +127,7 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
     this.$el.removeClass().addClass('up' + options.per_page);
     var groups = inGroupsOf(this.collection, options.per_page);
     var html = "";
-    var group_class = "group"
-    
+    var group_class = "group"    
     
     if(options.per_page == 4) {
       group_class = "group_landscape"        
@@ -179,11 +173,17 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
   }
 })
 
+
+
 var PrintControlPanelView = Backbone.View.extend({
   el: '#print_ui',
   initialize: function() {
     this.layout = 3
     $(window).on("resize", this.testForMobile.bind(this));
+    if(isiPad) {
+      this.listenTo(thisProduct, 'editing:guest', this.toggleControlPanel)
+      this.listenTo(thisProduct, 'finishediting:guest', this.toggleControlPanel)
+    }
     this.testForMobile();
   },
   testForMobile: function() {
@@ -199,13 +199,16 @@ var PrintControlPanelView = Backbone.View.extend({
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
     "dizzy-cp:click": "togglePanel",
-    "click input[type=radio]": "changeLayout",
+    "click .layout_icon_container": "changeLayout",
     "click #ui_printer_icon": "printPage",
     "click #menu_lines": "togglePanel",
     "click .global_baseline_up": "baselineUp",
     "click .global_baseline_down": "baselineDown",
     "click .global_font_increase": "fontIncrease",
     "click .global_font_decrease": "fontDecrease"
+  },
+  toggleControlPanel: function() {
+    this.$('#control_panel').fadeToggle();  
   },
   togglePanel: function() {
     if(this.mobile) {
@@ -226,9 +229,11 @@ var PrintControlPanelView = Backbone.View.extend({
     thisProduct.get("guests").invoke('downBaseline')
   },
   changeLayout: function(e) {
-    var val = $(e.currentTarget).val()
-    this.$('#actual_cards').attr("class", "up_" + val)
-    this.layout = val;
+    var per_page = [8,3,4][$(e.currentTarget).index()]
+    $('.layout_icon_container').removeClass('layout_selected');
+    $(e.currentTarget).addClass('layout_selected')
+    this.$('#actual_cards').attr("class", "up_" + per_page)
+    this.layout = per_page;
   },
   loadFont: function(e, font) {
     $('.font_spinner').hide();
@@ -266,7 +271,9 @@ var PrintControlPanelView = Backbone.View.extend({
     })
   },
   render: function() {
-    var $template = $(Handlebars.template(templates["user_interface_for_print"])()); 
+    var $template = $(Handlebars.template(templates["user_interface_for_print"])({
+        hide_layout_icons: isiPad
+    })); 
     this.$el.html($template)
     var $colour_picker_container = $template.find('#ui_print_colour_picker_container');
     

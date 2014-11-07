@@ -125,10 +125,12 @@ var GuestView = Backbone.View.extend({
     'focus input': 'clearGuest'
   },
   clearGuest: function() {
+    thisProduct.trigger("editing:guest")
     if(this.model.get("name") == "Guest Name") 
       this.$('input').val("")     
   },
   updateGuest: function() {
+   thisProduct.trigger("finishediting:guest")
    var name = this.$('input').val()
     this.model.set("name", name)
   },

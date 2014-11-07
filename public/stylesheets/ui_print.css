@@ -1,6 +1,4 @@
 #top_of_page {
-  margin:0;
-  padding:0;
   position:relative;
 }
 
@@ -65,42 +63,56 @@
     }
     #ui_crosshairs_icon {
       float:left;
+      opacity:0.3;
       text-align:center;
       width:10%;
     }
+     #ui_crosshairs_icon:hover {
+          cursor:pointer;
+          opacity:1;
+        }
     #layout_icons_wrapper {
       float:right;
       text-align:center;
       width:30%;
     }
-      .layout_icon_container {
+      .layout_icon_container {    
+        border-radius:10px;
+        padding:5px;
         display:inline-block;
         text-align:center;
         width:15%;
         margin-right:8%;
       }
+        .layout_icon_container.layout_selected,
+         .layout_icon_container:hover {
+         cursor:pointer;
+              background-color:#EEE;
+        }            
           
-        #up_3, #up_8 { width:30px; }
+        #up_3, #up_8 { width:30px; display:block;margin:0 auto;}
         #up_4 { width:42px; }
           
     #ui_print_font_picker_container {
       width:50%;
       float:right;
       padding-top:3px;
+      height:50px;
       padding-bottom:3px;
     }
     
   #ui_global_font {
     width:45%;
     float:left;
-    margin:0;padding:0;
+    height:56px;
     padding-left:5%;
     text-align:center;
   }
-    #ui_global_font div {
+    #ui_global_font div {    
       border:1px solid #AAA;
       opacity:0.5;
       display:inline-block;
+      margin-top:5px;
       border-bottom-right-radius:12px;
       border-top-left-radius:12px;
       width:60px;      

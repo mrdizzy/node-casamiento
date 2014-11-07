@@ -1,6 +1,10 @@
 $(function() {
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
   
+  /* Test for iPad */
+var isWindowsChrome = navigator.userAgent.match(/Chrome/i) != null;
+var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
   <%= include models.js %>  
   <%= include views.js %>
   <%= include ui_print_views.js %>
@@ -90,12 +94,14 @@ $(function() {
         app_router.navigate("preview_place_card")
       }    
     },
-    _renderPrintView: function() {    
-    
+    _renderPrintView: function() {        
       if(this.current_view != "print") {
         $('#inner_page_container').hide();
         this.print_control_panel_view.fadeIn(1000);               
-        this.flat_preview_view.hide();             
+        this.flat_preview_view.hide();        
+        $('body').animate({
+            scrollTop: $('body').offset().top
+          }, 0);      
         thisProduct.trigger("global:rerenderfont")     
         this.current_view = "print"    
       }      

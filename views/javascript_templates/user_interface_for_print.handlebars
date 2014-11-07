@@ -20,24 +20,21 @@
         </div>
 
       <!-- LAYOUT ICONS -->
-
+        {{#unless hide_layout_icons}}
         <div id="layout_icons_wrapper">
-          <div class="layout_icon_container">        
-            <input type="radio" value="8" checked="checked" name="layout" style="display:inline-block"></input><br/>          
+          <div class="layout_icon_container">              
             <img src="/gfx/icons/8_up.svg" id="up_8" />
           </div>
           
-          <div class="layout_icon_container">        
-            <input type="radio" value="3" id="radio_3_up" name="layout" style="display:inline-block"></input><br/>
+          <div class="layout_icon_container layout_selected">        
             <img src="/gfx/icons/3_up.svg" id="up_3" />          
           </div>
         
           <div class="layout_icon_container">        
-            <input type="radio" value="4" name="layout" style="display:inline-block"></input><br/> 
             <img src="/gfx/icons/4_up.svg" id="up_4" />
           </div>
         </div>
-     
+        {{/unless}}
         <div style="clear:both"></div>
       </div>
       
@@ -52,7 +49,8 @@
     <div class="global_font_increase"></div>
     <div class="global_font_decrease"></div>
     <div class="global_baseline_up"></div>
-    <div class="global_baseline_down"></div>     
+    <div class="global_baseline_down"></div>       
+    <div class="global_font_reset"></div>     
   </div>
   
   <div id="menu_lines" style="float:left;z-index:99999999999999999999999999999999">
