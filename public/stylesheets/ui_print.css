@@ -6,7 +6,6 @@
 
 #control_panel {
   background-color:white;
-  border-bottom:1px solid black; 
   padding-top:0.5em;
   position:fixed; 
   top:0;
@@ -58,8 +57,10 @@
 
     #ui_printer_icon {
       float:left;
+      position:relative;
+      left:-5%;
       text-align:center;
-      width:10%;
+      width:5%;
     }
     #ui_crosshairs_icon {
       float:left;
@@ -74,15 +75,15 @@
     #layout_icons_wrapper {
       float:right;
       text-align:center;
-      width:30%;
+      width:60%;
     }
       .layout_icon_container {    
         border-radius:10px;
         padding:5px;
         display:inline-block;
         text-align:center;
-        width:15%;
-        margin-right:8%;
+        width:26%;
+        margin-right:4%;
       }
         .layout_icon_container.layout_selected,
          .layout_icon_container:hover {
@@ -90,29 +91,43 @@
               background-color:#EEE;
         }            
           
-        #up_3, #up_8 { width:30px; display:block;margin:0 auto;}
-        #up_4 { width:42px; }
+        #up_3, #up_8 { width:40px; padding:5px; display:block;margin:0 auto;}
+        #up_4 { width:55px;padding:5px;  }
           
     #ui_print_font_picker_container {
-      width:50%;
+      width:30%;
+      margin-right:7%;
       float:right;
       padding-top:3px;
       height:50px;
       padding-bottom:3px;
     }
+    #ui_print_font_picker_container .selected_font td.font_name, 
+    #ui_print_font_picker_container .selected_font td.font_image {
+      background-color:#EEE
+    } 
     
+    #ui_guests {
+      width:3%;
+      padding:1%;
+      opacity:0.3;
+      float:left;
+    }
+    #ui_guests:hover {
+      opacity:1;
+      cursor:pointer;
+    }
   #ui_global_font {
-    width:45%;
-    float:left;
+    width:30%;
+    float:right;
     height:56px;
-    padding-left:5%;
+    margin-right:7%;
     text-align:center;
   }
     #ui_global_font div {    
       border:1px solid #AAA;
       opacity:0.5;
       display:inline-block;
-      margin-top:5px;
       border-bottom-right-radius:12px;
       border-top-left-radius:12px;
       width:60px;      
@@ -152,6 +167,10 @@
     float:left;
 }
   
+  
+  #ui_guests_quick .input_container { width:25%;display:inline-block;}
+  
+  #ui_guests_quick .input_container input { width:100%; }
 /* Smartphone */
 @media all and (min-width: 300px) and (max-width: 500px) {  
 /* ----------------------------------------------------------------------------- */    

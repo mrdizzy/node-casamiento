@@ -1,6 +1,17 @@
 if(isiPad) 
   $('#printsvg').addClass('ipad')
   
+var GuestCollectionView = Backbone.View.extend({
+  render: function() {
+    var guests_html = []
+    this.collection.forEach(function(guest) {  
+        guests_html.push(new GuestView({model:guest}).render().el);
+    })
+    this.$el.html(guests_html)
+    return this;
+  }
+})
+
 /* 
   This view takes svg as an option. When svg is set to true, 
   it uses absolute measurements rather than relative measurements
@@ -86,28 +97,29 @@ var PlaceCardView = GuestView.extend({
 // Used to render collections of place cards for both print view and 
 // UI preview view
 var PlaceCardCollectionView = Backbone.View.extend({
+  initialize: function() {
+    this.listenTo(thisProduct.get("guests"), 'add', this.addGuest)
+  },
+  addGuest: function(guest) {
+   var place_card = new PlaceCardView(_.extend({
+          model: guest
+        })).render().el
+        
+    this.$el.append(place_card)
+    thisProduct.trigger("global:rerenderfont")
+  },
   render: function() {
     var options = this.options;
-    var grouped_place_cards = inGroupsOf(thisProduct.get("guests").toArray(), options.per_page)
-    var counter = 0;
-    grouped_place_cards.forEach(function(group) {
-      counter= counter + 1;
-      
-      var $container = $('<div class="up_' + options.per_page + '"></div>"');
-   
-      group.forEach(function(guest) {
+    var place_cards = []
+
+    thisProduct.get("guests").toArray().forEach(function(guest) {   
         var place_card = new PlaceCardView(_.extend({
           model: guest
         }, 
         options)).render().el
-        $container.append(place_card)
-      })
-      
-      this.$el.append($container)
-      if (counter != grouped_place_cards.length)
-        this.$el.append("<div class='break'></div>")
-    }, this)
-      
+        place_cards.push(place_card)
+    })
+    this.$el.append(place_cards)
     return this;
   }
 }) 
@@ -196,6 +208,7 @@ var PrintControlPanelView = Backbone.View.extend({
     }
   },
   events: {
+  "click #add_another": "addGuest",
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
     "dizzy-cp:click": "togglePanel",
@@ -206,6 +219,9 @@ var PrintControlPanelView = Backbone.View.extend({
     "click .global_baseline_down": "baselineDown",
     "click .global_font_increase": "fontIncrease",
     "click .global_font_decrease": "fontDecrease"
+  },
+  addGuest: function() {
+    var guests = thisProduct.get("guests").add({name:"Alice"})
   },
   toggleControlPanel: function() {
     this.$('#control_panel').fadeToggle();  
@@ -265,7 +281,8 @@ var PrintControlPanelView = Backbone.View.extend({
     images.attr('src', "/svg/" + svg_url).load(function() {
       counter--;
       if(counter == 0) {   
-        window.print()        
+      $('#ui_print_alert').fadeIn();
+        //window.print()        
         $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
       }
     })
@@ -295,7 +312,18 @@ var PrintControlPanelView = Backbone.View.extend({
       fonts: casamiento_fonts, 
       selected_font: thisProduct.get("font")
     })
+    
+    var $ui_guests = $template.find('#ui_guests_quick');
+    
+    var guests_collection_view = new GuestCollectionView({collection:thisProduct.get("guests")}).render().el
+    $ui_guests.append(guests_collection_view)
+    
     $template.find('#actual_cards').append(place_cards)
+    var add_more = '<div class="place_card_view" style="border:1px dotted grey;border-radius:20px;margin-left:70px;margin-right:30px;padding-top:20px;padding-bottom:20px;width:40%;"><div class="grey_button" id="add_another" style="width:150px;">' +
+    '<img src="/gfx/people/crowdsourcing_white.svg" style="line-height:0.5em;width:40px;margin:0;padding:0;" /> ADD ANOTHER</div></div>';
+     var paypal = '<div class="place_card_view" style="border:1px dotted grey;border-radius:20px;margin-left:30px;margin-right:70px;padding-top:20px;padding-bottom:20px;width:40%;"><div id="buy" class="grey_button"><span style="color:white;font:normal 1em OS;">Check out with</span><img class="cart_icon" src="/gfx/cart_white.png" style="width:45px;"/><br/><img src="/gfx/paypal.png" id="paypal"/ style="padding-bottom:1em;"></div></div>';
+    $template.find('#actual_cards').append(add_more)
+    $template.find('#actual_cards').append(paypal)
     return this;
   }
 })

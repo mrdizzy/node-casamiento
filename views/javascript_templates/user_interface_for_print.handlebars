@@ -10,49 +10,32 @@
         </div>
 
         <div id="ui_print_colour_picker_container"></div>
-
+        
+  
         <div id="ui_printer_icon">
           <img src="/gfx/printer_icon.svg" style="margin-top:0.5em;width:55px">
         </div>
-        
-         <div id="ui_crosshairs_icon">
-          <img src="/gfx/crosshairs/crosshair8.svg" style="margin-top:0.5em;width:55px">
+        <div id="ui_global_font">
+          <div class="global_font_increase"></div>
+          <div class="global_font_decrease"></div>
+          <div class="global_baseline_up"></div>
+          <div class="global_baseline_down"></div>       
+          <div class="global_font_reset"></div>     
         </div>
-
-      <!-- LAYOUT ICONS -->
-        {{#unless hide_layout_icons}}
-        <div id="layout_icons_wrapper">
-          <div class="layout_icon_container">              
-            <img src="/gfx/icons/8_up.svg" id="up_8" />
-          </div>
+        <div id="ui_print_font_picker_container">
+          <div id="ui_font_picker"></div>
+        </div>      
           
-          <div class="layout_icon_container layout_selected">        
-            <img src="/gfx/icons/3_up.svg" id="up_3" />          
-          </div>
         
-          <div class="layout_icon_container">        
-            <img src="/gfx/icons/4_up.svg" id="up_4" />
-          </div>
-        </div>
-        {{/unless}}
         <div style="clear:both"></div>
       </div>
-      
-      <div id="ui_print_font_picker_container">
-        <div id="ui_font_picker"></div>
-      </div>      
-      
+            
   </div>
     
-  
-  <div id="ui_global_font">
-    <div class="global_font_increase"></div>
-    <div class="global_font_decrease"></div>
-    <div class="global_baseline_up"></div>
-    <div class="global_baseline_down"></div>       
-    <div class="global_font_reset"></div>     
+  <div id="ui_guests" style="position:relative;display:none;"> 
+    <img src="/gfx/people/crowdsourcing.svg" style="width:30px;" />    
   </div>
-  
+    
   <div id="menu_lines" style="float:left;z-index:99999999999999999999999999999999">
     <div class="menu_line"></div>
     <div class="menu_line"></div>
@@ -66,5 +49,31 @@
 </div>
 
 <div style="clear:both;border-top:1px solid black;"></div>
-   
+    <div id="ui_print_alert" style="display:none;padding:20px;width:50%;border:1px solid black;position:fixed;background-color:white;z-index:1000000000000000000000000000000000000000000;right:0;left:0;box-shadow:7px 7px 0 0 lightgrey;margin:auto;margin-top:100px;border-radius:15px;text-align:center;">
+        <div id="ui_crosshairs_icon">
+          <img src="/gfx/crosshairs/crosshair8.svg" style="margin-top:0.5em;width:55px">
+        </div>
+
+      <!-- LAYOUT ICONS -->
+        {{#unless hide_layout_icons}}
+        <div id="layout_icons_wrapper">
+          <div class="layout_icon_container">     <input type="radio" name="per_page" checked="checked" style="display:block;margin:0 auto"/>  
+            <img src="/gfx/icons/8_up.svg" id="up_8" />
+          </div>
+          
+          <div class="layout_icon_container layout_selected"><input type="radio" name="per_page" checked="checked" style="display:block;margin:0 auto"/>  
+            <img src="/gfx/icons/3_up.svg" id="up_3" />          
+          </div>
+        
+          <div class="layout_icon_container">        <input type="radio" name="per_page" checked="checked" style="display:block;margin:0 auto"/>  
+            <img src="/gfx/icons/4_up.svg" id="up_4" />
+          </div>
+        </div>
+        {{/unless}}
+  </div>
+
+
+<div style="clear:both;border-top:1px solid black;display:none;"></div>
+    <div id="ui_guests_quick" style="display:none;padding:20px;width:50%;border:1px solid black;position:absolute;background-color:white;z-index:1000000000000000000000000000000000000000000;right:0;left:0;margin:auto;margin-top:150px;border-radius:20px;text-align:center;">
+  </div>
 <div id="actual_cards"></div>

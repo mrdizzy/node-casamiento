@@ -117,6 +117,7 @@ var StepView = Backbone.View.extend({
 // GUEST VIEW
 ////////////////////////////////////////////////////////////////////////////// 
 var GuestView = Backbone.View.extend({  
+  className: 'input_container',
   initialize: function() {
     this.listenTo(this.model, "change:name", this.render)  
   },

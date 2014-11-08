@@ -51,7 +51,7 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
       this.step_view = new StepView().render();      
       this.product_container_view = this.$('#product_container')      
       this.flat_preview_view = new FlatPreviewView().render().$el.hide();      
-      this.print_control_panel_view = new PrintControlPanelView({}).render().$el.hide();         
+      this.print_control_panel_view_backbone = new PrintControlPanelView({})        
       this.listenTo(thisProduct, 'change:colours', this._renderPreviewAfterMain)
       this.listenTo(thisProduct, 'change:font', this._renderPreviewAfterMain)
     },
@@ -81,7 +81,7 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
         $('#inner_page_container').show();
         this.product_container_view.hide();  
         this.flat_preview_view.fadeIn(1000);
-        this.print_control_panel_view.hide();
+        //this.print_control_panel_view.hide();
         if(viewportSize.getWidth() < 501) {
           $('body').hide()
           $('body').animate({
@@ -96,14 +96,16 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
     },
     _renderPrintView: function() {        
       if(this.current_view != "print") {
+        this.current_view = "print"  
         $('#inner_page_container').hide();
-        this.print_control_panel_view.fadeIn(1000);               
+        var $el = this.print_control_panel_view_backbone.render().$el;
+        $el.hide().fadeIn(1000);               
         this.flat_preview_view.hide();        
         $('body').animate({
             scrollTop: $('body').offset().top
           }, 0);      
         thisProduct.trigger("global:rerenderfont")     
-        this.current_view = "print"    
+          
       }      
       app_router.navigate("print")
     }

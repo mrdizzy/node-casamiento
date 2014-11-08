@@ -20,7 +20,7 @@
     display:none; 
   }
   
-  #print_button {
+  #print_button, #add_another {
     text-align:center;
     margin:0 auto;    
     width:70%;

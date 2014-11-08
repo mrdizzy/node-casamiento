@@ -16,7 +16,8 @@
     margin:0 auto;
     position:relative;
   }		
-    #printsvg .up8 .print_place_card_view {
+    #printsvg .up8 .print_place_card_view,
+    #printsvg .up4 .print_place_card_view {
       float:left;
     }
       
