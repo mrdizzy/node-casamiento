@@ -54,6 +54,7 @@ var Product = Backbone.Model.extend({
     this.on("change:colours", this.saveProduct)    
     this.on("change:quantity", this.saveProduct)
     this.on("change:guests", this.saveProduct)
+    this.on("change:quantity", this.adjustGuests)
     this.listenTo(this.get("guests"), "change", this.saveProduct)
     this.updatePounds();
     this.updatePence();
@@ -113,11 +114,6 @@ var Product = Backbone.Model.extend({
       }
     }
     this.trigger("change:guests")
-  },
-  adjustQuantity: function(adjust_by) {      
-    var quantity = this.get("quantity") + adjust_by;
-    this.set("quantity", quantity)
-    this.adjustGuests();
   },
   _applyDiscounts: function(total) {
     var qty = this.get("quantity"),

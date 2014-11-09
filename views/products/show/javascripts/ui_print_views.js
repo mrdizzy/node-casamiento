@@ -113,11 +113,11 @@ var PlaceCardCollectionView = Backbone.View.extend({
     var place_cards = []
 
     thisProduct.get("guests").toArray().forEach(function(guest) {   
-        var place_card = new PlaceCardView(_.extend({
-          model: guest
-        }, 
-        options)).render().el
-        place_cards.push(place_card)
+      var place_card = new PlaceCardView(_.extend({
+        model: guest
+      }, 
+      options)).render().el
+      place_cards.push(place_card)
     })
     this.$el.append(place_cards)
     return this;
@@ -184,8 +184,6 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
     return this;
   }
 })
-
-
 
 var PrintControlPanelView = Backbone.View.extend({
   el: '#print_ui',
@@ -289,7 +287,9 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   render: function() {
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
-        hide_layout_icons: isiPad
+        hide_layout_icons: isiPad,
+        pounds: thisProduct.get("pounds"),
+        pence: thisProduct.get("pence")
     })); 
     this.$el.html($template)
     var $colour_picker_container = $template.find('#ui_print_colour_picker_container');
@@ -318,12 +318,7 @@ var PrintControlPanelView = Backbone.View.extend({
     var guests_collection_view = new GuestCollectionView({collection:thisProduct.get("guests")}).render().el
     $ui_guests.append(guests_collection_view)
     
-    $template.find('#actual_cards').append(place_cards)
-    var add_more = '<div class="place_card_view" style="border:1px dotted grey;border-radius:20px;margin-left:70px;margin-right:30px;padding-top:20px;padding-bottom:20px;width:40%;"><div class="grey_button" id="add_another" style="width:150px;">' +
-    '<img src="/gfx/people/crowdsourcing_white.svg" style="line-height:0.5em;width:40px;margin:0;padding:0;" /> ADD ANOTHER</div></div>';
-     var paypal = '<div class="place_card_view" style="border:1px dotted grey;border-radius:20px;margin-left:30px;margin-right:70px;padding-top:20px;padding-bottom:20px;width:40%;"><div id="buy" class="grey_button"><span style="color:white;font:normal 1em OS;">Check out with</span><img class="cart_icon" src="/gfx/cart_white.png" style="width:45px;"/><br/><img src="/gfx/paypal.png" id="paypal"/ style="padding-bottom:1em;"></div></div>';
-    $template.find('#actual_cards').append(add_more)
-    $template.find('#actual_cards').append(paypal)
+    $template.find('#actual_cards').prepend(place_cards)
     return this;
   }
 })

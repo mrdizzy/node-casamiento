@@ -28,11 +28,11 @@ var StepView = Backbone.View.extend({
     }).submit();
   },
   plusQty: function(e) {
-    thisProduct.adjustQuantity(8)
+    thisProduct.set("quantity", thisProduct.get("quantity") + 1)
   },
   minusQty: function(e) {
-    if(thisProduct.get("quantity") > 8) 
-      thisProduct.adjustQuantity(-8)
+    if(thisProduct.get("quantity") > 8)       
+    thisProduct.set("quantity", thisProduct.get("quantity") - 1)
   },
   clearQuantity: function(e) {
     $(e.currentTarget).val("")
@@ -40,18 +40,16 @@ var StepView = Backbone.View.extend({
   setQuantity: function(e) {
     $field = $(e.currentTarget)
     var value = $field.val();
-    if(isNaN(value) || value == false || value < 1) {
+    value = parseInt(value)
+    alert(value)
+    if(isNaN(value) || value == false || value < 8) {
+    console.log(thisProduct.get("quantity"))
       $field.val(thisProduct.get("quantity"))
     } else {
-      var remainder = value % 8;
-      if(remainder > 0) {
-        var new_quantity = 8- remainder + parseInt(value);
-      } else if (remainder == 0) {
-          new_quantity = value;
+      thisProduct.set("quantity",value)
+      $field.val(value)
       }
-      thisProduct.set("quantity", new_quantity)
-      $field.val(new_quantity)
-    }
+    
   },
   renderQtyAndPrice: function() {    
     this.$('#qty').val(thisProduct.get("quantity"))       

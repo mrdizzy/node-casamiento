@@ -327,7 +327,8 @@ body {
   font: normal 1.6em "OS";
   margin-bottom:0.5em; 
   color:white;
-  background-color:#AAA  
+  background-color:#AAA;
+  cursor:pointer;
 }
   .grey_button:hover { 
     background-color:black;

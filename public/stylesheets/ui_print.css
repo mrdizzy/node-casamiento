@@ -101,10 +101,13 @@
       padding-top:3px;
       height:50px;
       padding-bottom:3px;
-    }
-    #ui_print_font_picker_container .selected_font td.font_name, 
-    #ui_print_font_picker_container .selected_font td.font_image {
+    }    
+    
+    #ui_print_font_picker_container .font_selector_container tr:first-child {
       background-color:#EEE
+    } 
+    #ui_print_font_picker_container .font_selector_container tr:hover {
+      background-color:lightgrey;
     } 
     
     #ui_guests {
@@ -161,6 +164,18 @@
   #actual_cards .place_card_view {
       width:50%;
       float:left;
+  }
+ 
+  #actual_cards .place_card_view.add_another, 
+  #actual_cards .place_card_view.checkout {
+    border:1px dotted grey;
+    border-radius:20px;
+    margin-top:20px;
+    width:45%;
+    height:150px;
+    padding-top:10px;
+    margin-left:2%;
+    margin-right:2%;
   }
   
 .place_card_view:nth-child(even) .place_card_wrapper {
