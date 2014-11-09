@@ -206,7 +206,7 @@ var PrintControlPanelView = Backbone.View.extend({
     }
   },
   events: {
-  "click #add_another": "addGuest",
+    "click #add_another": "addGuest",
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
     "dizzy-cp:click": "togglePanel",
@@ -246,7 +246,6 @@ var PrintControlPanelView = Backbone.View.extend({
     var per_page = [8,3,4][$(e.currentTarget).index()]
     $('.layout_icon_container').removeClass('layout_selected');
     $(e.currentTarget).addClass('layout_selected')
-    this.$('#actual_cards').attr("class", "up_" + per_page)
     this.layout = per_page;
   },
   loadFont: function(e, font) {
