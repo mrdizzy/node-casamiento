@@ -55,6 +55,10 @@
             position: relative;
     float:right;
         }
+        
+        .place_card_view:nth-child(even) .place_card_parent {
+     float:left;
+    }
   .place_card_wrapper {
 
     height: 0;

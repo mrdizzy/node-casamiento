@@ -1,3 +1,12 @@
+function screenType(relative_to_viewport) {
+  var viewport = $('body').width();
+  if(viewport < 501) {
+    return (relative_to_viewport.mobile/100) * viewport;
+  } 
+  return (relative_to_viewport.desktop/100) * viewport;
+}
+
+
 if(isiPad) 
   $('#printsvg').addClass('ipad')
   
@@ -23,9 +32,10 @@ var GuestCollectionView = Backbone.View.extend({
 var PlaceCardView = GuestView.extend({
   className: 'place_card_view',
   initialize: function() {      
+    this.relative_to_viewport = this.options.widths_relative_to_viewport;
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);   
     this.listenTo(this.model, "change", this.render)
-    $(window).bind("resize", _.bind(this.render, this));
+    $(window).bind("resize", _.bind(this.resizeWindow, this));
   },  
   events: {
     'click .plus_font': 'increaseFont',
@@ -35,9 +45,13 @@ var PlaceCardView = GuestView.extend({
     "blur input": 'updateGuest',
     'focus input': 'clearGuest'
   }, 
+  resizeWindow: function() {
+  console.log("reisizingf", $(document).width())
+    this._renderFontSize();
+    this._renderBaseline();
+  },
   _getWidth: function() {
-    var relative_to_viewport = this.options.widths_relative_to_viewport;
-    return (relative_to_viewport.desktop/100) * $(document).width(); 
+    return screenType(this.relative_to_viewport)
   },
   increaseFont: function() {
     this.model.adjustFontSize(1.05) // percentage increase
@@ -64,16 +78,21 @@ var PlaceCardView = GuestView.extend({
   _renderFontFamily: function() {
     this.$('input').css('font-family', thisProduct.get("font"));  
   },
+  _renderFontSize: function() {
+    var new_size = this._getWidth() * this.model.get("font_size");
+    this.$('input').css('font-size', new_size + "px");   
+  },
+  _renderBaseline: function() {
+    this.calculateBaselineOffset();
+    this.$('.spacer').css("height", this.top_half_height + "px")
+    this.$('input').css("height", this.bottom_half_height + "px")
+  },
   render: function() {     
+  console.log("rendering")
     if(this.model.hasChanged('font_size')) {
-      var new_size = this._getWidth() * this.model.get("font_size");
-      this.$('input').css('font-size', new_size + "px");   
-      
+      this._renderFontSize();      
     } else if (this.model.hasChanged('baseline')){
-      this.calculateBaselineOffset();
-      this.$('.spacer').css("height", this.top_half_height + "px")
-      this.$('input').css("height", this.bottom_half_height + "px")
-      
+       this._renderBaseline();      
     } else if (this.model.hasChanged('name')) {
         this.$('input').val(this.model.get("name"))  
           
@@ -109,7 +128,8 @@ var PlaceCardCollectionView = Backbone.View.extend({
     return new PlaceCardView(_.extend({
       model: guest,
       widths_relative_to_viewport: {
-       desktop: 47.5
+       desktop: 47.5,
+       mobile: 95
       }
     }, this.options))
   },

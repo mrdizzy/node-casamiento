@@ -34,7 +34,8 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
       var place_card_view = new PlaceCardView({
         model: thisProduct.get("guests").first(),
         widths_relative_to_viewport: {
-          desktop: 64.505
+          desktop: 64.505,
+          mobile: 95
         }
       }).render()
       this.$el.html(place_card_view.el).append('<div class="place_card_wrapper" id="mobile_spacer"></div>')
@@ -102,16 +103,15 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
         
         this.flat_preview_view.render().$el.fadeIn(1000);
         
-         //if(viewportSize.getWidth() < 501) {
-         //  $('body').hide()
-         //  $('body').animate({
-         //    scrollTop: $('body').offset().top
-         //  }, 0); 
-         //  $('body').fadeIn(1000);   
-         //}
-          //$('#print_button').show();
-        //  app_router.navigate("preview_place_card")
-        //}   
+         if(viewportSize.getWidth() < 501) {
+           $('body').hide()
+           $('body').animate({
+             scrollTop: $('body').offset().top
+           }, 0); 
+           $('body').fadeIn(1000);   
+         
+         $('#print_button').show();
+        }   
         app_router.navigate("preview_place_card")
         this.current_view = "preview"
       }

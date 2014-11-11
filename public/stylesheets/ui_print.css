@@ -257,12 +257,12 @@
   
     #actual_cards .place_card_view { 
       width:100%;
+      
     }
      
-    #actual_cards .place_card_view:nth-child(even) .place_card_wrapper {
+    #actual_cards .place_card_view:nth-child(even) .place_card_parent {
         float:right;
     }
-    
   .place_card_view:nth-child(even) .font_size_adjust_buttons, 
   .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
     left:1%;
