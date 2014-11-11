@@ -3,6 +3,7 @@
   float:right;
   position:relative;
   margin:0 auto;
+  background-color:white; /* stop body background image seeping through */
 }
   
   .font_size_adjust_buttons, .font_baseline_adjust_buttons { 
@@ -49,11 +50,13 @@
           position:absolute;
           z-index:1000;
         }
-        
-  .place_card_wrapper {
-    position: relative;
-    width: 95%;
+        .place_card_parent {
+            width: 95%; 
+            position: relative;
     float:right;
+        }
+  .place_card_wrapper {
+
     height: 0;
     padding-bottom: 70.714285714285714285714285714286%;
   }

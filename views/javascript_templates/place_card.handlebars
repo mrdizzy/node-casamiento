@@ -16,11 +16,11 @@
     </div>
   </div>
   
+  <div class="place_card_parent">
 <div class="place_card_wrapper">
 
     <div class="font_spinner"></div>
-      
-    {{#if background}}
+       {{#if background}}
        <img src="/products/{{product}}/attachments/display-5" class="place_card_image" />
        <div class="place_card_background_wrapper colour_0">
        {{{background}}}
@@ -31,10 +31,12 @@
        <img src="/products/{{product}}/attachments/display-5" class="place_card_image colour_0"/>
     {{/unless}}
   
+  
   <div class="guest_wrapper">
-    <div class="spacer" style="height:50%;"></div>
+    <div class="spacer" style="height:{{baseline_top}}px;"></div>
    
-    <input type="text" class="guest_name" style="font-family:{{font_family}};" value="{{name}}"></input>
+    <input type="text" class="guest_name" style="height:{{baseline_bottom}}px;font-family:{{font_family}};font-size:{{font_size}}px" value="{{name}}"></input>
+  </div>
   </div>
        
 </div>

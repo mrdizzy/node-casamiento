@@ -23,12 +23,9 @@ var GuestCollectionView = Backbone.View.extend({
 var PlaceCardView = GuestView.extend({
   className: 'place_card_view',
   initialize: function() {      
-    this.listenTo(thisProduct, 'global:rerenderfont', this._renderFontSize); 
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);   
-    this.listenTo(this.model, "change:name", this._renderName)
-    this.listenTo(this.model, 'change:font_size', this._renderFontSize);
-    this.listenTo(this.model, 'change:baseline', this._renderBaseline);
-    $(window).bind("resize", _.bind(this._renderFontSize, this));
+    this.listenTo(this.model, "change", this.render)
+    $(window).bind("resize", _.bind(this.render, this));
   },  
   events: {
     'click .plus_font': 'increaseFont',
@@ -38,6 +35,10 @@ var PlaceCardView = GuestView.extend({
     "blur input": 'updateGuest',
     'focus input': 'clearGuest'
   }, 
+  _getWidth: function() {
+    var relative_to_viewport = this.options.widths_relative_to_viewport;
+    return (relative_to_viewport.desktop/100) * $(document).width(); 
+  },
   increaseFont: function() {
     this.model.adjustFontSize(1.05) // percentage increase
   },
@@ -50,52 +51,56 @@ var PlaceCardView = GuestView.extend({
   downBaseline: function() {
     this.model.downBaseline();
   },  
-  calculateFontSize: function() { // Element must be visible for width() to work
-    this.font_size = this.$el.width() * this.model.get("font_size");    
-  },    
-  calculateBaselineOffset: function() { // Element must be visible for height() to work
-    var height = this.$el.height();
+  
+  // get Width will report 16 pixels more for some reason -- it is something
+  // to do with scrollbars during the transition. This does not happen when the 
+  // window resizes, only when changing from another view
+  calculateBaselineOffset: function() { 
+    var height = (70.714285714285714285714285714286/100) * this._getWidth();     
     var baseline = (this.model.get("baseline") /100) * height;
     this.top_half_height = (height / 2) + baseline;
     this.bottom_half_height = (height / 2)  - baseline;
   },  
-  _renderBaseline: function() {
-    this.calculateBaselineOffset();
-    this.$('.spacer').css("height", this.top_half_height + "px")
-    this.$('input').css("height", this.bottom_half_height + "px")
-  },  
-  _renderFontSize: function() {
-    this.calculateFontSize();
-    this._renderBaseline();
-    this.$('input').css('font-size', this.font_size + "px");    
+  _renderFontFamily: function() {
+    this.$('input').css('font-family', thisProduct.get("font"));  
   },
   render: function() {     
-    var compiled_template = Handlebars.template(templates["place_card"]);
-    var $template = $(compiled_template({
+    if(this.model.hasChanged('font_size')) {
+      var new_size = this._getWidth() * this.model.get("font_size");
+      this.$('input').css('font-size', new_size + "px");   
+      
+    } else if (this.model.hasChanged('baseline')){
+      this.calculateBaselineOffset();
+      this.$('.spacer').css("height", this.top_half_height + "px")
+      this.$('input').css("height", this.bottom_half_height + "px")
+      
+    } else if (this.model.hasChanged('name')) {
+        this.$('input').val(this.model.get("name"))  
+          
+    } else { 
+      this.calculateBaselineOffset();
+      var compiled_template = Handlebars.template(templates["place_card"]);
+      var $template = $(compiled_template({
       font_family: thisProduct.get("font"),   
+      baseline_top: this.top_half_height,
+      baseline_bottom: this.bottom_half_height,
+      font_size: this._getWidth() * this.model.get("font_size"),
       background: thisProduct.get("background-5"),  
       product: thisProduct.get("_id"),
-      name: this.model.get("name"),
+      name: this.model.get("name")
     }));
-  
     var colours = thisProduct.get("colours");
   
     for(var i=0; i < colours.length; i++) {
       $template.find('.colour_' + i).css("background-color", colours[i])
     }
     this.$el.html($template)
+    }
     return this;
-  },
-  _renderFontFamily: function() {    
-    this.$('input').css('font-family', thisProduct.get("font"));
-  },
-  _renderName: function() {
-    this.$('input').val(this.model.get("name"))  
   }
 })
 
-// Used to render collections of place cards for both print view and 
-// UI preview view
+// Used to render collections of place cards for UI preview view
 var PlaceCardCollectionView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(thisProduct.get("guests"), 'add', this.addGuest)
@@ -106,7 +111,6 @@ var PlaceCardCollectionView = Backbone.View.extend({
         })).render().el
         
     this.$el.append(place_card)
-    thisProduct.trigger("global:rerenderfont")
   },
   render: function() {
     var options = this.options;
@@ -114,7 +118,10 @@ var PlaceCardCollectionView = Backbone.View.extend({
 
     thisProduct.get("guests").toArray().forEach(function(guest) {   
       var place_card = new PlaceCardView(_.extend({
-        model: guest
+        model: guest,
+        widths_relative_to_viewport: {
+            desktop: 47.5
+        }
       }, 
       options)).render().el
       place_cards.push(place_card)
@@ -227,7 +234,6 @@ var PrintControlPanelView = Backbone.View.extend({
   togglePanel: function() {
     if(this.mobile) {
       $('#mobile_panel_section').toggle();
-      thisProduct.trigger("rerender")
     }
   },
   fontIncrease: function() {
@@ -267,7 +273,6 @@ var PrintControlPanelView = Backbone.View.extend({
     }).render().el;
     $('#printsvg').html(result);    
     
-    thisProduct.trigger("global:rerenderfont")
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
     
     // Wait for SVG images to be loaded before printing

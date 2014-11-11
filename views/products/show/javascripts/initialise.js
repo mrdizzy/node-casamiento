@@ -1,4 +1,6 @@
+alert($(document).width())
 $(function() {
+
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
   
   /* Test for iPad */
@@ -31,7 +33,10 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
     el: '#flat_preview',
     render: function() {
       var place_card_view = new PlaceCardView({
-        model: thisProduct.get("guests").first()
+        model: thisProduct.get("guests").first(),
+        widths_relative_to_viewport: {
+          desktop: 64.505
+        }
       }).render()
       this.$el.html(place_card_view.el).append('<div class="place_card_wrapper" id="mobile_spacer"></div>')
       return this;
@@ -43,7 +48,7 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
   // of rendered views visible first, then add the html to them
   // as the widths of certain elements must be visible in order
   // to calculate dynamic widths (for the colour picker, for example)
-  
+
   var CoordinatorView = Backbone.View.extend({
     el: '#inner_page_container',
     initialize: function() {
@@ -90,7 +95,6 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
           $('body').fadeIn(1000);   
         }
         $('#print_button').show();
-        thisProduct.trigger("global:rerenderfont")
         app_router.navigate("preview_place_card")
       }    
     },
@@ -103,8 +107,7 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
         this.flat_preview_view.hide();        
         $('body').animate({
             scrollTop: $('body').offset().top
-          }, 0);      
-        thisProduct.trigger("global:rerenderfont")     
+          }, 0);        
           
       }      
       app_router.navigate("print")
@@ -138,7 +141,8 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
       "print": function() {
         coordinator_view._renderPrintView();
       }, 
-      "": function(actions) {       
+      "": function(actions) {  
+      //  coordinator_view._renderMainView();     
       }
     }
   });

@@ -164,7 +164,9 @@
 #actual_cards { 
   margin:0 auto;
   width:100%;
-  margin-top:140px;
+  
+  background-color:white; /* stop body background image seeping through */
+  padding-top:120px;
 }
 
   #actual_cards .place_card_view {
@@ -250,7 +252,7 @@
     width:100%;
   }
   #actual_cards {
-    margin-top:0;
+    margin-top:40px;
   }
   
     #actual_cards .place_card_view { 
@@ -265,7 +267,15 @@
   .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
     left:1%;
   }
-    
+  
+  #actual_cards .place_card_view.add_another, 
+  #actual_cards .place_card_view.checkout {
+   margin:0 auto;
+   margin-bottom:10px;
+   clear:both;
+   float:none;
+    width:90%;
+  }
 }
   
 /* Phablet */
