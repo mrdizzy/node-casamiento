@@ -57,8 +57,8 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
       this.product_container_view = this.$('#product_container')      
       this.flat_preview_view = new FlatPreviewView();
       this.print_control_panel_view_backbone = new PrintControlPanelView()        
-      this.listenTo(thisProduct, 'change:colours', this._renderPreview)
-      this.listenTo(thisProduct, 'change:font', this._renderPreview)
+      this.listenTo(thisProduct, 'change:colours', this._renderPreviewAfterMain)
+      this.listenTo(thisProduct, 'change:font', this._renderPreviewAfterMain)
     },
     events: {
       "click #print_button": "_renderPrintView",
@@ -74,6 +74,10 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
       this.$('.guest_name').hide()    
       thisProduct.set("font", font)
     },
+    _renderPreviewAfterMain: function() {
+      if(this.current_view == "home") 
+        this._renderPreview();
+    },
     _renderHome: function() {
       this.current_view = "home"
       this.print_control_panel_view_backbone.$el.hide(); 
@@ -84,11 +88,18 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
       app_router.navigate("")
     },
     _renderPreview: function() {
-      if (this.current_view != "preview") {
-        $('#print_ui').hide();
-        $('#inner_page_container').show();
+      if (this.current_view != "preview") {     
+         
+        if(this.current_view == "print") {
+          $('#print_ui').hide();
+          $('#inner_page_container').fadeIn(1000);  
+        }       
+        
         this.product_container_view.hide();  
-        this.step_view.render()
+        
+        if(this.current_view != "home") 
+          this.step_view.render();
+        
         this.flat_preview_view.render().$el.fadeIn(1000);
         
          //if(viewportSize.getWidth() < 501) {
