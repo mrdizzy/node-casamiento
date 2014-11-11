@@ -1,5 +1,9 @@
 .product_type_icon { width:130px; }
   
+  #flat_preview {
+      display:none;
+  }
+  
   #product_container .product_type_icon {
       display:none;
   }

@@ -1,4 +1,3 @@
-alert($(document).width())
 $(function() {
 
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
@@ -48,17 +47,18 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
   // of rendered views visible first, then add the html to them
   // as the widths of certain elements must be visible in order
   // to calculate dynamic widths (for the colour picker, for example)
+  
+  // #inner_page_container wraps everything including the header
 
   var CoordinatorView = Backbone.View.extend({
     el: '#inner_page_container',
     initialize: function() {
-      this.current_view = "main";
-      this.step_view = new StepView().render();      
+      this.step_view = new StepView(); 
       this.product_container_view = this.$('#product_container')      
-      this.flat_preview_view = new FlatPreviewView().render().$el.hide();      
-      this.print_control_panel_view_backbone = new PrintControlPanelView({})        
-      this.listenTo(thisProduct, 'change:colours', this._renderPreviewAfterMain)
-      this.listenTo(thisProduct, 'change:font', this._renderPreviewAfterMain)
+      this.flat_preview_view = new FlatPreviewView();
+      this.print_control_panel_view_backbone = new PrintControlPanelView()        
+      this.listenTo(thisProduct, 'change:colours', this._renderPreview)
+      this.listenTo(thisProduct, 'change:font', this._renderPreview)
     },
     events: {
       "click #print_button": "_renderPrintView",
@@ -74,42 +74,46 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
       this.$('.guest_name').hide()    
       thisProduct.set("font", font)
     },
-    _renderPreviewAfterMain: function() {
-      if(this.current_view != "print") {  
-        this._renderPreview()
-      }  
+    _renderHome: function() {
+      this.current_view = "home"
+      this.print_control_panel_view_backbone.$el.hide(); 
+      $('#inner_page_container').show();
+      this.product_container_view.fadeIn(1000);
+      this.flat_preview_view.$el.hide();
+      this.step_view.render()
+      app_router.navigate("")
     },
     _renderPreview: function() {
-      if(this.current_view != "preview") {   
-     
-        this.current_view = "preview"    
+      if (this.current_view != "preview") {
+        $('#print_ui').hide();
         $('#inner_page_container').show();
         this.product_container_view.hide();  
-        this.flat_preview_view.fadeIn(1000);
-        //this.print_control_panel_view.hide();
-        if(viewportSize.getWidth() < 501) {
-          $('body').hide()
-          $('body').animate({
-            scrollTop: $('body').offset().top
-          }, 0); 
-          $('body').fadeIn(1000);   
-        }
-        $('#print_button').show();
+        this.step_view.render()
+        this.flat_preview_view.render().$el.fadeIn(1000);
+        
+         //if(viewportSize.getWidth() < 501) {
+         //  $('body').hide()
+         //  $('body').animate({
+         //    scrollTop: $('body').offset().top
+         //  }, 0); 
+         //  $('body').fadeIn(1000);   
+         //}
+          //$('#print_button').show();
+        //  app_router.navigate("preview_place_card")
+        //}   
         app_router.navigate("preview_place_card")
-      }    
+        this.current_view = "preview"
+      }
     },
-    _renderPrintView: function() {        
-      if(this.current_view != "print") {
-        this.current_view = "print"  
-        $('#inner_page_container').hide();
-        var $el = this.print_control_panel_view_backbone.render().$el;
-        $el.hide().fadeIn(1000);               
-        this.flat_preview_view.hide();        
-        $('body').animate({
-            scrollTop: $('body').offset().top
-          }, 0);        
-          
-      }      
+    _renderPrintView: function() {     
+      this.current_view = "print"          
+      $('#inner_page_container').hide();
+      $('body').css('background-image', "none")
+      var $el = this.print_control_panel_view_backbone.render().$el;
+      $el.fadeIn(1000);                    
+      $('body').animate({
+          scrollTop: $('body').offset().top
+        }, 0);     
       app_router.navigate("print")
     }
   })      
@@ -142,7 +146,7 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
         coordinator_view._renderPrintView();
       }, 
       "": function(actions) {  
-      //  coordinator_view._renderMainView();     
+        coordinator_view._renderHome();     
       }
     }
   });
