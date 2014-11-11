@@ -105,25 +105,23 @@ var PlaceCardCollectionView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(thisProduct.get("guests"), 'add', this.addGuest)
   },
+  _newPlaceCardView: function(guest) {
+    return new PlaceCardView(_.extend({
+      model: guest,
+      widths_relative_to_viewport: {
+       desktop: 47.5
+      }
+    }, this.options))
+  },
   addGuest: function(guest) {
-   var place_card = new PlaceCardView(_.extend({
-          model: guest
-        })).render().el
-        
+    var place_card = this._newPlaceCardView(guest).render().el        
     this.$el.append(place_card)
   },
   render: function() {
-    var options = this.options;
-    var place_cards = []
-
+    var that = this;
+    var place_cards = [];
     thisProduct.get("guests").toArray().forEach(function(guest) {   
-      var place_card = new PlaceCardView(_.extend({
-        model: guest,
-        widths_relative_to_viewport: {
-            desktop: 47.5
-        }
-      }, 
-      options)).render().el
+      var place_card = that._newPlaceCardView(guest).render().el
       place_cards.push(place_card)
     })
     this.$el.append(place_cards)
