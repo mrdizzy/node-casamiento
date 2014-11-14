@@ -1,6 +1,6 @@
 var db = require('./../config/db').test_ebay,
-    _ = require('underscore'),
-    prepareDivs = require('./../lib/prepare_divs');
+    _ = require('underscore');
+    //prepareDivs = require('./../lib/prepare_divs');
 
 // Route: /ebay/:id
 // This renders an ebay product view by looking in the /views/ebay/product_type folder for its template as different product types will need different rendering

@@ -1,125 +1,96 @@
-@media print {
-  
-  body { background-image:none; }
- 
-  #printsvg { 
-    display:block;
-  }
-  
-    .crop_marks { 
-      display:block;
-      position:absolute;
-      z-index:10005; 
-      height:100%;
-      width:100%;
-    }
+#printsvg #container { 
+  margin:0 auto;
+  position:relative;
+}  
 
-    .vertical_crop_mark, 
-    .horizontal_crop_mark {
-      position: absolute; 
-    }
-
-    .vertical_crop_mark {
-      height:10mm;  
-      border-left:1px dashed lightgrey;
-    }
-
-    .horizontal_crop_mark {
-      width:10mm;
-      border-bottom:1px dashed lightgrey;
-    }
-    /* ----------------------------------------------------------------------------- */    
-      .crop_top_bottom_left {
-        left:-10mm;
-      }
-      .crop_top_bottom_right {
-        right:-10mm;
-      }
-      .crop_top_top_left {
-        top:-10mm;
-        height:10mm;
-      }  
-      .crop_top_top_right {
-        top:-10mm;
-        right:0;
-      }
-    /* ----------------------------------------------------------------------------- */    
-      .crop_horizontal_left {
-        left:-10mm; 
-      }  
-      .crop_horizontal_right {
-        right:-10mm; 
-      }
-    /* ----------------------------------------------------------------------------- */    
-      .crop_bottom_top_left {
-        bottom:0;
-        left:-10mm;
-      }
-      .crop_bottom_top_right {
-        bottom:0;
-        right:-10mm;
-      }
-      .crop_bottom_bottom_left {
-        bottom:-10mm;
-      }
-      .crop_bottom_bottom_right {
-        bottom:-10mm;
-        right:0;
-      }
-  
-    #printsvg .up_4 {
-      height:148.5mm;
-      margin:0 auto; 
-      position:relative;
-      padding-top:15mm;
-      width:210mm;
-    }
-    #printsvg .up_3 { 
-      margin:0 auto;
-      position:relative;
-      padding-top:15mm;
-      height:222.75mm;
-      width:105mm;
-    }  
-      #printsvg .up_3 .place_card_view {
-        float:none;
-        margin:0 auto;
-        clear:both;
-        float:none;
-      }
-    
-    #printsvg .up_8 {
-      height:296.8mm; /* slightly less than 297 to avoid blank sheets as height is dodgy */
-      width:210mm;
-      position:relative;
-    } 
-      
-    #printsvg .up_8 .place_card_view, 
-    #printsvg .up_4 .place_card_view { 
-      float:left; 
-    }
-  
-  .place_card_image { 
-    display:block;
-  }
-  
-  .place_card_view {
-    padding:0;
-    margin:0;
-    width:105mm;
-    float:left;
-    height:74.25mm;
-  }
-  
-  .place_card_wrapper { 
-    width:100%;
-  }
-  
-  #top_of_page, #control_panel { 
-   display:none; 
-  }
-  
-  .break { page-break-after:always;}
-  
+#printsvg #container.up3, 
+#printsvg #container.up8 {
+  width:210mm;
 }
 
+#printsvg #container.up4 {
+  width:297mm;
+}
+
+  #printsvg .print_place_card_view {
+    margin:0 auto;
+    position:relative;
+  }		
+    #printsvg .up8 .print_place_card_view,
+    #printsvg .up4 .print_place_card_view {
+      float:left;
+    }
+      
+  #printsvg .place_card_image { 
+    display:block;
+    width:100%;
+    height:100%
+  }
+  #printsvg .guest {
+    position:absolute;
+    z-index:1000;
+    text-align:center;
+  }		
+    
+    /* Grouping 
+    /////////////////////////// */
+    
+ #printsvg .group, 
+ #printsvg .group_landscape { 
+    margin:0 auto;		
+    width:210mm;
+  }
+ #printsvg .group_landscape {
+    padding-top:5mm;
+    height:180mm;		
+  }
+    
+ #printsvg .cas_print_logo {
+      display:block;
+      margin-top:10mm;
+      padding:1mm;
+      border:1px solid black;
+      width:35mm;
+      clear:both;
+      margin:0 auto;
+  }
+  #printsvg .up8 .cas_print_logo {
+      display:none;
+  }
+   #printsvg .svg_left_crop {
+      top:0;
+      left:0;
+      display:block;
+      padding:0;
+      margin:0;
+      width:100%;
+      height:100%;
+      position:absolute;
+      z-index:10010;    
+    }
+    
+/* iPad
+//////////////////////////////// */
+
+#printsvg.ipad #four, 
+#printsvg.ipad #eight { display:none; }
+
+#printsvg.ipad .group {
+  width:126mm;
+  height:280mm;
+}
+
+/* Print
+//////////////////////////////// */
+@media print {
+   
+  #printsvg { 
+    width:210mm;
+    display:block;
+  }
+  #top_of_page, 
+  #control_panel { display:none; }
+  
+  body { background-image:none; }
+  
+}

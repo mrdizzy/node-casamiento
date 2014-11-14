@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+<script src="/javascripts/libraries/in_groups_of.js"></script>
+
+<style type="text/css">
+/* Works on Ipad for a 8-up portrait printout
+	 Do not use page-break-after: always as this crashes chrome cloud print
+	 whereas page-break-before:always; does not seem to */
+	 
+div,html,body {
+  margin:0;
+  width:210mm;
+  padding:0;
+}
+
+#panel {
+	position:fixed;
+	width:100%;
+	z-index:1500000000000000;
+	background-color:white;
+	height:20mm;
+	border-bottom:1px solid black;
+}
+
+#container { 
+	margin:0 auto;
+	position:relative;
+}  
+
+#container.up3, #container.up8 {
+	width:210mm;
+	
+}
+
+#container.up4 {
+	width:297mm;
+}
+
+	.place_card_view {
+		margin:0 auto;
+		width:105mm;
+		height:74.25mm;	
+		position:relative;
+		float:left;
+	}		
+			.up8 .place_card_view {
+				float:left;
+			}
+			.up3 .place_card_view { 
+			  float:none;
+			}  
+			
+		.place_card_image { 
+			display:block;
+			width:100%;
+			height:100%
+		}
+		
+		/* We make the height of this 1mm less than the height of the containing element
+		  as otherwise IE11 will cut the guest names off. Line-height must also be the same */
+		.guest {
+			position:absolute;
+			margin-top:50.125mm;
+			border:0;
+			padding:0;
+			height:23.125mm;
+			width:105mm;
+			display:block;
+			z-index:1000;
+			line-height:23.125mm;
+			text-align:center;
+			font-size:2em;
+	  }		
+		
+	.group, .group_landscape { 
+		margin:0 auto;		
+		width:210mm;
+	}
+	.group {
+	}
+	.group_landscape {
+		padding-top:10mm;
+		height:199mm;		
+	}
+		
+	.cas_print_logo {
+			display:block;
+			margin-top:10mm;
+			padding:1mm;
+			border:1px solid black;
+			width:35mm;
+			clear:both;
+			margin:0 auto;
+	}
+		.up8 .cas_print_logo {
+			display:none;
+		}
+		 .svg_left_crop {
+			top:0;
+			left:0;
+			display:block;
+			padding:0;
+			margin:0;
+			width:100%;
+			height:100%;
+			position:absolute;
+			z-index:10010;
+		
+		}
+/* iPad
+//////////////////////////////// */
+
+.ipad #four, .ipad  #eight { display:none;}
+	 
+.ipad .guest {
+	width: 120.75mm;
+	margin-top:42.69375mm;
+	height:85.3875mm;
+	line-height:42.69375mm;
+}
+
+.ipad .place_card_view {
+	width:120.75mm;
+	height:85.3875mm;
+}
+
+.ipad .group {
+	width:126mm;
+  height:280mm;
+}
+
+@page {
+	margin:0;
+	size:A4 portrait;
+	border:0;
+	padding:0;
+}
+
+@media print {
+
+		
+	#panel {
+		display:none;
+	}
+	
+	@page {
+		margin:0;
+		size:A4;
+		border:0;
+		padding:0;
+	}
+}
+
+</style>
+
+</head>
+
+<body>
+<div id="format">
+  <div id="panel">
+	  <a id="three">3 per page</a> 
+		<a id="four">4 per page</a>
+		<a id="eight">8 per page</a>
+ </div>
+	
+	<div id="container"></div>
+</div>
+</body>
+
+<script>
+// The #container element contains the individual .group elements. We change the 
+// class on the #container element to 3up, 4up or 8up based on the number per page
+// This then causes the CSS of the group and place card elements to change. 
+// We cannot change the @page rule so we have to "overwrite" it by adding to the head
+// when we want to specify landscape mode
+
+// Landscape pages are grouped using the class .group_landscape rather than 
+// .group
+
+$(function() {
+var isWindowsChrome = navigator.userAgent.match(/Chrome/i) != null;
+var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
+if(isiPad) {
+	$('#format').addClass('ipad')
+}
+var RenderModel = Backbone.Model.extend({
+	initialize: function() {
+		if(isiPad) {
+			this.set("per_page", 3)
+		} else {
+			this.set("per_page", 8)
+		}
+	}
+})
+
+var render_model = new RenderModel()
+
+var PanelView = Backbone.View.extend({
+	el: '#panel',
+	events: {
+		'click #three': 'threeUp',
+		'click #four': 'fourUp',
+		'click #eight': 'eightUp'
+	},
+	threeUp: function() {
+	  this.model.set("per_page", 3)		
+	 $('head').append("<style type='text/css'>@page { size: A4 portrait }</style>");
+	},
+	fourUp: function() {
+	 this.model.set("per_page", 4)
+	 $('head').append("<style type='text/css'>@page { size: A4 landscape }</style>");
+	},
+	eightUp: function() {
+		this.model.set("per_page", 8)
+	 $('head').append("<style type='text/css'>@page { size: A4 portrait }</style>");
+	}
+})
+
+var PlaceCardCollectionView = Backbone.View.extend({
+	el: '#container',
+	initialize: function() {
+		this.listenTo(this.model, 'change:per_page', this.render)
+	},
+	render: function() {
+  	var model = this.model;
+	  this.$el.removeClass().addClass('up' + this.model.get("per_page"));
+	  var groups = inGroupsOf(this.collection, this.model.get("per_page"));
+		var html = "";
+		var group_class = "group"
+		if(this.model.get("per_page") == 4) {
+			group_class = "group_landscape"
+		} 
+		groups.forEach(function(guests) {		
+		// page breaks for ipad which can only print 3 per page anyway
+		if (isiPad) {
+	      html = html + '<div class="' + group_class + '" style="page-break-before:always;">'
+	    }
+	    // only apply page breaks when there are less than 8 per page, OR if the browser is Chrome
+		// for Windows
+	    else {
+	      if(model.get("per_page") != 8 || isWindowsChrome) {			 	
+		    html = html + '<div class="' + group_class + '" style="page-break-after:always;">'
+		  } else {
+		    html = html + '<div class="' + group_class + '">'
+		  }
+		}
+	
+	    guests.forEach(function(guest) {
+        html = html + 
+				  '<div class="place_card_view">' +			
+					'<img src="/gfx/left_crop.svg" style="width:100%;height:100%" class="svg_left_crop">' + 
+				    '<div class="guest" contenteditable="true">' +
+					    guest + 
+					  '</div>' +
+				    '<img src="/svg/birds_of_paradise_spirals-name_place/324ab2_23337c" class="place_card_image">' +
+			    '</div>'
+			})
+			html = html + '<img src="/gfx/logo/casamiento_black.svg" class="cas_print_logo" />'
+			html = html + "</div>"			
+		})
+		$('#container').html(html);
+		return this;
+	}
+})
+
+var place_cards = new PlaceCardCollectionView({
+  model: render_model,
+	collection: ["David", "Janine", "Lewis", "Memphis", "Lecford", "Maxwell", "Gary","David", "Janine", "Lewis", "Memphis", "Lecford", "Maxwell", "Gary","David", "Janine", "Lewis", "Memphis", "Lecford", "Maxwell", "Gary", "Jason", "Davinia", "Chantal", "Lucinda", "Valerie", "Barbara", "Amy Hartnell", "Jackie","Holly", "Shriley", "Davina", "Helena", "Alexis", "Debbie", "Julianna", "Sarah"]
+})
+
+place_cards.render();
+console.log(navigator.userAgent)
+new PanelView({model: render_model})
+
+})
+
+</script>
+</html>

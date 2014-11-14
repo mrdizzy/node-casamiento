@@ -1,5 +1,3 @@
-{{#unless svg}}
-
   <div class="font_baseline_adjust_buttons">
     <div class="button_wrapper plus_font deselected" style="margin-bottom:5px">
       <div class="button_inside"><img src="/gfx/font_increase.svg" style="margin-top:25%;width:50%"/></div>
@@ -18,21 +16,12 @@
     </div>
   </div>
   
-{{/unless}}
-
+  <div class="place_card_parent">
 <div class="place_card_wrapper">
 
- {{#unless svg}}
-    <div class="font_spinner" style=""></div>
-    {{/unless}}
-  {{#if svg}}
-    <img src="" style="width:100%;height:100%" class="place_card_image"/>  
-  {{/if}}
-  
-  {{#unless svg}}
-  
-    {{#if background}}
-       <img src="/products/{{product}}/attachments/display-5" class="place_card_image" style="width:100%;height:100%"/>
+    <div class="font_spinner"></div>
+       {{#if background}}
+       <img src="/products/{{product}}/attachments/display-5" class="place_card_image" />
        <div class="place_card_background_wrapper colour_0">
        {{{background}}}
        </div>
@@ -42,12 +31,12 @@
        <img src="/products/{{product}}/attachments/display-5" class="place_card_image colour_0"/>
     {{/unless}}
   
-  {{/unless}}
   
   <div class="guest_wrapper">
-    <div class="spacer" style="height:50%;"></div>
+    <div class="spacer" style="height:{{baseline_top}}px;"></div>
    
-    <input type="text" class="guest_name" style="font-family:{{font_family}};" value="{{name}}"></input>
+    <input type="text" class="guest_name" style="height:{{baseline_bottom}}px;font-family:{{font_family}};font-size:{{font_size}}px" value="{{name}}"></input>
+  </div>
   </div>
        
 </div>

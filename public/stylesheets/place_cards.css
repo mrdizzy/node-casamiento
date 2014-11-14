@@ -3,6 +3,7 @@
   float:right;
   position:relative;
   margin:0 auto;
+  background-color:white; /* stop body background image seeping through */
 }
   
   .font_size_adjust_buttons, .font_baseline_adjust_buttons { 
@@ -49,15 +50,20 @@
           position:absolute;
           z-index:1000;
         }
-        
-  .place_card_wrapper {
-    position: relative;
-    width: 95%;
+        .place_card_parent {
+            width: 95%; 
+            position: relative;
     float:right;
+        }
+        
+        .place_card_view:nth-child(even) .place_card_parent {
+     float:left;
+    }
+  .place_card_wrapper {
+
     height: 0;
     padding-bottom: 70.714285714285714285714285714286%;
   }
-    
     .font_spinner {  
       height:50%;
       top:50%;
@@ -88,7 +94,7 @@
       width:100%;
       position:absolute;
       height:100%;
-      z-index:1001
+      z-index:1000;
     }
     
       .guest_wrapper  input {

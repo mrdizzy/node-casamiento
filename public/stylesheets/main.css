@@ -20,14 +20,22 @@
   
 /* Typography
 ==================================== */
-@font-face { font-family:"Gara"; src: url('/f/GARA.eot?') format('eot'), url('/f/GARA.woff') format('woff'); }
+@font-face { font-family:"Gara"; src: url('/f/garamond.eot?') format('eot'), url('/f/garamond.woff') format('woff'); }
+@font-face { font-family:"GaraI"; src: url('/f/garamonditalic.eot?') format('eot'), url('/f/garamonditalic.woff') format('woff'); }
 @font-face { font-family:"TP"; src: url('/f/t.eot?') format('eot'), url('/f/t.woff') format('woff'); }
-@font-face { font-family:"GaraI"; src: url('/f/GARAIT.eot?') format('eot'), url('/f/GARAIT.woff') format('woff'); }
+
 @font-face { font-family:"OS"; src: url('/f/OSReg.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OS Light Italic"; src: url('/f/OSLI.eot?') format('eot'), url('/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('/f/OSCB.eot?') format('eot'), url('/f/OSCB.woff') format('woff'); }
-
+ @page
+{
+margin:0;
+padding:0;
+}
+body {
+  height:800px; /* Keeps scrollbars always visible in order to get correct width of body (if scrollbars are not visible then the body width is 16pixels smaller) */
+}
 h1 { 
   text-align:center;  
   font-family: TP; 
@@ -322,7 +330,8 @@ body {
   font: normal 1.6em "OS";
   margin-bottom:0.5em; 
   color:white;
-  background-color:#AAA  
+  background-color:#AAA;
+  cursor:pointer;
 }
   .grey_button:hover { 
     background-color:black;

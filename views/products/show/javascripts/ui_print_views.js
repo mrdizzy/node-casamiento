@@ -1,3 +1,26 @@
+function screenType(relative_to_viewport) {
+  var viewport = $('body').width();
+  if(viewport < 501) {
+    return (relative_to_viewport.mobile/100) * viewport;
+  } 
+  return (relative_to_viewport.desktop/100) * viewport;
+}
+
+
+if(isiPad) 
+  $('#printsvg').addClass('ipad')
+  
+var GuestCollectionView = Backbone.View.extend({
+  render: function() {
+    var guests_html = []
+    this.collection.forEach(function(guest) {  
+        guests_html.push(new GuestView({model:guest}).render().el);
+    })
+    this.$el.html(guests_html)
+    return this;
+  }
+})
+
 /* 
   This view takes svg as an option. When svg is set to true, 
   it uses absolute measurements rather than relative measurements
@@ -9,13 +32,10 @@
 var PlaceCardView = GuestView.extend({
   className: 'place_card_view',
   initialize: function() {      
-    this.listenTo(thisProduct, 'global:rerenderfont', this._renderFontSize); 
+    this.relative_to_viewport = this.options.widths_relative_to_viewport;
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);   
-    this.listenTo(this.model, "change:name", this._renderName)
-    this.listenTo(this.model, 'change:font_size', this._renderFontSize);
-    this.listenTo(this.model, 'change:baseline', this._renderBaseline);
-    this.units = this.options.svg ? "mm" : "px"
-    $(window).bind("resize", _.bind(this._renderFontSize, this));
+    this.listenTo(this.model, "change", this.render)
+    $(window).bind("resize", _.bind(this.resizeWindow, this));
   },  
   events: {
     'click .plus_font': 'increaseFont',
@@ -25,6 +45,14 @@ var PlaceCardView = GuestView.extend({
     "blur input": 'updateGuest',
     'focus input': 'clearGuest'
   }, 
+  resizeWindow: function() {
+  console.log("reisizingf", $(document).width())
+    this._renderFontSize();
+    this._renderBaseline();
+  },
+  _getWidth: function() {
+    return screenType(this.relative_to_viewport)
+  },
   increaseFont: function() {
     this.model.adjustFontSize(1.05) // percentage increase
   },
@@ -37,112 +65,160 @@ var PlaceCardView = GuestView.extend({
   downBaseline: function() {
     this.model.downBaseline();
   },  
-  calculateFontSize: function() { // Element must be visible for width() to work
-    var width = this.options.svg ? 105 : this.$el.width();
-   
-    this.font_size = width * this.model.get("font_size");
-    
-  },    
-  calculateBaselineOffset: function() { // Element must be visible for height() to work
-    var height = this.options.svg ? 74.25 : this.$el.height();
+  
+  // get Width will report 16 pixels more for some reason -- it is something
+  // to do with scrollbars during the transition. This does not happen when the 
+  // window resizes, only when changing from another view
+  calculateBaselineOffset: function() { 
+    var height = (70.714285714285714285714285714286/100) * this._getWidth();     
     var baseline = (this.model.get("baseline") /100) * height;
     this.top_half_height = (height / 2) + baseline;
     this.bottom_half_height = (height / 2)  - baseline;
   },  
+  _renderFontFamily: function() {
+    this.$('input').css('font-family', thisProduct.get("font"));  
+  },
+  _renderFontSize: function() {
+    var new_size = this._getWidth() * this.model.get("font_size");
+    this.$('input').css('font-size', new_size + "px");   
+  },
   _renderBaseline: function() {
     this.calculateBaselineOffset();
-    this.$('.spacer').css("height", this.top_half_height + this.units)
-    this.$('input').css("height", this.bottom_half_height + this.units)
-  },  
-  _renderFontSize: function() {
-    this.calculateFontSize();
-    this._renderBaseline();
-    console.log(this.model.get("font_size"), this.font_size, this.units)
-    this.$('input').css('font-size', this.font_size + this.units);
-    
+    this.$('.spacer').css("height", this.top_half_height + "px")
+    this.$('input').css("height", this.bottom_half_height + "px")
   },
   render: function() {     
-    var compiled_template = Handlebars.template(templates["place_card"]);
-    var $template = $(compiled_template({
+  console.log("rendering")
+    if(this.model.hasChanged('font_size')) {
+      this._renderFontSize();      
+    } else if (this.model.hasChanged('baseline')){
+       this._renderBaseline();      
+    } else if (this.model.hasChanged('name')) {
+        this.$('input').val(this.model.get("name"))  
+          
+    } else { 
+      this.calculateBaselineOffset();
+      var compiled_template = Handlebars.template(templates["place_card"]);
+      var $template = $(compiled_template({
       font_family: thisProduct.get("font"),   
+      baseline_top: this.top_half_height,
+      baseline_bottom: this.bottom_half_height,
+      font_size: this._getWidth() * this.model.get("font_size"),
       background: thisProduct.get("background-5"),  
-      svg: this.options.svg,
       product: thisProduct.get("_id"),
-      name: this.model.get("name"),
+      name: this.model.get("name")
     }));
-  
     var colours = thisProduct.get("colours");
   
     for(var i=0; i < colours.length; i++) {
       $template.find('.colour_' + i).css("background-color", colours[i])
     }
     this.$el.html($template)
+    }
     return this;
-  },
-  _renderFontFamily: function() {    
-    this.$('input').css('font-family', thisProduct.get("font"));
-  },
-  _renderName: function() {
-    this.$('input').val(this.model.get("name"))  
   }
 })
 
-// Used to render collections of place cards for both print view and 
-// UI preview view
+// Used to render collections of place cards for UI preview view
 var PlaceCardCollectionView = Backbone.View.extend({
+  initialize: function() {
+    this.listenTo(thisProduct.get("guests"), 'add', this.addGuest)
+  },
+  _newPlaceCardView: function(guest) {
+    return new PlaceCardView(_.extend({
+      model: guest,
+      widths_relative_to_viewport: {
+       desktop: 47.5,
+       mobile: 95
+      }
+    }, this.options))
+  },
+  addGuest: function(guest) {
+    var place_card = this._newPlaceCardView(guest).render().el        
+    this.$el.append(place_card)
+  },
   render: function() {
-    var options = this.options;
-    var grouped_place_cards = inGroupsOf(thisProduct.get("guests").toArray(), options.per_page)
-    
-    grouped_place_cards.forEach(function(group) {
-    
-    // Add crop marks
-      var $container = $('<div class="up_' + options.per_page + '"></div>"');
-      if ((options.per_page == 3) && options.svg) {
-       $container.html('<div class="crop_marks"><div class="horizontal_crop_mark crop_top_bottom_left"></div><div class="horizontal_crop_mark crop_top_bottom_right"></div><div class="crop_top_top_left vertical_crop_mark"></div><div class="crop_top_top_right vertical_crop_mark"></div></div>')
-       
-       $container.append('<div class="crop_horizontal_left horizontal_crop_mark" style="top:52.125mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:89.25mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:126.375mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:163.5mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:200.625mm;"></div>')
-       
-       $container.append('<div class="crop_horizontal_right horizontal_crop_mark" style="top:52.125mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:89.25mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:126.375mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:163.5mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:200.625mm;"></div>')
-       
-       $container.append('<div class="crop_bottom_top_left horizontal_crop_mark"></div><div class="crop_bottom_top_right horizontal_crop_mark"></div><div class="crop_bottom_bottom_left vertical_crop_mark"></div><div class="crop_bottom_bottom_right vertical_crop_mark"></div>')
-       }
-       else if ((options.per_page == 4) && options.svg) {
-           $container.html('<div class="crop_marks"><div class="horizontal_crop_mark crop_top_bottom_left"></div><div class="horizontal_crop_mark crop_top_bottom_right"></div><div class="crop_top_top_left vertical_crop_mark"></div><div class="crop_top_top_right vertical_crop_mark"></div></div>')
-       
-       
-       $container.append('<div class="crop_horizontal_left horizontal_crop_mark" style="top:52.125mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:89.25mm;"></div><div class="crop_horizontal_left horizontal_crop_mark" style="top:126.375mm;"></div>')
-       $container.append('<div class="crop_horizontal_right horizontal_crop_mark" style="top:52.125mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:89.25mm;"></div><div class="crop_horizontal_right horizontal_crop_mark" style="top:126.375mm;"></div>')
-       
-       $container.append('<div class="crop_bottom_top_left horizontal_crop_mark"></div><div class="crop_bottom_top_right horizontal_crop_mark"></div><div class="crop_bottom_bottom_left vertical_crop_mark"></div><div class="crop_bottom_bottom_right vertical_crop_mark"></div>')
-       
-       } else if ((options.per_page == 8) && options.svg) {
-        $container.html('<div style="z-index:1001;width:10%;left:45%;height:12.5%;position:absolute;border-bottom:1px dashed lightgrey;"></div><div style="z-index:1001;width:10%;left:45%;height:25%;position:absolute;border-bottom:1px solid lightgrey;"></div><div style="z-index:1001;width:10%;left:45%;height:37.5%;position:absolute;border-bottom:1px dashed lightgrey;"></div><div style="z-index:1001;width:10%;left:45%;height:50%;position:absolute;border-bottom:1px solid lightgrey;"></div><div style="z-index:1001;width:10%;left:45%;height:62.5%;position:absolute;border-bottom:1px dashed lightgrey;"></div><div style="z-index:1001;width:10%;left:45%;height:75%;position:absolute;border-bottom:1px solid lightgrey;"></div><div style="z-index:1001;width:10%;left:45%;height:87.5%;position:absolute;border-bottom:1px dashed lightgrey;"></div>')
-          
-        $container.append('<div style="z-index:1001;height:2.5%;left:50%;position:absolute;border-left:1px solid lightgrey;"></div><div style="z-index:1001;height:5%;top:22.5%;left:50%;position:absolute;border-left:1px solid lightgrey;"></div><div style="z-index:1001;height:5%;top:47.5%;left:50%;position:absolute;border-left:1px solid lightgrey;"></div><div style="z-index:1001;height:5%;top:72.5%;left:50%;position:absolute;border-left:1px solid lightgrey;"></div><div style="z-index:1001;height:2.5%;bottom:0;left:50%;position:absolute;border-left:1px solid lightgrey;"></div>')
-       }
-       group.forEach(function(guest) {
-        var place_card = new PlaceCardView(_.extend({
-          model: guest,
-          svg: options.svg
-        }, 
-        options)).render().el
-        $container.append(place_card)
-      })
-     
-      this.$el.append($container)
-     this.$el.append("<div class='break'></div>")
-    }, this)
-      
+    var that = this;
+    var place_cards = [];
+    thisProduct.get("guests").toArray().forEach(function(guest) {   
+      var place_card = that._newPlaceCardView(guest).render().el
+      place_cards.push(place_card)
+    })
+    this.$el.append(place_cards)
     return this;
   }
 }) 
 
+// This view loops through each guest and creates an SVG place 
+// card for printing. 
+var PrintPlaceCardCollectionView = Backbone.View.extend({
+  render: function() {
+    if(isiPad) {
+      var width = 120.75;        
+      var height = 85.3875;
+    } else {
+      var width = 105;
+      var height = 74.25;
+    }
+    var options = this.options;
+    this.$el.removeClass().addClass('up' + options.per_page);
+    var groups = inGroupsOf(this.collection, options.per_page);
+    var html = "";
+    var group_class = "group"    
+    
+    if(options.per_page == 4) {
+      group_class = "group_landscape"        
+      $('head').append("<style type='text/css'>@page { size: A4 landscape }</style>");
+    } 
+    else {        
+     $('head').append("<style type='text/css'>@page { size: A4 portrait }</style>");
+    }
+    groups.forEach(function(guests) {		            	
+        // page breaks for ipad which can only print 3 per page anyway
+        if (isiPad) {
+          html = html + '<div class="' + group_class + '" style="page-break-before:always;">'
+        }
+        // only apply page breaks when there are less than 8 per page, OR if the browser is Chrome
+        // for Windows
+        else {
+          if(options.per_page != 8 || isWindowsChrome) {			 	
+            html = html + '<div class="' + group_class + '" style="page-break-after:always;">'
+          } else {
+            html = html + '<div class="' + group_class + '">'
+          }
+        }
+    
+      guests.forEach(function(guest) {
+        guest.calculateBaselineOffset(height);
+        var compiled_template = Handlebars.template(templates["print_place_card"]) 
+        var $template = $(compiled_template({
+          font: thisProduct.get("font"),  
+          name: guest.get("name"),
+          height:height,
+          width: width,
+          font_size: (width * guest.get("font_size")),
+          margin_top: guest.top_half_height,
+          guest_height: guest.bottom_half_height
+        }));  
+        html = html + $template.html(); // /html() only returns INNER html so we have added a wrapping div in template
+      })
+      html = html + '<img src="/gfx/logo/casamiento_black.svg" class="cas_print_logo" />'
+      html = html + "</div>"			
+    })
+    this.$el.html(html);
+    return this;
+  }
+})
+
 var PrintControlPanelView = Backbone.View.extend({
   el: '#print_ui',
   initialize: function() {
-    this.layout = 8
+    this.layout = 3
     $(window).on("resize", this.testForMobile.bind(this));
+    if(isiPad) {
+      this.listenTo(thisProduct, 'editing:guest', this.toggleControlPanel)
+      this.listenTo(thisProduct, 'finishediting:guest', this.toggleControlPanel)
+    }
     this.testForMobile();
   },
   testForMobile: function() {
@@ -155,10 +231,11 @@ var PrintControlPanelView = Backbone.View.extend({
     }
   },
   events: {
+    "click #add_another": "addGuest",
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
     "dizzy-cp:click": "togglePanel",
-    "click input[type=radio]": "changeLayout",
+    "click .layout_icon_container": "changeLayout",
     "click #ui_printer_icon": "printPage",
     "click #menu_lines": "togglePanel",
     "click .global_baseline_up": "baselineUp",
@@ -166,10 +243,15 @@ var PrintControlPanelView = Backbone.View.extend({
     "click .global_font_increase": "fontIncrease",
     "click .global_font_decrease": "fontDecrease"
   },
+  addGuest: function() {
+    var guests = thisProduct.get("guests").add({name:"Alice"})
+  },
+  toggleControlPanel: function() {
+    this.$('#control_panel').fadeToggle();  
+  },
   togglePanel: function() {
     if(this.mobile) {
-        $('#mobile_panel_section').toggle();
-        thisProduct.trigger("rerender")
+      $('#mobile_panel_section').toggle();
     }
   },
   fontIncrease: function() {
@@ -185,9 +267,10 @@ var PrintControlPanelView = Backbone.View.extend({
     thisProduct.get("guests").invoke('downBaseline')
   },
   changeLayout: function(e) {
-    var val = $(e.currentTarget).val()
-    this.$('#actual_cards').attr("class", "up_" + val)
-    this.layout = val;
+    var per_page = [8,3,4][$(e.currentTarget).index()]
+    $('.layout_icon_container').removeClass('layout_selected');
+    $(e.currentTarget).addClass('layout_selected')
+    this.layout = per_page;
   },
   loadFont: function(e, font) {
     $('.font_spinner').hide();
@@ -202,13 +285,12 @@ var PrintControlPanelView = Backbone.View.extend({
   },  
   // Create the SVG print view
   printPage: function(e) {    
-    var result = new PlaceCardCollectionView({
+    var result = new PrintPlaceCardCollectionView({
       per_page: this.layout,
-      svg: true
+      collection: thisProduct.get("guests").toArray()
     }).render().el;
     $('#printsvg').html(result);    
     
-    thisProduct.trigger("global:rerenderfont")
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
     
     // Wait for SVG images to be loaded before printing
@@ -219,14 +301,18 @@ var PrintControlPanelView = Backbone.View.extend({
     images.attr('src', "/svg/" + svg_url).load(function() {
       counter--;
       if(counter == 0) {   
-      console.log("printing!")
-        window.print()        
+      $('#ui_print_alert').fadeIn();
+        //window.print()        
         $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
       }
     })
   },
   render: function() {
-    var $template = $(Handlebars.template(templates["user_interface_for_print"])()); 
+    var $template = $(Handlebars.template(templates["user_interface_for_print"])({
+        hide_layout_icons: isiPad,
+        pounds: thisProduct.get("pounds"),
+        pence: thisProduct.get("pence")
+    })); 
     this.$el.html($template)
     var $colour_picker_container = $template.find('#ui_print_colour_picker_container');
     
@@ -248,7 +334,14 @@ var PrintControlPanelView = Backbone.View.extend({
       fonts: casamiento_fonts, 
       selected_font: thisProduct.get("font")
     })
-    $template.find('#actual_cards').append(place_cards)
+    
+    var $ui_guests = $template.find('#ui_guests_quick');
+    
+    var guests_collection_view = new GuestCollectionView({collection:thisProduct.get("guests")}).render().el
+    $ui_guests.append(guests_collection_view)
+    
+    $template.find('#actual_cards').prepend(place_cards)
     return this;
   }
 })
+

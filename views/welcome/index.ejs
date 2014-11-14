@@ -3,75 +3,51 @@
   <% for(var i = 0; i < place_cards.length; i++) { %>
     <% if (place_cards[i].colours[1]) { %>
      #welcome_place_<%=i%> .colour_1 { background-color: <%= place_cards[i].colours[1] %>}
-  <% } %>
+    <% } %>
   <% } %>
 
 <%- contentFor('middle') %>
 
-      <div style="width:40%;float:left;">
-      <h5>Place cards you can personalise and print straight from your browser&hellip;</h5>
+  <div id="slides_column">
       
-      <div class="shell"></div>
-      <p>
-      
-          Your guests will
-        love seeing their names individually printed on our elegant freestanding place cards&hellip;
-      </p>
-      
-      <p>&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs below are bound to compliment your theme&hellip;</p>
-      
-      <h5 style="font-family:'GaraI';font-size:3em;letter-spacing:0.0005em;">Save yourself time, stress and hassle&hellip;</h5>
-    
-      <div class="shell"></div>
-        
-      <p>They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.</p>
-    
-      <p>Place your order today!</p>
-     
-      <p style="margin:0;padding:0;text-align:center;">
-        <img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/>
-      </p>
-     
-      <p style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
-    
-      <span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
-      </div>
-  
-      <div style="margin-left:40%;border-left:1px dotted black;">
-       <img id="slides_spinner" src="/gfx/spinner.gif" />
+    <img id="slides_spinner" src="/gfx/spinner.gif" />
  
-     <div id="slides_container">
+    <div id="slides_container">
      
       <% for (var i = 0; i < place_cards.length; i++) { %>
+      
         <% var place_card = place_cards[i] %>
-         <div id="welcome_place_<%= i %>" class="welcome_place_card_container">
-           <div class="welcome_slide_container" style="position:relative">
+        <div id="welcome_place_<%= i %>" class="welcome_place_card_container">
+          <div class="welcome_slide_container" style="position:relative">
             <% if (place_card.colours[1]) { %>
               <div class="welcome_background_container">                  
-               <div class="welcome_background colour_0" style="background-color:<%= place_card.colours[0] %>">
-                 <%- place_card["background-" +place_card.attachments_order[0] ] %>
-               </div>
+                <div class="welcome_background colour_0" style="background-color:<%= place_card.colours[0] %>">
+                  <%- place_card["background-" + place_card.attachments_order[0] ] %>
+                </div>
             <% } %>   
-             <a href="/products/<%= place_card._id %>">
-               <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0]%> 1000px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[0]%> 750px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 500px,
-               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 400px"
-               sizes="(min-width:801px) 40.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 55vw, 100VW" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %><% } %>"/>
-              </a>
+            <a href="/products/<%= place_card._id %>">
+              <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0]%> 1000w,
+               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[0]%> 750w,
+               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 500w,
+               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/small-<%= place_card.attachments_order[0]%> 400w,
+               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/tiny-<%= place_card.attachments_order[0]%> 345w"
+               sizes="(min-width:901px) 27.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 55vw, 100vw" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %><% } %>"/>
+            </a>
               
-           <% if (place_card.colours[1]) { %> 
-            </div>
-           <% } %>
+            <% if (place_card.colours[1]) { %> 
+              </div>
+            <% } %>
             
-           <div style="padding-top:1px;">
-            <div class="welcome_colour_frame">
-              <div class="welcome_colour_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
+            <a href="/products/<%= place_card._id %>">
+            <div style="padding-top:1px;">
+              <div class="welcome_colour_frame">
+                <div class="welcome_colour_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
+              </div>
+              <div class="welcome_colour_label" style="color:#000">  
+                <%= place_card.colour_0 %>    
+              </div>
             </div>
-            <div class="welcome_colour_label">  
-               <%= place_card.colour_0 %>    
-            </div>
-           </div>
+           </a>
            
            <% if (place_card.colours[1]) { %>                 
             <div class="welcome_colour_frame" style="clear:both;">
@@ -94,12 +70,12 @@
          <% } %>
             
            <a href="/products/<%= place_card._id %>">
-            <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[1]%> 1000px,
-            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[1]%> 750px,
-            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 500px,
-            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 400px,
-            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 345x"
-            sizes="(min-width:500px) 10.4vw, (min-width: 320px) 45vw, 100vm" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %>"<% } %>/>
+            <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[1]%> 100w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[1]%> 750w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 500w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/small-<%= place_card.attachments_order[1]%> 400w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/tiny-<%= place_card.attachments_order[1]%> 345w"
+            sizes="(min-width:901px) 22.27vw, (min-width:500px) 10.4vw, (min-width: 320px) 45vw, 100vw" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %>"<% } %>/>
            </a>
            
             <% if (place_card.colours[1]) { %>
@@ -117,12 +93,12 @@
          <% } %>
             
            <a href="/products/<%= place_card._id %>">
-            <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[2]%> 1000px,
-            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[2]%> 750px,
-            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2]%> 500px,
-            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2]%> 400px,
-            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2]%> 345x"
-            sizes="(min-width:500px) 10.4vw, (min-width: 320px) 45vw, 100vm" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %>"<% } %>/>
+            <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[2]%> 1000w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[2]%> 750w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2]%> 500w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/small-<%= place_card.attachments_order[2]%> 400w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/tiny-<%= place_card.attachments_order[2]%> 345w"
+            sizes="(min-width:901px) 22.27vw, (min-width:500px) 10.4vw, (min-width: 320px) 45vw, 100vw" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %>"<% } %>/>
            </a>
            
            <% if (place_card.colours[1]) { %>
@@ -133,35 +109,73 @@
       
      <% } %>
      </div>
+     
+     <div id="slide_separator"></div>
     
-       <h5 style="margin-bottom:0.5em;font-family:'GaraI';text-align:center;font-size:3em;letter-spacing:0.0005em;margin-top:1em;">How it works&hellip;</h5>
+      <h6>How it works&hellip;</h6>
    
     
       <div class="shell"></div>
-              <div style="margin-top:8px;margin-left:30px;width:60px;height:50px;background-image:url('/gfx/hex.svg');background-repeat:no-repeat;background-size:100%;text-align:center;line-height:45px;color:white;float:left;"><span style="font-size:2.4em;font-weight:600;font-style:italic;font-family:'Josefin Slab'">1</span></div>
-       <div style="margin-left:80px;"><p style="font-family:'TP';letter-spacing:0.05em;padding-bottom:0.5em;margin-bottom:0;font-size:1.5em;">Choose a design</p> 
-       <p style="margin-right:10%;margin-top:0;padding-top:0;">From ornamental to abstract, traditional to contemporary, weddings to Christmas, one of our designs are bound to compliment the theme of your event.</p>
+      
+      <div class="hex">1</div>      
+      <div class="how_to_bullet_container">
+        <p class="bullet_text">Choose a design</p> 
+        <p style="margin-right:10%;margin-top:0;padding-top:0;">From ornamental to abstract, traditional to contemporary, weddings to Christmas, one of our designs are bound to compliment the theme of your event.
+        </p>
        </div>
        
-       <div style="margin-top:8px;margin-left:30px;width:60px;height:50px;background-image:url('/gfx/hex.svg');background-repeat:no-repeat;background-size:100%;text-align:center;line-height:45px;color:white;float:left;"><span style="font-size:2.4em;font-weight:600;font-style:italic;font-family:'Josefin Slab'">2</span></div>
-       
-       
-       <div style="margin-left:80px;"><p style="font-family:'TP';padding-bottom:0.5em;margin-bottom:0;letter-spacing:0.05em;font-size:1.5em;">Choose a colour</p> 
-       <p style="margin-right:10%;margin-top:0;padding-top:0;">With hundreds of colours available, there's no doubt you'll find one to co-ordinate with your event. You'll see the colours change instantly on your screen so you know exactly what the finished result will look like. </p>
+       <div class="hex">2</div>       
+       <div  class="how_to_bullet_container">
+         <p class="bullet_text">Choose a colour</p> 
+         <p style="margin-right:10%;margin-top:0;padding-top:0;">With hundreds of colours available, there's no doubt you'll find one to co-ordinate with your event. You'll see the colours change instantly on your screen so you know exactly what the finished result will look like.
+         </p>
        </div>
        
-       <div style="margin-top:8px;margin-left:30px;width:60px;height:50px;background-image:url('/gfx/hex.svg');background-repeat:no-repeat;background-size:100%;text-align:center;line-height:45px;color:white;float:left;"><span style="font-size:2.4em;font-weight:600;font-style:italic;font-family:'Josefin Slab'">3</span></div>
-       <div style="margin-left:80px;"><p style="font-family:'TP';letter-spacing:0.05em;padding-bottom:0.5em;margin-bottom:0;font-size:1.5em;">Choose a font</p> 
-       <p style="margin-right:10%;margin-top:0;padding-top:0;">With hundreds of colours available, there's no doubt you'll find one to co-ordinate with your event. You'll see the colours change instantly on your screen so you know exactly what the finished result will look like.  </p>
-       </div>
-       
-        <div style="margin-top:8px;margin-left:30px;width:60px;height:50px;background-image:url('/gfx/hex.svg');background-repeat:no-repeat;background-size:100%;text-align:center;line-height:45px;color:white;float:left;"><span style="font-size:2.4em;font-weight:600;font-style:italic;font-family:'Josefin Slab'">4</span></div>
-       <div style="margin-left:80px;"><p style="font-family:'TP';letter-spacing:0.05em;padding-bottom:0.5em;margin-bottom:0;font-size:1.5em;">Print yourself</p> 
-       <p style="margin-right:10%;margin-top:0;padding-top:0;">It's quick and easy to print straight from your browser. No downloading PDFs or waiting on screens that say "processing..." for 10 seconds. It's nearly instant!</p>
-       </div>
-        <div style="position:relative;border-top:1px dotted black;border-bottom:1px dotted black;padding:1em;margin:1em;">
-         <img src="/gfx/tutorials/tutorial_4.gif" style="position: absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;width:86.25%;top:11%;max-width:682px;"/>
-         <img src="/gfx/desktop_screen_wide.svg" style="margin:0 auto;width:100%;display:block;"/>
-         </div>
+      <div class="hex">3</div>
+      <div class="how_to_bullet_container"><p  class="bullet_text">Choose a font</p> 
+        <p style="margin-right:10%;margin-top:0;padding-top:0;">With hundreds of colours available, there's no doubt you'll find one to co-ordinate with your event. You'll see the colours change instantly on your screen so you know exactly what the finished result will look like.  
+        </p>
       </div>
-      <div style="clear:both"></div>
+       
+      <div class="hex">4</div>
+      <div class="how_to_bullet_container">
+        <p class="bullet_text">Print yourself</p> 
+        <p style="margin-right:10%;margin-top:0;padding-top:0;">It's quick and easy to print straight from your browser. No downloading PDFs or waiting on screens that say "processing..." for 10 seconds. It's nearly instant!</p>
+      </div>
+        
+      <div style="position:relative;border-top:1px dotted black;border-bottom:1px dotted black;padding:1em;margin:1em;">
+        <img src="/gfx/tutorials/tutorial_4.gif" style="position: absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;width:86.25%;top:11%;max-width:682px;"/>
+        <img src="/gfx/desktop_screen_wide.svg" style="margin:0 auto;width:100%;display:block;"/>
+      </div>
+      </div>
+      
+      <!-- DESCRIPTION COLUMN -->
+  
+      <div id="description_column">     
+      
+      <h5>Place cards you can personalise and print straight from your browser&hellip;</h5>
+      
+      <div class="shell"></div>
+      
+      <p>Your guests will love seeing their names individually printed on our elegant freestanding place cards&hellip;
+      </p>
+      
+      <p>&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs below are bound to compliment your theme&hellip;</p>
+      
+      <h6>Save yourself time, stress and hassle&hellip;</h6>
+    
+      <div class="shell"></div>
+        
+      <p>They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.</p>
+    
+      <p>Place your order today!</p>
+     
+      <p style="margin:0;padding:0;text-align:center;">
+        <img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/>
+      </p>
+     
+      <p style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
+    
+      <span style="font-style:italic;font-size:1.2em;">Lead Designer</span></p>
+    </div>
+    <div style="clear:both"></div>

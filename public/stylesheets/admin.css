@@ -4,7 +4,8 @@ html,body,div,img {
   border:0;
 }
 #colour_picker {
-width:50%;float:right
+  width:50%;
+  float:right
 }
 .background_container, 
 .background_container img, 
@@ -13,7 +14,6 @@ width:50%;float:right
   width:500px;
   height:319px;
 }
-
 
 .place_card_view {
   width:100%;
@@ -42,19 +42,19 @@ width:50%;float:right
     
     .place_card_view:nth-child(odd) .font_size_adjust_buttons, 
     .place_card_view:nth-child(odd) .font_baseline_adjust_buttons{
-     left:1%;
+      left:1%;
     }
     
     .place_card_view:nth-child(even) .font_size_adjust_buttons, 
     .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
-     right:2%;
+      right:2%;
     }
 
       .button_wrapper {
-          position: relative;
-          width: 100%;
-          height: 0;
-          padding-bottom: 100%;
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 100%;
       }
         .button_inside { 
           text-align:center;

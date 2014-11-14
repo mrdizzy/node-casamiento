@@ -11,21 +11,6 @@
    
     <link rel="stylesheet" href="/static/css/all.css" />     
   
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>    
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
-
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
-    
-    <script src="/javascripts/libraries/fastclick.js"></script>
-    <script>
-      $(function() {    
-        FastClick.attach(document.body);  
-      })
-    </script>
-    <script type="text/javascript" src="/javascripts/libraries/backbone_syphon.js"></script>    
-    <script src="/static/javascripts/all.js"></script>   
-
     <style type="text/css">
         <%- inline_styles %>
     </style>
@@ -42,31 +27,33 @@
         <div id="header_container"><div id="headline_welcome">              
           <img src="/gfx/logo/drms.svg" id="dreams_slogan">
         </div>
-          <div id="menu_lines">
-            <div style="width:18px;border-color:black;border-style:solid;border-top:1px;"></div>
-            <div style="width:18px;border-color:black;border-style:solid;border-top:1px;margin-top:5px;"></div>
-            <div style="width:18px;border-color:black;border-style:solid;border-top:1px;margin-top:5px;"></div>
-          </div>
-          <a href="/"><img src="/gfx/logo/casamiento_gry.svg" id="logo"></a>       
-          
-          
-          <div class="navigation" style="position:relative">
+        <div id="menu_lines">
+          <div style="width:18px;border-color:black;border-style:solid;border-top:1px;"></div>
+          <div style="width:18px;border-color:black;border-style:solid;border-top:1px;margin-top:5px;"></div>
+          <div style="width:18px;border-color:black;border-style:solid;border-top:1px;margin-top:5px;"></div>
+        </div>
         
-            <div id="slogan_container">
-              <img src="/gfx/logo/drms.svg" id="dreams_slogan">
-            </div>
+        <a href="/"><img src="/gfx/logo/casamiento_gry.svg" id="logo"></a>       
+          
+        <div class="navigation" style="position:relative">
+        
+          <div id="slogan_container">
+            <img src="/gfx/logo/drms.svg" id="dreams_slogan">
+          </div>
             
-            <div class="nav_link" id="about">
-              <div style="padding-top:15px;height:35px;border-left:1px dotted grey;text-align:center;">
-                <img src="/gfx/bullets/line_diamond.png" /> About
-              </div>
+          <div class="nav_link" id="about">
+            <div style="padding-top:15px;height:35px;border-left:1px dotted grey;text-align:center;">
+              <img src="/gfx/bullets/line_diamond.png" /> About
             </div>
+          </div>
             
-            <a href="/products"><div id="browse" class="browse nav_link">
-            <div>
-              <img src="/gfx/bullets/line_diamond.png" /> Browse designs
+          <a href="/products">
+            <div id="browse" class="browse nav_link">
+              <div>
+                <img src="/gfx/bullets/line_diamond.png" /> Browse designs
+              </div>          
             </div>
-          </div></a>
+          </a>
             
           <div class="nav_link">
             <div style="padding-top:15px;height:35px;text-align:center;">
@@ -78,16 +65,32 @@
         <div style="clear:both;"></div>
       </div>
     </div>
+    
     <div id="middle_column"><%- middle %></div>
     <div class="left_column"><%- left %></div>       
     <div id="right_col" class="right_column"><%- right %></div>
    
     <div id="footer">
-      <div class="genesis_collection"><img src="/gfx/logo/gen_compact.png" style="width:160px"/></div>
+      <div class="genesis_collection"><img src="/gfx/genesis.svg" style="width:160px"/></div>
       <div class="footer_seperator"><img src="/gfx/three_across.png" style="width:60px"/></div>
-      <div class="castello_collection"><img src="/gfx/logo/castello.png" style="width:250px;" /></div>
+      <div class="castello_collection"><img src="/gfx/castello.svg" style="width:250px;" /></div>
     </div>
     
     <div style="clear:both;"></div>
   </body>
+  
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>    
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>    
+  <script src="/javascripts/libraries/fastclick.js"></script>    
+  <script type="text/javascript" src="/javascripts/libraries/backbone_syphon.js"></script>    
+  <script src="/static/javascripts/all.js"></script>   
+
+  <script type="text/javascript">
+    $(function() {    
+      FastClick.attach(document.body);  
+    })
+    <%- javascripts %>
+  </script>  
 </html>
