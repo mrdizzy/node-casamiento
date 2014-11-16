@@ -4,7 +4,8 @@ var StepView = Backbone.View.extend({
   el: '.right_column',
   initialize: function() {
     this.listenTo(thisProduct, 'change:quantity', this.renderQtyAndPrice)
-    this.listenTo(thisProduct, 'change:guests', this._renderGuests)
+    this.listenTo(thisProduct.get("guests"), 'add', this._renderGuests)
+    this.listenTo(thisProduct.get("guests"), 'remove', this._renderGuests)
     this.current_step = 1;
   },
   events: {     
@@ -41,15 +42,12 @@ var StepView = Backbone.View.extend({
     $field = $(e.currentTarget)
     var value = $field.val();
     value = parseInt(value)
-    alert(value)
     if(isNaN(value) || value == false || value < 8) {
-    console.log(thisProduct.get("quantity"))
       $field.val(thisProduct.get("quantity"))
     } else {
       thisProduct.set("quantity",value)
       $field.val(value)
-      }
-    
+    }    
   },
   renderQtyAndPrice: function() {    
     this.$('#qty').val(thisProduct.get("quantity"))       
@@ -103,6 +101,9 @@ var StepView = Backbone.View.extend({
     return this;
   },  
   _renderGuests: function($element) {
+    if($element.set) {
+        $element = undefined;
+    }
     var $element = $element || this.$('#guests')
     var guests_html = []
     thisProduct.get("guests").forEach(function(guest) {    
@@ -131,7 +132,7 @@ var GuestView = Backbone.View.extend({
   updateGuest: function() {
    thisProduct.trigger("finishediting:guest")
    var name = this.$('input').val()
-    this.model.set("name", name)
+   this.model.set("name", name)
   },
   render: function() { 
     this.$el.html('<input type="text" name="guest" value="' + this.model.get("name") + '"></input>')

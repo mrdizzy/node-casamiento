@@ -34,14 +34,14 @@ var Product = Backbone.Model.extend({
   localStorage: new Backbone.LocalStorage("CasamientoProducts"),
   defaults: function() {
     var defaults = <%- JSON.stringify(product) %>
-    defaults.quantity = 8;
-    defaults.font_size = 1;
-    defaults.guests = new Guests([{},{},{},{},{},{},{},{}]);
-    defaults.total = 3.97;
-    defaults.price = 0.10;
+    defaults.quantity = defaults.quantity || 8;
+    defaults.font_size = defaults.font_size || 1;
+    defaults.guests = defaults.guests || new Guests([{},{},{},{},{},{},{},{}]);
+    defaults.total = defaults.total || 3.97;
+    defaults.price = defaults.price || 0.10;
     return defaults;
   },
-  stale: ['attachments_order', 'divs', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5'],
+  stale: ['attachments_order', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5'],
   toJSON: function() {
     return _.omit(this.attributes, this.stale);
   },
@@ -52,9 +52,9 @@ var Product = Backbone.Model.extend({
     this.on("change:weight", this.calculatePrice)
     this.on("change:font", this.saveProduct)
     this.on("change:colours", this.saveProduct)    
-    this.on("change:quantity", this.saveProduct)
-    this.on("change:guests", this.saveProduct)
+    this.on("change:quantity", this.saveProduct)    
     this.on("change:quantity", this.adjustGuests)
+    this.on("change:guests", this.saveProduct)
     this.listenTo(this.get("guests"), "change", this.saveProduct)
     this.updatePounds();
     this.updatePence();
@@ -91,7 +91,7 @@ var Product = Backbone.Model.extend({
     this.set("pounds", this.get("total").toString().split(".")[0])
   },
   updatePence: function() {
-   this.set("pence", this.get("total").toString().split(".")[1])
+    this.set("pence", this.get("total").toString().split(".")[1])
   },
   updateColour: function(index, colour) {
     var colours = this.get("colours");
@@ -101,19 +101,19 @@ var Product = Backbone.Model.extend({
     $('.colour_' + index).css("background-color", colour) // global colour change  
   },
   adjustGuests: function() {
+  console.log(this.get("quantity"), this.previous("quantity"))
     var adjustment = this.get("quantity") - this.previous("quantity"),
       guests = this.get("guests");
     if(adjustment > 0) {
       for(var i =0;  i < adjustment; i++) {
-        guests.add({}, {silent:true});
+        guests.add({});
       }
     } else if(adjustment < 0) {
       adjustment = adjustment * -1;
       for(var i =0;  i < adjustment; i++) {
-        guests.pop({silent:true});
+        guests.pop();
       }
     }
-    this.trigger("change:guests")
   },
   _applyDiscounts: function(total) {
     var qty = this.get("quantity"),
@@ -150,7 +150,10 @@ var Product = Backbone.Model.extend({
     this.updatePence();
   },
   parse: function(response) {
-    response.guests = new Guests(response.guests)
+    if(response.guests) 
+      this.get("guests").reset(response.guests, {silent:true})
+      console.log("Parsing", this.get("guests"))
+    delete response.guests
     return response;
   },
   // Designs can have colours that are a darker shade of a main colour. This is implemented

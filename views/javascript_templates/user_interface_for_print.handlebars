@@ -43,33 +43,63 @@
   </div>
   
           <a href="/"><img src="/gfx/logo/casamiento_gry.svg" id="mobile_print_logo"></a>
- 
   
   <div style="clear:both"></div>
 </div>
 
 <div style="clear:both;border-top:1px solid black;"></div>
-    <div id="ui_print_alert" style="display:none;padding:20px;width:50%;border:1px solid black;position:fixed;background-color:white;z-index:1000000000000000000000000000000000000000000;right:0;left:0;box-shadow:7px 7px 0 0 lightgrey;margin:auto;margin-top:100px;border-radius:15px;text-align:center;">
-        <div id="ui_crosshairs_icon">
-          <img src="/gfx/crosshairs/crosshair8.svg" style="margin-top:0.5em;width:55px">
-        </div>
+    <div id="ui_print_alert">
+     
+     
 
       <!-- LAYOUT ICONS -->
+      
+      
+      <div style="border-bottom:1px solid black;padding-bottom:0.5em;margin-bottom:0.5em;font-family:'OS Light Italic';font-size:1.4em;">
+        Choose layout
+        </div>
+      
         {{#unless hide_layout_icons}}
         <div id="layout_icons_wrapper">
           <div class="layout_icon_container">     <input type="radio" name="per_page" checked="checked" style="display:block;margin:0 auto"/>  
             <img src="/gfx/icons/8_up.svg" id="up_8" />
+            8/portrait page
           </div>
           
           <div class="layout_icon_container layout_selected"><input type="radio" name="per_page" checked="checked" style="display:block;margin:0 auto"/>  
-            <img src="/gfx/icons/3_up.svg" id="up_3" />          
+            <img src="/gfx/icons/3_up.svg" id="up_3" />   
+            3/portrait page       
           </div>
         
-          <div class="layout_icon_container">        <input type="radio" name="per_page" checked="checked" style="display:block;margin:0 auto"/>  
-            <img src="/gfx/icons/4_up.svg" id="up_4" />
+          <div class="layout_icon_container"><br/>       <input type="radio" name="per_page" checked="checked" style="display:block;margin:0 auto"/>  
+            <img src="/gfx/icons/4_up.svg" id="up_4" /><br/>
+            4/landscape page
           </div>
         </div>
         {{/unless}}
+        <div style="margin-top:1em;clear:both;float:left;width:48%;margin-right:2%;">
+          <div style="text-align:center;padding-bottom:0.5em;margin-bottom:0.5em;border-bottom:1px solid black;font-family:'OS Light Italic';font-size:1.4em;margin-right:2%">
+            Cutting marks
+          </div>
+          
+          <div id="ui_crosshairs_icon">
+            <img src="/gfx/crosshairs/crosshair8.svg" style="margin-top:0.5em;width:55px">
+          </div>
+        </div>
+        
+         <div style="margin-top:1em;float:left;width:48%;">
+          <div style="text-align:center;padding-bottom:0.5em;margin-bottom:0.5em;border-bottom:1px solid black;font-family:'OS Light Italic';font-size:1.4em;margin-right:2%">
+            Selected names
+          </div>
+          
+          <div id="ui_crosshairs_icon">
+            <img src="/gfx/crosshairs/crosshair8.svg" style="margin-top:0.5em;width:55px">
+          </div>
+        </div>
+         <div class="grey_button" id="print_now" style="border-radius:10px;clear:both;width:150px;">
+      SUBMIT
+    </div>
+        
   </div>
 
 

@@ -8,6 +8,7 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
   <%= include models.js %>  
   <%= include views.js %>
+  <%= include place_card_view.js %>
   <%= include ui_print_views.js %>
 
   // Initialize templates
@@ -18,7 +19,8 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
   
   // Setup and initialization
   var thisProduct = new Product();   
-  thisProduct.fetch({success:function(resp) {
+  thisProduct.fetch({silent:true, success:function(resp) {
+
     $.updateFont(thisProduct.get("font"), {trigger: function(){}})
     
     // Globally change colours according to those saved in localStorage

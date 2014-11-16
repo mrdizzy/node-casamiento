@@ -59,20 +59,65 @@
       text-align:center;
       width:5%;
     }
-    #ui_crosshairs_icon {
-      float:left;
-      opacity:0.3;
-      text-align:center;
-      width:10%;
-    }
-      #ui_crosshairs_icon:hover {
-        cursor:pointer;
-        opacity:1;
-      }
-    #layout_icons_wrapper {
+    
+    #ui_global_font {
+      width:43%;
       float:right;
+      height:56px;
+      margin-right:1%;
       text-align:center;
-      width:60%;
+    }
+      #ui_global_font div {    
+        border:1px solid #AAA;
+        opacity:0.5;
+        display:inline-block;
+        border-bottom-right-radius:12px;
+        border-top-left-radius:12px;
+        width:60px;      
+        height:45px;
+      }
+      #ui_global_font div:hover {
+        opacity:1;
+        cursor:pointer;
+      }
+      
+      .global_font_increase {
+        background: url('/gfx/font_increase.svg') no-repeat center;       
+      } 
+      .global_font_decrease {
+        background: url('/gfx/font_decrease.svg') no-repeat center;          
+      } 
+      .global_baseline_up {
+        background: url('/gfx/baseline_up.svg') no-repeat center; 
+      } 
+      .global_baseline_down {
+        background: url('/gfx/baseline_down.svg') no-repeat center; 
+      } 
+      .global_font_reset {
+        background: url('/gfx/cancel4.svg') no-repeat center; 
+      } 
+    
+    #ui_print_alert {
+      display:none;
+      background-image:url('/gfx/close/close3.svg');
+      background-position:top 10px right 10px;
+      background-repeat:no-repeat;
+      padding:20px;
+      width:50%;
+      border:1px solid black;
+      position:fixed;
+      background-color:white;
+      z-index:1000000000000000000000000000000000000000000;
+      right:0;
+      left:0;
+      box-shadow:7px 7px 0 0 lightgrey;
+      margin:auto;
+      margin-top:100px;
+      border-radius:15px;
+      text-align:center;
+    }
+    #layout_icons_wrapper {      
+      text-align:center;
     }
       .layout_icon_container {    
         border-radius:10px;
@@ -81,6 +126,8 @@
         text-align:center;
         width:26%;
         margin-right:4%;
+        font-size:1em;
+        font-family:'OS Light'
       }
         .layout_icon_container.layout_selected,
         .layout_icon_container:hover {
@@ -99,6 +146,16 @@
           width:55px;
           padding:5px;  
         }
+        
+    #ui_crosshairs_icon {
+      opacity:0.3;
+      display:inline-block;      
+      text-align:center;
+    }
+      #ui_crosshairs_icon:hover {
+        cursor:pointer;
+        opacity:1;
+      }
           
     #ui_print_font_picker_container {
       width:30%;
@@ -126,40 +183,6 @@
       opacity:1;
       cursor:pointer;
     }
-    #ui_global_font {
-      width:30%;
-      float:right;
-      height:56px;
-      margin-right:7%;
-      text-align:center;
-    }
-      #ui_global_font div {    
-        border:1px solid #AAA;
-        opacity:0.5;
-        display:inline-block;
-        border-bottom-right-radius:12px;
-        border-top-left-radius:12px;
-        width:60px;      
-        height:45px;
-        margin-right:2%;
-      }
-      #ui_global_font div:hover {
-        opacity:1;
-        cursor:pointer;
-      }
-      
-      .global_font_increase {
-        background: url('/gfx/font_increase.svg') no-repeat center;       
-      } 
-      .global_font_decrease {
-        background: url('/gfx/font_decrease.svg') no-repeat center;          
-      } 
-      .global_baseline_up {
-        background: url('/gfx/baseline_up.svg') no-repeat center; 
-      } 
-      .global_baseline_down {
-        background: url('/gfx/baseline_down.svg') no-repeat center; 
-      } 
         
 #actual_cards { 
   margin:0 auto;
