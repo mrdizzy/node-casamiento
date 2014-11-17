@@ -3,9 +3,9 @@
 var StepView = Backbone.View.extend({ 
   el: '.right_column',
   initialize: function() {
-    this.listenTo(thisProduct, 'change:quantity', this.renderQtyAndPrice)
-    this.listenTo(thisProduct.get("guests"), 'add', this._renderGuests)
-    this.listenTo(thisProduct.get("guests"), 'remove', this._renderGuests)
+    var guests = thisProduct.get("guests")
+    this.listenTo(guests, 'add', this._renderGuests)
+    this.listenTo(guests, 'remove', this._renderGuests)
     this.current_step = 1;
   },
   events: {     
@@ -29,11 +29,11 @@ var StepView = Backbone.View.extend({
     }).submit();
   },
   plusQty: function(e) {
-    thisProduct.set("quantity", thisProduct.get("quantity") + 1)
+    thisProduct.addGuest();
   },
   minusQty: function(e) {
     if(thisProduct.get("quantity") > 8)       
-    thisProduct.set("quantity", thisProduct.get("quantity") - 1)
+    thisProduct.removeGuest();
   },
   clearQuantity: function(e) {
     $(e.currentTarget).val("")
@@ -43,14 +43,14 @@ var StepView = Backbone.View.extend({
     var value = $field.val();
     value = parseInt(value)
     if(isNaN(value) || value == false || value < 8) {
-      $field.val(thisProduct.get("quantity"))
+      $field.val(thisProduct.quantity())
     } else {
-      thisProduct.set("quantity",value)
+      thisProduct.adjustGuests(value)
       $field.val(value)
     }    
   },
   renderQtyAndPrice: function() {    
-    this.$('#qty').val(thisProduct.get("quantity"))       
+    this.$('#qty').val(thisProduct.quantity())   
     this.$('span#pound').text(thisProduct.get("pounds"));
     this.$('span#decimal').text("." + thisProduct.get("pence"));  
   },
@@ -104,6 +104,7 @@ var StepView = Backbone.View.extend({
     if($element.set) {
         $element = undefined;
     }
+    this.renderQtyAndPrice();
     var $element = $element || this.$('#guests')
     var guests_html = []
     thisProduct.get("guests").forEach(function(guest) {    

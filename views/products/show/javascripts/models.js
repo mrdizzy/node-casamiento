@@ -43,6 +43,7 @@ var Product = Backbone.Model.extend({
   },
   stale: ['attachments_order', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5'],
   toJSON: function() {
+    this.attributes.quantity = this.quantity();
     return _.omit(this.attributes, this.stale);
   },
   initialize: function() {  
@@ -51,11 +52,9 @@ var Product = Backbone.Model.extend({
     this.on("change:texture", this.calculatePrice)
     this.on("change:weight", this.calculatePrice)
     this.on("change:font", this.saveProduct)
-    this.on("change:colours", this.saveProduct)    
-    this.on("change:quantity", this.saveProduct)    
-    this.on("change:quantity", this.adjustGuests)
-    this.on("change:guests", this.saveProduct)
-    this.listenTo(this.get("guests"), "change", this.saveProduct)
+    this.on("change:colours", this.saveProduct)   
+    this.listenTo(this.get("guests"), "add", this.saveProduct)
+    this.listenTo(this.get("guests"), "remove", this.saveProduct)
     this.updatePounds();
     this.updatePence();
   },
@@ -100,10 +99,18 @@ var Product = Backbone.Model.extend({
     this.trigger("change:colours")
     $('.colour_' + index).css("background-color", colour) // global colour change  
   },
-  adjustGuests: function() {
-  console.log(this.get("quantity"), this.previous("quantity"))
-    var adjustment = this.get("quantity") - this.previous("quantity"),
-      guests = this.get("guests");
+  quantity: function() {
+    return this.get("guests").length  
+  },
+  addGuest: function() {
+    this.get("guests").add({});
+  },
+  removeGuest: function() {
+    this.get("guests").pop();
+  },
+  adjustGuests: function(new_amount) {
+     var guests = this.get("guests");
+    var adjustment = new_amount - guests.length
     if(adjustment > 0) {
       for(var i =0;  i < adjustment; i++) {
         guests.add({});
