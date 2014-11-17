@@ -55,6 +55,7 @@ var Product = Backbone.Model.extend({
     this.on("change:colours", this.saveProduct)   
     this.listenTo(this.get("guests"), "add", this.saveProduct)
     this.listenTo(this.get("guests"), "remove", this.saveProduct)
+    this.listenTo(this.get("guests"), "change", this.saveProduct)
     this.updatePounds();
     this.updatePence();
   },
