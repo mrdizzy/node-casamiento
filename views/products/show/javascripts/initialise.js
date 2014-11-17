@@ -2,7 +2,7 @@ $(function() {
 
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
   
-  /* Test for iPad */
+  /* Test for user agent */
 var isWindowsChrome = navigator.userAgent.match(/Chrome/i) != null;
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
@@ -23,9 +23,6 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
     $.updateFont(thisProduct.get("font"), {trigger: function(){}})
     
-    // Globally change colours according to those saved in localStorage
-    $('.colour_0').css("background-color", thisProduct.get("colours")[0])   
-    $('.colour_1').css("background-color", thisProduct.get("colours")[1])
   }, error: function(resp) {
     console.log("Error")
   }})    

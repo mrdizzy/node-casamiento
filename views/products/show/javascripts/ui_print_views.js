@@ -116,7 +116,7 @@ var PrintControlPanelView = Backbone.View.extend({
     "click .global_font_reset": "fontReset"
   },
   addGuest: function() {
-    var guests = thisProduct.get("guests").add({})
+    thisProduct.get("guests").add({})
   },
   toggleControlPanel: function() {
     this.$('#control_panel').fadeToggle();  
@@ -138,10 +138,10 @@ var PrintControlPanelView = Backbone.View.extend({
     thisProduct.get("guests").invoke('adjustFontSize',0.95)
   },
   baselineUp: function() {   
-    thisProduct.get("guests").invoke('upBaseline')
+    thisProduct.get("guests").invoke('adjustBaseline', -1)
   },
   baselineDown: function() {
-    thisProduct.get("guests").invoke('downBaseline')
+    thisProduct.get("guests").invoke('adjustBaseline', 1)
   },
   changeLayout: function(e) {
     var per_page = [8,3,4][$(e.currentTarget).index()]

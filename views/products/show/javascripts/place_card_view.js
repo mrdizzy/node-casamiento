@@ -34,10 +34,10 @@ var PlaceCardView = GuestView.extend({
    this.model.adjustFontSize(0.95) // percentage decrease
   },
   upBaseline: function() {
-    this.model.upBaseline();
+    this.model.adjustBaseline(-1);
   },
   downBaseline: function() {
-    this.model.downBaseline();
+    this.model.adjustBaseline(1);
   },  
   _renderName: function() {
     this.$('input').val(this.model.get("name"))            
@@ -64,9 +64,9 @@ var PlaceCardView = GuestView.extend({
     this.$('input').css("height", this.bottom_half_height + "px")
   },
   render: function() {     
-      this.calculateBaselineOffset();
-      var compiled_template = Handlebars.template(templates["place_card"]);
-      var $template = $(compiled_template({
+    this.calculateBaselineOffset();
+    var compiled_template = Handlebars.template(templates["place_card"]);
+    var $template = $(compiled_template({
       font_family: thisProduct.get("font"),   
       baseline_top: this.top_half_height,
       baseline_bottom: this.bottom_half_height,
@@ -74,7 +74,7 @@ var PlaceCardView = GuestView.extend({
       background: thisProduct.get("background-5"),  
       product: thisProduct.get("_id"),
       name: this.model.get("name")
-      }))
+    }))
     var colours = thisProduct.get("colours");
   
     for(var i=0; i < colours.length; i++) {
@@ -108,11 +108,9 @@ var PlaceCardCollectionView = Backbone.View.extend({
     this.$el.append(place_card)
   },
   render: function() {
-    console.log("Rendering collection view", thisProduct.get("guests"))
     var that = this;
     var place_cards = [];
     thisProduct.get("guests").toArray().forEach(function(guest) {   
-      console.log(guest.get("name"))
       var place_card = that._newPlaceCardView(guest).render().el
       place_cards.push(place_card)
     })

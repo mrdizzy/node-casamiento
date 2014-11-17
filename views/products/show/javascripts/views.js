@@ -29,11 +29,11 @@ var StepView = Backbone.View.extend({
     }).submit();
   },
   plusQty: function(e) {
-    thisProduct.addGuest();
+    thisProduct.get("guests").add({})
   },
   minusQty: function(e) {
     if(thisProduct.get("quantity") > 8)       
-    thisProduct.removeGuest();
+    thisProduct.get("guests").pop();
   },
   clearQuantity: function(e) {
     $(e.currentTarget).val("")

@@ -5,12 +5,8 @@ var Guest = Backbone.Model.extend({
     baseline: (<%= product.baseline %> || 0),
     font_size: "<%= product.font_size %>"
   },
-  // TODO: upBaseline and downBaseline should be consolidated into one adjustBaseline function
-  upBaseline: function() {
-    this.set("baseline", (this.get("baseline") - 1))
-  },
-  downBaseline: function() {
-    this.set("baseline", (this.get("baseline") + 1))
+  adjustBaseline: function(amount) {
+    this.set("baseline", (this.get("baseline") + amount))
   },
   adjustFontSize: function(amount) {
     this.set("font_size", this.get("font_size") * amount)
@@ -41,37 +37,41 @@ var Product = Backbone.Model.extend({
     defaults.price = defaults.price || 0.10;
     return defaults;
   },
-  stale: ['attachments_order', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5', 'tags', 'description','baseline', 'pence', 'pounds'],
-  toJSON: function() {
-    this.attributes.quantity = this.quantity();
-    return _.omit(this.attributes, this.stale);
-  },
   initialize: function() {  
+    this.guests = this.get("guests")
     this.textures = ["plain", "hammered", "linen"]
-    this.on("change:quantity", this.calculatePrice)
     this.on("change:texture", this.calculatePrice)
     this.on("change:weight", this.calculatePrice)
     this.on("change:font", this.saveProduct)
     this.on("change:colours", this.saveProduct)   
-    this.listenTo(this.get("guests"), "add", this.saveProduct)
-    this.listenTo(this.get("guests"), "remove", this.saveProduct)
-    this.listenTo(this.get("guests"), "change", this.saveProduct)
+    this.on("change:colours", this.renderColours)
+    this.once("sync", this.renderColours)
+    this.listenTo(this.guests, "add", this.calculatePrice)
+    this.listenTo(this.guests, "remove", this.calculatePrice)
+    this.listenTo(this.guests, "add", this.saveGuests)
+    this.listenTo(this.guests, "remove", this.saveGuests)
+    this.listenTo(this.guests, "change", this.saveGuests)
     this.updatePounds();
     this.updatePence();
+  },
+  renderColours: function() {    
+    // Globally change colours according to those saved in localStorage
+    $('.colour_0').css("background-color", this.get("colours")[0])   
+    $('.colour_1').css("background-color", this.get("colours")[1])  
   },
   saveProduct: function() {
     this.save();  
   },
+  saveGuests: function() {
+    this.save({guests: this.guests})  
+  },
   shareURL: function() {
+    var url = "http://www.casamiento.co.uk/products/" +
+      this.id + "/#preview_place_card/c0/" + this.get("colours")[0].substr(1);
     if (this.get("colours")[1]) {
-      return ("http://www.casamiento.co.uk/products/" + 
-        this.id + "/#preview_place_card/c0/" + this.get("colours")[0].substr(1) + 
-        "/c1/" + this.get("colours")[1].substr(1) + 
-        "/font/" + this.get("font"))  
+      return (url + "/c1/" + this.get("colours")[1].substr(1) + "/font/" + this.get("font"))  
     } else {
-      return ("http://www.casamiento.co.uk/products/" + 
-        this.id + "/#preview_place_card/c0/" + this.get("colours")[0].substr(1) + 
-        "/font/" + this.get("font"))  
+      return (url + "/font/" + this.get("font"))  
     }
   },
   hex: function() { // This provides a URL for calling the /svg function with the appropriate hex values
@@ -96,35 +96,34 @@ var Product = Backbone.Model.extend({
   updateColour: function(index, colour) {
     var colours = this.get("colours");
     colours[index] = colour;
-    this.set("colours", colours)
-    this.trigger("change:colours")
-    $('.colour_' + index).css("background-color", colour) // global colour change  
+    this.set("colours", colours).trigger("change:colours")
   },
   quantity: function() {
-    return this.get("guests").length  
-  },
-  addGuest: function() {
-    this.get("guests").add({});
-  },
-  removeGuest: function() {
-    this.get("guests").pop();
+    return this.guests.length  
   },
   adjustGuests: function(new_amount) {
-     var guests = this.get("guests");
-    var adjustment = new_amount - guests.length
-    if(adjustment > 0) {
+    var adjustment = new_amount - this.guests.length
+    if (adjustment > 0) {
       for(var i =0;  i < adjustment; i++) {
-        guests.add({});
+        if (i == adjustment - 1) {
+         this.guests.add({}) 
+        } else {
+          this.guests.add({},{silent:true})
+        }
       }
-    } else if(adjustment < 0) {
+    } else if (adjustment < 0) {
       adjustment = adjustment * -1;
       for(var i =0;  i < adjustment; i++) {
-        guests.pop();
+        if (i == adjustment - 1) {
+          this.guests.pop() 
+        } else {
+          this.guests.pop({silent:true})
+        }
       }
     }
   },
   _applyDiscounts: function(total) {
-    var qty = this.get("quantity"),
+    var qty = this.quantity(),
       discount = 0;
     if((qty > 32) && (qty < 96)) {
       discount = (10/100) * total
@@ -135,6 +134,7 @@ var Product = Backbone.Model.extend({
     return discount;
   },
   calculatePrice: function() {   
+  console.log("Calculating price")
     var qty = this.get("quantity"),
       total = this.get("price") * qty,
       texture = this.get("texture"),
@@ -159,8 +159,8 @@ var Product = Backbone.Model.extend({
   },
   parse: function(response) {
     if(response.guests) 
-      this.get("guests").reset(response.guests, {silent:true})
-      console.log("Parsing", this.get("guests"))
+      this.guests.reset(response.guests, {silent:true})
+    console.log("Parsing!")
     delete response.guests
     return response;
   },
@@ -179,5 +179,10 @@ var Product = Backbone.Model.extend({
       ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
       ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
+  },
+  stale: ['attachments_order', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5', 'tags', 'description','baseline', 'pence', 'pounds'],
+  toJSON: function() {
+    this.attributes.quantity = this.quantity();
+    return _.omit(this.attributes, this.stale);
   }
 });

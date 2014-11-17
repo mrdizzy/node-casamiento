@@ -1,3 +1,8 @@
+<!-- 
+
+We start by defining inline CSS styles. Colours are defined by classes .colour_0, .colour_1, .colour_2 and so on. Therefore we loop through the colours and define a colour for each class. 
+-->
+
 <%- contentFor('inline_styles') %>
   <% for (var i=0; i < product.colours.length; i++) { %>
     .colour_<%= i %> { background-color: <%= product.colours[i] %> }
