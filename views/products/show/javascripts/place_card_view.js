@@ -18,7 +18,8 @@ var PlaceCardView = GuestView.extend({
     'click .plus_font': 'increaseFont',
     'click .minus_font': 'decreaseFont',
     'click .up_baseline': 'upBaseline',
-    'click .down_baseline': 'downBaseline',    
+    'click .down_baseline': 'downBaseline',   
+    'click .delete_guest': 'deleteGuest', 
     "blur input": 'updateGuest',
     'focus input': 'clearGuest'
   }, 

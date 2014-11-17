@@ -123,7 +123,12 @@ var GuestView = Backbone.View.extend({
   },
   events: {
     "blur input": 'updateGuest',
-    'focus input': 'clearGuest'
+    'focus input': 'clearGuest',
+    'click .trash': 'deleteGuest'
+  },
+  deleteGuest: function() {
+    this.model.destroy();
+    this.remove();
   },
   clearGuest: function() {
     thisProduct.trigger("editing:guest")
@@ -136,7 +141,7 @@ var GuestView = Backbone.View.extend({
    this.model.set("name", name)
   },
   render: function() { 
-    this.$el.html('<input type="text" name="guest" value="' + this.model.get("name") + '"></input>')
+    this.$el.html('<input type="text" name="guest" value="' + this.model.get("name") + '"></input> <img src="/gfx/trash/delete96.svg" class="trash deselected" style="display:inline-block;width:13px;"/>')
     return this;
   }
 })

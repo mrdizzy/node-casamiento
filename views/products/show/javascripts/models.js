@@ -41,7 +41,7 @@ var Product = Backbone.Model.extend({
     defaults.price = defaults.price || 0.10;
     return defaults;
   },
-  stale: ['attachments_order', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5'],
+  stale: ['attachments_order', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5', 'tags', 'description','baseline', 'pence', 'pounds'],
   toJSON: function() {
     this.attributes.quantity = this.quantity();
     return _.omit(this.attributes, this.stale);

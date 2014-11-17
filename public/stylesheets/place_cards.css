@@ -6,7 +6,7 @@
   background-color:white; /* stop body background image seeping through */
 }
   
-  .font_size_adjust_buttons, .font_baseline_adjust_buttons { 
+  .font_size_adjust_buttons, .font_baseline_adjust_buttons, .delete_button { 
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -24,13 +24,19 @@
       top:14%;   
     }
     
+    .delete_button {
+        top:45%;
+    }
+    
     .place_card_view:nth-child(odd) .font_size_adjust_buttons, 
-    .place_card_view:nth-child(odd) .font_baseline_adjust_buttons{
+    .place_card_view:nth-child(odd) .font_baseline_adjust_buttons,
+    .place_card_view:nth-child(odd) .delete_button {
      left:1%;
     }
     
     .place_card_view:nth-child(even) .font_size_adjust_buttons, 
-    .place_card_view:nth-child(even) .font_baseline_adjust_buttons {
+    .place_card_view:nth-child(even) .font_baseline_adjust_buttons,
+    .place_card_view:nth-child(even) .delete_button {
      right:2%;
     }
 
