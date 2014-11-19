@@ -17,10 +17,23 @@ var Guest = Backbone.Model.extend({
     this.bottom_half_height = height - this.top_half_height - 1;
   }
 })
+
+Backbone.Collection.prototype.save = function (options) {
+    Backbone.sync("create", this, options);
+};
  
 var Guests = Backbone.Collection.extend({
-////////////////////////////////////////////////////////////////
-  model: Guest
+  initialize: function() {
+    this.on("change", this.saveGuests)
+  },
+  saveGuests: function() {
+  var guests = this.map(function(guest) {
+      return {name: guest.get("name")}
+  })
+    localStorage.setItem("guests", JSON.stringify(guests));
+  },
+  model: Guest,
+  url: '/guests'
 })
 
 var Product = Backbone.Model.extend({
@@ -60,7 +73,15 @@ var Product = Backbone.Model.extend({
     $('.colour_1').css("background-color", this.get("colours")[1])  
   },
   saveProduct: function() {
-    this.save();  
+    var that = this;
+    if(!this.currently_saving) {
+      console.log("not saving")
+      that.currently_saving = true;
+      setTimeout(function(){
+        that.save(); 
+        that.currently_saving = false;
+      }, 2000);
+    } 
   },
   saveGuests: function() {
     this.save({guests: this.guests})  
@@ -160,7 +181,7 @@ var Product = Backbone.Model.extend({
   parse: function(response) {
     if(response.guests) 
       this.guests.reset(response.guests, {silent:true})
-    console.log("Parsing!")
+    console.log("Parsing!", response)
     delete response.guests
     return response;
   },
@@ -180,7 +201,7 @@ var Product = Backbone.Model.extend({
       ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   },
-  stale: ['attachments_order', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5', 'tags', 'description','baseline', 'pence', 'pounds'],
+  stale: ['attachments_order', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5', 'tags', 'description','baseline', 'pence', 'pounds', 'font_size', 'name'],
   toJSON: function() {
     this.attributes.quantity = this.quantity();
     return _.omit(this.attributes, this.stale);

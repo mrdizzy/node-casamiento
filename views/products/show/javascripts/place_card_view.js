@@ -73,7 +73,7 @@ var PlaceCardView = GuestView.extend({
       font_size: screenType(this.relative_to_viewport) * this.model.get("font_size"),
       background: thisProduct.get("background-5"),  
       product: thisProduct.get("_id"),
-      name: this.model.get("name")
+      name: this.model.get("name"),
     }))
     var colours = thisProduct.get("colours");
   
@@ -111,6 +111,7 @@ var PlaceCardCollectionView = Backbone.View.extend({
     var that = this;
     var place_cards = [];
     thisProduct.get("guests").toArray().forEach(function(guest) {   
+
       var place_card = that._newPlaceCardView(guest).render().el
       place_cards.push(place_card)
     })

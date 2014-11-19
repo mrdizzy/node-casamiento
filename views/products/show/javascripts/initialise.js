@@ -19,12 +19,19 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
   
   // Setup and initialization
   var thisProduct = new Product();   
-  thisProduct.fetch({silent:true, success:function(resp) {
-
-    $.updateFont(thisProduct.get("font"), {trigger: function(){}})
-    
-  }, error: function(resp) {
-    console.log("Error")
+  var guestList = new Guests();
+   
+  thisProduct.fetch({silent:true, success:function(model, resp) {
+    $.updateFont(thisProduct.get("font"), {trigger: function(){}}) 
+   
+  }, error: function(model,resp) {
+    var guests = localStorage.getItem("guests")
+   if(guests) {
+   guests =JSON.parse(guests)
+   
+    thisProduct.get("guests").reset(guests)
+   }
+   
   }})    
   
   var FlatPreviewView = Backbone.View.extend({
