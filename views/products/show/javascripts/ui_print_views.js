@@ -6,8 +6,7 @@ function screenType(relative_to_viewport) {
   return (relative_to_viewport.desktop/100) * viewport;
 }
 
-if(isiPad) 
-  $('#printsvg').addClass('ipad')
+if(isiPad) $('#printsvg').addClass('ipad')
   
 var GuestCollectionView = Backbone.View.extend({
   render: function() {
@@ -148,6 +147,7 @@ var PrintControlPanelView = Backbone.View.extend({
     $('.layout_icon_container').removeClass('layout_selected');
     $(e.currentTarget).addClass('layout_selected')
     this.layout = per_page;
+    this.printPage();
   },
   loadFont: function(e, font) {
     $('.font_spinner').hide();
@@ -160,9 +160,6 @@ var PrintControlPanelView = Backbone.View.extend({
     this.togglePanel();
     thisProduct.save();
   },    
-  printNow: function() {
-    window.print()
-  },
   // Create the SVG print view
   printPage: function(e) {    
     var result = new PrintPlaceCardCollectionView({
@@ -185,6 +182,10 @@ var PrintControlPanelView = Backbone.View.extend({
         $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
       }
     })
+  },
+  printNow: function() {
+    $('#ui_print_alert').fadeOut();
+    window.print()     
   },
   render: function() {
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({

@@ -3,9 +3,7 @@
 var StepView = Backbone.View.extend({ 
   el: '.right_column',
   initialize: function() {
-    var guests = thisProduct.get("guests")
-    this.listenTo(guests, 'add', this._renderGuests)
-    this.listenTo(guests, 'remove', this._renderGuests)  
+    this.listenTo(thisProduct, 'change:quantity', this._renderGuests)
     this.current_step = 1;
   },
   events: {     
@@ -19,20 +17,12 @@ var StepView = Backbone.View.extend({
     "click #plus_qty": "plusQty",
     "click #minus_qty": "minusQty"
   },
-  checkout: function() {
-    $.form('/payments', { 
-      "L_PAYMENTREQUEST_0_AMT0": thisProduct.get("unit"), 
-      "PAYMENTREQUEST_0_AMT": thisProduct.get("total"), 
-      "L_PAYMENTREQUEST_0_QTY0": thisProduct.get("quantity"), 
-      "L_PAYMENTREQUEST_0_NAME0": thisProduct.get("name"), 
-      "L_PAYMENTREQUEST_0_DESC0": "Some description" 
-    }).submit();
-  },
   plusQty: function(e) {
-    thisProduct.adjustGuests(thisProduct.quantity() + 1);
+    thisProduct.set("quantity", thisProduct.get("quantity") + 1)
   },
-  minusQty: function(e) {
-    thisProduct.adjustGuests(thisProduct.quantity() - 1);
+  minusQty: function(e) { 
+    thisProduct.get("guests").pop()
+    thisProduct.set("quantity", thisProduct.get("quantity") -1)
   },
   clearQuantity: function(e) {
     $(e.currentTarget).val("")
@@ -42,12 +32,11 @@ var StepView = Backbone.View.extend({
     var value = $field.val();
     value = parseInt(value)
     if(isNaN(value) || value == false || value < 8) {
-      $field.val(thisProduct.quantity())
+      $field.val(thisProduct.get("quantity"))
     } else {
-      thisProduct.adjustGuests(value)
+       thisProduct.set("quantity",value)
     }    
-  },
-  
+  },  
   updateTexture: function(e) {
     var texture_selected = $(e.currentTarget)
     this.model.set("texture", texture_selected.index());
@@ -68,10 +57,17 @@ var StepView = Backbone.View.extend({
       this.$('#step_' + step_index + " .step").css("background-color", "#BBB") 
     }
   },
+  checkout: function() {
+    $.form('/payments', { 
+      "L_PAYMENTREQUEST_0_AMT0": thisProduct.get("unit"), 
+      "PAYMENTREQUEST_0_AMT": thisProduct.get("total"), 
+      "L_PAYMENTREQUEST_0_QTY0": thisProduct.get("quantity"), 
+      "L_PAYMENTREQUEST_0_NAME0": thisProduct.get("name"), 
+      "L_PAYMENTREQUEST_0_DESC0": "Some description" 
+    }).submit();
+  },
   render: function() {    
-   console.log("rendering main")
-    var $result = $(Handlebars.template(templates["products_show_step_through"])(thisProduct.toJSON()));     
-    
+    var $result = $(Handlebars.template(templates["products_show_step_through"])(thisProduct.toJSON()));         
     
     this.$el.html($result)
     this._renderGuests($result.find('#guests'));  // Input fields for guests
@@ -93,10 +89,7 @@ var StepView = Backbone.View.extend({
     return this;
   },  
   renderQtyAndPrice: function() { 
-    console.log("rendering qty and price")   
-    console.log(thisProduct.get("pence"))
-    console.log(this.$('#pound'))
-    this.$('#qty').val(thisProduct.quantity())   
+    this.$('#qty').val(thisProduct.get("quantity"))   
     this.$('#pound').text(thisProduct.get("pounds"));
     this.$('#decimal').text("." + thisProduct.get("pence"));  
   },
@@ -106,8 +99,7 @@ var StepView = Backbone.View.extend({
     var guests_html = thisProduct.get("guests").map(function(guest) {    
       return new GuestView({model:guest}).render().el;
     })
-    $element.html(guests_html);
-    
+    $element.html(guests_html);    
     this.renderQtyAndPrice();
   }
 })
@@ -126,7 +118,11 @@ var GuestView = Backbone.View.extend({
   },
   deleteGuest: function() {
     this.model.destroy();
-    this.remove();
+    var that = this;
+    thisProduct.set("quantity", thisProduct.get("quantity") -1)  
+    this.$el.fadeOut(function() {
+        that.remove();
+    });
   },
   clearGuest: function() {
     thisProduct.trigger("editing:guest")

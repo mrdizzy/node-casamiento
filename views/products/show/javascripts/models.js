@@ -19,7 +19,7 @@ var Guest = Backbone.Model.extend({
 })
 
 Backbone.Collection.prototype.save = function (options) {
-    Backbone.sync("create", this, options);
+  Backbone.sync("create", this, options);
 };
  
 var Guests = Backbone.Collection.extend({
@@ -28,8 +28,8 @@ var Guests = Backbone.Collection.extend({
   },
   saveGuests: function() {
     var guests = this.map(function(guest) {
-    return { name: guest.get("name") }
-  })
+      return { name: guest.get("name") }
+    })
     localStorage.setItem("guests", JSON.stringify(guests));
   },
   model: Guest,
@@ -61,15 +61,52 @@ var Product = Backbone.Model.extend({
     this.on("change:colours", this.saveProduct)   
     this.on("change:colours", this.renderColours)
     this.once("sync", this.renderColours)
-    this.listenTo(this.guests, "add", this.saveGuests)
-    this.listenTo(this.guests, "remove", this.saveGuests)
+    this.on("change:quantity", this.calculatePrice) // must come before adjust guests
+    this.on("change:quantity", this.adjustGuests)
+    this.on("change:quantity", this.saveProduct)
     this.listenTo(this.guests, "change", this.saveGuests)
-
+    this.listenTo(this.guests, "reset", this.updateQuantityFromGuests)
   },
   renderColours: function() {    
     // Globally change colours according to those saved in localStorage
     $('.colour_0').css("background-color", this.get("colours")[0])   
     $('.colour_1').css("background-color", this.get("colours")[1])  
+  },
+  updateQuantityFromGuests: function() {
+    this.set("quantity", this.guests.length)
+  },
+  updateColour: function(index, colour) {
+    var colours = this.get("colours");
+    colours[index] = colour;
+    this.set("colours", colours).trigger("change:colours")
+  },
+  adjustGuests: function() {
+  console.log("Adjusting guests")
+    var adjustment = this.get("quantity") - this.guests.length
+    if (adjustment > 0) {
+      for(var i =0;  i < adjustment; i++) {
+        (i == adjustment - 1) ? this.guests.add({}) : this.guests.add({}, {silent:true})
+      }
+    } else if (adjustment < 0) {
+      adjustment = adjustment * -1;
+      for(var i =0;  i < adjustment; i++) {
+        (i == adjustment - 1) ? this.guests.pop() : this.guests.pop({silent:true})
+      }
+    }
+  },
+  calculatePrice: function() {     
+    var total = this.get("price") * this.get("quantity");      
+    total = total.toFixed(2).toString().split(".")    
+    this.set("pounds", total[0]).set("pence", total[1])
+  },
+  shareURL: function() {
+    var url = "http://www.casamiento.co.uk/products/" +
+      this.id + "/#preview_place_card/c0/" + this.get("colours")[0].substr(1);
+    if (this.get("colours")[1]) {
+      return (url + "/c1/" + this.get("colours")[1].substr(1) + "/font/" + this.get("font"))  
+    } else {
+      return (url + "/font/" + this.get("font"))  
+    }
   },
   saveProduct: function() {
     var that = this;
@@ -85,89 +122,24 @@ var Product = Backbone.Model.extend({
   saveGuests: function() {
     this.save({guests: this.guests})  
   },
-  updateColour: function(index, colour) {
-    var colours = this.get("colours");
-    colours[index] = colour;
-    this.set("colours", colours).trigger("change:colours")
-  },
-  quantity: function() {
-    return this.guests.length  
-  },
-  adjustGuests: function(new_amount) {
-    var adjustment = new_amount - this.guests.length
-    if (adjustment > 0) {
-      for(var i =0;  i < adjustment; i++) {
-        (i == adjustment - 1) ? this.guests.add({}) : this.guests.add({}, {silent:true})
-      }
-    } else if (adjustment < 0) {
-      adjustment = adjustment * -1;
-      for(var i =0;  i < adjustment; i++) {
-        (i == adjustment - 1) ? this.guests.pop() : this.guests.pop({silent:true})
-      }
-    }
-    this.calculatePrice();
-  },
-  calculatePrice: function() {   
-  console.log("calcuating price", this.quantity())
-    var qty = this.quantity();
-      total = this.get("price") * qty,
-      texture = this.get("texture"),
-      weight = this.get("weight");
-    if(weight == "300") {
-      total = ((25/100) * total) + total 
-    }
-    if(texture == "hammered") {
-      total = ((25/100) * total) + total
-    } else if (texture == "linen") {
-      total = ((25/100) * total) + total
-    }
-   // var discount = this._applyDiscounts(total)
-    total = total //- discount;
-    var unit_cost = (total/qty).toFixed(2);
-    this.set("unit", unit_cost);
-    total = unit_cost * qty;
-    total = total.toFixed(2)    
-    this.set("pounds", this.get("total").toString().split(".")[0])  
-    this.set("pence", this.get("total").toString().split(".")[1])
-    this.set("total", total)    
-  },
-  //_applyDiscounts: function(total) {
-  //  var qty = this.quantity(),
-  //    discount = 0;
-  //  if((qty > 32) && (qty < 96)) {
-  //    discount = (10/100) * total
-  //  }
-  //  if((qty >95) && (qty < 152)) {
-  //    discount = (15/100) * total
-  //  }
-  //  return discount;
-  //},
-  shareURL: function() {
-    var url = "http://www.casamiento.co.uk/products/" +
-      this.id + "/#preview_place_card/c0/" + this.get("colours")[0].substr(1);
-    if (this.get("colours")[1]) {
-      return (url + "/c1/" + this.get("colours")[1].substr(1) + "/font/" + this.get("font"))  
-    } else {
-      return (url + "/font/" + this.get("font"))  
-    }
-  },
   parse: function(response) {
     if(response.guests) this.guests.reset(response.guests, {silent:true})
     delete response.guests
     return response;
   },
   hex: function() { // This provides a URL for calling the /svg function with the appropriate hex values
-    var monochromatic = this.get("monochromatic")
+    var monochromatic = this.get("monochromatic"),
+      colour_0 = this.get("colours")[0].substring(1) // remove hash from #000000
     if(monochromatic) { // Handle shades of grey
       var first_shade = monochromatic[0]
       var rgb = $('.colour_0').css("background-color");
       var hex = this._rgb_to_hex(rgb, first_shade/100)
-      return(this.get("colours")[0].substring(1) + "_" + hex.substring(1));
+      return(colour_0 + "_" + hex.substring(1));
     } 
     if(this.get("colours").length == 2) {
-      return(this.get("colours")[0].substring(1) + "_" + thisProduct.get("colours")[1].substring(1));
+      return(colour_0 + "_" + thisProduct.get("colours")[1].substring(1));
     }
-    return(this.get("colours")[0].substring(1))
+    return(colour_0)
   },
   // Designs can have colours that are a darker shade of a main colour. This is implemented
   // using a transparent PNG that has a black tint (100% pure black that has an opacity of between
@@ -187,7 +159,6 @@ var Product = Backbone.Model.extend({
   },
   stale: ['attachments_order', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5', 'tags', 'description','baseline', 'pence', 'pounds', 'font_size', 'name'],
   toJSON: function() {
-    this.attributes.quantity = this.quantity();
     return _.omit(this.attributes, this.stale);
   }
 });
