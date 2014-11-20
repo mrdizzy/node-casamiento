@@ -1,8 +1,13 @@
+var ControlPanel = Backbone.Model.extend({
+  defaults: {
+    cutting_marks: true,
+    per_page: 3
+  }
+})
+
 function screenType(relative_to_viewport) {
   var viewport = $('body').width();
-  if(viewport < 501) {
-    return (relative_to_viewport.mobile/100) * viewport;
-  } 
+  if(viewport < 501) return (relative_to_viewport.mobile/100) * viewport;
   return (relative_to_viewport.desktop/100) * viewport;
 }
 
@@ -10,9 +15,8 @@ if(isiPad) $('#printsvg').addClass('ipad')
   
 var GuestCollectionView = Backbone.View.extend({
   render: function() {
-    var guests_html = []
-    this.collection.forEach(function(guest) {  
-        guests_html.push(new GuestView({model:guest}).render().el);
+    var guests_html = this.collection.map(function(guest) {  
+        return(new GuestView({model:guest}).render().el);
     })
     this.$el.html(guests_html)
     return this;
@@ -21,6 +25,9 @@ var GuestCollectionView = Backbone.View.extend({
 
 // This view loops through each guest and creates an SVG place card for printing. 
 var PrintPlaceCardCollectionView = Backbone.View.extend({
+  initialize: function() {
+    this.listenTo(this.model, 'change:cutting_marks', this._renderCuttingMarks)  
+  },
   render: function() {
     if(isiPad) {
       var width = 120.75;        
@@ -29,13 +36,12 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
       var width = 105;
       var height = 74.25;
     }
-    var options = this.options;
-    this.$el.removeClass().addClass('up' + options.per_page);
-    var groups = inGroupsOf(this.collection, options.per_page);
+    this.$el.removeClass().addClass('up' + this.model.get("per_page"));
+    var groups = inGroupsOf(this.collection, this.model.get("per_page"));
     var html = "";
     var group_class = "group"    
     
-    if(options.per_page == 4) {
+    if(this.model.get("per_page") == 4) {
       group_class = "group_landscape"        
       $('head').append("<style type='text/css'>@page { size: A4 landscape }</style>");
     } 
@@ -47,10 +53,9 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
       if (isiPad) {
         html = html + '<div class="' + group_class + '" style="page-break-before:always;">'
       }
-      // only apply page breaks when there are less than 8 per page, OR if the browser is Chrome
-      // for Windows
+      // only apply page breaks when there are less than 8 per page, OR if the browser is Chrome for Windows
       else {
-        if(options.per_page != 8 || isWindowsChrome) {			 	
+        if(this.model.get("per_page") != 8 || isWindowsChrome) {			 	
           html = html + '<div class="' + group_class + '" style="page-break-after:always;">'
         } else {
           html = html + '<div class="' + group_class + '">'
@@ -70,19 +75,22 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
           guest_height: guest.bottom_half_height
         }));  
         html = html + $template.html(); // /html() only returns INNER html so we have added a wrapping div in template
-      })
+      }, this)
       html = html + '<img src="/gfx/logo/casamiento_black.svg" class="cas_print_logo" />'
       html = html + "</div>"			
-    })
+    }, this)
     this.$el.html(html);
+    this._renderCuttingMarks();
     return this;
+  },
+  _renderCuttingMarks: function() {
+    this.model.get("cutting_marks") ? this.$('.svg_left_crop').show() : this.$('.svg_left_crop').hide();
   }
 })
 
 var PrintControlPanelView = Backbone.View.extend({
   el: '#print_ui',
   initialize: function() {
-    this.layout = 3
     $(window).on("resize", this.testForMobile.bind(this));
     if(isiPad) {
       this.listenTo(thisProduct, 'editing:guest', this.toggleControlPanel)
@@ -101,7 +109,7 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   events: {
     "click #add_another": "addGuest",
-    "click #ui_crosshairs_icon": "toggleCuttingMarks",
+    "click #cutting_marks": "toggleCuttingMarks",
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
     "dizzy-cp:click": "togglePanel",
@@ -126,9 +134,6 @@ var PrintControlPanelView = Backbone.View.extend({
       $('#mobile_panel_section').toggle();
     }
   },
-  toggleCuttingMarks: function() {
-    $('.svg_left_crop').toggle();  
-  },
   fontReset: function() {
    var font_size = thisProduct.get("font_size");
    var baseline = thisProduct.get("baseline");
@@ -150,8 +155,14 @@ var PrintControlPanelView = Backbone.View.extend({
     var per_page = [8,3,4][$(e.currentTarget).index()]
     $('.layout_icon_container').removeClass('layout_selected');
     $(e.currentTarget).addClass('layout_selected')
-    this.layout = per_page;
+    $("input[type=radio]").prop("checked", false)
+    $("#radio_" + per_page).prop("checked", true)
+    this.model.set("per_page", per_page)
     this.printPage();
+  },  
+  toggleCuttingMarks: function() {
+    var cutting_marks = this.model.get("cutting_marks") ? false : true;
+    this.model.set("cutting_marks", cutting_marks)
   },
   loadFont: function(e, font) {
     $('.font_spinner').hide();
@@ -167,7 +178,7 @@ var PrintControlPanelView = Backbone.View.extend({
   // Create the SVG print view
   printPage: function(e) {    
     var result = new PrintPlaceCardCollectionView({
-      per_page: this.layout,
+      model: this.model,
       collection: thisProduct.get("guests").toArray()
     }).render().el;
     $('#printsvg').html(result);    
@@ -176,13 +187,12 @@ var PrintControlPanelView = Backbone.View.extend({
     
     // Wait for SVG images to be loaded before printing
     var images  = $('#printsvg img.place_card_image'),
-      counter = images.length,
-      svg_url = thisProduct.get("_id") + "/" + thisProduct.hex();
+      counter = images.length;
       
-    images.attr('src', "/svg/" + svg_url).load(function() {
+    images.attr('src', thisProduct.svgURL()).load(function() {
       counter--;
       if(counter == 0) {   
-      $('#ui_print_alert').fadeIn();
+        $('#ui_print_alert').fadeIn();
         $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
       }
     })

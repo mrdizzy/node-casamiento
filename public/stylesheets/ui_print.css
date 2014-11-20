@@ -148,15 +148,70 @@
         }
         
     #ui_crosshairs_icon {
-      opacity:0.3;
       display:inline-block;      
       text-align:center;
+      padding-left:10px;
+      padding-right:10px;
+      cursor:pointer;
+      border-radius:10px;
+        
     }
       #ui_crosshairs_icon:hover {
         cursor:pointer;
         opacity:1;
       }
-          
+      
+      .cmn-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+.cmn-toggle + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+input.cmn-toggle-yes-no + label {
+  padding: 2px;
+  width: 100px;
+  height: 50px;
+}
+input.cmn-toggle-yes-no + label:before,
+input.cmn-toggle-yes-no + label:after {
+  display: block;
+  border-radius:10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: black;
+  font-family: "OS Light", sans-serif;
+  font-size: 1.4em;
+  text-align: center;
+  line-height: 50px;
+}
+input.cmn-toggle-yes-no + label:before {
+  background-color: white;
+  content: attr(data-off);  
+  transition: transform 0.5s;
+  backface-visibility: hidden;
+}
+input.cmn-toggle-yes-no + label:after {
+  background-color: #EEE;
+  content: attr(data-on);
+  transition: transform 0.5s;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+input.cmn-toggle-yes-no:checked + label:before {
+  transform: rotateY(180deg);
+}
+input.cmn-toggle-yes-no:checked + label:after {
+  transform: rotateY(0);
+}
     #ui_print_font_picker_container {
       width:30%;
       margin-right:7%;
@@ -187,7 +242,6 @@
 #actual_cards { 
   margin:0 auto;
   width:100%;
-  
   background-color:white; /* stop body background image seeping through */
   padding-top:120px;
 }

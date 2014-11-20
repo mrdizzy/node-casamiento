@@ -127,6 +127,9 @@ var Product = Backbone.Model.extend({
     delete response.guests
     return response;
   },
+  svgURL: function() {
+    return "/svg/" + this.get("_id") + "/" + this.hex();
+  },
   hex: function() { // This provides a URL for calling the /svg function with the appropriate hex values
     var monochromatic = this.get("monochromatic"),
       colour_0 = this.get("colours")[0].substring(1) // remove hash from #000000

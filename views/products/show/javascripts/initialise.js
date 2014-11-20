@@ -20,6 +20,7 @@ $(function() {
   // Setup and initialization
   var thisProduct = new Product();   
   var guestList = new Guests();
+  var control_panel = new ControlPanel();
    
   thisProduct.fetch({silent:true, success:function(model, resp) {
     $.updateFont(thisProduct.get("font"), {trigger: function(){}}) 
@@ -58,7 +59,7 @@ $(function() {
       this.step_view = new StepView(); 
       this.product_container_view = this.$('#product_container')      
       this.flat_preview_view = new FlatPreviewView();
-      this.print_control_panel_view_backbone = new PrintControlPanelView()        
+      this.print_control_panel_view_backbone = new PrintControlPanelView({model:control_panel})        
       this.listenTo(thisProduct, 'change:colours', this._renderPreviewAfterMain)
       this.listenTo(thisProduct, 'change:font', this._renderPreviewAfterMain)
     },

@@ -5,16 +5,17 @@
     <div id="mobile_panel_section">
    
       <div id="control_panel_top_row">
+      
         <div id="ui_logo_container">
           <a href="/"><img src="/gfx/logo/casamiento_gry.svg" id="ui_print_logo"></a>
         </div>
 
         <div id="ui_print_colour_picker_container"></div>
         
-  
         <div id="ui_printer_icon">
           <img src="/gfx/printer_icon.svg" style="margin-top:0.5em;width:55px">
         </div>
+        
         <div id="ui_global_font">
           <div class="global_font_increase"></div>
           <div class="global_font_decrease"></div>
@@ -22,11 +23,11 @@
           <div class="global_baseline_down"></div>       
           <div class="global_font_reset"></div>     
         </div>
+        
         <div id="ui_print_font_picker_container">
           <div id="ui_font_picker"></div>
         </div>      
           
-        
         <div style="clear:both"></div>
       </div>
             
@@ -42,7 +43,7 @@
     <div class="menu_line"></div>
   </div>
   
-          <a href="/"><img src="/gfx/logo/casamiento_gry.svg" id="mobile_print_logo"></a>
+  <a href="/"><img src="/gfx/logo/casamiento_gry.svg" id="mobile_print_logo"></a>
   
   <div style="clear:both"></div>
 </div>
@@ -51,11 +52,9 @@
 <!-- PRINTER ALERT BOX -->
       
 <div style="clear:both;border-top:1px solid black;"></div>
-    <div id="ui_print_alert">   
-     
+    <div id="ui_print_alert">        
 
-      <!-- LAYOUT ICONS -->
-      
+      <!-- LAYOUT ICONS -->      
       
       <div style="border-bottom:1px solid black;padding-bottom:0.5em;margin-bottom:0.5em;font-family:'OS Light Italic';font-size:1.4em;">
         Choose layout
@@ -63,17 +62,18 @@
       
         {{#unless hide_layout_icons}}
         <div id="layout_icons_wrapper">
-          <div class="layout_icon_container">     <input type="radio" name="per_page" style="display:block;margin:0 auto"/>  
+          <div class="layout_icon_container">     
+            <input id="radio_8" type="radio" name="per_page" style="display:block;margin:0 auto" />  
             <img src="/gfx/icons/8_up.svg" id="up_8" />
             8/portrait page
           </div>
           
-          <div class="layout_icon_container layout_selected"><input type="radio" name="per_page" checked="checked" style="display:block;margin:0 auto"/>  
+          <div class="layout_icon_container layout_selected"><input type="radio" name="per_page" id="radio_3" checked="checked" style="display:block;margin:0 auto"/>  
             <img src="/gfx/icons/3_up.svg" id="up_3" />   
             3/portrait page       
           </div>
         
-          <div class="layout_icon_container"><br/>       <input type="radio" name="per_page" style="display:block;margin:0 auto"/>  
+          <div class="layout_icon_container"><br/>       <input type="radio" name="per_page" id="radio_4" style="display:block;margin:0 auto"/>  
             <img src="/gfx/icons/4_up.svg" id="up_4" /><br/>
             4/landscape page
           </div>
@@ -84,23 +84,21 @@
             Cutting marks
           </div>
           
-          <div id="ui_crosshairs_icon">
-            <img src="/gfx/crosshairs/crosshair8.svg" style="margin-top:0.5em;width:55px">
+          <div id="ui_crosshairs_icon" class="selected">
+            <img src="/gfx/crosshairs/crosshair8.svg" style="margin-top:0.5em;width:55px" style="display:inline-block;"> <div class="switch" style="display:inline-block;">
+  <input id="cutting_marks" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" checked="checked">
+  <label for="cutting_marks" data-on="Yes" data-off="No"></label>
+</div>
           </div>
         </div>
         
-         <div style="margin-top:1em;float:left;width:48%;">
-          <div style="text-align:center;padding-bottom:0.5em;margin-bottom:0.5em;border-bottom:1px solid black;font-family:'OS Light Italic';font-size:1.4em;margin-right:2%">
-            Selected names
-          </div>
-          
-          <div id="ui_crosshairs_icon">
-            <img src="/gfx/crosshairs/crosshair8.svg" style="margin-top:0.5em;width:55px">
-          </div>
-        </div>
+         <div style="margin-top:1em;float:left;width:48%;padding-top:3em;">
          <div class="grey_button" id="print_now" style="border-radius:10px;clear:both;width:150px;">
       SUBMIT
     </div>
+         
+        </div>
+        
         
   </div>
 
