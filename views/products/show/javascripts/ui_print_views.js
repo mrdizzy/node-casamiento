@@ -101,6 +101,7 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   events: {
     "click #add_another": "addGuest",
+    "click #ui_crosshairs_icon": "toggleCuttingMarks",
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
     "dizzy-cp:click": "togglePanel",
@@ -124,6 +125,9 @@ var PrintControlPanelView = Backbone.View.extend({
     if(this.mobile) {
       $('#mobile_panel_section').toggle();
     }
+  },
+  toggleCuttingMarks: function() {
+    $('.svg_left_crop').toggle();  
   },
   fontReset: function() {
    var font_size = thisProduct.get("font_size");
