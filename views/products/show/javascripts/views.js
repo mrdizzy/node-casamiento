@@ -5,7 +5,7 @@ var StepView = Backbone.View.extend({
   initialize: function() {
     var guests = thisProduct.get("guests")
     this.listenTo(guests, 'add', this._renderGuests)
-    this.listenTo(guests, 'remove', this._renderGuests)
+    this.listenTo(guests, 'remove', this._renderGuests)  
     this.current_step = 1;
   },
   events: {     
@@ -29,11 +29,10 @@ var StepView = Backbone.View.extend({
     }).submit();
   },
   plusQty: function(e) {
-    thisProduct.get("guests").add({})
+    thisProduct.adjustGuests(thisProduct.quantity() + 1);
   },
   minusQty: function(e) {
-    if(thisProduct.get("quantity") > 8)       
-    thisProduct.get("guests").pop();
+    thisProduct.adjustGuests(thisProduct.quantity() - 1);
   },
   clearQuantity: function(e) {
     $(e.currentTarget).val("")
@@ -46,23 +45,15 @@ var StepView = Backbone.View.extend({
       $field.val(thisProduct.quantity())
     } else {
       thisProduct.adjustGuests(value)
-      $field.val(value)
     }    
   },
-  renderQtyAndPrice: function() {    
-    this.$('#qty').val(thisProduct.quantity())   
-    this.$('span#pound').text(thisProduct.get("pounds"));
-    this.$('span#decimal').text("." + thisProduct.get("pence"));  
-  },
+  
   updateTexture: function(e) {
     var texture_selected = $(e.currentTarget)
     this.model.set("texture", texture_selected.index());
     this.$('.texture').removeClass("deselected");
     texture_selected.addClass("selected");
   },
-  updateWeight: function(e) {
-  },
-  
   // We use the index of the div to toggle it (index is its place within the hierarchy of other siblings obtained by the jquery.index() function), this breaks easily if other divs are added between or before steps. The first sibling
   // element is actually the img of the name place icon so this counts as index 0, then the first step is index 1. 
   // If we were to move the img then the first step would be index 0 so this would break things. 
@@ -77,12 +68,13 @@ var StepView = Backbone.View.extend({
       this.$('#step_' + step_index + " .step").css("background-color", "#BBB") 
     }
   },
-  render: function() {
+  render: function() {    
+   console.log("rendering main")
     var $result = $(Handlebars.template(templates["products_show_step_through"])(thisProduct.toJSON()));     
     
-    this._renderGuests($result.find('#guests'));  // Input fields for guests
     
     this.$el.html($result)
+    this._renderGuests($result.find('#guests'));  // Input fields for guests
     var colours = thisProduct.get("colours");
     for(var i=0; i < colours.length; i++) {
       var $div = $('<div></div>')
@@ -97,20 +89,26 @@ var StepView = Backbone.View.extend({
     this.$el.find('#fonts').fontPicker({
       fonts: casamiento_fonts, 
       selected_font: thisProduct.get("font")
-    });
+    });  
     return this;
   },  
+  renderQtyAndPrice: function() { 
+    console.log("rendering qty and price")   
+    console.log(thisProduct.get("pence"))
+    console.log(this.$('#pound'))
+    this.$('#qty').val(thisProduct.quantity())   
+    this.$('#pound').text(thisProduct.get("pounds"));
+    this.$('#decimal').text("." + thisProduct.get("pence"));  
+  },
   _renderGuests: function($element) {
-    if($element.set) {
-        $element = undefined;
-    }
-    this.renderQtyAndPrice();
+    if ($element.set) $element = undefined;
     var $element = $element || this.$('#guests')
-    var guests_html = []
-    thisProduct.get("guests").forEach(function(guest) {    
-      guests_html.push(new GuestView({model:guest}).render().el);
+    var guests_html = thisProduct.get("guests").map(function(guest) {    
+      return new GuestView({model:guest}).render().el;
     })
     $element.html(guests_html);
+    
+    this.renderQtyAndPrice();
   }
 })
 
@@ -132,8 +130,7 @@ var GuestView = Backbone.View.extend({
   },
   clearGuest: function() {
     thisProduct.trigger("editing:guest")
-    if(this.model.get("name") == "Guest Name") 
-      this.$('input').val("")     
+    if(this.model.get("name") == "Guest Name") this.$('input').val("")     
   },
   updateGuest: function() {
    thisProduct.trigger("finishediting:guest")
@@ -141,7 +138,10 @@ var GuestView = Backbone.View.extend({
    this.model.set("name", name)
   },
   render: function() { 
-    this.$el.html('<input type="text" name="guest" value="' + this.model.get("name") + '"></input> <img src="/gfx/trash/delete96.svg" class="trash deselected" style="display:inline-block;width:13px;"/>')
+    var html = '<input type="text" name="guest" value="' + 
+      this.model.get("name") + 
+      '"></input> <img src="/gfx/trash/delete96.svg" class="trash deselected" style="display:inline-block;width:13px;"/>'
+    this.$el.html(html)
     return this;
   }
 })

@@ -3,8 +3,8 @@ $(function() {
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
   
   /* Test for user agent */
-var isWindowsChrome = navigator.userAgent.match(/Chrome/i) != null;
-var isiPad = navigator.userAgent.match(/iPad/i) != null;
+  var isWindowsChrome = navigator.userAgent.match(/Chrome/i) != null;
+  var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
   <%= include models.js %>  
   <%= include views.js %>
@@ -23,16 +23,11 @@ var isiPad = navigator.userAgent.match(/iPad/i) != null;
    
   thisProduct.fetch({silent:true, success:function(model, resp) {
     $.updateFont(thisProduct.get("font"), {trigger: function(){}}) 
-   
-  }, error: function(model,resp) {
-    var guests = localStorage.getItem("guests")
-   if(guests) {
-   guests =JSON.parse(guests)
-   
-    thisProduct.get("guests").reset(guests)
-   }
-   
-  }})    
+    }, error: function(model,resp) {
+      var guests = localStorage.getItem("guests")
+      if(guests) thisProduct.get("guests").reset(JSON.parse(guests))
+    }
+  })
   
   var FlatPreviewView = Backbone.View.extend({
     el: '#flat_preview',
