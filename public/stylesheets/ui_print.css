@@ -62,18 +62,28 @@
       text-align:center;
       width:5%;
     }
-    
+  #cutting_marks {
+    text-align:center;
+    padding-bottom:0.5em;
+    margin-bottom:0.5em;
+    border-bottom:1px solid black;
+    font-family:'OS Light Italic';
+    font-size:1.4em;
+    margin-right:2%
+  }
     #ui_global_font_mobile {
       display:none;
     }
-    #ui_global_font, #ui_global_font_mobile {
+    #ui_global_font, 
+    #ui_global_font_mobile {
       width:43%;
       float:right;
       height:56px;
       margin-right:1%;
       text-align:center;
     }
-      #ui_global_font div,  #ui_global_font_mobile div {    
+      #ui_global_font div,  
+      #ui_global_font_mobile div {    
         border:1px solid #AAA;
         opacity:0.5;
         display:inline-block;
@@ -82,10 +92,11 @@
         width:60px;      
         height:45px;
       }
-      #ui_global_font div:hover, #ui_global_font_mobile div:hover {
-        opacity:1;
-        cursor:pointer;
-      }
+        #ui_global_font div:hover, 
+        #ui_global_font_mobile div:hover {
+          opacity:1;
+          cursor:pointer;
+        }
       
       .global_font_increase {
         background: url('/gfx/font_increase.svg') no-repeat center;       
@@ -119,21 +130,29 @@
       border-radius:15px;
       text-align:center;
     }
-.close {
-      display:block;
-      position:absolute;
-      cursor:pointer;
-      opacity: 0.4;
-      top:10px;
-      right:10px;
-    }
-    .close:hover {
-      opacity:1;
-    }
+      .close {
+        display:block;
+        position:absolute;
+        cursor:pointer;
+        opacity: 0.4;
+        top:10px;
+        right:10px;
+      }
+        .close:hover {
+          opacity:1;
+        }
+      
+      #choose_layout {
+        border-bottom:1px solid black;
+        padding-bottom:0.5em;
+        margin-bottom:0.5em;
+        font-family:'OS Light Italic';
+        font-size:1.4em;
+      }
     #layout_icons_wrapper {      
       text-align:center;
-        font-size:1em;
-        font-family:'OS Light'
+      font-size:1em;
+      font-family:'OS Light'
     }
       .layout_icon_container {    
         border-radius:10px;
@@ -170,12 +189,7 @@
       padding-right:10px;
       cursor:pointer;
       border-radius:10px;
-        
     }
-      #ui_crosshairs_icon:hover {
-        cursor:pointer;
-        opacity:1;
-      }
       
       .cmn-toggle {
   position: absolute;
@@ -290,32 +304,21 @@ input.cmn-toggle-yes-no:checked + label:after {
 /* Smartphone */
 @media all and (min-width: 300px) and (max-width: 500px) {  
 /* ----------------------------------------------------------------------------- */    
+  #control_panel {
+    padding-top:0;
+  }
   #mobile_panel_section {
     display:none;
     position: fixed;
     background-color:white;
     border-right:1px solid black;
-    width:75%;
-    
+    width:75%;    
     z-index:999999999999999999999999999999999999999;
     height:100%;    
     box-shadow:7px 7px 0 0 lightgrey;
   }
-  
   #close_mobile {
     display:block;
-  }
-  #control_panel {
-    padding-top:0;
-     }
-  #ui_print_alert {
-  margin-top:0;
-  border-radius:0;
-  width:88vw;
-  height:100%;
-  border:0;
-  border-bottom:1px solid black;
-  margin-top:0;
   }
   #ui_print_logo { display:none; }
     
@@ -324,6 +327,7 @@ input.cmn-toggle-yes-no:checked + label:after {
     float:right;
     margin-left:2%;
     width:6%;
+    cursor:pointer;
   }
   
   #mobile_print_logo {
@@ -334,18 +338,13 @@ input.cmn-toggle-yes-no:checked + label:after {
     z-index:999999999999999999999999999;
   }
 
-  #menu_lines:hover {
-    cursor:pointer;
-  }
-
   #ui_global_font {
     display:none;
   } 
-   #ui_global_font_mobile {
-   display:block;
-    padding:0;
-    
-   padding-top:3px;
+  #ui_global_font_mobile {
+    display:block;
+    padding:0;    
+    padding-top:3px;
     padding-left:0;
     height:38px;
     width:60%;
@@ -367,19 +366,30 @@ input.cmn-toggle-yes-no:checked + label:after {
     float:none; 
     clear:both;
     width:100%;
-  }
+  } 
+  
+  #ui_print_alert {
+    width:92vw;
+    height:100%;
+    border-radius:0;
+    border:0;
+    padding:2vw;
+    border-bottom:1px solid black;
+    margin-top:0;
+  } 
+    #choose_layout {
+      padding-top:2em;
+    }
   #actual_cards {
     padding-top:40px;
   }
-  
     #actual_cards .place_card_view { 
       width:100%;
-      
     }
      
     #actual_cards .place_card_view:nth-child(even) .place_card_parent {
-        float:right;
-    }
+      float:right;
+     }
   .place_card_view:nth-child(even) .font_size_adjust_buttons, 
   .place_card_view:nth-child(even) .font_baseline_adjust_buttons,
   .place_card_view:nth-child(even) .delete_button {
@@ -388,11 +398,19 @@ input.cmn-toggle-yes-no:checked + label:after {
   
   #actual_cards .place_card_view.add_another, 
   #actual_cards .place_card_view.checkout {
-   margin:0 auto;
-   margin-bottom:10px;
-   clear:both;
-   float:none;
+    margin:0 auto;
+    margin-bottom:10px;
+    clear:both;
+    float:none;
     width:90%;
+  }
+  td.font_name, 
+  td.font_description { display:none; }
+  
+  #ui_print_font_picker_container {
+    width:96%;
+    padding-left:2%;
+    padding-right:2%;
   }
 }
   

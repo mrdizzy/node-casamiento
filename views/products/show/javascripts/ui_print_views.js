@@ -123,7 +123,10 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     $('#ui_print_alert').fadeOut();
   },
   togglePanel: function() {
-    if(this.mobile) $('#mobile_panel_section').toggle();
+    if(this.mobile) {
+      $('#mobile_panel_section').toggle();
+      thisProduct.trigger("rerender")
+    }
   },
   fontReset: function() {
    var font_size = thisProduct.get("font_size");

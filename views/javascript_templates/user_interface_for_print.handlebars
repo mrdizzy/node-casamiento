@@ -59,62 +59,65 @@
 </div>
 
 
-<!-- PRINTER ALERT BOX -->
-      
-<div style="clear:both;border-top:1px solid black;"></div>
-    <div id="ui_print_alert">        
+    <!-- PRINTER ALERT BOX -->
+          
+    <div style="clear:both;border-top:1px solid black;"></div>
 
+    <div id="ui_print_alert">       
 
     <img src="/gfx/close/close3.svg" class="close" />
+    
       <!-- LAYOUT ICONS -->      
       
-      <div style="border-bottom:1px solid black;padding-bottom:0.5em;margin-bottom:0.5em;font-family:'OS Light Italic';font-size:1.4em;">
-        Choose layout
-        </div>
+      <div id="choose_layout">Choose layout</div>
       
         {{#unless ipad}}
         <div id="layout_icons_wrapper">
+        
           <div class="layout_icon_container">     
             <input id="radio_8" type="radio" name="per_page" style="display:block;margin:0 auto" />  
             <img src="/gfx/icons/8_up.svg" id="up_8" />
             8/portrait page
           </div>
           
-          <div class="layout_icon_container layout_selected"><input type="radio" name="per_page" id="radio_3" checked="checked" style="display:block;margin:0 auto"/>  
+          <div class="layout_icon_container layout_selected">
+            <input type="radio" name="per_page" id="radio_3" checked="checked" style="display:block;margin:0 auto"/>  
             <img src="/gfx/icons/3_up.svg" id="up_3" />   
             3/portrait page       
           </div>
         
-          <div class="layout_icon_container"><br/>       <input type="radio" name="per_page" id="radio_4" style="display:block;margin:0 auto"/>  
+          <div class="layout_icon_container"><br/>       
+            <input type="radio" name="per_page" id="radio_4" style="display:block;margin:0 auto"/>  
             <img src="/gfx/icons/4_up.svg" id="up_4" /><br/>
             4/landscape page
           </div>
+          
         </div>
         {{/unless}}
         
         {{#if ipad}}
-        <div id="layout_icons_wrapper">
-          
+        <div id="layout_icons_wrapper">        
           
           <div class="layout_icon_container layout_selected"><input type="radio" name="per_page" id="radio_3" checked="checked" style="display:block;margin:0 auto"/>  
             <img src="/gfx/icons/3_up.svg" id="up_3" />   
             3/portrait page       
           </div>
-        <p class="chat-bubble">Because you are using an iPad, only one layout option is available for you: 3 place cards per portrait page. On a desktop computer or Android tablet, you may have other options available.</p>
+          <p class="chat-bubble">Because you are using an iPad, only one layout option is available for you: 3 place cards per portrait page. On a desktop computer or Android tablet, you may have other options available.</p>
+          
         </div>
-        {{/if}}
-        
+        {{/if}}        
         
         <div style="margin-top:1em;clear:both;float:left;width:48%;margin-right:2%;">
-          <div style="text-align:center;padding-bottom:0.5em;margin-bottom:0.5em;border-bottom:1px solid black;font-family:'OS Light Italic';font-size:1.4em;margin-right:2%">
-            Cutting marks
-          </div>
+        
+          <div id="cutting_marks">Cutting marks</div>
           
           <div id="ui_crosshairs_icon" class="selected">
-            <img src="/gfx/crosshairs/crosshair8.svg" style="margin-top:0.5em;width:55px" style="display:inline-block;"> <div class="switch" style="display:inline-block;">
-  <input id="cutting_marks" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" checked="checked">
-  <label for="cutting_marks" data-on="Yes" data-off="No"></label>
-</div>
+          
+            <img src="/gfx/crosshairs/crosshair8.svg" style="margin-top:0.5em;width:55px" style="display:inline-block;"> 
+            <div class="switch" style="display:inline-block;">
+              <input id="cutting_marks" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" checked="checked">
+              <label for="cutting_marks" data-on="Yes" data-off="No"></label>
+            </div>
           </div>
         </div>
         
@@ -124,15 +127,16 @@
     </div>
          
         </div>
-        
-        
   </div>
-
 
 <div style="clear:both;border-top:1px solid black;display:none;"></div>
-    <div id="ui_guests_quick" style="display:none;padding:20px;width:50%;border:1px solid black;position:absolute;background-color:white;z-index:1000000000000000000000000000000000000000000;right:0;left:0;margin:auto;margin-top:150px;border-radius:20px;text-align:center;">
-  </div>
+
+<div id="ui_guests_quick" style="display:none;padding:20px;width:50%;border:1px solid black;position:absolute;background-color:white;z-index:1000000000000000000000000000000000000000000;right:0;left:0;margin:auto;margin-top:150px;border-radius:20px;text-align:center;"></div>
+ 
+ 
+ <!-- PLACE CARDS FOR VIEW PURPOSES GO HERE AND THE "ADD ANOTHER" AND "CHECKOUT" BUTTONS" -->
 <div id="actual_cards">
+
   <div class="place_card_view add_another">
     <div class="grey_button" id="add_another" style="width:150px;">
       <img src="/gfx/people/crowdsourcing_white.svg" style="line-height:0.5em;width:40px;margin:0;padding:0;" /> 
@@ -147,4 +151,5 @@
     <div class="price"><span class="pound_sign">&pound;</span><span class="number" id="pound">{{pounds}}</span>
     <span class="decimal" id="decimal">.{{pence}}</span></div></div>
   </div>
+  
 </div>

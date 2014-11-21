@@ -123,6 +123,7 @@ $(function() {
       $('body').animate({
           scrollTop: $('body').offset().top
         }, 0);     
+        thisProduct.trigger("rerender")
       app_router.navigate("print")
     }
   })      
