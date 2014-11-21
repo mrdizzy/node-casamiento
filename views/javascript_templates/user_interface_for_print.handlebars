@@ -80,6 +80,20 @@
         </div>
         {{/unless}}
         
+        {{#if ipad}}
+        <div id="layout_icons_wrapper">
+          
+          
+          <div class="layout_icon_container layout_selected"><input type="radio" name="per_page" id="radio_3" checked="checked" style="display:block;margin:0 auto"/>  
+            <img src="/gfx/icons/3_up.svg" id="up_3" />   
+            3/portrait page       
+          </div>
+        
+          <div style="clear:both">Because you are using an iPad, only one layout option is available for you: 3 place cards per portrait page. On a desktop computer or Android tablet, you may have other options available.</div>
+        </div>
+        {{/if}}
+        
+        
         <div style="margin-top:1em;clear:both;float:left;width:48%;margin-right:2%;">
           <div style="text-align:center;padding-bottom:0.5em;margin-bottom:0.5em;border-bottom:1px solid black;font-family:'OS Light Italic';font-size:1.4em;margin-right:2%">
             Cutting marks
