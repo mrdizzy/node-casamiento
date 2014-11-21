@@ -52,6 +52,9 @@
           padding-top:12px;
         }
 
+  #close_mobile {
+    display:none;
+  }
     #ui_printer_icon {
       float:left;
       position:relative;
@@ -60,14 +63,17 @@
       width:5%;
     }
     
-    #ui_global_font {
+    #ui_global_font_mobile {
+      display:none;
+    }
+    #ui_global_font, #ui_global_font_mobile {
       width:43%;
       float:right;
       height:56px;
       margin-right:1%;
       text-align:center;
     }
-      #ui_global_font div {    
+      #ui_global_font div,  #ui_global_font_mobile div {    
         border:1px solid #AAA;
         opacity:0.5;
         display:inline-block;
@@ -76,7 +82,7 @@
         width:60px;      
         height:45px;
       }
-      #ui_global_font div:hover {
+      #ui_global_font div:hover, #ui_global_font_mobile div:hover {
         opacity:1;
         cursor:pointer;
       }
@@ -290,34 +296,40 @@ input.cmn-toggle-yes-no:checked + label:after {
     background-color:white;
     border-right:1px solid black;
     width:75%;
+    
     z-index:999999999999999999999999999999999999999;
     height:100%;    
     box-shadow:7px 7px 0 0 lightgrey;
   }
   
+  #close_mobile {
+    display:block;
+  }
+  #control_panel {
+    padding-top:0;
+     }
   #ui_print_alert {
   margin-top:0;
   border-radius:0;
-  width:100%;
+  width:88vw;
   height:100%;
   border:0;
   border-bottom:1px solid black;
   margin-top:0;
-  
   }
   #ui_print_logo { display:none; }
     
   #menu_lines {
     display:block;
     float:right;
-    margin-left:5%;
-    width:8%;
+    margin-left:2%;
+    width:6%;
   }
   
   #mobile_print_logo {
     display:block;
+    padding-top:3px;
     width:24%;
-    padding-right:1%;
     float:left;
     z-index:999999999999999999999999999;
   }
@@ -327,16 +339,24 @@ input.cmn-toggle-yes-no:checked + label:after {
   }
 
   #ui_global_font {
+    display:none;
+  } 
+   #ui_global_font_mobile {
+   display:block;
     padding:0;
+    
+   padding-top:3px;
     padding-left:0;
-    padding-bottom:0.5em;
-    width:55%;
+    height:38px;
+    width:60%;
   }
 
-    #ui_global_font div {
-      width:20%;
-      height:35px;
-      background-size:20px;
+    #ui_global_font_mobile div {
+      width:17%;
+      height:30px;
+      border-top-left-radius:8px;      
+      border-bottom-right-radius:8px;
+      background-size:50%;
     }
         
   #ui_logo_container,   
