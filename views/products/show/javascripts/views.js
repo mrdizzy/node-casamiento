@@ -1,6 +1,7 @@
 var BackboneRelativeView = Backbone.View.extend({
   initialize: function() {
-    $(window).on("resize", this.testForMobile.bind(this));   
+    $(window).on("resize", this.testForMobile.bind(this)); 
+    this.testForMobile();
  },
   relativeToViewport: function() {
     var widths_relative_to_viewport = this.options.widths_relative_to_viewport;

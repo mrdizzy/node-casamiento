@@ -104,6 +104,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
     "dizzy-cp:click": "togglePanel",
+    "click #close_mobile": "togglePanel",
     "click .layout_icon_container": "changeLayout",
     "click #ui_printer_icon": "printPage",
     'click #print_now': "printNow",
@@ -112,10 +113,14 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     "click .global_baseline_down": "baselineDown",
     "click .global_font_increase": "fontIncrease",
     "click .global_font_decrease": "fontDecrease",
-    "click .global_font_reset": "fontReset"
+    "click .global_font_reset": "fontReset",
+    "click #ui_print_alert .close": "closeAlert"
   },
   addGuest: function() {
     thisProduct.get("guests").add({})
+  },
+  closeAlert: function() {
+    $('#ui_print_alert').fadeOut();
   },
   togglePanel: function() {
     if(this.mobile) $('#mobile_panel_section').toggle();
@@ -184,7 +189,8 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     })
   },
   printNow: function() {
-    $('#ui_print_alert').fadeOut();
+    $('#ui_print_alert').hide();
+    if(this.mobile) { this.togglePanel() }
     window.print()     
   },
   render: function() {
