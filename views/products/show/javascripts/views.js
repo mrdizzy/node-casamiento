@@ -1,12 +1,23 @@
 var BackboneRelativeView = Backbone.View.extend({
+  initialize: function() {
+    $(window).on("resize", this.testForMobile.bind(this));   
+ },
   relativeToViewport: function() {
     var widths_relative_to_viewport = this.options.widths_relative_to_viewport;
     var viewport = $('body').width();
     if(viewport < 501) return (widths_relative_to_viewport.mobile/100) * viewport;
     return (widths_relative_to_viewport.desktop/100) * viewport;
-  }
+  },  
+  testForMobile: function() {
+    var viewport = $('body').width();
+    if(viewport < 501) {
+      this.mobile = true
+    } else {
+      this.mobile = false;
+    }
+  },
+  
 })
-
 
 // STEP VIEW
 ////////////////////////////////////////////////////////////////////////////// 
@@ -113,42 +124,3 @@ var StepView = Backbone.View.extend({
     this.renderQtyAndPrice();
   }
 })
-
-// GUEST VIEW
-////////////////////////////////////////////////////////////////////////////// 
-var GuestView = BackboneRelativeView.extend({  
-  className: 'input_container',
-  initialize: function() {
-    this.listenTo(this.model, "change:name", this.render)  
-  },
-  events: {
-    "blur input": 'updateGuest',
-    'focus input': 'clearGuest',
-    'click .trash': 'deleteGuest'
-  },
-  deleteGuest: function() {
-    this.model.destroy();
-    var that = this;
-    thisProduct.set("quantity", thisProduct.get("quantity") -1)  
-    this.$el.fadeOut(function() {
-        that.remove();
-    });
-  },
-  clearGuest: function() {
-    thisProduct.trigger("editing:guest")
-    if(this.model.get("name") == "Guest Name") this.$('input').val("")     
-  },
-  updateGuest: function() {
-   thisProduct.trigger("finishediting:guest")
-   var name = this.$('input').val()
-   this.model.set("name", name)
-  },
-  render: function() { 
-    var html = '<input type="text" name="guest" value="' + 
-      this.model.get("name") + 
-      '"></input> <img src="/gfx/trash/delete96.svg" class="trash deselected" style="display:inline-block;width:13px;"/>'
-    this.$el.html(html)
-    return this;
-  }
-})
-

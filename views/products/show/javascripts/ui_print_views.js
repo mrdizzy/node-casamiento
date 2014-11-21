@@ -2,9 +2,30 @@ var ControlPanel = Backbone.Model.extend({
   defaults: {
     cutting_marks: true,
     per_page: 3
+  },
+  initialize:function() {
+    this.calculateUserAgent()
+    this.calculatePlaceCardPrintSize();
+  },
+  calculateUserAgent: function() {
+    if(navigator.userAgent.match(/Chrome/i) != null) {
+      this.set("chrome", true)
+    } else if (navigator.userAgent.match(/iPad/i) != null) {
+      this.set("ipad", true)
+    }      
+  },
+  calculatePlaceCardPrintSize: function() {
+    if(this.get("ipad")) {
+      this.set("width",120.75);
+      this.set("height", 85.3875);
+    } else {
+      this.set("width",105);
+      this.set("height", 74.25);
+    }
   }
 })
 
+// Used by control panel for fast editing of guests
 var GuestCollectionView = Backbone.View.extend({
   render: function() {
     var guests_html = this.collection.map(function(guest) {  
@@ -32,31 +53,29 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
     }    
   },
   render: function() {      
-    if(isiPad) $('#printsvg').addClass('ipad')
-    this.$el.removeClass().addClass('up' + this.model.get("per_page"));
-    if(isiPad) {
-      var width = 120.75;        
-      var height = 85.3875;
-    } else {
-      var width = 105;
-      var height = 74.25;
-    }
+    if(this.model.get("ipad")) $('#printsvg').addClass('ipad')
+    
+    var per_page = this.model.get("per_page")
+    
+    this.$el.removeClass().addClass('up' + per_page);    
+    
     var result = this.collection.map(function(guest) {
-      guest.calculateBaselineOffset(height);
-      return { font: thisProduct.get("font"),  
+      guest.calculateBaselineOffset(this.model.get("height"));
+      return { 
+        font: thisProduct.get("font"),  
         name: guest.get("name"),
-        height: height,
-        width: width,
-        font_size: (width * guest.get("font_size")),
+        height: this.model.get("height"),
+        width: this.model.get("width"),
+        font_size: (this.model.get("width") * guest.get("font_size")),
         margin_top: guest.top_half_height,
         guest_height: guest.bottom_half_height
       }
-    })
-    var groups = inGroupsOf(result, this.model.get("per_page"));
+    }, this)
+    var groups = inGroupsOf(result, per_page);
     var $template = $(Handlebars.template(templates["print_place_card_view_collection"])({
-      isiPad: isiPad, 
+      ipad: this.model.get("ipad"),
       group_class: this.model.get("group_class"),
-      per_page: this.model.get("per_page"),
+      per_page: per_page,
       groups: groups
     })); 
     
@@ -69,24 +88,15 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
   }
 })
 
-var PrintControlPanelView = Backbone.View.extend({
+var PrintControlPanelView = BackboneRelativeView.extend({
   el: '#print_ui',
   initialize: function() {
-    $(window).on("resize", this.testForMobile.bind(this));
-    if(isiPad) {
-      this.listenTo(thisProduct, 'editing:guest', this.toggleControlPanel)
-      this.listenTo(thisProduct, 'finishediting:guest', this.toggleControlPanel)
-    }
-    this.testForMobile();
-  },
-  testForMobile: function() {
-    if(viewportSize.getWidth() < 501) {
-      this.mobile = true      
-      $('#mobile_panel_section').hide();
-    } else {
-      this.mobile = false;
-      $('#mobile_panel_section').show();
-    }
+    BackboneRelativeView.prototype.initialize.apply(this)
+    //if(isiPad) {
+    //  this.listenTo(thisProduct, 'editing:guest', this.toggleControlPanel)
+    //  this.listenTo(thisProduct, 'finishediting:guest', this.toggleControlPanel)
+    //}
+    //this.testForMobile();
   },
   events: {
     "click #add_another": "addGuest",
@@ -107,13 +117,8 @@ var PrintControlPanelView = Backbone.View.extend({
   addGuest: function() {
     thisProduct.get("guests").add({})
   },
-  toggleControlPanel: function() {
-    this.$('#control_panel').fadeToggle();  
-  },
   togglePanel: function() {
-    if(this.mobile) {
-      $('#mobile_panel_section').toggle();
-    }
+    if(this.mobile) $('#mobile_panel_section').toggle();
   },
   fontReset: function() {
    var font_size = thisProduct.get("font_size");
@@ -184,7 +189,7 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   render: function() {
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
-      hide_layout_icons: isiPad,
+      agent: this.agent,
       pounds: thisProduct.get("pounds"),
       pence: thisProduct.get("pence")
     })); 
@@ -192,7 +197,7 @@ var PrintControlPanelView = Backbone.View.extend({
     var $colour_picker_container = $template.find('#ui_print_colour_picker_container');
     
     var place_cards = new PlaceCardCollectionView({
-      per_page: this.layout,
+      collection: thisProduct.get("guests")
     }).render().el
     
     var colours = thisProduct.get("colours") 

@@ -1,3 +1,45 @@
+// GUEST VIEW
+////////////////////////////////////////////////////////////////////////////// 
+var GuestView = BackboneRelativeView.extend({  
+  className: 'input_container',
+  initialize: function() {
+    BackboneRelativeView.prototype.initialize.apply(this)
+    this.listenTo(this.model, "change:name", this._renderName);
+  },
+  events: {
+    "blur input": 'updateGuest',
+    'focus input': 'clearGuest',
+    'click .trash': 'deleteGuest'
+  },
+  deleteGuest: function() {
+    this.model.destroy();
+    var that = this;
+    thisProduct.set("quantity", thisProduct.get("quantity") -1)  
+    this.$el.fadeOut(function() {
+        that.remove();
+    });
+  },
+  clearGuest: function() {
+    thisProduct.trigger("editing:guest")
+    if(this.model.get("name") == "Guest Name") this.$('input').val("")     
+  },
+  updateGuest: function() {
+   thisProduct.trigger("finishediting:guest")
+   var name = this.$('input').val()
+   this.model.set("name", name)
+  },
+  _renderName: function() {
+    this.$('input').val(this.model.get("name"))            
+  },
+  render: function() { 
+    var html = '<input type="text" name="guest" value="' + 
+      this.model.get("name") + 
+      '"></input> <img src="/gfx/trash/delete96.svg" class="trash deselected" style="display:inline-block;width:13px;"/>'
+    this.$el.html(html)
+    return this;
+  }
+})
+
 /* 
   Each font has a size value such as 0.12 or 0.08 and this value
   is the size of the font as a percentage of the container width. 
@@ -7,10 +49,10 @@
 var PlaceCardView = GuestView.extend({
   className: 'place_card_view',
   initialize: function() {      
+    GuestView.prototype.initialize.apply(this)
     $(window).bind("resize", _.bind(this.resizeWindow, this));
     
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);   
-    this.listenTo(this.model, "change:name", this._renderName);
     this.listenTo(this.model, "change:font_size", this._renderFontSize);
     this.listenTo(this.model, "change:baseline", this._renderBaseline)
   },  
@@ -19,9 +61,9 @@ var PlaceCardView = GuestView.extend({
     'click .minus_font': 'decreaseFont',
     'click .up_baseline': 'upBaseline',
     'click .down_baseline': 'downBaseline',   
-    'click .delete_guest': 'deleteGuest', 
-    "blur input": 'updateGuest',
-    'focus input': 'clearGuest'
+    'click .delete_guest': 'deleteGuest', // see parent view for implementation
+    "blur input": 'updateGuest', // see parent view for implementation
+    'focus input': 'clearGuest' // see parent view for implementation
   }, 
   resizeWindow: function() {
     this._renderFontSize();
@@ -39,9 +81,6 @@ var PlaceCardView = GuestView.extend({
   downBaseline: function() {
     this.model.adjustBaseline(1);
   },  
-  _renderName: function() {
-    this.$('input').val(this.model.get("name"))            
-  },
   // getWidth() will report 16 pixels more for some reason -- it is something
   // to do with scrollbars during the transition. This does not happen when the 
   // window resizes, only when changing from another view
@@ -89,8 +128,18 @@ var PlaceCardView = GuestView.extend({
 // Used to render collections of place cards for UI preview view
 var PlaceCardCollectionView = Backbone.View.extend({
   initialize: function() {
-    var guests = thisProduct.get("guests")
-    this.listenTo(guests, 'add', this.addGuest)
+    this.listenTo(this.collection, 'add', this.addGuest)
+  },
+  addGuest: function(guest) {
+    var place_card = this._newPlaceCardView(guest).render().el        
+    this.$el.append(place_card)
+  },
+  render: function() {
+    var place_cards = this.collection.map(function(guest) {   
+      return this._newPlaceCardView(guest).render().el
+    }, this)
+    this.$el.html(place_cards)
+    return this;
   },
   _newPlaceCardView: function(guest) {
     return new PlaceCardView(_.extend({
@@ -99,20 +148,6 @@ var PlaceCardCollectionView = Backbone.View.extend({
         desktop: 47.5,
         mobile: 95
       }
-    }, this.options))
-  },
-  addGuest: function(guest) {
-    var place_card = this._newPlaceCardView(guest).render().el        
-    this.$el.append(place_card)
-  },
-  render: function() {
-    var that = this;
-    var place_cards = [];
-    thisProduct.get("guests").toArray().forEach(function(guest) {   
-      var place_card = that._newPlaceCardView(guest).render().el
-      place_cards.push(place_card)
-    })
-    this.$el.html(place_cards)
-    return this;
+    }))
   }
 }) 

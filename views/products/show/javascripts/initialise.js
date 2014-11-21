@@ -1,17 +1,12 @@
 $(function() {
 
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
-  
-  /* Test for user agent */
-  var isWindowsChrome = navigator.userAgent.match(/Chrome/i) != null;
-  var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
   <%= include models.js %>  
   <%= include views.js %>
   <%= include place_card_view.js %>
   <%= include ui_print_views.js %>
 
-  var screen_model = new ScreenModel();
   // Initialize templates
   var templates = {}
   <% templates.forEach(function(template) { %>
