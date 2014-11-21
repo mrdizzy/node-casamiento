@@ -60,7 +60,7 @@
         Choose layout
         </div>
       
-        {{#if ipad}}
+        {{#unless ipad}}
         <div id="layout_icons_wrapper">
           <div class="layout_icon_container">     
             <input id="radio_8" type="radio" name="per_page" style="display:block;margin:0 auto" />  
@@ -78,9 +78,9 @@
             4/landscape page
           </div>
         </div>
-        {{/if}}
+        {{/unless}}
         
-        {{#unless ipad}}
+        {{#if ipad}}
         <div id="layout_icons_wrapper">
           
           
@@ -90,7 +90,7 @@
           </div>
         <p class="chat-bubble">Because you are using an iPad, only one layout option is available for you: 3 place cards per portrait page. On a desktop computer or Android tablet, you may have other options available.</p>
         </div>
-        {{/unless}}
+        {{/if}}
         
         
         <div style="margin-top:1em;clear:both;float:left;width:48%;margin-right:2%;">
