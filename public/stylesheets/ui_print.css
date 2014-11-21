@@ -118,6 +118,8 @@
     }
     #layout_icons_wrapper {      
       text-align:center;
+        font-size:1em;
+        font-family:'OS Light'
     }
       .layout_icon_container {    
         border-radius:10px;
@@ -364,6 +366,9 @@ input.cmn-toggle-yes-no:checked + label:after {
   }
   #menu_lines {
     display:none;
+  } 
+  #ui_print_alert {
+  width:70%;
   }
   .colour_picker_wrapper .dizzycp-static_container { 
     padding-bottom:5px;
@@ -390,21 +395,6 @@ input.cmn-toggle-yes-no:checked + label:after {
     font-size:1em;
   }
   
-  #layout_icons_wrapper {
-    float:right;
-    width:30%;
-  }
-    .layout_icon_container {
-      float:left;
-      margin:0 auto;
-      text-align:center;
-      width:35px;
-      margin-right:5%;
-    }
-    
-      .layout_icon_table td {
-        width:50%;height:8px;border-bottom:1px dotted grey;
-      }
     
     #ui_global_font div {
       width:45px;
