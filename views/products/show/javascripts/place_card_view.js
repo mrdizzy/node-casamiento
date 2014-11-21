@@ -7,12 +7,12 @@
 var PlaceCardView = GuestView.extend({
   className: 'place_card_view',
   initialize: function() {      
-    this.relative_to_viewport = this.options.widths_relative_to_viewport;
+    $(window).bind("resize", _.bind(this.resizeWindow, this));
+    
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);   
     this.listenTo(this.model, "change:name", this._renderName);
     this.listenTo(this.model, "change:font_size", this._renderFontSize);
     this.listenTo(this.model, "change:baseline", this._renderBaseline)
-    $(window).bind("resize", _.bind(this.resizeWindow, this));
   },  
   events: {
     'click .plus_font': 'increaseFont',
@@ -46,7 +46,7 @@ var PlaceCardView = GuestView.extend({
   // to do with scrollbars during the transition. This does not happen when the 
   // window resizes, only when changing from another view
   calculateBaselineOffset: function() { 
-    var height = (70.714285714285714285714285714286/100) * screenType(this.relative_to_viewport);     
+    var height = (70.714285714285714285714285714286/100) * this.relativeToViewport();     
     var baseline = (this.model.get("baseline") /100) * height;
     this.top_half_height = (height / 2) + baseline;
     this.bottom_half_height = (height / 2)  - baseline;
@@ -55,7 +55,7 @@ var PlaceCardView = GuestView.extend({
     this.$('input').css('font-family', thisProduct.get("font"));  
   },
   _renderFontSize: function() {
-    var new_size = screenType(this.relative_to_viewport) * this.model.get("font_size");
+    var new_size = this.relativeToViewport() * this.model.get("font_size");
     this.$('input').css('font-size', new_size + "px");   
   },
   _renderBaseline: function() {
@@ -70,7 +70,7 @@ var PlaceCardView = GuestView.extend({
       font_family: thisProduct.get("font"),   
       baseline_top: this.top_half_height,
       baseline_bottom: this.bottom_half_height,
-      font_size: screenType(this.relative_to_viewport) * this.model.get("font_size"),
+      font_size: this.relativeToViewport() * this.model.get("font_size"),
       background: thisProduct.get("background-5"),  
       product: thisProduct.get("_id"),
       name: this.model.get("name"),
@@ -86,13 +86,11 @@ var PlaceCardView = GuestView.extend({
   }
 })
 
-
 // Used to render collections of place cards for UI preview view
 var PlaceCardCollectionView = Backbone.View.extend({
   initialize: function() {
     var guests = thisProduct.get("guests")
     this.listenTo(guests, 'add', this.addGuest)
-   // this.listenTo(guests, 'change', this.render)
   },
   _newPlaceCardView: function(guest) {
     return new PlaceCardView(_.extend({
@@ -111,7 +109,6 @@ var PlaceCardCollectionView = Backbone.View.extend({
     var that = this;
     var place_cards = [];
     thisProduct.get("guests").toArray().forEach(function(guest) {   
-
       var place_card = that._newPlaceCardView(guest).render().el
       place_cards.push(place_card)
     })

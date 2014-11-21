@@ -5,18 +5,10 @@ var ControlPanel = Backbone.Model.extend({
   }
 })
 
-function screenType(relative_to_viewport) {
-  var viewport = $('body').width();
-  if(viewport < 501) return (relative_to_viewport.mobile/100) * viewport;
-  return (relative_to_viewport.desktop/100) * viewport;
-}
-
-if(isiPad) $('#printsvg').addClass('ipad')
-  
 var GuestCollectionView = Backbone.View.extend({
   render: function() {
     var guests_html = this.collection.map(function(guest) {  
-        return(new GuestView({model:guest}).render().el);
+      return(new GuestView({model:guest}).render().el);
     })
     this.$el.html(guests_html)
     return this;
@@ -26,9 +18,22 @@ var GuestCollectionView = Backbone.View.extend({
 // This view loops through each guest and creates an SVG place card for printing. 
 var PrintPlaceCardCollectionView = Backbone.View.extend({
   initialize: function() {
-    this.listenTo(this.model, 'change:cutting_marks', this._renderCuttingMarks)  
+    this.listenTo(this.model, 'change:cutting_marks', this._renderCuttingMarks) 
+    this.listenTo(this.model, 'change:per_page', this._changeOrientation) 
   },
-  render: function() {
+  _changeOrientation: function() {
+    if(this.model.get("per_page") == 4) {
+      this.model.set("group_class","group_landscape")       
+      $('head').append("<style type='text/css'>@page { size: A4 landscape }</style>");
+    } 
+    else {        
+      this.model.set("group_class","group")       
+      $('head').append("<style type='text/css'>@page { size: A4 portrait }</style>");
+    }    
+  },
+  render: function() {      
+    if(isiPad) $('#printsvg').addClass('ipad')
+    this.$el.removeClass().addClass('up' + this.model.get("per_page"));
     if(isiPad) {
       var width = 120.75;        
       var height = 85.3875;
@@ -36,50 +41,26 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
       var width = 105;
       var height = 74.25;
     }
-    this.$el.removeClass().addClass('up' + this.model.get("per_page"));
-    var groups = inGroupsOf(this.collection, this.model.get("per_page"));
-    var html = "";
-    var group_class = "group"    
-    
-    if(this.model.get("per_page") == 4) {
-      group_class = "group_landscape"        
-      $('head').append("<style type='text/css'>@page { size: A4 landscape }</style>");
-    } 
-    else {        
-      $('head').append("<style type='text/css'>@page { size: A4 portrait }</style>");
-    }
-    groups.forEach(function(guests) {		            	
-      // page breaks for ipad which can only print 3 per page anyway
-      if (isiPad) {
-        html = html + '<div class="' + group_class + '" style="page-break-before:always;">'
+    var result = this.collection.map(function(guest) {
+      guest.calculateBaselineOffset(height);
+      return { font: thisProduct.get("font"),  
+        name: guest.get("name"),
+        height: height,
+        width: width,
+        font_size: (width * guest.get("font_size")),
+        margin_top: guest.top_half_height,
+        guest_height: guest.bottom_half_height
       }
-      // only apply page breaks when there are less than 8 per page, OR if the browser is Chrome for Windows
-      else {
-        if(this.model.get("per_page") != 8 || isWindowsChrome) {			 	
-          html = html + '<div class="' + group_class + '" style="page-break-after:always;">'
-        } else {
-          html = html + '<div class="' + group_class + '">'
-        }
-      }
+    })
+    var groups = inGroupsOf(result, this.model.get("per_page"));
+    var $template = $(Handlebars.template(templates["print_place_card_view_collection"])({
+      isiPad: isiPad, 
+      group_class: this.model.get("group_class"),
+      per_page: this.model.get("per_page"),
+      groups: groups
+    })); 
     
-      guests.forEach(function(guest) {
-        guest.calculateBaselineOffset(height);
-        var compiled_template = Handlebars.template(templates["print_place_card"]) 
-        var $template = $(compiled_template({
-          font: thisProduct.get("font"),  
-          name: guest.get("name"),
-          height: height,
-          width: width,
-          font_size: (width * guest.get("font_size")),
-          margin_top: guest.top_half_height,
-          guest_height: guest.bottom_half_height
-        }));  
-        html = html + $template.html(); // /html() only returns INNER html so we have added a wrapping div in template
-      }, this)
-      html = html + '<img src="/gfx/logo/casamiento_black.svg" class="cas_print_logo" />'
-      html = html + "</div>"			
-    }, this)
-    this.$el.html(html);
+    this.$el.html($template)
     this._renderCuttingMarks();
     return this;
   },

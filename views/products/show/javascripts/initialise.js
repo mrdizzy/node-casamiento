@@ -11,6 +11,7 @@ $(function() {
   <%= include place_card_view.js %>
   <%= include ui_print_views.js %>
 
+  var screen_model = new ScreenModel();
   // Initialize templates
   var templates = {}
   <% templates.forEach(function(template) { %>
@@ -20,8 +21,8 @@ $(function() {
   // Setup and initialization
   var thisProduct = new Product();   
   var guestList = new Guests();
-  var control_panel = new ControlPanel();
-   
+  var control_panel = new ControlPanel();  
+ 
   thisProduct.fetch({silent:true, success:function(model, resp) {
     $.updateFont(thisProduct.get("font"), {trigger: function(){}}) 
     }, error: function(model,resp) {

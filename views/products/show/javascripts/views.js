@@ -1,3 +1,13 @@
+var BackboneRelativeView = Backbone.View.extend({
+  relativeToViewport: function() {
+    var widths_relative_to_viewport = this.options.widths_relative_to_viewport;
+    var viewport = $('body').width();
+    if(viewport < 501) return (widths_relative_to_viewport.mobile/100) * viewport;
+    return (widths_relative_to_viewport.desktop/100) * viewport;
+  }
+})
+
+
 // STEP VIEW
 ////////////////////////////////////////////////////////////////////////////// 
 var StepView = Backbone.View.extend({ 
@@ -106,7 +116,7 @@ var StepView = Backbone.View.extend({
 
 // GUEST VIEW
 ////////////////////////////////////////////////////////////////////////////// 
-var GuestView = Backbone.View.extend({  
+var GuestView = BackboneRelativeView.extend({  
   className: 'input_container',
   initialize: function() {
     this.listenTo(this.model, "change:name", this.render)  
