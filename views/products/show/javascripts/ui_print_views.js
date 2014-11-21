@@ -7,6 +7,10 @@ var ControlPanel = Backbone.Model.extend({
     this.calculateUserAgent()
     this.calculatePlaceCardPrintSize();
   },
+  toggleCuttingMarks: function() {
+    var cutting_marks = this.get("cutting_marks") ? false : true;
+    this.set("cutting_marks", cutting_marks)
+  },
   calculateUserAgent: function() {
     if(navigator.userAgent.match(/Chrome/i) != null) {
       this.set("chrome", true)
@@ -88,15 +92,13 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
   }
 })
 
+//PRINT CONTROL PANEL VIEW
+////////////////////////////////////////////////////////////////////////////////
 var PrintControlPanelView = BackboneRelativeView.extend({
   el: '#print_ui',
   initialize: function() {
     BackboneRelativeView.prototype.initialize.apply(this)
-    //if(isiPad) {
-    //  this.listenTo(thisProduct, 'editing:guest', this.toggleControlPanel)
-    //  this.listenTo(thisProduct, 'finishediting:guest', this.toggleControlPanel)
-    //}
-    //this.testForMobile();
+    this.listenTo(thisProduct, "change:quantity", this.updatePrice)
   },
   events: {
     "click #add_another": "addGuest",
@@ -114,12 +116,12 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     "click .global_font_increase": "fontIncrease",
     "click .global_font_decrease": "fontDecrease",
     "click .global_font_reset": "fontReset",
-    "click #ui_print_alert .close": "closeAlert"
+    "click #ui_print_alert .close": "closePrintAlert"
   },
-  addGuest: function() {
-    thisProduct.get("guests").add({})
+  addGuest: function() {    
+    thisProduct.set("quantity", thisProduct.get("quantity") + 1)
   },
-  closeAlert: function() {
+  closePrintAlert: function() {
     $('#ui_print_alert').fadeOut();
   },
   togglePanel: function() {
@@ -129,9 +131,10 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     }
   },
   fontReset: function() {
-   var font_size = thisProduct.get("font_size");
-   var baseline = thisProduct.get("baseline");
-   thisProduct.get("guests").invoke('set', {font_size: font_size, baseline: baseline})
+   thisProduct.get("guests").invoke('set', {
+     font_size: thisProduct.get("font_size"), 
+     baseline: thisProduct.get("baseline")
+   })
   },
   fontIncrease: function() {
     thisProduct.get("guests").invoke('adjustFontSize',1.05)
@@ -155,8 +158,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     this.printPage();
   },  
   toggleCuttingMarks: function() {
-    var cutting_marks = this.model.get("cutting_marks") ? false : true;
-    this.model.set("cutting_marks", cutting_marks)
+    this.model.toggleCuttingMarks();
   },
   loadFont: function(e, font) {
     $('.font_spinner').hide();
@@ -231,6 +233,10 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     
     $template.find('#actual_cards').prepend(place_cards)
     return this;
+  },
+  updatePrice: function() {
+    this.$('#pound').text(thisProduct.get("pounds"));
+    this.$('#decimal').text("." + thisProduct.get("pence"))
   }
 })
 

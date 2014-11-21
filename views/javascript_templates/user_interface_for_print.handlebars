@@ -6,12 +6,11 @@
    
       <div id="control_panel_top_row">
       
-        <div id="ui_logo_container">
+        <div id="ui_logo_container" class="desktop">
           <a href="/"><img src="/gfx/logo/casamiento_gry.svg" id="ui_print_logo"></a>
-        </div>
-      
+        </div> 
           
-    <img src="/gfx/close/close3.svg" class="close" id="close_mobile" style="margin-right:10px;position:static;margin-top:10px;float:right;"/>
+        <img src="/gfx/close/close3.svg" class="close mobile" id="close_mobile" style="margin-right:10px;position:static;margin-top:10px;float:right;"/>
 
         <div id="ui_print_colour_picker_container"></div>
         
@@ -19,7 +18,7 @@
           <img src="/gfx/printer_icon.svg" style="margin-top:0.5em;width:55px">
         </div>
         
-        <div id="ui_global_font">
+        <div id="ui_global_font" class="desktop">
           <div class="global_font_increase"></div>
           <div class="global_font_decrease"></div>
           <div class="global_baseline_up"></div>
@@ -40,96 +39,93 @@
     <img src="/gfx/people/crowdsourcing.svg" style="width:30px;" />    
   </div>
     
-  <div id="menu_lines" style="float:left;z-index:99999999999999999999999999999999">
+  <div id="menu_lines" class="mobile">
     <div class="menu_line"></div>
     <div class="menu_line"></div>
     <div class="menu_line"></div>
   </div>
   
-  <a href="/"><img src="/gfx/logo/casamiento_gry.svg" id="mobile_print_logo"></a>
+  <a href="/"><img src="/gfx/logo/casamiento_gry.svg" class="mobile" id="mobile_print_logo"></a>
   
-        <div id="ui_global_font_mobile">
-          <div class="global_font_increase"></div>
-          <div class="global_font_decrease"></div>
-          <div class="global_baseline_up"></div>
-          <div class="global_baseline_down"></div>       
-          <div class="global_font_reset"></div>     
-        </div>
-  <div style="clear:both"></div>
+  <div id="ui_global_font_mobile" class="mobile">
+    <div class="global_font_increase"></div>
+    <div class="global_font_decrease"></div>
+    <div class="global_baseline_up"></div>
+    <div class="global_baseline_down"></div>       
+    <div class="global_font_reset"></div>     
+  </div>
+  
 </div>
 
+<!-- PRINTER ALERT BOX -->
 
-    <!-- PRINTER ALERT BOX -->
-          
-    <div style="clear:both;border-top:1px solid black;"></div>
+<div id="ui_print_alert">       
 
-    <div id="ui_print_alert">       
+  <img src="/gfx/close/close3.svg" class="close" />
 
-    <img src="/gfx/close/close3.svg" class="close" />
-    
-      <!-- LAYOUT ICONS -->      
-      
-      <div id="choose_layout">Choose layout</div>
-      
-        {{#unless ipad}}
-        <div id="layout_icons_wrapper">
-        
-          <div class="layout_icon_container">     
-            <input id="radio_8" type="radio" name="per_page" style="display:block;margin:0 auto" />  
-            <img src="/gfx/icons/8_up.svg" id="up_8" />
-            8/portrait page
-          </div>
-          
-          <div class="layout_icon_container layout_selected">
-            <input type="radio" name="per_page" id="radio_3" checked="checked" style="display:block;margin:0 auto"/>  
-            <img src="/gfx/icons/3_up.svg" id="up_3" />   
-            3/portrait page       
-          </div>
-        
-          <div class="layout_icon_container"><br/>       
-            <input type="radio" name="per_page" id="radio_4" style="display:block;margin:0 auto"/>  
-            <img src="/gfx/icons/4_up.svg" id="up_4" /><br/>
-            4/landscape page
-          </div>
-          
-        </div>
-        {{/unless}}
-        
-        {{#if ipad}}
-        <div id="layout_icons_wrapper">        
-          
-          <div class="layout_icon_container layout_selected"><input type="radio" name="per_page" id="radio_3" checked="checked" style="display:block;margin:0 auto"/>  
-            <img src="/gfx/icons/3_up.svg" id="up_3" />   
-            3/portrait page       
-          </div>
-          <p class="chat-bubble">Because you are using an iPad, only one layout option is available for you: 3 place cards per portrait page. On a desktop computer or Android tablet, you may have other options available.</p>
-          
-        </div>
-        {{/if}}        
-        
-        <div style="margin-top:1em;clear:both;float:left;width:48%;margin-right:2%;">
-        
-          <div id="cutting_marks">Cutting marks</div>
-          
-          <div id="ui_crosshairs_icon" class="selected">
-          
-            <img src="/gfx/crosshairs/crosshair8.svg" style="margin-top:0.5em;width:55px" style="display:inline-block;"> 
-            <div class="switch" style="display:inline-block;">
-              <input id="cutting_marks" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" checked="checked">
-              <label for="cutting_marks" data-on="Yes" data-off="No"></label>
-            </div>
-          </div>
-        </div>
-        
-         <div style="margin-top:1em;float:left;width:48%;padding-top:3em;">
-         <div class="grey_button" id="print_now" style="border-radius:10px;clear:both;width:150px;">
-      SUBMIT
+  <!-- LAYOUT ICONS 
+    -------------------------------------------------------------------- -->      
+  
+  <div id="choose_layout">Choose layout</div>
+  
+  {{#unless ipad}}
+  <div id="layout_icons_wrapper">
+  
+    <div class="layout_icon_container">     
+      <input id="radio_8" type="radio" style="display:block;margin:0 auto" />  
+      <img src="/gfx/icons/8_up.svg" id="up_8" />
+      8/portrait page
     </div>
-         
-        </div>
+    
+    <div class="layout_icon_container layout_selected">
+      <input type="radio" id="radio_3" checked="checked" style="display:block;margin:0 auto"/>  
+      <img src="/gfx/icons/3_up.svg" id="up_3" />   
+      3/portrait page       
+    </div>
+  
+    <div class="layout_icon_container"><br/>       
+      <input type="radio" id="radio_4" style="display:block;margin:0 auto"/>  
+      <img src="/gfx/icons/4_up.svg" id="up_4" /><br/>
+      4/landscape page
+    </div>
+    
   </div>
-
-<div style="clear:both;border-top:1px solid black;display:none;"></div>
+  {{/unless}}
+  
+  {{#if ipad}}
+  <div id="layout_icons_wrapper">        
+    
+    <div class="layout_icon_container layout_selected">
+      <input type="radio" name="per_page" id="radio_3" checked="checked" style="display:block;margin:0 auto"/>  
+      <img src="/gfx/icons/3_up.svg" id="up_3" />   
+      3/portrait page       
+    </div>
+    
+    <p class="chat-bubble">Because you are using an iPad, only one layout option is available for you: 3 place cards per portrait page. On a desktop computer or Android tablet, you may have other options available.</p>
+    
+  </div>
+  {{/if}}        
+  
+  <div style="margin-top:1em;clear:both;float:left;width:48%;margin-right:2%;">
+  
+    <div id="cutting_marks">Cutting marks</div>
+    
+    <div id="ui_crosshairs_icon" class="selected">
+    
+      <img src="/gfx/crosshairs/crosshair8.svg" style="margin-top:0.5em;width:55px" style="display:inline-block;"> 
+      
+      <div class="switch" style="display:inline-block;">
+        <input id="cutting_marks" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" checked="checked">
+        <label for="cutting_marks" data-on="Yes" data-off="No"></label>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div style="margin-top:1em;float:left;width:48%;padding-top:3em;">
+    <div class="grey_button" id="print_now" style="border-radius:10px;clear:both;width:150px;">SUBMIT</div>
+  </div>
+</div>
 
 <div id="ui_guests_quick" style="display:none;padding:20px;width:50%;border:1px solid black;position:absolute;background-color:white;z-index:1000000000000000000000000000000000000000000;right:0;left:0;margin:auto;margin-top:150px;border-radius:20px;text-align:center;"></div>
  
