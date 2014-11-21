@@ -53,6 +53,7 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
     }    
   },
   render: function() {      
+  alert(this.model.get("ipad"))
     if(this.model.get("ipad")) $('#printsvg').addClass('ipad')
     
     var per_page = this.model.get("per_page")
