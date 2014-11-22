@@ -1,34 +1,3 @@
-var ControlPanel = Backbone.Model.extend({
-  defaults: {
-    cutting_marks: true,
-    per_page: 3
-  },
-  initialize:function() {
-    this.calculateUserAgent()
-    this.calculatePlaceCardPrintSize();
-  },
-  toggleCuttingMarks: function() {
-    var cutting_marks = this.get("cutting_marks") ? false : true;
-    this.set("cutting_marks", cutting_marks)
-  },
-  calculateUserAgent: function() {
-    if(navigator.userAgent.match(/Chrome/i) != null) {
-      this.set("chrome", true)
-    } else if (navigator.userAgent.match(/iPad/i) != null) {
-      this.set("ipad", true)
-    }      
-  },
-  calculatePlaceCardPrintSize: function() {
-    if(this.get("ipad")) {
-      this.set("width",120.75);
-      this.set("height", 85.3875);
-    } else {
-      this.set("width",105);
-      this.set("height", 74.25);
-    }
-  }
-})
-
 // Used by control panel for fast editing of guests
 var GuestCollectionView = Backbone.View.extend({
   render: function() {
@@ -44,43 +13,32 @@ var GuestCollectionView = Backbone.View.extend({
 var PrintPlaceCardCollectionView = Backbone.View.extend({
   el: '#printsvg',
   initialize: function() {  
-    if(this.model.get("ipad")) this.$el.addClass('ipad')
-    this.listenTo(this.model, 'change:cutting_marks', this._renderCuttingMarks) 
-    this.listenTo(this.model, 'change:per_page', this._changeOrientation) 
-    this.listenTo(this.model, 'change:per_page', this.render)
+    if(thisProduct.get("ipad")) this.$el.addClass('ipad')
+    this.listenTo(thisProduct, 'change:cutting_marks', this._renderCuttingMarks) 
+    this.listenTo(thisProduct, 'change:per_page', this._changeOrientation) 
+    this.listenTo(thisProduct, 'change:per_page', this.render)
   },
   _changeOrientation: function() {
-    if(this.model.get("per_page") == 4) {
-      this.model.set("group_class","group_landscape")       
+    if(thisProduct.get("per_page") == 4) {
+      thisProduct.set("group_class","group_landscape")       
       $('head').append("<style type='text/css'>@page { size: A4 landscape }</style>");
     } 
     else {        
-      this.model.set("group_class","group")       
+      thisProduct.set("group_class","group")       
       $('head').append("<style type='text/css'>@page { size: A4 portrait }</style>");
     }    
   },
-  render: function() {          
-    var per_page = this.model.get("per_page")   
-    
-    var result = this.collection.invoke('presenter');
-    var $template = $(Handlebars.template(templates["print_place_card_view_collection"]) ({
-      ipad: this.model.get("ipad"),
-      group_class: this.model.get("group_class"),
-      per_page: per_page,
-      groups: inGroupsOf(result, per_page)
-    })); 
+  render: function() {  
+    var $template = $(Handlebars.template(templates["print_place_card_view_collection"]) (thisProduct.get("guests").printPresenter())); 
     
     this.$el.html($template)
-     // Wait for SVG images to be loaded before printing
-    var images  = $('#printsvg img.place_card_image'),
+  
+    var images  = $('#printsvg img.place_card_image'),  // Wait for SVG images to be loaded before printing
       counter = images.length;
-      var that = this;
     
     images.attr('src', thisProduct.svgURL()).load(function() {
       counter--;
-      if(counter == 0) {   
-        that.model.trigger("readyforprint")
-      }
+      if(counter == 0) thisProduct.trigger("readyforprint")
     })
     
     this._renderCuttingMarks();
@@ -88,7 +46,7 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
   },
   // display cutting marks based on class of #printsvg to avoid the need for showing and hiding
   _renderCuttingMarks: function() {
-    this.model.get("cutting_marks") ? this.$el.addClass('show_crop_marks') : this.$el.removeClass('show_crop_marks');
+    thisProduct.get("cutting_marks") ? this.$el.addClass('show_crop_marks') : this.$el.removeClass('show_crop_marks');
   }
 })
 
@@ -98,29 +56,28 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   el: '#print_ui',
   initialize: function() {
     BackboneRelativeView.prototype.initialize.apply(this)
-    this.listenTo(thisProduct, "change:quantity", this.updatePrice)
-    this.listenTo(this.model, "readyforprint", this.showPrintDialog)
+    this.listenTo(thisProduct, "change:quantity", this.renderPrice)
+    this.listenTo(thisProduct, "readyforprint", this.renderPrintDialog)
     this._place_card_print_collection = new PrintPlaceCardCollectionView({
-      model: this.model,
       collection: thisProduct.get("guests")
     })
   },
   events: {
     "click #add_another": "addGuest",
-    "click #cutting_marks": "toggleCuttingMarks",
-    "fontpicker:selected": "changeFont",
-    "fontpicker:fontloaded": "loadFont",
-    "dizzy-cp:click": "togglePanel",
-    "click #close_mobile": "togglePanel",
-    "click .layout_icon_container": "changeLayout",
-    "click #ui_printer_icon": "printPage",
-    'click #print_now': "printNow",
-    "click #menu_lines": "togglePanel",
     "click .global_baseline_up": "baselineUp",
     "click .global_baseline_down": "baselineDown",
     "click .global_font_increase": "fontIncrease",
     "click .global_font_decrease": "fontDecrease",
     "click .global_font_reset": "fontReset",
+    "fontpicker:selected": "changeFont",
+    "fontpicker:fontloaded": "loadFont",
+    "dizzy-cp:click": "togglePanel",
+    "click #menu_lines": "togglePanel",
+    "click #close_mobile": "togglePanel",
+    "click #ui_printer_icon": "printPage",    
+    "click #cutting_marks": "toggleCuttingMarks",
+    "click .layout_icon_container": "changeLayout",
+    'click #print_now': "printNow",
     "click #ui_print_alert .close": "closePrintAlert"
   },
   addGuest: function() {    
@@ -156,10 +113,10 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     $(e.currentTarget).addClass('layout_selected')
     $("input[type=radio]").prop("checked", false)
     $("#radio_" + per_page).prop("checked", true)
-    this.model.set("per_page", per_page)
+    thisProduct.set("per_page", per_page)
   },  
   toggleCuttingMarks: function() {
-    this.model.toggleCuttingMarks();
+    thisProduct.toggleCuttingMarks();
   },
   loadFont: function(e, font) {
     $('.font_spinner').hide();
@@ -180,7 +137,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   closePrintAlert: function() {
     $('#ui_print_alert').fadeOut();
   },
-  showPrintDialog: function() {
+  renderPrintDialog: function() {
     $('#ui_print_alert').fadeIn();
     $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
   },
@@ -191,7 +148,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   },
   render: function() {
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
-      ipad: this.model.get("ipad"),
+      ipad: thisProduct.get("ipad"),
       pounds: thisProduct.get("pounds"),
       pence: thisProduct.get("pence")
     })); 
@@ -225,7 +182,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     $template.find('#actual_cards').prepend(place_cards)
     return this;
   },
-  updatePrice: function() {
+  renderPrice: function() {
     this.$('#pound').text(thisProduct.get("pounds"));
     this.$('#decimal').text("." + thisProduct.get("pence"))
   }

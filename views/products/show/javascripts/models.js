@@ -16,15 +16,9 @@ var Guest = Backbone.Model.extend({
     this.top_half_height = (height / 2) + baseline;
     this.bottom_half_height = height - this.top_half_height - 1;
   },  
-  presenter: function() {
-    var result = {};
-    if(navigator.userAgent.match(/Chrome/i) != null) {
-      result.width = 105;
-      result.height =  74.25;
-    } else if (navigator.userAgent.match(/iPad/i) != null) {
-      result.width = 120.75;
-      result.height = 85.3875;
-    }   
+  printPresenter: function() {
+    if(navigator.userAgent.match(/Chrome/i) != null) var result = { width: 105, height: 74.25 }
+    if (navigator.userAgent.match(/iPad/i) != null) var result = { width:120.75, height: 85.3875 }
     
     var baseline = (this.get("baseline") /100) * result.height;
     result.name = this.get("name");
@@ -50,6 +44,15 @@ var Guests = Backbone.Collection.extend({
     })
     localStorage.setItem("guests", JSON.stringify(guests));
   },
+  printPresenter: function() {
+   var result = this.invoke('printPresenter');
+   return {
+      ipad: thisProduct.get("ipad"),
+      group_class: thisProduct.get("group_class"),
+      per_page: thisProduct.get("per_page"),
+      groups: inGroupsOf(result, thisProduct.get("per_page"))
+    }
+  },
   model: Guest,
   url: '/guests'
 })
@@ -68,6 +71,8 @@ var Product = Backbone.Model.extend({
     defaults.pence = defaults.pence || 90;
     defaults.pounds = defaults.pounds || 3;
     defaults.price = defaults.price || 0.10;
+    defaults.cutting_marks = true;
+    defaults.per_page = 3;
     return defaults;
   },
   initialize: function() {  
@@ -77,8 +82,6 @@ var Product = Backbone.Model.extend({
     this.on("change:weight", this.calculatePrice)
     this.on("change:font", this.saveProduct)
     this.on("change:colours", this.saveProduct)   
-    this.on("change:colours", this.renderColours)
-    this.once("sync", this.renderColours)
     this.on("change:quantity", this.calculatePrice) // must come before adjust guests
     this.on("change:quantity", this.adjustGuests)
     this.on("change:quantity", this.saveProduct)
@@ -99,7 +102,6 @@ var Product = Backbone.Model.extend({
     this.set("colours", colours).trigger("change:colours")
   },
   adjustGuests: function() {
-  console.log("Adjusting guests")
     var adjustment = this.get("quantity") - this.guests.length
     if (adjustment > 0) {
       for(var i =0;  i < adjustment; i++) {
@@ -117,6 +119,17 @@ var Product = Backbone.Model.extend({
     total = total.toFixed(2).toString().split(".")    
     this.set("pounds", total[0]).set("pence", total[1])
   },
+  toggleCuttingMarks: function() {
+    var cutting_marks = this.get("cutting_marks") ? false : true;
+    this.set("cutting_marks", cutting_marks)
+  },
+  calculateUserAgent: function() {
+    if(navigator.userAgent.match(/Chrome/i) != null) {
+      this.set("chrome", true)
+    } else if (navigator.userAgent.match(/iPad/i) != null) {
+      this.set("ipad", true)
+    }      
+  },
   shareURL: function() {
     var url = "http://www.casamiento.co.uk/products/" +
       this.id + "/#preview_place_card/c0/" + this.get("colours")[0].substr(1);
@@ -129,7 +142,6 @@ var Product = Backbone.Model.extend({
   saveProduct: function() {
     var that = this;
     if(!this.currently_saving) {
-      console.log("not saving")
       that.currently_saving = true;
       setTimeout(function(){
         that.save(); 
@@ -178,7 +190,7 @@ var Product = Backbone.Model.extend({
       ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   },
-  stale: ['attachments_order', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5', 'tags', 'description','baseline', 'pence', 'pounds', 'font_size', 'name'],
+  stale: ['attachments_order', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5', 'tags', 'description','baseline', 'pence', 'pounds', 'font_size', 'name', 'per_page', 'cutting_marks'],
   toJSON: function() {
     return _.omit(this.attributes, this.stale);
   }
