@@ -3,10 +3,10 @@ $(function() {
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
 
   <%= include models.js %>  
-  <%= include views.js %>
-  <%= include place_card_view.js %>
-  <%= include ui_print_views.js %>
-  <%= include coordinator_view.js %>  
+  <%= include view_product_steps.js %>
+  <%= include view_place_card.js %>
+  <%= include view_print_ui.js %>
+  <%= include view_coordinator.js %>  
   <%= include router.js %>
   
   // Initialize templates
@@ -19,7 +19,7 @@ $(function() {
   var guestList = new Guests();   
   var coordinator_view = new CoordinatorView(); 
   
-  thisProduct.fetch({silent:true, success:function(model, resp) {
+  thisProduct.fetch({silent: true, success: function(model, resp) {
     $.updateFont(thisProduct.get("font"), {trigger: function(){}}) 
     }, error: function(model,resp) {
       var guests = localStorage.getItem("guests")

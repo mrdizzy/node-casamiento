@@ -11,11 +11,25 @@ var Guest = Backbone.Model.extend({
   adjustFontSize: function(amount) {
     this.set("font_size", this.get("font_size") * amount)
   },
-  calculateBaselineOffset: function(height) {
+  calculateBaselineOffset: function(absolute_width) { 
+    var height = (70.714285714285714285714285714286/100) * absolute_width;     
     var baseline = (this.get("baseline") /100) * height;
-    this.top_half_height = (height / 2) + baseline;
-    this.bottom_half_height = height - this.top_half_height - 1;
+    var top_half_height = (height / 2) + baseline;
+    var bottom_half_height = height - top_half_height - 1;
+    return { top_half: top_half_height, bottom_half: bottom_half_height }
   },  
+  presenter: function(absolute_width) {
+    var baselines = this.calculateBaselineOffset(absolute_width)
+    return {
+      font_family: thisProduct.get("font"),   
+      baseline_top: baselines.top_half,
+      baseline_bottom: baselines.bottom_half,
+      font_size: absolute_width * this.get("font_size"),
+      background: thisProduct.get("background-5"),  
+      product: thisProduct.get("_id"),
+      name: this.get("name")
+    } 
+  },
   printPresenter: function() {
     if(navigator.userAgent.match(/Chrome/i) != null) var result = { width: 105, height: 74.25 }
     if (navigator.userAgent.match(/iPad/i) != null) var result = { width:120.75, height: 85.3875 }
@@ -45,8 +59,8 @@ var Guests = Backbone.Collection.extend({
     localStorage.setItem("guests", JSON.stringify(guests));
   },
   printPresenter: function() {
-   var result = this.invoke('printPresenter');
-   return {
+    var result = this.invoke('printPresenter');
+    return {
       ipad: thisProduct.get("ipad"),
       group_class: thisProduct.get("group_class"),
       per_page: thisProduct.get("per_page"),
