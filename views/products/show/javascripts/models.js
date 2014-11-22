@@ -1,3 +1,7 @@
+Backbone.Collection.prototype.save = function (options) {
+  Backbone.sync("create", this, options);
+};
+ 
 var Guest = Backbone.Model.extend({
 ////////////////////////////////////////////////////////////////
   defaults: {
@@ -6,7 +10,7 @@ var Guest = Backbone.Model.extend({
     font_size: "<%= product.font_size %>"
   },
   adjustBaseline: function(amount) {
-    this.set("baseline", (this.get("baseline") + amount))
+    this.set("baseline", this.get("baseline" + amount))
   },
   adjustFontSize: function(amount) {
     this.set("font_size", this.get("font_size") * amount)
@@ -44,10 +48,6 @@ var Guest = Backbone.Model.extend({
   }
 })
 
-Backbone.Collection.prototype.save = function (options) {
-  Backbone.sync("create", this, options);
-};
- 
 var Guests = Backbone.Collection.extend({
   initialize: function() {
     this.on("change", this.saveGuests)
@@ -66,6 +66,12 @@ var Guests = Backbone.Collection.extend({
       per_page: thisProduct.get("per_page"),
       groups: inGroupsOf(result, thisProduct.get("per_page"))
     }
+  },
+  resetFont: function() {
+    this.invoke('set', {
+      font_size: thisProduct.get("font_size"), 
+      baseline: thisProduct.get("baseline")
+    })
   },
   model: Guest,
   url: '/guests'
