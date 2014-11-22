@@ -46,29 +46,32 @@
   }
     
  #printsvg .cas_print_logo {
-      display:block;
-      margin-top:10mm;
-      padding:1mm;
-      border:1px solid black;
-      width:35mm;
-      clear:both;
-      margin:0 auto;
+    display:block;
+    margin-top:10mm;
+    padding:1mm;
+    border:1px solid black;
+    width:35mm;
+    clear:both;
+    margin:0 auto;
   }
   #printsvg .up8 .cas_print_logo {
-      display:none;
+    display:none;
   }
-   #printsvg .svg_left_crop {
-      top:0;
-      left:0;
-      display:block;
-      padding:0;
-      margin:0;
-      width:100%;
-      height:100%;
-      position:absolute;
-      z-index:10010;    
-    }
-    
+  #printsvg .svg_left_crop {
+    top:0;
+    display:none;
+    left:0;
+    padding:0;
+    margin:0;
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index:10010;    
+  }
+      
+  #printsvg.show_crop_marks .svg_left_crop {
+    display:block;
+  }
 /* iPad
 //////////////////////////////// */
 

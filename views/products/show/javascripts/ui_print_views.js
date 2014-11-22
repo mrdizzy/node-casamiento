@@ -42,9 +42,12 @@ var GuestCollectionView = Backbone.View.extend({
 
 // This view loops through each guest and creates an SVG place card for printing. 
 var PrintPlaceCardCollectionView = Backbone.View.extend({
-  initialize: function() {
+  el: '#printsvg',
+  initialize: function() {  
+    if(this.model.get("ipad")) this.$el.addClass('ipad')
     this.listenTo(this.model, 'change:cutting_marks', this._renderCuttingMarks) 
     this.listenTo(this.model, 'change:per_page', this._changeOrientation) 
+    this.listenTo(this.model, 'change:per_page', this.render)
   },
   _changeOrientation: function() {
     if(this.model.get("per_page") == 4) {
@@ -56,39 +59,36 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
       $('head').append("<style type='text/css'>@page { size: A4 portrait }</style>");
     }    
   },
-  render: function() {      
-    if(this.model.get("ipad")) $('#printsvg').addClass('ipad')
+  render: function() {          
+    var per_page = this.model.get("per_page")   
     
-    var per_page = this.model.get("per_page")
-    
-    this.$el.removeClass().addClass('up' + per_page);    
-    
-    var result = this.collection.map(function(guest) {
-      guest.calculateBaselineOffset(this.model.get("height"));
-      return { 
-        font: thisProduct.get("font"),  
-        name: guest.get("name"),
-        height: this.model.get("height"),
-        width: this.model.get("width"),
-        font_size: (this.model.get("width") * guest.get("font_size")),
-        margin_top: guest.top_half_height,
-        guest_height: guest.bottom_half_height
-      }
-    }, this)
-    var groups = inGroupsOf(result, per_page);
-    var $template = $(Handlebars.template(templates["print_place_card_view_collection"])({
+    var result = this.collection.invoke('presenter');
+    var $template = $(Handlebars.template(templates["print_place_card_view_collection"]) ({
       ipad: this.model.get("ipad"),
       group_class: this.model.get("group_class"),
       per_page: per_page,
-      groups: groups
+      groups: inGroupsOf(result, per_page)
     })); 
     
     this.$el.html($template)
+     // Wait for SVG images to be loaded before printing
+    var images  = $('#printsvg img.place_card_image'),
+      counter = images.length;
+      var that = this;
+    
+    images.attr('src', thisProduct.svgURL()).load(function() {
+      counter--;
+      if(counter == 0) {   
+        that.model.trigger("readyforprint")
+      }
+    })
+    
     this._renderCuttingMarks();
     return this;
   },
+  // display cutting marks based on class of #printsvg to avoid the need for showing and hiding
   _renderCuttingMarks: function() {
-    this.model.get("cutting_marks") ? this.$('.svg_left_crop').show() : this.$('.svg_left_crop').hide();
+    this.model.get("cutting_marks") ? this.$el.addClass('show_crop_marks') : this.$el.removeClass('show_crop_marks');
   }
 })
 
@@ -99,6 +99,11 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   initialize: function() {
     BackboneRelativeView.prototype.initialize.apply(this)
     this.listenTo(thisProduct, "change:quantity", this.updatePrice)
+    this.listenTo(this.model, "readyforprint", this.showPrintDialog)
+    this._place_card_print_collection = new PrintPlaceCardCollectionView({
+      model: this.model,
+      collection: thisProduct.get("guests")
+    })
   },
   events: {
     "click #add_another": "addGuest",
@@ -121,9 +126,6 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   addGuest: function() {    
     thisProduct.set("quantity", thisProduct.get("quantity") + 1)
   },
-  closePrintAlert: function() {
-    $('#ui_print_alert').fadeOut();
-  },
   togglePanel: function() {
     if(this.mobile) {
       $('#mobile_panel_section').toggle();
@@ -131,10 +133,10 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     }
   },
   fontReset: function() {
-   thisProduct.get("guests").invoke('set', {
-     font_size: thisProduct.get("font_size"), 
-     baseline: thisProduct.get("baseline")
-   })
+    thisProduct.get("guests").invoke('set', {
+      font_size: thisProduct.get("font_size"), 
+      baseline: thisProduct.get("baseline")
+    })
   },
   fontIncrease: function() {
     thisProduct.get("guests").invoke('adjustFontSize',1.05)
@@ -155,7 +157,6 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     $("input[type=radio]").prop("checked", false)
     $("#radio_" + per_page).prop("checked", true)
     this.model.set("per_page", per_page)
-    this.printPage();
   },  
   toggleCuttingMarks: function() {
     this.model.toggleCuttingMarks();
@@ -173,25 +174,15 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   },    
   // Create the SVG print view
   printPage: function(e) {    
-    var result = new PrintPlaceCardCollectionView({
-      model: this.model,
-      collection: thisProduct.get("guests").toArray()
-    }).render().el;
-    $('#printsvg').html(result);    
-    
+    this._place_card_print_collection.render()
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
-    
-    // Wait for SVG images to be loaded before printing
-    var images  = $('#printsvg img.place_card_image'),
-      counter = images.length;
-      
-    images.attr('src', thisProduct.svgURL()).load(function() {
-      counter--;
-      if(counter == 0) {   
-        $('#ui_print_alert').fadeIn();
-        $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
-      }
-    })
+  },
+  closePrintAlert: function() {
+    $('#ui_print_alert').fadeOut();
+  },
+  showPrintDialog: function() {
+    $('#ui_print_alert').fadeIn();
+    $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
   },
   printNow: function() {
     $('#ui_print_alert').hide();

@@ -15,6 +15,24 @@ var Guest = Backbone.Model.extend({
     var baseline = (this.get("baseline") /100) * height;
     this.top_half_height = (height / 2) + baseline;
     this.bottom_half_height = height - this.top_half_height - 1;
+  },  
+  presenter: function() {
+    var result = {};
+    if(navigator.userAgent.match(/Chrome/i) != null) {
+      result.width = 105;
+      result.height =  74.25;
+    } else if (navigator.userAgent.match(/iPad/i) != null) {
+      result.width = 120.75;
+      result.height = 85.3875;
+    }   
+    
+    var baseline = (this.get("baseline") /100) * result.height;
+    result.name = this.get("name");
+    result.font = thisProduct.get("font");
+    result.font_size = result.width * this.get("font_size");
+    result.margin_top = (result.height /2) + baseline;
+    result.guest_height = result.height - result.margin_top - 1
+    return result;
   }
 })
 
