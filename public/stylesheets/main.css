@@ -162,13 +162,19 @@ body {
       width:24.75%;
     }
             
+      #browse:hover {
+        background-color:#EEE;
+      }
       #browse div {
         padding-top:15px;
         height:35px;
+        cursor: pointer;
         border-left:1px dotted grey;
         border-right:1px dotted grey;
         text-align:center;
       }
+      
+      
        
     .left_column { 
       float:left; 
@@ -344,3 +350,6 @@ body {
    border-top:1px;
    margin-bottom:5px;
  }
+ 
+.thumbnail { opacity:0.9;}
+.thumbnail:hover { opacity:1.2}

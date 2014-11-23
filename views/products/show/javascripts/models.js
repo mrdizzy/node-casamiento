@@ -10,7 +10,7 @@ var Guest = Backbone.Model.extend({
     font_size: "<%= product.font_size %>"
   },
   adjustBaseline: function(amount) {
-    this.set("baseline", this.get("baseline" + amount))
+    this.set("baseline", this.get("baseline") + amount)
   },
   adjustFontSize: function(amount) {
     this.set("font_size", this.get("font_size") * amount)
@@ -215,3 +215,37 @@ var Product = Backbone.Model.extend({
     return _.omit(this.attributes, this.stale);
   }
 });
+
+var ShortProduct = Backbone.Model.extend({
+  idAttribute: '_id'
+})
+String.prototype.toTitleCase = function () {
+  var A = this.split(' '), B = [];
+  for (var i = 0; A[i] !== undefined; i++) {
+    B[B.length] = A[i].substr(0, 1).toUpperCase() + A[i].substr(1);
+  }
+  return B.join(' ');
+}
+var ShortProducts = Backbone.Collection.extend({
+  url: '/products',
+  model: ShortProduct,
+
+  browsePresenter: function() {
+    
+    var result = this.map(function(product) {
+      var product = product.attributes;
+      if(product["background-1"]) {
+        var name = product._id.split("-");
+        product.name = name[0].replace(/_/g, ' ')
+        product.name = product.name.toTitleCase();
+        product["background-3"] = product["background-3"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
+        
+        product["background-1"] = product["background-1"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
+        
+        product["background-2"] = product["background-2"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
+      }
+      return product
+    })
+   return result
+  }
+})

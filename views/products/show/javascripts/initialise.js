@@ -17,7 +17,10 @@ $(function() {
   
   var thisProduct = new Product();   
   var guestList = new Guests();   
-  var coordinator_view = new CoordinatorView(); 
+   
+  var short_products = new ShortProducts();
+  var coordinator_view = new CoordinatorView();  
+ 
   
   thisProduct.fetch({silent: true, success: function(model, resp) {
     $.updateFont(thisProduct.get("font"), {trigger: function(){}}) 

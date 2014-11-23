@@ -3,16 +3,9 @@ var db = require('./../config/db').test_ebay,
     zlib = require('zlib');
 
 exports.index = function(req, res) {
-  db.view('products/name_place', function(err, docs) {
+  db.view('all/products_without_attachments', function(err, docs) {
     docs = docs.toArray();
-    docs.forEach(function(place) {
-      place.divs = prepareDivs(place, "search", "search", "display", "colour");
-    })
-    docs.place_cards = docs;
-    res.render('products/index', {
-      layout: 'layout',
-      locals: docs
-    });
+    res.json(docs);
   });
 }
 
