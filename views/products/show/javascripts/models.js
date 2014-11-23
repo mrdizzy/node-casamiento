@@ -240,6 +240,7 @@ var ShortProducts = Backbone.Collection.extend({
         product.name = product.name.toTitleCase();
         product["background-3"] = product["background-3"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
         
+        product["background-4"] = product["background-4"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
         product["background-1"] = product["background-1"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
         
         product["background-2"] = product["background-2"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");

@@ -1,11 +1,9 @@
-#browse_designs h1 {
-  border-bottom:1px solid black;
-  letter-spacing:0.1em;
-}
 
-#browse_designs .small_thumbnail h1 {
+#browse_designs h1 {
 font-size:2em;
   font-family:'GaraI';letter-spacing:0;
+  margin-bottom:0.0em;
+  padding-bottom:0.0em;
 }
 
 .product_type_icon { width:130px; }

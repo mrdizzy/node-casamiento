@@ -57,7 +57,7 @@ var CoordinatorView = Backbone.View.extend({
   },
   _renderBrowse: function() {   
     var $template = $(Handlebars.template(templates["browse"])({
-      groups: inGroupsOf(short_products.browsePresenter(), 7)
+      groups: inGroupsOf(short_products.browsePresenter(), 4) //inGroupsOf(short_products.browsePresenter(), 7)
     })); 
     this.$('#browse_designs').html($template)    
     this.flat_preview_view.$el.hide()
