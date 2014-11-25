@@ -78,7 +78,7 @@
     return this;
   }
   $.fn.fontPicker.defaultOptions ={
-    fonts: ["Metroscript", "PoorRichard", "TrajanPro", "CaslonPro", "EccentricStd", "MyriadProLight", "SacramentoRegular", "ChaparralItalic", "Exmouth"],
+    fonts: ["Metroscript", "PoorRichard", "TrajanPro", "CaslonPro", "EccentricStd", "MyriadProLight", "SacramentoRegular", "ChaparralItalic", "Exmouth", "PerpetuaTitling"],
     selected_font: "Metroscript",
     in_groups_of: 3
   }

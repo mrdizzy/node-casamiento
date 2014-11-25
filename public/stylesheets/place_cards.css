@@ -15,7 +15,7 @@
     user-select: none;
     cursor:pointer;
     bottom:14%;
-    z-index:9999;    
+    z-index:9999999999999999999999999999999999999999999999;    
     position:absolute;
     width:7%;    
     text-align:center;
@@ -27,7 +27,17 @@
     .delete_button {
         top:45%;
     }
-    
+    .place_card_border {
+  position:absolute;
+  border:1px solid lightgrey;width:100%;height:100%;border-top:0;z-index:99999;
+}
+ .place_card_fold {
+  position:absolute;
+  border-bottom:1px dotted lightgrey;width:100%;height:50%;z-index:99999;
+}
+.place_card_view:nth-child(odd) .place_card_border { border-right:0 
+}
+
     .place_card_view:nth-child(odd) .font_size_adjust_buttons, 
     .place_card_view:nth-child(odd) .font_baseline_adjust_buttons,
     .place_card_view:nth-child(odd) .delete_button {
@@ -43,7 +53,8 @@
       .button_wrapper {
           position: relative;
           width: 100%;
-          height: 0;
+          height: 0; 
+          z-index:9999999999999999999999999999999999999999999999;  
           padding-bottom: 100%;
       }
         .button_inside { 
@@ -54,7 +65,7 @@
           width:100%;
           height:100%;
           position:absolute;
-          z-index:1000;
+         
         }
         .place_card_parent {
             width: 95%; 
