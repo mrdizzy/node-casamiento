@@ -1,0 +1,19 @@
+
+  <div class="spc" style="border:0;">
+    <h1>You will also like&hellip;</h1>
+<% j = 0 %>
+<% for (var k = 0; k < 2; k++) { %>
+    <% for (var i = 0; i < 6; i++) { %>
+      <%if (related[j]) { %><a class="caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">
+        <div class="place_square_<%= i %> place_square">
+          <div class="inner_place_square"><%- related[j].divs[0] %></div>
+          <div class="inner_place_square_hidden"><%- related[j].divs[2] %></div>
+          <div style="margin:0;padding:0;"><h2 class="caz"><%= related[j].name %></h2></div>
+        </div>
+      </a>
+      <% } %>
+      <% j++ %>
+    <% } %>
+    <% } %>
+  
+  </div>

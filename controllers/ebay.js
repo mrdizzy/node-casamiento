@@ -34,17 +34,19 @@ exports.create = function(req, res) {
     product_type = id.split("-")[1];
     
     db.get(id, function(err, doc) {
+     var name = doc._id.replace(/_/g, " ").split("-")[0];
+name = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+doc.name = name; 
     db.view('products/name_place', function(err, related) {
     var related = related.toArray()
-       related.forEach(function(related) {
-           related.divs = prepareDivs(related, "thumbnail", "thumbnail", "display", "related_colour")
-       })
+        related.forEach(function(related) {
+            var name = related._id.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+related.name = name; 
+        })
         doc.related = related;
-      var divs = prepareDivs(doc, "slide", "slide", "display", "colour");
+      
         doc.document = doc;
-        doc.divs = divs;
         doc.params = req.body
-        console.log(doc)
         res.render('ebay/' + product_type + 's/new.ejs', {
             layout: false,
             locals: doc
@@ -58,10 +60,6 @@ exports.places = function(req, res) {
   db.get(req.body.ids, function(err, docs) {
     docs = docs.toArray();
     var counter = 0;
-    docs.forEach(function(place) {
-       place.divs = prepareDivs(place, "slide_" + counter + "_", "slide slide_" + counter, "display", "colour");
-       counter++;
-    })
     docs.place_cards = docs;
     res.render('ebay/name_places/name_places_new_trial', {
       layout: 'ebay_layout',
