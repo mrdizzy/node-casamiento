@@ -210,24 +210,15 @@ table {
 
 /* COLUMNS */
 
-#page_container_casamiento { 
-  color:#000; 
-  background-image:url('http://www.casamiento.co.uk/gfx/backgrounds/grey_header.png'); 
-  margin:0;
-  padding:0;  
-}
 #inner_page_container_casamiento { 
   background-color:#fff; 
-  border-left:1px dotted #000; 
-  border-right: 1px dotted #000; 
   text-align:left;
   margin:auto; 
-  width:97%;
 }
 
 .left_column { 
   float:left;
-  width:49%; 
+  width:50%; 
 }
 
   #header_container_casamiento { 
@@ -342,6 +333,7 @@ table {
 -->
 
 <div class="left_column">
+<div id="resizing"></div>
   <div class="caz" id="header_container_casamiento">
     <div id="main_logo_casamiento" class="caz">
       <img src="http://www.casamiento.co.uk/gfx/logo/casamiento_gry.svg" id="logo" class="caz">
@@ -415,7 +407,7 @@ table {
 
     <h4>Save time and hassle&hellip;</h4>
     
-    <p class="caz">They'll also save you time and stress: just decide on your options, send us a list of names, and within five working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.</p>
+    <p class="caz">They'll also save you time and stress: just decide on your options, send us a list of names, and within three working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.</p>
     
     <p class="caz casamiento">Place your order today!</p>
     
@@ -456,7 +448,7 @@ table {
       </div>
          
          </div>
-          <div style="margin:0;padding:0;"><h2 class="caz"><%= related[j].name %></h2></div>
+          <div class="slide_name" style="margin:0;padding:0;"><h2 class="caz"><%= related[j].name %></h2></div>
         </div>
       </a>
           </div>
@@ -569,13 +561,13 @@ table {
       <div class="step global_colour_0">STEP 1</div>
     </div>
     
-    <div class="chat-bubble">Choose from hundreds of colours: hover over or tap the colour shown below to bring up the hues panel, then hover or tap the colour swatches and the image will change so you can see exactly how your design will look. Move backwards and forwards through the hues panel by clicking the left &larr; and right &rarr; arrows.
-    </div>
-    
     <!-- COLOUR SWATCH PICKER -->
     <% for(var i=0; i < colours.length; i++) { %>
       <div id="colour_<%=i %>"></div>
     <% } %>
+    <div class="chat-bubble">Choose from hundreds of colours: hover over or tap the colour shown above to bring up the hues panel, then hover or tap the colour swatches and the image will change so you can see exactly how your design will look. Move backwards and forwards through the hues panel by clicking the left &larr; and right &rarr; arrows.
+    </div>
+    
   </div>
 
  <!-- 
@@ -776,4 +768,26 @@ $('.place_square').mouseout(function() {
   $(".inner_place_square", this).show();
   $(".inner_place_square_hidden",this).hide();
 })
+var width = $('#inner_page_container_casamiento').width();
+if (width < 700) {
+reducePage();
+}
+$( window ).resize(function() {
+  if (width < 700) {
+reducePage();
+}
+});
+function reducePage() {
+$('.intro h5').attr("style", "font-size:2.8em;");
+$('.place_square_0').attr("style", "width:100%;clear:both;float:none");
+$('.place_square_1').attr("style", "width:100%;clear:both;float:none");
+$('.place_square_2').attr("style", "width:100%;clear:both;float:none");
+$('.place_square_3').attr("style", "width:100%;clear:both;float:none");
+$('.place_square_4').attr("style", "width:100%;clear:both;float:none");
+$('.place_square_5').attr("style", "width:100%;clear:both;float:none");
+$('.quote h6').attr("style", "width:95%;");
+$('.place_square h2').attr("style", "width:80%;font-size:1.4em;");
+$('#header_container_casamiento').attr("style", "margin:0 auto;");
+$('#main_slogan_casamiento').attr("style", "float:none;clear:both;margin:0 auto;");
+}
 </script>
