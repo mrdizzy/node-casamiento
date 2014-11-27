@@ -5,7 +5,7 @@ _ = require('underscore'),
 
 var timeNow = new Date();
 var timeAgo = new Date(timeNow - 2629740000); //
-
+console.log(timeNow)
 // Downloads PayPal Transactions for immediate display -- it does not save them to Couch
 
 module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[1,2,3,4]

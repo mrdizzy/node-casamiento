@@ -163,7 +163,7 @@ h5 { padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:
 
 h6.caz { 
   color:#333;
-  font: normal 1.375em "OS Light", sans-serif; 
+  font: normal 1.375em "OS IL", sans-serif; 
   line-height:1.5em;
   margin-bottom:1.5em; 
   text-indent:1em; 
@@ -362,11 +362,7 @@ table {
         <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= colours[0]%>" class="global_colour_0">
           <%- document["background-" + attachments_order[0]]  %>
         </div>
-        <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/large-<%= attachments_order[0]%> 2000w,
-            http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[0]%> 1000w,
-            http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/display-<%= attachments_order[0]%> 750w,
-            http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/thumb-<%= attachments_order[0]%> 500w"
-          sizes="(min-width:801px) 33.95vw, (min-width:500px) 58.2vw, (min-width: 320px), 100vw" style="position:relative;display:block;width:100%;z-index:6"/>
+        <img src="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[0]%>" style="position:relative;display:block;width:100%;z-index:6"/>
       </div>
     </div>
 
@@ -386,11 +382,7 @@ table {
         <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= colours[0] %>" class="global_colour_0">
           <%- document["background-" + attachments_order[1]]  %>
         </div>
-        <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/large-<%= attachments_order[1]%> 2000w,
-            http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[1]%> 1000w,
-            http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/display-<%= attachments_order[1]%> 750w,
-            http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/thumb-<%= attachments_order[1]%> 500w"
-          sizes="(min-width:801px) 33.95vw, (min-width:500px) 58.2vw, (min-width: 320px), 100vw" style="position:relative;display:block;width:100%;z-index:6"/>
+        <img src="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[1]%>" style="position:relative;display:block;width:100%;z-index:6"/>
       </div>
     </div>
 
@@ -451,11 +443,7 @@ table {
         <div style="position:absolute;width:100%;height:100%;z-index:0;%>" class="colour_0">
           <%- related[j]["background-" + related[j].attachments_order[1]]  %>
         </div>
-        <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/large-<%= related[j].attachments_order[1]%> 2000w,
-            http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/medium-<%= related[j].attachments_order[1]%> 1000w,
-            http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/display-<%= related[j].attachments_order[1]%> 750w,
-            http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/thumb-<%= related[j].attachments_order[1]%> 500w"
-          sizes="(min-width:801px) 33.95vw, (min-width:500px) 58.2vw, (min-width: 320px), 100vw" style="position:relative;display:block;width:100%;z-index:6"/>
+        <img src="http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/display-<%= related[j].attachments_order[1]%>" style="position:relative;display:block;width:100%;z-index:6"/>
       </div>
           </div>
          <div class="inner_place_square_hidden">
@@ -464,11 +452,7 @@ table {
         <div style="position:absolute;width:100%;height:100%;z-index:0; %>" class="colour_0">
           <%- related[j]["background-" + related[j].attachments_order[2]]  %>
         </div>
-        <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/large-<%= related[j].attachments_order[2]%> 2000w,
-            http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/medium-<%= related[j].attachments_order[2]%> 1000w,
-            http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/display-<%= related[j].attachments_order[2]%> 750w,
-            http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/thumb-<%= related[j].attachments_order[2]%> 500w"
-          sizes="(min-width:801px) 33.95vw, (min-width:500px) 58.2vw, (min-width: 320px), 100vw" style="position:relative;display:block;width:100%;z-index:6"/>
+        <img src="http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/display-<%= related[j].attachments_order[2]%>" style="position:relative;display:block;width:100%;z-index:6"/>
       </div>
          
          </div>
@@ -511,7 +495,7 @@ table {
  
   
   <div class="spc">
-    <h1 style="text-align:center;padding-top:1em;">This auction is for:</h1>
+    <h1 style="text-align:center;padding-top:1em;">This <%= params.buy_it_now ? "buy-it-now listing" : "auction" %> is for:</h1>
 
     <div style="border-bottom:1px dotted grey;padding-top:0.1em;border-top:1px dotted grey;font-size:3em;"><img src="http://www.casamiento.co.uk/gfx/product_types/small/name_place_small.png" style="width:155px;" class="name_place_icon"></div>
     
@@ -519,6 +503,7 @@ table {
       <tr>
         <td style="border-right:1px dotted grey;">
           <table>
+          <% if (!params.buy_it_now) { %>
             <tr>
               <td style="border-bottom:1px dotted grey;border-right:1px dotted grey;width:35%;">
                 <h1 style="text-align:right;">Quantity:</h1>
@@ -526,6 +511,7 @@ table {
             
               <td style="border-bottom:1px dotted grey;width:65%;text-align:left;"><h3 class="caz casamiento" style="margin:0;padding:0;font-size:1.5em;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/qty.png" style="display:inline-block;width:40px;"><%= params.quantity %></h3></td>
             </tr>
+            <% } %>
             
             <tr>
               <td style="text-align:right;border-bottom:1px dotted grey;border-right:1px dotted grey;"><h1 style="text-align:right;">Format:</h1></td>
@@ -537,6 +523,9 @@ table {
               <td style="text-align:center;border-bottom:1px dotted grey;">
                 <div style="padding:1em;">
     <div class="weight" style="border-top:3px solid #000;"></div> <span style="font:normal 0.8em OS;">250gsm</span>
+    </div>
+                <div style="padding:1em;padding-top:0;">
+    <div class="weight" style="border-top:7px solid #000;"></div> <span style="font:normal 0.8em OS;">300gsm</span>
     </div>
                 </div>
               </td>
@@ -553,13 +542,21 @@ table {
         </td>
         
         <td style="width:35%;">
-<div style="font: normal 0.75em 'OS';text-align:center;letter-spacing:0.2em;">BIDDING STARTS AT</div>
+        
+        <% if (params.buy_it_now) { %>
+        <div style="font: normal 0.75em 'OS';text-align:center;letter-spacing:0.1em;">PRICES STARTING FROM</div>
+          <h3 class="caz casamiento" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;<%= params.buy_it_now_price %></h3>
+          
+        <% } else { %>
+        <div style="font: normal 0.75em 'OS';text-align:center;letter-spacing:0.2em;">BIDDING STARTS AT</div>
           <h3 class="caz casamiento" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;<%= params.bidding %></h3>
           
 <div style="font: normal 0.75em 'OS';margin-top:2em;text-align:center;letter-spacing:0.2em;">OR BUY-IT-NOW FOR</div>
 
           <h3 class="caz casamiento" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;<%= params.buy_it_now_price %></h3>
           <p style="font-family:OS;font-size:0.8em;margin:0.5em;">For more options and different quantities, see our <a class="caz casamiento text_colour_0" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">buy-it-now</a> listing</p>
+        <% } %>
+
         </td>
         
       </tr>
@@ -581,6 +578,25 @@ table {
     <% } %>
   </div>
 
+ <!-- 
+    FONTS 
+ -->
+  <div class="spc">
+    <div style="margin-bottom:0.5em;height:2em;">
+      <div style="float:left"><h1>Choose your font</h1></div>
+      <div class="step global_colour_0">STEP 2</div>
+    </div>
+    
+    <div class="chat-bubble">Choose a font to suit your event. From small and simple to big and bold, fun and fierce to silent and steely&hellip; choose the font to express the personality you want to convey.
+    </div>
+    
+    <% ["CaslonPro","ChaparralItalic","EccentricStd","Exmouth","Metroscript","MyriadProLight","Parchment","PerpetuaTitling","PFBodoniScript","PoorRichard","SacramentoRegular","TrajanPro"].forEach(function(font) { %>
+    <div style="margin:0 auto;width:75%;text-align:center;padding:1em;padding-bottom:0.5em;border-bottom:1px solid black;">
+    <img src="http://www.casamiento.co.uk/fonts/<%= font %>.svg" style="display:inline-block;"/>
+    </div>
+    <% }) %>
+  </div>
+
   
  <!-- 
     THICKNESS 
@@ -589,7 +605,7 @@ table {
   <div class="spc">
     <div style="margin-bottom:0.5em;height:3em;">
       <div style="float:left"><h1>Choose Thickness</h1></div>
-      <div class="step global_colour_0">STEP 2</div>  
+      <div class="step global_colour_0">STEP 3</div>  
     </div>
 
     <div class="chat-bubble">Decide the thickness of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm): the higher the number, the thicker the card. A normal sheet of A4 copy paper is usually about 80gsm.
@@ -603,19 +619,34 @@ table {
       <div class="weight" style="border-top-width:7px;"></div> 
       <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span>
     </div>
-     
+     <% if (!params.buy_it_now) { %>
     <p style="font-family:OS;font-size:0.8em;margin-left:33%;">Please note: this auction is for 250gsm card. For other options, please see our <a class="text_colour_0 caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">buy-it-now</a> listing</p>
+    <% } %>
   </div>
 
  <div class="spc">
     <div style="margin-bottom:0.5em;height:3em;">
       <div style="float:left"><h1>Enter guest names</h1></div>
-      <div class="step global_colour_0">STEP 3</div>  
+      <div class="step global_colour_0">STEP 4</div>  
     </div>
 
     <div class="chat-bubble">Just email us or send an eBay message with a list of guest names that you want printed on each place card. 
     </div>
   </div>
+  
+  
+  
+<div class="slide">
+      <div style="position:relative;width:100%;">
+    
+        <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= colours[0] %>" class="global_colour_0">
+          <%- document["background-" + attachments_order[3]]  %>
+        </div>
+        <img src="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[3]%>" style="position:relative;display:block;width:100%;z-index:6"/>
+      </div>
+    </div>
+
+  
    <!-- 
     BUY-IT BOX 2
  -->
@@ -716,16 +747,17 @@ table {
   var zz0 = "cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js";
   document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
   document.write("</" + az + bz + cz + ">");
- // document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
- // document.write("</" + az + bz + cz + ">");  
+
     document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + tz2+ ">");
   document.write("</" + az + bz + cz + ">");
+  
   document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + zz0+ ">");
   document.write("</" + az + bz + cz + ">");
-</script>
-
-<script type="text/javascript" src="/javascripts/libraries/new_color_picker.js"></script>
-<script type="text/javascript">
+  
+  document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
+  document.write("</" + az + bz + cz + ">");  
+  </script>
+  <script>
 <% for (var i = 0; i < colours.length; i ++) { %>
   $('#colour_' + <%=i%>).colorPicker({default_color: '<%= colours[i] %>'}).on('dizzy-cp:hoverColor', function(e, colour) {
      <% if (i == 0) { %>
