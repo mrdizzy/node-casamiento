@@ -1,27 +1,9 @@
 <!doctype html>
-<script type="text/javascript">
-  var az = "SC", bz = "RI", cz = "PT", dz = "SR", ez = "C=", fz = "htt", gz = "ps://", pp = "p://";
-  var hz = ".com";
-  var zz = ".co.uk"   
-  var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
- var fz1 = "www.casamiento.co.uk"+ "/javascripts/libraries/new_color_picker.js";
-    var tz2 = "www.casamiento.co.uk"+ "/javascripts/libraries/in_groups_of.js";
-  var zz0 = "cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js";
-  document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
-  document.write("</" + az + bz + cz + ">");
- // document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
- // document.write("</" + az + bz + cz + ">");  
-    document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + tz2+ ">");
-  document.write("</" + az + bz + cz + ">");
-  document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + zz0+ ">");
-  document.write("</" + az + bz + cz + ">");
-</script>
-
-  <script type="text/javascript" src="/javascripts/libraries/new_color_picker.js"></script>
 <style type="text/css">
 <% if (colours[1]) { %>
-.colour_1 { background-color: <%= colours[1] %> }
+  .global_colour_0 .colour_1 { background-color: <%= colours[1] %> }
 <% } %>
+
 .shell { 
   background-image:url('http://www.casamiento.co.uk/gfx/bullets/wiggle.svg');
   background-repeat:no-repeat; 
@@ -109,10 +91,12 @@
   <% var j = 0 %>
   <% for (var k = 0; k < 3; k++) { %>
   <% for (var i = 0; i < 6; i++) { %>
+  <% if (document.related[j]) { %>
    <% var card = document.related[j] %>
    #related_<%= j %> .colour_0 { background-color:<%= card.colours[0] %>; }
   #related_<%= j %>  .colour_1 { background-color: <%= card.colours[1] %>; }  
     <% j++ %>
+    <% } %>
   <% } %>
 
   <% } %>
@@ -375,7 +359,7 @@ table {
 <div class="slide">
       <div style="position:relative;width:100%;">
     
-        <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= colours[0]%>" class="colour_0">
+        <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= colours[0]%>" class="global_colour_0">
           <%- document["background-" + attachments_order[0]]  %>
         </div>
         <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/large-<%= attachments_order[0]%> 2000w,
@@ -399,7 +383,7 @@ table {
 <div class="slide">
       <div style="position:relative;width:100%;">
     
-        <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= colours[0] %>" class="colour_0">
+        <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= colours[0] %>" class="global_colour_0">
           <%- document["background-" + attachments_order[1]]  %>
         </div>
         <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/large-<%= attachments_order[1]%> 2000w,
@@ -418,7 +402,7 @@ table {
  
   <div class="spc" style="clear:both">
   
-    <div class="colour_0 buyitnow">
+    <div class="global_colour_0 buyitnow">
       <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"><a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH MANY MORE OPTIONS&hellip;</a>      
     </div>
   </div>
@@ -575,7 +559,7 @@ table {
 <div style="font: normal 0.75em 'OS';margin-top:2em;text-align:center;letter-spacing:0.2em;">OR BUY-IT-NOW FOR</div>
 
           <h3 class="caz casamiento" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;<%= params.buy_it_now_price %></h3>
-          <p style="font-family:OS;font-size:0.8em;margin:0.5em;">For more options and different quantities, see our <a class="caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">buy-it-now</a> listing</p>
+          <p style="font-family:OS;font-size:0.8em;margin:0.5em;">For more options and different quantities, see our <a class="caz casamiento text_colour_0" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">buy-it-now</a> listing</p>
         </td>
         
       </tr>
@@ -585,7 +569,7 @@ table {
   <div class="spc">
     <div style="margin-bottom:0.5em;height:2em;">
       <div style="float:left"><h1>Choose your colour</h1></div>
-      <div class="step colour_0">STEP 1</div>
+      <div class="step global_colour_0">STEP 1</div>
     </div>
     
     <div class="chat-bubble">Choose from hundreds of colours: hover over or tap the colour shown below to bring up the hues panel, then hover or tap the colour swatches and the image will change so you can see exactly how your design will look. Move backwards and forwards through the hues panel by clicking the left &larr; and right &rarr; arrows.
@@ -605,7 +589,7 @@ table {
   <div class="spc">
     <div style="margin-bottom:0.5em;height:3em;">
       <div style="float:left"><h1>Choose Thickness</h1></div>
-      <div class="step colour_0">STEP 2</div>  
+      <div class="step global_colour_0">STEP 2</div>  
     </div>
 
     <div class="chat-bubble">Decide the thickness of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm): the higher the number, the thicker the card. A normal sheet of A4 copy paper is usually about 80gsm.
@@ -620,13 +604,13 @@ table {
       <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span>
     </div>
      
-    <p style="font-family:OS;font-size:0.8em;margin-left:33%;">Please note: this auction is for 250gsm card. For other options, please see our <a class="caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">buy-it-now</a> listing</p>
+    <p style="font-family:OS;font-size:0.8em;margin-left:33%;">Please note: this auction is for 250gsm card. For other options, please see our <a class="text_colour_0 caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">buy-it-now</a> listing</p>
   </div>
 
  <div class="spc">
     <div style="margin-bottom:0.5em;height:3em;">
       <div style="float:left"><h1>Enter guest names</h1></div>
-      <div class="step colour_0">STEP 3</div>  
+      <div class="step global_colour_0">STEP 3</div>  
     </div>
 
     <div class="chat-bubble">Just email us or send an eBay message with a list of guest names that you want printed on each place card. 
@@ -636,7 +620,7 @@ table {
     BUY-IT BOX 2
  -->
   <div class="spc">
-    <div class="colour_0 buyitnow">
+    <div class="global_colour_0 buyitnow">
       <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"/> <a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH MANY MORE OPTIONS&hellip;</a>
     </div>
   </div>
@@ -648,43 +632,74 @@ table {
   
 <div class="spc">
   <h1>Don't take our word for it&hellip;</h1>
-  
+      <div class="quote">
+    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Perfect, and great communication from seller, even when I forgot names! A****</h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=catclarke1984">catclarke1984</a></h6>
+  </div>
+  <div class="quote">
+    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Wow. Look very professional and expensive. Highly recommend</h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=jurider1">jurider1</a></h6>
+  </div>
+           <div class="quote">
+    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" />Thank you, thank you! I love them, amazing man I'll be back again with next order!</h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid= foxmoose">foxmoose</a></h6>
+  </div>    
+            <div class="quote">
+    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> 
+  Brilliant, very helpful even when I made mistake with order, thank you so much!</h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid= sterry1984">sterry1984</a></h6>
+  </div>     
     <div class="quote">
     <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Thank you, they arrived on time and were fab!</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=sparklingsars123">sparklingsars123</a></h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=sparklingsars123">sparklingsars123</a></h6>
   </div>
+        <div class="quote">
+    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" />  These are just perfect. Very reasonable. A+++++</h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid= kirsty_chick21">kirsty_chick21</a></h6>
+  </div>
+  <div class="quote">
+    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> 
+  greatservice very helpful even with a small order will use again!</h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid= 1057diana">1057diana</a></h6>
+  </div>    
+ 
+   
+   <div class="quote">
+    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" />
+  Brilliant so happy with these and super fast!!</h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=  tregale280283">tregale280283</a></h6>
+  </div>
+  
           
     <div class="quote">
     <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> These are amazing value for money and very professional, perfect for our event.</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=dannyw3341">dannyw3341</a></h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=dannyw3341">dannyw3341</a></h6>
   </div>       
   
     <div class="quote">
     <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Wow. Look very professional & expensive. Highly recommend.</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=jurider1">jurider1</a></h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=jurider1">jurider1</a></h6>
   </div>       
   
   <div class="quote">
     <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Beautiful place cards, thank you! Would Highly recommend :-)&rdquo;</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=baked.potato07">baked.potato07</a></h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=baked.potato07">baked.potato07</a></h6>
   </div>.
-                          <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Wow. Look very professional and expensive. Highly recommend</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=jurider1">jurider1</a></h6>
-  </div>
+                          
+  
   <div class="quote">
     <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Totally perfect. Thank you</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=mummysmith1974">mummysmith1974</a></h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=mummysmith1974">mummysmith1974</a></h6>
   </div>
                  
    <div class="quote">
     <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> These are amazing, excellent quality for an excellent price, highly recommended&rdquo;</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=chris.hall20">chris.hall20</a></h6>
+    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=chris.hall20">chris.hall20</a></h6>
   </div>
                                          
   <div class="quote">
    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> They look amazing and came so fast. Highly recommend :)</h6>
-   <h6 class="caz ebay_user">&mdash;<a class="caz" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=kellyc3456">kellyc3456</a></h6>
+   <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=kellyc3456">kellyc3456</a></h6>
    </div>
             
 </div>
@@ -692,14 +707,35 @@ table {
 </div>
 
 <script type="text/javascript">
+  var az = "SC", bz = "RI", cz = "PT", dz = "SR", ez = "C=", fz = "htt", gz = "ps://", pp = "p://";
+  var hz = ".com";
+  var zz = ".co.uk"   
+  var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
+ var fz1 = "www.casamiento.co.uk"+ "/javascripts/libraries/new_color_picker.js";
+    var tz2 = "www.casamiento.co.uk"+ "/javascripts/libraries/in_groups_of.js";
+  var zz0 = "cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js";
+  document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
+  document.write("</" + az + bz + cz + ">");
+ // document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
+ // document.write("</" + az + bz + cz + ">");  
+    document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + tz2+ ">");
+  document.write("</" + az + bz + cz + ">");
+  document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + zz0+ ">");
+  document.write("</" + az + bz + cz + ">");
+</script>
+
+<script type="text/javascript" src="/javascripts/libraries/new_color_picker.js"></script>
+<script type="text/javascript">
 <% for (var i = 0; i < colours.length; i ++) { %>
   $('#colour_' + <%=i%>).colorPicker({default_color: '<%= colours[i] %>'}).on('dizzy-cp:hoverColor', function(e, colour) {
-    
-      $('.colour_<%= i %>').css("background-color", colour)
-
+     <% if (i == 0) { %>
+      $('.global_colour_<%= i %>').css("background-color", colour)
+      $('.text_colour_<%= i %>').css("color", colour)
+      <% } else { %>
+      $('.global_colour_0 .colour_<%= i %>').css("background-color", colour)
+      <% } %>
   })
 <% } %>
-
 $('.place_square').mouseover(function() {
   $(".inner_place_square", this).hide();
   $(".inner_place_square_hidden",this).show();
