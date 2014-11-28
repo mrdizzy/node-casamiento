@@ -136,7 +136,7 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     
     $static_container.addClass("dizzycp-container_selected")
     $container_to_fade_in.addClass("dizzycp-container_selected")
-    $container_to_fade_in.fadeIn();
+    $container_to_fade_in.show();
     if(first_time) {    
       $internal_wrapper.scrollLeft(default_panel.position().left);
       first_time = false;
