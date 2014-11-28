@@ -83,7 +83,7 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
       $big_colour_square_swatch.css("background-color", hex)
     })
     
-    $container_to_fade_in.find('.square').on("click touchstart", function(e) {
+    $container_to_fade_in.find('.square').on("click", function(e) {
       var $el = $(e.currentTarget);
       var hex = $el.data("colour");
       $text_label_for_colour.text(colours[hex])
@@ -131,7 +131,7 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
   })
   
    // Enter big swatch    
-  $big_colour_square_frame.on('mouseenter click touchstart', function() {       
+  $big_colour_square_frame.on('mouseenter click', function() {       
     
     $static_container.addClass("dizzycp-container_selected")
     $container_to_fade_in.addClass("dizzycp-container_selected")
