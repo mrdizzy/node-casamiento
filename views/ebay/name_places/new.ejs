@@ -754,7 +754,7 @@ table {
   </script>
   <script>
 <% for (var i = 0; i < colours.length; i ++) { %>
-  $('#colour_' + <%=i%>).colorPicker({default_color: '<%= colours[i] %>'}).on('dizzy-cp:hoverColor', function(e, colour) {
+  $('#colour_' + <%=i%>).colorPicker({default_color: '<%= colours[i] %>'}).on('dizzy-cp:hoverColor dizzy-cp:click', function(e, colour) {
      <% if (i == 0) { %>
       $('.global_colour_<%= i %>').css("background-color", colour)
       $('.text_colour_<%= i %>').css("color", colour)
