@@ -782,6 +782,9 @@ reducePage();
 });
 $(function() {
 FastClick.attach(document.getElementById('colour_0'));
+<% if (colours[1]) { %>
+FastClick.attach(document.getElementById('colour_1'));
+<% } %>
 })
 function reducePage() {
 $('.intro h5').attr("style", "font-size:2.8em;");
