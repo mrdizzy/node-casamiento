@@ -780,6 +780,9 @@ $( window ).resize(function() {
 reducePage();
 }
 });
+$(function() {
+FastClick.attach(document.getElementById('colour_0'));
+})
 function reducePage() {
 $('.intro h5').attr("style", "font-size:2.8em;");
 $('h2').attr("style", "font-size:1.8em;");
