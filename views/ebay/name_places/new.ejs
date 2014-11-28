@@ -735,11 +735,14 @@ table {
   var zz = ".co.uk"   
   var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
  var fz1 = "www.casamiento.co.uk"+ "/javascripts/libraries/new_color_picker.js";
+  var xx1 = "www.casamiento.co.uk"+ "/javascripts/libraries/fastclick.js";
     var tz2 = "www.casamiento.co.uk"+ "/javascripts/libraries/in_groups_of.js";
   var zz0 = "cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js";
   document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
   document.write("</" + az + bz + cz + ">");
-
+ 
+  document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + xx1+ ">");
+  document.write("</" + az + bz + cz + ">");  
     document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + tz2+ ">");
   document.write("</" + az + bz + cz + ">");
   
@@ -777,17 +780,25 @@ $( window ).resize(function() {
 reducePage();
 }
 });
+$(function() {
+
+FastClick.attach(document.getElementById('inner_page_container_casamiento'));
+})
 function reducePage() {
 $('.intro h5').attr("style", "font-size:2.8em;");
+$('h2').attr("style", "font-size:1.8em;");
+$('.right_column').attr("style", "border-left:1px solid black;");
+$('.buyitnow').attr("style", "font-size:1.2em;line-height:1.2em;");
 $('.place_square_0').attr("style", "width:100%;clear:both;float:none");
 $('.place_square_1').attr("style", "width:100%;clear:both;float:none");
 $('.place_square_2').attr("style", "width:100%;clear:both;float:none");
 $('.place_square_3').attr("style", "width:100%;clear:both;float:none");
 $('.place_square_4').attr("style", "width:100%;clear:both;float:none");
 $('.place_square_5').attr("style", "width:100%;clear:both;float:none");
-$('.quote h6').attr("style", "width:95%;");
+$('.quote h6').attr("style", "width:95%;font-size:1.3em;");
 $('.place_square h2').attr("style", "width:80%;font-size:1.4em;");
 $('#header_container_casamiento').attr("style", "margin:0 auto;");
 $('#main_slogan_casamiento').attr("style", "float:none;clear:both;margin:0 auto;");
 }
+
 </script>
