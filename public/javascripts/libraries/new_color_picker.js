@@ -142,6 +142,7 @@ var colours = {"#cd5c5c":"Indian red","#ff4040":"Coral red","#321414":"Seal brow
     }
   })
     
+  FastClick.attach($big_colour_square_frame)
   // Leave wrapper
   $wrapper.mouseleave(function() {  
     $static_container.removeClass("dizzycp-container_selected")
