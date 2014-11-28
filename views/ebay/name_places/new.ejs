@@ -196,7 +196,10 @@ p.caz {
   
 a.caz:link, a.caz:active, a.caz:visited { 
   color:<%= colours[0] %>;  
-  font-style:underline; 
+  
+}
+a.related_link:link, a.related_link:active, a.related_link:visited {
+  text-decoration: none;
 }
   .buyitnow a { 
     color:white;
@@ -291,6 +294,7 @@ table {
   .place_square:hover { 
     border:1px solid grey;   
     cursor:pointer;
+    color:black;
     text-decoration:underline; 
   }
   .place_square img { width:100%;}
@@ -427,7 +431,7 @@ table {
 
     <% for (var i = 0; i < 6; i++) { %>
       <%if (related[j]) { %>
-      <div id="related_<%=j %>"><a class="caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">
+      <div id="related_<%=j %>"><a class="caz related_link casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">
         <div class="place_square_<%= i %> place_square">
           <div class="inner_place_square">
             <div style="position:relative;width:100%;">
@@ -798,7 +802,8 @@ $('.place_square_3').attr("style", "width:100%;clear:both;float:none");
 $('.place_square_4').attr("style", "width:100%;clear:both;float:none");
 $('.place_square_5').attr("style", "width:100%;clear:both;float:none");
 $('.quote h6').attr("style", "width:95%;font-size:1.3em;");
-$('.place_square h2').attr("style", "width:80%;font-size:1.4em;");
+$('.place_square h2').attr("style", "width:80%;font-size:1.4em;float:none;margin-bottom:0.5em;");
+
 $('#header_container_casamiento').attr("style", "margin:0 auto;");
 $('#main_slogan_casamiento').attr("style", "float:none;clear:both;margin:0 auto;");
 }
