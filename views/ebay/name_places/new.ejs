@@ -5,13 +5,9 @@
 <% } %>
 
 .shell { 
-  background-image:url('http://www.casamiento.co.uk/gfx/bullets/wiggle.svg');
-  background-repeat:no-repeat; 
-  background-position:center;
-  background-size:24px 17px;
+  background:url('http://www.casamiento.co.uk/gfx/bullets/wiggle.svg') center 24px 17px no-repeat;
   height:17px;
-  padding-top:1em;
-  padding-bottom:1em;
+  padding:1em 0 1em;
 }
    .dizzycp-static_container { 
       background-color:white;
@@ -89,8 +85,8 @@
     position:relative;
   }
   <% var j = 0 %>
-  <% for (var k = 0; k < 3; k++) { %>
-  <% for (var i = 0; i < 6; i++) { %>
+    <% for (var k = 0; k < 3; k++) { %>
+      <% for (var i = 0; i < 6; i++) { %>
   <% if (document.related[j]) { %>
    <% var card = document.related[j] %>
    #related_<%= j %> .colour_0 { background-color:<%= card.colours[0] %>; }
@@ -100,7 +96,7 @@
   <% } %>
 
   <% } %>
-/* FONTS */
+  
 @font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
 @font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/garamonditalic.eot?') format('eot'), url('http://www.casamiento.co.uk/f/garamonditalic.woff') format('woff'); }
 @font-face { font-family:"Gara"; src: url('http://www.casamiento.co.uk/f/garamond.eot?') format('eot'), url('http://www.casamiento.co.uk/f/garamond.woff') format('woff'); }
@@ -110,7 +106,14 @@
 @font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OSLI.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
 
-.texture { margin-top:0.5em;width:2.5em;height:2.5em;border:1px solid black;border-radius:0.25em;display:inline-block;}
+.texture { 
+  margin-top:0.5em;
+  width:2.5em;
+  height:2.5em;
+  border:1px solid black;
+  border-radius:0.25em;
+  display:inline-block;
+}
 
 h1 { 
   font: normal 0.75em "OS Condensed";
@@ -149,6 +152,7 @@ h3.caz {
   padding-right:10px; 
   padding-left:10px;
 }
+
 h4 { 
   border-bottom:1px solid black;
   display:inline-block; 
@@ -159,7 +163,14 @@ h4 {
   text-align:center;
 }
 
-h5 { padding:0;margin:0;text-align:left;letter-spacing:0; line-height:1em; font:normal 4.2em GaraI;}
+h5 { 
+  padding:0;
+  margin:0;
+  text-align:left;
+  letter-spacing:0; 
+  line-height:1em; 
+  font:normal 4.2em GaraI;
+}
 
 h6.caz { 
   color:#333;
