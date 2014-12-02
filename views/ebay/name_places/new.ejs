@@ -4,99 +4,9 @@
   .global_colour_0 .colour_1 { background-color: <%= colours[1] %> }
 <% } %>
 
-.shell { 
-  background:url('http://www.casamiento.co.uk/gfx/bullets/wiggle.svg') center 24px 17px no-repeat;
-  height:17px;
-  padding:1em 0 1em;
-}
-   .dizzycp-static_container { 
-      background-color:white;
-    }
-    
-    .dizzycp-container_to_fade_in {
-      display:none; 
-      position:absolute; 
-      z-index:99999999999999999999999999999999999999999999999999999;
-      border:1px dotted black;
-    }
-    
-      .dizzycp-swatch_container { 
-        text-align:center;
-      }
-      
-        .dizzycp-big_colour_square_frame { 
-          cursor:pointer;
-          display:inline-block;
-          border:1px solid lightgrey;
-          width:40px;
-          height:40px;
-          padding:2px; 
-          border-radius:25px;
-        }
-          .dizzycp-big_colour_square_swatch {
-            width:36px; 
-            height:36px;
-            margin:2px; 
-            border-radius:20px;
-          }
-        .dizzycp-text_label_for_colour { 
-          color:black;
-          padding-top:0.25em;
-          padding-bottom:0.25em;
-          font:normal 1.2em 'OS';
-          text-transform:uppercase;
-          letter-spacing:0.05em;
-        }
+<% include css_partials/colour_picker.js %>
 
-  .dizzycp-external_wrapper {
-    margin:0 auto;
-    overflow:hidden;
-  }
-  .dizzycp-left_arrow, .dizzycp-right_arrow {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: pointer;
-  }
-  .dizzycp-left_arrow { 
-    margin-left:50px; 
-    float:left;
-    font-size:50px;
-  }
-  .dizzycp-right_arrow { 
-    margin-right:50px; 
-    float:right;
-    font-size:50px;
-  }
-  .dizzycp-internal_wrapper{
-    overflow-y: hidden;
-    overflow-x: scroll;    
-    -webkit-overflow-scrolling: touch;
-  }
-  .square { 
-    float:left;
-    cursor: pointer;
-  }
-  .dizzycp-scrollable_colours {
-    height:100px;
-    position:relative;
-  }
-  <% var j = 0 %>
-    <% for (var k = 0; k < 3; k++) { %>
-      <% for (var i = 0; i < 6; i++) { %>
-  <% if (document.related[j]) { %>
-   <% var card = document.related[j] %>
-   #related_<%= j %> .colour_0 { background-color:<%= card.colours[0] %>; }
-  #related_<%= j %>  .colour_1 { background-color: <%= card.colours[1] %>; }  
-    <% j++ %>
-    <% } %>
-  <% } %>
 
-  <% } %>
-  
 @font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
 @font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/garamonditalic.eot?') format('eot'), url('http://www.casamiento.co.uk/f/garamonditalic.woff') format('woff'); }
 @font-face { font-family:"Gara"; src: url('http://www.casamiento.co.uk/f/garamond.eot?') format('eot'), url('http://www.casamiento.co.uk/f/garamond.woff') format('woff'); }
@@ -106,6 +16,24 @@
 @font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OSLI.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
 
+
+.shell { 
+  background:url('http://www.casamiento.co.uk/gfx/bullets/wiggle.svg') center 24px 17px no-repeat;
+  height:17px;
+  padding:1em 0 1em;
+}
+  <% var j = 0 %>
+  <% for (var k = 0; k < 3; k++) { %>
+    <% for (var i = 0; i < 6; i++) { %>
+      <% if (document.related[j]) { %>
+        <% var card = document.related[j] %>
+          #related_<%= j %> .colour_0 { background-color:<%= card.colours[0] %>; }
+          #related_<%= j %> .colour_1 { background-color: <%= card.colours[1] %>; }  
+        <% j++ %>
+      <% } %>
+    <% } %>
+  <% } %>
+  
 .texture { 
   margin-top:0.5em;
   width:2.5em;
@@ -118,18 +46,15 @@
 h1 { 
   font: normal 0.75em "OS Condensed";
   margin-bottom:0.5em; 
-  padding:0.25em;
-  padding-left:1em;
+  padding:0.25em 0.25em 0.25em 1em;
   text-align:left
 }
 
 h2.caz {
   font: normal 2.2em "TP", sans-serif; 
   letter-spacing:10px; 
-  margin-top:0.5em;
-  margin-bottom:0.5em; 
-  padding-right:10px;
-  padding-left:10px;
+  margin:0.5em 0 0.5em;
+  padding: 0 10px 0 10px;
   text-align:center; 
 }
   .place_square h2 { 
@@ -149,16 +74,14 @@ h3.caz {
   text-align:justify; 
   line-height:1.4em;
   letter-spacing:0.1em;
-  padding-right:10px; 
-  padding-left:10px;
+  padding:0 10px 0 10px;
 }
 
 h4 { 
   border-bottom:1px solid black;
   display:inline-block; 
   font:normal 2.2em GaraI;
-  margin-top:0.5em;
-  margin-bottom:0.5em;
+  margin:0.5em 0 0.5em;
   padding-bottom:0.5em; 
   text-align:center;
 }
@@ -205,7 +128,9 @@ p.caz {
       padding-right:0.05em;
     }
   
-a.caz:link, a.caz:active, a.caz:visited { 
+a.caz:link, 
+a.caz:active,
+a.caz:visited { 
   color:<%= colours[0] %>;  
   font-style:underline; 
 }
@@ -218,8 +143,6 @@ table {
   border-collapse:collapse;
   width:100%; 
 }
-
-/* COLUMNS */
 
 #inner_page_container_casamiento { 
   background-color:#fff; 
@@ -234,8 +157,7 @@ table {
 
   #header_container_casamiento { 
     border-bottom:1px solid #000;
-    padding-top:0.5em;
-    padding-bottom:0.5em;
+    padding:0.5em 0 0.5em;
     text-align:center;
   }
     #main_logo_casamiento { 
@@ -270,8 +192,7 @@ table {
   color:black; 
   font: normal 0.9em "OS IL"; 
   margin:10px auto;
-  padding-left:1em;
-  padding-right:1em; 
+  padding: 0 1em 0 1em;
 }
 
 .step { 
@@ -286,8 +207,7 @@ table {
 
 .weight { 
   display:inline-block;
-  border-color:#444;
-  border-style:solid;
+  border: 1px solid #444;
   margin:0.5em 0 0.2em;
   width:75px;
 }
@@ -295,10 +215,17 @@ table {
 .product_type {  border-top:0; }
 
 .slide { width:100%;}
-.inner_place_square, .inner_place_square_hidden { margin-bottom:0;padding:0.25em; }
-.inner_place_square_hidden {display:none}
+.inner_place_square, 
+.inner_place_square_hidden { 
+  margin-bottom:0;
+  padding:0.25em; 
+}
+  .inner_place_square_hidden {display:none}
 
-.place_square {border:1px solid transparent;}
+.place_square {
+  border:1px solid transparent;
+  border-bottom:1px solid grey;
+}
   .place_square:hover { 
     border:1px solid grey;   
     cursor:pointer;
@@ -306,30 +233,27 @@ table {
   }
   .place_square img { width:100%;}
 
-.place_square_0 {width:60%;float:left;border-bottom:1px solid grey }
-.place_square_1 { width:39%;float:right;border-bottom:1px solid grey;}
+.place_square_0 {width:60%;float:left; }
 
-.place_square_2 { width:60%;float:right;border-bottom:1px solid grey;}
-.place_square_3 { width:39%;float:left;border-bottom:1px solid grey;}
-.place_square_4 { width:39%;float:left;border-bottom:1px solid grey }
-.place_square_5 { width:60%;float:right;border-bottom:1px solid grey; }
+.place_square_2, .place_square_5 { width:60%; float:right; }
+.place_square_1, .place_square_3, .place_square_4, { width:39%; float:left; }
+
 .place_square_1 h2, .place_square_3 h2, .place_square_4 h2 { font-size:1.2em;}
 
 /* GLOBAL CLASSES */
 .buyitnow { 
   background-color:<%= colours[0]%>;
   border-radius:5px;
-  color:white;
+  color:#FFF;
   font:normal 1.4em OS;
   margin:0 auto;
-  margin-top:1em;
-  margin-bottom:1em;
+  margin: 1em 0 1em;
   padding:1em;
   text-align:center;
   width:65%;
 }
   .buyitnow:hover { 
-    background-color:black;
+    background-color:#000;
     text-decoration:underline;
   }
   
@@ -344,7 +268,7 @@ table {
 -->
 
 <div class="left_column">
-<div id="resizing"></div>
+  
   <div class="caz" id="header_container_casamiento">
     <div id="main_logo_casamiento" class="caz">
       <img src="http://www.casamiento.co.uk/gfx/logo/casamiento_gry.svg" id="logo" class="caz">
@@ -360,14 +284,14 @@ table {
   SLIDES 1-3
 -->     
 <div class="slide">
-      <div style="position:relative;width:100%;">
-    
-        <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= colours[0]%>" class="global_colour_0">
-          <%- document["background-" + attachments_order[0]]  %>
-        </div>
-        <img src="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[0]%>" style="position:relative;display:block;width:100%;z-index:6"/>
-      </div>
+  <div style="position:relative;width:100%;">
+
+    <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= colours[0]%>" class="global_colour_0">
+      <%- document["background-" + attachments_order[0]]  %>
     </div>
+    <img src="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[0]%>" style="position:relative;display:block;width:100%;z-index:6"/>
+  </div>
+  </div>
 
    
   <div>
@@ -547,7 +471,7 @@ table {
         <td style="width:35%;">
         
         <% if (params.buy_it_now) { %>
-        <div style="font: normal 0.75em 'OS';text-align:center;letter-spacing:0.1em;">PRICES STARTING FROM</div>
+          <div style="font: normal 0.75em 'OS';text-align:center;letter-spacing:0.1em;">PRICES STARTING FROM</div>
           <h3 class="caz casamiento" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;<%= params.buy_it_now_price %></h3>
           
         <% } else { %>
@@ -745,13 +669,12 @@ table {
   var hz = ".com";
   var zz = ".co.uk"   
   var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
- var fz1 = "www.casamiento.co.uk"+ "/javascripts/libraries/new_color_picker.js";
-    var tz2 = "www.casamiento.co.uk"+ "/javascripts/libraries/in_groups_of.js";
+  var fz1 = "www.casamiento.co.uk"+ "/javascripts/libraries/new_color_picker.js";
+  var tz2 = "www.casamiento.co.uk"+ "/javascripts/libraries/in_groups_of.js";
   var zz0 = "cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js";
   document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
   document.write("</" + az + bz + cz + ">");
-
-    document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + tz2+ ">");
+  document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + tz2+ ">");
   document.write("</" + az + bz + cz + ">");
   
   document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + zz0+ ">");
@@ -759,46 +682,42 @@ table {
   
   document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
   document.write("</" + az + bz + cz + ">");  
-  </script>
-  <script>
-<% for (var i = 0; i < colours.length; i ++) { %>
-  $('#colour_' + <%=i%>).colorPicker({default_color: '<%= colours[i] %>'}).on('dizzy-cp:hoverColor', function(e, colour) {
-     <% if (i == 0) { %>
-      $('.global_colour_<%= i %>').css("background-color", colour)
-      $('.text_colour_<%= i %>').css("color", colour)
+</script>
+
+<script>
+
+  <% for (var i = 0; i < colours.length; i ++) { %>
+    $('#colour_' + <%=i%>).colorPicker({default_color: '<%= colours[i] %>'}).on('dizzy-cp:hoverColor', function(e, colour) {
+      <% if (i == 0) { %>
+        $('.global_colour_<%= i %>').css("background-color", colour)
+        $('.text_colour_<%= i %>').css("color", colour)
       <% } else { %>
-      $('.global_colour_0 .colour_<%= i %>').css("background-color", colour)
+        $('.global_colour_0 .colour_<%= i %>').css("background-color", colour)
       <% } %>
+    })
+  <% } %>
+  
+  $('.place_square').mouseover(function() {
+    $(".inner_place_square", this).hide();
+    $(".inner_place_square_hidden",this).show();
   })
-<% } %>
-$('.place_square').mouseover(function() {
-  $(".inner_place_square", this).hide();
-  $(".inner_place_square_hidden",this).show();
-})
-$('.place_square').mouseout(function() {
-  $(".inner_place_square", this).show();
-  $(".inner_place_square_hidden",this).hide();
-})
-var width = $('#inner_page_container_casamiento').width();
-if (width < 700) {
-reducePage();
-}
-$( window ).resize(function() {
-  if (width < 700) {
-reducePage();
-}
-});
-function reducePage() {
-$('.intro h5').attr("style", "font-size:2.8em;");
-$('.place_square_0').attr("style", "width:100%;clear:both;float:none");
-$('.place_square_1').attr("style", "width:100%;clear:both;float:none");
-$('.place_square_2').attr("style", "width:100%;clear:both;float:none");
-$('.place_square_3').attr("style", "width:100%;clear:both;float:none");
-$('.place_square_4').attr("style", "width:100%;clear:both;float:none");
-$('.place_square_5').attr("style", "width:100%;clear:both;float:none");
-$('.quote h6').attr("style", "width:95%;");
-$('.place_square h2').attr("style", "width:80%;font-size:1.4em;");
-$('#header_container_casamiento').attr("style", "margin:0 auto;");
-$('#main_slogan_casamiento').attr("style", "float:none;clear:both;margin:0 auto;");
-}
+  $('.place_square').mouseout(function() {
+    $(".inner_place_square", this).show();
+    $(".inner_place_square_hidden",this).hide();
+  })
+  var width = $('#inner_page_container_casamiento').width();
+
+  if (width < 700) reducePage();
+
+  $(window).resize(function() {
+    if (width < 700) reducePage();
+  });
+  function reducePage() {
+    $('.intro h5').attr("style", "font-size:2.8em;");
+    $('.place_square').attr("style", "width:100%;float:none");
+    $('.quote h6').attr("style", "width:95%;font-size:1.2em;");
+    $('.place_square h2').attr("style", "width:80%;font-size:1.4em;");
+    $('#header_container_casamiento').attr("style", "margin:0 auto;");
+    $('#main_slogan_casamiento').attr("style", "float:none;clear:both;margin:0 auto;");
+  }
 </script>
