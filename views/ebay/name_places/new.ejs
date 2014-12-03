@@ -1,5 +1,6 @@
 <!doctype html>
 <style type="text/css">
+div { margin:0;padding:0; }
 <% if (colours[1]) { %>
   .global_colour_0 .colour_1 { background-color: <%= colours[1] %> }
 <% } %>
@@ -14,12 +15,6 @@
 @font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OSLI.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
 
-h1 { 
-  font: 0.75em "OS Condensed";
-  margin-bottom:0.5em; 
-  padding:0.25em 0.25em 0.25em 1em;
-  text-align:left;
-}
 
 h2 {
   font: normal 2.2em "TP", sans-serif; 
@@ -28,6 +23,13 @@ h2 {
   padding: 0 10px 0 10px;
   text-align:center; 
 }
+
+  h2.price_and_quantity { 
+    font-size:1.4em;
+    text-align:justify; 
+    line-height:1.4em;
+    letter-spacing:0.1em;
+  }
   .place_square h2 { 
     width:70%;
     margin-top:0;
@@ -39,13 +41,6 @@ h2 {
   
   a h2 { color: black; }
  
-h3.caz { 
-  font:normal 1.4em "TP", serif; 
-  text-align:justify; 
-  line-height:1.4em;
-  letter-spacing:0.1em;
-  padding:0 10px 0 10px;
-}
 
 h4 { 
   border-bottom:1px solid black;
@@ -56,34 +51,42 @@ h4 {
   text-align:center;
 }
 
-h5 { 
-  padding:0;
-  margin:0;
-  text-align:left;
-  letter-spacing:0; 
-  line-height:1em; 
-  font:normal 4.2em GaraI;
-}
-
-h6 { 
-  font: 1.4em 'OS IL';
-  margin:auto;
-  text-align:center;
-  width:75%; 
-}
-  h6.ebay_user { 
-    font: 1.2em 'GaraI', serif;
+  #testimonials h4 {
+    font-size: 1.2em;
     margin-right:20%;
     text-align:right; 
+    border:0;
+  }
+
+h5 { 
+ font: 0.9em "OS IL"; 
+  margin:10px auto;
+  padding: 0 1em 0 1em;
+}
+
+  #testimonials h5 {
+    background-image:url('http://www.casamiento.co.uk/gfx/QUOTE.png');
+    background-repeat:no-repeat;
+    font-size:1.4em;
+    margin:auto;
+    padding-left:1.75em;
+    text-align:left;
+    width:75%; 
   }
   
-p.caz { 
-  padding: 0 0.25em 0.75em 0.25em 0; 
-  font: 0.9em "OS", sans-serif;
-  line-height: 1.5em;
+h6 { 
+  font: 0.75em "OS Condensed";
+  margin-bottom:0.5em; 
+  padding:0.25em 0.25em 0.25em 1em;
+  text-align:left;
+}
+
+p { 
+  padding: 0 0.25em 0.75em 0.25em; 
+  font: 0.9em/1.5em "OS", sans-serif;
   margin-bottom:1em;
 }
-  .intro p { text-align:left;}
+  .intro p { text-align:left; }
     .intro p.first:first-letter { 
       float:left;
       font: normal 5.5em/0.8em TP;
@@ -245,6 +248,7 @@ table {
   
 .spc {
   border-bottom:1px dotted grey;   
+  position:relative;
 }
 
   .a_font {
@@ -266,18 +270,13 @@ table {
 
   #description { padding:1em }
 
-.chat-bubble {
-  color:#000; 
-  font: 0.9em "OS IL"; 
-  margin:10px auto;
-  padding: 0 1em 0 1em;
-}
 
 .step { 
   background-color:<%= colours[0] %>;
   border-bottom-left-radius:10px;
   color:#FFF;
-  float:right;
+  position:absolute;
+  top:0;right:0;
   font:0.8em 'OS Light';
   padding:0.25em;
   width:50%;
@@ -289,9 +288,6 @@ table {
   margin:0.5em 0 0.2em;
   width:75px;
 }
-
-.quote { padding-bottom:5px;padding-top:10px;}
-
 
   <% var j = 0 %>
   <% for (var k = 0; k < 3; k++) { %>
@@ -342,6 +338,7 @@ table {
 
      
     <h2><%= name %></h2>
+    
     <div style="text-align:center;margin:0;margin-right:2%;">
       <p class="ornamental_line"><img src="http://www.casamiento.co.uk/gfx/ornamentalline.png" /></p>
     </div>
@@ -370,36 +367,45 @@ table {
   </div>
 
 
+
+
  <!-- 
     BLURB 
  -->
 
   <div class="intro" style="clear:both;width:90%;margin:0 auto;text-align:center;border:0;">
+    
     <h5 style="text-align:center;">Impress your guests with elegant personalised place cards&hellip;</h5>
   
-  <div class="shell"></div>
+    <div class="shell"></div>
     
-   
-    <p class="first caz casamiento">Y<span style="letter-spacing:0.2em; font-size:1em;font-family:Gara';font-variant:small-caps">OUR GUESTS</span>, will love seeing their names individually printed on our elegant freestanding place cards&hellip; </p>
-    <p class="caz casamiento">&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs is certain to compliment your theme&hellip;</p>
+    <p>Y<span style="letter-spacing:0.2em; font-size:1em;font-family:Gara';font-variant:small-caps">OUR GUESTS</span>, will love seeing their names individually printed on our elegant freestanding place cards&hellip; </p>
+    
+    <p>&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs is certain to compliment your theme&hellip;</p>
 
     <h4>Save time and hassle&hellip;</h4>
     
-    <p class="caz">They'll also save you time and stress: just decide on your options, send us a list of names, and within three working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.</p>
+    <p>They'll also save you time and stress: just decide on your options, send us a list of names, and within three working days you'll have a parcel dropping through your letterbox: no scoring card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.</p>
     
-    <p class="caz casamiento">Place your order today!</p>
+    <p>Place your order today!</p>
     
-    <p class="caz" style="margin:0;padding:0;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/></p>
+    <p style="margin:0;padding:0;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/></p>
     
-    <p class="caz" style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
+    <p style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
+    
     <span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
+  
   </div>
+  
+  
+
+  
   
 <!-- 
   RELATED ITEMS 
   --> 
     <div class="spc">
-    <h1>You will also like&hellip;</h1>
+    <h6>You will also like&hellip;</h6>
     
 <% j = 0 %>
 
@@ -458,7 +464,7 @@ table {
 <div id="right_column"> 
   
   <div class="spc">
-    <h1 style="text-align:center;padding-top:1em;">This <%= params.buy_it_now ? "buy-it-now listing" : "auction" %> is for:</h1>
+    <h6 style="text-align:center;padding-top:1em;">This <%= params.buy_it_now ? "buy-it-now listing" : "auction" %> is for:</h6>
 
     <div style="border-bottom:1px dotted grey;padding-top:0.1em;border-top:1px dotted grey;font-size:3em;"><img src="http://www.casamiento.co.uk/gfx/product_types/small/name_place_small.png" style="width:155px;" class="name_place_icon"></div>
     
@@ -469,20 +475,20 @@ table {
           <% if (!params.buy_it_now) { %>
             <tr>
               <td style="border-bottom:1px dotted grey;border-right:1px dotted grey;width:35%;">
-                <h1 style="text-align:right;">Quantity:</h1>
+                <h6 style="text-align:right;">Quantity:</h6>
               </td>
             
-              <td style="border-bottom:1px dotted grey;width:65%;text-align:left;"><h3 class="caz casamiento" style="margin:0;padding:0;font-size:1.5em;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/qty.png" style="display:inline-block;width:40px;"><%= params.quantity %></h3></td>
+              <td style="border-bottom:1px dotted grey;width:65%;text-align:left;"><h2 class="price_and_quantity" style="margin:0;padding:0;font-size:1.5em;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/qty.png" style="display:inline-block;width:40px;"><%= params.quantity %></h2></td>
             </tr>
-            <% } %>
+          <% } %>
             
             <tr>
-              <td style="text-align:right;border-bottom:1px dotted grey;border-right:1px dotted grey;"><h1 style="text-align:right;">Format:</h1></td>
-              <td style="text-align:left;border-bottom:1px dotted grey;"><h3 class="caz casamiento" style="font-size:1.5em;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/specs/tent.png" style="display:inline-block;width:100px;padding-top:1em;"></h3></td>
+              <td style="text-align:right;border-bottom:1px dotted grey;border-right:1px dotted grey;"><h6 style="text-align:right;">Format:</h6></td>
+              <td style="text-align:left;border-bottom:1px dotted grey;"><img src="http://www.casamiento.co.uk/gfx/specs/tent.png" style="display:inline-block;width:100px;padding-top:1em;"></td>
             </tr>
             
             <tr>
-              <td style="text-align:right;border-bottom:1px dotted grey;border-right:1px dotted grey;"><h1 style="text-align:right;">Card thickness:</h1></td>
+              <td style="text-align:right;border-bottom:1px dotted grey;border-right:1px dotted grey;"><h6 style="text-align:right;">Card thickness:</h6></td>
               <td style="text-align:center;border-bottom:1px dotted grey;">
                 <div style="padding:1em;">
     <div class="weight" style="border-top:3px solid #000;"></div> <span style="font:normal 0.8em OS;">250gsm</span>
@@ -494,7 +500,7 @@ table {
               </td>
             </tr>
             <tr>
-            <td style="text-align:right;border-right:1px dotted grey;"><h1 style="text-align:right;">Card texture:</h1></td>
+            <td style="text-align:right;border-right:1px dotted grey;"><h6 style="text-align:right;">Card texture:</h1></td>
               <td style="text-align:center;">
             <div style="margin-left:1em;margin-bottom:0;margin-top:0;display:inline-block;font-family:'TP'"><div class="texture"></div><br/>Smooth<br/>White</div>
               
@@ -508,15 +514,15 @@ table {
         
         <% if (params.buy_it_now) { %>
           <div style="font: normal 0.75em 'OS';text-align:center;letter-spacing:0.1em;">PRICES STARTING FROM</div>
-          <h3 class="caz casamiento" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;<%= params.buy_it_now_price %></h3>
+          <h2 class="price_and_quantity" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;<%= params.buy_it_now_price %></h2>
           
         <% } else { %>
         <div style="font: normal 0.75em 'OS';text-align:center;letter-spacing:0.2em;">BIDDING STARTS AT</div>
-          <h3 class="caz casamiento" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;<%= params.bidding %></h3>
+          <h2 class="price_and_quantity" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;<%= params.bidding %></h2>
           
 <div style="font: normal 0.75em 'OS';margin-top:2em;text-align:center;letter-spacing:0.2em;">OR BUY-IT-NOW FOR</div>
 
-          <h3 class="caz casamiento" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;<%= params.buy_it_now_price %></h3>
+          <h2 class="caz casamiento" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;<%= params.buy_it_now_price %></h2>
           <p style="font-family:OS;font-size:0.8em;margin:0.5em;">For more options and different quantities, see our <a class="caz casamiento text_colour_0" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">buy-it-now</a> listing</p>
         <% } %>
 
@@ -526,19 +532,28 @@ table {
     </table>
   </div>
 
+
+
+
+
+
+
+
+
+
+
+
   <div class="spc">
-    <div style="margin-bottom:0.5em;height:2em;">
-      <div style="float:left"><h1>Choose your colour</h1></div>
+<h6>Choose your colour</h6>
       <div class="step global_colour_0">STEP 1</div>
-    </div>
     
     <!-- COLOUR SWATCH PICKER -->
     
     <% for(var i=0; i < colours.length; i++) { %>
       <div id="colour_<%=i %>"></div>
     <% } %>
-    <div class="chat-bubble">Choose from hundreds of colours: hover over or tap the colour shown above to bring up the hues panel, then hover or tap the colour swatches and the image will change so you can see exactly how your design will look. Move backwards and forwards through the hues panel by clicking the left &larr; and right &rarr; arrows.
-    </div>
+    <h5>Choose from hundreds of colours: hover over or tap the colour shown above to bring up the hues panel, then hover or tap the colour swatches and the image will change so you can see exactly how your design will look. Move backwards and forwards through the hues panel by clicking the left &larr; and right &rarr; arrows.
+    </h5>
     
   </div>
 
@@ -546,13 +561,12 @@ table {
     FONTS 
  -->
   <div class="spc">
-    <div style="margin-bottom:0.5em;height:2em;">
-      <div style="float:left"><h1>Choose your font</h1></div>
+    <h6>Choose your font</h6>
       <div class="step global_colour_0">STEP 2</div>
-    </div>
+
     
-    <div class="chat-bubble">Choose a font to suit your event. From small and simple to big and bold, fun and fierce to silent and steely&hellip; choose the font to express the personality you want to convey.
-    </div>
+    <h5>Choose a font to suit your event. From small and simple to big and bold, fun and fierce to silent and steely&hellip; choose the font to express the personality you want to convey.
+    </h5>
     
     <% ["CaslonPro","ChaparralItalic","EccentricStd","Exmouth","Metroscript","MyriadProLight","Parchment","PerpetuaTitling","PFBodoniScript","PoorRichard","SacramentoRegular","TrajanPro"].forEach(function(font) { %>
     
@@ -569,13 +583,11 @@ table {
  -->
  
   <div class="spc">
-    <div style="margin-bottom:0.5em;height:3em;">
-      <div style="float:left"><h1>Choose Thickness</h1></div>
-      <div class="step global_colour_0">STEP 3</div>  
-    </div>
+    <div class="step global_colour_0">STEP 3</div>  
+    <h6>Choose Thickness</h6>
 
-    <div class="chat-bubble">Decide the thickness of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm): the higher the number, the thicker the card. A normal sheet of A4 copy paper is usually about 80gsm.
-    </div>
+    <h5>Decide the thickness of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm): the higher the number, the thicker the card. A normal sheet of A4 copy paper is usually about 80gsm.
+    </h5>
     
     <div>
       <div class="weight" style="border-top-width:2px;"></div> 
@@ -593,23 +605,21 @@ table {
   </div>
 
   <div class="spc">
-    <div style="margin-bottom:0.5em;height:3em;">
-      <div style="float:left"><h1>Enter guest names</h1></div>
+     <h6>Enter guest names</h6>
       <div class="step global_colour_0">STEP 4</div>  
-    </div>
 
-    <div class="chat-bubble">Just email us or send an eBay message with a list of guest names that you want printed on each place card. 
-    </div>
+    <h5>Just email us or send an eBay message with a list of guest names that you want printed on each place card.</h5>
     
   </div>
   
   
   
   <div class="slide">
-
+  
     <div class="background_container global_colour_0">
       <%- document["background-" + attachments_order[3]]  %>
     </div>
+    
     <img src="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[3]%>" />
   </div>
 
@@ -641,79 +651,54 @@ table {
     TESTIMONIALS 
  -->  
   
-<div class="spc">
-  <h1>Don't take our word for it&hellip;</h1>
-      <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Perfect, and great communication from seller, even when I forgot names! A****</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=catclarke1984">catclarke1984</a></h6>
-  </div>
-  <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Wow. Look very professional and expensive. Highly recommend</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=jurider1">jurider1</a></h6>
-  </div>
-           <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" />Thank you, thank you! I love them, amazing man I'll be back again with next order!</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid= foxmoose">foxmoose</a></h6>
-  </div>    
-            <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> 
-  Brilliant, very helpful even when I made mistake with order, thank you so much!</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid= sterry1984">sterry1984</a></h6>
-  </div>     
-    <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Thank you, they arrived on time and were fab!</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=sparklingsars123">sparklingsars123</a></h6>
-  </div>
-        <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" />  These are just perfect. Very reasonable. A+++++</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid= kirsty_chick21">kirsty_chick21</a></h6>
-  </div>
-  <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> 
-  greatservice very helpful even with a small order will use again!</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid= 1057diana">1057diana</a></h6>
-  </div>    
+<div class="spc" id="testimonials">
+
+  <h6>Don't take our word for it&hellip;</h6>
+
+  <h5>Perfect, and great communication from seller, even when I forgot names! A****</h5>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=catclarke1984">catclarke1984</a></h4>
+
+  <h5>Wow. Look very professional and expensive. Highly recommend</h5>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=jurider1">jurider1</a></h4>
+
+  <h5>Thank you, thank you! I love them, amazing man I'll be back again with next order!</h5>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=foxmoose">foxmoose</a></h4>
+
+  <h5>Brilliant, very helpful even when I made mistake with order, thank you so much!</h5>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=sterry1984">sterry1984</a></h4>
+
+  <h5>Thank you, they arrived on time and were fab!</h5>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=sparklingsars123">sparklingsars123</a></h4>
+  
+  <h5>These are just perfect. Very reasonable. A+++++</h5>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid= kirsty_chick21">kirsty_chick21</a></h4>
+
+  <h5>greatservice very helpful even with a small order will use again!</h5>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=1057diana">1057diana</a></h4>
+
+  <h5>Brilliant so happy with these and super fast!!</h5>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=  tregale280283">tregale280283</a></h4>
+        
+  <h5>These are amazing value for money and very professional, perfect for our event.</h4>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=dannyw3341">dannyw3341</a></h5>
  
-   
-   <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" />
-  Brilliant so happy with these and super fast!!</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=  tregale280283">tregale280283</a></h6>
-  </div>
-  
-          
-    <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> These are amazing value for money and very professional, perfect for our event.</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=dannyw3341">dannyw3341</a></h6>
-  </div>       
-  
-    <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Wow. Look very professional & expensive. Highly recommend.</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=jurider1">jurider1</a></h6>
-  </div>       
-  
-  <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Beautiful place cards, thank you! Would Highly recommend :-)&rdquo;</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=baked.potato07">baked.potato07</a></h6>
-  </div>.
-                          
-  
-  <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> Totally perfect. Thank you</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=mummysmith1974">mummysmith1974</a></h6>
-  </div>
-                 
-   <div class="quote">
-    <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> These are amazing, excellent quality for an excellent price, highly recommended&rdquo;</h6>
-    <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=chris.hall20">chris.hall20</a></h6>
-  </div>
-                                         
-  <div class="quote">
-   <h6 class="caz"><img src="http://www.casamiento.co.uk/gfx/QUOTE.png" /> They look amazing and came so fast. Highly recommend :)</h6>
-   <h6 class="caz ebay_user">&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=kellyc3456">kellyc3456</a></h6>
-   </div>
-            
+  <h5>Wow. Look very professional & expensive. Highly recommend.</h5>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=jurider1">jurider1</a></h4>
+
+  <h5>Beautiful place cards, thank you! Would Highly recommend :-)&rdquo;</h5>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=baked.potato07">baked.potato07</a></h4>
+
+  <h5>Totally perfect. Thank you</h5>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=mummysmith1974">mummysmith1974</a></h4>
+
+  <h5>These are amazing, excellent quality for an excellent price, highly recommended&rdquo;</h5>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=chris.hall20">chris.hall20</a></h4>
+
+  <h5>They look amazing and came so fast. Highly recommend :)</h5>
+  <h4>&mdash;<a class="caz text_colour_0" href="http://feedback.ebay.co.uk/ws/eBayISAPI.dll?ViewFeedback2&userid=kellyc3456">kellyc3456</a></h4>
+
 </div>
+
 <div style="clear:both;"></div>
 </div>
 
