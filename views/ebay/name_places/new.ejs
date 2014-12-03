@@ -8,79 +8,20 @@
 
 @font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
 @font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/garamonditalic.eot?') format('eot'), url('http://www.casamiento.co.uk/f/garamonditalic.woff') format('woff'); }
-@font-face { font-family:"Gara"; src: url('http://www.casamiento.co.uk/f/garamond.eot?') format('eot'), url('http://www.casamiento.co.uk/f/garamond.woff') format('woff'); }
 @font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OSReg"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSReg.woff') format('woff'); }
 @font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OSL.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OSLI.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
 
-#page_container_casamiento { 
-  background-color:#fff; 
-}
-
-#left_column { 
-  float:left;
-  width:50%; 
-}
-
-  #header_container_casamiento { 
-    border-bottom:1px solid #000;
-    padding:0.5em 0 0.5em;
-    text-align:center;
-  }
-    #main_logo_casamiento { 
-      float:left; 
-      padding-left:20px; 
-      text-align:left; 
-      width:25%; 
-    }
-      #logo { width:202px; }
-      
-    #main_slogan_casamiento { float:right; }
-      #main_slogan_casamiento img { width:180px; }
-  
-#right_column { 
-  border-left:1px dotted black;
-  margin-left:50%; 
-  min-width:180px;
-  text-align:center; 
-}
-
-.shell { 
-  background:url('http://www.casamiento.co.uk/gfx/bullets/wiggle.svg') center 24px 17px no-repeat;
-  height:17px;
-  padding:1em 0 1em;
-}
-  <% var j = 0 %>
-  <% for (var k = 0; k < 3; k++) { %>
-    <% for (var i = 0; i < 6; i++) { %>
-      <% if (document.related[j]) { %>
-        <% var card = document.related[j] %>
-          #related_<%= j %> .colour_0 { background-color:<%= card.colours[0] %>; }
-          #related_<%= j %> .colour_1 { background-color: <%= card.colours[1] %>; }  
-        <% j++ %>
-      <% } %>
-    <% } %>
-  <% } %>
-  
-.texture { 
-  margin-top:0.5em;
-  width:2.5em;
-  height:2.5em;
-  border:1px solid black;
-  border-radius:0.25em;
-  display:inline-block;
-}
-
 h1 { 
-  font: normal 0.75em "OS Condensed";
+  font: 0.75em "OS Condensed";
   margin-bottom:0.5em; 
   padding:0.25em 0.25em 0.25em 1em;
-  text-align:left
+  text-align:left;
 }
 
-h2.caz {
+h2 {
   font: normal 2.2em "TP", sans-serif; 
   letter-spacing:10px; 
   margin:0.5em 0 0.5em;
@@ -88,19 +29,18 @@ h2.caz {
   text-align:center; 
 }
   .place_square h2 { 
-    float:left;
-    width:50%;
-    margin-top:0em;
-    padding-top:0em;
+    width:70%;
+    margin-top:0;
+    padding-top:0;
     letter-spacing:0.2em;
     text-align:left;
-    font-size:1.5em;
+    font-size:1.6em;
   }
   
   a h2 { color: black; }
  
 h3.caz { 
-  font:normal 1.4em "Gara", serif; 
+  font:normal 1.4em "TP", serif; 
   text-align:justify; 
   line-height:1.4em;
   letter-spacing:0.1em;
@@ -125,126 +65,151 @@ h5 {
   font:normal 4.2em GaraI;
 }
 
-h6.caz { 
-  color:#333;
-  font: normal 1.375em "OS IL", sans-serif; 
-  line-height:1.5em;
-  margin-bottom:1.5em; 
-  text-indent:1em; 
- }
-  .quote h6 { 
-    font: 1.4em normal 'OS IL';
-    margin:auto;
-    text-align:center;
-    width:75%; 
-  }
+h6 { 
+  font: 1.4em 'OS IL';
+  margin:auto;
+  text-align:center;
+  width:75%; 
+}
   h6.ebay_user { 
-    font:1.2em 'GaraI', serif;
+    font: 1.2em 'GaraI', serif;
     margin-right:20%;
     text-align:right; 
   }
   
 p.caz { 
   padding: 0 0.25em 0.75em 0.25em 0; 
-  font: normal 0.9em "OS", sans-serif;
+  font: 0.9em "OS", sans-serif;
   line-height: 1.5em;
   margin-bottom:1em;
 }
   .intro p { text-align:left;}
     .intro p.first:first-letter { 
       float:left;
-      font:normal 5.5em TP;
-      line-height:0.8em;
+      font: normal 5.5em/0.8em TP;
       padding-right:0.05em;
     }
   
 a.caz:link, 
 a.caz:active,
-a.caz:visited { 
-  color:<%= colours[0] %>;  
-  
-}
-a.related_link:link, a.related_link:active, a.related_link:visited {
+a.caz:visited { color:<%= colours[0] %>; }
+
+a.related_link:link, 
+a.related_link:active, 
+a.related_link:visited {
   text-decoration: none;
 }
   .buyitnow a { 
-    color:white;
+    color:#FFF;
     text-decoration:none; 
   }
+  
+  
+  
+  
+  
+  
+  
+  
 
-table { 
-  border-collapse:collapse;
-  width:100%; 
+#page_container_casamiento { 
+  background-color:#fff; 
+  margin:0;
+  padding:0;  
 }
 
-  #description { padding:1em }
-
-.spc {
-  border-bottom:1px dotted grey;   
-}
-
-.name_place_icon { width:130px; }
-  .name_place_icon img { width:150px;}
-
-.chat-bubble {
-  color:black; 
-  font: normal 0.9em "OS IL"; 
-  margin:10px auto;
-  padding: 0 1em 0 1em;
-}
-
-.step { 
-  background-color:<%= colours[0] %>;
-  border-bottom-left-radius:10px;
-  color:white;
-  float:right;
-  font:0.8em normal 'OS Light';
-  padding:0.25em;
-  width:50%;
-}
-
-.weight { 
-  display:inline-block;
-  border: 1px solid #444;
-  margin:0.5em 0 0.2em;
-  width:75px;
-}
-.quote { padding-bottom:5px;padding-top:10px;}
-.product_type {  border-top:0; }
-
-.slide { width:100%;}
-.inner_place_square, 
-.inner_place_square_hidden { 
-  margin-bottom:0;
-  padding:0.25em; 
-}
-  .inner_place_square_hidden {display:none}
-
-.place_square {
-  border:1px solid transparent;
-  border-bottom:1px solid grey;
-}
-  .place_square:hover { 
-    border:1px solid grey;   
-    cursor:pointer;
-    color:black;
-    text-decoration:underline; 
+  #left_column { 
+    float:left;
+    width:50%; 
   }
-  .place_square img { width:100%;}
 
-.place_square_0 {width:60%;float:left; }
+    #logo { width:202px; }
+      
+    #slogan { 
+      width: 180px; 
+      display:block; 
+      float:right;
+    }
+    
+    .slide { position:relative; }
+      .slide img,
+      .inner_place_square img,
+      .inner_place_square_hidden img { 
+        position:relative;
+        display:block;
+        width:100%;
+        z-index:6;
+      }
+      
+      .background_container, 
+      .inner_place_square div,
+      .inner_place_square_hidden div {
+        position:absolute;
+        width:100%;
+        height:100%;
+        z-index:0;
+      }
+      
+      .background_container { 
+        background-color:<%= colours[0] %>
+      }
+      
+    .shell { 
+      background:url('http://www.casamiento.co.uk/gfx/bullets/wiggle.svg') center 24px 17px no-repeat;
+      height:17px;
+      padding:1em 0 1em;
+    }
 
-.place_square_2, .place_square_5 { width:60%; float:right; }
-.place_square_1, .place_square_3, .place_square_4, { width:39%; float:left; }
+    .related { 
+      border-bottom:1px solid grey; 
+      margin-bottom:0.5em;
+    }
 
-.place_square_1 h2, .place_square_3 h2, .place_square_4 h2 { font-size:1.2em;}
+      #related_0 {
+        width:60%;
+        float:left; 
+      }
 
-/* GLOBAL CLASSES */
+      #related_2, 
+      #related_5 { 
+        width:60%; 
+        float:right; 
+      }
+      
+      #related_1, 
+      #related_3, 
+      #related_4 { 
+        width:39%; 
+        float:left; 
+      }
+
+    .place_square {
+      border:1px solid transparent;
+    }
+      .place_square:hover { 
+        border:1px solid grey;   
+        cursor:pointer;
+        color:#000;
+        text-decoration:underline; 
+      }
+      .place_square img { width:100%;}
+      
+      .inner_place_square, 
+      .inner_place_square_hidden {
+        position:relative;
+        width:100%;
+      }
+      .inner_place_square_hidden { display:none; }
+
+      #related_1 h2, 
+       #related_3 h2, 
+      #related_4 h2 { font-size:1.2em; }
+
 .buyitnow { 
   background-color:<%= colours[0]%>;
   border-radius:5px;
   color:#FFF;
-  font:normal 1.4em OS;
+  font:1.4em OS;
   margin:0 auto;
   margin: 1em 0 1em;
   padding:1em;
@@ -256,52 +221,140 @@ table {
     text-decoration:underline;
   }
   
-  .cart_icon { width:30px; }
+  .cart_icon { width:30px; }    
+    
+    
+    
+    
+    
+    
+  
+  #right_column { 
+    border-left:1px dotted black;
+    margin-left:50%; 
+    min-width:180px;
+    text-align:center; 
+  }
+
+table { 
+  border-collapse:collapse;
+  width:100%; 
+}
+.name_place_icon { width:130px; }
+  .name_place_icon img { width:150px; }
+  
+.spc {
+  border-bottom:1px dotted grey;   
+}
+
+  .a_font {
+    margin:0 auto;
+    width:75%;
+    text-align:center;
+    padding:1em 1em 0.5em 1em;
+    border-bottom:1px solid #000;
+  }
+  
+.texture { 
+  margin-top:0.5em;
+  width:2.5em;
+  height:2.5em;
+  border:1px solid black;
+  border-radius:0.25em;
+  display:inline-block;
+}
+
+  #description { padding:1em }
+
+.chat-bubble {
+  color:#000; 
+  font: 0.9em "OS IL"; 
+  margin:10px auto;
+  padding: 0 1em 0 1em;
+}
+
+.step { 
+  background-color:<%= colours[0] %>;
+  border-bottom-left-radius:10px;
+  color:#FFF;
+  float:right;
+  font:0.8em 'OS Light';
+  padding:0.25em;
+  width:50%;
+}
+
+.weight { 
+  display:inline-block;
+  border: 1px solid #444;
+  margin:0.5em 0 0.2em;
+  width:75px;
+}
+
+.quote { padding-bottom:5px;padding-top:10px;}
+
+
+  <% var j = 0 %>
+  <% for (var k = 0; k < 3; k++) { %>
+    <% for (var i = 0; i < 6; i++) { %>
+      <% if (document.related[j]) { %>
+        <% var card = document.related[j] %>
+          #related_<%= j %> .colour_0 { background-color: <%= card.colours[0] %>; }
+          #related_<%= j %> .colour_1 { background-color: <%= card.colours[1] %>; }  
+        <% j++ %>
+      <% } %>
+    <% } %>
+  <% } %>
+  
 </style>
+
+
+
+
+
+
+
+
+
+
 
 <div id="page_container_casamiento">
      
-  <!-- --------------------------------------------------------
-    LEFT COLUMN
-  -->
+<!-- --------------------------------------------------------
+  LEFT COLUMN
+-->
 
   <div id="left_column">
 
-    <img src="http://www.casamiento.co.uk/gfx/logo/casamiento_gry.svg" id="logo" class="caz">
-    <img src="http://www.casamiento.co.uk/gfx/logo/drms.svg">
+    <img src="http://www.casamiento.co.uk/gfx/logo/casamiento_gry.svg" id="logo" />
+    <img src="http://www.casamiento.co.uk/gfx/logo/drms.svg" id="slogan" />
       
 <!--
   SLIDES 1-3
 -->     
-<div class="slide">
-  <div style="position:relative;width:100%;">
-
-    <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= colours[0]%>" class="global_colour_0">
-      <%- document["background-" + attachments_order[0]]  %>
-    </div>
-    <img src="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[0]%>" style="position:relative;display:block;width:100%;z-index:6"/>
-  </div>
-  </div>
-
-   
-  <div>
-    <h2 class="caz"><%= name %></h2>
-    <div style="text-align:center;margin:0;margin-right:2%;"><p class="ornamental_line"><img src="http://www.casamiento.co.uk/gfx/ornamentalline.png" /></p>
-    </div>
-  </div>
-   
- <br/>
-  
- 
-<div class="slide">
-      <div style="position:relative;width:100%;">
+    <div class="slide">
     
-        <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= colours[0] %>" class="global_colour_0">
-          <%- document["background-" + attachments_order[1]]  %>
-        </div>
-        <img src="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[1]%>" style="position:relative;display:block;width:100%;z-index:6"/>
+      <div class="background_container global_colour_0">
+        <%- document["background-" + attachments_order[0]]  %>
       </div>
+      
+      <img src="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[0]%>" />
     </div>
+
+     
+    <h2><%= name %></h2>
+    <div style="text-align:center;margin:0;margin-right:2%;">
+      <p class="ornamental_line"><img src="http://www.casamiento.co.uk/gfx/ornamentalline.png" /></p>
+    </div>
+ 
+    <div class="slide">
+      
+      <div class="background_container global_colour_0">
+        <%- document["background-" + attachments_order[1]]  %>
+      </div>
+      
+      <img src="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[1]%>" />
+    </div>
+
 
    
   
@@ -321,7 +374,7 @@ table {
     BLURB 
  -->
 
-  <div class="spc intro" style="clear:both;width:90%;margin:0 auto;text-align:center;border:0;">
+  <div class="intro" style="clear:both;width:90%;margin:0 auto;text-align:center;border:0;">
     <h5 style="text-align:center;">Impress your guests with elegant personalised place cards&hellip;</h5>
   
   <div class="shell"></div>
@@ -345,48 +398,46 @@ table {
 <!-- 
   RELATED ITEMS 
   --> 
-    <div class="spc" style="border:0;">
+    <div class="spc">
     <h1>You will also like&hellip;</h1>
+    
 <% j = 0 %>
-<% for (var k = 0; k < 3; k++) { %>
 
-    <% for (var i = 0; i < 6; i++) { %>
-      <%if (related[j]) { %>
-      <div id="related_<%=j %>"><a class="caz related_link casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">
-        <div class="place_square_<%= i %> place_square">
-          <div class="inner_place_square">
-            <div style="position:relative;width:100%;">
+<% for (var k = 0; k < 3; k++) { %>
+  <% for (var i = 0; i < 6; i++) { %>
+    <% if (related[j]) { %>
+    <div id="related_<%=j %>" class="related">
     
-        <div style="position:absolute;width:100%;height:100%;z-index:0;%>" class="colour_0">
-          <%- related[j]["background-" + related[j].attachments_order[1]]  %>
-        </div>
-        <img src="http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/display-<%= related[j].attachments_order[1]%>" style="position:relative;display:block;width:100%;z-index:6"/>
-      </div>
-          </div>
-         <div class="inner_place_square_hidden">
-          <div style="position:relative;width:100%;">
-    
-        <div style="position:absolute;width:100%;height:100%;z-index:0; %>" class="colour_0">
-          <%- related[j]["background-" + related[j].attachments_order[2]]  %>
-        </div>
-        <img src="http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/display-<%= related[j].attachments_order[2]%>" style="position:relative;display:block;width:100%;z-index:6"/>
-      </div>
+      <a class="caz related_link casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">
+        <div class="place_square">
+        
+            <div class="inner_place_square">
+              <div class="colour_0"><%- related[j]["background-" + related[j].attachments_order[1]]  %></div>              
+              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/display-<%= related[j].attachments_order[1]%>" />
+            </div>
+          
+            <div class="inner_place_square_hidden">    
+              <div class="colour_0"><%- related[j]["background-" + related[j].attachments_order[2]]  %></div>
+              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/display-<%= related[j].attachments_order[2]%>" />
+            </div>
          
-         </div>
-          <div class="slide_name" style="margin:0;padding:0;"><h2 class="caz"><%= related[j].name %></h2></div>
+          <h2 class="caz"><%= related[j].name %></h2>
+          
         </div>
       </a>
-          </div>
-      <% } %>
-      <% j++ %>
       
+    </div>
     <% } %>
+    <% j++ %>
+    
+  <% } %>
+<% } %>
 
-    <% } %>
-  
   </div>
 
 </div>   
+
+
 
 
 
@@ -404,12 +455,7 @@ table {
   RIGHT COLUMN
   -->
 
-<div id="right_column">
-
-  <div></div>
-
-
- 
+<div id="right_column"> 
   
   <div class="spc">
     <h1 style="text-align:center;padding-top:1em;">This <%= params.buy_it_now ? "buy-it-now listing" : "auction" %> is for:</h1>
@@ -487,6 +533,7 @@ table {
     </div>
     
     <!-- COLOUR SWATCH PICKER -->
+    
     <% for(var i=0; i < colours.length; i++) { %>
       <div id="colour_<%=i %>"></div>
     <% } %>
@@ -508,9 +555,11 @@ table {
     </div>
     
     <% ["CaslonPro","ChaparralItalic","EccentricStd","Exmouth","Metroscript","MyriadProLight","Parchment","PerpetuaTitling","PFBodoniScript","PoorRichard","SacramentoRegular","TrajanPro"].forEach(function(font) { %>
-    <div style="margin:0 auto;width:75%;text-align:center;padding:1em;padding-bottom:0.5em;border-bottom:1px solid black;">
-    <img src="http://www.casamiento.co.uk/fonts/<%= font %>.svg" style="display:inline-block;"/>
+    
+    <div class="a_font">
+      <img src="http://www.casamiento.co.uk/fonts/<%= font %>.svg" style="display:inline-block;"/>
     </div>
+    
     <% }) %>
   </div>
 
@@ -532,16 +581,18 @@ table {
       <div class="weight" style="border-top-width:2px;"></div> 
       <span style="font:normal 0.8em OS;">250gsm</span>
     </div>
+    
     <div>
       <div class="weight" style="border-top-width:7px;"></div> 
       <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span>
     </div>
-     <% if (!params.buy_it_now) { %>
+     
+    <% if (!params.buy_it_now) { %>
     <p style="font-family:OS;font-size:0.8em;margin-left:33%;">Please note: this auction is for 250gsm card. For other options, please see our <a class="text_colour_0 caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">buy-it-now</a> listing</p>
     <% } %>
   </div>
 
- <div class="spc">
+  <div class="spc">
     <div style="margin-bottom:0.5em;height:3em;">
       <div style="float:left"><h1>Enter guest names</h1></div>
       <div class="step global_colour_0">STEP 4</div>  
@@ -549,21 +600,20 @@ table {
 
     <div class="chat-bubble">Just email us or send an eBay message with a list of guest names that you want printed on each place card. 
     </div>
+    
   </div>
   
   
   
-<div class="slide">
-      <div style="position:relative;width:100%;">
-    
-        <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:<%= colours[0] %>" class="global_colour_0">
-          <%- document["background-" + attachments_order[3]]  %>
-        </div>
-        <img src="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[3]%>" style="position:relative;display:block;width:100%;z-index:6"/>
-      </div>
-    </div>
+  <div class="slide">
 
-  
+    <div class="background_container global_colour_0">
+      <%- document["background-" + attachments_order[3]]  %>
+    </div>
+    <img src="http://mrdizzy.cloudant.com/test_ebay/<%= _id %>/medium-<%= attachments_order[3]%>" />
+  </div>
+
+
    <!-- 
     BUY-IT BOX 2
  -->
@@ -573,6 +623,19 @@ table {
     </div>
   </div>
   
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  <!-- 
     TESTIMONIALS 
@@ -654,6 +717,21 @@ table {
 <div style="clear:both;"></div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
   var az = "SC", bz = "RI", cz = "PT", dz = "SR", ez = "C=", fz = "htt", gz = "ps://", pp = "p://";
   var hz = ".com";
@@ -719,7 +797,8 @@ table {
   
   function reducePage() {
     $('.intro h5').attr("style", "font-size:2.8em;");
-    $('.place_square').attr("style", "width:100%;float:none");
+    $('h2').attr("style", "font-size:1.6em;");
+    $('.related').attr("style", "clear:both;width:100%;float:none");
     $('.quote h6').attr("style", "width:95%;font-size:1.2em;");
     $('.place_square h2').attr("style", "width:80%;font-size:1.4em;");
     $('#header_container_casamiento').attr("style", "margin:0 auto;");
