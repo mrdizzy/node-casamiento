@@ -86,6 +86,7 @@
 }(jQuery))
 
 $.updateFont = function(font, obj) {
+  var obj = obj || { trigger: function() {}}
   $('head').append("<style type='text/css'> @font-face { font-family:'" + font + "'; src: url('/fonts/"+ font + ".eot?') format('eot'), url('/fonts/" + font + ".woff') format('woff'); }</style>");
   var fontLoader = new FontLoader([font], {
     "fontsLoaded": function(error) {

@@ -36,46 +36,53 @@ var CoordinatorView = Backbone.View.extend({
   rerender: function() {
     this.flat_preview_view.$el.hide()
     this.step_view.$el.hide();
-    this.flat_preview_view.render().$el.fadeIn(2000);
-    this.step_view.render().$el.fadeIn(2000);
+    this.flat_preview_view.render().$el.fadeIn(1000);
+    this.step_view.render().$el.fadeIn(1000);
   },
   events: {
     "click #print_button": "_renderPrintView",
     "click #browse": "browseDesigns",
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
- 
     "click #browse_designs .related": "selectModel"
   },
   selectModel: function(e) {
     var id = $(e.currentTarget).attr('id');
     var model = short_products.get(id);
+    $.updateFont(model.get("font"))
+    console.log(thisProduct.attributes)
+    thisProduct.unset("background-1").unset("background-2").unset("background-3").unset("background-4").unset("background-5")
     thisProduct.set(model.toJSON()).trigger("reset")
+    thisProduct.get("guests").resetFont();
     this.$('#browse_designs').hide();
   },
   browseDesigns: function() {
     short_products.fetch();
   },
   _renderBrowse: function() {   
+    var groups = inGroupsOf(short_products.browsePresenter(), 11);
+    groups = _.map(groups, function(group) {
+      return inGroupsOf(group, 6);
+    });
     var $template = $(Handlebars.template(templates["browse"])({
-      groups: inGroupsOf(short_products.browsePresenter(), 6) //inGroupsOf(short_products.browsePresenter(), 7)
+      groups: groups
     })); 
-    var that = this;
         
     this.$('#browse_designs').html($template)  
- //   this.$('.place_square').mouseover(function() {
- //   $(".inner_place_square", this).hide();
- //   $(".inner_place_square_hidden",this).show();
- //   })
+    this.$('.place_square').mouseover(function() {
+      $(".inner_place_square", this).hide();
+      $(".inner_place_square_hidden",this).show();
+    })
 
- //   this.$('.place_square').mouseout(function() {
- //    $(".inner_place_square", this).show();
- //    $(".inner_place_square_hidden",this).hide();
- //   })  
+    this.$('.place_square').mouseout(function() {
+      $(".inner_place_square", this).show();
+      $(".inner_place_square_hidden",this).hide();
+    })
+      
     this.flat_preview_view.$el.hide()
-        this.$('#product_container').hide()
+    this.$('#product_container').hide()
     this.step_view.$el.hide();
-    this.$('#browse_designs').fadeIn(10000);
+    this.$('#browse_designs').fadeIn(750);
   },
   loadFont: function(e, font) {
     this.$('.font_spinner').hide();

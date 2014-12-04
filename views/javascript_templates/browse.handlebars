@@ -1,28 +1,46 @@
-
-
 {{#each groups}}
 
- {{#each this}}
-   <div id="{{this._id}}"  class="related related_{{@index}}">
-        
-         
-            <div class="place_square">
-            
-                <div class="inner_place_square">
-                  <div class="browse_background_container" style="background-color:{{this.colours.[0]}}">{{{this.background-4}}}</div>              
-                  <img src="http://mrdizzy.cloudant.com/test_ebay/{{this._id}}/display-4" />
-                </div>
-              
-             
-              <h2 class="caz">{{this.name}}</h2>
-              
+<div class="browse_left_column">
+{{#each this.[0]}}
+<div id="{{this._id}}"  class="related related_{{@index}}">
+          <div class="place_square">
+    
+            <div class="inner_place_square">
+              <div class="browse_background_container" style="background-color:{{this.colours.[0]}}">{{{this.background-4}}}</div>              
+              <img src="http://mrdizzy.cloudant.com/test_ebay/{{this._id}}/display-4" />
             </div>
-   
-          
+     <div class="inner_place_square_hidden">
+              <div class="browse_background_container" style="background-color:{{this.colours.[0]}}">{{{this.background-3}}}</div>              
+              <img src="http://mrdizzy.cloudant.com/test_ebay/{{this._id}}/display-3" />
+            </div>
+            <h2>{{this.name}}</h2>
+      
+          </div>
         </div>
 
+{{/each}}
+</div>
+
+<div class="browse_right_column">
+
+{{#each this.[1]}}
+<div id="{{this._id}}"  class="related related_{{@index}}">
+          <div class="place_square">
+    
+            <div class="inner_place_square">
+              <div class="browse_background_container" style="background-color:{{this.colours.[0]}}">{{{this.background-4}}}</div>              
+              <img src="http://mrdizzy.cloudant.com/test_ebay/{{this._id}}/display-4" />
+            </div>
+             <div class="inner_place_square_hidden">
+              <div class="browse_background_container" style="background-color:{{this.colours.[0]}}">{{{this.background-3}}}</div>              
+              <img src="http://mrdizzy.cloudant.com/test_ebay/{{this._id}}/display-3" />
+            </div>
+     
+            <h2 class="caz">{{this.name}}</h2>
+      
+          </div>
+        </div>
 
 {{/each}}
-
-
+</div>
 {{/each}}

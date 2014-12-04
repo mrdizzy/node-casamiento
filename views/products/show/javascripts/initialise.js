@@ -20,7 +20,6 @@ $(function() {
    
   var short_products = new ShortProducts();
   var coordinator_view = new CoordinatorView();  
- 
   
   thisProduct.fetch({silent: true, success: function(model, resp) {
     $.updateFont(thisProduct.get("font"), {trigger: function(){}}) 
