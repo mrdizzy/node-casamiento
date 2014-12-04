@@ -93,7 +93,7 @@ var PlaceCardView = GuestView.extend({
     var compiled_template = Handlebars.template(templates["place_card"]);
     var $template = $(compiled_template(this.model.presenter(this.relativeToViewport())))
     var colours = thisProduct.get("colours");
-  
+  console.log(colours)
     for(var i=0; i < colours.length; i++) {
       $template.find('.colour_' + i).css("background-color", colours[i])
     }

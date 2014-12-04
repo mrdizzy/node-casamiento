@@ -234,6 +234,7 @@ var ShortProducts = Backbone.Collection.extend({
     
     var result = this.map(function(product) {
       var product = product.attributes;
+      // replace the background colour with the appropriate colour
       if(product["background-1"]) {
         var name = product._id.split("-");
         product.name = name[0].replace(/_/g, ' ')
