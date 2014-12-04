@@ -44,7 +44,8 @@ var CoordinatorView = Backbone.View.extend({
     "click #browse": "browseDesigns",
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
-    "click #browse_designs .thumbnail": "selectModel"
+ 
+    "click #browse_designs .related": "selectModel"
   },
   selectModel: function(e) {
     var id = $(e.currentTarget).attr('id');
@@ -57,13 +58,24 @@ var CoordinatorView = Backbone.View.extend({
   },
   _renderBrowse: function() {   
     var $template = $(Handlebars.template(templates["browse"])({
-      groups: inGroupsOf(short_products.browsePresenter(), 4) //inGroupsOf(short_products.browsePresenter(), 7)
+      groups: inGroupsOf(short_products.browsePresenter(), 6) //inGroupsOf(short_products.browsePresenter(), 7)
     })); 
-    this.$('#browse_designs').html($template)    
+    var that = this;
+        
+    this.$('#browse_designs').html($template)  
+ //   this.$('.place_square').mouseover(function() {
+ //   $(".inner_place_square", this).hide();
+ //   $(".inner_place_square_hidden",this).show();
+ //   })
+
+ //   this.$('.place_square').mouseout(function() {
+ //    $(".inner_place_square", this).show();
+ //    $(".inner_place_square_hidden",this).hide();
+ //   })  
     this.flat_preview_view.$el.hide()
         this.$('#product_container').hide()
     this.step_view.$el.hide();
-    this.$('#browse_designs').fadeIn();
+    this.$('#browse_designs').fadeIn(10000);
   },
   loadFont: function(e, font) {
     this.$('.font_spinner').hide();

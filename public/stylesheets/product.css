@@ -144,6 +144,61 @@ font-size:2em;
         width:90px;
       }              
       
+      
+      /* browsing */
+          .background_container {
+        position:absolute;
+        width:100%;
+        height:100%;
+        z-index:-5;
+      }
+          .related { 
+      border-bottom:1px solid grey; 
+      margin-bottom:0.5em;
+    }
+
+      .related_0 {
+        width:60%;
+        float:left; 
+      }
+
+      .related_2, 
+      .related_5 { 
+        width:60%; 
+        float:right; 
+      }
+      
+      .related_1, 
+      .related_3, 
+      .related_4 { 
+        width:39%; 
+        float:left; 
+      }
+
+    .place_square {
+      border:1px solid transparent;
+    }
+      .place_square:hover { 
+        border:1px solid grey;   
+        cursor:pointer;
+        color:#000;
+        text-decoration:underline; 
+      }
+      .place_square img { width:100%; display:block;}
+      
+      .inner_place_square, 
+      .inner_place_square_hidden {
+        position:relative;
+        width:100%;
+      }
+      .inner_place_square_hidden { display:none; }
+
+      .related_1 h2, 
+       .related_3 h2, 
+      .related_4 h2 { font-size:1.2em; }
+
+      
+      
 /* Smartphone */
 @media all and (min-width: 320px) and (max-width: 500px) {
 /* ----------------------------------------------------------------------------- */    

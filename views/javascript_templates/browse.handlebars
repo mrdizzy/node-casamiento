@@ -2,34 +2,27 @@
 
 {{#each groups}}
 
-<table style="margin-left:5%;margin-right:5%;width:90%;border-collapse:collapse;clear:both;">
- <tr>
  {{#each this}}
- <td class="thumbnail" id="{{this._id}}" style="width:25%;cursor:pointer;padding:25px;padding-bottom:0;border:1px solid grey;border-top:0;">
-    <div style="position:relative;width:100%">
-        <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:{{this.colours.[0]}}">
-          {{{this.background-3}}}
+   <div id="{{this._id}}"  class="related related_{{@index}}">
+        
+         
+            <div class="place_square">
+            
+                <div class="inner_place_square">
+                  <div class="background_container" style="background-color:{{this.colours.[0]}}">{{{this.background-4}}}</div>              
+                  <img src="http://mrdizzy.cloudant.com/test_ebay/{{this._id}}/display-4" />
+                </div>
+              
+             
+              <h2 class="caz">{{this.name}}</h2>
+              
+            </div>
+   
+          
         </div>
-        <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{this._id}}/thumb-3" style="position:relative;display:block;width:100%;z-index:6; "/>
-      </div>
-      <div style="position:relative;width:50%;float:left;">
-        <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:{{this.colours.[0]}}">
-          {{{this.background-4}}}
-        </div>
-        <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{this._id}}/thumb-4" style="position:relative;display:block;width:100%;z-index:6; "/>
-      </div>
-      <div style="position:relative;width:50%;float:left;">
-        <div style="position:absolute;width:100%;height:100%;z-index:0;background-color:{{this.colours.[0]}}">
-          {{{this.background-2}}}
-        </div>
-        <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{this._id}}/thumb-2" style="position:relative;display:block;width:100%;z-index:6; "/>
-      </div>
-      <h1>{{this.name}}</h1>
-<div style="clear:both;"></div>
 
-</td>
+
 {{/each}}
 
-</tr></table>
 
 {{/each}}
