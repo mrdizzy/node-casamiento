@@ -1,7 +1,8 @@
 <!doctype html>
+
 <style type="text/css">
 
-div,h1,h2,h3,h4,h5,h6 { margin:0;padding:0; }
+div,body,h1,h2,h3,h4,h5,h6 { margin:0;padding:0; }
 <% if (colours[1]) { %>
   .global_colour_0 .colour_1 { background-color: <%= colours[1] %> }
 <% } %>
@@ -16,38 +17,35 @@ div,h1,h2,h3,h4,h5,h6 { margin:0;padding:0; }
 @font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OSLI.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
 
-
+h1 {
+  text-align:center;
+   font:normal 3.5em GaraI, serif;
+}
 h2 {
-  font: normal 2.2em "TP", sans-serif; 
+  font: normal 2.2em "TP", serif; 
   letter-spacing:10px; 
   margin:0.5em 0 0.5em;
   padding: 0 10px 0 10px;
   text-align:center; 
 }
 
-  h2.price_and_quantity { 
-    font-size:1.4em;
-    text-align:justify; 
-    line-height:1.4em;
-    letter-spacing:0.1em;
-  }
   .place_square h2 { 
     width:70%;
-    margin-top:0;
+    margin-top:0.5em;
     padding-top:0;
     letter-spacing:0.2em;
     text-align:left;
+    padding-left:5px; 
     font-size:1.6em;
   }
   
   a h2 { color: black; }
  
-
 h4 { 
   border-bottom:1px solid black;
-  display:inline-block; 
-  font:normal 2.2em GaraI;
-  margin:0.5em 0 0.5em;
+ width:75%;
+  font:normal 2.2em GaraI, serif;
+  margin:0.5em auto 0.5em;
   padding-bottom:0.5em; 
   text-align:center;
 }
@@ -60,7 +58,7 @@ h4 {
   }
 
 h5 { 
- font: 0.9em "OS IL"; 
+  font: 0.9em "OS IL", sans-serif; 
   margin:10px auto;
   padding: 0 1em 0 1em;
 }
@@ -76,8 +74,8 @@ h5 {
   }
   
 h6 { 
-  font: 0.75em "OS Condensed";
-  margin-bottom:0.5em; 
+  font: 0.75em "OS Condensed", sans-serif;
+  margin-bottom:1em; 
   padding:0.25em 0.25em 0.25em 1em;
   text-align:left;
 }
@@ -87,10 +85,10 @@ p {
   font: 0.9em/1.5em "OS", sans-serif;
   margin-bottom:1em;
 }
-  .intro p { text-align:left; }
-    .intro p.first:first-letter { 
+  #intro p { text-align:left; }
+    #intro p.first:first-letter { 
       float:left;
-      font: normal 5.5em/0.8em TP;
+      font: normal 5.5em/0.8em TP, serif;
       padding-right:0.05em;
     }
   
@@ -127,11 +125,13 @@ a.related_link:visited {
     width:50%; 
   }
 
-    #logo { width:202px; }
+    #logo { width:202px; margin:5px 0 5px 10px;}
       
     #slogan { 
       width: 180px; 
       display:block; 
+      margin-top:10px;
+      margin-right:5px;
       float:right;
     }
     
@@ -159,11 +159,21 @@ a.related_link:visited {
       }
       
     .shell { 
-      background:url('http://www.casamiento.co.uk/gfx/bullets/wiggle.svg') center 24px 17px no-repeat;
+      background:url('http://www.casamiento.co.uk/gfx/bullets/wiggle.svg') center no-repeat;
       height:17px;
       padding:1em 0 1em;
     }
-
+    
+    #intro {
+      clear:both;
+      width:95%;
+      margin:0 auto;
+    }
+    
+    #signature { 
+      width:100px;
+      display:inline-block;
+    }
     .related { 
       border-bottom:1px solid grey; 
       margin-bottom:0.5em;
@@ -214,8 +224,7 @@ a.related_link:visited {
   border-radius:5px;
   color:#FFF;
   font:1.4em OS;
-  margin:0 auto;
-  margin: 1em 0 1em;
+  margin: 1em auto 1em;
   padding:1em;
   text-align:center;
   width:65%;
@@ -240,12 +249,49 @@ a.related_link:visited {
     text-align:center; 
   }
 
+  #name_place_icon { width:155px; }
+  
 table { 
   border-collapse:collapse;
   width:100%; 
+  border-top:1px dotted grey;
+  border-bottom:1px dotted grey;
 }
-.name_place_icon { width:130px; }
-  .name_place_icon img { width:150px; }
+ table table td {
+  padding:0.25em; 
+  text-align:center;
+  }
+
+  table.inside_table {
+    border:0;
+  }
+  
+  table table tr.last_row td {
+  border-bottom:0;
+  }
+  
+  #table_value_format img { width:100px }
+  #table_value_texture {
+  font: 1em TP;
+  letter-spacing:0.1em;
+  }
+  #table_value_quantity {
+    font: 1.6em TP;
+    letter-spacing:0.1em;
+  }
+  .table_key {
+    font: 0.75em "OS Condensed", sans-serif;
+    border-right:1px dotted grey;
+    border-bottom:1px dotted grey;
+    text-align:right;
+    padding-right:0.5em;
+  }
+  
+  .table_value {
+  border-bottom:1px dotted grey;
+  
+  border-right:1px dotted grey;
+  }
   
 .spc {
   border-bottom:1px dotted grey;   
@@ -314,8 +360,7 @@ table {
 
 
 
-<div id="page_container_casamiento">
-     
+<div id="page_container_casamiento">   
 <!-- --------------------------------------------------------
   LEFT COLUMN
 -->
@@ -359,13 +404,11 @@ table {
  <!-- 
     BUY IT BOX 1
  -->
- 
-  <div class="spc" style="clear:both">
   
     <div class="global_colour_0 buyitnow">
-      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"><a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH MANY MORE OPTIONS&hellip;</a>      
+      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"><a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE FOR A BUY-IT-NOW LISTING WITH MANY MORE OPTIONS&hellip;</a>      
     </div>
-  </div>
+
 
 
 
@@ -374,9 +417,9 @@ table {
     BLURB 
  -->
 
-  <div class="intro" style="clear:both;width:90%;margin:0 auto;text-align:center;border:0;">
+  <div id="intro">
     
-    <h5 style="text-align:center;">Impress your guests with elegant personalised place cards&hellip;</h5>
+    <h1>Impress your guests with elegant personalised place cards&hellip;</h1>
   
     <div class="shell"></div>
     
@@ -390,9 +433,9 @@ table {
     
     <p>Place your order today!</p>
     
-    <p style="margin:0;padding:0;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/></p>
-    
-    <p style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
+    <img src="http://www.casamiento.co.uk/gfx/davidsign.png" id="signature" />
+
+    <p>&mdash;David Pettifer<br/>
     
     <span style="font:normal 1.2em GaraI;">Lead Designer</span></p>
   
@@ -405,40 +448,41 @@ table {
 <!-- 
   RELATED ITEMS 
   --> 
-    <div class="spc">
+  <div class="spc">
+    
     <h6>You will also like&hellip;</h6>
-    
-<% j = 0 %>
-
-<% for (var k = 0; k < 3; k++) { %>
-  <% for (var i = 0; i < 6; i++) { %>
-    <% if (related[j]) { %>
-    <div id="related_<%=j %>" class="related">
-    
-      <a class="caz related_link casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">
-        <div class="place_square">
         
-            <div class="inner_place_square">
-              <div class="colour_0"><%- related[j]["background-" + related[j].attachments_order[1]]  %></div>              
-              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/display-<%= related[j].attachments_order[1]%>" />
+    <% j = 0 %>
+
+    <% for (var k = 0; k < 3; k++) { %>
+      <% for (var i = 0; i < 6; i++) { %>
+        <% if (related[j]) { %>
+        <div id="related_<%=j %>" class="related">
+        
+          <a class="caz related_link casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">
+            <div class="place_square">
+            
+                <div class="inner_place_square">
+                  <div class="colour_0"><%- related[j]["background-" + related[j].attachments_order[1]]  %></div>              
+                  <img src="http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/display-<%= related[j].attachments_order[1]%>" />
+                </div>
+              
+                <div class="inner_place_square_hidden">    
+                  <div class="colour_0"><%- related[j]["background-" + related[j].attachments_order[2]]  %></div>
+                  <img src="http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/display-<%= related[j].attachments_order[2]%>" />
+                </div>
+             
+              <h2 class="caz"><%= related[j].name %></h2>
+              
             </div>
-          
-            <div class="inner_place_square_hidden">    
-              <div class="colour_0"><%- related[j]["background-" + related[j].attachments_order[2]]  %></div>
-              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= related[j]._id %>/display-<%= related[j].attachments_order[2]%>" />
-            </div>
-         
-          <h2 class="caz"><%= related[j].name %></h2>
+          </a>
           
         </div>
-      </a>
-      
-    </div>
+        <% } %>
+        <% j++ %>
+        
+      <% } %>
     <% } %>
-    <% j++ %>
-    
-  <% } %>
-<% } %>
 
   </div>
 
@@ -464,47 +508,50 @@ table {
 
 <div id="right_column"> 
   
-  <div class="spc">
-    <h6 style="text-align:center;padding-top:1em;">This <%= params.buy_it_now ? "buy-it-now listing" : "auction" %> is for:</h6>
+    <h6>This <%= params.buy_it_now ? "buy-it-now listing" : "auction" %> is for:</h6>
 
-    <div style="border-bottom:1px dotted grey;padding-top:0.1em;border-top:1px dotted grey;font-size:3em;"><img src="http://www.casamiento.co.uk/gfx/product_types/small/name_place_small.png" style="width:155px;" class="name_place_icon"></div>
+    <img src="http://www.casamiento.co.uk/gfx/product_types/small/name_place_small.png" id="name_place_icon">
     
     <table>
       <tr>
-        <td style="border-right:1px dotted grey;">
-          <table>
+        <td>
+          <table class="inside_table">
           <% if (!params.buy_it_now) { %>
             <tr>
-              <td style="border-bottom:1px dotted grey;border-right:1px dotted grey;width:35%;">
-                <h6 style="text-align:right;">Quantity:</h6>
-              </td>
+              <td class="table_key" id="table_key_quantity">Quantity:</td>
             
-              <td style="border-bottom:1px dotted grey;width:65%;text-align:left;"><h2 class="price_and_quantity" style="margin:0;padding:0;font-size:1.5em;text-align:center;"><img src="http://www.casamiento.co.uk/gfx/qty.png" style="display:inline-block;width:40px;"><%= params.quantity %></h2></td>
+              <td class="table_value" id="table_value_quantity">
+                <img src="http://www.casamiento.co.uk/gfx/qty.png" style="display:inline-block;width:40px;">
+                <%= params.quantity %>
+              </td>
             </tr>
           <% } %>
             
             <tr>
-              <td style="text-align:right;border-bottom:1px dotted grey;border-right:1px dotted grey;"><h6 style="text-align:right;">Format:</h6></td>
-              <td style="text-align:left;border-bottom:1px dotted grey;"><img src="http://www.casamiento.co.uk/gfx/specs/tent.png" style="display:inline-block;width:100px;padding-top:1em;"></td>
+              <td class="table_key" id="table_key_format">Format:</td>              
+              <td class="table_value" id="table_value_format"><img src="http://www.casamiento.co.uk/gfx/specs/tent.png"></td>
             </tr>
             
             <tr>
-              <td style="text-align:right;border-bottom:1px dotted grey;border-right:1px dotted grey;"><h6 style="text-align:right;">Card thickness:</h6></td>
-              <td style="text-align:center;border-bottom:1px dotted grey;">
+              <td class="table_key" id="table_key_thickness">Card thickness:</td>
+              <td class="table_value" id="table_value_thickness">
+              
                 <div style="padding:1em;">
-    <div class="weight" style="border-top:3px solid #000;"></div> <span style="font:normal 0.8em OS;">250gsm</span>
-    </div>
+                  <div class="weight" style="border-top:3px solid #000;"></div> 
+                  <span style="font:normal 0.8em OS;">250gsm</span>
+                </div>
+                
                 <div style="padding:1em;padding-top:0;">
-    <div class="weight" style="border-top:7px solid #000;"></div> <span style="font:normal 0.8em OS;">300gsm</span>
-    </div>
+                  <div class="weight" style="border-top:7px solid #000;"></div> 
+                  <span style="font:normal 0.8em OS;">300gsm</span>
                 </div>
               </td>
             </tr>
-            <tr>
-            <td style="text-align:right;border-right:1px dotted grey;"><h6 style="text-align:right;">Card texture:</h1></td>
-              <td style="text-align:center;">
-            <div style="margin-left:1em;margin-bottom:0;margin-top:0;display:inline-block;font-family:'TP'"><div class="texture"></div><br/>Smooth<br/>White</div>
-              
+            
+            <tr class="last_row">
+              <td class="table_key" id="table_key_texture">Card texture:</td>
+              <td class="table_value" id="table_value_texture">
+                <div class="texture"></div><br/>Smooth<br/>White
               </td>
             </tr>
             
@@ -531,7 +578,6 @@ table {
         
       </tr>
     </table>
-  </div>
 
 
 
@@ -563,16 +609,14 @@ table {
  -->
   <div class="spc">
     <h6>Choose your font</h6>
-      <div class="step global_colour_0">STEP 2</div>
+    <div class="step global_colour_0">STEP 2</div>
 
-    
-    <h5>Choose a font to suit your event. From small and simple to big and bold, fun and fierce to silent and steely&hellip; choose the font to express the personality you want to convey.
-    </h5>
+    <h5>Choose a font to suit your event. From small and simple to big and bold, fun and fierce to silent and steely&hellip; choose the font to express the personality you want to convey.</h5>
     
     <% ["CaslonPro","ChaparralItalic","EccentricStd","Exmouth","Metroscript","MyriadProLight","Parchment","PerpetuaTitling","PFBodoniScript","PoorRichard","SacramentoRegular","TrajanPro"].forEach(function(font) { %>
     
     <div class="a_font">
-      <img src="http://www.casamiento.co.uk/fonts/<%= font %>.svg" style="display:inline-block;"/>
+      <img src="http://www.casamiento.co.uk/fonts/<%= font %>.svg" />
     </div>
     
     <% }) %>
@@ -628,11 +672,10 @@ table {
    <!-- 
     BUY-IT BOX 2
  -->
-  <div class="spc">
     <div class="global_colour_0 buyitnow">
-      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"/> <a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE TO BUY THIS ITEM NOW WITH MANY MORE OPTIONS&hellip;</a>
+      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"/> <a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.buy_it_now_number %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE FOR A BUY-IT-NOW LISTING WITH MANY MORE OPTIONS&hellip;</a>
     </div>
-  </div>
+
   
 
 
@@ -782,13 +825,15 @@ table {
   });
   
   function reducePage() {
-    $('.intro h5').attr("style", "font-size:2.8em;");
-    $('h2').attr("style", "font-size:1.6em;");
+    $('h1').attr("style", "font-size:2.5em;");
+    
+    $('h2').attr("style", "font-size:1.8em;");
+    $('h4').attr("style", "font-size:1.6em;");
     $('.related').attr("style", "clear:both;width:100%;float:none");
     $('.quote h6').attr("style", "width:95%;font-size:1.2em;");
     $('.place_square h2').attr("style", "width:80%;font-size:1.4em;");
-    $('#header_container_casamiento').attr("style", "margin:0 auto;");
-    $('#main_slogan_casamiento').attr("style", "float:none;clear:both;margin:0 auto;");
+    $('#logo').attr("style", "display:block;margin:0 auto;float:none;clear:both");
+    $('#slogan').attr("style", "margin:0 auto;float:none;clear:both;width:180px;padding-top:0.5em;padding-bottom:0.5em;");
   }
   
   function forMobile() {
