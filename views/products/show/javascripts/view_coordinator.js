@@ -50,11 +50,14 @@ var CoordinatorView = Backbone.View.extend({
     var id = $(e.currentTarget).attr('id');
     var model = short_products.get(id);
     $.updateFont(model.get("font"))
-    console.log(thisProduct.attributes)
     thisProduct.unset("background-1").unset("background-2").unset("background-3").unset("background-4").unset("background-5")
     thisProduct.set(model.toJSON()).trigger("reset")
     thisProduct.get("guests").resetFont();
     this.$('#browse_designs').hide();
+        $('body').animate({
+        scrollTop: $('body').offset().top
+      }, 0); 
+      thisProduct.trigger("rerender")
   },
   browseDesigns: function() {
     short_products.fetch();
@@ -82,7 +85,7 @@ var CoordinatorView = Backbone.View.extend({
     this.flat_preview_view.$el.hide()
     this.$('#product_container').hide()
     this.step_view.$el.hide();
-    this.$('#browse_designs').fadeIn(750);
+    this.$('#browse_designs').fadeIn(750);    
   },
   loadFont: function(e, font) {
     this.$('.font_spinner').hide();
