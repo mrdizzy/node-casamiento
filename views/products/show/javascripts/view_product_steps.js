@@ -39,7 +39,13 @@ var StepView = Backbone.View.extend({
   el: '.right_column',
   initialize: function() {
     this.listenTo(thisProduct, 'change:quantity', this._renderGuests)
+    this.listenTo(view_coordinator, 'change:view', this.changeView)
     this.current_step = 1;
+  },
+  changeView: function() {
+    if(!view_coordinator.previous("view")) {
+        this.render();
+    }
   },
   events: {     
     "click #buy": "checkout",        

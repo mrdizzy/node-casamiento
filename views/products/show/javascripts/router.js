@@ -21,10 +21,11 @@ var AppRouter = Backbone.Router.extend({
       coordinator_view._renderPreview();
     },  
     "print": function() {
-      coordinator_view._renderPrintView();
+      view_coordinator.set("view", "print")
     }, 
     "": function(actions) {  
-      coordinator_view._renderHome();     
+    view_coordinator.set("view", "home")
+    app_router.navigate("")
     }
   }
 });
