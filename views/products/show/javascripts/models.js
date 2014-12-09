@@ -183,6 +183,7 @@ var Product = Backbone.Model.extend({
   hex: function() { // This provides a URL for calling the /svg function with the appropriate hex values
     var monochromatic = this.get("monochromatic"),
       colour_0 = this.get("colours")[0].substring(1) // remove hash from #000000
+      console.log(this.attributes)
     if(monochromatic) { // Handle shades of grey
       var first_shade = monochromatic[0]
       var rgb = $('.colour_0').css("background-color");

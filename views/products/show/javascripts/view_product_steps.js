@@ -50,7 +50,18 @@ var StepView = Backbone.View.extend({
     "click #plus_qty": "plusQty",
     "click #minus_qty": "minusQty",
     "focus #qty": "clearQuantity",
-    "click .weight": "updateWeight"
+    "click .weight": "updateWeight",
+    "blur #quick_guests": "quickGuests"
+  },
+  quickGuests: function() {
+  console.log("doing")
+   var guests = ($('#quick_guests').val());
+   guests = guests.split("\n")
+   var names = _.map(guests, function(name) {
+    name = $.trim(name);
+    return {name: name}
+  })   
+  thisProduct.get("guests").reset(names)
   },
   plusQty: function(e) {
     thisProduct.set("quantity", thisProduct.get("quantity") + 1)

@@ -12,6 +12,7 @@ exports.index = function(req, res) {
 exports.show = function(req, res) {
   var id = req.params.product;
   db.view('all/products_without_attachments', { key: id }, function(error, docs) {
+
     db.view("all/fonts_by_id", function(error, fonts_response) {
       res.render('products/show/show.ejs', {     
         locals: {
