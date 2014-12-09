@@ -108,18 +108,15 @@ var Product = Backbone.Model.extend({
     this.listenTo(this.guests, "change", this.saveGuests)
     this.listenTo(this.guests, "reset", this.updateQuantityFromGuests)
   },
-  renderColours: function() {    
-    // Globally change colours according to those saved in localStorage
-    $('.colour_0').css("background-color", this.get("colours")[0])   
-    $('.colour_1').css("background-color", this.get("colours")[1])  
-  },
   updateQuantityFromGuests: function() {
     this.set("quantity", this.guests.length)
   },
   updateColour: function(index, colour) {
     var colours = this.get("colours");
     colours[index] = colour;
-    this.set("colours", colours).trigger("change:colours")
+    this.set("colours", colours).trigger("change:colours")    
+    $('.colour_0').css("background-color", this.get("colours")[0])   
+    $('.colour_1').css("background-color", this.get("colours")[1])  
   },
   adjustGuests: function() {
     var adjustment = this.get("quantity") - this.guests.length
