@@ -6,18 +6,21 @@ $(function() {
   
   var thisProduct = new Product();   
   
-var ViewCoordinator = Backbone.Model.extend({
-  initialize:function() {
-    this.on("change:view", this.updateRouter)
-  },
-  updateRouter: function() {
-        app_router.navigate(this.get("view"))
-  }
-    
-})
-var view_coordinator = new ViewCoordinator()
+// var ViewCoordinator = Backbone.Model.extend({
+//   initialize:function() {
+//     this.on("change:view", this.updateRouter)
+//   },
+//   updateRouter: function() {
+//         app_router.navigate(this.get("view"))
+//   }
+// })
+// 
+// var view_coordinator = new ViewCoordinator()
+
   <%= include view_product_steps.js %>
   <%= include view_place_card.js %>
+  <%= include view_flat_preview.js %>  
+  <%= include view_product_slides.js %>
   <%= include view_print_ui.js %>
   <%= include view_coordinator.js %>  
   <%= include router.js %>
@@ -30,8 +33,8 @@ var view_coordinator = new ViewCoordinator()
   
   var guestList = new Guests();   
    
-var flat_preview_view = new FlatPreviewView();
-var print_ui = new PrintControlPanelView();
+  var flat_preview_view = new FlatPreviewView();
+  var print_ui = new PrintControlPanelView();
 
   var short_products = new ShortProducts();
   var coordinator_view = new CoordinatorView();  

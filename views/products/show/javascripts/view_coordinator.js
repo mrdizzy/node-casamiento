@@ -1,31 +1,3 @@
-var FlatPreviewView = Backbone.View.extend({
-  el: '#flat_preview',
-  initialize: function() {
-    this.listenTo(view_coordinator, "change:view", this.changeView)
-    this.listenTo(thisProduct, "change:colours", this.renderViewOnColourOrFontChange)
-        this.listenTo(thisProduct, "change:font", this.renderViewOnColourOrFontChange)
-  },
-  renderViewOnColourOrFontChange: function() {
-    if(view_coordinator.previous("view") != "preview") {
-      view_coordinator.set("view", "preview")
-      this.render();
-      this.$el.fadeIn(2000)
-    }
-  },
-  render: function() {
-    var place_card_view = new PlaceCardView({
-      model: thisProduct.get("guests").first(),
-      widths_relative_to_viewport: {
-        desktop: 64.505,
-        mobile: 95
-      }
-    }).render()
-    this.$el.html(place_card_view.el).append('<div class="place_card_wrapper" id="mobile_spacer"></div>')
-    return this;
-  }
-})
-
-
   // Takes care of rendering the sub views
   // It is important to make the divs that will contain the html 
   // of rendered views visible first, then add the html to them
@@ -37,31 +9,60 @@ var FlatPreviewView = Backbone.View.extend({
 var CoordinatorView = Backbone.View.extend({
   el: '#inner_page_container',
   initialize: function() {
+    this.first_render = true;
     this.step_view = new StepView(); 
-    this.product_container_view = this.$('#product_container')      
-    this.listenTo(view_coordinator, "change:view", this.changeView) 
-//    this.listenTo(thisProduct, 'change:colours', this._renderPreviewAfterMain)    
- //   this.listenTo(thisProduct, "sync", thioms._renderColours)
- //   this.listenTo(thisProduct, 'change:font', this._renderPreviewAfterMain)
+    this.slides_view = new ProductSlideView();    
+    this.flat_preview_view = new FlatPreviewView();
+    this.print_ui_view = new PrintControlPanelView();
+    this.listenToOnce(thisProduct, 'change:colours', this.renderFlatPreview)    
+ //   this.listenTo(thisProduct, "sync", this._renderColours)
+    this.listenTo(thisProduct, 'change:font', this.renderFlatPreview)
  //   this.listenTo(short_products, 'sync', this._renderBrowse)
  //   this.listenTo(thisProduct, 'reset', this.rerender)
-  },
-  changeView: function() {
-    if(view_coordinator.get("view") == "print") {           
-       $('#inner_page_container').hide();
-    } else if(view_coordinator.get("view") == "home") {
-       $('#inner_page_container').fadeIn(1000);
-    }
   },
   events: {
     "click #print_button": "renderPrintView",
     "click #browse": "browseDesigns",
+    "click #browse_designs .related": "selectModel",
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
-    "click #browse_designs .related": "selectModel"
+  },
+  renderHome: function() {
+  var that = this;
+    if(this.first_render) $('#loading_main_page_spinner').hide();
+    this.flat_preview_view.$el.fadeOut(function() {
+        
+    that.slides_view.render().$el.fadeIn();  
+    });
+    this.step_view.render();
+    this.first_render = false;
+  },
+  renderFlatPreviewFromScratch: function() {    
+    if(!this.first_render) {
+        $('#print_ui').fadeOut();
+    }
+    this.flat_preview_view.render()
+    $('#inner_page_container').fadeIn();
+    
+  },
+  renderFlatPreview: function() {   
+    var that = this;
+    this.slides_view.$el.fadeOut(function() {
+        
+    that.flat_preview_view.render().$el.fadeIn();
+    });  
+    app_router.navigate("preview_place_card")
   },
   renderPrintView: function() {
-    view_coordinator.set("view", "print")  
+  var that = this;
+    $('#inner_page_container').fadeOut(function() {
+        
+    that.print_ui_view.render().$el.fadeIn(1000);                
+      $('body').animate({
+        scrollTop: $('body').offset().top
+      }, 0);
+      app_router.navigate("print")
+    })
   },
   loadFont: function(e, font) {
     this.$('.font_spinner').hide();
