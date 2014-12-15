@@ -101,16 +101,16 @@
         <% total = total + (item.L_QTY * item.L_AMT) %>
         
         <tr>
-          <td class="tdqty"><p class="qty"><%= item.L_QTY %></p></td>
-          <td class="tdcode"><p class="code">PLACE</p></td>
-          <td class="tdname"><p class="name"><%= item.L_NAME %></p></td>
-          <td class="tdamount"><p class="amount"><%= item.L_AMT %></p></td>
-          <td class="tdtotal"><p class="amount"><%= (item.L_QTY * item.L_AMT).toFixed(2) %></p></td>
+          <td class="tdqty"><p class="qty" contenteditable="true"><%= item.L_QTY %></p></td>
+          <td class="tdcod"><p class="code" contenteditable="true">PLACE</p></td>
+          <td class="tdname"><p class="name" contenteditable="true"><%= item.L_NAME %></p></td>
+          <td class="tdamount"><p class="amount" contenteditable="true"><%= item.L_AMT %></p></td>
+          <td class="tdtotal"><p class="amount" contenteditable="true"><%= (item.L_QTY * item.L_AMT).toFixed(2) %></p></td>
         </tr>
       <% })%>
       </table>
       
-      <div class="total"><p><%= total.toFixed(2) %></p></div>
+      <div class="total"><p class="edit" contenteditable="true"><%= total.toFixed(2) %></p></div>
     </div>
 
   <% } %>
