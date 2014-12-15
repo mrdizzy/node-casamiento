@@ -22,7 +22,7 @@ var CoordinatorView = Backbone.View.extend({
  //   this.listenTo(thisProduct, 'reset', this.rerender)
   },
   events: {
-    "click #print_button": "renderPrintView",
+   "click #print_button": "renderPrintView",
     "click #browse": "browseDesigns",
     "click #browse_designs .related": "selectModel",
     "fontpicker:selected": "changeFont",
@@ -55,14 +55,14 @@ var CoordinatorView = Backbone.View.extend({
     app_router.navigate("preview_place_card")
   },
   renderPrintView: function() {
-  var that = this;
+    var that = this;
     $('#inner_page_container').fadeOut(function() {
         
     that.print_ui_view.render().$el.fadeIn(1000);                
       $('body').animate({
         scrollTop: $('body').offset().top
       }, 0);
-      app_router.navigate("print")
+     // app_router.navigate("print")
     })
   },
   loadFont: function(e, font) {

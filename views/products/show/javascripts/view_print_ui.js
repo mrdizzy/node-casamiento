@@ -36,12 +36,12 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
     var images  = $('#printsvg img.place_card_image'),  // Wait for SVG images to be loaded before printing
       counter = images.length;
     
+    this._renderCuttingMarks();
     images.attr('src', thisProduct.svgURL()).load(function() {
       counter--;
       if(counter == 0) thisProduct.trigger("readyforprint")
     })
     
-    this._renderCuttingMarks();
     return this;
   },
   // display cutting marks based on class of #printsvg to avoid the need for showing and hiding
@@ -55,6 +55,7 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
 var PrintControlPanelView = BackboneRelativeView.extend({
   el: '#print_ui',
   initialize: function() {
+  console.log("intilized")
     BackboneRelativeView.prototype.initialize.apply(this)
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
     this.listenTo(thisProduct, "readyforprint", this.renderPrintDialog)
@@ -134,6 +135,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   // Create the SVG print view
   printPage: function(e) {    
     this._place_card_print_collection.render()
+    console.log("rendering")
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
   },
   closePrintAlert: function() {
@@ -149,6 +151,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     window.print()     
   },
   render: function() {
+  console.log("rendering ")
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
       ipad: thisProduct.get("ipad"),
       pounds: thisProduct.get("pounds"),
