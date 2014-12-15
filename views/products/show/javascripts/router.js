@@ -21,6 +21,7 @@ var AppRouter = Backbone.Router.extend({
       coordinator_view.renderFlatPreview();
     },  
     "print": function() {
+
       coordinator_view.renderPrintView();      
     }, 
     "": function(actions) {  

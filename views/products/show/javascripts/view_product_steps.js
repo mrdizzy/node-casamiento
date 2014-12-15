@@ -47,6 +47,7 @@ var StepView = Backbone.View.extend({
  //       this.render();
  //   }
  // },
+
   events: {     
     "click #buy": "checkout",        
     "mouseenter .spc": "hoverOver",

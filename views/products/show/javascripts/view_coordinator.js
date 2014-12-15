@@ -11,6 +11,7 @@ var CoordinatorView = Backbone.View.extend({
   initialize: function() {
     this.first_render = true;
     this.step_view = new StepView(); 
+
     this.slides_view = new ProductSlideView();    
     this.flat_preview_view = new FlatPreviewView();
     this.print_ui_view = new PrintControlPanelView();
@@ -97,7 +98,7 @@ var CoordinatorView = Backbone.View.extend({
     var $template = $(Handlebars.template(templates["browse"])({
       groups: groups
     })); 
-        
+       
     this.$('#browse_designs').html($template)  
     this.$('.place_square').mouseover(function() {
       $(".inner_place_square", this).hide();

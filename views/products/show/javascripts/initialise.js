@@ -17,6 +17,7 @@ $(function() {
 // 
 // var view_coordinator = new ViewCoordinator()
 
+
   <%= include view_product_steps.js %>
   <%= include view_place_card.js %>
   <%= include view_flat_preview.js %>  
@@ -33,8 +34,10 @@ $(function() {
   
   var guestList = new Guests();   
    
+
   var flat_preview_view = new FlatPreviewView();
   var print_ui = new PrintControlPanelView();
+
 
   var short_products = new ShortProducts();
   var coordinator_view = new CoordinatorView();  

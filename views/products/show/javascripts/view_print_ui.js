@@ -56,12 +56,24 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   el: '#print_ui',
   initialize: function() {
     BackboneRelativeView.prototype.initialize.apply(this)
+    this.listenTo(view_coordinator, "change:view", this.changeView)
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
     this.listenTo(thisProduct, "readyforprint", this.renderPrintDialog)
     this.listenTo(thisProduct.get("guests"), 'add', this.appendPlaceCard)
     this._place_card_print_collection = new PrintPlaceCardCollectionView({
       collection: thisProduct.get("guests")
     })
+  },
+  changeView: function() {
+    if(view_coordinator.get("view") == "print") {
+      this.render()
+      this.$el.fadeIn(1000);                    
+      $('body').animate({
+        scrollTop: $('body').offset().top
+      }, 0);     
+    } else {
+      $('#print_ui').hide();
+    }
   },
   events: {
     "click #add_another": "addGuest",
