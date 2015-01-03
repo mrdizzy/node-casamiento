@@ -3,9 +3,6 @@ var db = require('couchdb-migrator').db,
 _ = require('underscore'),
     paypal = require('./../config/paypal_config')();
 
-var timeNow = new Date();
-var timeAgo = new Date(timeNow - 2629740000); //
-console.log(timeNow)
 // Downloads PayPal Transactions for immediate display -- it does not save them to Couch
 
 module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[1,2,3,4]
@@ -46,6 +43,13 @@ module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[
 }
 
 module.exports.index = function(req, res) {  // GET /invoices
+
+
+var timeNow = new Date();
+console.log(timeNow)
+var timeAgo = new Date(timeNow - 2629740000); //
+console.log(timeNow)
+
   paypal.buildQuery("TransactionSearch", function(error, response) {
     parseTransactions(response.TransactionSearchResponse, function(err, results) {
       if (err) {

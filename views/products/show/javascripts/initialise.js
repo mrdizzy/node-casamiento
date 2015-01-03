@@ -1,22 +1,8 @@
 $(function() {
 
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
-
+  
   <%= include models.js %>  
-  
-  var thisProduct = new Product();   
-  
-// var ViewCoordinator = Backbone.Model.extend({
-//   initialize:function() {
-//     this.on("change:view", this.updateRouter)
-//   },
-//   updateRouter: function() {
-//         app_router.navigate(this.get("view"))
-//   }
-// })
-// 
-// var view_coordinator = new ViewCoordinator()
-
   <%= include view_product_steps.js %>
   <%= include view_place_card.js %>
   <%= include view_flat_preview.js %>  
@@ -24,6 +10,8 @@ $(function() {
   <%= include view_print_ui.js %>
   <%= include view_coordinator.js %>  
   <%= include router.js %>
+  
+  var thisProduct = new Product();   
   
   // Initialize templates
   var templates = {}

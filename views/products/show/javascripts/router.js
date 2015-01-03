@@ -2,7 +2,7 @@
 var AppRouter = Backbone.Router.extend({
   routes: {
     "preview_place_card": function() {
-      coordinator_view.renderFlatPreviewFromScratch();
+      coordinator_view.renderFlatPreview();
     },    
     "preview_place_card/colour0/:colour0": function(colour_0) {      
       thisProduct.updateColour(0, "#" + colour_0)
