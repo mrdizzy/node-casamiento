@@ -33,7 +33,7 @@ var assetManagerGroups = {
       route: /\/static\/javascripts\/admin\.js/,
       path: __dirname + '/public/javascripts/libraries/',
       dataType: 'javascript',
-      files: [ "handlebars_helpers.js", "backbone_selection_view.js", 'backbone_syphon.js', 'attachments.js' ]
+      files: [ "handlebars_helpers.js", "handlebars.form-helpers.js","backbone_selection_view.js", 'backbone_syphon.js', 'attachments.js' ]
   }
 };
 

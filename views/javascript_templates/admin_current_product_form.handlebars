@@ -15,31 +15,22 @@
     <input type="file" name="svgupload"></input></p>
     
     <p><label for="monochromatic"> SVG monochromatic colours:</label>
-   <select name="monochromatic"  multiple="true" size="5">
-     
+    
+      <select name="monochromatic"  multiple="true" size="5">
         <option value="10" name="10">10</option>
-     
         <option value="20" name="20">20</option>
-        
         <option value="30" name="30">30</option>
-     
         <option value="40" name="40">40</option>
-        <option value="50" name="50">50</option>
-     
+        <option value="50" name="50">50</option>    
         <option value="60" name="60">60</option>
-        
-        <option value="70" name="70">70</option>
-     
+        <option value="70" name="70">70</option>   
         <option value="80" name="80">80</option>
-    </select></p>
+      </select>
+    </p>
     
     <p><label for="tags">Tags:</label>
-    
-    <select name="tags" multiple="true" size="10">
-      {{#each tags}} 
-        <option value="{{.}}" name="{{tag}}">{{.}}</option>
-      {{/each}}
-    </select></p>
+    {{select "tags" default_tags tags}}
+    </p>
   
   </div>
   

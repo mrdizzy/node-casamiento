@@ -11,7 +11,11 @@
 </div>
 
 <script type="text/javascript">
-    var default_tags = ["victorian", "wallpaper", "damask", "contemporary", "pattern", "floral", "minimalistic", "geometric", "birds", "hearts", "vintage", "dots", "simple"];
+    var default_tags = ["christmas", "victorian", "wallpaper", "damask", "contemporary", "pattern", "floral", "minimalistic", "geometric", "birds", "hearts", "vintage", "dots", "simple"];
+    default_tags = _.map(default_tags, function(tag) {
+        return {text: tag, value: tag}
+    })
+    HandlebarsFormHelpers.register(Handlebars);
 
     // Initialize templates
     var templates = {}

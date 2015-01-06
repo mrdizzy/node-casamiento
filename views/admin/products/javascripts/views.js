@@ -133,7 +133,6 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     // Backbone.Syphon serializes a Backbone view into a JavaScript object. See:
     // https://github.com/derickbailey/backbone.syphon/
     var serialized = Backbone.Syphon.serialize(this);
-    //serialized.tags.sort();
     this.model.set(serialized)
     this.model.save(this.model.attributes, {
       success: function(model, response, options) {
@@ -148,6 +147,7 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     var modelToJSON = this.model.toJSON();   
     modelToJSON.isNew = this.model.isNew();
     modelToJSON.divs = {}
+    modelToJSON.default_tags = default_tags;
     this.model.attachments_order.map(function(attachment) {
         modelToJSON.divs[attachment] = this.model.get("background-" + attachment)
     }, this)
