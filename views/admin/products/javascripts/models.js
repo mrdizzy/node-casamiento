@@ -19,8 +19,6 @@ var Product = Backbone.Model.CouchDB.extend({
   },
   toJSON: function() {
     var json = Backbone.Model.prototype.toJSON.call(this);
-
-    // manipulate the json here
     if (!json.tags) json.tags = []
     return json;
   }

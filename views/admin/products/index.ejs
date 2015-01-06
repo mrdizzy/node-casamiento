@@ -24,16 +24,14 @@
     <% }) %>
   
   // Render javascripts
+    <%- include javascripts/models.js %>  
     <%- include javascripts/views.js %>  
-    <%- include javascripts/models.js %>
-  
   $(function() {    
-
     var products = new Products( <%- JSON.stringify(products) %>, {parse: true} );
     
     new ProductsView({
         collection: products
     }).render();
-      
+    
   })
 </script>

@@ -1,7 +1,6 @@
 var AttachView = Backbone.View.Attachment.extend({
   initialize: function() {
-    if(this.model) 
-      this.model.on("change", this.render, this)
+    if(this.model) this.model.on("change", this.render, this)
   },
   tagName: "td",
   className: "attachment",
@@ -26,10 +25,10 @@ var ProductView = Backbone.View.extend({
     this.model.destroy({success:function(model, response) {
     }})
   },
-  // TODO: refactor to use events and an event listener when current product is changed
   select: function() {
     var cpv = new CurrentProductView({model:this.model, attachmentView: AttachView});
     cpv.render()
+    $('#cpv').html(cpv.el)
   },
   render: function() {
     this.$el.html(this.model.get("_id") + " | <span class='destroy'>destroy</span>");
@@ -50,7 +49,8 @@ var ProductsView = Backbone.View.extend({
     
     this.collection.add(product);
     var cpv = new CurrentProductView({model:product, attachmentView: AttachView});
-    cpv.render();
+    cpv.render();    
+    $('#cpv').html(cpv.el)
   },
   render: function() {
     this.$el.empty();
@@ -67,7 +67,6 @@ var ProductsView = Backbone.View.extend({
 
 // SELECTED PRODUCT
 var CurrentProductView = Backbone.View.CouchDB.extend({
-  el: '#cpv',
   initialize: function() {
     this.place_card_view = new PlaceCardView({model: this.model})
     this.model.on("sync", this.render, this)
@@ -112,6 +111,7 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     this.model.set("background-" + id, val).trigger("change:background")
   },
   renderColours: function() {
+  console.log(this.model.attributes)
     this.$('.colour_0').css("background-color", this.model.get("colours")[0])       
     this.$('.colour_1').css("background-color", this.model.get("colours")[1])
   },    
@@ -134,6 +134,7 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     // https://github.com/derickbailey/backbone.syphon/
     var serialized = Backbone.Syphon.serialize(this);
     this.model.set(serialized)
+    $('#submit_product').hide();
     this.model.save(this.model.attributes, {
       success: function(model, response, options) {
         console.log("Success:", response)

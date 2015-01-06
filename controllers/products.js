@@ -25,6 +25,7 @@ exports.show = function(req, res) {
 };
 
 exports.update = exports.create = function(req, res) {
+console.log(req.body)
   if(req.product) {
     var rev = req.product.rev,
     id = req.product.id;
@@ -32,33 +33,40 @@ exports.update = exports.create = function(req, res) {
   } else {
     var id = req.body._id
   }
-  //var svg = new String(req.body.svg) // new String is used to "copy" the string as we are about to delete it in the next line
+  console.log(id, rev)
+  //var svg = req.body.svg.toString() is used to "copy" the string as we are about to delete it in the next line
   if(req.body.svg) {
     var svg = req.body.svg.toString();    
     delete req["body"].svg;
   }
   db.save(id, rev, req.body, function(err, documents) {
+  console.log("Unable to save main document", err, documents)
+    var new_product = req.body;
+    new_product._rev = documents.rev;
     if (err) {
-    console.log("Error saving main product", err)
       res.status(500);
       res.end();
     }
-    else if(svg) {
-      var svg_id = "svg__" + documents.id;
-      db.get(svg_id, function(e, record) {
-        if (record) {
-          var svg_rev = record._rev
-        }
-        db.save(svg_id,svg_rev, {_attachments: { svg: { 'Content-Type': "image/xml+svgz", data: svg}}}, function(anerror, done) {
-            if (anerror) {
-              console.log("Error saving attachment of SVG",anerror)
-              res.status(500);
-              res.end();
-            } else {
-              console.log("DONE")              
-            }
-          })
-      })  
+    else {
+      if(svg) {
+        var svg_id = "svg__" + documents.id;
+        db.get(svg_id, function(e, record) {
+          if (record) {
+            var svg_rev = record._rev
+          }
+          db.save(svg_id,svg_rev, {_attachments: { svg: { 'Content-Type': "image/xml+svgz", data: svg}}}, function(anerror, done) {
+              if (anerror) {
+                console.log("Error saving attachment of SVG",anerror)
+                res.status(500);
+                res.end();
+              } else {
+                res.json(new_product)           
+              }
+            })
+        }) 
+      } else {
+        res.json(new_product)
+      }
     }
   });
 }

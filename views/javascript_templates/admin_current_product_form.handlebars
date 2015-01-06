@@ -14,6 +14,12 @@
     <p><label for="svgupload">SVG:</label>
     <input type="file" name="svgupload"></input></p>
     
+  
+  </div>
+  
+  <div id="colour_picker"></div>
+  <div id="add_second_colour">Add second colour</div>
+  
     <p><label for="monochromatic"> SVG monochromatic colours:</label>
     
       <select name="monochromatic"  multiple="true" size="5">
@@ -31,14 +37,8 @@
     <p><label for="tags">Tags:</label>
     {{select "tags" default_tags tags}}
     </p>
-  
-  </div>
-  
-  <div id="colour_picker"></div>
-  <div id="add_second_colour">Add second colour</div>
-  
    
-  <input type="submit" style="clear:both;">Submit</a>
+  <input type="submit" id="submit_product" style="clear:both;">Submit</a>
 </form>
 
 <div id="background_customisation" style="clear:both;">

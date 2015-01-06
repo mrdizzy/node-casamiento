@@ -1,7 +1,7 @@
 var db = require('./../config/db').test_ebay,
     _ = require('underscore');
 
-var tags = ["christmas", "vintage", "floral", "contemporary", "minimalist", "solid"]
+var tags = ["christmas", "victorian", "wallpaper", "damask", "contemporary", "pattern", "floral", "minimalistic", "geometric", "birds", "hearts", "vintage", "dots", "simple"]
 
 // Route: /ebay/:id
 // This renders an ebay product view by looking in the /views/ebay/product_type folder for its template as different product types will need different rendering
