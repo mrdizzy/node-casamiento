@@ -18,7 +18,7 @@ var Product = Backbone.Model.CouchDB.extend({
     this.set("font_size", this.get("font_size") * amount)
   },
   toJSON: function() {
-    var json = Backbone.Model.prototype.toJSON.call(this);
+    var json = Backbone.Model.CouchDB.prototype.toJSON.call(this);
     if (!json.tags) json.tags = []
     return json;
   }

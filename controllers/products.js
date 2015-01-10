@@ -40,10 +40,11 @@ console.log(req.body)
     delete req["body"].svg;
   }
   db.save(id, rev, req.body, function(err, documents) {
-  console.log("Unable to save main document", err, documents)
     var new_product = req.body;
     new_product._rev = documents.rev;
     if (err) {
+    
+  console.log("Unable to save main document", err, documents)
       res.status(500);
       res.end();
     }

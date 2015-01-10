@@ -7,7 +7,9 @@ exports.index = function(req, res) {
     if (error) {
       console.log(error)
     }
+   
     else {
+    console.log(docs.toArray())
       res.render("admin/products/index", {
         products: docs.toArray(), 
         layout:"admin_layout" 
