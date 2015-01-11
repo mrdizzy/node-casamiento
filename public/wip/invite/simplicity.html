@@ -33,6 +33,7 @@
 				border-bottom:1px solid black;
 			}
 	    .A6_container {
+			  border:1px dotted grey;
 			  width:105mm;
 				height:148.5mm;
 				float:left;				
@@ -129,9 +130,27 @@
 
 <div id="control_panel">
   <img src="/gfx/logo/casamiento_black.svg" style="width:100px;" />
+	<span id="select_front_invitation">Front</span> | <span id="select_back_invitation">Back</span> | <span id="select_envelope_inside">Inside envelope</span>
 </div>
 
 <div class="printable_area">
+
+<div id="second_monogram">
+  <div style="width:25mm;height:25mm;position:relative;">
+  <img src="monogram_2.svg" style="width:100%;height:100%;position:absolute;" />
+	<div class="fulljustify" style="padding-top:0.62em;text-align:center;letter-spacing:0.4em;width:85%;margin:0 auto;font:normal 0.7em 'TP'">Helena</div>
+	
+	<div class="fulljustify" style="padding-top:4.6em;text-align:center;letter-spacing:0.4em;width:85%;margin:0 auto;font:normal 0.7em 'TP'">Daniel</div>
+	</div>
+	</div>
+</div>
+
+<div id="envelope_inside" style="position:relative;width:210mm;height:210mm";>
+<img src="envelope_background.svg" style="position:absolute;width:210mm;height:210mm;" />
+  <div style="text-align:center;color:#49008C;font:normal 1.5em 'TP';letter-spacing:0.5em;position:absolute;top:30mm;right:20mm;width:30mm;padding:0.5em;height:8mm;border-radius:2em;background-color:#FFF;transform:rotate(45deg)">
+    a&amp;m	
+  </div>
+</div>
 
 	<div id="invitation_front">
 		<div class="A6_container">
@@ -186,7 +205,7 @@
 	</div>
 	
 	<div id="invitation_back">
-		<div class="A6_container" style="border:1px solid black;">
+		<div class="A6_container">
 			<img src="simplicity_front.svg" class="invitation_image" />	
 			<div class="second_monogram" style="margin-top:35mm;"></div>
 			<div style="padding-top:30mm;margin:0 auto;text-align:center;font:normal 1em 'TP';letter-spacing:0.2em">&middot;Invitation&middot;</div>
@@ -198,6 +217,19 @@
 <script>
 $('#original_monogram').clone().appendTo('.second_monogram');
 $('.second_monogram').css("transform", "scale(1.25)")
+$('#select_front_invitation').click(function() {
+	$('#invitation_front').show();
+	$('#invitation_back').hide();
+})
+$('#select_envelope_inside').click(function() {
+	$('#invitation_front').hide();
+	$('#invitation_back').hide();
+	$('#envelope_inside').show()
+})
+$('#select_back_invitation').click(function() {
+	$('#invitation_front').hide();
+	$('#invitation_back').show();
+})
 </script>
 </body>
 
