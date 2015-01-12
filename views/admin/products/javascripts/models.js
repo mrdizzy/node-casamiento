@@ -16,6 +16,11 @@ var Product = Backbone.Model.CouchDB.extend({
   },
   adjustFontSize: function(amount) {
     this.set("font_size", this.get("font_size") * amount)
+  },
+  toJSON: function() {
+    var json = Backbone.Model.CouchDB.prototype.toJSON.call(this);
+    if (!json.tags) json.tags = []
+    return json;
   }
 });
 

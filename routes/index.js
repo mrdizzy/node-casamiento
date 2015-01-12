@@ -14,7 +14,21 @@ module.exports = function(app){
   });
   var attachments = app.resource("attachments", require('./../controllers/attachments'));
   products.add(attachments);
+  
+  // eBay
+  app.get("/ebay", require('./../controllers/ebay').index);
+  app.post("/ebay", require('./../controllers/ebay').create);
+  app.get('/ebay/:id', require('./../controllers/ebay').show)
+  
+  app.post("/ebay/places", require('./../controllers/ebay').places)
+  
+  // Admin  
+  app.get("/admin/products", require('./../controllers/admin/products').index); 
+  app.resource("conversations", require('./../controllers/conversations'));
+  app.resource("invoices", require('./../controllers/invoices'))
 
+  // Homepage
+  app.get("/", require("./../controllers/welcome").index)
   // Look at all the files in the current /routes directory and require them
   fs.readdirSync(__dirname).forEach(function(file) {
       if (file == "index.js") return;

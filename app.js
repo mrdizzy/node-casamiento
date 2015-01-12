@@ -33,7 +33,7 @@ var assetManagerGroups = {
       route: /\/static\/javascripts\/admin\.js/,
       path: __dirname + '/public/javascripts/libraries/',
       dataType: 'javascript',
-      files: [ "handlebars_helpers.js", "backbone_selection_view.js", 'backbone_syphon.js', 'attachments.js' ]
+      files: [ "handlebars_helpers.js", "handlebars.form-helpers.js","backbone_selection_view.js", 'backbone_syphon.js', 'attachments.js' ]
   }
 };
 
@@ -60,7 +60,7 @@ app.configure(function() {
     });
     
     // Compresses static files and res.json responses    
-     app.use(compression()); // must be one of the first middlewares to compress effectively
+    app.use(compression()); // must be one of the first middlewares to compress effectively
     
     app.use(express.cookieParser());
     app.use(express.favicon());
@@ -76,6 +76,10 @@ app.configure(function() {
     
   // app.use(cacher.cache('seconds', 1000))
     app.use(app.router);
+    // Error handling function for 404s and 500s
+    app.use(function (err, req, res, next) {
+      res.send("There was an error!");
+    })
 });
 
 app.configure('development', function() {
@@ -85,7 +89,7 @@ app.configure('development', function() {
 require('./routes')(app);
 
 http.createServer(app).listen((process.env.PORT || 3000), function() {
-    console.log("Express server listening on port " + (process.env.PORT || 3000));
+  console.log("Express server listening on port " + (process.env.PORT || 3000));
 });
 
 
