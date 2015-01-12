@@ -76,12 +76,12 @@ exports.places = function(req, res) {
 }
 exports.index = function(req, res) {
     db.view('products/all', function(err, docs) {
-    var documents = _.groupBy(docs.toArray(), 'product_type');
-documents.tags =  tags;
-        res.render('ebay/index', {
-            layout: false,
-            documents: documents
-        });
-    });
+      var documents = _.groupBy(docs.toArray(), 'product_type');
+      documents.tags =  tags;
+      res.render('ebay/index', {
+        layout: false,
+        documents: documents
+      });
+  });
 }
 

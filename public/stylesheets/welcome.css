@@ -34,7 +34,8 @@
 }
 
 #description_column {
-	margin-left:60%;border-left:1px dotted black;
+	margin-left:60%;
+	border-left:1px dotted black;
 }
 	#welcome_column h5 { 
 	  font: normal 4.4em/1.2em 'GaraI', serif;
@@ -84,7 +85,7 @@ body {
 		background-image:url('/gfx/background_wiggle.svg');  
 	}  
 	  #header_wrapper {
-				text-align:center;
+			text-align:center;
 	    background-color:#fff; 
 			border-bottom:1px solid black;
     }
@@ -97,15 +98,15 @@ body {
 			}
 			
 			#browse {
-			display:inline-block;
-			font: normal 1.4em 'OS Light';
+				display:inline-block;
+				font: normal 1.4em 'OS Light';
 			}
 				
 			#dreams_slogan { 
-			margin-top:25px;
-			margin-right:30px;
-			float:right;
-			display:block;
+				margin-top:25px;
+				margin-right:30px;
+				float:right;
+				display:block;
 				width:150px;
 			}
 
@@ -249,8 +250,8 @@ body {
 		background-repeat:no-repeat;
 		background-size:100%;
 		text-align:center;
-		line-height:46px;
 		color:white;
+		line-height:50px;
 		float:left;
 		font-size:2.4em;
 		font-weight:700;

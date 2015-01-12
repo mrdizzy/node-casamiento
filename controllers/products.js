@@ -9,23 +9,26 @@ exports.index = function(req, res) {
   });
 }
 
-exports.show = function(req, res) {
+exports.show = function(req, res, next) {
   var id = req.params.product;
   db.view('all/products_without_attachments', { key: id }, function(error, docs) {
-
-    db.view("all/fonts_by_id", function(error, fonts_response) {
-      res.render('products/show/show.ejs', {     
-        locals: {
-          fonts: fonts_response.toArray(), 
-          product: docs[0].value // First record   
-        }
-      });
-    })
+    if(docs.length == 0) {
+      var myerr = new Error('Record not found!');
+      return next(myerr); // <---- pass it, not throw it
+    } else {
+      db.view("all/fonts_by_id", function(error, fonts_response) {
+        res.render('products/show/show.ejs', {     
+          locals: {
+            fonts: fonts_response.toArray(), 
+            product: docs[0].value // First record   
+          }
+        });
+      })
+    }
   });
 };
 
 exports.update = exports.create = function(req, res) {
-console.log(req.body)
   if(req.product) {
     var rev = req.product.rev,
     id = req.product.id;
@@ -33,7 +36,6 @@ console.log(req.body)
   } else {
     var id = req.body._id
   }
-  console.log(id, rev)
   //var svg = req.body.svg.toString() is used to "copy" the string as we are about to delete it in the next line
   if(req.body.svg) {
     var svg = req.body.svg.toString();    

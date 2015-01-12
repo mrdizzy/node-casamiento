@@ -1,19 +1,18 @@
 var db = require('couchdb-migrator').db,
-    async = require('async'),
-_ = require('underscore'),
-    paypal = require('./../config/paypal_config')();
+  async = require('async'),
+  _ = require('underscore'),
+  paypal = require('./../config/paypal_config')();
 
 var timeNow = new Date();
 var timeAgo = new Date(timeNow - 2629740000); //
-console.log(timeNow)
+
 // Downloads PayPal Transactions for immediate display -- it does not save them to Couch
 
 module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[1,2,3,4]
  
   var transactions = req.body.transaction_ids;
-  if(typeof transactions === "string") { // If we are only submitting one transaction from the form then we need to make it into an array
-    transactions = [transactions]
-  }
+   // If we are only submitting one transaction from the form then we need to make it into an array
+  if(typeof transactions === "string") transactions = [transactions]
 
   async.map(transactions, function(transaction, callback) {
         
