@@ -21,7 +21,7 @@ var assetManagerGroups = {
     dataType: 'css',
     // These files must be availble in the directory specified by path above
     // Make sure they are in the right order--stylesheets cascade! Reponsive last!
-    files: [ 'new_color_picker.css', 'font_picker.css', 'main.css',  'product.css', 'place_cards.css', 'ui_print.css', 'print.css' ]
+    files: [ 'reset.css', 'new_color_picker.css', 'font_picker.css', 'main.css',  'product.css', 'place_cards.css', 'ui_print.css', 'print.css' ]
   },
   'js': { 
     route: /\/static\/javascripts\/all\.js/,
@@ -78,7 +78,7 @@ app.configure(function() {
     app.use(app.router);
     // Error handling function for 404s and 500s
     app.use(function (err, req, res, next) {
-      res.send("There was an error!");
+      res.send("There was an error!" + err);
     })
 });
 
