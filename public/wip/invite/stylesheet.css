@@ -1,0 +1,180 @@
+body, div{
+  text-rendering: optimizeLegibility;
+  padding:0;
+  margin:0;
+}
+body {
+  width:210mm;
+  height:297mm;
+}
+
+@font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
+@font-face { font-family:"OS Light Italic"; src: url('/f/OSLI.eot?') format('eot'), url('/f/OSLI.woff') format('woff'); }
+@font-face { font-family:"TP"; src: url('/f/t.eot?') format('eot'), url('/f/t.woff') format('woff'); }
+@font-face { font-family:"Exmouth"; src: url('/f/exmouth.eot?') format('eot'), url('/f/exmouth.woff') format('woff'); } 
+@page {
+  size:A4;
+  margin:0;
+}
+.printable_area {
+  display:none;
+}
+#control_panel {
+  z-index:1000;
+  position:fixed;
+  top:0;
+  bottom:0;
+  height:100px;
+  background-color:#FFF;
+  width:100%;
+  border-bottom:1px solid black;
+}
+.A6_container {
+  width:105mm;
+  float:left;
+  height:148.5mm;	
+  position:relative;
+}
+
+.invitation_image {
+  display:block;
+  width:100%;
+  height:100%;
+  position:absolute;
+  z-index:-1;
+}
+.monogram {
+  text-align:center;
+  padding-top:12mm;
+  margin:0 auto;
+  z-index:2;
+}
+
+#ampersand { 
+  vertical-align:middle;
+  z-index:100;
+  position:relative; 
+  padding:0;
+  margin:0;
+  display:inline-block;
+  width:5em;
+}
+
+.monogram .first_name, .monogram .second_name {
+  display:inline-block;
+  position:relative;
+  font: normal 1.2em "TP";
+  text-transform:uppercase;
+  line-height:1.5em;				 
+  letter-spacing:0.4em; 
+  vertical-align:middle;
+}
+
+.monogram .first_name {
+  position:relative;
+  margin-right:-0.5em;
+}
+ 
+.monogram .second_name {
+  position:relative;
+  margin-left:-1em;
+} 
+ 
+.monogram_city { text-transform:uppercase;}
+.monogram_county { text-transform:lowercase;}
+.monogram_date { text-transform:capitalize;}
+
+.monogram_bottom_line, .monogram_top_line {
+  display:block;
+  width:100%;
+  position:absolute;
+}
+.monogram_bottom_line {
+  bottom:0;
+}
+.monogram_town {
+  font:normal 0.55em 'TP';
+  letter-spacing:0.25em;
+  margin:0 auto;
+}
+.monogram_date {
+  font:normal 1em 'Exmouth';
+  margin:0 auto;
+  letter-spacing:0;
+}
+
+.bride, .groom {
+  margin:0 auto;
+  margin-top:5mm;
+  text-align:center;
+   text-transform:capitalize;
+  font:normal 1.9em 'Exmouth'
+}
+.groom { margin-top:0;}
+
+.and {
+  margin:0 auto;
+  text-align:center;
+  font:normal 0.7em 'TP';
+  letter-spacing:0.05em;"
+}
+.guestname { 
+  text-transform:capitalize;
+  padding-top:2.5mm;
+  margin:0 auto;text-align:center;font:normal 1.7em 'Exmouth';
+}
+.layout_container {
+  display:inline-block;
+  text-align:center;width:50px;
+  padding:1em;21
+
+  border-radius:0.75em;
+}
+.layout_container:hover {
+  background-color:#EEE;
+}
+ .editable:hover {
+  background-color:lightgrey;
+ }
+.bullet {
+  width:0.9em;
+  height:0.9em;
+}
+
+.request {
+  padding-top:3.4mm;
+  margin:0 auto;
+  text-align:center;
+  font:normal 0.75em 'TP';
+  letter-spacing:0.1em;
+}
+
+#description {
+  padding-top:2.5mm;
+  width:80mm;
+  margin:0 auto;
+  text-align:center;
+  font:normal 0.75em 'TP';
+  letter-spacing:0.1em;
+  line-height:2.2em
+}
+
+@media print {
+  #control_panel {
+    display:none;
+  }
+  #ui_area {
+    display:none;
+  }
+  body {
+    width:210mm;
+    height:297mm;
+  }
+  .printable_area {
+  width:100%;
+    margin-top:0;
+    margin:0;
+    display:block;
+    padding:0;
+  }
+}		
