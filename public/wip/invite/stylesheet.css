@@ -3,35 +3,44 @@ body, div{
   padding:0;
   margin:0;
 }
-body {
-  width:210mm;
-  height:297mm;
-}
 
 @font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 @font-face { font-family:"OS Light Italic"; src: url('/f/OSLI.eot?') format('eot'), url('/f/OSLI.woff') format('woff'); }
 @font-face { font-family:"TP"; src: url('/f/t.eot?') format('eot'), url('/f/t.woff') format('woff'); }
 @font-face { font-family:"Exmouth"; src: url('/f/exmouth.eot?') format('eot'), url('/f/exmouth.woff') format('woff'); } 
+
 @page {
   size:A4;
   margin:0;
 }
-.printable_area {
-  display:none;
-}
+#printable_area { display:none; }
+#ui_area { margin-top:80px;}
+
 #control_panel {
   z-index:1000;
   position:fixed;
   top:0;
   bottom:0;
-  height:100px;
+  height:80px;
   background-color:#FFF;
   width:100%;
   border-bottom:1px solid black;
 }
+
+.layout_container {
+  display:inline-block;
+  text-align:center;width:50px;
+  padding:1em;21
+  border-radius:0.75em;
+}
+.layout_container:hover {
+  background-color:#EEE;
+}
+
 .A6_container {
   width:105mm;
   float:left;
+  z-index:5;
   height:148.5mm;	
   position:relative;
 }
@@ -41,7 +50,7 @@ body {
   width:100%;
   height:100%;
   position:absolute;
-  z-index:-1;
+  z-index:-10;
 }
 .monogram {
   text-align:center;
@@ -93,12 +102,12 @@ body {
   bottom:0;
 }
 .monogram_town {
-  font:normal 0.55em 'TP';
+  font:normal 0.6em 'TP';
   letter-spacing:0.25em;
   margin:0 auto;
 }
 .monogram_date {
-  font:normal 1em 'Exmouth';
+  font:normal 1.2em 'Exmouth';
   margin:0 auto;
   letter-spacing:0;
 }
@@ -122,16 +131,6 @@ body {
   text-transform:capitalize;
   padding-top:2.5mm;
   margin:0 auto;text-align:center;font:normal 1.7em 'Exmouth';
-}
-.layout_container {
-  display:inline-block;
-  text-align:center;width:50px;
-  padding:1em;21
-
-  border-radius:0.75em;
-}
-.layout_container:hover {
-  background-color:#EEE;
 }
  .editable:hover {
   background-color:lightgrey;
@@ -170,7 +169,7 @@ body {
     width:210mm;
     height:297mm;
   }
-  .printable_area {
+  #printable_area {
   width:100%;
     margin-top:0;
     margin:0;

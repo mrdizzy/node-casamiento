@@ -20,15 +20,18 @@
 	
 	<!-- CONTROL PANEL -->
 
-<div id="control_panel" style="height:90px;line-height:50px;">
+<div id="control_panel" style="line-height:50px;">
   <img src="/gfx/logo/casamiento_black.svg" style="vertical-align:middle;width:150px" />
 	
 	<div class="layout_container">
 	  <img src="open.svg" style="width:35px;vertical-align:middle;" />
 	</div>
+	
 	<div class="layout_container" style="background-color:#EEE;">
 	  <img src="flat.svg" style="width:30px;vertical-align:middle;" />
 	</div>
+	
+	<img src="/gfx/logo/drms.svg" style="padding:5px;display:block;float:right;width:140px;"/>
 </div>
 
 
@@ -52,27 +55,26 @@
 <!-- PRINTABLE AREA -->
 
 
-<div class="printable_area">
+<div id="printable_area">
 
-
-				<div id="invitation_front" class="A6_container">
+	<div class="invitation_front A6_container">
 
 			<img src="simplicity_back.svg" class="invitation_image" />	
 			
 			<div id="original_monogram" class="monogram">
 
-				<div class="editable first_name" contenteditable="true">
+				<div class="first_name">
 					<img class="monogram_top_line" src="line.svg" />
 					<img class="monogram_bottom_line" src="line.svg" />
-					Anna
+					<span class="editable actual_first_name" contenteditable="true">ANNA</span>
 				</div>
 				
 				<img id="ampersand" src="ampersand.svg" />
 				
-				<div class="editable second_name" contenteditable="true">
+				<div class="second_name">
 					<img class="monogram_top_line" src="line.svg" />
 					<img class="monogram_bottom_line" src="line.svg" />
-					Peter
+					<span class="editable actual_second_name" contenteditable="true">Peter</span>
 				</div>
 					
 				<div class="monogram_town">
@@ -109,7 +111,7 @@
 			
 		</div>
 	
-		<div id="invitation_back" class="A6_container">
+		<div class="invitation_back A6_container">
 			<img src="simplicity_front.svg" class="invitation_image" />	
 			<div class="second_monogram" style="margin-top:35mm;"></div>
 			<div style="padding-top:30mm;margin:0 auto;text-align:center;font:normal 1em 'TP';letter-spacing:0.2em">&middot;Invitation&middot;</div>
@@ -120,26 +122,23 @@
 </div>
 
 <script>
+
+  var vw = $('html').width();
+
+	var transform_value = vw / 794
+
 	// Copy monogram to front design
 	$('#original_monogram').clone().appendTo('.second_monogram');
+
+	$('.invitation_front').clone().appendTo('#printable_area');
+	$('.invitation_back').clone().appendTo('#printable_area')	
 	
-	$('#invitation_front').clone().appendTo('#ui_area')
-	$('#ui_area #invitation_front').css("transform", "scale(1.5)")
-	$('#ui_area #invitation_front').css("transform-origin", "top left")
+	var $printable_area = $('#printable_area').clone()
 	
-	//$('.second_monogram').css("transform", "scale(1.25)")
-	//	$('.second_monogram').css("position", "absolute")
-
-	$('#select_front_invitation').click(function() {
-		$('#invitation_front').show();
-		$('#invitation_back').hide();
-	})
-
-	$('#select_back_invitation').click(function() {
-		$('#invitation_front').hide();
-		$('#invitation_back').show();
-	})
-
+	$('#ui_area').html($printable_area.html())
+	$('#ui_area').css("transform", "scale(" + transform_value + ")")
+	$('#ui_area').css("transform-origin", "top left")
+	
 	$('.editable').blur(function(e) {
 		var $target = $(e.currentTarget);
 		var classes = $target.attr('class').split(' ');
