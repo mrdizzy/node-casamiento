@@ -30,9 +30,7 @@
     margin-bottom:0.5em;
   }
 
-  #step_1 { 
-    border-top:1px dotted #000; 
-  }
+  #step_1 { border-top:1px dotted #000; }
   
   .spc {   
     padding-left:0.3em;

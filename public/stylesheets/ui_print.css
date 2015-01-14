@@ -1,29 +1,26 @@
-#top_of_page {
-  position:relative;
-}
+#top_of_page { position:relative; }
 
   #control_panel {
     width:100%;
     background-color:white;
     padding-top:0.5em;
     position:fixed; 
-    z-index:99999999999999999999999999999999999999999999999999999999999999999999;  
+    z-index:500;  
     border-bottom:1px solid black; 
   }
     #ui_logo_container {
       float:left;
-      width:20%;
+      width:18%;
       text-align:center;
     }
       #ui_print_logo {
         text-align:center;
-        width:80%;
+        width:95%;
       }
         
     #ui_print_colour_picker_container {
       float:left;
-      text-align:center;
-      width:30%;
+      width:32%;
     }
   
       .colour_picker_wrapper {
@@ -40,31 +37,40 @@
         }
         
         .colour_picker_wrapper .dizzycp-big_colour_square_frame { 
-          margin-left:40px;
+          margin-left:20px;
           float:left;
         }
         
         .colour_picker_wrapper .dizzycp-text_label_for_colour { 
           text-align:left;
-          margin-left:95px;
+          margin-left:75px;
           padding-top:12px;
         }
 
     #ui_printer_icon {
       float:left;
       position:relative;
-      left:-5%;
+      left:-2%;
       text-align:center;
       width:5%;
-    }
-  #crop_marks {
-    text-align:center;
-    padding-bottom:0.5em;
-    margin-bottom:0.5em;
-    border-bottom:1px solid black;
-    font: normal 1.4em "OS Light Italic";
-    margin-right:2%
-  }
+    }    
+    
+    #ui_print_font_picker_container {
+      width:30%;
+      margin-right:7%;
+      float:right;
+      padding-top:3px;
+      height:50px;
+      padding-bottom:3px;
+    }    
+    
+    #ui_print_font_picker_container .font_selector_container tr:first-child {
+      background-color:#EEE
+    } 
+    #ui_print_font_picker_container .font_selector_container tr:hover {
+      background-color:lightgrey;
+    } 
+    
     #ui_global_font, 
     #ui_global_font_mobile {
       width:43%;
@@ -112,7 +118,7 @@
       border:1px solid black;
       position:fixed;
       background-color:white;
-      z-index:1000000000000000000000000000000000000000000;
+      z-index:900;
       right:0;
       left:0;
       box-shadow:7px 7px 0 0 lightgrey;
@@ -234,21 +240,6 @@ input.cmn-toggle-yes-no:checked + label:before {
 input.cmn-toggle-yes-no:checked + label:after {
   transform: rotateY(0);
 }
-    #ui_print_font_picker_container {
-      width:30%;
-      margin-right:7%;
-      float:right;
-      padding-top:3px;
-      height:50px;
-      padding-bottom:3px;
-    }    
-    
-    #ui_print_font_picker_container .font_selector_container tr:first-child {
-      background-color:#EEE
-    } 
-    #ui_print_font_picker_container .font_selector_container tr:hover {
-      background-color:lightgrey;
-    } 
     
     #ui_guests {
       width:3%;

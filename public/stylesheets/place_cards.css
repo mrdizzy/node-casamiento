@@ -29,6 +29,38 @@
   }
     .font_baseline_adjust_buttons { top:14%; }
     
+      .plus_font, 
+      .delete_guest,
+      .up_baseline {
+        background-color:white;
+        margin-bottom:5px;
+      }
+        .specific_font_increase_icon,
+        .specific_delete_icon {
+          margin-top:25%;
+          width:50%;
+        }
+        
+        .specific_baseline_up_icon {
+          margin-top:35%;
+          width:50%
+        }
+        .specific_baseline_down_icon {
+          margin-top:40%;
+          width:50%
+        }
+      
+      .minus_font,
+      .down_baseline {
+        background-color:white;
+      }  
+        
+        .specific_font_decrease_icon {
+          margin-top:43%;
+          width:30%;
+        }
+        
+    
     .delete_button { top:45%; }
     
     .place_card_view:nth-child(odd) .place_card_border {
@@ -62,6 +94,7 @@
           height:100%;
           position:absolute;         
         }
+        
     .place_card_parent {
       width: 95%; 
       position: relative;
@@ -122,7 +155,7 @@
           width:100%;
           position:absolute;
           height:100%;
-          z-index:10000000;
+          z-index:100;
         }
     
           .guest_wrapper input {

@@ -1,24 +1,39 @@
 <div class="font_baseline_adjust_buttons">
-  <div class="button_wrapper plus_font"  style="background-color:white;margin-bottom:5px;">
-    <div class="button_inside deselected"><img src="/gfx/font_increase.svg" style="margin-top:25%;width:50%"/></div>
+
+  <div class="button_wrapper plus_font">
+    <div class="button_inside deselected">
+      <img src="/gfx/font_increase.svg" class="specific_font_increase_icon" />
+    </div>
   </div>
-  <div class="button_wrapper minus_font"  style="background-color:white;">
-    <div class="button_inside deselected"><img src="/gfx/font_decrease.svg" style="margin-top:43%;width:30%"/></div>
+  
+  <div class="button_wrapper minus_font">
+    <div class="button_inside deselected">
+      <img src="/gfx/font_decrease.svg" class="specific_font_decrease_icon" />
+    </div>
   </div>
+  
 </div>
   
 <div class="delete_button">
-  <div class="button_wrapper delete_guest" style="margin-bottom:5px;background-color:white;">
-    <div class="button_inside deselected"><img src="/gfx/trash/delete96.svg" style="margin-top:25%;width:50%"/></div>
+  <div class="button_wrapper delete_guest">
+    <div class="button_inside deselected">
+      <img src="/gfx/trash/delete96.svg" class="specific_delete_icon" />
+    </div>
   </div>
 </div>
   
 <div class="font_size_adjust_buttons">
-  <div class="button_wrapper up_baseline" style="background-color:white;margin-bottom:5px">
-    <div class="button_inside deselected"><img src="/gfx/baseline_up.svg" style="margin-top:35%;width:50%"/></div>
+
+  <div class="button_wrapper up_baseline">
+    <div class="button_inside deselected">
+      <img src="/gfx/baseline_up.svg" class="specific_baseline_up_icon" />
+    </div>
   </div>
-  <div class="button_wrapper down_baseline" style="background-color:white;">
-    <div class="button_inside deselected"><img src="/gfx/baseline_down.svg" style="margin-top:40%;width:50%"/></div>
+  
+  <div class="button_wrapper down_baseline">
+    <div class="button_inside deselected">
+      <img src="/gfx/baseline_down.svg" class="specific_baseline_down_icon" />
+    </div>
   </div>
 </div>
   
@@ -26,13 +41,14 @@
     
   <div class="place_card_wrapper">
   
-  <div class="place_card_border"></div>
-  <div class="place_card_fold"></div>
+    <div class="place_card_border"></div>
+    <div class="place_card_fold"></div>
     <div class="font_spinner"></div>
+    
     {{#if background}}
       <img src="/products/{{product}}/attachments/display-5" class="place_card_image" />
       <div class="place_card_background_wrapper colour_0">
-      {{{background}}}
+        {{{background}}}
       </div>
     {{/if}}
     
