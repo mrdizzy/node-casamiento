@@ -1,0 +1,78 @@
+<%- contentFor('inline_styles') %>
+#loading_main_page_spinner { display:none; }
+<%- contentFor('left') %>
+  
+<%- contentFor('right') %>
+
+<%- contentFor('main') %>
+
+<%- contentFor('middle') %>
+
+  <div id="browse_designs" style="background-color:white;">
+  
+  
+  <% groups.forEach(function(group) { %>
+<% counter = 0 %>
+<div class="browse_left_column">
+<% group[0].forEach(function(product) { %>
+
+<a href="/products/<%= product._id %>">
+<div id="<%= product._id %>"  class="related related_<%= counter %>">
+          <div class="place_square">
+    
+            <div class="inner_place_square">
+              <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-3"] %></div>              
+              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-3" />
+            </div>
+     <div class="inner_place_square_hidden">
+              <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-2"] %></div>              
+              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-2" />
+            </div>
+            <h2><%= product.name %></h2>
+      
+          </div>
+        </div>
+        </a>
+<% counter = counter + 1 %>
+<% }) %>
+</div>
+
+<div class="browse_right_column">
+<% counter = 0; %>
+<% group[1].forEach(function(product) { %>
+
+<a href="/products/<%= product._id %>">
+<div id="<%= product._id %>"  class="related related_<%= counter %>">
+          <div class="place_square">
+    
+            <div class="inner_place_square">
+              <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-3"] %></div>              
+              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-3" />
+            </div>
+     <div class="inner_place_square_hidden">
+              <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-2"] %></div>              
+              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-2" />
+            </div>
+            <h2><%= product.name %></h2>
+      
+          </div>
+        </div>
+        </a>
+<% counter = counter + 1 %>
+<% }) %>
+</div>
+<% }) %>
+
+  
+  </div>
+  <%- contentFor('javascripts') %>
+  
+   $('.place_square').mouseover(function() {
+     $(".inner_place_square", this).hide();
+     $(".inner_place_square_hidden",this).show();
+   })
+
+   $('.place_square').mouseout(function() {
+     $(".inner_place_square", this).show();
+     $(".inner_place_square_hidden",this).hide();
+   })

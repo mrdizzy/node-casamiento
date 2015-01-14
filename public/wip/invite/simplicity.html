@@ -7,7 +7,6 @@
 		
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>    
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
 
   </head>
 	
@@ -16,6 +15,50 @@
 	
 	
 	
+
+<!-- PRINTER ALERT BOX -->
+
+<div id="ui_print_alert">       
+
+	<img src="/gfx/close/close3.svg" class="close" />    
+	
+	<div id="choose_layout">Choose layout</div>
+	
+	<div id="layout_icons_wrapper">
+	
+		<div class="layout_container" id="folded_invite" style="width:90%;border-radius:10px;">
+			<img src="open.svg" style="width:35px;vertical-align:middle;float:left;" />
+		
+			<div class="details" style="padding-top:5px;text-align:left;font:normal 1.2em 'OS Light';margin-left:50px;">
+				If you want to have your invitations folded with a front cover and an inside, then choose this option.<br/>
+				<span style="font:normal 0.9em 'OS Light Italic';line-height:0.9em;">Two pages will be printed and after the first page has printed you will need to turn it over and print onto the other side. You will have 2 invitations per A4 page.</span>
+			</div>
+		</div>
+		
+		<div class="details" style="clear:both;text-align:center;font:normal 1.2em 'OS Light';margin-left:100px;">
+				OR
+		</div>
+		
+		<div class="layout_container" id="flat_invite" style="width:90%;border-radius:10px;">
+			<img src="flat.svg" style="width:35px;vertical-align:middle;float:left;" />
+		
+			<div class="details" style="padding-top:5px;text-align:left;font:normal 1.2em 'OS Light';margin-left:50px;">
+					If you want flat invitations printed on both sides, choose this option.<br/>
+				<span style="font:normal 0.9em 'OS Light Italic';line-height:0.9em;">One page will be printed. Turn the page over and then print again using this option. You will have 4 invitations per A4 page.</span>
+			</div>
+		</div>
+		
+	</div>
+	
+	
+	<div style="margin:0 auto;width:48%;padding-top:0.5em;">
+		<div class="grey_button" id="print_now" style="border-radius:10px;clear:both;width:150px;">SUBMIT</div>
+	</div>
+	
+</div>
+
+
+
 	
 	
 	<!-- CONTROL PANEL -->
@@ -23,16 +66,17 @@
 <div id="control_panel" style="line-height:50px;">
   <img src="/gfx/logo/casamiento_black.svg" style="vertical-align:middle;width:150px" />
 	
-	<div class="layout_container">
-	  <img src="open.svg" style="width:35px;vertical-align:middle;" />
-	</div>
-	
-	<div class="layout_container" style="background-color:#EEE;">
-	  <img src="flat.svg" style="width:30px;vertical-align:middle;" />
+	<div class="layout_container" id="printer_icon">
+		<img src="printer35.svg" style="width:50px;vertical-align:middle;" />
 	</div>
 	
 	<img src="/gfx/logo/drms.svg" style="padding:5px;display:block;float:right;width:140px;"/>
 </div>
+
+
+
+
+
 
 
 
@@ -130,8 +174,10 @@
 	// Copy monogram to front design
 	$('#original_monogram').clone().appendTo('.second_monogram');
 
-	$('.invitation_front').clone().appendTo('#printable_area');
-	$('.invitation_back').clone().appendTo('#printable_area')	
+	var $front = $('.invitation_front').clone();
+	$front.appendTo('#printable_area');
+	var $back = $('.invitation_back').clone();
+	$back.appendTo('#printable_area')	
 	
 	var $printable_area = $('#printable_area').clone()
 	
@@ -146,7 +192,46 @@
 		var text = $(e.currentTarget).text();
 		$('.' + element_classes_to_change).text(text)
 	})
-
+	
+	$('#folded_invite').click(function() {
+	 $front = $('#printable_area .invitation_front')[0];
+				$front = $($front);
+		$back = $('#printable_area .invitation_back')[0];
+		$back = $($back);
+	  $('#folded_invite').addClass("selected")
+		$('#flat_invite').removeClass("selected")
+	  $('#printable_area').html($front.clone().css({float: "right", clear: "both"}));
+		$('#printable_area').append($front.clone().css({float:"right", clear: "both"}));
+		$('#printable_area').append($back.clone().css({float: "right", clear: "both"}));
+		$('#printable_area').append($back.clone().css({float:"right", clear: "none"}))
+	})
+	
+	
+	$('#flat_invite').click(function() {
+	  $front = $('#printable_area .invitation_front')[0];
+		$front = $($front);
+		$back = $('#printable_area .invitation_back')[0];
+		$back = $($back);
+		$('#folded_invite').removeClass("selected")
+		$('#flat_invite').addClass("selected")
+		$('#printable_area').html($front.clone().css({float: "left", clear: "none"}));
+		$('#printable_area').append($back.clone().css({float: "left", clear: "none"}));
+		$('#printable_area').append($front.clone().css({float: "left", clear: "none"}));
+		$('#printable_area').append($back.clone().css({float: "left", clear: "none"}));
+	})
+	
+   $('#printer_icon').click(function() {
+	 	  $('#ui_print_alert').fadeIn();
+	 })
+	 
+	 $('#print_now').click(function() {
+	  	$('#ui_print_alert').hide();
+		 window.print();
+	 })
+	 
+	 $('.close').click(function() {
+	   $('#ui_print_alert').fadeOut();
+	 })
 </script>
 
 </body>

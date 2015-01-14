@@ -10,7 +10,7 @@
           <a href="/"><img src="/gfx/logo/casamiento_gry.svg" id="ui_print_logo"></a>
         </div> 
           
-        <img src="/gfx/close/close3.svg" class="close mobile" id="close_mobile" style="margin-right:10px;position:static;margin-top:10px;float:right;"/>
+        <img src="/gfx/close/close3.svg" class="close mobile" id="close_mobile" />
 
         <div id="ui_print_colour_picker_container"></div>
         
@@ -57,6 +57,18 @@
   
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- PRINTER ALERT BOX -->
 
 <div id="ui_print_alert">       
@@ -101,7 +113,7 @@
       3/portrait page       
     </div>
     
-    <p class="chat-bubble">Because you are using an iPad, only one layout option is available for you: 3 place cards per portrait page. On a desktop computer or Android tablet, you may have other options available.</p>
+    <p class="chat-bubble">Because you are using an iPad, only one layout option is available for you: 3 place cards per portrait page. On a desktop computer or Android device, you may have other options available.</p>
     
   </div>
   {{/if}}        
@@ -130,22 +142,46 @@
 <div id="ui_guests_quick" style="display:none;padding:20px;width:50%;border:1px solid black;position:absolute;background-color:white;z-index:1000000000000000000000000000000000000000000;right:0;left:0;margin:auto;margin-top:150px;border-radius:20px;text-align:center;"></div>
  
  
+ 
+ 
+ 
+ 
+ 
  <!-- PLACE CARDS FOR VIEW PURPOSES GO HERE AND THE "ADD ANOTHER" AND "CHECKOUT" BUTTONS" -->
+ 
 <div id="actual_cards">
 
   <div class="place_card_view add_another">
     <div class="grey_button" id="add_another" style="width:150px;">
+
       <img src="/gfx/people/crowdsourcing_white.svg" style="line-height:0.5em;width:40px;margin:0;padding:0;" /> 
-    ADD ANOTHER
+      ADD ANOTHER
     </div>
   </div>
   
+  
+  
+  
+  
+  
+  
   <div class="place_card_view checkout">
+  
+    <div style="margin:0 auto;text-align:center;font:normal 1.4em 'OS Light Italic';width:90%;padding:0.25em;padding-bottom:0.5em;">Too much hassle to print them yourself?<br/> Let us do the hard work for you&hellip;</div>
+  
     <div id="buy" class="grey_button">
-      <span style="color:white;font:normal 1em OS;">Check out with</span><img class="cart_icon" src="/gfx/cart_white.png" style="width:45px;"/><br/><img src="/gfx/paypal.png" id="paypal"/ style="padding-bottom:1em;">
+      <span style="color:white;font:normal 1em OS;">Check out with</span>
+      <img class="cart_icon" src="/gfx/cart_white.png" style="width:45px;"/><br/>
+      <img src="/gfx/paypal.png" id="paypal" style="padding-bottom:1em;" />
     </div>
-    <div class="price"><span class="pound_sign">&pound;</span><span class="number" id="pound">{{pounds}}</span>
-    <span class="decimal" id="decimal">.{{pence}}</span></div></div>
+    
+    <div class="price">
+      <span class="pound_sign">&pound;</span>
+      <span class="number" id="pound">{{pounds}}</span>
+      <span class="decimal" id="decimal">.{{pence}}</span>
+    </div>
+  </div>
+  
   </div>
   
 </div>

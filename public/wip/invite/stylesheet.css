@@ -30,19 +30,41 @@ body, div{
 .layout_container {
   display:inline-block;
   text-align:center;width:50px;
-  padding:1em;21
+  padding:1em;
+  cursor:pointer;
   border-radius:0.75em;
 }
 .layout_container:hover {
   background-color:#EEE;
 }
 
+.grey_button {
+  text-align:center;
+  margin:0 auto;    
+  width:70%;
+  padding:1em;
+  border-top-left-radius:30px;
+  border-bottom-right-radius:30px;
+  text-align:center;
+  font: normal 1.6em "OS Light";
+  margin-bottom:0.5em; 
+  color:white;
+  background-color:#AAA;
+  cursor:pointer;
+}
+  .grey_button:hover { 
+    background-color:black;
+  }
 .A6_container {
   width:105mm;
   float:left;
   z-index:5;
   height:148.5mm;	
   position:relative;
+}
+
+.selected {
+  background-color:#EEE;
 }
 
 .invitation_image {
@@ -130,7 +152,9 @@ body, div{
 .guestname { 
   text-transform:capitalize;
   padding-top:2.5mm;
-  margin:0 auto;text-align:center;font:normal 1.7em 'Exmouth';
+  margin:0 auto;
+  text-align:center;
+  font:normal 1.7em 'Exmouth';
 }
  .editable:hover {
   background-color:lightgrey;
@@ -158,17 +182,56 @@ body, div{
   line-height:2.2em
 }
 
+
+    #ui_print_alert {
+      display:none;
+      padding:20px;
+      width:50%;
+      border:1px solid black;
+      position:fixed;
+      background-color:white;
+      z-index:1000000000000000000000000000000000000000000;
+      top:0;
+      right:0;
+      left:0;
+      box-shadow:7px 7px 0 0 lightgrey;
+      margin:auto;
+      margin-top:20px;
+      border-radius:15px;
+      text-align:center;
+    }
+      .close {
+        display:block;
+        position:absolute;
+        cursor:pointer;
+        opacity: 0.4;
+        top:10px;
+        right:10px;
+      }
+        .close:hover {
+          opacity:1;
+        }
+      
+      #choose_layout {
+        border-bottom:1px solid black;
+        padding-bottom:0.5em;
+        margin-bottom:0.5em;
+        font-family:'OS Light Italic';
+        font-size:1.4em;
+      }   
+          
+
 @media print {
-  #control_panel {
-    display:none;
-  }
-  #ui_area {
+  #control_panel,
+  #ui_area,
+  #ui_print_alert {
     display:none;
   }
   body {
     width:210mm;
-    height:297mm;
+    height:295mm;
   }
+  
   #printable_area {
   width:100%;
     margin-top:0;

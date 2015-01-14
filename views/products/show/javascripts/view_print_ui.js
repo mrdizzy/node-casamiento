@@ -9,7 +9,7 @@ var GuestCollectionView = Backbone.View.extend({
   }
 })
 
-// This view loops through each guest and creates an SVG place card for printing. 
+// This view loops through each guest and creates an SVG place card for printing
 var PrintPlaceCardCollectionView = Backbone.View.extend({
   el: '#printsvg',
   initialize: function() {  
@@ -55,7 +55,6 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
 var PrintControlPanelView = BackboneRelativeView.extend({
   el: '#print_ui',
   initialize: function() {
-  console.log("intilized")
     BackboneRelativeView.prototype.initialize.apply(this)
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
     this.listenTo(thisProduct, "readyforprint", this.renderPrintDialog)
@@ -107,8 +106,8 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     thisProduct.get("guests").invoke('adjustBaseline', 1)
   },
   appendPlaceCard: function(guest) {
-    var place_card = this._newPlaceCardView(guest).render().el        
-    this.$('#actual_cards').append(place_card)
+    var place_card = this._newPlaceCardView(guest).render().el   
+    this.$( ".add_another" ).before(place_card);     
   },
   changeLayout: function(e) {
     var per_page = [8,3,4][$(e.currentTarget).index()]
@@ -135,7 +134,6 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   // Create the SVG print view
   printPage: function(e) {    
     this._place_card_print_collection.render()
-    console.log("rendering")
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
   },
   closePrintAlert: function() {
@@ -151,7 +149,6 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     window.print()     
   },
   render: function() {
-  console.log("rendering ")
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
       ipad: thisProduct.get("ipad"),
       pounds: thisProduct.get("pounds"),

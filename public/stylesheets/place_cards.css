@@ -3,10 +3,17 @@
   float:right;
   position:relative;
   margin:0 auto;
-  background-color:white; /* stop body background image seeping through */
+  background-color:white; /* stop body background image seeping .placethrough */
 }
+
+  #actual_cards .place_card_view {
+    width:50%;
+    float:left;
+  }
   
-  .font_size_adjust_buttons, .font_baseline_adjust_buttons, .delete_button { 
+  .font_size_adjust_buttons, 
+  .font_baseline_adjust_buttons, 
+  .delete_button { 
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -15,28 +22,18 @@
     user-select: none;
     cursor:pointer;
     bottom:14%;
-    z-index:9999999999999999999999999999999999999999999999;    
+    z-index:100;    
     position:absolute;
     width:7%;    
     text-align:center;
   }
-    .font_baseline_adjust_buttons {
-      top:14%;   
-    }
+    .font_baseline_adjust_buttons { top:14%; }
     
-    .delete_button {
-        top:45%;
+    .delete_button { top:45%; }
+    
+    .place_card_view:nth-child(odd) .place_card_border {
+      border-right:0 
     }
-    .place_card_border {
-  position:absolute;
-  border:1px solid lightgrey;width:100%;height:100%;border-top:0;z-index:99999;
-}
- .place_card_fold {
-  position:absolute;
-  border-bottom:1px dotted lightgrey;width:100%;height:50%;z-index:99999;
-}
-.place_card_view:nth-child(odd) .place_card_border { border-right:0 
-}
 
     .place_card_view:nth-child(odd) .font_size_adjust_buttons, 
     .place_card_view:nth-child(odd) .font_baseline_adjust_buttons,
@@ -54,7 +51,6 @@
           position: relative;
           width: 100%;
           height: 0; 
-          z-index:9999999999999999999999999999999999999999999999;  
           padding-bottom: 100%;
       }
         .button_inside { 
@@ -64,74 +60,88 @@
           border-bottom-right-radius:10px;
           width:100%;
           height:100%;
-          position:absolute;
-         
+          position:absolute;         
         }
-        .place_card_parent {
-            width: 95%; 
-            position: relative;
-    float:right;
-        }
+    .place_card_parent {
+      width: 95%; 
+      position: relative;
+      z-index:0;
+      float:right;
+    }
         
-        .place_card_view:nth-child(even) .place_card_parent {
-     float:left;
-    }
-  .place_card_wrapper {
-
-    height: 0;
-    padding-bottom: 70.714285714285714285714285714286%;
-  }
-    .font_spinner {  
-      height:50%;
-      top:50%;
-      display:none;
-      width:100%;
-      background: url('/gfx/spinner.gif') no-repeat center center; 
-      position:absolute;
-      z-index:1000000000000000000000000000000000000000;     
-    }
+      .place_card_view:nth-child(even) .place_card_parent {
+        float:left;
+      }
     
-    .place_card_wrapper .place_card_image { 
-      top:0;
-      left:0;
-      display:block;
-      width:100%;
-      height:100%;
-      position:absolute;
-      z-index:1000;
-    }
-      .place_card_background_wrapper {
+      .place_card_border {
         position:absolute;
+        border:1px solid lightgrey;
         width:100%;
         height:100%;
-        z-index:999;
+        z-index:10;
+        background:transparent;
       }
-      
-    .guest_wrapper {
-      width:100%;
-      position:absolute;
-      height:100%;
-      z-index:1000;
-    }
-    
-      .guest_wrapper  input {
-        padding:0;
-        margin:0;
-        border:0;
-        z-index:300;
+      .place_card_fold {
         position:absolute;
-        text-align:center;
-        background-color:transparent;
-        display:block;
+        z-index:10;
+        border-bottom:1px dotted lightgrey;
         width:100%;
         height:50%;
-        line-height:100%;
-      }  
-      
-      .guest_wrapper input::-ms-clear { /* Remove massive X from IE input field */
-        width : 0;
+      }
+      .place_card_wrapper {
         height: 0;
-       }
+        padding-bottom: 70.714285714285714285714285714286%;
+      }
+        .font_spinner {  
+          height:50%;
+          top:50%;
+          display:none;
+          width:100%;
+          background: url('/gfx/spinner.gif') no-repeat center center; 
+          position:absolute;
+          z-index:1;
+        }
+        
+        .place_card_wrapper .place_card_image { 
+          top:0;
+          left:0;
+          display:block;
+          width:100%;
+          height:100%;
+          position:absolute;
+        }
+        
+        .place_card_background_wrapper {
+          position:absolute;
+          width:100%;
+          height:100%;
+          z-index:-1;
+        }
+      
+        .guest_wrapper {
+          width:100%;
+          position:absolute;
+          height:100%;
+          z-index:10000000;
+        }
+    
+          .guest_wrapper input {
+            padding:0;
+            margin:0;
+            border:0;
+            position:absolute;
+            text-align:center;
+            background-color:transparent;
+            display:block;
+            width:100%;
+            height:50%;
+            line-height:100%;
+          }  
+      
+            .guest_wrapper input::-ms-clear { /* Remove massive X from IE input field */
+              width : 0;
+              height: 0;
+             }
               
 /* Smartphone */
 @media all and (min-width: 320px) and (max-width: 500px) {  

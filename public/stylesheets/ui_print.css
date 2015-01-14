@@ -265,11 +265,6 @@ input.cmn-toggle-yes-no:checked + label:after {
   background-color:white; /* stop body background image seeping through */
   padding-top:120px;
 }
-
-  #actual_cards .place_card_view {
-      width:50%;
-      float:left;
-  }
  
   #actual_cards .place_card_view.add_another, 
   #actual_cards .place_card_view.checkout {
@@ -277,7 +272,6 @@ input.cmn-toggle-yes-no:checked + label:after {
     border-radius:20px;
     margin-top:20px;
     width:45%;
-    height:150px;
     padding-top:10px;
     margin-left:2%;
     margin-right:2%;
@@ -317,7 +311,12 @@ input.cmn-toggle-yes-no:checked + label:after {
     width:6%;
     cursor:pointer;
   }
-  
+  #close_mobile {
+    margin-right:10px;
+    position:static;
+    margin-top:10px;
+    float:right;
+  } 
   #mobile_print_logo {
     padding-top:3px;
     width:24%;

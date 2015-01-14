@@ -61,7 +61,6 @@ var StepView = Backbone.View.extend({
     "blur #quick_guests": "quickGuests"
   },
   quickGuests: function() {
-  console.log("doing")
    var guests = ($('#quick_guests').val());
    guests = guests.split("\n")
    var names = _.map(guests, function(name) {
@@ -100,15 +99,13 @@ var StepView = Backbone.View.extend({
   // element is actually the img of the name place icon so this counts as index 0, then the first step is index 1. 
   // If we were to move the img then the first step would be index 0 so this would break things. 
   hoverOver: function(e) {
-    var step_index = $(e.currentTarget).index();
+    var step_index = $(e.currentTarget).index() - 1;
     this.$('#step_' + step_index + " .step").css("background-color", thisProduct.get("colours")[0])      
     this.$('#step_' + step_index).toggleClass('highlight')
   },
   hoverOut: function(e) {
-    var step_index = $(e.currentTarget).index();
-    if(step_index != this.current_step) {
-      this.$('#step_' + step_index + " .step").css("background-color", "#BBB") 
-    }
+    var step_index = $(e.currentTarget).index() - 1;
+    if(step_index != this.current_step) this.$('#step_' + step_index + " .step").css("background-color", "#BBB") 
   },
   checkout: function() {
     $.form('/payments', { 
@@ -116,7 +113,7 @@ var StepView = Backbone.View.extend({
       "PAYMENTREQUEST_0_AMT": thisProduct.get("total"), 
       "L_PAYMENTREQUEST_0_QTY0": thisProduct.get("quantity"), 
       "L_PAYMENTREQUEST_0_NAME0": thisProduct.get("name"), 
-      "L_PAYMENTREQUEST_0_DESC0": "Some description" 
+      "L_PAYMENTREQUEST_0_DESC0": "Place cards" 
     }).submit();
   },
   render: function() {    

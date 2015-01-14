@@ -21,12 +21,11 @@ var AppRouter = Backbone.Router.extend({
       coordinator_view.renderFlatPreview();
     },  
     "print": function() {
-
       coordinator_view.renderPrintView();      
     }, 
     "": function(actions) {  
       coordinator_view.renderHome();
-      app_router.navigate("")
+      console.log("HOME ROUTE")
     }
   }
 });

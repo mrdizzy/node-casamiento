@@ -84,7 +84,6 @@ var PlaceCardView = GuestView.extend({
     this.$('input').css('font-size', new_size + "px");   
   },
   _renderBaseline: function() {
-    console.log(this.model.get("baseline"))
     var baselines = this.model.calculateBaselineOffset(this.relativeToViewport());
     this.$('.spacer').css("height", baselines.top_half + "px")
     this.$('input').css("height", baselines.bottom_half + "px")
@@ -93,7 +92,6 @@ var PlaceCardView = GuestView.extend({
     var compiled_template = Handlebars.template(templates["place_card"]);
     var $template = $(compiled_template(this.model.presenter(this.relativeToViewport())))
     var colours = thisProduct.get("colours");
-  console.log(colours)
     for(var i=0; i < colours.length; i++) {
       $template.find('.colour_' + i).css("background-color", colours[i])
     }

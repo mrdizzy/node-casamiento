@@ -35,7 +35,7 @@ var Guest = Backbone.Model.extend({
     } 
   },
   printPresenter: function() {
-    if(navigator.userAgent.match(/Chrome/i) != null) var result = { width: 105, height: 74.25 }
+    if(navigator.userAgent.match(/Chrome|firefox/i) != null) var result = { width: 105, height: 74.25 }
     if (navigator.userAgent.match(/iPad/i) != null) var result = { width:120.75, height: 85.3875 }
     
     var baseline = (this.get("baseline") /100) * result.height;
@@ -141,11 +141,11 @@ var Product = Backbone.Model.extend({
     this.set("cutting_marks", cutting_marks)
   },
   calculateUserAgent: function() {
-    if(navigator.userAgent.match(/Chrome/i) != null) {
+    if(navigator.userAgent.match(/Chrome|firefox/i) != null) {
       this.set("chrome", true)
     } else if (navigator.userAgent.match(/iPad/i) != null) {
       this.set("ipad", true)
-    }      
+    }
   },
   shareURL: function() {
     var url = "http://www.casamiento.co.uk/products/" +
@@ -208,15 +208,12 @@ var Product = Backbone.Model.extend({
       ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   },
-  stale: ['attachments_order', 'background-1', 'background-2', 'background-3', 'background-4', 'background-5', 'tags', 'description','baseline', 'pence', 'pounds', 'font_size', 'name', 'per_page', 'cutting_marks'],
+  stale: ['attachments_order', 'tags', 'description','baseline', 'pence', 'pounds', 'font_size', 'name', 'per_page', 'cutting_marks'],
   toJSON: function() {
     return _.omit(this.attributes, this.stale);
   }
 });
 
-var ShortProduct = Backbone.Model.extend({
-  idAttribute: '_id'
-})
 String.prototype.toTitleCase = function () {
   var A = this.split(' '), B = [];
   for (var i = 0; A[i] !== undefined; i++) {
@@ -224,28 +221,3 @@ String.prototype.toTitleCase = function () {
   }
   return B.join(' ');
 }
-var ShortProducts = Backbone.Collection.extend({
-  url: '/products',
-  model: ShortProduct,
-
-  browsePresenter: function() {
-    
-    var result = this.map(function(product) {
-      var product = product.attributes;
-      // replace the background colour with the appropriate colour
-      if(product["background-1"]) {
-        var name = product._id.split("-");
-        product.name = name[0].replace(/_/g, ' ')
-        product.name = product.name.toTitleCase();
-        product["background-3"] = product["background-3"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
-        
-        product["background-4"] = product["background-4"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
-        product["background-1"] = product["background-1"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
-        
-        product["background-2"] = product["background-2"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
-      }
-      return product
-    })
-   return result
-  }
-})

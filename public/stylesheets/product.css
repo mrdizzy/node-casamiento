@@ -1,20 +1,7 @@
-
-#browse_designs h1 {
-font-size:2em;
-  font-family:'GaraI';letter-spacing:0;
-  margin-bottom:0.0em;
-  padding-bottom:0.0em;
-}
-
 .product_type_icon { width:130px; }
   
-  #flat_preview {
-      display:none;
-  }
+  #product_container .product_type_icon { display:none; }
   
-  #product_container .product_type_icon {
-      display:none;
-  }
   .slide { 
     display:block;
     float:left;
@@ -28,11 +15,10 @@ font-size:2em;
     width:48%;
   }
     
-  #mobile_spacer { 
-    display:none; 
-  }
+  #mobile_spacer { display:none; }
   
-  #print_button, #add_another {
+  #print_button, 
+  #add_another {
     text-align:center;
     margin:0 auto;    
     width:70%;
@@ -113,7 +99,8 @@ font-size:2em;
         text-align:center;
       }
 
-      #minus_qty, #plus_qty {       
+      #minus_qty, 
+      #plus_qty {       
         border: 1px solid black;
         display:inline-block;
         padding:5px;
@@ -142,108 +129,13 @@ font-size:2em;
       #paypal { 
         padding-top:0.25em;
         width:90px;
-      }              
-      
-      /* browsing */
-      .browse_left_column {
-        clear:both;
-      }
-      .browse_left_column, 
-      .browse_right_column {
-        width:50%;
-        float:left;
-      }
-      
-      .browse_right_column {
-        float:right;
-      }
-      .browse_background_container {
-        position:absolute;
-        width:100%;
-        height:100%;
-        z-index:0;
-      }
-    .related { 
-      border-bottom:1px solid grey; 
-      margin-bottom:0.5em;
-    }
-
-      .related_0 {
-        width:60%;
-        float:left; 
-      }
-
-      .related_2, 
-      .related_5 { 
-        width:60%; 
-        float:right; 
-      }
-      
-      .related_1, 
-      .related_3, 
-      .related_4 { 
-        width:39%; 
-        float:left;
-      }
-
-    .browse_right_column .related_0 {
-      width:100%;
-    }
-    
-    .browse_right_column .related_1 {
-      width:50%;
-      float:left;
-    }
-    .browse_right_column .related_2 {
-      width:50%;
-      float:right;
-    }
-    
-    .browse_right_column .related_3 {
-      width:39%;
-      clear:both;
-      float:left;
-    }
-    
-    .browse_right_column .related_4 {
-      width:60%;
-      float:right;
-    }
-
-    .place_square {
-      border:1px solid transparent;
-    }
-      .place_square:hover { 
-        border:1px solid grey;   
-        cursor:pointer;
-        color:#000;
-        text-decoration:underline; 
-      }
-      .place_square img { width:100%; display:block;position:relative;}
-      
-      .inner_place_square, 
-      .inner_place_square_hidden {
-        position:relative;
-        width:100%;
-      }
-      .inner_place_square_hidden { display:none; }
-
-      .related_1 h2, 
-       .related_3 h2, 
-      .related_4 h2 { font-size:1.4em; letter-spacing:0.2em;}
-
-      
+      }      
       
 /* Smartphone */
 @media all and (min-width: 320px) and (max-width: 500px) {
 /* ----------------------------------------------------------------------------- */    
-   .browse_left_column,
-   .browse_right_column {
-     float:none;
-     clear:both;
-     width:100%;
-   }
-
+   
+  #preview { padding-top:42px;}
 
   .slide { 
     width:100%;
@@ -268,26 +160,20 @@ font-size:2em;
     height: 0;
     padding-bottom: 70.714285714285714285714285714286%;
   }
-  .right_column {clear:both; }
+  .right_column { clear:both; }
   #description_container { 
     float:none;
     width:90%;
     margin:0 auto;
   }
 
-  #print_button {width:60%; }
+  #print_button { width:60%; }
 
 }
   
 /* Phablet */
 @media all and (min-width: 501px) and (max-width: 800px) {
 /* ----------------------------------------------------------------------------- */    
-   .browse_left_column,
-   .browse_right_column {
-     float:none;
-     clear:both;
-     width:100%;
-   }
 
 .left_column { 
   width:60%; 
@@ -302,17 +188,6 @@ font-size:2em;
 #product_name_container { 
   width:100%;
   float:none;
-}
-
-.tooltip-bubble, 
-.tooltip-bubble-arrow, 
-.tooltip-bubble-arrow-border { 
-  width:0;
-  height:0;
-  overflow:hidden; 
-  border:0;
-  background-color:transparent;
-  z-index:-99999
 }
 
 .chat-bubble { left:3em; }
