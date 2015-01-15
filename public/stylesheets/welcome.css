@@ -1,5 +1,5 @@
-	@font-face { font-family:"GaraI"; src: url('/f/garamonditalic.eot?') format('eot'), url('/f/garamonditalic.woff') format('woff'); }
-	@font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
+@font-face { font-family:"GaraI"; src: url('/f/garamonditalic.eot?') format('eot'), url('/f/garamonditalic.woff') format('woff'); }
+@font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 
 #slide_separator {
 	border-top:3px double grey;
@@ -239,67 +239,16 @@ body {
 			float:left; 
 			text-align:center; 
 		}
-/* RESPONSIVE
-==================================== */
 
  /* Smartphone */
 /* ----------------------------------------------------------------------------- */    
 @media all and (min-width: 260px) and (max-width: 500px) {
-	body { 
-		background-image:none;
-	} 
-	 #menu_lines {
-			float:left;
-			margin-left:15px;
-			width:20px;
-			padding-top:10px;
-			display:block;
-		}
-	#browse {
-		display:none;
-	}
-			#dreams_slogan { 
-			margin-top:2px;
-			margin-right:5px;
-			float:right;
-			display:block;
-				width:110px;
-			}
-#slide_separator {
-display:block;
-	position:relative;
-	top:0;
-	margin:0;
-}
-	.hex { margin-left:5px;}
-		.how_to_bullet_container {
-		margin-left:50px;
-	}
+	body { background-image:none; } 
+	 
 	#inner_page_container { 
 		background-image:none;  
 		width:100%;
 	}
-	#slides_column {
-		float:none;
-		width:100%;
-	}
-	#description_column {
-		margin:0;
-		
-	}
-		#welcome_column { width:100%; }
-	 
-		#welcome_column h5 {
-			font-size:3.5em;
-		}
-		
-		#header_container {
-			background-color:#fff;
-			z-index:20;
-			height:39px;
-			position:fixed;
-			width:100%;
-		}
 			#header_wrapper {
 				height:39px;
 			}
@@ -308,7 +257,31 @@ display:block;
 				padding:0.2em;
 				margin:0 auto;
 			}
-			#menu_lines { display:block;}
+#slide_separator {
+  display:block;
+	position:relative;
+	top:0;
+	margin:0;
+}
+	.hex { margin-left:5px;}
+		.how_to_bullet_container {
+		  margin-left:50px;
+	  }
+	#slides_column {
+		float:none;
+		width:100%;
+	}
+	#description_column {
+		margin:0;		
+	}
+		#welcome_column { 
+		  width:100%; 
+		  padding-top:40px;
+	  }
+	 
+		#welcome_column h5 {
+			font-size:3.5em;
+		}
 			
 		.welcome_colour_frame { 
 			width:23px;
@@ -339,14 +312,11 @@ display:block;
 			display:none;
 		}
 }
-
 	
 /* Phablet */
 @media all and (min-width: 501px) and (max-width: 900px) {  
 /* ----------------------------------------------------------------------------- */    
-	body { 
-		background-image:none;
-	} 
+	body { background-image:none; } 
 	
 	.hex { 
 	  margin-top:5px;

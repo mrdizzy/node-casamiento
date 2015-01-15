@@ -123,7 +123,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     var colours = thisProduct.get("colours") 
     for(var i=0; i < colours.length; i++) {
       var $div = $('<div class="colour_picker_wrapper"></div>');
-     $('#ui_print_colour_picker_container').append($div);
+      $('#ui_print_colour_picker_container').append($div);
       $div.colorPicker({
         default_color: colours[i], 
         listen_to: thisProduct,
