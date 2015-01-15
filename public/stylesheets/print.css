@@ -1,10 +1,14 @@
-#printsvg .print_place_card_view {
-  margin:0 auto;
-  position:relative;
-}		
+#printsvg { 
+  width:210mm;
+  margin:0 auto; /* center the root parent container */
+} 
 
-.up4 { width:210mm; margin:0 auto;}
+  #printsvg .print_place_card_view {
+    margin:0 auto; /* center individual place cards, most useful for portrait 3 per page */
+    position:relative; 
+  }		
 
+/* INDIVIDUAL PLACE CARDS */ 
 /* Make sure each individual place card floats up against its predecessor
    so they form a grid--only for 4 and 8 per page, 3 per page must stack 
    one above the other so no float is required */
@@ -12,81 +16,59 @@
   #printsvg .up4 .print_place_card_view {
     float:left;
   }
+      
+  #printsvg .place_card_image { 
+    display:block;
+    width:100%;
+    height:100%
+  }
+  #printsvg .guest {
+    position:absolute;
+    z-index:1000;
+    text-align:center;
+  }		  
+  
+  #printsvg .crop_marks_overlay {
+    top:0;
+    display:none; /* Default is to hide crop marks */
+    left:0;
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index:10010;    
+  }
+  
+    /* Show crop marks */
+    #printsvg.show_crop_marks .crop_marks_overlay { display:block; }
+  
+/* Grouping 
+/////////////////////////// */
+
+  #printsvg .group_landscape { 
+    padding-top:10mm;
+    height:158.5mm;		
+  }
     
-#printsvg .place_card_image { 
-  display:block;
-  width:100%;
-  height:100%
-}
-#printsvg .guest {
-  position:absolute;
-  z-index:1000;
-  text-align:center;
-}		
-  
-  /* Grouping 
-  /////////////////////////// */
-  
-#printsvg .group, 
-#printsvg .group_landscape { 
-  margin:0 auto;		
-  width:210mm;
-}
-
-#printsvg .group_landscape { 
-  padding-top:10mm;
-  height:158.5mm;		
-}
-  
-#printsvg .cas_print_logo {
-  display:block;
-  margin-top:10mm;
-  padding:1mm;
-  border:1px solid black;
-  width:35mm;
-  clear:both;
-  margin:0 auto;
-}
-#printsvg .up8 .cas_print_logo {
-  display:none;
-}
-#printsvg .crop_marks_overlay {
-  top:0;
-  display:none;
-  left:0;
-  padding:0;
-  margin:0;
-  width:100%;
-  height:100%;
-  position:absolute;
-  z-index:10010;    
-}
+  #printsvg .cas_print_logo {
+    display:block;
+    margin-top:10mm;
+    padding:1mm;
+    border:1px solid black;
+    width:35mm;
+    clear:both;
+    margin:0 auto;
+  }
     
-#printsvg.show_crop_marks .crop_marks_overlay {
-  display:block;
-}
-/* iPad
-//////////////////////////////// */
-
-#printsvg.ipad #four, 
-#printsvg.ipad #eight { display:none; }
-
-#printsvg.ipad .group {
-  width:126mm;
-  height:280mm;
-}
+    #printsvg .up8 .cas_print_logo { display:none; }
 
 /* Print
 //////////////////////////////// */
-@media print {
-   
-  #printsvg { 
-    width:210mm;
-    display:block;
+  @media print {
+     
+    body { background-image:none; }
+    
+    #printsvg { display:block; }
+    
+    #top_of_page, 
+    #control_panel { display:none; }  
   }
-  #top_of_page, 
-  #control_panel { display:none; }
-  
-  body { background-image:none; }
-  
-}

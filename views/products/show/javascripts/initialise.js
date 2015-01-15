@@ -1,8 +1,21 @@
 $(function() {
 
+  Backbone.Collection.prototype.save = function (options) {
+    Backbone.sync("create", this, options);
+  };
+   
+  String.prototype.toTitleCase = function () {
+    var A = this.split(' '), B = [];
+    for (var i = 0; A[i] !== undefined; i++) {
+      B[B.length] = A[i].substr(0, 1).toUpperCase() + A[i].substr(1);
+    }
+    return B.join(' ');
+  }
+  
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
   
-  <%= include models.js %>  
+  <%= include models_guest.js %> 
+  <%= include models_product.js %>   
   <%= include view_backbone_relative.js %>
   <%= include view_product_steps.js %>
   <%= include view_place_card.js %>
