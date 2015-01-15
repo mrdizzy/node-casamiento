@@ -1,5 +1,4 @@
 var Guest = Backbone.Model.extend({
-////////////////////////////////////////////////////////////////
   defaults: {
     name: "Guest Name",
     baseline: (<%= product.baseline %> || 0),
@@ -45,6 +44,7 @@ var Guest = Backbone.Model.extend({
 })
 
 var Guests = Backbone.Collection.extend({
+//================================================================================
   initialize: function() {
     this.on("change", this.saveGuests)
   },
@@ -59,8 +59,6 @@ var Guests = Backbone.Collection.extend({
 
     return {
       ipad: thisProduct.get("ipad"),
-      group_class: thisProduct.get("group_class"),
-      per_page: thisProduct.get("per_page"),
       groups: inGroupsOf(result, thisProduct.get("per_page"))
     }
   },

@@ -12,8 +12,8 @@
 /* Make sure each individual place card floats up against its predecessor
    so they form a grid--only for 4 and 8 per page, 3 per page must stack 
    one above the other so no float is required */
-  #printsvg .up8 .print_place_card_view,
-  #printsvg .up4 .print_place_card_view {
+  #printsvg.up8 .print_place_card_view,
+  #printsvg.up4 .print_place_card_view {
     float:left;
   }
       
@@ -44,22 +44,22 @@
 /* Grouping 
 /////////////////////////// */
 
-  #printsvg .group_landscape { 
-    padding-top:10mm;
-    height:158.5mm;		
+  #printsvg.up4 .group, 
+  #printsvg.up3 .group { 
+    padding-top:15mm;
   }
     
   #printsvg .cas_print_logo {
     display:block;
-    margin-top:10mm;
     padding:1mm;
     border:1px solid black;
     width:35mm;
     clear:both;
     margin:0 auto;
+    margin-top:5mm;
   }
     
-    #printsvg .up8 .cas_print_logo { display:none; }
+    #printsvg.up8 .cas_print_logo { display:none; }
 
 /* Print
 //////////////////////////////// */

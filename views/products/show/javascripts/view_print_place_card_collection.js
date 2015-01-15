@@ -14,7 +14,7 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
   },
   render: function() {  
     var $template = $(Handlebars.template(templates["print_place_card_view_collection"]) (thisProduct.get("guests").printPresenter())); 
-    
+    this.$el.removeClass().addClass("up" + thisProduct.get("per_page"))
     this.$el.html($template)
    
     // Wait for SVG images to be loaded before printing, and then 
@@ -31,12 +31,10 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
     return this;
   },
   _changeOrientation: function() {
-    if(thisProduct.get("per_page") == 4) {
-      thisProduct.set("group_class","group_landscape")       
+    if(thisProduct.get("per_page") == 4) {   
       $('head').append("<style type='text/css'>@page { size: A4 landscape }</style>");
     } 
-    else {        
-      thisProduct.set("group_class","group")       
+    else {             
       $('head').append("<style type='text/css'>@page { size: A4 portrait }</style>");
     }    
   },
