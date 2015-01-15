@@ -3,6 +3,7 @@ $(function() {
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
   
   <%= include models.js %>  
+  <%= include view_backbone_relative.js %>
   <%= include view_product_steps.js %>
   <%= include view_place_card.js %>
   <%= include view_flat_preview.js %>  

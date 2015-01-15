@@ -1,4 +1,3 @@
-
 // This view loops through each guest and creates an SVG place card for printing
 // We start by checking if the device is an ipad, and if it is, we add an "ipad" class to the #printsvg containing element. This will allow us to change the
 // contents based on the class. We also listen to the Product object for changes
@@ -28,8 +27,7 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
     images.attr('src', thisProduct.svgURL()).load(function() {
       counter--;
       if(counter == 0) thisProduct.trigger("readyforprint")
-    })
-    
+    })    
     return this;
   },
   _changeOrientation: function() {
