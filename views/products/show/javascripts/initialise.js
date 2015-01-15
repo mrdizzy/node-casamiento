@@ -13,7 +13,6 @@ $(function() {
   
   var thisProduct = new Product();   
   
-  // Initialize templates
   var templates = {}
   <% templates.forEach(function(template) { %>
     templates["<%= template.name %>"] = <%- template.template %>;

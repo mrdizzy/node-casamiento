@@ -7,6 +7,19 @@
     float:left;
     width:50%;
   }
+  
+    .slide_background_container {
+      position:absolute;
+      width:100%;
+      height:100%
+    }
+  
+    .slide_image {
+      position:relative;
+      display:block;
+      width:100%;
+      height:100%;
+    }
     
   #description_container {   
     clear:both;
@@ -19,7 +32,6 @@
   
   #print_button, 
   #add_another {
-    text-align:center;
     margin:0 auto;    
     width:70%;
     padding:1em;

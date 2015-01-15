@@ -26,22 +26,21 @@ We start by defining inline CSS styles. Colours are defined by classes .colour_0
   
   <div id="print_ui"></div>
   
-  
-  
-  
+ 
 
 <%- contentFor('left') %>
 
-<div id="preview">
-  <div id="flat_preview"></div>
-  <div id="product_container"></div>
-</div>
-
-
+  <div id="preview">
+    <div id="flat_preview"></div>
+    <div id="product_container"></div>
+  </div>
 
 
 
 <%- contentFor('right') %>
 
+
+
 <%- contentFor('javascripts') %>
+
   <% include javascripts/initialise.js %>
