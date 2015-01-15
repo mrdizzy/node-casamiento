@@ -7,6 +7,7 @@ $(function() {
   <%= include view_place_card.js %>
   <%= include view_flat_preview.js %>  
   <%= include view_product_slides.js %>
+  <%= include view_print_place_card_collection.js %>
   <%= include view_print_ui.js %>
   <%= include view_coordinator.js %>  
   <%= include router.js %>

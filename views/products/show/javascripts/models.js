@@ -60,6 +60,7 @@ var Guests = Backbone.Collection.extend({
   },
   printPresenter: function() {
     var result = this.invoke('printPresenter');
+
     return {
       ipad: thisProduct.get("ipad"),
       group_class: thisProduct.get("group_class"),

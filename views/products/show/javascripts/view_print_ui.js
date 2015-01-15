@@ -9,47 +9,6 @@ var GuestCollectionView = Backbone.View.extend({
   }
 })
 
-// This view loops through each guest and creates an SVG place card for printing
-var PrintPlaceCardCollectionView = Backbone.View.extend({
-  el: '#printsvg',
-  initialize: function() {  
-    if(thisProduct.get("ipad")) this.$el.addClass('ipad')
-    this.listenTo(thisProduct, 'change:cutting_marks', this._renderCuttingMarks) 
-    this.listenTo(thisProduct, 'change:per_page', this._changeOrientation) 
-    this.listenTo(thisProduct, 'change:per_page', this.render)
-  },
-  _changeOrientation: function() {
-    if(thisProduct.get("per_page") == 4) {
-      thisProduct.set("group_class","group_landscape")       
-      $('head').append("<style type='text/css'>@page { size: A4 landscape }</style>");
-    } 
-    else {        
-      thisProduct.set("group_class","group")       
-      $('head').append("<style type='text/css'>@page { size: A4 portrait }</style>");
-    }    
-  },
-  render: function() {  
-    var $template = $(Handlebars.template(templates["print_place_card_view_collection"]) (thisProduct.get("guests").printPresenter())); 
-    
-    this.$el.html($template)
-  
-    var images  = $('#printsvg img.place_card_image'),  // Wait for SVG images to be loaded before printing
-      counter = images.length;
-    
-    this._renderCuttingMarks();
-    images.attr('src', thisProduct.svgURL()).load(function() {
-      counter--;
-      if(counter == 0) thisProduct.trigger("readyforprint")
-    })
-    
-    return this;
-  },
-  // display cutting marks based on class of #printsvg to avoid the need for showing and hiding
-  _renderCuttingMarks: function() {
-    thisProduct.get("cutting_marks") ? this.$el.addClass('show_crop_marks') : this.$el.removeClass('show_crop_marks');
-  }
-})
-
 //PRINT CONTROL PANEL VIEW
 ////////////////////////////////////////////////////////////////////////////////
 var PrintControlPanelView = BackboneRelativeView.extend({
