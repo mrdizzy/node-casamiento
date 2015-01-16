@@ -161,6 +161,7 @@
           .guest_wrapper input {
             padding:0;
             margin:0;
+            text-transform:capitalize;
             border:0;
             position:absolute;
             text-align:center;

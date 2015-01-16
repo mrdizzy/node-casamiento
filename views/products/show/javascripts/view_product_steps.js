@@ -27,7 +27,12 @@ var StepView = Backbone.View.extend({
   },
   quickGuests: function() {
    var guests = ($('#quick_guests').val());
-   guests = guests.split("\n")
+   if(guests.indexOf(',') === -1) {
+       guests = guests.split("\n")
+   } else {
+       guests = guests.split(",")
+   }
+   
    var names = _.map(guests, function(name) {
     name = $.trim(name);
     return {name: name}
