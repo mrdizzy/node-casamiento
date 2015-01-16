@@ -22,6 +22,7 @@
       .page { width:210mm;height:296.7mm;position:relative;}
 
       textarea.delivery_address, textarea.invoice_address, textarea.label {
+        text-transform: capitalize;
         position:relative;
         z-index:100000;
         resize:none;
@@ -71,20 +72,16 @@
       </textarea>
      
       <textarea id="delivery_address_<%= i %>" class="delivery_address"><%= t.SHIPTONAME %>
-<%= t.SHIPTOSTREET %>
-<% if (t.SHIPTOSTREET2) {  %>
-<%= t.SHIPTOSTREET2%>
-<% } %>
+<%= t.SHIPTOSTREET %><% if (t.SHIPTOSTREET2) {  %>
+<%= t.SHIPTOSTREET2%><% } %>
 <%= t.SHIPTOCITY%>
 <%= t.SHIPTOSTATE%>
 <%= t.SHIPTOZIP%>
       </textarea>
       
       <textarea  id="invoice_address_<%= i %>" class="invoice_address"><%= t.SHIPTONAME %>
-<%= t.SHIPTOSTREET %>
-<% if (t.SHIPTOSTREET2) {  %>
-  <%= t.SHIPTOSTREET2%>
-<% } %>
+<%= t.SHIPTOSTREET %><% if (t.SHIPTOSTREET2) {  %>
+<%= t.SHIPTOSTREET2%><% } %>
 <%= t.SHIPTOCITY%>
 <%= t.SHIPTOSTATE%>
 <%= t.SHIPTOZIP%>

@@ -43,11 +43,8 @@ module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[
 
 module.exports.index = function(req, res) {  // GET /invoices
 
-
-var timeNow = new Date();
-console.log(timeNow)
+  var timeNow = new Date();
 var timeAgo = new Date(timeNow - 2629740000); //
-console.log(timeNow)
 
   paypal.buildQuery("TransactionSearch", function(error, response) {
     parseTransactions(response.TransactionSearchResponse, function(err, results) {
@@ -68,7 +65,7 @@ console.log(timeNow)
 
 function parseTransactions(transactions, maincallback) {
   async.map(transactions, function(transaction, callback) {
-    if (transaction.L_TYPE == 'Fee' || transaction.L_TYPE == 'Fee Reversal' || transaction.L_TYPE == 'Temporary Hold' || transaction.L_TYPE == 'Transfer' || transaction.L_TYPE == 'Refund' || transaction.L_TYPE == 'Voucher') {
+    if (transaction.L_TYPE == 'Fee' || transaction.L_TYPE == 'Fee Reversal' || transaction.L_TYPE == 'Temporary Hold' || transaction.L_TYPE == 'Transfer' || transaction.L_TYPE == 'Refund' || transaction.L_TYPE == 'Voucher' || transaction.L_TYPE == 'Currency Conversion (debit)' || transaction.L_TYPE == 'Currency Conversion (credit)') {
         callback(null, null)
     }
     else {
