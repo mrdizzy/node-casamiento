@@ -135,9 +135,7 @@
         top:10px;
         right:10px;
       }
-        .close:hover {
-          opacity:1;
-        }
+        .close:hover { opacity:1; }
       
       #choose_layout {
         border-bottom:1px solid black;
@@ -305,9 +303,9 @@ input.cmn-toggle-yes-no:checked + label:after {
     
   #menu_lines {
     float:left;
-    z-index:99999999999999999999999999999999
-    margin-left:2%;
-    width:6%;
+    z-index:99999999999999999999999999999999;
+    padding:6px;
+    width:30px;
     cursor:pointer;
   }
   #close_mobile {

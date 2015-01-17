@@ -75,7 +75,11 @@ p {
 }
   
 .pound_sign, 
-.decimal { font-size:1.6em; position:relative;top:-8px;}
+.decimal { 
+  font-size:1.6em;
+  position:relative;
+  top:-8px;
+}
 
 .number {  font-size:2.4em;  }
 
@@ -211,9 +215,8 @@ input {
         border-left:1px solid black;
         padding-left:10px;
       }     
-        #browse img {
-          width:30px;
-        }
+        #browse img { width:30px; }
+        
     #inner_page_container { width:100%;}
 
     .left_column, 
@@ -240,7 +243,7 @@ input {
       padding:0;
     }
     #logo {
-    margin:0;
+      margin:0;
       width:145px;
       padding:7px;
     }
@@ -268,9 +271,7 @@ input {
         border-left:1px solid black;
         padding-left:10px;
       }     
-        #browse img {
-          width:40px;
-        }
+        #browse img { width:40px; }
         
       #dreams_slogan { 
         margin-top:15px;
@@ -330,18 +331,8 @@ input {
   background-color:#AAA;
   cursor:pointer;
 }
-  .grey_button:hover { 
-    background-color:black;
-  }
+  .grey_button:hover { background-color:#000; }
   
- .menu_line {
-   width:18px;
-   border-color:black;
-   border-style:solid;
-   border-top:1px;
-   margin-bottom:5px;
- }
- 
  #loading_main_page_spinner {
    margin:0 auto;
    padding-top:25vh;

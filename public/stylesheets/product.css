@@ -150,9 +150,8 @@
     float:none;
   }
     .slide .shell, 
-    #second_product_type_icon { 
-      display:none; 
-    }
+    #second_product_type_icon,
+    #description_container .shell { display:none; } 
     
   .left_column .place_card_view {
     background-color:white;
@@ -174,6 +173,7 @@
     width:90%;
     margin:0 auto;
   }
+
 
   #print_button { width:60%; }
 
