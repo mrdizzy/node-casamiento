@@ -14,6 +14,7 @@ var GuestCollectionView = Backbone.View.extend({
 var PrintControlPanelView = BackboneRelativeView.extend({
   el: '#print_ui',
   initialize: function() {
+    if(thisProduct.get("ipad")) this.$el.addClass('ipad')
     BackboneRelativeView.prototype.initialize.apply(this)
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
     this.listenTo(thisProduct, "readyforprint", this.renderPrintDialog)

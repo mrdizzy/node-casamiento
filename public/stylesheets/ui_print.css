@@ -275,6 +275,14 @@ input.cmn-toggle-yes-no:checked + label:after {
   #ui_guests_quick .input_container input { width:100%; }
   
 .mobile { display:none; }
+
+#print_ui #ipad_blurb { display:none;}
+/* ipad */
+#print_ui.ipad #ipad_blurb { display:block;}
+#print_ui.ipad #per_page_4_container,
+#print_ui.ipad #per_page_8_container {
+  display:none;
+}
   
 /* Smartphone */
 @media all and (min-width: 300px) and (max-width: 500px) {  

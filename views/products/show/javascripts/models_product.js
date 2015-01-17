@@ -17,6 +17,7 @@ var Product = Backbone.Model.extend({
     return defaults;
   },
   initialize: function() {  
+    this.calculateUserAgent();
     this.guests = this.get("guests")
     this.textures = ["plain", "hammered", "linen"]
     this.on("change:texture", this.calculatePrice)
