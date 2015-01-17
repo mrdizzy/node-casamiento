@@ -14,7 +14,7 @@ var GuestCollectionView = Backbone.View.extend({
 var PrintControlPanelView = BackboneRelativeView.extend({
   el: '#print_ui',
   initialize: function() {
-    if(thisProduct.get("ipad")) this.$el.addClass('ipad')
+    if(thisProduct.get("browser")) this.$el.addClass(thisProduct.get("browser"))
     BackboneRelativeView.prototype.initialize.apply(this)
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
     this.listenTo(thisProduct, "readyforprint", this.renderPrintDialog)
@@ -110,7 +110,6 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   },
   render: function() {
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
-      ipad: thisProduct.get("ipad"),
       pounds: thisProduct.get("pounds"),
       pence: thisProduct.get("pence")
     })); 

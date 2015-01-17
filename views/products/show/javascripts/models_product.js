@@ -63,10 +63,12 @@ var Product = Backbone.Model.extend({
     this.set("cutting_marks", cutting_marks)
   },
   calculateUserAgent: function() {
-    if(navigator.userAgent.match(/Chrome|firefox/i) != null) {
-      this.set("chrome", true)
+    if(navigator.userAgent.match(/Chrome/i) != null) {
+      this.set("browser", "chrome") 
+    } else if(navigator.userAgent.match(/firefox/i) != null) {
+      this.set("browser", "firefox")
     } else if (navigator.userAgent.match(/iPad/i) != null) {
-      this.set("ipad", true)
+      this.set("browser", "ipad")
     }
   },
   shareURL: function() {

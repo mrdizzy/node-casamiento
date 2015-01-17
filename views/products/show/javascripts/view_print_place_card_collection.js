@@ -7,7 +7,6 @@
 var PrintPlaceCardCollectionView = Backbone.View.extend({
   el: '#printsvg',
   initialize: function() {  
-
     this.listenTo(thisProduct, 'change:cutting_marks', this._renderCuttingMarks) 
     this.listenTo(thisProduct, 'change:per_page', this._changeOrientation) 
     this.listenTo(thisProduct, 'change:per_page', this.render)
@@ -15,7 +14,7 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
   render: function() {  
     var $template = $(Handlebars.template(templates["print_place_card_view_collection"]) (thisProduct.get("guests").printPresenter())); 
     this.$el.removeClass().addClass("up" + thisProduct.get("per_page"))
-    if(thisProduct.get("ipad")) this.$el.addClass('ipad')
+    if(thisProduct.get("browser")) this.$el.addClass(thisProduct.get("browser"))
     this.$el.html($template)
    
     // Wait for SVG images to be loaded before printing, and then 
