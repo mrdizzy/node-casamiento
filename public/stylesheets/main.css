@@ -138,7 +138,7 @@ input {
           width:40px;
           vertical-align:middle
         }
-      
+        
       #dreams_slogan { 
         margin-top:25px;
         margin-right:30px;
@@ -226,9 +226,7 @@ input {
       width:100%;
     }
     
-    #middle_column {
-      padding-top:40px;
-    }
+    #middle_column { padding-top:40px; }
 }
 
   /* Phablet 
@@ -242,9 +240,9 @@ input {
       padding:0;
     }
     #logo {
+    margin:0;
       width:145px;
-      padding:0.5em;
-      margin-left:0.5em;
+      padding:7px;
     }
     #menu_lines {
       display:block;
@@ -257,9 +255,32 @@ input {
       width:100%; 
       top:0;
       left:0;
-      height:57px;
+      height:60px;
       border-bottom:1px solid black;
-    }
+    } 
+    
+    #browse {
+        display:inline-block;
+        font: normal 1.4em 'OS Light';
+        margin-top:10px;
+        height:37px;
+        line-height:30px;
+        border-left:1px solid black;
+        padding-left:10px;
+      }     
+        #browse img {
+          width:40px;
+        }
+        
+      #dreams_slogan { 
+        margin-top:15px;
+        margin-right:10px;
+        float:right;
+        display:block;
+        width:150px;
+      }
+      
+      #middle_column { padding-top:60px; }
 }  
 
 /* GLOBAL CLASSES

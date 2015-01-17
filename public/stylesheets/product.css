@@ -183,25 +183,17 @@
 @media all and (min-width: 501px) and (max-width: 800px) {
 /* ----------------------------------------------------------------------------- */    
 
-.left_column { 
-  width:60%; 
-  position:fixed;
-}
-.right_column { 
-  margin-left:60%;
-}
-.chat-bubble { display:block;}
+.left_column { width:55%; }
+.right_column { margin-left:55%; }
 
 .slide, 
-#product_name_container { 
+#description_container { 
   width:100%;
   float:none;
 }
 
-.chat-bubble { left:3em; }
+.chat-bubble { display:block; left:3em; }
 
-  .texture { 
-    display:block; 
-  }
+  .texture { display:block; }
 }
     

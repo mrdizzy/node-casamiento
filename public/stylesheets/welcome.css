@@ -249,9 +249,7 @@ body {
 		background-image:none;  
 		width:100%;
 	}
-			#header_wrapper {
-				height:39px;
-			}
+		#header_wrapper { height:39px; }
 			#logo { 
 				width:115px;
 				padding:0.2em;
@@ -271,17 +269,13 @@ body {
 		float:none;
 		width:100%;
 	}
-	#description_column {
-		margin:0;		
-	}
+	#description_column { margin:0;	}
 		#welcome_column { 
 		  width:100%; 
 		  padding-top:40px;
 	  }
 	 
-		#welcome_column h5 {
-			font-size:3.5em;
-		}
+		#welcome_column h5 { font-size:3.5em;	}
 			
 		.welcome_colour_frame { 
 			width:23px;
@@ -334,6 +328,7 @@ body {
 			width:160px;
 		}
 		#welcome_column {
+		margin-top:60px;
 			width:96%;
 		}
 		#welcome_column h5 {
@@ -342,6 +337,7 @@ body {
 			line-height:1.4em;
 		}
 		#welcome_column h6 {
+		
 			font-size:2.6em;
 		  margin-left:0.2em;
 		  margin-right:0.2em;

@@ -94,9 +94,20 @@ border:1px solid transparent;
      clear:both;
      width:100%;
    }
- }
- 
    
+   .related { 
+   margin-bottom:0;}
+.related_1 h2, 
+ .related_3 h2, 
+.related_4 h2 { margin-top:0.3em;margin-bottom:0.3em;font-size:1.4em; letter-spacing:0.2em;}
+
+ 
+.related_0 h2, 
+ .related_2 h2, 
+.related_5 h2,
+.related_6 h2 { font-size:1.8em; margin-top:0.3em;margin-bottom:0.3em;letter-spacing:0.2em;}
+   
+ }
 /* Phablet */
 @media all and (min-width: 501px) and (max-width: 800px) {
 /* ----------------------------------------------------------------------------- */    
