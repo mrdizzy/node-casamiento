@@ -123,7 +123,7 @@
       left:0;
       box-shadow:7px 7px 0 0 lightgrey;
       margin:auto;
-      margin-top:100px;
+      margin-top:80px;
       border-radius:15px;
       text-align:center;
     }
@@ -137,7 +137,8 @@
       }
         .close:hover { opacity:1; }
       
-      #choose_layout {
+      #choose_layout,
+      #crop_marks {
         border-bottom:1px solid black;
         padding-bottom:0.5em;
         margin-bottom:0.5em;
@@ -308,6 +309,7 @@ input.cmn-toggle-yes-no:checked + label:after {
     width:30px;
     cursor:pointer;
   }
+  
   #close_mobile {
     margin-right:10px;
     position:static;

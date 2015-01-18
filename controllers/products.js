@@ -45,6 +45,7 @@ exports.index = function(req, res) {
 exports.show = function(req, res, next) {
   var id = req.params.product;
   db.view('all/products_without_attachments', { key: id }, function(error, docs) {
+  console.log(docs)
     if(docs.length == 0) {
       var myerr = new Error('Record not found!');
       return next(myerr); // <---- pass it, not throw it

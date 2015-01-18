@@ -3,14 +3,6 @@ $(function() {
   Backbone.Collection.prototype.save = function (options) {
     Backbone.sync("create", this, options);
   };
-   
-  String.prototype.toTitleCase = function () {
-    var A = this.split(' '), B = [];
-    for (var i = 0; A[i] !== undefined; i++) {
-      B[B.length] = A[i].substr(0, 1).toUpperCase() + A[i].substr(1);
-    }
-    return B.join(' ');
-  }
   
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
   
@@ -26,15 +18,15 @@ $(function() {
   <%= include view_coordinator.js %>  
   <%= include router.js %>
   
-  var thisProduct = new Product();   
-  
   var templates = {}
   <% templates.forEach(function(template) { %>
     templates["<%= template.name %>"] = <%- template.template %>;
   <% }) %>
   
-  var guestList = new Guests();   
-  var coordinator_view = new CoordinatorView();  
+  var thisProduct = new Product(),
+    guestList = new Guests(),
+    coordinator_view = new CoordinatorView(),   
+    app_router = new AppRouter;
   
   thisProduct.fetch({silent: true, success: function(model, resp) {
     $.updateFont(thisProduct.get("font"), {trigger: function(){}}) 
@@ -44,7 +36,6 @@ $(function() {
     }
   })
   
-  var app_router = new AppRouter;
   Backbone.history.start();      
 
 })

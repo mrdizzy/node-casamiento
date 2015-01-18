@@ -1,3 +1,5 @@
+// Why do we set defaults like this
+
 var Product = Backbone.Model.extend({
 ////////////////////////////////////////////////////////////////
   urlRoot: '/products',
@@ -6,7 +8,7 @@ var Product = Backbone.Model.extend({
   defaults: function() {
     var defaults = <%- JSON.stringify(product) %>
     defaults.quantity = defaults.quantity || 8;
-    defaults.font_size = defaults.font_size || 1;
+    defaults.font_size = defaults.font_size || 1;    
     defaults.guests = defaults.guests || new Guests([{},{},{},{},{},{},{},{}]);
     defaults.total = defaults.total || 3.97;
     defaults.pence = defaults.pence || 90;
@@ -132,7 +134,7 @@ var Product = Backbone.Model.extend({
       ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   },
-  stale: ['attachments_order', 'tags', 'description','baseline', 'pence', 'pounds', 'font_size', 'name', 'per_page', 'cutting_marks'],
+  stale: ['attachments_order', 'tags', 'description','baseline', 'pence', 'pounds', 'font_size', 'per_page', 'cutting_marks'],
   toJSON: function() {
     return _.omit(this.attributes, this.stale);
   }
