@@ -1,5 +1,4 @@
 @font-face { font-family:"GaraI"; src: url('/f/garamonditalic.eot?') format('eot'), url('/f/garamonditalic.woff') format('woff'); }
-@font-face { font-family:"OS Light"; src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); }
 
 #slide_separator {
 	border-top:3px double grey;
@@ -196,9 +195,7 @@
 	}
  /* Smartphone */
 /* ----------------------------------------------------------------------------- */    
-@media all and (min-width: 260px) and (max-width: 500px) {
-	body { background-image:none; } 
-	 
+@media all and (min-width: 260px) and (max-width: 500px) {	 
 	#inner_page_container { 
 		background-image:none;  
 		width:100%;
@@ -295,9 +292,7 @@
 			margin: 0 3px;
 		}	
 		
-		.slidesjs-next {	
-		margin-left:6em;	
-	}
+		.slidesjs-next { margin-left:6em;	}
 
 	.welcome_colour_frame { 
 		width:32px;
@@ -309,6 +304,6 @@
 		}
 	.welcome_colour_label { 
 		padding-top:10px;
-	margin-left:5px;
-		}
+	  margin-left:5px;
+	}
 }
