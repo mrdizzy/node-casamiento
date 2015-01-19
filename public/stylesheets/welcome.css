@@ -15,7 +15,7 @@
 	#welcome_column h5 { 
 	  font: normal 4.4em/1.2em 'GaraI', serif;
     letter-spacing:-0.01em;
-	  margin-top:0.5em;	
+		margin:0;
 	  text-align:center;
 	  color:#000;
 	  margin-left:0.25em;
@@ -61,6 +61,7 @@ body {
 	}  
 		#welcome_column {
 			width:85%; 
+			padding:0;
 			background-color:#fff;
 			margin:0 auto;
 			border-left:1px dotted #000;
@@ -71,9 +72,8 @@ body {
 	float:left;
 }
 
-#footer {
-  background-color:#fff; 
-}
+#footer { background-color:#fff; }
+
 	#slides_spinner {
 		display:block;
 		margin:0 auto;
@@ -81,9 +81,7 @@ body {
 		margin-bottom:50px;
 	}
 
-	#slides_container { 
-		display:none;
-	}
+	#slides_container { display:none;	}
 
 	.slidesjs-previous, .slidesjs-next {
 		color:#000;
@@ -135,13 +133,10 @@ body {
 			background-position: 0 -26px
 		}
 		
-  .welcome_place_card_container {
-	  float:left;
-  }
+  .welcome_place_card_container { float:left;} 
 	
-	.right_slide_col { 
-	  margin-left:55%;
-	}
+	.right_slide_col { margin-left:55%;	}
+	
   .welcome_slide_container {
 	  width:55%;
 	  float:left;

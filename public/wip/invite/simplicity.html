@@ -88,7 +88,7 @@
 
 <!-- USER INTERFACE DISPLAY -->
 
-<div style="overflow:hidden">
+<div style="overflow:hidden" id="ui_container">
 <div id="ui_area"></div>
 </div>
 
@@ -141,8 +141,9 @@
 			
 			<div contenteditable="true" class="guestname">Mr Daniel Cooley</div>
 			
-			<div id="description">
-				
+				<table id="description_text" style="height:34mm;">
+				<tr>
+				<td style="vertical-align:middle;">
 				<span class="editable" contenteditable="true">on the occasion of their marriage</span> <img src="bullet.svg" class="bullet" style="display:inline-block;vertical-align:middle;" />
 				
 				<span class="editable" contenteditable="true">to take place at</span> <img class="bullet" src="bullet.svg" style="display:inline-block;vertical-align:middle;" /> 
@@ -152,7 +153,9 @@
 				<span class="editable" contenteditable="true">on Saturday 17th June 2012 at 1.30pm</span> <img src="bullet.svg" class="bullet" style="display:inline-block;vertical-align:middle;" />
 				
 				<span class="editable" contenteditable="true">Followed by a Reception at Lakeside Manor Park</span> <img src="bullet.svg" class="bullet" style="display:inline-block;vertical-align:middle;" />
-			</div>
+				</td>
+				</tr>
+				</table>
 			
 		</div>
 	
@@ -169,8 +172,10 @@
 <script>
 
   var vw = $('html').width();
+  var height_of_ui_container = (1.4142857142857142857142857142857 * vw)
+	$('#ui_container').css("height",height_of_ui_container + 75)
 
-	var transform_value = vw / 794
+	var transform_value = vw / 794 // 794 is the width of an A4 page in pixels
 
 	// Copy monogram to front design
 	$('#original_monogram').clone().appendTo('.second_monogram');
@@ -181,7 +186,10 @@
 	$back.appendTo('#printable_area')	
 	
 	var $printable_area = $('#printable_area').clone()
-	
+	  // $('#printable_area') is the equivalent of an A4 page width 
+		// therefore we need to find the value of the viewport and scale it
+		// up or down by a percentage to make it the same size as the viewport
+		// We use  the transform_value as the percentage.
 	$('#ui_area').html($printable_area.html())
 	$('#ui_area').css("transform", "scale(" + transform_value + ")")
 	$('#ui_area').css("transform-origin", "top left")
@@ -195,8 +203,8 @@
 	})
 	
 	$('#folded_invite').click(function() {
-	 $front = $('#printable_area .invitation_front')[0];
-				$front = $($front);
+	  $front = $('#printable_area .invitation_front')[0];
+	  $front = $($front);
 		$back = $('#printable_area .invitation_back')[0];
 		$back = $($back);
 	  $('#folded_invite').addClass("selected")
@@ -227,7 +235,7 @@
 	 
 	 $('#print_now').click(function() {
 	  	$('#ui_print_alert').hide();
-		 window.print();
+		  window.print();
 	 })
 	 
 	 $('.close').click(function() {

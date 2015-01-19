@@ -12,18 +12,13 @@ exports.index = function(req, res) {
         if(background = product["background-" + i]) {
           var divs = background.split("</div>");
           divs = _.map(divs, function(div) {
-            if (!(/class="nocolor"/.test(div))) {
+            if (!(/class="nocolor"/.test(div))) 
               div = div.replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");  
-            }
             return div
-          })
-          
+          })          
           product["background-" + i] = divs.join("</div>")  
         }
-       // console.log(product["background-"] + i)
-      }
-      // replace the background colour with the appropriate colour
-    
+      }    
       return product
     })
     var groups = inGroupsOf(result, 11);

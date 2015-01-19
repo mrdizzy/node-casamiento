@@ -34,9 +34,7 @@ body, div{
   cursor:pointer;
   border-radius:0.75em;
 }
-.layout_container:hover {
-  background-color:#EEE;
-}
+  .layout_container:hover { background-color:#EEE; }
 
 .grey_button {
   text-align:center;
@@ -52,9 +50,8 @@ body, div{
   background-color:#AAA;
   cursor:pointer;
 }
-  .grey_button:hover { 
-    background-color:black;
-  }
+  .grey_button:hover { background-color:black; }
+  
 .A6_container {
   width:105mm;
   float:left;
@@ -63,9 +60,7 @@ body, div{
   position:relative;
 }
 
-.selected {
-  background-color:#EEE;
-}
+.selected { background-color:#EEE; }
 
 .invitation_image {
   display:block;
@@ -74,6 +69,9 @@ body, div{
   position:absolute;
   z-index:-10;
 }
+
+/* MONOGRAM
+--------------------------------------------------------------------- */
 .monogram {
   text-align:center;
   padding-top:12mm;
@@ -134,6 +132,10 @@ body, div{
   letter-spacing:0;
 }
 
+
+/* INVITATION TEXT 
+-------------------------------------------------------------------------------- */
+
 .bride, .groom {
   margin:0 auto;
   margin-top:5mm;
@@ -173,7 +175,9 @@ body, div{
 }
 
 #description {
-  padding-top:2.5mm;
+  
+}
+  #description_text {
   width:80mm;
   margin:0 auto;
   text-align:center;
@@ -182,6 +186,8 @@ body, div{
   line-height:2.2em
 }
 
+/* PRINTER 
+-------------------------------------------------------------------------*/
 
     #ui_print_alert {
       display:none;
@@ -220,10 +226,9 @@ body, div{
         font-size:1.4em;
       }   
           
-
 @media print {
   #control_panel,
-  #ui_area,
+  #ui_container,
   #ui_print_alert {
     display:none;
   }

@@ -25,6 +25,7 @@
                   <%- place_card["background-" + place_card.attachments_order[0] ] %>
                 </div>
             <% } %>   
+            
             <a href="/products/<%= place_card._id %>">
               <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0]%> 1000w,
                http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[0]%> 750w,
@@ -131,6 +132,12 @@
          </p>
        </div>
        
+      
+      <div style="position:relative;border-top:1px dotted black;border-bottom:1px dotted black;padding:1em;margin:1em;">
+        <img src="/gfx/tutorials/tutorial_4.gif" style="position: absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;width:86.25%;top:11%;max-width:682px;"/>
+        <img src="/gfx/desktop_screen_wide.svg" style="margin:0 auto;width:100%;display:block;"/>
+      </div> 
+       
       <div class="hex">3</div>
       <div class="how_to_bullet_container"><p  class="bullet_text">Choose a font</p> 
         <p style="margin-right:10%;margin-top:0;padding-top:0;">With hundreds of colours available, there's no doubt you'll find one to co-ordinate with your event. You'll see the colours change instantly on your screen so you know exactly what the finished result will look like.  
@@ -143,10 +150,6 @@
         <p style="margin-right:10%;margin-top:0;padding-top:0;">It's quick and easy to print straight from your browser. No downloading PDFs or waiting on screens that say "processing..." for 10 seconds. It's nearly instant!</p>
       </div>
         
-      <div style="position:relative;border-top:1px dotted black;border-bottom:1px dotted black;padding:1em;margin:1em;">
-        <img src="/gfx/tutorials/tutorial_4.gif" style="position: absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;width:86.25%;top:11%;max-width:682px;"/>
-        <img src="/gfx/desktop_screen_wide.svg" style="margin:0 auto;width:100%;display:block;"/>
-      </div>
       </div>
       
       <!-- DESCRIPTION COLUMN -->
@@ -178,4 +181,4 @@
     
       <span style="font-style:italic;font-size:1.2em;">Lead Designer</span></p>
     </div>
-    <div style="clear:both"></div>
+    <div style="clear:both"></div>  
