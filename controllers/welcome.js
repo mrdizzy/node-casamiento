@@ -15,7 +15,6 @@ exports.index = function(req, res) {
 		})
 		docs.place_cards = docs;
 		res.render('welcome/index', {
-			layout: 'welcome_layout',
 			locals: docs
 		});
 	});

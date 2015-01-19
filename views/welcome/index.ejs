@@ -1,13 +1,24 @@
-<%- contentFor('inline_styles') %>
+<%- contentFor('inside_headtag') %>
 
+
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700italic,400italic' rel='stylesheet' type='text/css'>   
+    <link rel="stylesheet" href="/stylesheets/welcome.css" /> 
+    <style type="text/css">
   <% for(var i = 0; i < place_cards.length; i++) { %>
     <% if (place_cards[i].colours[1]) { %>
      #welcome_place_<%=i%> .colour_1 { background-color: <%= place_cards[i].colours[1] %>}
     <% } %>
   <% } %>
+  
+    </style>
+  <%- contentFor('main') %>
+  
+  <%- contentFor('left') %>
+  
+  <%- contentFor('right') %>
 
 <%- contentFor('middle') %>
-
+<div id="welcome_column">
   <div id="slides_column">
       
     <img id="slides_spinner" src="/gfx/spinner.gif" />
@@ -182,3 +193,23 @@
       <span style="font-style:italic;font-size:1.2em;">Lead Designer</span></p>
     </div>
     <div style="clear:both"></div>  
+    </div>
+<%- contentFor('javascripts') %>
+  $(function() {              
+    $("#slides_container").slidesjs({
+      width: 360,
+      height: 207,
+      pagination: { active: true }, 
+      navigation: { active: true },
+      play: {
+        active: false,
+        auto: true,        
+        interval: 5000
+      },
+      callback: {
+        loaded: function(n) {
+          $('#slides_spinner').hide();
+        }
+      }
+    })
+  })
