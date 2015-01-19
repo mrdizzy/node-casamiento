@@ -3,36 +3,33 @@ var db = require('./../config/db').test_ebay,
     zlib = require('zlib'),
     inGroupsOf = require('./../lib/in_groups_of');
 
-String.prototype.toTitleCase = function () {
-  var A = this.split(' '), B = [];
-  for (var i = 0; A[i] !== undefined; i++) {
-    B[B.length] = A[i].substr(0, 1).toUpperCase() + A[i].substr(1);
-  }
-  return B.join(' ');
-}
 exports.index = function(req, res) {
   db.view('all/products_without_attachments', function(err, docs) {
     docs = docs.toArray();
     var result = _.map(docs, function(product) {
-
-      // replace the background colour with the appropriate colour
-      if(product["background-1"]) {
-        var name = product._id.split("-");
-        product.name = name[0].replace(/_/g, ' ')
-        product.name = product.name.toTitleCase();
-        product["background-3"] = product["background-3"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
-        
-        product["background-4"] = product["background-4"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
-        product["background-1"] = product["background-1"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
-        
-        product["background-2"] = product["background-2"].replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
+      for (var i=1; i< 5; i++) {
+        var background;
+        if(background = product["background-" + i]) {
+          var divs = background.split("</div>");
+          divs = _.map(divs, function(div) {
+            if (!(/class="nocolor"/.test(div))) {
+              div = div.replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");  
+            }
+            return div
+          })
+          
+          product["background-" + i] = divs.join("</div>")  
+        }
+       // console.log(product["background-"] + i)
       }
+      // replace the background colour with the appropriate colour
+    
       return product
     })
-   var groups = inGroupsOf(result, 11);
-   groups = _.map(groups, function(group) {
-     return inGroupsOf(group, 6);
-   });  
+    var groups = inGroupsOf(result, 11);
+    groups = _.map(groups, function(group) {
+      return inGroupsOf(group, 6);
+    });  
      
     res.render("products/index.ejs", {
         locals: {

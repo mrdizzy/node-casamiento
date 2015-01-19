@@ -41,7 +41,7 @@
   #fonts td, #ui_font_picker td { 
     border-bottom:1px dotted lightgrey;
     vertical-align:middle; 
-      font: normal 1em 'OS Light';
+    font: normal 1em 'OS Light';
   }
   #fonts tr, #ui_font_picker tr { 
     height:50px
