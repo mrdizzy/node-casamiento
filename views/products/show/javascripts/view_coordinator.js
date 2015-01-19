@@ -17,13 +17,10 @@ var CoordinatorView = Backbone.View.extend({
     this.flat_preview_view = new FlatPreviewView();
     this.print_ui_view = new PrintControlPanelView(); 
  //   this.listenTo(thisProduct, "sync", this._renderColours)
- 
- //   this.listenTo(short_products, 'sync', this._renderBrowse)
  //   this.listenTo(thisProduct, 'reset', this.rerender)
   },
   events: {
    "click #print_button": "renderPrintView",
-    "click #browse_designs .related": "selectModel",
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
   },
@@ -90,18 +87,5 @@ var CoordinatorView = Backbone.View.extend({
     this.$('.font_spinner').show();
     this.$('.guest_name').hide()    
     thisProduct.set("font", font)
-  },
-  selectModel: function(e) {
-    var id = $(e.currentTarget).attr('id');
-    var model = short_products.get(id);
-    $.updateFont(model.get("font"))
-    thisProduct.unset("background-1").unset("background-2").unset("background-3").unset("background-4").unset("background-5")
-    thisProduct.set(model.toJSON()).trigger("reset")
-    thisProduct.get("guests").resetFont();
-    this.$('#browse_designs').hide();
-        $('body').animate({
-        scrollTop: $('body').offset().top
-      }, 0); 
-      thisProduct.trigger("rerender")
   }
 })      

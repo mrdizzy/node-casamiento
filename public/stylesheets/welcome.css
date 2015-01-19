@@ -45,19 +45,16 @@
 		}
 	#loading_main_page_spinner { display:none;}
 	
-/* HEADER AND FOOTER
-==================================== */
-	#inner_page_container { 
-		background-image:url('/gfx/background_wiggle.svg');  
-	}  
-		#welcome_column {
-			width:85%; 
-			padding:0;
-			background-color:#fff;
-			margin:0 auto;
-			border-left:1px dotted #000;
-			border-right: 1px dotted #000;
-		}
+	#inner_page_container { background-image:url('/gfx/background_wiggle.svg'); }  
+	
+	#welcome_column {
+		width:85%; 
+		padding:0;
+		background-color:#fff;
+		margin:0 auto;
+		border-left:1px dotted #000;
+		border-right: 1px dotted #000;
+	}
 #slides_column {	
 	width:60%;
 	float:left;
@@ -81,15 +78,9 @@
 		position:absolute;
 		padding:1em;
 	}
-	.slidesjs-previous:before {
-		content: '\00ab  '
-	}
-	.slidesjs-next {	
-		margin-left:7em;	
-	}
-		.slidesjs-next:after {
-			content: ' \00bb'
-		}
+	.slidesjs-previous:before {	content: '\00ab  '}
+	.slidesjs-next { margin-left:7em;	}
+		.slidesjs-next:after { content: ' \00bb' }
 
 	.slidesjs-pagination {
 		margin: 10px 0 10px;
@@ -167,10 +158,9 @@
 	.welcome_colour_label { 
 		text-transform:uppercase;
 		float:left;
-		font-family: 'OS Light';
+		font-family: normal 1.2em 'OS Light';
 		padding-top:12px;
 		margin-left:7px;
-		font-size:1.2em;
 	}
 	
 	.hex {
@@ -182,7 +172,7 @@
 		background-repeat:no-repeat;
 		background-size:100%;
 		text-align:center;
-		color:white;
+		color:#FFF;
 		line-height:50px;
 		float:left;
 		font-size:2.4em;
@@ -247,29 +237,24 @@
 				float:none;
 				width:100%; 
 			}
-		.slidesjs-pagination, .slidesjs-navigation {
-			display:none;
-		}
+		.slidesjs-pagination, .slidesjs-navigation { display:none; }
 }
 	
 /* Phablet */
 @media all and (min-width: 501px) and (max-width: 900px) {  
 /* ----------------------------------------------------------------------------- */  
-	
 	.hex { 
 	  margin-top:5px;
 		width:50px;
 		height:50px;
 		line-height:42px;
   }
-	.how_to_bullet_container {
-		margin-left:70px;
-	}
-	#inner_page_container { 
-		width:100%;
-	}
+	.how_to_bullet_container { margin-left:70px; }
+	
+	#inner_page_container { width:100%; }
+	
 		#welcome_column {
-		margin-top:60px;
+		  margin-top:60px;
 			width:96%;
 		}
 		#welcome_column h5 {
@@ -277,8 +262,7 @@
 			font-size:3.4em;
 			line-height:1.4em;
 		}
-		#welcome_column h6 {
-		
+		#welcome_column h6 {		
 			font-size:2.6em;
 		  margin-left:0.2em;
 		  margin-right:0.2em;

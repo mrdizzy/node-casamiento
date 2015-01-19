@@ -41,6 +41,7 @@
 
 <div class="browse_right_column">
 <% counter = 0; %>
+<% if (group[1]) { %>
 <% group[1].forEach(function(product) { %>
 
 <a href="/products/<%= product._id %>">
@@ -62,6 +63,7 @@
         </a>
 <% counter = counter + 1 %>
 <% }) %>
+<% } %>
 </div>
 <% }) %>
 

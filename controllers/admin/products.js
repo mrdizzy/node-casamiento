@@ -7,12 +7,13 @@ exports.index = function(req, res) {
     if (error) {
       console.log(error)
     }
-   
     else {
-    console.log(docs.toArray())
-      res.render("admin/products/index", {
-        products: docs.toArray(), 
-        layout:"admin_layout" 
+      db.view("all/fonts_by_id", function(error, fonts_response) {
+        res.render("admin/products/index", {
+          products: docs.toArray(), 
+          layout:"admin_layout",
+          fonts: fonts_response.toArray()
+        })
       })
     }
   })

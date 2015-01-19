@@ -57,8 +57,8 @@ exports.show = function(req, res, next) {
 exports.update = exports.create = function(req, res) {
   if(req.product) {
     var rev = req.product.rev,
-    id = req.product.id;
-    req.body._rev = rev;
+      id = req.product.id;
+      req.body._rev = rev;
   } else {
     var id = req.body._id
   }
@@ -70,9 +70,8 @@ exports.update = exports.create = function(req, res) {
   db.save(id, rev, req.body, function(err, documents) {
     var new_product = req.body;
     new_product._rev = documents.rev;
-    if (err) {
-    
-  console.log("Unable to save main document", err, documents)
+    if (err) {    
+      console.log("Unable to save main document", err, documents)
       res.status(500);
       res.end();
     }
@@ -80,10 +79,8 @@ exports.update = exports.create = function(req, res) {
       if(svg) {
         var svg_id = "svg__" + documents.id;
         db.get(svg_id, function(e, record) {
-          if (record) {
-            var svg_rev = record._rev
-          }
-          db.save(svg_id,svg_rev, {_attachments: { svg: { 'Content-Type': "image/xml+svgz", data: svg}}}, function(anerror, done) {
+          if (record) var svg_rev = record._rev;
+          db.save(svg_id, svg_rev, {_attachments: { svg: { 'Content-Type': "image/xml+svgz", data: svg}}}, function(anerror, done) {
               if (anerror) {
                 console.log("Error saving attachment of SVG",anerror)
                 res.status(500);

@@ -28,7 +28,6 @@ var ProductView = Backbone.View.extend({
   select: function() {
     var cpv = new CurrentProductView({model:this.model, attachmentView: AttachView});
     cpv.render()
-    $('#cpv').html(cpv.el)
   },
   render: function() {
     this.$el.html(this.model.get("_id") + " | <span class='destroy'>destroy</span>");
@@ -73,6 +72,7 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     this.model.on("change:colours", this.renderColours, this) 
     this.model.on("change:background", this.renderBackground, this)
   },    
+  el: $('#cpv'),
   events: { 
     'change input[name=svgupload]': 'prepareSVG',      
     'dizzy-cp:hoverColor': 'updateColours',  
@@ -111,7 +111,6 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     this.model.set("background-" + id, val).trigger("change:background")
   },
   renderColours: function() {
-  console.log(this.model.attributes)
     this.$('.colour_0').css("background-color", this.model.get("colours")[0])       
     this.$('.colour_1').css("background-color", this.model.get("colours")[1])
   },    
@@ -145,6 +144,7 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     })
   },
   render: function() {
+  this.$el.html("")
     var modelToJSON = this.model.toJSON();   
     modelToJSON.isNew = this.model.isNew();
     modelToJSON.divs = {}
@@ -165,7 +165,8 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
       $picker.colorPicker({width: this.$('#colour_picker').width(), index: i, default_color: this.model.get("colours")[i], colours_per_page: 10, listen_to: this.model})
     }
      this.$('#font_picker_wrapper').fontPicker({
-      selected_font: this.model.get("font")
+      selected_font: this.model.get("font"),
+      fonts: casamiento_fonts
     });
    var place_card = this.place_card_view.render()
    this.$('#place_card').html(place_card.el)
@@ -219,7 +220,8 @@ var PlaceCardView = Backbone.View.extend({
   render: function() {     
     var compiled_template = Handlebars.template(templates["admin_place_card"]);
     var $template = $(compiled_template({
-      font_family: this.model.get("font"),   
+      font_family: this.model.get("font"),      
+      fonts: casamiento_fonts, 
       background: this.model.get("background-5"),  
       product: this.model.get("_id")
     }));
@@ -251,15 +253,3 @@ var PlaceCardView = Backbone.View.extend({
 function appendFont(font) {
   $('head').append("<style type='text/css'> @font-face { font-family:'" + font + "'; src: url('/fonts/"+ font + ".eot?') format('eot'), url('/fonts/" + font + ".woff') format('woff'); }</style>");
 }
-   //var options_for_select = "";
-   //default_tags.forEach(function(tag) {
-   //    if(_.contains(tags, tag)) {
-   //        options_for_select = options_for_select + "<option value='" + tag + "' selected='selected'>" + tag + "</option>";
-   //    } else {
-   //        options_for_select = options_for_select + "<option value='" + tag + "'>" + tag + "</option>";
-   //    }
-   //})
-   
-   
-   
-   
