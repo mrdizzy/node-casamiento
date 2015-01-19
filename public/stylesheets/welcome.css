@@ -48,16 +48,7 @@
 	
 /* HEADER AND FOOTER
 ==================================== */
-body {
-	background-image:url('/gfx/backgrounds/grey_header.png');  
-}
-
 	#inner_page_container { 
-		background-color:#fff; 
-		width:97%; 
-		margin:0 auto; 
-		border-left: 1px dotted grey; 
-		border-right: 1px dotted grey;
 		background-image:url('/gfx/background_wiggle.svg');  
 	}  
 		#welcome_column {
@@ -72,8 +63,6 @@ body {
 	width:60%;
 	float:left;
 }
-
-#footer { background-color:#fff; }
 
 	#slides_spinner {
 		display:block;
@@ -205,37 +194,6 @@ body {
 	.how_to_bullet_container {
 		margin-left:85px;
 	}
-.shell { 
-	background-image:url('/gfx/bullets/wiggle.svg');
-	background-repeat:no-repeat; 
-	background-position:center;
-	background-size:24px 17px;
-	margin-bottom:20px;
-	height:17px;
-}
-
-		#footer { 
-			border-left: 1px dotted #939598;      
-			border-top: 1px solid #939598;
-			border-right: 1px dotted #939598; 
-			clear:both; 
-			height:60px; 
-			margin: 0 auto; 
-			padding-top:10px; 
-		}
-	
-			.footer_seperator {  
-				text-align:center; 
-				padding-top:1em;  
-				float:left;  
-				width:20%; 
-			}
-		#footer .genesis_collection, #footer .castello_collection { 
-			width:40%; 
-			float:left; 
-			text-align:center; 
-		}
-
  /* Smartphone */
 /* ----------------------------------------------------------------------------- */    
 @media all and (min-width: 260px) and (max-width: 500px) {
@@ -245,12 +203,6 @@ body {
 		background-image:none;  
 		width:100%;
 	}
-		#header_wrapper { height:39px; }
-			#logo { 
-				width:115px;
-				padding:0.2em;
-				margin:0 auto;
-			}
 #slide_separator {
   display:block;
 	position:relative;
@@ -305,8 +257,7 @@ body {
 	
 /* Phablet */
 @media all and (min-width: 501px) and (max-width: 900px) {  
-/* ----------------------------------------------------------------------------- */    
-	body { background-image:none; } 
+/* ----------------------------------------------------------------------------- */  
 	
 	.hex { 
 	  margin-top:5px;
@@ -320,9 +271,6 @@ body {
 	#inner_page_container { 
 		width:100%;
 	}
-		#logo { 
-			width:160px;
-		}
 		#welcome_column {
 		margin-top:60px;
 			width:96%;
