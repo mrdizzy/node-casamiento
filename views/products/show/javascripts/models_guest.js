@@ -1,4 +1,4 @@
-var Guest = Backbone.Model.extend({
+var Guest = Backbone.Model.extend({ // rename PlaceCardBluePrint?
   defaults: {
     name: "Guest Name",
     baseline: (<%= product.baseline %> || 0),
@@ -29,6 +29,9 @@ var Guest = Backbone.Model.extend({
       name: this.get("name")
     } 
   },
+  
+  // tidy up, we do not need to call the navigator.userAgent every time, this
+  // can be set in an initialisation method
   printPresenter: function() {
     if(navigator.userAgent.match(/Chrome|firefox/i) != null) var result = { width: 105, height: 74.25 }
     if (navigator.userAgent.match(/iPad/i) != null) var result = { width:120.75, height: 85.3875 }
@@ -55,11 +58,9 @@ var Guests = Backbone.Collection.extend({
     localStorage.setItem("guests", JSON.stringify(guests));
   },
   printPresenter: function() {
-    var result = this.invoke('printPresenter');
-
     return {
       ipad: thisProduct.get("ipad"),
-      groups: inGroupsOf(result, thisProduct.get("per_page"))
+      groups: inGroupsOf(this.invoke('printPresenter'), thisProduct.get("per_page"))
     }
   },
   resetFont: function() {

@@ -160,6 +160,7 @@
     position:fixed;
     border-bottom:1px solid black;
   }   
+
   #mobile_spacer {
     z-index:100000000000000000000000000000000000000000;
     width: 95%;
@@ -173,7 +174,6 @@
     width:90%;
     margin:0 auto;
   }
-
 
   #print_button { width:60%; }
 

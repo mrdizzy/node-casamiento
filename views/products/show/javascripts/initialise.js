@@ -23,7 +23,7 @@ $(function() {
     templates["<%= template.name %>"] = <%- template.template %>;
   <% }) %>
   
-  var thisProduct = new Product(),
+  var thisProduct = new Product(<%- JSON.stringify(product) %>),
     guestList = new Guests(),
     coordinator_view = new CoordinatorView(),   
     app_router = new AppRouter;

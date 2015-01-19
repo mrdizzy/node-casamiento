@@ -58,10 +58,11 @@
         .specific_font_decrease_icon {
           margin-top:43%;
           width:30%;
-        }
-        
+        }        
     
     .delete_button { top:45%; }
+    
+      #flat_preview .delete_button {  display:none; }
     
     .place_card_view:nth-child(odd) .place_card_border {
       border-right:0 

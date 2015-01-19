@@ -1,22 +1,18 @@
-// Why do we set defaults like this
-
 var Product = Backbone.Model.extend({
 ////////////////////////////////////////////////////////////////
   urlRoot: '/products',
   idAttribute: "_id",
   localStorage: new Backbone.LocalStorage("CasamientoProducts"),
-  defaults: function() {
-    var defaults = <%- JSON.stringify(product) %>
-    defaults.quantity = defaults.quantity || 8;
-    defaults.font_size = defaults.font_size || 1;    
-    defaults.guests = defaults.guests || new Guests([{},{},{},{},{},{},{},{}]);
-    defaults.total = defaults.total || 3.97;
-    defaults.pence = defaults.pence || 90;
-    defaults.pounds = defaults.pounds || 3;
-    defaults.price = defaults.price || 0.10;
-    defaults.cutting_marks = true;
-    defaults.per_page = 3;
-    return defaults;
+  defaults: {
+      quantity: 8,
+      font_size: 1,
+      guests: new Guests([{},{},{},{},{},{},{},{}]),
+      total: 3.97,
+      pence:90,
+      pounds: 3,
+      price: 0.10,
+      cutting_marks: true,
+      per_page: 3
   },
   initialize: function() {  
     this.calculateUserAgent();
