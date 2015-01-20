@@ -10,6 +10,10 @@ var Guest = Backbone.Model.extend({ // rename PlaceCardBluePrint?
   adjustFontSize: function(amount) {
     this.set("font_size", this.get("font_size") * amount)
   },
+  // This method calculates how far up or down the guest name on
+  // the place card should appear. It returns an object containing 
+  // two heights, the bottom half and the top half, which are used to 
+  // position the divs containing the guest name. We pass an ABSOLUTE width to this function and use a ratio to calculate its height
   calculateBaselineOffset: function(absolute_width) { 
     var height = (70.714285714285714285714285714286/100) * absolute_width;     
     var baseline = (this.get("baseline") /100) * height;
@@ -30,11 +34,12 @@ var Guest = Backbone.Model.extend({ // rename PlaceCardBluePrint?
     } 
   },
   
-  // tidy up, we do not need to call the navigator.userAgent every time, this
-  // can be set in an initialisation method
   printPresenter: function() {
-    if(navigator.userAgent.match(/Chrome|firefox/i) != null) var result = { width: 105, height: 74.25 }
-    if (navigator.userAgent.match(/iPad/i) != null) var result = { width:120.75, height: 85.3875 }
+    if (thisProduct.get("browser") == "ipad") {
+      var result = { width:120.75, height: 85.3875 }
+    } else {
+      var result = { width: 105, height: 74.25 }
+    }
     
     var baseline = (this.get("baseline") /100) * result.height;
     result.name = this.get("name");

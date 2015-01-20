@@ -28,6 +28,10 @@ $(function() {
     coordinator_view = new CoordinatorView(),   
     app_router = new AppRouter;
   
+  // thisProduct.fetch looks in localstorage for the product. If we find
+  // it, then we first update the current font. If we don't find it, 
+  // then we check to see if there is an existing guest list and add
+  // that to the product
   thisProduct.fetch({silent: true, success: function(model, resp) {
     $.updateFont(thisProduct.get("font"), {trigger: function(){}}) 
     }, error: function(model,resp) {

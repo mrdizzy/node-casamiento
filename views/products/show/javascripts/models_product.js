@@ -74,8 +74,8 @@ var Product = Backbone.Model.extend({
     else if (quantity > 71 && quantity > 81) { price = 0.29 }
     else if (quantity > 79 && quantity > 89) { price = 0.28 }
     else if (quantity > 87 && quantity > 97) { price = 0.27 }
-    else if (quantity > 95 && quantity > 105) { price = 0.26 }
-    if (quantity <8) { 
+    else if (quantity > 95) { price = 0.26 }
+    if (quantity < 8) { 
       total = 0.50 * 8
     } else {  
       total = price * quantity;  
@@ -130,7 +130,7 @@ var Product = Backbone.Model.extend({
   hex: function() { // This provides a URL for calling the /svg function with the appropriate hex values
     var monochromatic = this.get("monochromatic"),
       colour_0 = this.get("colours")[0].substring(1) // remove hash from #000000
-      console.log(this.attributes)
+
     if(monochromatic) { // Handle shades of grey
       var first_shade = monochromatic[0]
       var rgb = $('.colour_0').css("background-color");
