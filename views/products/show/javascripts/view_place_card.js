@@ -59,6 +59,8 @@ var PlaceCardView = GuestView.extend({
   },  
   events: {
     'click .plus_font': 'increaseFont',
+    
+    "blur .guest_name": 'updateGuestFromDiv',
     'click .minus_font': 'decreaseFont',
     'click .up_baseline': 'upBaseline',
     'click .down_baseline': 'downBaseline',   
@@ -73,22 +75,27 @@ var PlaceCardView = GuestView.extend({
    this.model.adjustFontSize(0.95) // percentage decrease
   },
   upBaseline: function() {
-    this.model.adjustBaseline(-1);
+    this.model.adjustBaseline(-0.5);
   },
   downBaseline: function() {
-    this.model.adjustBaseline(1);
+    this.model.adjustBaseline(0.5);
   },  
+  updateGuestFromDiv: function() {
+    var name = this.$('.guest_name').text()
+   this.model.set("name", name)
+  },
   _renderFontFamily: function() {
-    this.$('input').css('font-family', thisProduct.get("font"));  
+    this.$('.guest_name').css('font-family', thisProduct.get("font"));  
   },
   _renderFontSize: function() {
     var font_size = this.calculatedWidth * this.model.get("font_size");
-    this.$('input').css('font-size', font_size + "px");   
+    this.$('.guest_name').css('font-size', font_size + "px");   
   },
   _renderBaseline: function() {
     var baseline = this.model.calculateBaselineOffset(this.calculatedWidth);
-    this.$('.spacer').css("height", baseline.top_half + "px")
-    this.$('input').css("height", baseline.bottom_half + "px")
+    this.$('.guest_name').css("margin-top", baseline.top_half + "px")
+    this.$('.guest_name').css("height", baseline.bottom_half + "px")
+        this.$('.guest_name').css("line-height", baseline.bottom_half + "px")
   },
   render: function() {     
     var compiled_template = Handlebars.template(templates["place_card"]),

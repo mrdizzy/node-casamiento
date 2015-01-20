@@ -49,6 +49,7 @@
     <div class="place_card_fold"></div>
     <div class="font_spinner"></div>
     
+    <div class="guest_name" contenteditable="true" style="border:0;padding:0;margin:0;margin-top:{{baseline_top}}px;height:{{baseline_bottom}}px;line-height:{{baseline_bottom}}px;text-transform:capitalize;font-size:{{font_size}}px;font-family:{{font_family}};">{{name}}</div>
     {{#if background}}
       <img src="/products/{{product}}/attachments/display-5" class="place_card_image" />
       <div class="place_card_background_wrapper colour_0">
@@ -59,12 +60,7 @@
     {{#unless background}}    
       <img src="/products/{{product}}/attachments/display-5" class="place_card_image colour_0"/>
     {{/unless}}
- 
-    <div class="guest_wrapper">
-      <div class="spacer" style="height:{{baseline_top}}px;"></div>
- 
-      <input type="text" class="guest_name" style="height:{{baseline_bottom}}px;font-family:{{font_family}};font-size:{{font_size}}px" value="{{name}}"></input>
-    </div>
+    
   </div>       
   
 </div>

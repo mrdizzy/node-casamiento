@@ -18,7 +18,7 @@ var Guest = Backbone.Model.extend({ // rename PlaceCardBluePrint?
     var height = (70.714285714285714285714285714286/100) * absolute_width;     
     var baseline = (this.get("baseline") /100) * height;
     var top_half_height = (height / 2) + baseline;
-    var bottom_half_height = height - top_half_height - 1;
+    var bottom_half_height = height - top_half_height // removed - 1;
     return { top_half: top_half_height, bottom_half: bottom_half_height }
   },  
   presenter: function(absolute_width) {
@@ -32,15 +32,13 @@ var Guest = Backbone.Model.extend({ // rename PlaceCardBluePrint?
       product: thisProduct.get("_id"),
       name: this.get("name")
     } 
-  },
-  
+  },  
   printPresenter: function() {
     if (thisProduct.get("browser") == "ipad") {
       var result = { width:120.75, height: 85.3875 }
     } else {
       var result = { width: 105, height: 74.25 }
-    }
-    
+    }    
     var baseline = (this.get("baseline") /100) * result.height;
     result.name = this.get("name");
     result.font = thisProduct.get("font");

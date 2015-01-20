@@ -151,32 +151,16 @@
           height:100%;
           z-index:-1;
         }
-      
-        .guest_wrapper {
-          width:100%;
-          position:absolute;
-          height:100%;
-          z-index:100;
-        }
     
-          .guest_wrapper input {
-            padding:0;
-            margin:0;
+          .guest_name {
             text-transform:capitalize;
-            border:0;
             position:absolute;
             text-align:center;
             background-color:transparent;
-            display:block;
             width:100%;
-            height:50%;
-            line-height:100%;
+            z-index:100;
           }  
       
-            .guest_wrapper input::-ms-clear { /* Remove massive X from IE input field */
-              width : 0;
-              height: 0;
-             }
               
 /* Smartphone */
 @media all and (min-width: 320px) and (max-width: 500px) {  
