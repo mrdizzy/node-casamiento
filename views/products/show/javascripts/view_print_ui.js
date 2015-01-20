@@ -31,6 +31,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     "click .global_font_decrease": "fontDecrease",
     "click .global_font_reset": "fontReset",
     "fontpicker:selected": "changeFont",
+    "click .buy": "checkout",
     "fontpicker:fontloaded": "loadFont",
     "dizzy-cp:click": "togglePanel",
     "click #menu_lines": "togglePanel",
@@ -40,6 +41,11 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     "click .layout_icon_container": "changeLayout",
     'click #print_now': "printNow",
     "click #ui_print_alert .close": "closePrintAlert"
+  },
+  checkout: function() {
+      this.$('.buy').hide();
+      this.$('.paypal_spinner').show()
+      thisProduct.makePurchase();
   },
   addGuest: function() {    
     thisProduct.set("quantity", thisProduct.get("quantity") + 1)

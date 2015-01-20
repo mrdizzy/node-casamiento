@@ -1,12 +1,11 @@
 var db = require('./../config/db').test_ebay,
   _ = require('underscore'),  
-    zlib = require('zlib'),
-    inGroupsOf = require('./../lib/in_groups_of');
+  zlib = require('zlib'),
+  inGroupsOf = require('./../lib/in_groups_of');
 
 exports.index = function(req, res) {
   db.view('all/products_without_attachments', function(err, docs) {
-    docs = docs.toArray();
-    var result = _.map(docs, function(product) {
+    var result = _.map(docs.toArray(), function(product) {
       for (var i=1; i< 5; i++) {
         var background;
         if(background = product["background-" + i]) {
@@ -27,9 +26,9 @@ exports.index = function(req, res) {
     });  
      
     res.render("products/index.ejs", {
-        locals: {
-          groups: groups
-        }
+      locals: {
+        groups: groups
+      }
     });
   });
 }
@@ -37,7 +36,6 @@ exports.index = function(req, res) {
 exports.show = function(req, res, next) {
   var id = req.params.product;
   db.view('all/products_without_attachments', { key: id }, function(error, docs) {
-  console.log(docs)
     if(docs.length == 0) {
       var myerr = new Error('Record not found!');
       return next(myerr); // <---- pass it, not throw it

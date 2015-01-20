@@ -7,15 +7,23 @@ var Product = Backbone.Model.extend({
       quantity: 8,
       font_size: 1,
       guests: new Guests([{},{},{},{},{},{},{},{}]),
-      total: 3.97,
-      pence:90,
-      pounds: 3,
       price: 0.10,
       cutting_marks: true,
       per_page: 3
   },
+  makePurchase: function() {    
+    $.form('/payments', { 
+      "object": JSON.stringify(this.toJSON()),
+      "L_PAYMENTREQUEST_0_AMT0": this.get("total") / this.get("quantity"),
+      "PAYMENTREQUEST_0_AMT": this.get("total"), 
+      "L_PAYMENTREQUEST_0_QTY0": this.get("quantity"), 
+      "L_PAYMENTREQUEST_0_NAME0": this.get("name"), 
+      "L_PAYMENTREQUEST_0_DESC0": "Place cards" 
+    }).submit();  
+  },
   initialize: function() {  
     this.calculateUserAgent();
+    this.calculatePrice();
     this.guests = this.get("guests")
     this.textures = ["plain", "hammered", "linen"]
     this.on("change:texture", this.calculatePrice)
@@ -53,7 +61,8 @@ var Product = Backbone.Model.extend({
   },
   calculatePrice: function() {     
     var price, 
-      quantity = this.get("quantity");
+      quantity = this.get("quantity"),
+      total;
     if(quantity >7 && quantity < 17) { price = 0.50 }
     else if (quantity > 15 && quantity < 25) { price = 0.40 }
     else if (quantity > 23 && quantity < 33) { price = 0.35 }
@@ -66,8 +75,12 @@ var Product = Backbone.Model.extend({
     else if (quantity > 79 && quantity > 89) { price = 0.28 }
     else if (quantity > 87 && quantity > 97) { price = 0.27 }
     else if (quantity > 95 && quantity > 105) { price = 0.26 }
-    var total = price * quantity;  
-    thisProduct.set("total", total)    
+    if (quantity <8) { 
+      total = 0.50 * 8
+    } else {  
+      total = price * quantity;  
+    }
+    this.set("total", total)    
     total = total.toFixed(2).toString().split(".")    
     this.set("pounds", total[0]).set("pence", total[1])
   },
@@ -145,7 +158,7 @@ var Product = Backbone.Model.extend({
       ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   },
-  stale: ['attachments_order', 'tags', 'description','baseline', 'pence', 'pounds', 'font_size', 'per_page', 'cutting_marks'],
+  stale: ['attachments_order', 'tags', 'description','baseline', 'pence', 'pounds', 'font_size', 'per_page', 'cutting_marks', 'browser'],
   toJSON: function() {
     return _.omit(this.attributes, this.stale);
   }

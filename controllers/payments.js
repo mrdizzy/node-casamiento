@@ -1,5 +1,6 @@
  var  paypal = require('./../config/paypal_config')(),
- _ = require('underscore');
+ _ = require('underscore'),
+db = require('./../config/db').test_ebay;
  
  /* Example parameters
 
@@ -30,19 +31,55 @@
 */
 
 exports.create = function(req, res) {
-  var default_options = {
-        "PAYMENTREQUEST_0_CURRENCYCODE": "GBP",
-        "RETURNURL": "http://www.casamiento.co.uk/",
-        "CANCELURL": "http://www.casamiento.co.uk/admin/products",
-        "PAYMENTREQUEST_0_PAYMENTACTION": "Sale",  
-        "ALLOWNOTE": 1,
-        "LOGOIMG": "http://www.casamiento.co.uk/gfx/logo/casamiento_black.png"
-    };
-      console.log(req.body)
-  var options = _.extend(default_options, req.body);
-  paypal.buildQuery("SetExpressCheckout", function(error, response) { 
+  var product = JSON.parse(req.body.object);
+  delete product._rev
+  delete product._id
+  delete req.body.object;
+  product.type = "order"
+  product.status = "UNPAID"
   
-  console.log(error, response)
-    res.redirect("https://www.paypal.com/uk/cgi-bin/webscr?cmd=_express-checkout&token="+response.TOKEN)
-      }, options)
+  
+  var default_options = {
+    "PAYMENTREQUEST_0_CURRENCYCODE": "GBP",
+    "RETURNURL": "http://localhost:3000/payments",
+    "CANCELURL": "http://www.casamiento.co.uk",
+    "PAYMENTREQUEST_0_PAYMENTACTION": "Sale",  
+    "ALLOWNOTE": 1,
+    "LOGOIMG": "http://www.casamiento.co.uk/gfx/logo/casamiento_black.png"
+  };
+  var options = _.extend(default_options, req.body);
+  
+  paypal.buildQuery("SetExpressCheckout", function(error, response) { 
+  product._id = response.TOKEN
+    db.save(product, function(err, docs) {
+      if(err) {
+        res.send(500)
+      } else {
+      console.log(docs)
+        res.redirect("https://www.sandbox.paypal.com/uk/cgi-bin/webscr?cmd=_express-checkout&token="+response.TOKEN)
+      }      
+    })
+    
+  }, options)
+}
+
+exports.index = function(req, res) {
+  paypal.buildQuery("GetExpressCheckoutDetails", function(error, response) {
+    db.get(req.query.token, function(dberror, doc) {
+    
+      doc.paypal = response;
+      doc.status = "PAID"
+      db.save(doc, function(new_err, new_doc) {
+        if(new_err) {
+          console.log(new_err, new_doc)
+        } else {
+           paypal.buildQuery("DoExpressCheckoutPayment", function(paymenterror, paymentresponse) { 
+           console.log(paymenterror, paymentresponse)
+           }, { TOKEN: req.query.token, PAYERID: req.query.PayerID, PAYMENTACTION: "Sale", PAYMENTREQUEST_0_AMT: doc.paypal.PAYMENTREQUEST_0_AMT,
+       PAYMENTREQUEST_0_CURRENCYCODE: 'GBP' })
+        }
+      })
+    })
+  }, { TOKEN: req.query.token })
+  res.send(200)
 }

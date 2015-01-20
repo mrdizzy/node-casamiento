@@ -7,7 +7,7 @@ var StepView = Backbone.View.extend({
     this.current_step = 1;
   },
   events: {     
-    "click #buy": "checkout",        
+    "click .buy": "checkout",        
     "mouseenter .spc": "hoverOver",
     "mouseleave .spc": "hoverOut",     
     "click .texture": "updateTexture",  
@@ -20,25 +20,19 @@ var StepView = Backbone.View.extend({
   },
   quickGuests: function() {
     var guests = ($('#quick_guests').val());
+    if (!($.trim(guests ) == '')) {
     if(guests.indexOf(',') === -1) { // Check how the names are delimited (comma or newline)
       guests = guests.split("\n")
     } else {
       guests = guests.split(",")
     }
    
-    var number = guests.length;
-    var add_blanks = 8 - guests.length;
-    if (add_blanks > 0) {
-      for(var i = 0; i < add_blanks; i++) {
-        guests.push("");
-      }
-    }
     var names = _.map(guests, function(name) {
       name = $.trim(name);
       return {name: name}
     })   
     thisProduct.get("guests").reset(names)
-    this._renderGuests();
+    }
   },
   plusQty: function(e) {
     thisProduct.set("quantity", thisProduct.get("quantity") + 1)
@@ -54,7 +48,7 @@ var StepView = Backbone.View.extend({
     $field = $(e.currentTarget)
     var value = $field.val();
     value = parseInt(value)
-    if(isNaN(value) || value == false || value < 8) {
+    if(isNaN(value) || value == false || value < 1) {
       $field.val(thisProduct.get("quantity"))
     } else {
        thisProduct.set("quantity",value)
@@ -79,13 +73,9 @@ var StepView = Backbone.View.extend({
     if(step_index != this.current_step) this.$('#step_' + step_index + " .step").css("background-color", "#BBB") 
   },
   checkout: function() {
-    $.form('/payments', { 
-      "L_PAYMENTREQUEST_0_AMT0": thisProduct.get("total") / thisProduct.get("quantity"),
-      "PAYMENTREQUEST_0_AMT": thisProduct.get("total"), 
-      "L_PAYMENTREQUEST_0_QTY0": thisProduct.get("quantity"), 
-      "L_PAYMENTREQUEST_0_NAME0": thisProduct.get("name"), 
-      "L_PAYMENTREQUEST_0_DESC0": "Place cards" 
-    }).submit();
+    $('.paypal_spinner').show();
+    $('.buy').hide();
+    thisProduct.makePurchase();
   },
   render: function() {    
     var $result = $(Handlebars.template(templates["products_show_step_through"])(thisProduct.toJSON()));         

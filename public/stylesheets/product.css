@@ -122,7 +122,10 @@
         color:black; 
         font: normal 2em 'OS Light';
       }
-      
+      #quick_guests {
+        width:90%;
+        font: normal 1.2em 'OS Light'
+      }
     input { 
       border:1px solid darkgrey; 
       font: normal 1.2em "OS";
@@ -130,16 +133,20 @@
       text-align:center;
     }
   
-    #buy {
+    .buy {
       clear:both;
       font-size:1.2em;
       width:60%;
       padding:0.25em;
     }
-      #paypal { 
+      .paypal { 
         padding-top:0.25em;
         width:90px;
       }      
+      
+      .paypal_spinner { 
+        padding:2.5em;
+        display:none; }
       
 /* Smartphone */
 @media all and (min-width: 320px) and (max-width: 500px) {
