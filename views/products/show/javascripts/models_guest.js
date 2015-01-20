@@ -46,7 +46,7 @@ var Guest = Backbone.Model.extend({ // rename PlaceCardBluePrint?
     result.font = thisProduct.get("font");
     result.font_size = result.width * this.get("font_size");
     result.margin_top = (result.height /2) + baseline;
-    result.guest_height = result.height - result.margin_top - 1
+    result.guest_height = result.height - result.margin_top // Removed (- 1) from this calculation
     return result;
   }
 })

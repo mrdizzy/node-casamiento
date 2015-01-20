@@ -4,7 +4,9 @@
 // to initialize the utility functions
 var BackboneRelativeView = Backbone.View.extend({
   initialize: function() {
+    this.calculateWidth();
     $(window).on("resize", this.testForMobile.bind(this)); 
+    $(window).on("resize", this.calculateWidth.bind(this)); 
     this.testForMobile();
   },
   // This function looks at the widths defined in widths_relative_to_viewport 
@@ -15,13 +17,18 @@ var BackboneRelativeView = Backbone.View.extend({
   //    mobile: 50 
   //  })
   //
-  // It calculates and returns the absolute width of the element based on the 
+  // It calculates and returns an absolute width of the element based on the 
   // current viewport size and the device type
-  relativeToViewport: function() {
+  calculateWidth: function() {
     var widths_relative_to_viewport = this.options.widths_relative_to_viewport;
     var viewport = $('body').width();
-    if(viewport < 501) return (widths_relative_to_viewport.mobile/100) * viewport;
-    return (widths_relative_to_viewport.desktop/100) * viewport;
+    if (widths_relative_to_viewport) { // doesn't exist in plain GuestView
+      if(viewport < 501) {
+        this.calculatedWidth = (widths_relative_to_viewport.mobile/100) * viewport; 
+      } else { 
+        this.calculatedWidth = (widths_relative_to_viewport.desktop/100) * viewport;
+      }
+    }
   },  
   testForMobile: function() {
     var viewport = $('body').width();

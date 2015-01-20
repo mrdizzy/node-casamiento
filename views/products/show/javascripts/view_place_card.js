@@ -82,18 +82,18 @@ var PlaceCardView = GuestView.extend({
     this.$('input').css('font-family', thisProduct.get("font"));  
   },
   _renderFontSize: function() {
-    var font_size = this.relativeToViewport() * this.model.get("font_size");
+    var font_size = this.calculatedWidth * this.model.get("font_size");
     this.$('input').css('font-size', font_size + "px");   
   },
   _renderBaseline: function() {
-    var baseline = this.model.calculateBaselineOffset(this.relativeToViewport());
+    var baseline = this.model.calculateBaselineOffset(this.calculatedWidth);
     this.$('.spacer').css("height", baseline.top_half + "px")
     this.$('input').css("height", baseline.bottom_half + "px")
   },
   render: function() {     
-    var compiled_template = Handlebars.template(templates["place_card"]);
-    var $template = $(compiled_template(this.model.presenter(this.relativeToViewport())))
-    var colours = thisProduct.get("colours");
+    var compiled_template = Handlebars.template(templates["place_card"]),
+      $template = $(compiled_template(this.model.presenter(this.calculatedWidth))),
+      colours = thisProduct.get("colours");
     for(var i=0; i < colours.length; i++) {
       $template.find('.colour_' + i).css("background-color", colours[i])
     }
