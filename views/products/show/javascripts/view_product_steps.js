@@ -19,18 +19,26 @@ var StepView = Backbone.View.extend({
     "blur #quick_guests": "quickGuests"
   },
   quickGuests: function() {
-   var guests = ($('#quick_guests').val());
-   if(guests.indexOf(',') === -1) {
-       guests = guests.split("\n")
-   } else {
-       guests = guests.split(",")
-   }
+    var guests = ($('#quick_guests').val());
+    if(guests.indexOf(',') === -1) { // Check how the names are delimited (comma or newline)
+      guests = guests.split("\n")
+    } else {
+      guests = guests.split(",")
+    }
    
-   var names = _.map(guests, function(name) {
-    name = $.trim(name);
-    return {name: name}
-  })   
-  thisProduct.get("guests").reset(names)
+    var number = guests.length;
+    var add_blanks = 8 - guests.length;
+    if (add_blanks > 0) {
+      for(var i = 0; i < add_blanks; i++) {
+        guests.push("");
+      }
+    }
+    var names = _.map(guests, function(name) {
+      name = $.trim(name);
+      return {name: name}
+    })   
+    thisProduct.get("guests").reset(names)
+    this._renderGuests();
   },
   plusQty: function(e) {
     thisProduct.set("quantity", thisProduct.get("quantity") + 1)

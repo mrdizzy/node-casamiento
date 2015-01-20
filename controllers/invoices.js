@@ -36,6 +36,7 @@ module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[
       console.log("There has been an error getting the PayPal response:")
       console.log(err)
     } else {
+            console.log(results)
       res.render("invoices/show.ejs", { layout: false, locals: { transactions: results }})
     }
   }); 
@@ -53,6 +54,7 @@ var timeAgo = new Date(timeNow - 2629740000); //
         console.log(err)
       } else {
         results = _.compact(results); // remove all falsy values
+
         res.render('invoices/index', { layout: 'admin_layout', locals: { transactions: results}});
       }
     });
