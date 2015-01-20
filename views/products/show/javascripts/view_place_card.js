@@ -84,6 +84,9 @@ var PlaceCardView = GuestView.extend({
     var name = this.$('.guest_name').text()
    this.model.set("name", name)
   },
+  _renderName: function() {
+    this.$('.guest_name').text(this.model.get("name"))            
+  },
   _renderFontFamily: function() {
     this.$('.guest_name').css('font-family', thisProduct.get("font"));  
   },
