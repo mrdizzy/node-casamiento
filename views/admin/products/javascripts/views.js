@@ -49,7 +49,6 @@ var ProductsView = Backbone.View.extend({
     this.collection.add(product);
     var cpv = new CurrentProductView({model:product, attachmentView: AttachView});
     cpv.render();    
-    $('#cpv').html(cpv.el)
   },
   render: function() {
     this.$el.empty();
@@ -144,7 +143,7 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
     })
   },
   render: function() {
-  this.$el.html("")
+    this.$el.html("")
     var modelToJSON = this.model.toJSON();   
     modelToJSON.isNew = this.model.isNew();
     modelToJSON.divs = {}

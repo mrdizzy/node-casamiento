@@ -9,15 +9,11 @@
 var CoordinatorView = Backbone.View.extend({
   el: '#background_container',
   initialize: function() {
-    this.current_view = "";
     this.first_render = true;
     this.step_view = new StepView(); 
-
     this.slides_view = new ProductSlideView();    
     this.flat_preview_view = new FlatPreviewView();
     this.print_ui_view = new PrintControlPanelView(); 
- //   this.listenTo(thisProduct, "sync", this._renderColours)
- //   this.listenTo(thisProduct, 'reset', this.rerender)
   },
   events: {
    "click #print_button": "renderPrintView",
@@ -30,7 +26,6 @@ var CoordinatorView = Backbone.View.extend({
     var that = this;
     if(this.first_render) $('#loading_main_page_spinner').hide();
     if(this.current_view == "printui") {
-    
       this.print_ui_view.$el.fadeOut(function() {
         $('#background_container').fadeIn();
       })
@@ -69,14 +64,16 @@ var CoordinatorView = Backbone.View.extend({
     var that = this;
     this.stopListening(thisProduct, 'change:colours');
     this.stopListening(thisProduct, 'change:font')
-    
-    this.current_view = "printui"
-    $('#background_container').fadeOut(function() {        
-      that.print_ui_view.render().$el.fadeIn(1000);                
+    if(!that.print_view_already_rendered) that.print_ui_view.render()
+    $('#background_container').fadeOut(function() {    
+      that.print_ui_view.$el.fadeIn(1000);                
       $('body').animate({
         scrollTop: $('body').offset().top
       }, 0);
     })    
+    this.print_view_already_rendered = true;
+    
+    this.current_view = "printui"
     app_router.navigate("print")
   },
   loadFont: function(e, font) {

@@ -52,7 +52,22 @@ var Product = Backbone.Model.extend({
     }
   },
   calculatePrice: function() {     
-    var total = this.get("price") * this.get("quantity");      
+    var price, 
+      quantity = this.get("quantity");
+    if(quantity >7 && quantity < 17) { price = 0.50 }
+    else if (quantity > 15 && quantity < 25) { price = 0.40 }
+    else if (quantity > 23 && quantity < 33) { price = 0.35 }
+    else if (quantity > 31 && quantity < 41) { price = 0.34 }
+    else if (quantity > 39 && quantity < 49) { price = 0.33 }
+    else if (quantity > 47 && quantity < 57) { price = 0.32 }
+    else if (quantity > 55 && quantity < 65) { price = 0.31 }
+    else if (quantity > 63 && quantity < 73) { price = 0.30 }
+    else if (quantity > 71 && quantity > 81) { price = 0.29 }
+    else if (quantity > 79 && quantity > 89) { price = 0.28 }
+    else if (quantity > 87 && quantity > 97) { price = 0.27 }
+    else if (quantity > 95 && quantity > 105) { price = 0.26 }
+    var total = price * quantity;  
+    thisProduct.set("total", total)    
     total = total.toFixed(2).toString().split(".")    
     this.set("pounds", total[0]).set("pence", total[1])
   },

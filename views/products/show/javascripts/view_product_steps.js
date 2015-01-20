@@ -72,7 +72,7 @@ var StepView = Backbone.View.extend({
   },
   checkout: function() {
     $.form('/payments', { 
-      "L_PAYMENTREQUEST_0_AMT0": thisProduct.get("unit"), 
+      "L_PAYMENTREQUEST_0_AMT0": thisProduct.get("total") / thisProduct.get("quantity"),
       "PAYMENTREQUEST_0_AMT": thisProduct.get("total"), 
       "L_PAYMENTREQUEST_0_QTY0": thisProduct.get("quantity"), 
       "L_PAYMENTREQUEST_0_NAME0": thisProduct.get("name"), 

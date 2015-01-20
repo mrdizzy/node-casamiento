@@ -38,9 +38,8 @@ exports.create = function(req, res) {
         "ALLOWNOTE": 1,
         "LOGOIMG": "http://www.casamiento.co.uk/gfx/logo/casamiento_black.png"
     };
-      
+      console.log(req.body)
   var options = _.extend(default_options, req.body);
-  console.log(options)
   paypal.buildQuery("SetExpressCheckout", function(error, response) { 
   
   console.log(error, response)
