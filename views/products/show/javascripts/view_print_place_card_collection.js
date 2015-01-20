@@ -1,8 +1,7 @@
-// This view loops through each guest and creates an SVG place card for printing
-// We start by checking if the device is an ipad, and if it is, we add an "ipad" class to the #printsvg containing element. This will allow us to change the
-// contents based on the class. We also listen to the Product object for changes
+// Loops through guests and creates an SVG placecard for printing.
+// We listen to the Product object for changes
 // to crop marks or number of place cards per page. When these changes happen,
-// we call private methods which will alter css or add/remove classes on the 
+// we call private methods which will alter css or add/remove classes on  
 // elements 
 var PrintPlaceCardCollectionView = Backbone.View.extend({
   el: '#printsvg',
@@ -12,7 +11,7 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
     this.listenTo(thisProduct, 'change:per_page', this.render)
   },
   render: function() {  
-    var $template = $(Handlebars.template(templates["print_place_card_view_collection"]) (thisProduct.get("guests").printPresenter())); 
+    var $template = $(Handlebars.template(templates["print_place_card_view_collection"])(thisProduct.get("guests").printPresenter())); 
     this.$el.removeClass().addClass("up" + thisProduct.get("per_page"))
     if(thisProduct.get("browser")) this.$el.addClass(thisProduct.get("browser"))
     this.$el.html($template)

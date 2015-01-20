@@ -64,7 +64,6 @@ var Guests = Backbone.Collection.extend({
   },
   printPresenter: function() {
     return {
-      ipad: thisProduct.get("ipad"),
       groups: inGroupsOf(this.invoke('printPresenter'), thisProduct.get("per_page"))
     }
   },

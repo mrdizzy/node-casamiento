@@ -1,6 +1,3 @@
-// GUEST VIEW
-////////////////////////////////////////////////////////////////////////////// 
-
 var GuestView = BackboneRelativeView.extend({  
   className: 'input_container',
   initialize: function() {
@@ -44,6 +41,11 @@ var GuestView = BackboneRelativeView.extend({
   is the size of the font as a percentage of the container width. 
   This allows us to make sure that when the font size is changed
   it remains consistent relative to its container 
+  
+  This view inherits from GuestView. It takes a Guest as a model.
+  We start by binding the window resize events to two private render methods, _renderFontSize and
+  _renderBaseline, which will rerender the font and baseline when
+  the window is resized
 */
 var PlaceCardView = GuestView.extend({
   className: 'place_card_view',
@@ -60,9 +62,9 @@ var PlaceCardView = GuestView.extend({
     'click .minus_font': 'decreaseFont',
     'click .up_baseline': 'upBaseline',
     'click .down_baseline': 'downBaseline',   
-    'click .delete_guest': 'deleteGuest', // see parent view for implementation
-    "blur input": 'updateGuest', // see parent view for implementation
-    'focus input': 'clearGuest' // see parent view for implementation
+    'click .delete_guest': 'deleteGuest', // see parent GuestView for implementation
+    "blur input": 'updateGuest', // see parent GuestView for implementation
+    'focus input': 'clearGuest' // see parent GuestView for implementation
   }, 
   increaseFont: function() {
     this.model.adjustFontSize(1.05) // percentage increase
@@ -80,13 +82,13 @@ var PlaceCardView = GuestView.extend({
     this.$('input').css('font-family', thisProduct.get("font"));  
   },
   _renderFontSize: function() {
-    var new_size = this.relativeToViewport() * this.model.get("font_size");
-    this.$('input').css('font-size', new_size + "px");   
+    var font_size = this.relativeToViewport() * this.model.get("font_size");
+    this.$('input').css('font-size', font_size + "px");   
   },
   _renderBaseline: function() {
-    var baselines = this.model.calculateBaselineOffset(this.relativeToViewport());
-    this.$('.spacer').css("height", baselines.top_half + "px")
-    this.$('input').css("height", baselines.bottom_half + "px")
+    var baseline = this.model.calculateBaselineOffset(this.relativeToViewport());
+    this.$('.spacer').css("height", baseline.top_half + "px")
+    this.$('input').css("height", baseline.bottom_half + "px")
   },
   render: function() {     
     var compiled_template = Handlebars.template(templates["place_card"]);
