@@ -10,7 +10,7 @@
 
 <%- contentFor('middle') %>
 
-  <div id="browse_designs" style="background-color:white;">
+  <div id="browse_designs" style="background-color:white;padding-top:10px;">
   
   
   <% groups.forEach(function(group) { %>
@@ -18,8 +18,11 @@
 <div class="browse_left_column">
 <% group[0].forEach(function(product) { %>
 
-<a href="/products/<%= product._id %>">
 <div id="<%= product._id %>"  class="related related_<%= counter %>">
+
+<div class="frame" style="width:90%;margin:0 auto;border-top-left-radius:15px;border-bottom-right-radius:15px;padding:5px;">
+
+<a href="/products/<%= product._id %>">
           <div class="place_square">
     
             <div class="inner_place_square">
@@ -29,13 +32,18 @@
      <div class="inner_place_square_hidden">
               <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-2"] %></div>              
               <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-2" />
-            </div>
+            </div> 
             <h2><%= product.name %></h2>
-      
           </div>
+          </a>
+          
+           <p style="margin:0;padding:0;margin-left:1em;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: <% if (product.tags) { %> <%= product.tags.join(", ") %> <%  } %></p>
         </div>
-        </a>
+        
+        
+        <p style="margin:0;padding:0;color:lightgrey;padding-top:1em;padding-bottom:1em;letter-spacing:0.5em;font:normal 0.75em 'OS Light';text-align:center"> &diams;  &diams;  &diams; </p>
 <% counter = counter + 1 %>
+</div>
 <% }) %>
 </div>
 
@@ -46,6 +54,8 @@
 
 <a href="/products/<%= product._id %>">
 <div id="<%= product._id %>"  class="related related_<%= counter %>">
+
+<div class="frame" style="width:90%;margin:0 auto;border-top-left-radius:15px;border-bottom-right-radius:15px;padding:5px;">
           <div class="place_square">
     
             <div class="inner_place_square">
@@ -55,13 +65,17 @@
      <div class="inner_place_square_hidden">
               <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-2"] %></div>              
               <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-2" />
-            </div>
+            </div> 
             <h2><%= product.name %></h2>
-      
           </div>
+          
+           <p style="margin:0;padding:0;margin-left:1em;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: <% if (product.tags) { %> <%= product.tags.join(", ") %> <%  } %></p>
         </div>
         </a>
+        
+        <p style="margin:0;padding:0;color:lightgrey;padding-top:1em;padding-bottom:1em;letter-spacing:0.5em;font:normal 0.75em 'OS Light';text-align:center"> &diams;  &diams;  &diams; </p>
 <% counter = counter + 1 %>
+</div>
 <% }) %>
 <% } %>
 </div>
