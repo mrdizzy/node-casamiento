@@ -1,8 +1,7 @@
 var fs = require('fs');
 
 module.exports = function(app){
-  
-  app.post("/search", require("./../controllers/search"))
+
   app.get("/svg/:id/:colours", require("./../controllers/svg").show)
   
   app.get("/svg/:id", require("./../controllers/svg").show)
@@ -12,6 +11,7 @@ module.exports = function(app){
   var products = app.resource('products', require('./../controllers/products'), {
       load: parseRevision
   });
+  app.get("/products/tags/:tag", require('./../controllers/products').tags)
   var attachments = app.resource("attachments", require('./../controllers/attachments'));
   products.add(attachments);
   
@@ -29,12 +29,6 @@ module.exports = function(app){
 
   // Homepage
   app.get("/", require("./../controllers/welcome").index)
-  // Look at all the files in the current /routes directory and require them
-  fs.readdirSync(__dirname).forEach(function(file) {
-      if (file == "index.js") return;
-      var name = file.substr(0, file.indexOf('.'));
-      require('./' + name)(app);
-  });
 }
 
 // Takes a request and parses the _rev and _id out of it

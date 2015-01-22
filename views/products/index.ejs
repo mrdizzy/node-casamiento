@@ -69,7 +69,14 @@
             <h2><%= product.name %></h2>
           </div>
           
-           <p style="margin:0;padding:0;margin-left:1em;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: <% if (product.tags) { %> <%= product.tags.join(", ") %> <%  } %></p>
+           <p style="margin:0;padding:0;margin-left:1em;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: <% if (product.tags) { %>
+           <% var i = 0 %>
+           <% product.tags.forEach(function(tag) { %>
+           <% i = i + 1 %>
+           <a href="/products/tags/<%= tag %>"><%= tag %></a><% if (!(i == product.tags.length)) {%>,<% } %>
+           <% }) %>
+           <% } %>
+           </p>
         </div>
         </a>
         

@@ -3,8 +3,8 @@ var db = require('./../config/db').test_ebay,
   zlib = require('zlib'),
   inGroupsOf = require('./../lib/in_groups_of');
 
-exports.index = function(req, res) {
-  db.view('all/products_without_attachments', function(err, docs) {
+exports.tags = function(req, res) {
+  db.view('tags/by_tags', { key: [req.params.tag]}, function(err, docs) {
     var result = _.map(docs.toArray(), function(product) {
       for (var i=1; i< 5; i++) {
         var background;
@@ -32,6 +32,37 @@ exports.index = function(req, res) {
     });
   });
 }
+
+exports.index = function(req, res) {
+  db.view('all/products_without_attachments',  function(err, docs) {
+    var result = _.map(docs.toArray(), function(product) {
+      for (var i=1; i< 5; i++) {
+        var background;
+        if(background = product["background-" + i]) {
+          var divs = background.split("</div>");
+          divs = _.map(divs, function(div) {
+            if (!(/class="nocolor"/.test(div))) 
+              div = div.replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");  
+            return div
+          })          
+          product["background-" + i] = divs.join("</div>")  
+        }
+      }    
+      return product
+    })
+    var groups = inGroupsOf(result, 11);
+    groups = _.map(groups, function(group) {
+      return inGroupsOf(group, 6);
+    });  
+     
+    res.render("products/index.ejs", {
+      locals: {
+        groups: groups
+      }
+    });
+  });
+}
+
 
 exports.show = function(req, res, next) {
   var id = req.params.product;
