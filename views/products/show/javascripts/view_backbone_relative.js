@@ -25,8 +25,8 @@ var BackboneRelativeView = Backbone.View.extend({
     if (widths_relative_to_viewport) { // doesn't exist in plain GuestView
       if(viewport < 501) {
         this.calculatedWidth = (widths_relative_to_viewport.mobile/100) * viewport; 
-      } else { 
-        this.calculatedWidth = (widths_relative_to_viewport.desktop/100) * viewport;
+      } else if(viewport > 500 && viewport  801){ 
+        this.calculatedWidth = (widths_relative_to_viewport.tablet/100) * viewport;
       }
     }
   },  

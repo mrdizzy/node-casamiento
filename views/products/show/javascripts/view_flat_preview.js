@@ -5,6 +5,7 @@ var FlatPreviewView = Backbone.View.extend({
       model: thisProduct.get("guests").first(),
       widths_relative_to_viewport: {
         desktop: 64.505,
+        tablet: 53.35,
         mobile: 95
       }
     }).render()

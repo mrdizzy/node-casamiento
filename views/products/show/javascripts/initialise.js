@@ -10,6 +10,7 @@ $(function() {
   <%= include models_product.js %>   
   <%= include view_backbone_relative.js %>
   <%= include view_product_steps.js %>
+  <%= include view_guest.js %>
   <%= include view_place_card.js %>
   <%= include view_flat_preview.js %>  
   <%= include view_product_slides.js %>
