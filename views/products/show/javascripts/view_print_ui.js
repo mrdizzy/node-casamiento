@@ -157,6 +157,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
       model: guest,
       widths_relative_to_viewport: {
         desktop: 47.5,
+        tablet: 47.5,
         mobile: 95
       }
     }))

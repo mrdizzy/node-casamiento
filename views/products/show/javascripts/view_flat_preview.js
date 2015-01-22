@@ -1,4 +1,4 @@
-var FlatPreviewView = Backbone.View.extend({
+var FlatPreviewView = BackboneRelativeView.extend({
   el: '#flat_preview',
   render: function() {
     var place_card_view = new PlaceCardView({

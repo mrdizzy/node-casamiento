@@ -171,4 +171,13 @@
     }
  
 }    
-    
+                
+/* Tablet */
+@media all and (min-width: 501px) and (max-width: 800px) {  
+/* ----------------------------------------------------------------------------- */    
+  
+    .button_inside { 
+      border-top-left-radius:5px;      
+      border-bottom-right-radius:5px;
+    }
+ 
