@@ -14,6 +14,7 @@ module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[
   async.map(transactions, function(transaction, callback) {
         
     paypal.buildQuery("GetTransactionDetails", function(err, response) {
+
       if(err) {
         callback(err)
       } else {
@@ -48,7 +49,9 @@ module.exports.index = function(req, res) {  // GET /invoices
 var timeAgo = new Date(timeNow - 2629740000); //
 
   paypal.buildQuery("TransactionSearch", function(error, response) {
+   console.log(error, response)
     parseTransactions(response.TransactionSearchResponse, function(err, results) {
+   
       if (err) {
         console.log("There has been an error with the Paypal Request: ")
         console.log(err)
