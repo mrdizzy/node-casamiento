@@ -23,9 +23,11 @@ var Product = Backbone.Model.extend({
     }).submit();  
   },
   initialize: function() {  
+  console.log("Initialize")
     this.calculateUserAgent();
     this.calculatePrice();
     this.guests = this.get("guests")
+    console.log(this.guests.toJSON())
     this.on("change:weight", this.calculatePrice)
     this.on("change:font", this.saveProduct)
     this.on("change:weight", this.saveProduct)
@@ -60,7 +62,6 @@ var Product = Backbone.Model.extend({
     }
   },
   calculatePrice: function() {     
-  console.log("calculate price", this.get("weight"), this.get("quantity"))
     var price, 
       quantity = this.get("quantity"),
       total;
@@ -88,10 +89,7 @@ var Product = Backbone.Model.extend({
     }
 
     split_total = total.toFixed(2).toString().split(".")   
-
-    this.set("pounds",split_total[0]).set("pence", split_total[1])
-    
-    this.set("total", total)    
+    this.set("pounds",split_total[0]).set("pence", split_total[1]).set("total", total)    
   },
   toggleCuttingMarks: function() {
     var cutting_marks = this.get("cutting_marks") ? false : true;
@@ -129,8 +127,11 @@ var Product = Backbone.Model.extend({
     this.save({guests: this.guests})  
   },
   parse: function(response) {
-    if(response.guests) this.guests.reset(response.guests, {silent:true})
-    delete response.guests
+  console.log("Parse")
+  console.log(this.guests)
+    if(response.guests) {
+    response.guests = new Guests(response.guests, {silent:true})
+    }
     return response;
   },
   svgURL: function() {

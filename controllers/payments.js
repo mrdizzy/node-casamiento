@@ -44,7 +44,7 @@ exports.create = function(req, res) {
   
   var default_options = {
     "PAYMENTREQUEST_0_CURRENCYCODE": "GBP",
-    "RETURNURL": "http://localhost:3000/payments",
+    "RETURNURL": "http://www.casamiento.co.uk/payments",
     "CANCELURL": "http://www.casamiento.co.uk",
     "PAYMENTREQUEST_0_PAYMENTACTION": "Sale",  
     "ALLOWNOTE": 1,
@@ -60,7 +60,7 @@ exports.create = function(req, res) {
         res.send(500)
       } else {
       console.log(docs)
-        res.redirect("https://www.sandbox.paypal.com/uk/cgi-bin/webscr?cmd=_express-checkout&token="+response.TOKEN)
+        res.redirect("https://www.paypal.com/uk/cgi-bin/webscr?cmd=_express-checkout&token="+response.TOKEN)
       }      
     })
     

@@ -1,0 +1,43 @@
+<%- contentFor('inside_headtag') %>
+
+<style type="text/css">
+
+#inner_page_container { display:none; }
+
+  <% for (var i=0; i < product.colours.length; i++) { %>
+    .colour_<%= i %> { background-color: <%= product.colours[i] %> }
+  <% } %>
+  
+  @font-face { font-family:"<%= product.font %>"; src: url('/fonts/<%= product.font %>.eot?') format('eot'), url('/fonts/<%= product.font %>.woff') format('woff') }  
+
+</style>
+
+
+
+
+<%- contentFor('middle') %>
+ 
+  
+<%- contentFor('main') %>
+  
+  <div id="print_ui"></div>
+  
+ 
+
+<%- contentFor('left') %>
+
+  <div id="preview">
+    <div id="flat_preview"></div>
+    <div id="product_container"></div>
+  </div>
+  
+
+
+
+<%- contentFor('right') %>
+
+
+
+<%- contentFor('javascripts') %>
+
+<%= include initialise.js %>

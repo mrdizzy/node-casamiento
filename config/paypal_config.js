@@ -16,6 +16,6 @@ var PayPal = require('node-paypal-api-nv'),
         return new PayPal(sandbox.USER, sandbox.PWD, sandbox.SIGNATURE);
     }
     else {
-        return new PayPal(sandbox.USER, sandbox.PWD, sandbox.SIGNATURE);
+        return new PayPal(production.USER, production.PWD, production.SIGNATURE);
     }
 }

@@ -63,7 +63,6 @@ exports.index = function(req, res) {
   });
 }
 
-
 exports.show = function(req, res, next) {
   var id = req.params.product;
   db.view('all/products_without_attachments', { key: id }, function(error, docs) {
@@ -82,6 +81,30 @@ exports.show = function(req, res, next) {
     }
   });
 };
+
+exports.edit = function(req, res) {
+var order_id = req.params.product;
+    db.get(order_id, function(err, doc) {
+      if(err) {
+        console.log(err)
+      } else {
+        db.view("all/fonts_by_id", function(error, fonts_response) {
+        var product_id = doc.product_id,
+           order_id = doc.order_id;
+        doc._id = product_id;
+        doc.order_id = order_id;
+        
+          res.render('products/edit/edit.ejs', {     
+            locals: {
+              fonts: fonts_response.toArray(), 
+              product: doc   
+            }
+          });
+      })
+      }
+    })
+  
+}
 
 exports.update = exports.create = function(req, res) {
   if(req.product) {
