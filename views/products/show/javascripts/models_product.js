@@ -8,6 +8,7 @@ var Product = Backbone.Model.extend({
       font_size: 1,
       guests: new Guests([{},{},{},{},{},{},{},{}]),
       price: 0.10,
+      weight: 160,
       cutting_marks: true,
       per_page: 3
   },
@@ -25,10 +26,9 @@ var Product = Backbone.Model.extend({
     this.calculateUserAgent();
     this.calculatePrice();
     this.guests = this.get("guests")
-    this.textures = ["plain", "hammered", "linen"]
-    this.on("change:texture", this.calculatePrice)
     this.on("change:weight", this.calculatePrice)
     this.on("change:font", this.saveProduct)
+    this.on("change:weight", this.saveProduct)
     this.on("change:colours", this.saveProduct)   
     this.on("change:quantity", this.calculatePrice) // must come before adjust guests
     this.on("change:quantity", this.adjustGuests)
@@ -60,6 +60,7 @@ var Product = Backbone.Model.extend({
     }
   },
   calculatePrice: function() {     
+  console.log("calculate price", this.get("weight"), this.get("quantity"))
     var price, 
       quantity = this.get("quantity"),
       total;
@@ -71,18 +72,26 @@ var Product = Backbone.Model.extend({
     else if (quantity > 47 && quantity < 57) { price = 0.32 }
     else if (quantity > 55 && quantity < 65) { price = 0.31 }
     else if (quantity > 63 && quantity < 73) { price = 0.30 }
-    else if (quantity > 71 && quantity > 81) { price = 0.29 }
-    else if (quantity > 79 && quantity > 89) { price = 0.28 }
-    else if (quantity > 87 && quantity > 97) { price = 0.27 }
+    else if (quantity > 71 && quantity < 81) { price = 0.29 }
+    else if (quantity > 79 && quantity < 89) { price = 0.28 }
+    else if (quantity > 87 && quantity < 97) { price = 0.27 }
     else if (quantity > 95) { price = 0.26 }
+    if(this.get("weight") == 250) {
+      price = price + 0.03;
+    } else if (this.get("weight") == 280) {
+      price = price + 0.05;
+    }
     if (quantity < 8) { 
       total = 0.50 * 8
     } else {  
       total = price * quantity;  
     }
+
+    split_total = total.toFixed(2).toString().split(".")   
+
+    this.set("pounds",split_total[0]).set("pence", split_total[1])
+    
     this.set("total", total)    
-    total = total.toFixed(2).toString().split(".")    
-    this.set("pounds", total[0]).set("pence", total[1])
   },
   toggleCuttingMarks: function() {
     var cutting_marks = this.get("cutting_marks") ? false : true;
@@ -158,7 +167,7 @@ var Product = Backbone.Model.extend({
       ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   },
-  stale: ['attachments_order', 'tags', 'description','baseline', 'pence', 'pounds', 'font_size', 'per_page', 'cutting_marks', 'browser'],
+  stale: ['attachments_order', 'tags', 'baseline', 'pence', 'pounds', 'font_size', 'per_page', 'cutting_marks', 'browser'],
   toJSON: function() {
     return _.omit(this.attributes, this.stale);
   }

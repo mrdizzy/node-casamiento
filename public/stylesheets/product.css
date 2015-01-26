@@ -74,7 +74,7 @@
       width:40%;
     }
     .chat-bubble { 
-      font: normal 1.1em "OS Light Italic"; 
+      font: normal 1.15em "OS Light Italic"; 
       margin:10px auto;
     }
 
@@ -111,6 +111,8 @@
 
       #minus_qty, 
       #plus_qty {       
+      font-size:2em;
+      line-height:1em;
         border: 1px solid black;
         display:inline-block;
         padding:5px;

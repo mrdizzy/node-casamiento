@@ -1,6 +1,7 @@
  var  paypal = require('./../config/paypal_config')(),
  _ = require('underscore'),
-db = require('./../config/db').test_ebay;
+db = require('./../config/db').test_ebay,
+  inGroupsOf = require('./../lib/in_groups_of');
  
  /* Example parameters
 
@@ -32,9 +33,11 @@ db = require('./../config/db').test_ebay;
 
 exports.create = function(req, res) {
   var product = JSON.parse(req.body.object);
+  product.product_id = product._id;
   delete product._rev
   delete product._id
   delete req.body.object;
+  console.log(product)
   product.type = "order"
   product.status = "UNPAID"
   
@@ -50,6 +53,7 @@ exports.create = function(req, res) {
   var options = _.extend(default_options, req.body);
   
   paypal.buildQuery("SetExpressCheckout", function(error, response) { 
+  console.log(error, response)
   product._id = response.TOKEN
     db.save(product, function(err, docs) {
       if(err) {
@@ -74,12 +78,14 @@ exports.index = function(req, res) {
           console.log(new_err, new_doc)
         } else {
            paypal.buildQuery("DoExpressCheckoutPayment", function(paymenterror, paymentresponse) { 
-           console.log(paymenterror, paymentresponse)
+           doc.guests = inGroupsOf(doc.guests, 2);
+           res.render('invoices/thankyou', {
+      locals:doc
+    })
            }, { TOKEN: req.query.token, PAYERID: req.query.PayerID, PAYMENTACTION: "Sale", PAYMENTREQUEST_0_AMT: doc.paypal.PAYMENTREQUEST_0_AMT,
        PAYMENTREQUEST_0_CURRENCYCODE: 'GBP' })
         }
       })
     })
   }, { TOKEN: req.query.token })
-  res.send(200)
 }

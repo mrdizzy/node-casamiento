@@ -3,8 +3,36 @@
 var StepView = Backbone.View.extend({ 
   el: '.right_column',
   initialize: function() {
+    this.weights_reference = {2: "160", 3: "250", 4: "280"}
     this.listenTo(thisProduct, 'change:quantity', this._renderGuests)
+    this.listenToOnce(thisProduct, 'change:colours', this.changeStepToFont);   
+    this.listenTo(thisProduct, 'change:font', this.changeStepToThickness);   
+    this.listenToOnce(thisProduct, 'change:weight', this.changeStepToQuantity);   
+    this.listenTo(thisProduct, 'change:weight',     this.renderWeight);
+    this.listenToOnce(thisProduct, 'change:quantity', this.changeStepToNames);
+    this.listenTo(thisProduct, "change:total", this.renderQtyAndPrice)
     this.current_step = 1;
+  },
+  changeStepToFont: function() {
+    if (this.current_step < 2) this.current_step = 2;  
+    this.changeStep();
+  },
+  changeStepToThickness: function() { 
+    if (this.current_step < 4) this.current_step = 4;
+    console.log(this.current_step)
+    this.changeStep();
+  },  
+  changeStepToQuantity: function() { 
+    if (this.current_step < 5) this.current_step = 5;
+    this.changeStep();
+  },  
+  changeStepToNames: function() { 
+    if (this.current_step < 6) this.current_step = 6;
+    this.changeStep();
+  },
+  changeStep: function() {
+      this.$('.step').css("background-color", "#BBB") 
+      this.$('#step_' + this.current_step + " .step").addClass('colour_0')   
   },
   events: {     
     "click .buy": "checkout",        
@@ -17,6 +45,15 @@ var StepView = Backbone.View.extend({
     "focus #qty": "clearQuantity",
     "click .weight": "updateWeight",
     "blur #quick_guests": "quickGuests"
+  },
+  updateWeight: function(e) {   
+    var weight_selected = $(e.currentTarget).index();
+    weight_selected = this.weights_reference[weight_selected];
+    thisProduct.set("weight", weight_selected);
+  },
+  renderWeight: function(e) {
+    this.$('.weight').removeClass('selected').addClass('deselected');
+    this.$('#weight_' + thisProduct.get("weight")).addClass("selected").removeClass('deselected')      
   },
   quickGuests: function() {
     var guests = ($('#quick_guests').val());
@@ -35,11 +72,13 @@ var StepView = Backbone.View.extend({
     }
   },
   plusQty: function(e) {
-    thisProduct.set("quantity", thisProduct.get("quantity") + 1)
+    if(thisProduct.get("quantity") < 250) thisProduct.set("quantity", thisProduct.get("quantity") + 1)
   },
   minusQty: function(e) { 
+    if ((thisProduct.get("quantity") - 1) > 0) {
     thisProduct.get("guests").pop()
     thisProduct.set("quantity", thisProduct.get("quantity") -1)
+    }
   },
   clearQuantity: function(e) {
     $(e.currentTarget).val("")
@@ -48,8 +87,12 @@ var StepView = Backbone.View.extend({
     $field = $(e.currentTarget)
     var value = $field.val();
     value = parseInt(value)
+
     if(isNaN(value) || value == false || value < 1) {
       $field.val(thisProduct.get("quantity"))
+    } else if (value > 250) {
+                thisProduct.set("quantity",250)
+                $field.val(250)
     } else {
        thisProduct.set("quantity",value)
     }    
@@ -67,10 +110,16 @@ var StepView = Backbone.View.extend({
     var step_index = $(e.currentTarget).index() - 1;
     this.$('#step_' + step_index + " .step").css("background-color", thisProduct.get("colours")[0])      
     this.$('#step_' + step_index).toggleClass('highlight')
+    if(step_index == 3) {
+        this.$('#print_button').css("background-color", thisProduct.get("colours")[0])
+    }
   },
   hoverOut: function(e) {
     var step_index = $(e.currentTarget).index() - 1;
     if(step_index != this.current_step) this.$('#step_' + step_index + " .step").css("background-color", "#BBB") 
+     if(step_index == 3) {
+        this.$('#print_button').css("background-color", '#AAA')
+    }
   },
   checkout: function() {
     $('.paypal_spinner').show();
@@ -97,6 +146,7 @@ var StepView = Backbone.View.extend({
       fonts: casamiento_fonts, 
       selected_font: thisProduct.get("font")
     });  
+    this.renderWeight();
     return this;
   },  
   renderQtyAndPrice: function() { 
