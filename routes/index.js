@@ -5,7 +5,6 @@ module.exports = function(app){
   app.get("/svg/:id/:colours", require("./../controllers/svg").show)
   
   app.get("/svg/:id", require("./../controllers/svg").show)
-  
   app.resource("payments", require("./../controllers/payments"))
   app.resource("fonts", require("./../controllers/fonts"))
   var products = app.resource('products', require('./../controllers/products'), {
@@ -24,6 +23,8 @@ module.exports = function(app){
   
   // Admin  
   app.get("/admin/products", require('./../controllers/admin/products').index); 
+  
+  app.get("/admin/orders", require('./../controllers/admin/orders').index); 
   app.resource("conversations", require('./../controllers/conversations'));
   app.resource("invoices", require('./../controllers/invoices'))
 
