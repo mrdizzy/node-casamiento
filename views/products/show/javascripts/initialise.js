@@ -35,6 +35,7 @@ $(function() {
   // that to the product
   thisProduct.fetch({silent: true, success: function(model, resp) {
     $.updateFont(thisProduct.get("font"), {trigger: function(){}}) 
+    thisProduct.calculatePrice();
     }, error: function(model,resp) {
       var guests = localStorage.getItem("guests")
       if(guests) thisProduct.get("guests").reset(JSON.parse(guests))

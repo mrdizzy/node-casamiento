@@ -17,7 +17,7 @@
 		
 	<div id="colour_section_render"></div>
   
-	<div class="chat-bubble">Choose from hundreds of colours: hover over or tap the colour shown below to bring up the hues panel, then hover or tap the colour swatches and the image will change so you can see exactly how your design will look. Move backwards and forwards through the hues panel by clicking the left &laquo; and right &raquo;arrows.
+	<div class="chat-bubble">Choose from hundreds of colours: hover over or tap the colour shown below to bring up the hues panel, then hover or tap the colour swatches and the image will change so you can see exactly how your design will look. Move backwards and forwards through the hues panel by clicking the left &laquo; and right &raquo;arrows or swiping left and right if you are on a smartphone or tablet.
   </div>
 
 </div>
@@ -36,7 +36,7 @@
 	</div>
 	
 
-	<div class="chat-bubble">Choose a font. Click the up &#9650; and down &#9660;  arrows to move through the different choices.
+	<div class="chat-bubble">Click on the font below to bring up the font selection menu, then click the up &#9650; and down &#9660;  arrows to move through the different choices.
 	</div>
 	
 	<div id="fonts" style="margin:4px"></div>
@@ -64,65 +64,35 @@
 	</div>
 </div>
 
-
-<!-- 
-
-  TEXTURE 
-  
--->
-
-<div class="spc" id="step_4">
-	<div class="step_header_container">
-		<h4>Card Texture</h4>
-		<div class="step">STEP 4</div>
-	</div> 
-	
-	<div class="chat-bubble">Click and highlight an icon to select the texture of your choice. Plain is the cheapest with its smooth plain finish, but hammered and linen both make your cards feel more luxurious. 
-	</div>
-	
-	<div id="texture_selection">
-	
-		<div class="texture selectable deselected">
-			<div class="texture_circle"></div>
-			<br/>Plain
-		</div>
-		
-		<div class="texture selectable deselected">
-			<div class="texture_circle" style="background-image:url('/gfx/hammered.png');background-size:2em;"></div>
-			<br/>Hammered
-		</div>		
-		
-		<div class="texture selectable deselected">
-			<div class="texture_circle" style="background-image:url('/gfx/icons/linen.png');background-size:2em;"></div>
-			<br/>Linen
-			</div>
-		
-	</div>
-</div>
-
 <!-- 
 
   WEIGHT 
   
 -->
 	
-<div class="spc"  id="step_5">
+<div class="spc"  id="step_4">
 	<div class="step_header_container">
 		<h4>Card Thickness</h4>
-		<div class="step">STEP 5</div>
+		<div class="step">STEP 4</div>
 	</div> 
 	
-	<div class="chat-bubble">Choose the weight of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm): the higher the number, the thicker the card. A normal sheet of A4 copy paper is usually about 80gsm.
+	<div class="chat-bubble">Choose the weight of your card by clicking or tapping the icons below to highlight your choice. All our card is high quality smooth and white&mdash;we hope to introduce different textures in the future. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm): the higher the number, the thicker the card. A normal sheet of A4 copy paper is usually about 70gsm.
 	</div>
 	
-	<div class="weight deselected selectable">
+	
+	<div id="weight_160" class="weight selected selectable">
 		 <div class="weight_line"></div>
+		 <p>160gsm</p>
+	</div>
+	
+	<div id="weight_250" class="weight deselected selectable">
+		 <div class="weight_line" style="border-top:6px solid black;"></div>
 		 <p>250gsm</p>
 	</div>
 		
-	<div class="weight deselected selectable">
+	<div id="weight_280" class="weight deselected selectable">
 		<div class="weight_line" style="border-top:10px solid black;"></div>
-		<p>300gsm</p>
+		<p>280gsm</p>
 	</div>
 	
 </div>
@@ -133,12 +103,14 @@
 	
 	-->
 
-<div class="spc" id="step_6">
+<div class="spc" id="step_5">
 	<div class="step_header_container">
 		<h4>Quantity</h4>
-		<div class="step">STEP 6</div>
+		<div class="step">STEP 5</div>
 	</div> 
 	
+	<div class="chat-bubble">Choose the number of cards you would like by clicking the + and - buttons or by typing a number into the box and watch the price update. You can order a maximum of 250 cards per order. 
+	</div>
 
 		<div id="qty_container">
 				<div id="minus_qty" class="deselected">-</div> <input type="text" id="qty" value="{{quantity}}" size="3"></input>
@@ -155,10 +127,10 @@
   
  -->
 
-<div class="spc"  id="step_7">
+<div class="spc"  id="step_6">
 	<div class="step_header_container">
 		<h4><img src="/gfx/guests.png" style="width:30px"/> Guest names</h4>
-		<div class="step">STEP 7</div>
+		<div class="step">STEP 6</div>
 	</div> 
 	
 	<div class="chat-bubble">Enter your guest names now or choose to do it later. Names will be printed exactly as you type them so make sure you use capital letters in the right places. 
@@ -174,10 +146,10 @@
 
 -->
 
-<div class="spc"  id="step_8">
+<div class="spc"  id="step_7">
 
   <h4>Place your order&hellip;</h4>
-	<div class="step">STEP 8</div>
+	<div class="step">STEP 7</div>
 
   <div class="paypal_spinner" style="text-align:center;">
 	  <img src="/gfx/spinner.gif" />
