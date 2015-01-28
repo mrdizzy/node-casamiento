@@ -103,9 +103,9 @@
     <td>
     <table cellpadding="0" cellspacing="0" border="0" align="center">
       <tr>
-        <td width="600" valign="top"><img align="right" src="http://www.casamiento.co.uk/gfx/logo/email_dreams_grey.png" width="150px"><img align="left" style="padding-right:10px;" width="150px" src="http://www.casamiento.co.uk/gfx/logo/email_casamiento_grey.png"><br/><br/><hr style="border-top:1px solid grey;"></hr><br/><p>Dear  Customer,</p>
+        <td width="600" valign="top"><img align="right" src="http://www.casamiento.co.uk/gfx/logo/email_dreams_grey.png" width="150px"><img align="left" style="padding-right:10px;" width="150px" src="http://www.casamiento.co.uk/gfx/logo/email_casamiento_grey.png"><br/><br/><hr style="border-top:1px solid grey;"></hr><br/><p>Dear <%= paypal.shiptoname %></p>
         <p>Thank you for your order at Casamiento which is detailed below. You can continue to edit your place cards by clicking this link: 
-        <p style="margin-left:30px;"><a href="http://www.casamiento.co.uk/products/order/edit">http://www.casamiento.co.uk/products/EC-73453245435/edit</a></p>
+        <p style="margin-left:30px;"><a href="http://www.casamiento.co.uk/products/<%= _id %>/edit">http://www.casamiento.co.uk/products/<%= _id %>/edit</a></p>
          <p>Everything is editable including your guest names, colours and fonts, right up until we begin printing them, at which point this page will be locked.</p></p>
         <table>
         <tr>
@@ -120,18 +120,18 @@
         
         <td  width="150;"><p>100</p></td>
         
-        <td width="150"><img src="http://mrdizzy.cloudant.com/test_ebay/beautiful-name_place/tiny-2" style="background-color:purple" width="100px"/></td>
-        <td  width="150"><p><a href="/products//edit">Birds of Paradise</a></p></td>
+        <td width="150"><img src="http://mrdizzy.cloudant.com/test_ebay/<%= product_id %>/tiny-2" style="background-color:purple" width="100px"/></td>
+        <td  width="150"><p><a href="/products/<%= _id %>/edit"><%= name %></a></p></td>
         
-        <td  width="150"><p>&pound;2.99</p></td>
+        <td  width="150"><p>&pound;<%= paypal.amt %></p></td>
         </tr>
         </table>
         <p><span style="font-weight:bold">Deliver to:</span><br/>
-        David Pettifer<br/>
-        22 Brook Road<br/> 
-        Shanklin<br/>
-        Isle of Wight<br/>
-        PO37 7LU</p>
+        <%= paypal.shiptoname %><br/>
+        <%= paypal.shiptostreet %><br/> 
+        <%= paypal.shiptocity %><br/>
+        <%= paypal.shiptostate %><br/>
+        <%= paypal.shiptozip %></p>
          <p>If you have any questions or need any assistance please reply to this message in your email program. </p>
          
          <p>Thanks again for your order!</p>

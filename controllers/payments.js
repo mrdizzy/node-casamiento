@@ -1,7 +1,8 @@
 var  paypal = require('./../config/paypal_config')(),
   _ = require('underscore'),
   db = require('./../config/db').test_ebay,
-  inGroupsOf = require('./../lib/in_groups_of');
+  inGroupsOf = require('./../lib/in_groups_of'),
+    sendgrid  = require('sendgrid')("app7076151@heroku.com", "rw1gxgg5");
  
  /* Example parameters
 
@@ -76,6 +77,19 @@ exports.index = function(req, res) {
         } else {
            paypal.buildQuery("DoExpressCheckoutPayment", function(paymenterror, paymentresponse) { 
            doc.guests = inGroupsOf(doc.guests, 2);
+           req.app.render("invoices/email", { locals: doc}, function(err, html) {  
+    sendgrid.send({
+      to:       doc.paypal.email,
+      from:     'david@casamiento.co.uk',
+      subject:  "Your order at Casamiento",
+      text:     '',
+      html: html
+    }, function(err, json) {
+      if (err) { return console.error("Error", err); }
+      console.log(json)  
+    })
+
+  });
            res.render('invoices/thankyou', {
       locals:doc
     })
@@ -88,7 +102,6 @@ exports.index = function(req, res) {
 }
 
 function sanitizePaypalResponse(response) {
-console.log(response)
 var checkout_details = response.GetExpressCheckoutDetailsResponse[0]
   return { 
     email: response.EMAIL,

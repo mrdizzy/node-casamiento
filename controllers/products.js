@@ -1,8 +1,7 @@
 var db = require('./../config/db').test_ebay,
   _ = require('underscore'),  
   zlib = require('zlib'),
-  inGroupsOf = require('./../lib/in_groups_of'),
-  sendgrid  = require('sendgrid')("app7076151@heroku.com", "rw1gxgg5");
+  inGroupsOf = require('./../lib/in_groups_of');
 
 exports.tags = function(req, res) {
   db.view('tags/by_tags', { key: [req.params.tag]}, function(err, docs) {
@@ -35,19 +34,7 @@ exports.tags = function(req, res) {
 }
 
 exports.index = function(req, res) {
-  req.app.render("invoices/email", function(err, html) {  
-    sendgrid.send({
-      to:       'david.pettifer@googlemail.com',
-      from:     'david@casamiento.co.uk',
-      subject:  'Hello World',
-      text:     'My first email through SendGrid.',
-      html: html
-    }, function(err, json) {
-      if (err) { return console.error("Error", err); }
-      console.log(json)  
-    })
-
-  });
+  
   db.view('all/products_without_attachments',  function(err, docs) {
     var result = _.map(docs.toArray(), function(product) {
       for (var i=1; i< 5; i++) {
