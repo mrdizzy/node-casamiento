@@ -34,6 +34,16 @@ exports.tags = function(req, res) {
 }
 
 exports.index = function(req, res) {
+var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+sendgrid.send({
+  to:       'david.pettifer@googlemail.com',
+  from:     'david@casamiento.co.uk',
+  subject:  'Hello World',
+  text:     'My first email through SendGrid.'
+}, function(err, json) {
+  if (err) { return console.error(err); }
+  console.log(json);
+});
   db.view('all/products_without_attachments',  function(err, docs) {
     var result = _.map(docs.toArray(), function(product) {
       for (var i=1; i< 5; i++) {

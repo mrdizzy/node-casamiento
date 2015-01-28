@@ -9,7 +9,7 @@
     "node-paypal-api-nv": "git://github.com/mrdizzy/node-paypal-api-nv.git",
     "node-ebay-trading-api": "git://github.com/mrdizzy/node-ebay-trading-api.git",
     "async": "0.1.x",
-
+ "sendgrid": "1.0.4",
     "xml2js": "0.1.x",
     "ejs": "0.8.x",
     "express-partials": "0.1.x"
