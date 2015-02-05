@@ -2,10 +2,9 @@ var  paypal = require('./../config/paypal_config')(),
   _ = require('underscore'),
   db = require('./../config/db').test_ebay,
   inGroupsOf = require('./../lib/in_groups_of'),
-    sendgrid  = require('sendgrid')("app7076151@heroku.com", "rw1gxgg5");
+  sendgrid  = require('sendgrid')("app7076151@heroku.com", "rw1gxgg5");
  
- /* Example parameters
-
+ /* 
 [requiredSecurityParameters]
 &METHOD=SetExpressCheckout
 &RETURNURL=http://...
@@ -70,7 +69,6 @@ exports.index = function(req, res) {
     db.get(req.query.token, function(dberror, doc) {
       doc.paypal = sanitizePaypalResponse(response);
       doc.status = "PAID"
-      console.log(doc.paypal, doc)
       db.save(doc, function(new_err, new_doc) {
         if(new_err) {
           console.log(new_err, new_doc)
@@ -90,9 +88,9 @@ exports.index = function(req, res) {
     })
 
   });
-           res.render('invoices/thankyou', {
-      locals:doc
-    })
+      res.render('invoices/thankyou', {
+        locals:doc
+      })
            }, { TOKEN: req.query.token, PAYERID: req.query.PayerID, PAYMENTACTION: "Sale", PAYMENTREQUEST_0_AMT: doc.paypal.PAYMENTREQUEST_0_AMT,
        PAYMENTREQUEST_0_CURRENCYCODE: 'GBP' })
         }
@@ -102,7 +100,7 @@ exports.index = function(req, res) {
 }
 
 function sanitizePaypalResponse(response) {
-var checkout_details = response.GetExpressCheckoutDetailsResponse[0]
+  var checkout_details = response.GetExpressCheckoutDetailsResponse[0]
   return { 
     email: response.EMAIL,
     payerid: response.PAYERID,
@@ -121,5 +119,4 @@ var checkout_details = response.GetExpressCheckoutDetailsResponse[0]
     quantity: checkout_details.L_QTY,
     price_each: checkout_details.L_AMT
   }
-  
 }

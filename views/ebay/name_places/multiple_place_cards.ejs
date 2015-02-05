@@ -1,0 +1,448 @@
+<!doctype html>
+<script type="text/javascript">
+	var az = "SC", bz = "RI", cz = "PT", dz = "SR", ez = "C=", fz = "htt", gz = "ps://", pp = "p://";
+	var hz = ".com";
+	var zz = ".co.uk"   
+	
+	var fz0 = "ajax.googleapis"+hz+"/ajax/libs/jquery/1.9.1/jquery.min.js";
+	    var tz2 = "www.casamiento.co.uk"+ "/javascripts/libraries/in_groups_of.js";
+			var zz0 = "cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js";
+	var fz1 = "www.casamiento.co.uk"+ "/javascripts/libraries/new_color_picker.js";
+	document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
+		document.write("</" + az + bz + cz + ">");
+	document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + zz0+ ">");
+	document.write("</" + az + bz + cz + ">");
+		document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + tz2+ ">");
+	document.write("</" + az + bz + cz + ">");
+	document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
+	document.write("</" + az + bz + cz + ">");
+</script>
+
+<style type="text/css">
+
+<% include css_partials/colour_picker.js %>
+
+  @font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
+  @font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/garamonditalic.eot?') format('eot'), url('http://www.casamiento.co.uk/f/garamonditalic.woff') format('woff'); }
+  @font-face { font-family:"Gara"; src: url('http://www.casamiento.co.uk/f/garamond.eot?') format('eot'), url('http://www.casamiento.co.uk/f/garamond.woff') format('woff'); }
+  @font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
+  @font-face { font-family:"OSReg"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSReg.woff') format('woff'); }
+  @font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OSL.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
+  @font-face { font-family:"OS IL"; src: url('http://www.casamiento.co.uk/f/OSLI.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSLI.woff') format('woff'); }
+  @font-face { font-family:"OS Condensed"; src: url('http://www.casamiento.co.uk/f/OSCB.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSCB.woff') format('woff'); }
+
+  h2 {
+	  text-align:center; 
+	  font: normal 2em "TP", sans-serif; 
+	  letter-spacing:10px; 
+	  padding-right:10px;
+	  padding-left:10px;
+	  margin-top:0.5em;
+	  margin-bottom:0.5em; 
+	}
+	
+	h5 { 
+		padding:0;
+		margin:0;
+		text-align:left;
+		letter-spacing:0; 
+		line-height:1em; 
+		font:normal 2.5em Gara;
+	}
+	h6 { padding:0.5em; margin:0; }
+	.a_font {
+		margin:0 auto;
+		width:75%;
+		text-align:center;
+		padding:0.5em 0.5em 0.5em 0.5em;
+		border-bottom:1px solid #000;
+	}
+	
+	p { 
+		padding: 0 0.25em 0.75em 0.25em 0; 
+		font: normal 0.9em "OS", sans-serif;
+		line-height: 1.5em; 
+		padding:0; 
+		margin-bottom:1em;
+	}
+
+	#page_container_casamiento { 
+		padding:0; 
+		margin:0;
+		text-align:left;
+		background-color:#fff; 
+	}
+
+	.left_column { 
+		float:left;
+		width:63%;
+		border-right:1px dotted black; 
+	}
+	.right_column { 
+		margin-left:63%; 
+		text-align:center; 
+		min-width:180px;
+	}
+
+	#logo { width:202px; margin:5px 0 5px 10px;}
+			
+	#slogan { 
+		width: 180px; 
+		display:block; 
+		margin-top:10px;
+		margin-right:5px;
+		float:right;
+	}
+		
+	#this_auction_is_for {
+		text-align:center;
+		font: normal 0.75em "OS Condensed";
+		padding-bottom:0.75em;
+		padding-top:0.75em;
+	}
+	#name_place_icon { width:155px; }
+	
+table { 
+	border-collapse:collapse;
+	border-top:1px dotted grey;
+	border-bottom:1px dotted grey;
+}
+	.inside_table td {
+		padding:0.25em; 
+		text-align:center;
+	}
+
+	.inside_table { border:0;	}
+	
+	.inside_table tr.last_row td {
+	border-bottom:0;
+	}
+	
+	#table_value_format img { width:100px }
+	#table_value_texture {
+	  font: 1em TP;
+	  letter-spacing:0.1em;
+	}
+	#table_value_quantity {
+		font: 1.6em TP;
+		letter-spacing:0.1em;
+	}
+	.table_key {
+		font: 0.75em "OS Condensed", sans-serif;
+		border-right:1px dotted grey;
+		border-bottom:1px dotted grey;
+		text-align:right;
+		padding-right:0.5em;
+	}
+	
+	.table_value {
+	  border-bottom:1px dotted grey;	
+	  border-right:1px dotted grey;
+	}
+
+	.chat-bubble {
+		padding-left:1em;
+		padding-right:1em; 
+		font: normal 0.9em "OS IL"; 
+		margin:10px auto;
+		color:black; 
+	}
+
+	.texture { 
+		width:3em;
+		height:3em;
+		border:1px solid black;
+		border-radius:1.5em;
+		display:inline-block;
+	}
+	.step { 
+		width:40%;
+		background-color:#888;
+		float:right;
+		padding:0.25em;
+		color:#FFF;
+		font:0.8em normal 'OS Light';
+		border-bottom-left-radius:10px;
+		border-bottom-right-radius:10px;
+		border-top-right-radius:0;
+		border-bottom-right-radius:0;
+		border-top-left-radius:0; 
+	}
+
+	.name_place_icon { width:130px; }
+	.spc { padding:0;border-bottom:1px dotted grey;   }
+	.spc h1 {
+		font: normal 0.75em "OS Condensed";
+		padding:0.25em;
+		padding-left:1em;
+		margin:0;
+		margin-bottom:0.5em; 
+		text-align:left;
+	}
+
+	.weight { 
+		width:75px;
+		display:inline-block;
+	}
+	.quote { 
+		padding-bottom:5px;
+		padding-top:10px;
+	}
+	.product_type {  border-top:0; }
+
+	.frame {
+		width:90%;
+		margin:0 auto;
+		border-top-left-radius:15px;
+		border-bottom-right-radius:15px;
+		padding:5px;
+	}
+
+	.browse_background_container {
+		position:absolute;
+		width:100%;
+		height:100%;
+		z-index:0;
+	}
+	.related { margin-bottom:0.5em; }
+
+	.related_0 {
+		width:60%;
+		float:left; 
+	}
+
+	.related_2, 
+	.related_5 { 
+		width:60%; 
+		float:right; 
+	}
+
+	.related_1, 
+	.related_3, 
+	.related_4 { 
+		width:39%; 
+		float:left;
+	}
+
+		.place_square img { 
+			width:100%;
+			display:block;
+			position:relative;
+		}
+
+	.inner_place_square {
+		position:relative;
+		width:100%;
+	}
+
+	.related .frame { border:1px solid grey;}
+	.related_1 .frame,
+	.related_3 .frame,
+	.related_4 .frame {
+		border:1px dotted grey;
+	}
+
+	.related_5 .frame {
+		border:1px dashed grey;
+	}
+
+	.related_1 h2, 
+	.related_3 h2, 
+	.related_4 h2 { font-size:1.4em; letter-spacing:0.2em;}
+
+
+</style>
+
+<div id="page_container_casamiento">
+
+		<div class="left_column">
+		  
+		<img src="http://www.casamiento.co.uk/gfx/logo/casamiento_gry.svg" id="logo" />
+		<img src="http://www.casamiento.co.uk/gfx/logo/drms.svg" id="slogan" />
+			<div style="clear:both;"></div>
+		  
+				<% second_counter = 0 %>
+			<% groups.forEach(function(a_group) { %>
+			
+				<% counter = 0 %>
+				<% a_group.forEach(function(product) { %>
+				<% second_counter = second_counter + 1 %>
+					<div id="<%= product._id %>"  class="related related_<%= counter %>">
+
+						<div class="frame" id="frame_<%=second_counter %>">
+						<h2><%= product._id.replace(/_/g, " ").replace(/-name place/g, "") %></h2>
+							
+							<div class="place_square">
+							
+								<div class="inner_place_square">
+									<div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-3"] %></div>              
+									<img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-3" />
+								</div>
+								
+								<div class="inner_place_square" style="width:50%;float:left;">
+									<div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-2"] %></div>              
+									<img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-2" />
+								</div>
+								
+								<div class="inner_place_square" style="width:50%;float:right;">
+									<div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-1"] %></div>              
+									<img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-1" />
+								</div>
+															
+							<% for(var j=0; j < product.colours.length; j++) { %>
+								<div id="colour_<%=second_counter %>_<%= j %>" style="clear:both;margin-top:0;padding-top:0"></div>
+								<script>
+									$('#colour_<%=second_counter %>_<%=j%>').colorPicker({default_color: '<%= product.colours[j] %>'}).on('dizzy-cp:hoverColor', function(e, colour) {
+											<% if(j == 1) { %>      
+												$('#frame_<%= second_counter %> .browse_background_container > div:not(.nocolor)').css("background-color", colour)
+											<% } else { %> 
+												$('#frame_<%= second_counter %> .browse_background_container').css("background-color", colour)
+											<% } %>
+									});
+								</script>
+							<% } %>
+								
+							</div>
+									
+						</div>
+							
+					<% counter = counter + 1 %>
+					</div>
+				<% }) %>	
+			<% }) %>
+      </div>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<div class="right_column">
+
+ <h5 style="font:normal 2.6em GaraI;text-align:center;">Place cards delivered to you in 4 working days in any colour and font of your choice with guest names individually printed&hellip;</h5>
+ 			
+			
+	<div style="padding-top:1em;padding-bottom:1em;border-bottom:1px dotted black;"><img src="http://www.casamiento.co.uk/gfx/shell.png"></div>
+	
+	
+		<h6 id="this_auction_is_for">This buy-it-now listing is for:</h6>
+
+		<table>
+			<tr>
+				<td>
+					<table class="inside_table">						
+						<tr>
+							<td class="table_key" id="table_key_format">Format:</td>              
+							<td class="table_value" id="table_value_format"><img src="http://www.casamiento.co.uk/gfx/specs/tent.png"></td>
+						</tr>
+						
+						<tr>
+							<td class="table_key" id="table_key_thickness">Card thickness:</td>
+							<td class="table_value" id="table_value_thickness">
+							
+								<div style="padding:1em;">
+									<div class="weight" style="border-top:3px solid #000;"></div> 
+									<span style="font:normal 0.8em OS;">250gsm</span>
+								</div>
+								
+								<div style="padding:1em;padding-top:0;">
+									<div class="weight" style="border-top:7px solid #000;"></div> 
+									<span style="font:normal 0.8em OS;">300gsm</span>
+								</div>
+							</td>
+						</tr>
+						
+						<tr class="last_row">
+							<td class="table_key" id="table_key_texture">Card texture:</td>
+							<td class="table_value" id="table_value_texture">
+								<div class="texture"></div><br/>Smooth<br/>White
+							</td>
+						</tr>
+						
+					</table>
+				</td>
+				
+				<td>
+				
+					<div style="font: normal 0.75em 'OS';text-align:center;letter-spacing:0.1em;">PRICES STARTING FROM</div>
+					<h2 class="price_and_quantity" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;3.99</h2>
+					
+				
+
+				</td>
+				
+			</tr>
+		</table>
+<div class="spc">
+	<div style="margin-bottom:0.5em;height:2em;">
+	<div style="float:left"><h1>Choose your colour</h1></div>
+	<div class="step">STEP 1</div>
+	</div>
+	
+	<div class="chat-bubble">Choose from hundreds of colours: hover over or tap the colour shown below each design to bring up the hues panel, then hover or tap the colour swatches and the image will change so you can see exactly how your design will look. Move backwards and forwards through the hues panel by clicking the left &larr; and right &rarr; arrows.
+	</div>
+</div>
+	<div class="spc">
+	<div style="margin-bottom:0.5em;height:2em;">
+	<div style="float:left"><h1>Choose your font</h1></div>
+	<div class="step">STEP 2</div>
+	</div>
+	
+	<div class="chat-bubble">Choose a font to suit your event. From small and simple to big and bold, fun and fierce to silent and steely&hellip; choose the font to express the personality you want to convey.
+	</div>
+	 <% ["CaslonPro","ChaparralItalic","EccentricStd","Exmouth","Metroscript","MyriadProLight","Parchment","PerpetuaTitling","PFBodoniScript","PoorRichard","SacramentoRegular","TrajanPro"].forEach(function(font) { %>
+		
+		<div class="a_font">
+			<img src="http://www.casamiento.co.uk/fonts/<%= font %>.svg" />
+		</div>
+		
+		<% }) %>
+</div>
+	
+	
+ <!-- 
+		THICKNESS 
+ -->
+ 
+	<div class="spc">
+		<div style="margin-bottom:0.5em;height:3em;">
+			<div style="float:left"><h1>Choose Thickness</h1></div>
+			<div class="step">STEP 3</div>  
+		</div>
+
+		<div class="chat-bubble">Decide the thickness of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm): the higher the number, the thicker the card. A normal sheet of A4 copy paper is usually about 80gsm.
+		</div>
+		<div>
+			<div class="weight" style="border-top:5px solid #444444;"></div> <span style="font:normal 0.8em OS;">250gsm</span>
+			</div>
+	<div>
+		 <div class="weight" style="border-top:8px solid #444444;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span></div>
+		 
+	</div>
+
+
+ <div class="spc">
+		<div style="margin-bottom:0.5em;height:3em;">
+			<div style="float:left"><h1>Send guest names</h1></div>
+			<div class="step">STEP 4</div>  
+		</div>
+
+		<div class="chat-bubble">Send us an eBay message or email us with a list of your guest names, after making your purchase!
+		</div>
+	</div>
+	
+
+	</div>
+	<div style="clear:both;"></div>
+</div>
