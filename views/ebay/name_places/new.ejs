@@ -409,7 +409,7 @@ table {
  -->
    <% if (!params.buy_it_now) { %>
     <div class="global_colour_0 buyitnow">
-      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"><a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= buy_it_now_number %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE FOR A BUY-IT-NOW LISTING WITH MANY MORE OPTIONS&hellip;</a>      
+      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"><a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.global_buy_it_now_number ? params.global_buy_it_now_number : buy_it_now_number %>">SEE ALL OF OUR DESIGNS: CLICK HERE FOR A BUY-IT-NOW LISTING WITH MANY MORE OPTIONS AND DESIGNS&hellip;</a>      
     </div>
    <% } %>
 
@@ -462,7 +462,7 @@ table {
         <% if (related[j]) { %>
         <div id="related_<%=j %>" class="related">
         
-          <a class="caz related_link casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= related[j].buy_it_now_number %>">
+          <a class="caz related_link casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.global_buy_it_now_number ? params.global_buy_it_now_number : related[j].buy_it_now_number %>">
             <div class="place_square">
             
                 <div class="inner_place_square">
@@ -574,7 +574,7 @@ table {
 <div style="font: normal 0.75em 'OS';margin-top:2em;text-align:center;letter-spacing:0.2em;">OR BUY-IT-NOW FROM</div>
 
           <h2 class="caz casamiento" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;<%= params.buy_it_now_price %></h2>
-          <p style="font-family:OS;font-size:0.8em;margin:0.5em;">For more options and different quantities, see our <a class="caz casamiento text_colour_0" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= buy_it_now_number %>">buy-it-now</a> listing</p>
+          <p style="font-family:OS;font-size:0.8em;margin:0.5em;">To see more of our beautiful designs with other options and different quantities, see our <a class="caz casamiento text_colour_0" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.global_buy_it_now_number ?  params.global_buy_it_now_number : buy_it_now_number %>">buy-it-now</a> listing</p>
         <% } %>
 
         </td>
@@ -647,7 +647,7 @@ table {
     </div>
      
     <% if (!params.buy_it_now) { %>
-    <p style="font-family:OS;font-size:0.8em;margin-left:33%;">Please note: this auction is for 250gsm card. For other options, please see our <a class="text_colour_0 caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= buy_it_now_number %>">buy-it-now</a> listing</p>
+    <p style="font-family:OS;font-size:0.8em;margin-left:33%;">Please note: this auction is for 250gsm card. For other options, please see our <a class="text_colour_0 caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.global_buy_it_now_number ?  params.global_buy_it_now_number : buy_it_now_number %>">buy-it-now</a> listing</p>
     <% } %>
   </div>
 
@@ -675,7 +675,7 @@ table {
     BUY-IT BOX 2
  -->   <% if (!params.buy_it_now) { %>
     <div class="global_colour_0 buyitnow">
-      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"/> <a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= buy_it_now_number %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE FOR A BUY-IT-NOW LISTING WITH MANY MORE OPTIONS&hellip;</a>
+      <img src="http://www.casamiento.co.uk/gfx/cart_white.png" class="cart_icon"/> <a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.global_buy_it_now_number ? params.global_buy_it_now_number : buy_it_now_number %>">DON'T WAIT FOR THIS AUCTION TO FINISH! CLICK HERE FOR A BUY-IT-NOW LISTING WITH MANY MORE OPTIONS&hellip;</a>
     </div>
     <% } %>
 
