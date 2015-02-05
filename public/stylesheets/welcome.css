@@ -79,7 +79,7 @@
 		padding:1em;
 	}
 	.slidesjs-previous:before {	content: '\00ab  '}
-	.slidesjs-next { margin-left:7em;	}
+	.slidesjs-next { margin-left:6em;	}
 		.slidesjs-next:after { content: ' \00bb' }
 
 	.slidesjs-pagination {
@@ -90,7 +90,7 @@
 
 		.slidesjs-pagination li {
 			float: left;
-			margin: 0 7px;
+			margin: 0 4px;
 		}
 
 		.slidesjs-pagination li a {
