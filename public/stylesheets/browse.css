@@ -55,22 +55,16 @@
   float:right;
 }
 
-.place_square {
-  border:1px solid transparent;  
-  border-bottom:1px dotted #000; 
-}
   .place_square img { 
     width:100%;
     display:block;
     position:relative;
   }
 
-.inner_place_square, 
-.inner_place_square_hidden {
+.inner_place_square{
   position:relative;
   width:100%;
 }
-.inner_place_square_hidden { display:none; }
 .related .frame { border:1px solid grey;}
 .related_1 .frame,
 .related_3 .frame,
