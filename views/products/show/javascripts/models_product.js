@@ -23,11 +23,10 @@ var Product = Backbone.Model.extend({
     }).submit();  
   },
   initialize: function() {  
-  console.log("Initialize")
     this.calculateUserAgent();
     this.calculatePrice();
     this.guests = this.get("guests")
-    console.log(this.guests.toJSON())
+    console.log(this.guests)
     this.on("change:weight", this.calculatePrice)
     this.on("change:font", this.saveProduct)
     this.on("change:weight", this.saveProduct)
@@ -39,6 +38,7 @@ var Product = Backbone.Model.extend({
     this.listenTo(this.guests, "reset", this.updateQuantityFromGuests)
   },
   updateQuantityFromGuests: function() {
+  console.log("Updating guests")
     this.set("quantity", this.guests.length)
   },
   updateColour: function(index, colour) {
@@ -127,10 +127,11 @@ var Product = Backbone.Model.extend({
     this.save({guests: this.guests})  
   },
   parse: function(response) {
-  console.log("Parse")
-  console.log(this.guests)
-    if(response.guests) {
-    response.guests = new Guests(response.guests, {silent:true})
+    if(response.guests && this.guests) {
+      this.guests.reset(response.guests)
+      delete response.guests;
+    } else if (response.guests){
+      response.guests = new Guests(response.guests, {silent:true})
     }
     return response;
   },

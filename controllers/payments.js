@@ -33,6 +33,9 @@ var  paypal = require('./../config/paypal_config')(),
 
 exports.create = function(req, res) {
   var product = JSON.parse(req.body.object);
+  if(req.body.L_PAYMENTREQUEST_0_QTY0 < 9)
+    req.body.L_PAYMENTREQUEST_0_AMT0 = req.body.PAYMENTREQUEST_0_AMT;
+    console.log(req.body)
   product.product_id = product._id;
   delete product._rev
   delete product._id

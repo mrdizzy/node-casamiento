@@ -124,6 +124,10 @@
         color:black; 
         font: normal 2em 'OS Light';
       }
+      
+      #guests {
+        display:none;
+      }
       #quick_guests {
         width:90%;
         font: normal 1.2em 'OS Light'

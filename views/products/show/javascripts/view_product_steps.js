@@ -3,8 +3,10 @@
 var StepView = Backbone.View.extend({ 
   el: '.right_column',
   initialize: function() {
+  console.log(thisProduct.get("guests"))
     this.weights_reference = {2: "160", 3: "250", 4: "280"}
     this.listenTo(thisProduct, 'change:quantity', this._renderGuests)
+    this.listenTo(thisProduct.get("guests"), 'change:name', this._renderQuickGuests)
     this.listenToOnce(thisProduct, 'change:colours', this.changeStepToFont);   
     this.listenTo(thisProduct, 'change:font', this.changeStepToThickness);   
     this.listenToOnce(thisProduct, 'change:weight', this.changeStepToQuantity);   
@@ -13,13 +15,24 @@ var StepView = Backbone.View.extend({
     this.listenTo(thisProduct, "change:total", this.renderQtyAndPrice)
     this.current_step = 1;
   },
+  events: {     
+    "click .buy": "checkout",        
+    "mouseenter .spc": "hoverOver",
+    "mouseleave .spc": "hoverOut",     
+    "click .texture": "updateTexture",  
+    "blur #qty": "setQuantity",  
+    "click #plus_qty": "plusQty",
+    "click #minus_qty": "minusQty",
+    "focus #qty": "clearQuantity",
+    "click .weight": "updateWeight",
+    "blur #quick_guests": "quickGuests"
+  },
   changeStepToFont: function() {
     if (this.current_step < 2) this.current_step = 2;  
     this.changeStep();
   },
   changeStepToThickness: function() { 
     if (this.current_step < 4) this.current_step = 4;
-    console.log(this.current_step)
     this.changeStep();
   },  
   changeStepToQuantity: function() { 
@@ -34,18 +47,6 @@ var StepView = Backbone.View.extend({
       this.$('.step').css("background-color", "#BBB") 
       this.$('#step_' + this.current_step + " .step").addClass('colour_0')   
   },
-  events: {     
-    "click .buy": "checkout",        
-    "mouseenter .spc": "hoverOver",
-    "mouseleave .spc": "hoverOut",     
-    "click .texture": "updateTexture",  
-    "blur #qty": "setQuantity",  
-    "click #plus_qty": "plusQty",
-    "click #minus_qty": "minusQty",
-    "focus #qty": "clearQuantity",
-    "click .weight": "updateWeight",
-    "blur #quick_guests": "quickGuests"
-  },
   updateWeight: function(e) {   
     var weight_selected = $(e.currentTarget).index();
     weight_selected = this.weights_reference[weight_selected];
@@ -54,6 +55,9 @@ var StepView = Backbone.View.extend({
   renderWeight: function(e) {
     this.$('.weight').removeClass('selected').addClass('deselected');
     this.$('#weight_' + thisProduct.get("weight")).addClass("selected").removeClass('deselected')      
+  },
+  _renderQuickGuests: function() {
+    this.$('#quick_guests').text(thisProduct.get("guests").pluck("name").join("\n"))
   },
   quickGuests: function() {
     var guests = ($('#quick_guests').val());
@@ -127,7 +131,10 @@ var StepView = Backbone.View.extend({
     thisProduct.makePurchase();
   },
   render: function() {    
-    var $result = $(Handlebars.template(templates["products_show_step_through"])(thisProduct.toJSON()));         
+    var json_product = thisProduct.toJSON();
+    var guests = thisProduct.get("guests").pluck("name").join("\n")
+    json_product.guests = guests;
+    var $result = $(Handlebars.template(templates["products_show_step_through"])(json_product));         
     
     this.$el.html($result)
     this._renderGuests($result.find('#guests'));  // Input fields for guests

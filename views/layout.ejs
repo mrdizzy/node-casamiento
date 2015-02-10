@@ -14,6 +14,17 @@
   </head>
 
   <body>
+  
+  <div id="left_menu">
+  <img src="/gfx/close/close3.svg" class="close" id="close_left_menu"/>
+    <div style="text-align:center;padding:1em;font:normal 1.4em 'OS Light';border-bottom:1px solid black;">
+      <a href="">ABOUT</a>
+    </div>
+    <div style="text-align:center;padding:1em;font:normal 1.4em 'OS Light';">
+      <a href="">CONTACT</a>
+    </div>
+  </div>
+  
   <div id="overlay"></div>
     <div id="printsvg"></div>
   
@@ -53,8 +64,15 @@
   ga('send', 'pageview');
 
 </script>
+
   <script type="text/javascript">
     $(function() {    
+    $('#mainmenulines').click(function() {
+      $('#left_menu').toggle();
+    })
+    $('#close_left_menu').click(function() {
+      $('#left_menu').hide();
+    })
       FastClick.attach(document.body);  
     })
     <%- javascripts %>
