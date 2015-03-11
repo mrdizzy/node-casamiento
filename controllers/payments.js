@@ -33,9 +33,6 @@ var  paypal = require('./../config/paypal_config')(),
 
 exports.create = function(req, res) {
   var product = JSON.parse(req.body.object);
-  if(req.body.L_PAYMENTREQUEST_0_QTY0 < 9)
-    req.body.L_PAYMENTREQUEST_0_AMT0 = req.body.PAYMENTREQUEST_0_AMT;
-    console.log(req.body)
   product.product_id = product._id;
   delete product._rev
   delete product._id
@@ -55,6 +52,8 @@ exports.create = function(req, res) {
   var options = _.extend(default_options, req.body);
   
   paypal.buildQuery("SetExpressCheckout", function(error, response) { 
+  console.log(options)
+  console.log(error, response)
     product._id = response.TOKEN
     db.save(product, function(err, docs) {
       if(err) {
