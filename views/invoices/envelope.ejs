@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <style type="text/css">
+
+      body, div, img, p, textarea { padding:0;margin:0;border:0}
+
+      @font-face { 
+        font-family:"OS Light"; 
+        src: url('/f/OSL.eot?') format('eot'), url('/f/OSL.woff') format('woff'); 
+      }
+
+      .page { width:210mm;height:296.7mm;position:relative;page-break-after:always;}
+
+      textarea {
+        text-transform: capitalize;
+        position:relative;
+        z-index:100000;
+        resize:none;
+        background-color:transparent;
+        overflow:hidden;
+        display:block;
+        font: normal 11pt "OS Light"; 
+        color:#000;
+        text-align:center;
+        width:75mm;
+        height:34.25mm;
+        padding-left:40mm;
+        transform: rotate(-45deg); 
+       margin-top:108mm;
+       position:absolute;
+      }
+      
+ 
+    </style>
+  </head>
+  <body>
+      
+  <% for (var i =0; i< transactions.length; i++) { %>
+  <% var t = transactions[i] %>
+    <% var total = 0; %>
+    <div class="page">
+    <div style="height:10mm";></div>
+         <div style="margin:0 auto;border:1px dotted lightgrey;width:170mm;height:170mm;position:relative;"><img src="/gfx/note_envelope_background.svg" style="position:absolute;width:100%;"/>
+      
+      </div>
+      </div>
+     <div class="page">
+         <div style="height:10mm";></div>
+     <div style="position:relative;margin:0 auto;width:17cm;height:17cm;">
+     <img src="/gfx/note_envelope_front.svg" style="position:absolute;width:100%;"/>
+     <textarea class="label" data-label="<%= i %>"><%= t.SHIPTONAME %>
+<%= t.SHIPTOSTREET %><% if (t.SHIPTOSTREET2) {  %>
+<%= t.SHIPTOSTREET2%><% } %>
+<%= t.SHIPTOCITY%>
+<%= t.SHIPTOSTATE%>
+<%= t.SHIPTOZIP%>
+      </textarea>
+     </div>
+     </div>
+  <% } %>
+
+  </body>
+</html>

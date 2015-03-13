@@ -14,7 +14,6 @@ function handleHyphens(str) {
   pieces[1] = toTitleCase(pieces[1]);
   }
   str = pieces.join("-");
-  console.log(pieces[1])
   return str;
 }
 function toTitleCase(str)
@@ -308,7 +307,6 @@ names = _.map(names, function(name) {
   var r = _.template(template, {
       names: names
   });
-  console.log(r)
   $('#download_6').attr("href", "data:application/octet-stream," + encodeURIComponent(r));
 }
 
@@ -338,6 +336,7 @@ console.log("Parsing addresses\n---------------------" + "\n" + template_id)
   var names = _.map(invitation_names, function(name) {
 
     name = $.trim(name);
+  
     var new_names = name.split("\n");
    
     for(i = 0; i < new_names.length; i++) {
@@ -378,11 +377,12 @@ console.log("Parsing addresses\n---------------------" + "\n" + template_id)
   }
   names = _.chunk(names, chunk_value);
   var template = $('#' + template_id).html();
-  console.log(names)
   var r = _.template(template, {
       names: names
   });
-  console.log(r)
+  
+  console.log(template_id, names)
+
   $('#' + download_id).attr("href", "data:application/octet-stream," + encodeURIComponent(r));
 }
 
@@ -507,7 +507,7 @@ Jasmin
 
 <h1>Result</h1>
 
-<a href=""  download="names.xml" id="download">Download</a>
+<a href=""  download="names.xml" id="download">Download 8 per page</a>
 <a href=""  download="names.xml" id="download_6">Download 6</a>
 <a href=""  download="names_tables.xml" id="download_tables">Download tables</a>
 <a href=""  download="invitations.xml" id="download_invitations">Download invitations</a>

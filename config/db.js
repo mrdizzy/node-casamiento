@@ -10,7 +10,6 @@ var cradle = require('cradle'),
 
 databases.connection = connection;
 databases.ebay_messages = connection.database("ebay_messages");
-console.log(databases.connection)
 databases.test_ebay = connection.database("test_ebay");
 
 databases.test_ebay.documents = [

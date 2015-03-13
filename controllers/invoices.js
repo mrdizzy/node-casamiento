@@ -7,7 +7,8 @@ var db = require('couchdb-migrator').db,
 
 module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[1,2,3,4]
  
-  var transactions = req.body.transaction_ids;
+  var transactions = req.body.transaction_ids || req.body.envelope_transaction_ids;
+  
    // If we are only submitting one transaction from the form then we need to make it into an array
   if(typeof transactions === "string") transactions = [transactions]
 
@@ -37,8 +38,15 @@ module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[
       console.log("There has been an error getting the PayPal response:")
       console.log(err)
     } else {
+    console.log("RESULTS", req.body.envelope_transaction_ids)
             console.log(results)
+            if(req.body.envelope_transaction_ids) {
+   
+        res.render("invoices/envelope.ejs",{ layout: false, locals: { transactions: results }})
+        
+      }else {
       res.render("invoices/show.ejs", { layout: false, locals: { transactions: results }})
+      }
     }
   }); 
 }

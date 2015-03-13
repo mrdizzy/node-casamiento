@@ -1,7 +1,7 @@
 var Product = Backbone.Model.CouchDB.extend({
   urlRoot: "/products",
   defaults: { "type": "product", font_size: "0.08", baseline: 0, "font": "Metroscript" },
-  attachment_types: ["tiny", "small", "thumb", "display","medium","large"],
+  attachment_types: ["tiny", "thumb", "display","medium"],
   updateColour: function(index, colour) {
     var colours = this.get("colours");
     colours[index] = colour;

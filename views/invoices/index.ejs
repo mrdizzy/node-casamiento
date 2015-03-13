@@ -1,9 +1,11 @@
+
 <form action="/invoices" method="POST">
   <table style="border:1px solid black;border-collapse:collapse;">
     <tr>
       <th>Date</th>
       <th>Name</th>
-      <th>payer ID</th>
+      <th>Invoice</th>
+      <th>Envelope</th>
       <th>Email</th>
       <th>Memo</th>
       <th>Items</th>
@@ -15,6 +17,8 @@
     <td><%= t.SHIPTONAME %></td>
     <td>
       <input type="checkbox" name="transaction_ids" value='<%= t.TRANSACTIONID %>' /></input>
+      </td><td>
+      <input type="checkbox" name="envelope_transaction_ids" value='<%= t.TRANSACTIONID %>' /></input>
     </td>
     <td>
       <a href="mailto:<%= t.EMAIL %>"><%= t.EMAIL %></a>
@@ -24,8 +28,10 @@
     <td><%= t.AMT %></td>
   </tr>
 <% }) %>
-</table>
 
 <input type="submit" style="position:fixed;top:0;right:0;padding:10px;"></input>
 
 </form>
+
+
+</table>
