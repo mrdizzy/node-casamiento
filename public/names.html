@@ -136,6 +136,36 @@ _.chunk = function(array, n) {
 </script>
 
 
+<script type="text/template" id="invitations_two_template"><?xml version="1.0" encoding="UTF-8"?>
+<svg>
+  <variableSets>
+    <variableSet locked="none">
+      <variables>
+        <variable varName="Variable0" trait="textcontent"/>
+        <variable varName="Variable1" trait="textcontent"/>
+      </variables>
+      <v:sampleDataSets xmlns:v="casamiento">
+      <% var counter = 0; %>
+      <% var name_counter = "" %>
+      <% names.forEach(function(list) { %>
+      <% name_counter = 0 %>
+        <v:sampleDataSet dataSetName="<%=counter %>">
+        <% for(var i =0; i < 2; i++) { %>
+            <% var name = list[i] %>
+        <% name == undefined ? name = "" : name = name %>
+          <Variable<%= name_counter %>>
+            <p><%= name %></p>
+          </Variable<%= name_counter %>>
+          <% name_counter = name_counter + 1 %>
+          <% } %>
+        </v:sampleDataSet>
+        <% counter = counter + 1; %>
+        <% }) %>
+      </v:sampleDataSets>
+    </variableSet>
+  </variableSets>
+</svg></script>
+
 <script type="text/template" id="invitations_template"><?xml version="1.0" encoding="UTF-8"?>
 <svg>
   <variableSets>
@@ -300,35 +330,38 @@ var doNamesAndTables = function() {
 }
 
 var parseAddresses= function(line_number, template_id, download_id, chunk_value) {
-console.log("Parsing addresses\n---------------------")
+console.log("Parsing addresses\n---------------------" + "\n" + template_id)
   var names = $('#names').val()
   names = $.trim(names);
   var invitation_names = names.split("*");
-  
+
   var names = _.map(invitation_names, function(name) {
 
     name = $.trim(name);
     var new_names = name.split("\n");
-     
+   
     for(i = 0; i < new_names.length; i++) {
       
-    if(new_names.length == (i + 1)) {
-    } else {
-      new_names[i] = toTitleCase(new_names[i])
-    new_names[i] = handleHyphens(new_names[i])
-    
-    }
-    if((i == 0) || (i == 1)) {
-      new_names[i] = new_names[i].replace(" and ", " &amp; ")
-      new_names[i] = new_names[i].replace(" & ", " &amp; ")
+      if(new_names.length == (i + 1)) {
+      } else {
+        new_names[i] = toTitleCase(new_names[i])
+        new_names[i] = handleHyphens(new_names[i])      
       }
+      if((i == 0) || (i == 1)) {
+        new_names[i] = new_names[i].replace(" and ", " &amp; ")
+        new_names[i] = new_names[i].replace(" & ", " &amp; ")
+      }
+      
+      
     }
-    if (line_number == 1) {
+     if (line_number == 1) {
     new_names.shift();
     
     var new_name = new_names.join("<br/>")
-    }
     return new_name;
+    } else {
+     return new_names[0]
+    }
   })
   names = _.compact(names);
   names = names.sort();
@@ -392,6 +425,7 @@ $(function() {
         doNamesAndTables()
         parseAddresses(1,'envelopes_template','download_envelopes', 1)
         parseAddresses(0,'invitations_template','download_invitations', 4)
+         parseAddresses(0,'invitations_two_template','download_two_invitations',2)
         compileSheet();
     });
   $('#comma_to_newline').click(function() {
@@ -477,6 +511,7 @@ Jasmin
 <a href=""  download="names.xml" id="download_6">Download 6</a>
 <a href=""  download="names_tables.xml" id="download_tables">Download tables</a>
 <a href=""  download="invitations.xml" id="download_invitations">Download invitations</a>
+<a href=""  download="invitations_two.xml" id="download_two_invitations">Download 2x invitations</a>
 <a href=""  download="envelopes.xml" id="download_envelopes">Download envelopes</a>
 <div id="report"></div>
 </body>
