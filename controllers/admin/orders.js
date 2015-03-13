@@ -12,7 +12,6 @@ exports.index = function(req, res) {
         orders: docs.toArray(), 
         layout:"admin_layout"
       })
-     
     }
   })
 }

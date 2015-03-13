@@ -1,5 +1,6 @@
 var db = require('./../config/db').test_ebay,
-    _ = require('underscore');
+  _ = require('underscore'),
+  inGroupsOf = require('./../lib/in_groups_of');
 
 var tags =  ["christmas", "victorian", "wallpaper", "damask", "contemporary", "pattern", "floral", "minimalistic", "geometric", "birds", "hearts", "vintage", "dots", "simple"].sort();
 // Route: /ebay/:id
@@ -63,16 +64,43 @@ console.log("Related",related)
 }
 
 // POST to places with an array of ids for multiple place cards on one page
-exports.places = function(req, res) {
+//exports.places = function(req, res, next) {
+//  db.get(req.body.ids, function(err, docs) {
+//
+//    docs = docs.toArray();
+//    docs.place_cards = docs;
+//    console.log(docs.place_cards)
+//    res.render('ebay/name_places/multiple_place_cards', {
+//          layout: false,
+//      locals: docs
+//    });
+//  });
+//}
+
+exports.places = function(req, res, next) {
   db.get(req.body.ids, function(err, docs) {
-    docs = docs.toArray();
-    var counter = 0;
-    docs.place_cards = docs;
-    res.render('ebay/name_places/name_places_new_trial', {
-      layout: 'ebay_layout',
-      locals: docs
+    var result = _.map(docs.toArray(), function(product) {
+      for (var i=1; i< 5; i++) {
+        var background;
+        if(background = product["background-" + i]) {
+          var divs = background.split("</div>");
+          divs = _.map(divs, function(div) {
+            if (!(/class="nocolor"/.test(div))) 
+              div = div.replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");  
+            return div
+          })          
+          product["background-" + i] = divs.join("</div>")  
+        }
+      }    
+      return product
+    })
+    var groups = inGroupsOf(result, 6);
+    groups.groups = groups
+    res.render('ebay/name_places/multiple_place_cards', {
+      layout: false,
+      locals: groups
     });
-  });
+  })
 }
 exports.index = function(req, res) {
     db.view('products/all', function(err, docs) {

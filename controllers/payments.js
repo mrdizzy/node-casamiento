@@ -1,10 +1,10 @@
- var  paypal = require('./../config/paypal_config')(),
- _ = require('underscore'),
-db = require('./../config/db').test_ebay,
-  inGroupsOf = require('./../lib/in_groups_of');
+var  paypal = require('./../config/paypal_config')(),
+  _ = require('underscore'),
+  db = require('./../config/db').test_ebay,
+  inGroupsOf = require('./../lib/in_groups_of'),
+  sendgrid  = require('sendgrid')("app7076151@heroku.com", "rw1gxgg5");
  
- /* Example parameters
-
+ /* 
 [requiredSecurityParameters]
 &METHOD=SetExpressCheckout
 &RETURNURL=http://...
@@ -37,15 +37,14 @@ exports.create = function(req, res) {
   delete product._rev
   delete product._id
   delete req.body.object;
-  console.log(product)
   product.type = "order"
   product.status = "UNPAID"
   
-  
+  // Change RETURNURL to http://localhost for testing
   var default_options = {
     "PAYMENTREQUEST_0_CURRENCYCODE": "GBP",
-    "RETURNURL": "http://www.casamiento.co.uk/payments",
-    "CANCELURL": "http://www.casamiento.co.uk",
+    "RETURNURL": "http://localhost:3000/payments",
+    "CANCELURL": "http://localhost:3000/products/" + product.product_id,
     "PAYMENTREQUEST_0_PAYMENTACTION": "Sale",  
     "ALLOWNOTE": 1,
     "LOGOIMG": "http://www.casamiento.co.uk/gfx/logo/casamiento_black.png"
@@ -53,25 +52,24 @@ exports.create = function(req, res) {
   var options = _.extend(default_options, req.body);
   
   paypal.buildQuery("SetExpressCheckout", function(error, response) { 
+  console.log(options)
   console.log(error, response)
-  product._id = response.TOKEN
+    product._id = response.TOKEN
     db.save(product, function(err, docs) {
       if(err) {
         res.send(500)
       } else {
-      console.log(docs)
-        res.redirect("https://www.paypal.com/uk/cgi-bin/webscr?cmd=_express-checkout&token="+response.TOKEN)
+      // If in sandbox mode change to www.sandbox.paypal.com
+        res.redirect("https://www.sandbox.paypal.com/uk/cgi-bin/webscr?cmd=_express-checkout&token="+response.TOKEN)
       }      
-    })
-    
+    })    
   }, options)
 }
 
 exports.index = function(req, res) {
   paypal.buildQuery("GetExpressCheckoutDetails", function(error, response) {
     db.get(req.query.token, function(dberror, doc) {
-    
-      doc.paypal = response;
+      doc.paypal = sanitizePaypalResponse(response);
       doc.status = "PAID"
       db.save(doc, function(new_err, new_doc) {
         if(new_err) {
@@ -79,13 +77,48 @@ exports.index = function(req, res) {
         } else {
            paypal.buildQuery("DoExpressCheckoutPayment", function(paymenterror, paymentresponse) { 
            doc.guests = inGroupsOf(doc.guests, 2);
-           res.render('invoices/thankyou', {
-      locals:doc
+           req.app.render("invoices/email", { locals: doc}, function(err, html) {  
+    sendgrid.send({
+      to:       doc.paypal.email,
+      from:     'david@casamiento.co.uk',
+      subject:  "Your order at Casamiento",
+      text:     '',
+      html: html
+    }, function(err, json) {
+      if (err) { return console.error("Error", err); }
+      console.log(json)  
     })
+
+  });
+      res.render('invoices/thankyou', {
+        locals:doc
+      })
            }, { TOKEN: req.query.token, PAYERID: req.query.PayerID, PAYMENTACTION: "Sale", PAYMENTREQUEST_0_AMT: doc.paypal.PAYMENTREQUEST_0_AMT,
        PAYMENTREQUEST_0_CURRENCYCODE: 'GBP' })
         }
       })
     })
   }, { TOKEN: req.query.token })
+}
+
+function sanitizePaypalResponse(response) {
+  var checkout_details = response.GetExpressCheckoutDetailsResponse[0]
+  return { 
+    email: response.EMAIL,
+    payerid: response.PAYERID,
+    firstname: response.FIRSTNAME,
+    lastname: response.LASTNAME,
+    countrycode: response.COUNTRYCODE,
+    shiptoname: response.SHIPTONAME,
+    shiptostreet: response.SHIPTOSTREET, 
+    shiptocity: response.SHIPTOCITY,
+    shiptostate: response.SHIPTOSTATE,
+    shiptozip: response.SHIPTOZIP,
+    shiptocountrycode: response.SHIPTOCOUNTRYCODE,
+    shiptocountryname: response.SHIPTOCOUNTRYNAME,
+    amt: response.AMT,
+    product: checkout_details.L_NAME,
+    quantity: checkout_details.L_QTY,
+    price_each: checkout_details.L_AMT
+  }
 }

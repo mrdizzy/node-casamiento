@@ -118,12 +118,24 @@ input {
       background-color:#fff; 
       border-bottom:1px solid black;
     }
+    
+    #left_menu {
+      display:none;
+      position:fixed;
+      top:0;
+      right:0;
+      z-index:999999999999999;
+      height:100%;
+      width:33%;
+      background-color:white;
+      border-left:1px solid black;
+    }
       #logo { 
         display:block;
         float:left;
         margin-left:1em;
         padding:0.5em; 
-        max-width:202px;
+        width:210px;
       }
       
       #browse {
@@ -150,6 +162,20 @@ input {
         display:block;
         width:170px;
       }
+      
+      
+    #mainmenulines {
+      opacity:0.5;
+      display:block;
+      float:right;
+      width:30px;
+      margin-top:22px;
+      margin-right:10px;
+      cursor:pointer;
+    }
+    #mainmenulines:hover {
+      opacity:1;
+    }
           
     .left_column { 
       float:left; 

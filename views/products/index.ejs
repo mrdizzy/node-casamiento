@@ -29,19 +29,35 @@
               <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-3"] %></div>              
               <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-3" />
             </div>
-     <div class="inner_place_square_hidden">
-              <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-2"] %></div>              
-              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-2" />
-            </div> 
+           
             <h2><%= product.name %></h2>
           </div>
           </a>
+          <a href="/products/<%= product._id %>">
+          <div class="place_square" style="float:left;width:49%;">
+    
+            <div class="inner_place_square">
+              <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-2"] %></div>              
+              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-2" />
+            </div>
+     </div>
+          </a>
           
-           <p style="margin:0;padding:0;margin-left:1em;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: <% if (product.tags) { %> <%= product.tags.join(", ") %> <%  } %></p>
+          <a href="/products/<%= product._id %>">
+          <div class="place_square"  style="float:right;width:49%;">
+    
+            <div class="inner_place_square">
+              <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-4"] %></div>              
+              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-4" />
+            </div>
+     </div>
+          </a>          
+          
+           <p style="clear:both;margin:0;padding:0;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: <% if (product.tags) { %> <%= product.tags.join(", ") %> <%  } %></p>
         </div>
         
         
-        <p style="margin:0;padding:0;color:lightgrey;padding-top:1em;padding-bottom:1em;letter-spacing:0.5em;font:normal 0.75em 'OS Light';text-align:center"> &diams;  &diams;  &diams; </p>
+        <p style="clear:both;margin:0;padding:0;color:lightgrey;padding-top:1em;padding-bottom:1em;letter-spacing:0.5em;font:normal 0.75em 'OS Light';text-align:center"> &diams;  &diams;  &diams; </p>
 <% counter = counter + 1 %>
 </div>
 <% }) %>
@@ -56,20 +72,39 @@
 <div id="<%= product._id %>"  class="related related_<%= counter %>">
 
 <div class="frame" style="width:90%;margin:0 auto;border-top-left-radius:15px;border-bottom-right-radius:15px;padding:5px;">
+          
+<a href="/products/<%= product._id %>">
           <div class="place_square">
     
             <div class="inner_place_square">
               <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-3"] %></div>              
               <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-3" />
             </div>
-     <div class="inner_place_square_hidden">
-              <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-2"] %></div>              
-              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-2" />
-            </div> 
+           
             <h2><%= product.name %></h2>
           </div>
+          </a>
+          <a href="/products/<%= product._id %>">
+          <div class="place_square" style="float:left;width:49%;">
+    
+            <div class="inner_place_square">
+              <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-2"] %></div>              
+              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-2" />
+            </div>
+     </div>
+          </a>
           
-           <p style="margin:0;padding:0;margin-left:1em;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: <% if (product.tags) { %>
+          <a href="/products/<%= product._id %>">
+          <div class="place_square"  style="float:right;width:49%;">
+    
+            <div class="inner_place_square">
+              <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-4"] %></div>              
+              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-4" />
+            </div>
+     </div>
+          </a>    
+          
+           <p style="margin:0;padding:0;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: <% if (product.tags) { %>
            <% var i = 0 %>
            <% product.tags.forEach(function(tag) { %>
            <% i = i + 1 %>
@@ -92,12 +127,3 @@
   </div>
   <%- contentFor('javascripts') %>
   
-   $('.place_square').mouseover(function() {
-     $(".inner_place_square", this).hide();
-     $(".inner_place_square_hidden",this).show();
-   })
-
-   $('.place_square').mouseout(function() {
-     $(".inner_place_square", this).show();
-     $(".inner_place_square_hidden",this).hide();
-   })

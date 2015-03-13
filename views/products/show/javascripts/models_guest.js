@@ -22,7 +22,6 @@ var Guest = Backbone.Model.extend({ // rename PlaceCardBluePrint?
     return { top_half: top_half_height, bottom_half: bottom_half_height }
   },  
   presenter: function(absolute_width) {
-  console.log(this.get("font_size"), absolute_width)
     var baselines = this.calculateBaselineOffset(absolute_width)
     return {
       font_family: thisProduct.get("font"),   
@@ -55,7 +54,7 @@ var Guests = Backbone.Collection.extend({
   initialize: function() {
     this.on("change", this.saveGuests)
   },
-  saveGuests: function() {
+  saveGuests: function() { // Change to pluck?
     var guests = this.map(function(guest) {
       return { name: guest.get("name") }
     })

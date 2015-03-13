@@ -12,7 +12,7 @@
 	border-left:1px dotted black;
 }
 	#welcome_column h5 { 
-	  font: normal 4.4em/1.2em 'GaraI', serif;
+	  font: normal 3em/1.2em 'GaraI', serif;
     letter-spacing:-0.01em;
 		margin:0;
 	  text-align:center;
@@ -79,7 +79,7 @@
 		padding:1em;
 	}
 	.slidesjs-previous:before {	content: '\00ab  '}
-	.slidesjs-next { margin-left:7em;	}
+	.slidesjs-next { margin-left:6em;	}
 		.slidesjs-next:after { content: ' \00bb' }
 
 	.slidesjs-pagination {
@@ -90,7 +90,7 @@
 
 		.slidesjs-pagination li {
 			float: left;
-			margin: 0 7px;
+			margin: 0 4px;
 		}
 
 		.slidesjs-pagination li a {

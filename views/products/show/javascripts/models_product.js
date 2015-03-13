@@ -13,7 +13,10 @@ var Product = Backbone.Model.extend({
       per_page: 3
   },
   makePurchase: function() {    
+    if (this.get("quantity") > 7) {
+    
     $.form('/payments', { 
+    
       "object": JSON.stringify(this.toJSON()),
       "L_PAYMENTREQUEST_0_AMT0": this.get("total") / this.get("quantity"),
       "PAYMENTREQUEST_0_AMT": this.get("total"), 
@@ -21,13 +24,31 @@ var Product = Backbone.Model.extend({
       "L_PAYMENTREQUEST_0_NAME0": this.get("name"), 
       "L_PAYMENTREQUEST_0_DESC0": "Place cards" 
     }).submit();  
+    } else {
+      var price_each  = this.get("total") / 8;
+      var qty = this.get("quantity");
+      var place_cards_total = price_each * this.get("quantity");
+      var minimum_charge = this.get("total") - place_cards_total;
+      console.log(minimum_charge, place_cards_total, qty)
+     $.form('/payments', { 
+      "object": JSON.stringify(this.toJSON()),
+      "L_PAYMENTREQUEST_0_AMT0": price_each,
+      "PAYMENTREQUEST_0_AMT": this.get("total"), 
+      "L_PAYMENTREQUEST_0_QTY0": this.get("quantity"), 
+      "L_PAYMENTREQUEST_0_NAME0": this.get("name"), 
+      "L_PAYMENTREQUEST_0_DESC0": "Place cards",
+      "L_PAYMENTREQUEST_0_AMT1": minimum_charge, 
+      "L_PAYMENTREQUEST_0_QTY1": 1, 
+      "L_PAYMENTREQUEST_0_NAME1": "Charge",
+      "L_PAYMENTREQUEST_0_DESC1": "Minimum handling charge" 
+    }).submit();  
+    }
   },
   initialize: function() {  
-  console.log("Initialize")
     this.calculateUserAgent();
     this.calculatePrice();
     this.guests = this.get("guests")
-    console.log(this.guests.toJSON())
+    console.log(this.guests)
     this.on("change:weight", this.calculatePrice)
     this.on("change:font", this.saveProduct)
     this.on("change:weight", this.saveProduct)
@@ -39,6 +60,7 @@ var Product = Backbone.Model.extend({
     this.listenTo(this.guests, "reset", this.updateQuantityFromGuests)
   },
   updateQuantityFromGuests: function() {
+  console.log("Updating guests")
     this.set("quantity", this.guests.length)
   },
   updateColour: function(index, colour) {
@@ -127,10 +149,11 @@ var Product = Backbone.Model.extend({
     this.save({guests: this.guests})  
   },
   parse: function(response) {
-  console.log("Parse")
-  console.log(this.guests)
-    if(response.guests) {
-    response.guests = new Guests(response.guests, {silent:true})
+    if(response.guests && this.guests) {
+      this.guests.reset(response.guests)
+      delete response.guests;
+    } else if (response.guests){
+      response.guests = new Guests(response.guests, {silent:true})
     }
     return response;
   },
