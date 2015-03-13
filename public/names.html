@@ -14,7 +14,6 @@ function handleHyphens(str) {
   pieces[1] = toTitleCase(pieces[1]);
   }
   str = pieces.join("-");
-  console.log(pieces[1])
   return str;
 }
 function toTitleCase(str)
@@ -278,7 +277,6 @@ names = _.map(names, function(name) {
   var r = _.template(template, {
       names: names
   });
-  console.log(r)
   $('#download_6').attr("href", "data:application/octet-stream," + encodeURIComponent(r));
 }
 
@@ -308,6 +306,7 @@ console.log("Parsing addresses\n---------------------")
   var names = _.map(invitation_names, function(name) {
 
     name = $.trim(name);
+  
     var new_names = name.split("\n");
      
     for(i = 0; i < new_names.length; i++) {
@@ -327,8 +326,10 @@ console.log("Parsing addresses\n---------------------")
     new_names.shift();
     
     var new_name = new_names.join("<br/>")
-    }
     return new_name;
+    } else {
+     return new_names[0]
+    }
   })
   names = _.compact(names);
   names = names.sort();
@@ -345,11 +346,12 @@ console.log("Parsing addresses\n---------------------")
   }
   names = _.chunk(names, chunk_value);
   var template = $('#' + template_id).html();
-  console.log(names)
   var r = _.template(template, {
       names: names
   });
-  console.log(r)
+  
+  console.log(template_id, names)
+
   $('#' + download_id).attr("href", "data:application/octet-stream," + encodeURIComponent(r));
 }
 
