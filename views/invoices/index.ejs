@@ -6,6 +6,8 @@
       <th>Name</th>
       <th>Invoice</th>
       <th>Envelope</th>
+      
+      <th>Label</th>
       <th>Email</th>
       <th>Memo</th>
       <th>Items</th>
@@ -19,6 +21,11 @@
       <input type="checkbox" name="transaction_ids" value='<%= t.TRANSACTIONID %>' /></input>
       </td><td>
       <input type="checkbox" name="envelope_transaction_ids" value='<%= t.TRANSACTIONID %>' /></input>
+      
+    </td>
+    <td>
+      <input type="checkbox" name="label_transaction_ids" value='<%= t.TRANSACTIONID %>' /></input>
+      
     </td>
     <td>
       <a href="mailto:<%= t.EMAIL %>"><%= t.EMAIL %></a>

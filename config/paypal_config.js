@@ -12,10 +12,10 @@ var PayPal = require('node-paypal-api-nv'),
     }
     
   module.exports = function() {
-    if (process.env.NODE_ENV == 'test') {
-        return new PayPal(sandbox.USER, sandbox.PWD, sandbox.SIGNATURE);
-    }
-    else {
-        return new PayPal(production.USER, production.PWD, production.SIGNATURE, false);
-    }
+   // if (process.env.NODE_ENV == 'test') {
+        return new PayPal(sandbox.USER, sandbox.PWD, sandbox.SIGNATURE, true);
+   // }
+   // else {
+  //      return new PayPal(production.USER, production.PWD, production.SIGNATURE, false);
+   // }
 }
