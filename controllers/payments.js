@@ -33,6 +33,7 @@ var  paypal = require('./../config/paypal_config')(),
 
 exports.create = function(req, res) {
   var product = JSON.parse(req.body.object);
+  console.log(product)
   product.product_id = product._id;
   delete product._rev
   delete product._id
