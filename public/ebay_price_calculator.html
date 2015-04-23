@@ -9,19 +9,27 @@
 var quantities = [ 10, 25, 50]
 var quantities_discount = { 10: 100, 25: 85, 50: 75}
 // cost per 10
-var options = { flat: (4.99 / 10), foldout: (8.99 / 10), envelopes:( 3.99/10), rsvp: (3.99/10), wrap: (6.99/10)}
+var options = { flat: (4.99 / 10), foldout: (8.99 / 10), envelopes:( 3.99/10), envelopes_matching: (6.99/10), envelopes_matching_and_addressed: (8.99/10), rsvp: (3.99/10), wrap: (6.99/10)}
 
 $(function() {
 ["flat", "foldout"].forEach(function(format) {
 
     var cost_per_1 = options[format]
     var cost_with_envelopes = cost_per_1 + options["envelopes"];
+    var cost_with_matching_envelopes = cost_per_1 + options["envelopes_matching"];
+    var cost_with_matching_envelopes_addressed = cost_per_1 + options["envelopes_matching_and_addressed"]
     var cost_with_rsvps = cost_per_1 + options["rsvp"];
     var cost_with_wraps = cost_per_1 + options["wrap"];
     var cost_with_envelopes_and_wraps = cost_with_envelopes + options["wrap"];
     var cost_with_envelopes_and_rsvps = cost_with_envelopes + options["rsvp"];
+    var cost_with_envelopes_matching_and_wraps = cost_with_matching_envelopes + options["wrap"];
+    var cost_with_envelopes_matching_and_rsvps = cost_with_matching_envelopes + options["rsvp"];
+    var cost_with_envelopes_addressed_and_wraps = cost_with_matching_envelopes_addressed + options["wrap"];
+    var cost_with_envelopes_addressed_and_rsvps = cost_with_matching_envelopes_addressed + options["rsvp"];
     var cost_with_rsvps_and_wraps = cost_with_rsvps + options["wrap"];
     var cost_with_all = (90/100) * (cost_with_rsvps_and_wraps + options["envelopes"])
+    var cost_with_all_matching_envelopes = (90/100) * ( cost_with_rsvps_and_wraps + options["envelopes_matching"])
+    var cost_with_all_addressed_envelopes = (90/100) * (cost_with_rsvps_and_wraps + options["envelopes_matching_and_addressed"])
     quantities.forEach(function(quantity) {
     qty_discount = (quantities_discount[quantity] / 100)
     
@@ -30,11 +38,19 @@ $(function() {
     $('#results').append("<b>Cost per " + quantity + " " +format + " with envelopes" + (qty_discount * (cost_with_envelopes * quantity )).toFixed(2)+ "<br/>");
     $('#results').append("<b>Cost per " + quantity + " " + format + " with rsvps" + (qty_discount * (cost_with_rsvps * quantity )).toFixed(2)+ "<br/>");
     $('#results').append("<b>Cost per " + quantity + " " + format + " with wraps" + (qty_discount * (cost_with_wraps * quantity)).toFixed(2)+ "<br/>")
-        $('#results').append("<b>Cost per " + quantity + " " + format + " with envelopes and wraps" + (qty_discount * (cost_with_envelopes_and_wraps * quantity)).toFixed(2)+ "<br/>")
-            $('#results').append("<b>Cost per " + quantity + " " + format + " with envelopes and rsvps" + (qty_discount * (cost_with_envelopes_and_rsvps * quantity)).toFixed(2)+ "<br/>")
+        $('#results').append("<b>Cost per " + quantity + " " + format + " with blank envelopes and wraps" + (qty_discount * (cost_with_envelopes_and_wraps * quantity)).toFixed(2)+ "<br/>")
+         $('#results').append("<b>Cost per " + quantity + " " + format + " with matching envelopes and wraps" + (qty_discount * (cost_with_envelopes_matching_and_wraps * quantity)).toFixed(2)+ "<br/>")
+         $('#results').append("<b>Cost per " + quantity + " " + format + " with addressed envelopes and wraps" + (qty_discount * (cost_with_envelopes_addressed_and_wraps * quantity)).toFixed(2)+ "<br/>")
+         
+         $('#results').append("<b>Cost per " + quantity + " " + format + " with blank envelopes and rsvps" + (qty_discount * (cost_with_envelopes_and_rsvps * quantity)).toFixed(2)+ "<br/>")
+         $('#results').append("<b>Cost per " + quantity + " " + format + " with matching envelopes and rsvps" + (qty_discount * (cost_with_envelopes_matching_and_rsvps * quantity)).toFixed(2)+ "<br/>")
+          $('#results').append("<b>Cost per " + quantity + " " + format + " with addressed envelopes and rsvps" + (qty_discount * (cost_with_envelopes_addressed_and_rsvps * quantity)).toFixed(2)+ "<br/>")
+       
         
             $('#results').append("<b>Cost per " + quantity + " " + format + " with RSVPS and wraps" + (qty_discount * (cost_with_rsvps_and_wraps * quantity)).toFixed(2)+ "<br/>")
                 $('#results').append("<b>Cost per " + quantity + " " + format + " with EVERYTHING" + (qty_discount * (cost_with_all * quantity)).toFixed(2)+ "<br/>")
+                $('#results').append("<b>Cost per " + quantity + " " + format + " with EVERYTHING + matching_envelopes" + (qty_discount * (cost_with_all_matching_envelopes * quantity)).toFixed(2)+ "<br/>")
+                $('#results').append("<b>Cost per " + quantity + " " + format + " with EVERYTHING + matching addressed envelopes" + (qty_discount * (cost_with_all_addressed_envelopes * quantity)).toFixed(2)+ "<br/>")
     })
     $('#results').append("<hr/>")
 })
