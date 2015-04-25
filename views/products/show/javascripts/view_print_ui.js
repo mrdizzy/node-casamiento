@@ -9,8 +9,6 @@ var GuestCollectionView = Backbone.View.extend({
   }
 })
 
-//PRINT CONTROL PANEL VIEW
-////////////////////////////////////////////////////////////////////////////////
 var PrintControlPanelView = BackboneRelativeView.extend({
   el: '#print_ui',
   initialize: function() {
