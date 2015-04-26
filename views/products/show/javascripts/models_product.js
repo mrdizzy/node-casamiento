@@ -53,7 +53,7 @@ var Product = Backbone.Model.extend({
     this.on("change:weight", this.saveProduct)
     this.on("change:colours", this.saveProduct)   
     this.on("change:quantity", this.calculatePrice) // must come before adjust guests
-    this.on("change:quantity", this.adjustGuests)
+    //this.on("change:quantity", this.adjustGuests)
     this.on("change:quantity", this.saveProduct)
     this.listenTo(this.guests, "change", this.saveGuests)
     this.listenTo(this.guests, "reset", this.updateQuantityFromGuests)
