@@ -74,7 +74,7 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   el: $('#cpv'),
   events: { 
     'change input[name=svgupload]': 'prepareSVG',      
-    'dizzy-cp:hoverColor': 'updateColours',  
+    'dizzy-cp:hoverColor .picker': 'updateColours',  
     'click #add_second_colour': 'addSecondColour',
     'blur .change_background': 'updateBackground',
     'click input[type=submit]': 'sendForm',
@@ -100,8 +100,10 @@ var CurrentProductView = Backbone.View.CouchDB.extend({
   updateColours: function(e, colour) {
      var index = $(e.currentTarget).index();
      var colours = this.model.get("colours");
-     colours[index] = colour;
-     this.model.set("colours", colours).trigger("change:colours")
+     //colours[index] = colour;
+
+   //  this.model.trigger("change:colours")
+          console.log(this.model.get("colours"))
   },  
   updateBackground: function(e) {  
     var $textarea = $(e.currentTarget),
