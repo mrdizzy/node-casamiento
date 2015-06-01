@@ -5,8 +5,7 @@
       {{{background-1}}}
     </div>
     
-    <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/large-1 2000w,
-      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-1 1000w,
+    <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-1 1000w,
       http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-1 750w,
       http://mrdizzy.cloudant.com/test_ebay/{{_id}}/thumb-1 500w"
       sizes="(min-width:801px) 33.95vw, (min-width:500px) 58.2vw, (min-width: 320px), 100vw" class="slide_image" />
@@ -22,8 +21,7 @@
       {{{background-2}}}
     </div>
     
-    <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/large-2 2000px,
-      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-2 1000w,
+    <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-2 1000w,
       http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-2 750w,
       http://mrdizzy.cloudant.com/test_ebay/{{_id}}/thumb-2 500w"
       sizes="(min-width:801px) 33.95vw,(min-width:500px) 58.2vw, (min-width: 320px), 100vw" class="slide_image" />
@@ -37,8 +35,7 @@
      {{{background-3}}}
     </div>
     
-    <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/large-3 2000w,
-      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-3 1000w,
+    <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-3 1000w,
       http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-3 750w,
       http://mrdizzy.cloudant.com/test_ebay/{{_id}}/thumb-3 500w"
       sizes="(min-width:801px) 33.95vw,(min-width:500px) 58.2vw, (min-width: 320px), 100vw" class="slide_image" />
@@ -48,6 +45,11 @@
 <div class="slide">
     <h1 class="product_name">{{name}}</h1>
     <div class="ornamental_line"></div>
+     <p style="margin:0;margin-left:1em;padding:0;padding-top:1em;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: 
+           {{#each tags}}
+           <a href="/products/tags/{{.}}">{{.}},
+           {{/each}}
+           </p>
 </div>
   
 <div id="description_container">
@@ -60,8 +62,7 @@
 
     <div class="slide_background_container colour_0">{{{background-4}}}</div>
     
-    <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/large-4 2000w,
-        http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-4 1000w,
+    <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-4 1000w,
         http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-4 750w,
         http://mrdizzy.cloudant.com/test_ebay/{{_id}}/thumb-4 500w"
         sizes="(min-width:801px) 33.95vw,(min-width:500px) 58.2vw, (min-width: 320px), 100vw"class="slide_image" />

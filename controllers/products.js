@@ -72,6 +72,7 @@ exports.show = function(req, res, next) {
       return next(myerr); // <---- pass it, not throw it
     } else {
       db.view("all/fonts_by_id", function(error, fonts_response) {
+        console.log(docs[0].value)
         res.render('products/show/show.ejs', {     
           locals: {
             fonts: fonts_response.toArray(), 
@@ -108,6 +109,7 @@ var order_id = req.params.product;
 }
 
 exports.update = exports.create = function(req, res) {
+  console.log("UPDATING or CREATING")
   if(req.product) {
     var rev = req.product.rev,
       id = req.product.id;
@@ -121,6 +123,7 @@ exports.update = exports.create = function(req, res) {
     delete req["body"].svg;
   }
   db.save(id, rev, req.body, function(err, documents) {
+    console.log(err, documents)
     var new_product = req.body;
     new_product._rev = documents.rev;
     if (err) {    

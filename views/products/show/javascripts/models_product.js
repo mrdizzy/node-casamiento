@@ -189,7 +189,7 @@ var Product = Backbone.Model.extend({
       ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   },
-  stale: ['attachments_order', 'tags', 'baseline', 'pence', 'pounds', 'font_size', 'per_page', 'cutting_marks', 'browser'],
+  stale: ['attachments_order', 'baseline', 'pence', 'pounds', 'font_size', 'per_page', 'cutting_marks', 'browser'],
   toJSON: function() {
     return _.omit(this.attributes, this.stale);
   }
