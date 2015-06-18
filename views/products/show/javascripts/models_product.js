@@ -14,7 +14,7 @@ var Product = Backbone.Model.extend({
   },
   makePurchase: function() {    
     if (this.get("quantity") > 7) {
-    
+    console.log(this.get("total"))
     $.form('/payments', { 
     
       "object": JSON.stringify(this.toJSON()),
@@ -48,19 +48,17 @@ var Product = Backbone.Model.extend({
     this.calculateUserAgent();
     this.calculatePrice();
     this.guests = this.get("guests")
-    console.log(this.guests)
     this.on("change:weight", this.calculatePrice)
     this.on("change:font", this.saveProduct)
     this.on("change:weight", this.saveProduct)
     this.on("change:colours", this.saveProduct)   
     this.on("change:quantity", this.calculatePrice) // must come before adjust guests
-    this.on("change:quantity", this.adjustGuests)
+    //this.on("change:quantity", this.adjustGuests)
     this.on("change:quantity", this.saveProduct)
     this.listenTo(this.guests, "change", this.saveGuests)
     this.listenTo(this.guests, "reset", this.updateQuantityFromGuests)
   },
   updateQuantityFromGuests: function() {
-  console.log("Updating guests")
     this.set("quantity", this.guests.length)
   },
   updateColour: function(index, colour) {
@@ -109,8 +107,8 @@ var Product = Backbone.Model.extend({
     } else {  
       total = price * quantity;  
     }
-
-    split_total = total.toFixed(2).toString().split(".")   
+    total = total.toFixed(2);
+    split_total = total.toString().split(".")   
     this.set("pounds",split_total[0]).set("pence", split_total[1]).set("total", total)    
   },
   toggleCuttingMarks: function() {
@@ -191,7 +189,7 @@ var Product = Backbone.Model.extend({
       ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   },
-  stale: ['attachments_order', 'tags', 'baseline', 'pence', 'pounds', 'font_size', 'per_page', 'cutting_marks', 'browser'],
+  stale: ['attachments_order', 'baseline', 'pence', 'pounds', 'font_size', 'per_page', 'cutting_marks', 'browser'],
   toJSON: function() {
     return _.omit(this.attributes, this.stale);
   }

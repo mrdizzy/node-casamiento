@@ -7,7 +7,7 @@ var db = require('couchdb-migrator').db,
 
 module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[1,2,3,4]
  
-  var transactions = req.body.transaction_ids || req.body.envelope_transaction_ids;
+  var transactions = req.body.transaction_ids || req.body.envelope_transaction_ids || req.body.label_transaction_ids;
   
    // If we are only submitting one transaction from the form then we need to make it into an array
   if(typeof transactions === "string") transactions = [transactions]
@@ -35,16 +35,13 @@ module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[
 
   }, function(err, results) {
     if(err) {
-      console.log("There has been an error getting the PayPal response:")
-      console.log(err)
+      console.log("There has been an error getting the PayPal response:", err)
     } else {
-    console.log("RESULTS", req.body.envelope_transaction_ids)
-            console.log(results)
-            if(req.body.envelope_transaction_ids) {
-   
-        res.render("invoices/envelope.ejs",{ layout: false, locals: { transactions: results }})
-        
-      }else {
+      if(req.body.envelope_transaction_ids) {   
+      res.render("invoices/envelope.ejs",{ layout: false, locals: { transactions: results }})        
+    } else if (req.body.label_transaction_ids) {
+      res.render("invoices/label.ejs", { layout: false, locals: { transactions: results }})
+    } else {
       res.render("invoices/show.ejs", { layout: false, locals: { transactions: results }})
       }
     }
@@ -52,20 +49,16 @@ module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[
 }
 
 module.exports.index = function(req, res) {  // GET /invoices
-
   var timeNow = new Date();
-var timeAgo = new Date(timeNow - 2629740000); //
+  var timeAgo = new Date(timeNow - 7776000000); // time ago is in MILLISECONDS so a day is 86400000
 
   paypal.buildQuery("TransactionSearch", function(error, response) {
-   console.log(error, response)
     parseTransactions(response.TransactionSearchResponse, function(err, results) {
-   
       if (err) {
-        console.log("There has been an error with the Paypal Request: ")
-        console.log(err)
+        console.log("There has been an error with the Paypal Request: ", err)
       } else {
-        results = _.compact(results); // remove all falsy values
 
+        results = _.compact(results); // remove all falsy values
         res.render('invoices/index', { layout: 'admin_layout', locals: { transactions: results}});
       }
     });

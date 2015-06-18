@@ -42,7 +42,7 @@ var PlaceCardView = GuestView.extend({
     this.model.adjustBaseline(0.5);
   },  
   updateGuestFromDiv: function() {
-    this.model.set("name", this.$('.guest_name').text())
+    this.model.set("name", this.$('.guest_name').text()).trigger("change:name")
   },
   _renderName: function() {
     this.$('.guest_name').text(this.model.get("name"))            

@@ -41,7 +41,6 @@
               <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0]%> 1000w,
                http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[0]%> 750w,
                http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 500w,
-               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/small-<%= place_card.attachments_order[0]%> 400w,
                http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/tiny-<%= place_card.attachments_order[0]%> 345w"
                sizes="(min-width:901px) 27.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 55vw, 100vw" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %><% } %>"/>
             </a>

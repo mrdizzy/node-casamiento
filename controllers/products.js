@@ -35,7 +35,8 @@ exports.tags = function(req, res) {
 
 exports.index = function(req, res) {
   
-  db.view('all/products_without_attachments',  function(err, docs) {
+  db.view('tags/except_christmas',  function(err, docs) {
+  console.log(docs)
     var result = _.map(docs.toArray(), function(product) {
       for (var i=1; i< 5; i++) {
         var background;
@@ -72,6 +73,7 @@ exports.show = function(req, res, next) {
       return next(myerr); // <---- pass it, not throw it
     } else {
       db.view("all/fonts_by_id", function(error, fonts_response) {
+        console.log(docs[0].value)
         res.render('products/show/show.ejs', {     
           locals: {
             fonts: fonts_response.toArray(), 
@@ -108,6 +110,7 @@ var order_id = req.params.product;
 }
 
 exports.update = exports.create = function(req, res) {
+  console.log("UPDATING or CREATING")
   if(req.product) {
     var rev = req.product.rev,
       id = req.product.id;
@@ -121,6 +124,7 @@ exports.update = exports.create = function(req, res) {
     delete req["body"].svg;
   }
   db.save(id, rev, req.body, function(err, documents) {
+    console.log(err, documents)
     var new_product = req.body;
     new_product._rev = documents.rev;
     if (err) {    

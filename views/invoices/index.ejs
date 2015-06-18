@@ -1,4 +1,6 @@
-
+<style type="text/css">
+tr:nth-child(even) {background: #CCC}
+</style>
 <form action="/invoices" method="POST">
   <table style="border:1px solid black;border-collapse:collapse;">
     <tr>
@@ -6,6 +8,8 @@
       <th>Name</th>
       <th>Invoice</th>
       <th>Envelope</th>
+      
+      <th>Label</th>
       <th>Email</th>
       <th>Memo</th>
       <th>Items</th>
@@ -19,12 +23,19 @@
       <input type="checkbox" name="transaction_ids" value='<%= t.TRANSACTIONID %>' /></input>
       </td><td>
       <input type="checkbox" name="envelope_transaction_ids" value='<%= t.TRANSACTIONID %>' /></input>
+      
+    </td>
+    <td>
+      <input type="checkbox" name="label_transaction_ids" value='<%= t.TRANSACTIONID %>' /></input>
+      
     </td>
     <td>
       <a href="mailto:<%= t.EMAIL %>"><%= t.EMAIL %></a>
     </td>
     <td><%= t.NOTE %></td>
-    <td></td>
+    <td><% t.items.forEach(function(item) { %>
+       <li><%= item.L_NAME %></li>
+    <% }) %></td>
     <td><%= t.AMT %></td>
   </tr>
 <% }) %>

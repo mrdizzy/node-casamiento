@@ -3,7 +3,7 @@ _ = require('underscore');
 
 exports.index = function(req, res) {
     messages.view('conversations/all', { descending: true }, function(error, documents) {
-        res.render("conversations/index", { layout:'admin',
+        res.render("conversations/index", { layout:'admin_layout',
             documents: documents.toArray()
         });
     });

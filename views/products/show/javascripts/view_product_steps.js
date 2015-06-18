@@ -3,10 +3,12 @@
 var StepView = Backbone.View.extend({ 
   el: '.right_column',
   initialize: function() {
-  console.log(thisProduct.get("guests"))
+  this.changed_names = false;
     this.weights_reference = {2: "160", 3: "250", 4: "280"}
     this.listenTo(thisProduct, 'change:quantity', this._renderGuests)
     this.listenTo(thisProduct.get("guests"), 'change:name', this._renderQuickGuests)
+    this.listenTo(thisProduct.get("guests"), 'remove', this._renderQuickGuests)
+        this.listenTo(thisProduct.get("guests"), 'add', this._renderQuickGuests)
     this.listenToOnce(thisProduct, 'change:colours', this.changeStepToFont);   
     this.listenTo(thisProduct, 'change:font', this.changeStepToThickness);   
     this.listenToOnce(thisProduct, 'change:weight', this.changeStepToQuantity);   
@@ -25,7 +27,7 @@ var StepView = Backbone.View.extend({
     "click #minus_qty": "minusQty",
     "focus #qty": "clearQuantity",
     "click .weight": "updateWeight",
-    "blur #quick_guests": "quickGuests"
+    "blur #quick_guests": "updateGuests"
   },
   changeStepToFont: function() {
     if (this.current_step < 2) this.current_step = 2;  
@@ -57,9 +59,11 @@ var StepView = Backbone.View.extend({
     this.$('#weight_' + thisProduct.get("weight")).addClass("selected").removeClass('deselected')      
   },
   _renderQuickGuests: function() {
-    this.$('#quick_guests').text(thisProduct.get("guests").pluck("name").join("\n"))
+  console.log("deleted", thisProduct.get("guests").toJSON())
+    this.$('#quick_guests').val(thisProduct.get("guests").pluck("name").join("\n"))
   },
-  quickGuests: function() {
+  updateGuests: function() {
+    this.changed_names = true;
     var guests = ($('#quick_guests').val());
     if (!($.trim(guests ) == '')) {
     if(guests.indexOf(',') === -1) { // Check how the names are delimited (comma or newline)
@@ -91,7 +95,6 @@ var StepView = Backbone.View.extend({
     $field = $(e.currentTarget)
     var value = $field.val();
     value = parseInt(value)
-
     if(isNaN(value) || value == false || value < 1) {
       $field.val(thisProduct.get("quantity"))
     } else if (value > 250) {

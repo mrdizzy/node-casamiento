@@ -64,7 +64,7 @@ var CoordinatorView = Backbone.View.extend({
     var that = this;
     this.stopListening(thisProduct, 'change:colours');
     this.stopListening(thisProduct, 'change:font')
-    if(!that.print_view_already_rendered) that.print_ui_view.render()
+    that.print_ui_view.render()
     $('#background_container').fadeOut(function() {    
       that.print_ui_view.$el.fadeIn(1000);                
       $('body').animate({

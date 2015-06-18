@@ -176,20 +176,31 @@ a.related_link:visited {
       margin-bottom:0.5em;
     }
 
-      #related_0 {
+      #related_0, #related_6, #related_12  {
         width:60%;
+      
         float:left; 
       }
 
       #related_2, 
-      #related_5 { 
+      #related_5,
+      #related_8,
+      #related_11, 
+      #related_14, 
+      #related_17 { 
         width:60%; 
         float:right; 
       }
       
       #related_1, 
       #related_3, 
-      #related_4 { 
+      #related_4,
+      #related_7,
+      #related_9,
+      #related_10,
+      #related_13, 
+      #related_15,
+      #related_16 { 
         width:39%; 
         float:left; 
       }
@@ -338,7 +349,7 @@ table {
   margin:0.5em 0 0.2em;
   width:75px;
 }
-#related_6 { clear:both; }
+#related_6, #related_12, #related_18 { clear:both; }
   <% var j = 0 %>
   <% for (var k = 0; k < 3; k++) { %>
     <% for (var i = 0; i < 6; i++) { %>
@@ -541,7 +552,7 @@ table {
               
                 <div style="padding:1em;">
                   <div class="weight" style="border-top:3px solid #000;"></div> 
-                  <span style="font:normal 0.8em OS;">250gsm</span>
+                  <span style="font:normal 0.8em OS;">200gsm</span>
                 </div>
                 
                 <div style="padding:1em;padding-top:0;">
@@ -638,7 +649,7 @@ table {
     
     <div>
       <div class="weight" style="border-top-width:2px;"></div> 
-      <span style="font:normal 0.8em OS;">250gsm</span>
+      <span style="font:normal 0.8em OS;">200gsm</span>
     </div>
     
     <div>
@@ -647,7 +658,7 @@ table {
     </div>
      
     <% if (!params.buy_it_now) { %>
-    <p style="font-family:OS;font-size:0.8em;margin-left:33%;">Please note: this auction is for 250gsm card. For other options, please see our <a class="text_colour_0 caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.global_buy_it_now_number ?  params.global_buy_it_now_number : buy_it_now_number %>">buy-it-now</a> listing</p>
+    <p style="font-family:OS;font-size:0.8em;margin-left:33%;">Please note: this auction is for 200gsm card. For other options, please see our <a class="text_colour_0 caz casamiento" href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=<%= params.global_buy_it_now_number ?  params.global_buy_it_now_number : buy_it_now_number %>">buy-it-now</a> listing</p>
     <% } %>
   </div>
 

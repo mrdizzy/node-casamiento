@@ -2,7 +2,7 @@ var  paypal = require('./../config/paypal_config')(),
   _ = require('underscore'),
   db = require('./../config/db').test_ebay,
   inGroupsOf = require('./../lib/in_groups_of'),
-  sendgrid  = require('sendgrid')("app7076151@heroku.com", "rw1gxgg5");
+  sendgrid  = require('sendgrid')("app7076151@heroku.com", "fbnafrlv8387");
  
  /* 
 [requiredSecurityParameters]
@@ -33,6 +33,7 @@ var  paypal = require('./../config/paypal_config')(),
 
 exports.create = function(req, res) {
   var product = JSON.parse(req.body.object);
+  console.log(product)
   product.product_id = product._id;
   delete product._rev
   delete product._id
@@ -43,8 +44,8 @@ exports.create = function(req, res) {
   // Change RETURNURL to http://localhost for testing
   var default_options = {
     "PAYMENTREQUEST_0_CURRENCYCODE": "GBP",
-    "RETURNURL": "http://localhost:3000/payments",
-    "CANCELURL": "http://localhost:3000/products/" + product.product_id,
+    "RETURNURL": "http://node-casamiento-mrdizzy.c9.io/payments", // http://localhost:3000/payments or http://http://node-casamiento-mrdizzy.c9.io/payments
+    "CANCELURL": "http://node-casamiento-mrdizzy.c9.io/products/" + product.product_id, // http://localhost:3000/products or http://node-casamiento-mrdizzy.c9.io/products
     "PAYMENTREQUEST_0_PAYMENTACTION": "Sale",  
     "ALLOWNOTE": 1,
     "LOGOIMG": "http://www.casamiento.co.uk/gfx/logo/casamiento_black.png"
