@@ -249,7 +249,7 @@
 	#inner_page_container { width:100%; }
 	
 		#welcome_column {
-		  margin-top:60px;
+		 /* margin-top:60px;*/
 			width:96%;
 		}
 		#welcome_column h5 {
