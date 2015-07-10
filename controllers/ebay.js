@@ -24,6 +24,8 @@ exports.show = function(req, res) {
   })
 }
 
+// Creates a single name place card view, as found in /new.ejs
+
 exports.create = function(req, res) {
   var id = req.body.id,
     theme = id.split("-")[0],
@@ -35,8 +37,7 @@ exports.create = function(req, res) {
     var name = doc._id.replace(/_/g, " ").split("-")[0];
     doc.name = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     db.get(req.body.related_ids, function(err, related) {
-    console.log(req.body.related_ids)
-console.log("Related",related)
+
     //db.view('tags/by_tags', { key: req.body.tags }, function(err, related) {
 
       var related = related.toArray()
