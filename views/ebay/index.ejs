@@ -16,7 +16,10 @@
     Quantity: <input type="text" name="quantity" value="50"></input><br/>
     Bidding starts from (auction only): <input type="text" name="bidding" value="2.99"></input><br/>
     Buy it now price: <input type="text" name="buy_it_now_price" value="5.99"></input><br/>
+    Description:
+    <textarea name="description">Description here</textarea>
     Related:<br/>
+   
     <select name="related_ids" multiple="true" size="10">
     <% documents['name_place'].forEach(function(product) { %>
     <option value="<%= product._id %>" name="<%= product._id%>"><%= product._id %></option> 

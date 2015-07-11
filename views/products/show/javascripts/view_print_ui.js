@@ -46,6 +46,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
       thisProduct.makePurchase();
   },
   addGuest: function() {    
+  console.log("Adding guest")
     thisProduct.set("quantity", thisProduct.get("quantity") + 1)
   },
   togglePanel: function() {
