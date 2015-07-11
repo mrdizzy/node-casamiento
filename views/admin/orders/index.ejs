@@ -1,5 +1,8 @@
 <% orders.forEach(function(order) { %>
 
-<li><a href="/products/<%= order._id %>/edit"><%= order._id %></a></li>
+<li><a href="/products/<%= order._id %>/edit"><%= order._id %></a> <%= order.status %> <% if (order.paypal) { %>
+
+<%= order.paypal.firstname %> <%= order.paypal.lastname %>, <%= order.paypal.product %>
+<% } %> <a href="">Delete</a></li>
 
 <% } ) %>

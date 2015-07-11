@@ -40,11 +40,13 @@ exports.create = function(req, res) {
   delete req.body.object;
   product.type = "order"
   product.status = "UNPAID"
-  
+   var localhost = "http://localhost:3000/payments"
+   var heroku_test = "http://node-casamiento-mrdizzy.c9.io/payments"
+   var production = "http://www.casamiento.co.uk/payments"
   // Change RETURNURL to http://localhost for testing
   var default_options = {
     "PAYMENTREQUEST_0_CURRENCYCODE": "GBP",
-    "RETURNURL": "http://node-casamiento-mrdizzy.c9.io/payments", // http://localhost:3000/payments or http://http://node-casamiento-mrdizzy.c9.io/payments
+    "RETURNURL": localhost,
     "CANCELURL": "http://node-casamiento-mrdizzy.c9.io/products/" + product.product_id, // http://localhost:3000/products or http://node-casamiento-mrdizzy.c9.io/products
     "PAYMENTREQUEST_0_PAYMENTACTION": "Sale",  
     "ALLOWNOTE": 1,
@@ -79,16 +81,16 @@ exports.index = function(req, res) {
            paypal.buildQuery("DoExpressCheckoutPayment", function(paymenterror, paymentresponse) { 
            doc.guests = inGroupsOf(doc.guests, 2);
            req.app.render("invoices/email", { locals: doc}, function(err, html) {  
-    sendgrid.send({
-      to:       doc.paypal.email,
-      from:     'david@casamiento.co.uk',
-      subject:  "Your order at Casamiento",
-      text:     '',
-      html: html
-    }, function(err, json) {
-      if (err) { return console.error("Error", err); }
-      console.log(json)  
-    })
+ //   sendgrid.send({
+ //     to:       doc.paypal.email,
+ //     from:     'david@casamiento.co.uk',
+ //     subject:  "Your order at Casamiento",
+ //     text:     '',
+ //     html: html
+ //   }, function(err, json) {
+ //     if (err) { return console.error("Error", err); }
+ //     console.log(json)  
+ //   })
 
   });
       res.render('invoices/thankyou', {
