@@ -31,6 +31,7 @@
     #cart a {
       color: <%= colours[0] %>;
       text-decoration:underline;
+      
     }
     #cart table {
       border-collapse:collapse;padding:0
@@ -40,6 +41,9 @@
       border:0;
       letter-spacing:0;
       font:normal 0.9em 'OS Condensed';
+      padding-bottom:0;
+      margin-bottom:0;
+      padding-top:1em;
     }
  </style>
 
@@ -56,7 +60,7 @@
 
         <h5 class="header">Deliver to:</h5>
 
-        <div style="padding-left:1em;">
+        <div style="padding-left:2em;font-size:1.1em;">
           <%= paypal.shiptoname %><br/>
           <%= paypal.shiptostreet %><br/>
           <%= paypal.shiptocity %><br/>
@@ -68,12 +72,13 @@
         
 
         <h5 class="header">Order Number:</h5>
-
+<div style="padding-left:2em;font-size:1.1em;">
         <a href="/products/<%= _id %>/edit"><%= _id %></a>
-
+</div>
         <h5 class="header">Your email:</h5>
-
+<div style="padding-left:2em;font-size:1.1em;">
         <a href="mailto:<%= paypal.email %>" style="color:<%= colours[0] %>;"><%= paypal.email %></a>
+        </div>
       </td>
 
       <td style="padding:1em;">
@@ -125,8 +130,8 @@
 <%- contentFor('right') %>
 
   <div style="">
-    <img src="/gfx/handshake1.svg" style="padding-bottom:1em;padding-top:2em;width:50px;opacity:0.8;display:block;margin:0 auto;" />
-     <p style="margin-bottom:0.25em;opacity:0.8;padding:0.25em;text-align:center;font:normal 3em 'Gara'">Thank you for your order.</p>
+    <img src="/gfx/thanks.svg" style="padding-bottom:1em;padding-top:2em;width:150px;display:block;margin:0 auto;" />
+     <p style="margin-bottom:0.25em;opacity:0.8;padding:0.25em;text-align:center;font:normal 3em 'Josefin Slab'">Thank you for your order.</p>
 
      <p style="padding-top:0;padding-left:1.75em;padding-right:1.75em;font-size:1.2em;font-family: 'OS Light Italic'">If you have any questions then please do not hesitate to contact us on <a href="mailto:orders@casamiento.co.uk">orders@casamiento.co.uk</a></p>
      <div style="height:200px;"></div>

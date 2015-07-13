@@ -19,10 +19,10 @@ var PayPal = require('node-paypal-api-nv'),
     
     // Pass true as the final parameter to new PayPal() if we are using the sandbox
   module.exports = function() {
-   // if (process.env.NODE_ENV == 'test') {
-        return new PayPal(sandbox.USER, sandbox.PWD, sandbox.SIGNATURE, true);
-   // }
-   // else {
-  //      return new PayPal(production.USER, production.PWD, production.SIGNATURE, false);
-   // }
+   if (process.env.NODE_ENV == 'test') {
+       return new PayPal(sandbox.USER, sandbox.PWD, sandbox.SIGNATURE, true);
+    }
+    else {
+        return new PayPal(production.USER, production.PWD, production.SIGNATURE, false);
+    }
 }

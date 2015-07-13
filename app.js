@@ -89,6 +89,7 @@ app.configure('development', function() {
 require('./routes')(app);
 
 http.createServer(app).listen((process.env.PORT || 3000), function() {
+console.log(process.env.NODE_ENV)
   console.log("Express server listening on port " + (process.env.PORT || 3000));
 });
 
