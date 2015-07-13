@@ -1,3 +1,20 @@
+<script>
+
+var Order = Backbone.Model.extend({})
+
+var Orders = Backbone.Collection.extend({
+  model: Order
+})
+
+var orders = new Orders( <%- JSON.stringify(orders) %>;)
+
+
+var OrdersView = Backbone.View.extend({
+  
+})
+
+</script>
+
 <% orders.forEach(function(order) { %>
 
 <li><a href="/products/<%= order._id %>/edit"><%= order._id %></a></li>
