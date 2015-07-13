@@ -1,25 +1,63 @@
+<style type="text/css">
+.lock:hover, .delete:hover { cursor:pointer;}
+</style>
+<div id="orders"></div>
+
 <script>
 
-var Order = Backbone.Model.extend({})
+var Order = Backbone.Model.extend({idAttribute: '_id'})
 
 var Orders = Backbone.Collection.extend({
-  model: Order
+  model: Order,
+  url: '/admin/orders'
 })
 
-var orders = new Orders( <%- JSON.stringify(orders) %>;)
+var orders = new Orders( <%- JSON.stringify(orders) %>)
 
+
+var OrderView = Backbone.View.extend({
+  events: {
+    'click .lock': 'lock',
+    'click .delete': 'delete'
+  },
+  delete: function() {
+    this.model.destroy();
+    this.remove();
+  },
+  lock: function() {
+    this.model.save({"locked": true, "_rev": this.model.get("_rev")}, { patch: true, success:function(success) {
+      console.log("success")
+    }, error: function(error) {
+      console.log(error)
+    }})
+  },
+  render: function() {
+    var html= '<li><a href ="/products/' + this.model.id + '/edit">' + this.model.id + " </a>| "
+    if (this.model.get("locked")) {
+    html = html + "LOCKED | "
+    } else {
+     html = html + '<span class="lock" style="color:red;">LOCK</span> | ';
+    }
+    html = html + '<span class="delete" style="color:blue;">DELETE</span></li>'
+    this.$el.html(html)
+    return this;
+  }
+})
 
 var OrdersView = Backbone.View.extend({
-  
+  el: '#orders',
+  render: function() {
+    var orders = [];
+    this.collection.forEach(function(order) {
+      var order = new OrderView({model: order}).render().el
+      orders.push(order)
+    }, this)
+    this.$el.html(orders)
+  }
 })
 
+var orders_view = new OrdersView({collection:orders});
+orders_view.render();
+
+
 </script>
-
-<% orders.forEach(function(order) { %>
-
-<li><a href="/products/<%= order._id %>/edit"><%= order._id %></a> <%= order.status %> <% if (order.paypal) { %>
-
-<%= order.paypal.firstname %> <%= order.paypal.lastname %>, <%= order.paypal.product %>
-<% } %> <a href="">Delete</a></li>
-
-<% } ) %>

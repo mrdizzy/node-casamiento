@@ -15,3 +15,13 @@ exports.index = function(req, res) {
     }
   })
 }
+exports.destroy = function(req, res) {
+  db.remove(req.params.id, req.body._rev, function(err, res) {
+    console.log(err, res)
+  })
+}
+exports.patch = function(req, res) {
+db.merge(req.params.id,  {locked: true}, function (err, res) {
+      console.log(err, res)
+  });
+}

@@ -97,6 +97,7 @@ var order_id = req.params.product;
         doc._id = product_id;
         doc.order_id = order_id;
         
+        
           res.render('products/edit/edit.ejs', {     
             locals: {
               fonts: fonts_response.toArray(), 

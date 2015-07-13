@@ -1,7 +1,7 @@
 <%- contentFor('inside_headtag') %>
 
 <style type="text/css">
-  /* Use these styles when locked 
+  <% if (product.locked) { %>
   #overlay {
     position:fixed;
     width:100%;
@@ -11,11 +11,10 @@
   }
   #middle_column, 
   #print_ui { 
-    position:fixed; 
     width:100%;
   }
   body { height:0; }
-  */ 
+  <% } %>
   
   .checkout,
   .add_another,
