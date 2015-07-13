@@ -21,7 +21,10 @@ exports.destroy = function(req, res) {
   })
 }
 exports.patch = function(req, res) {
-db.merge(req.params.id,  {locked: true}, function (err, res) {
+var id = req.body.order_id;
+delete req.body.order_id;
+console.log(id, req.body)
+db.merge(id, req.body, function (err, res) {
       console.log(err, res)
   });
 }

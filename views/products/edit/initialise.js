@@ -7,7 +7,7 @@ $(function() {
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
 
   <%= include ./../show/javascripts/models_guest.js %> 
-  <%= include ./../show/javascripts/models_product.js %>   
+  <%= include ./../show/javascripts/models_edit_product.js %>   
   <%= include ./../show/javascripts/view_backbone_relative.js %>
   <%= include ./../show/javascripts/view_guest.js %>
   <%= include ./../show/javascripts/view_place_card.js %>

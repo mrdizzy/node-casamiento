@@ -25,7 +25,7 @@ var OrderView = Backbone.View.extend({
     this.remove();
   },
   lock: function() {
-    this.model.save({"locked": true, "_rev": this.model.get("_rev")}, { patch: true, success:function(success) {
+    this.model.save({"locked": true, order_id: this.model.get("_id"), "_rev": this.model.get("_rev")}, { patch: true, success:function(success) {
       console.log("success")
     }, error: function(error) {
       console.log(error)

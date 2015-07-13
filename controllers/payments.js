@@ -81,16 +81,16 @@ exports.index = function(req, res) {
            paypal.buildQuery("DoExpressCheckoutPayment", function(paymenterror, paymentresponse) { 
            doc.guests = inGroupsOf(doc.guests, 2);
            req.app.render("invoices/email", { locals: doc}, function(err, html) {  
- //   sendgrid.send({
- //     to:       doc.paypal.email,
- //     from:     'david@casamiento.co.uk',
- //     subject:  "Your order at Casamiento",
- //     text:     '',
- //     html: html
- //   }, function(err, json) {
- //     if (err) { return console.error("Error", err); }
- //     console.log(json)  
- //   })
+    sendgrid.send({
+      to:       doc.paypal.email,
+      from:     'david@casamiento.co.uk',
+      subject:  "Your order at Casamiento",
+      text:     '',
+      html: html
+    }, function(err, json) {
+      if (err) { return console.error("Error", err); }
+      console.log(json)  
+    })
 
   });
       res.render('invoices/thankyou', {

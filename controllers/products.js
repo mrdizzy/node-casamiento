@@ -92,11 +92,10 @@ var order_id = req.params.product;
         console.log(err)
       } else {
         db.view("all/fonts_by_id", function(error, fonts_response) {
-        var product_id = doc.product_id,
-           order_id = doc.order_id;
+        var product_id = doc.product_id;
         doc._id = product_id;
         doc.order_id = order_id;
-        
+        console.log(doc.order_id)
         
           res.render('products/edit/edit.ejs', {     
             locals: {
