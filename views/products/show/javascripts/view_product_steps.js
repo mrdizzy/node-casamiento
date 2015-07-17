@@ -59,7 +59,6 @@ var StepView = Backbone.View.extend({
     this.$('#weight_' + thisProduct.get("weight")).addClass("selected").removeClass('deselected')      
   },
   _renderQuickGuests: function() {
-  console.log("deleted", thisProduct.get("guests").toJSON())
     this.$('#quick_guests').val(thisProduct.get("guests").pluck("name").join("\n"))
   },
   updateGuests: function() {

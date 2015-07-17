@@ -14,6 +14,7 @@ var CoordinatorView = Backbone.View.extend({
     this.slides_view = new ProductSlideView();    
     this.flat_preview_view = new FlatPreviewView();
     this.print_ui_view = new PrintControlPanelView(); 
+    this.first_print_render = true;
   },
   events: {
     "fontpicker:selected": "changeFont",
@@ -50,7 +51,6 @@ var CoordinatorView = Backbone.View.extend({
     } else if (that.current_view == "printui") {
       that.print_ui_view.$el.fadeOut(function() {
       that.slides_view.$el.fadeIn();
-      //$('#background_container').fadeIn();
       })
     } else {
       that.step_view.render();

@@ -20,6 +20,8 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     this._place_card_print_collection = new PrintPlaceCardCollectionView({
       collection: thisProduct.get("guests")
     })
+     this.listenTo(thisProduct.get("guests"), 'reset', this.render)
+     
   },
   events: {
     "click #add_another": "addGuest",
@@ -45,9 +47,6 @@ var PrintControlPanelView = BackboneRelativeView.extend({
       this.$('.paypal_spinner').show()
       thisProduct.makePurchase();
   },
-  // TODO: Quantity is successfully increased when pressing add another button, 
-  // but the UI does not seem to respond because adjustGuests in the Product model 
-  // is not being called as the listenTo is currently commented out--why??
   addGuest: function() {    
     thisProduct.set("quantity", thisProduct.get("quantity") + 1)
   },
@@ -73,7 +72,6 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     thisProduct.get("guests").invoke('adjustBaseline', 1)
   },
   appendPlaceCard: function(guest) {
-  console.log("Appending")
     var place_card = this._newPlaceCardView(guest).render().el   
     this.$( ".add_another" ).before(place_card);     
   },
