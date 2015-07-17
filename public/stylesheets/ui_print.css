@@ -1,7 +1,7 @@
 #top_of_page { position:relative; }
 
   #control_panel {
-    width:73%;
+    width:67.9%;
     margin-top:-1px;
     background-color:white;
     padding-top:0.5em;
@@ -389,6 +389,13 @@ input.cmn-toggle-yes-no:checked + label:after {
     padding-top:100px;
   }
 }
+
+
+  @media all and (min-width: 801px) and (max-width:1025px) {
+ #control_panel {
+    width:73%;
+  }
+  }
   
 /* HIDDEN DIVS FOR PRINT
 ==================================== */  

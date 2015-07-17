@@ -27,8 +27,10 @@ var BackboneRelativeView = Backbone.View.extend({
         this.calculatedWidth = (widths_relative_to_viewport.mobile/100) * viewport; 
       } else if(viewport > 500 && viewport < 801){ 
         this.calculatedWidth = (widths_relative_to_viewport.tablet/100) * viewport;
+      }  else if(viewport > 800 && viewport < 1026){ 
+        this.calculatedWidth = (widths_relative_to_viewport.netbook/100) * viewport;
       } else {
-                this.calculatedWidth = (widths_relative_to_viewport.desktop/100) * viewport;
+        this.calculatedWidth = (widths_relative_to_viewport.desktop/100) * viewport;
       }
       
     }

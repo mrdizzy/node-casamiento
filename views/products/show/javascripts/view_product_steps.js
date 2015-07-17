@@ -3,16 +3,16 @@
 var StepView = Backbone.View.extend({ 
   el: '.right_column',
   initialize: function() {
-  this.changed_names = false;
+    this.changed_names = false;
     this.weights_reference = {2: "160", 3: "250", 4: "280"}
     this.listenTo(thisProduct, 'change:quantity', this._renderGuests)
     this.listenTo(thisProduct.get("guests"), 'change:name', this._renderQuickGuests)
     this.listenTo(thisProduct.get("guests"), 'remove', this._renderQuickGuests)
-        this.listenTo(thisProduct.get("guests"), 'add', this._renderQuickGuests)
+    this.listenTo(thisProduct.get("guests"), 'add', this._renderQuickGuests)
     this.listenToOnce(thisProduct, 'change:colours', this.changeStepToFont);   
     this.listenTo(thisProduct, 'change:font', this.changeStepToThickness);   
     this.listenToOnce(thisProduct, 'change:weight', this.changeStepToQuantity);   
-    this.listenTo(thisProduct, 'change:weight',     this.renderWeight);
+    this.listenTo(thisProduct, 'change:weight', this.renderWeight);
     this.listenToOnce(thisProduct, 'change:quantity', this.changeStepToNames);
     this.listenTo(thisProduct, "change:total", this.renderQtyAndPrice)
     this.current_step = 1;
