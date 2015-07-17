@@ -77,6 +77,5 @@
     
     #printsvg { display:block; }
     
-    #top_of_page, 
-    #control_panel { display:none; }  
+    #background_container { display:none; }  
   }

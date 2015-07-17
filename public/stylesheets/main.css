@@ -258,6 +258,7 @@ input {
     #middle_column { padding-top:38px; }
 }
 
+
   /* Phablet 
    ============================================================================*/
   @media all and (min-width: 501px) and (max-width: 800px) {
@@ -309,6 +310,20 @@ input {
       
       #middle_column { padding-top:60px; }
 }  
+
+  /* Netbook
+  =========================================================== */
+  
+  @media all and (min-width: 801px) and (max-width:1025px) {
+    #inner_page_container { 
+      width:100%;
+      border:0;
+      margin:0;
+      padding:0;
+    }
+    .left_column { width:73%;}
+    .right_column { margin-left:73%;}
+  }
 
 /* GLOBAL CLASSES
 =========================== */
