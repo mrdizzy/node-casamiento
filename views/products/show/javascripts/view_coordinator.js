@@ -18,6 +18,10 @@ var CoordinatorView = Backbone.View.extend({
   events: {
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
+    "click #print_button": "printing"
+  },
+  printing: function() {
+    this.print_ui_view.printPage();
   },
   // This is the default home view that is always rendered when the URL has no hashtags appended
   renderHome: function() {  

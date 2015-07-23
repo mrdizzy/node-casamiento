@@ -195,8 +195,8 @@
 /* Phablet */
 @media all and (min-width: 501px) and (max-width: 800px) {
 /* ----------------------------------------------------------------------------- */    
-.left_column { width:55%; }
-.right_column { margin-left:55%; }
+.left_column { width:65%; }
+.right_column { margin-left:65%; }
 
 .slide, 
 #description_container { 

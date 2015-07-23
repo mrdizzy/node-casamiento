@@ -8,13 +8,12 @@ var Product = Backbone.Model.extend({
       font_size: 1,
       guests: new Guests([{},{},{},{},{},{},{},{}]),
       price: 0.10,
-      weight: 160,
+      weight: 200,
       cutting_marks: true,
       per_page: 3
   },
   makePurchase: function() {    
     if (this.get("quantity") > 7) {
-    console.log(this.get("total"))
     $.form('/payments', { 
     
       "object": JSON.stringify(this.toJSON()),
@@ -29,7 +28,6 @@ var Product = Backbone.Model.extend({
       var qty = this.get("quantity");
       var place_cards_total = price_each * this.get("quantity");
       var minimum_charge = this.get("total") - place_cards_total;
-      console.log(minimum_charge, place_cards_total, qty)
      $.form('/payments', { 
       "object": JSON.stringify(this.toJSON()),
       "L_PAYMENTREQUEST_0_AMT0": price_each,
@@ -97,9 +95,7 @@ var Product = Backbone.Model.extend({
     else if (quantity > 79 && quantity < 89) { price = 0.28 }
     else if (quantity > 87 && quantity < 97) { price = 0.27 }
     else if (quantity > 95) { price = 0.26 }
-    if(this.get("weight") == 250) {
-      price = price + 0.03;
-    } else if (this.get("weight") == 280) {
+    if (this.get("weight") == 300) {
       price = price + 0.05;
     }
     if (quantity < 8) { 

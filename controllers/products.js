@@ -36,8 +36,8 @@ exports.tags = function(req, res) {
 exports.index = function(req, res) {
   
   db.view('tags/except_christmas',  function(err, docs) {
-  console.log(docs)
     var result = _.map(docs.toArray(), function(product) {
+     
       for (var i=1; i< 5; i++) {
         var background;
         if(background = product["background-" + i]) {

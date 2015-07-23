@@ -86,6 +86,9 @@ p {
 a:link, a:visited { text-decoration:none;color: #000; }
   a:hover { text-decoration:underline;}
   a:active { color: #29A4BD; }
+  
+  a.a_tag { border-radius:10px;background-color:lightgrey; color:white; display:inline-block; padding:3px;padding-left:5px;padding-right:5px;margin:3px;}
+  a.a_tag:hover { background-color:#000;}
 
 /* FORMS
 ===================================== */  
@@ -321,8 +324,8 @@ input {
       margin:0;
       padding:0;
     }
-    .left_column { width:73%;}
-    .right_column { margin-left:73%;}
+    .left_column { width:78%;}
+    .right_column { margin-left:78%;}
   }
 
 /* GLOBAL CLASSES

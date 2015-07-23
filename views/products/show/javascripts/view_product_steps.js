@@ -4,7 +4,7 @@ var StepView = Backbone.View.extend({
   el: '.right_column',
   initialize: function() {
     this.changed_names = false;
-    this.weights_reference = {2: "160", 3: "250", 4: "280"}
+    this.weights_reference = {2: "200", 3: "300" } // number refers to position of element in HTML hierarchy
     this.listenTo(thisProduct, 'change:quantity', this._renderGuests)
     this.listenTo(thisProduct.get("guests"), 'change:name', this._renderQuickGuests)
     this.listenTo(thisProduct.get("guests"), 'remove', this._renderQuickGuests)
@@ -21,11 +21,7 @@ var StepView = Backbone.View.extend({
     "click .buy": "checkout",        
     "mouseenter .spc": "hoverOver",
     "mouseleave .spc": "hoverOut",     
-    "click .texture": "updateTexture",  
-    "blur #qty": "setQuantity",  
-    "click #plus_qty": "plusQty",
-    "click #minus_qty": "minusQty",
-    "focus #qty": "clearQuantity",
+    "click .texture": "updateTexture", 
     "click .weight": "updateWeight",
     "blur #quick_guests": "updateGuests"
   },
@@ -78,31 +74,6 @@ var StepView = Backbone.View.extend({
     thisProduct.get("guests").reset(names)
     }
   },
-  plusQty: function(e) {
-    if(thisProduct.get("quantity") < 250) thisProduct.set("quantity", thisProduct.get("quantity") + 1)
-  },
-  minusQty: function(e) { 
-    if ((thisProduct.get("quantity") - 1) > 0) {
-    thisProduct.get("guests").pop()
-    thisProduct.set("quantity", thisProduct.get("quantity") -1)
-    }
-  },
-  clearQuantity: function(e) {
-    $(e.currentTarget).val("")
-  },
-  setQuantity: function(e) {
-    $field = $(e.currentTarget)
-    var value = $field.val();
-    value = parseInt(value)
-    if(isNaN(value) || value == false || value < 1) {
-      $field.val(thisProduct.get("quantity"))
-    } else if (value > 250) {
-                thisProduct.set("quantity",250)
-                $field.val(250)
-    } else {
-       thisProduct.set("quantity",value)
-    }    
-  },  
   updateTexture: function(e) {
     var texture_selected = $(e.currentTarget)
     this.model.set("texture", texture_selected.index());

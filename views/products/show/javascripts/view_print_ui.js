@@ -156,9 +156,9 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     return new PlaceCardView(_.extend({
       model: guest,
       widths_relative_to_viewport: {
-        netbook: 34.672619047,
+        netbook: 37.04890873,
         desktop: 32.251265822,
-        tablet: 47.5,
+        tablet: 61.746742671,
         mobile: 95
       }
     }))

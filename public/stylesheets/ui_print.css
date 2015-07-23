@@ -1,12 +1,13 @@
 #top_of_page { position:relative; }
 
   #control_panel {
-    width:67.9%;
+    width:100%;
     margin-top:-1px;
     background-color:white;
     padding-top:0.5em;
     position:fixed; 
     z-index:500;  
+    opacity:0.9;
     border-bottom:1px solid black; 
     border-top:1px solid black;
   }
@@ -384,17 +385,30 @@ input.cmn-toggle-yes-no:checked + label:after {
     border-top-left-radius: 15px;
     border-bottom-right-radius: 15px;
   }    
+  
+  
+    #actual_cards .place_card_view { width:100%; }
     
-  #actual_cards { 
-    padding-top:100px;
+    #actual_cards .place_card_view:nth-child(even) .place_card_parent { float:right; }
+  .place_card_view:nth-child(even) .font_size_adjust_buttons, 
+  .place_card_view:nth-child(even) .font_baseline_adjust_buttons,
+  .place_card_view:nth-child(even) .delete_button {
+    left:1%;
+  }
+  
+  #actual_cards .place_card_view.add_another, 
+  #actual_cards .place_card_view.checkout {
+    margin:0 auto;
+    margin-bottom:10px;
+    clear:both;
+    float:none;
+    width:90%;
   }
 }
 
 
   @media all and (min-width: 801px) and (max-width:1025px) {
- #control_panel {
-    width:73%;
-  }
+ 
   }
   
 /* HIDDEN DIVS FOR PRINT
