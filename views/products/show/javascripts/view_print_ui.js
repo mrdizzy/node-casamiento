@@ -72,8 +72,10 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     thisProduct.get("guests").invoke('adjustBaseline', 1)
   },
   appendPlaceCard: function(guest) {
-    var place_card = this._newPlaceCardView(guest).render().el   
-    this.$( ".add_another" ).before(place_card);     
+    var place_card = this._newPlaceCardView(guest, "appended_place_card").render().el   
+    var place_card = $(place_card);
+    this.$( ".add_another" ).before(place_card)    
+    place_card.fadeIn(2000);
   },
   changeLayout: function(e) {
     var per_page = [8,3,4][$(e.currentTarget).index()]
@@ -152,15 +154,16 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     this.$('#decimal').text("." + thisProduct.get("pence"))
   },
   // convenience method for rendering a new place card view
-  _newPlaceCardView: function(guest) {
+  _newPlaceCardView: function(guest, appended) {
     return new PlaceCardView(_.extend({
-      model: guest,
+      model: guest,      
       widths_relative_to_viewport: {
         netbook: 37.04890873,
         desktop: 32.251265822,
         tablet: 61.746742671,
         mobile: 95
-      }
+      },
+      className:"place_card_view " + (appended ? appended : "")
     }))
   }
 })

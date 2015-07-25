@@ -109,16 +109,6 @@
         text-align:center;
       }
 
-      #minus_qty, 
-      #plus_qty {       
-      font-size:2em;
-      line-height:1em;
-        border: 1px solid black;
-        display:inline-block;
-        padding:5px;
-        padding-left:10px;
-        padding-right:10px;
-      }
 
       #qty { 
         color:black; 
@@ -140,11 +130,12 @@
     }
   
     .buy {
-      clear:both;
       font-size:1.2em;
-      width:60%;
+      width:70%;
       padding:0.25em;
     }
+    
+   
       .paypal { 
         padding-top:0.25em;
         width:90px;
@@ -188,6 +179,7 @@
     margin:0 auto;
   }
 
+    .buy { padding-top:0.75em; }
   #print_button { width:60%; }
 
 }
@@ -197,7 +189,7 @@
 /* ----------------------------------------------------------------------------- */    
 .left_column { width:65%; }
 .right_column { margin-left:65%; }
-
+    .buy { padding-top:0.75em; }
 .slide, 
 #description_container { 
   width:100%;

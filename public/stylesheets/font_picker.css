@@ -71,3 +71,15 @@
 
   h2 { font-family:"Gara";font-weight:normal;}
   
+  
+  
+
+  @media all and (min-width: 300px) and (max-width:1025px) {
+ 
+
+  
+  td.font_name, td.font_description { display:none; }
+ 
+  td.font_image { width:100%; }
+  
+    }

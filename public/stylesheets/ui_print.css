@@ -324,8 +324,6 @@ input.cmn-toggle-yes-no:checked + label:after {
     float:none;
     width:90%;
   }
-  td.font_name, 
-  td.font_description { display:none; }
   
   #ui_print_font_picker_container {
     width:96%;
@@ -376,9 +374,6 @@ input.cmn-toggle-yes-no:checked + label:after {
       height:40px
     }
     
-  td.font_name, td.font_description { display:none; }
- 
-  td.font_image { width:100%; }
    
   .selected_font td.font_image {
     border-radius:0;
