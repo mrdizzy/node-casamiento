@@ -245,7 +245,11 @@ input {
         padding-left:10px;
       }     
         #browse img { width:30px; }
-        
+          #mainmenulines {
+      width:30px;
+      margin-top:7px;
+      margin-right:2px;
+    }
     #inner_page_container { width:100%;}
 
     .left_column, 

@@ -237,31 +237,15 @@ input.cmn-toggle-yes-no:checked + label:after {
   
   #control_panel { padding-top:0; }
   
-  #mobile_panel_section {
-    display:none;
-    position: fixed;
-    background-color:white;
-    border-right:1px solid black;
-    width:75%;    
-    z-index:999999999999999999999999999999999999999;
-    height:100%;    
-    box-shadow:7px 7px 0 0 lightgrey;
-  }
-    
   #menu_lines {
     float:left;
     z-index:99999999999999999999999999999999;
-    padding:6px;
-    width:30px;
+    padding:2px;
+    padding-right:6px;
+    width:20px;
     cursor:pointer;
   }
   
-  #close_mobile {
-    margin-right:10px;
-    position:static;
-    margin-top:10px;
-    float:right;
-  } 
   #mobile_print_logo {
     padding-top:3px;
     width:24%;
@@ -273,13 +257,13 @@ input.cmn-toggle-yes-no:checked + label:after {
     padding:0;    
     padding-top:3px;
     padding-left:0;
-    height:38px;
+    height:30px;
     width:60%;
   }
 
     #ui_global_font_mobile div {
-      width:17%;
-      height:30px;
+      width:15%;
+      height:25px;
       border-top-left-radius:8px;      
       border-bottom-right-radius:8px;
       background-size:50%;
@@ -306,7 +290,7 @@ input.cmn-toggle-yes-no:checked + label:after {
   } 
     #choose_layout { padding-top:2em; }
   
-  #actual_cards { padding-top:40px; }
+  #actual_cards { padding-top:30px; }
     #actual_cards .place_card_view { width:100%; }
      
     #actual_cards .place_card_view:nth-child(even) .place_card_parent { float:right; }
@@ -325,11 +309,6 @@ input.cmn-toggle-yes-no:checked + label:after {
     width:90%;
   }
   
-  #ui_print_font_picker_container {
-    width:96%;
-    padding-left:2%;
-    padding-right:2%;
-  }
 }
   
 /* Phablet */
@@ -339,30 +318,6 @@ input.cmn-toggle-yes-no:checked + label:after {
   #menu_lines { display:none; } 
   #ui_print_alert { width:70%; }
   
-  .colour_picker_wrapper .dizzycp-static_container { 
-    padding-bottom:5px;
-    clear:both;
-  }
-  
-  .colour_picker_wrapper .dizzycp-big_colour_square_frame { 
-    width:31px;
-    height:31px;
-    padding:0; 
-    border-radius:25px;
-  }
-    .colour_picker_wrapper .dizzycp-big_colour_square_swatch {
-      width:27px; 
-      height:27px;
-      margin:2px; 
-      border-radius:20px;
-    }
-
-  .colour_picker_wrapper .dizzycp-text_label_for_colour { 
-    letter-spacing:0;
-    padding-top:8px;
-    margin-left:80px;
-    font-size:1em;
-  }
     
     #ui_global_font div {
       width:45px;
@@ -380,7 +335,6 @@ input.cmn-toggle-yes-no:checked + label:after {
     border-top-left-radius: 15px;
     border-bottom-right-radius: 15px;
   }    
-  
   
     #actual_cards .place_card_view { width:100%; }
     
@@ -401,11 +355,6 @@ input.cmn-toggle-yes-no:checked + label:after {
   }
 }
 
-
-  @media all and (min-width: 801px) and (max-width:1025px) {
- 
-  }
-  
 /* HIDDEN DIVS FOR PRINT
 ==================================== */  
 #printsvg { 

@@ -39,8 +39,10 @@ var BackboneRelativeView = Backbone.View.extend({
     var viewport = $('body').width();
     if(viewport < 501) {
       this.mobile = true
+      
     } else {
       this.mobile = false;
     }
+    
   }
 })

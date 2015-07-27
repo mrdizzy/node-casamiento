@@ -20,8 +20,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     this._place_card_print_collection = new PrintPlaceCardCollectionView({
       collection: thisProduct.get("guests")
     })
-     this.listenTo(thisProduct.get("guests"), 'reset', this.render)
-     
+     this.listenTo(thisProduct.get("guests"), 'reset', this.render)     
   },
   events: {
     "click #add_another": "addGuest",
@@ -30,12 +29,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     "click .global_font_increase": "fontIncrease",
     "click .global_font_decrease": "fontDecrease",
     "click .global_font_reset": "fontReset",
-    "fontpicker:selected": "changeFont",
     "click .buy": "checkout",
-    "fontpicker:fontloaded": "loadFont",
-    "dizzy-cp:click": "togglePanel",
-    "click #menu_lines": "togglePanel",
-    "click #close_mobile": "togglePanel",
     "click #ui_printer_icon": "printPage",    
     "click #cutting_marks": "toggleCuttingMarks",
     "click .layout_icon_container": "changeLayout",
@@ -47,30 +41,14 @@ var PrintControlPanelView = BackboneRelativeView.extend({
       this.$('.paypal_spinner').show()
       thisProduct.makePurchase();
   },
-  addGuest: function() {    
-    thisProduct.set("quantity", thisProduct.get("quantity") + 1)
-  },
-  togglePanel: function() {
-    if(this.mobile) {
-      $('#mobile_panel_section').toggle();
-      thisProduct.trigger("rerender")
-    }
-  },
-  fontReset: function() { 
-    thisProduct.get("guests").resetFont();
-  },
-  fontIncrease: function() {
-    thisProduct.get("guests").invoke('adjustFontSize',1.05)
-  },
-  fontDecrease: function() {    
-    thisProduct.get("guests").invoke('adjustFontSize',0.95)
-  },
-  baselineUp: function() {   
-    thisProduct.get("guests").invoke('adjustBaseline', -1)
-  },
-  baselineDown: function() {
-    thisProduct.get("guests").invoke('adjustBaseline', 1)
-  },
+  addGuest:     function() {            thisProduct.set("quantity", thisProduct.get("quantity") + 1) },
+  fontReset:    function() {           thisProduct.get("guests").resetFont(); },
+  fontIncrease: function() {        thisProduct.get("guests").invoke('adjustFontSize',1.05) },
+  fontDecrease: function() {        thisProduct.get("guests").invoke('adjustFontSize',0.95) },
+  baselineUp:   function() {          thisProduct.get("guests").invoke('adjustBaseline', -1) },
+  baselineDown: function() {        thisProduct.get("guests").invoke('adjustBaseline', 1) },
+  toggleCuttingMarks: function() {  thisProduct.toggleCuttingMarks(); },
+  
   appendPlaceCard: function(guest) {
     var place_card = this._newPlaceCardView(guest, "appended_place_card").render().el   
     var place_card = $(place_card);
@@ -85,9 +63,6 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     $("#radio_" + per_page).prop("checked", true)
     thisProduct.set("per_page", per_page)
   },  
-  toggleCuttingMarks: function() {
-    thisProduct.toggleCuttingMarks();
-  },
   loadFont: function(e, font) {
     $('.font_spinner').hide();
     $('.guest_name').show()  
@@ -96,7 +71,6 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     thisProduct.set("font", font)
     $('.font_spinner').show();
     $('.guest_name').hide()  
-    this.togglePanel();
     thisProduct.save();
   },    
   // Create the SVG print view
@@ -113,7 +87,6 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   },
   printNow: function() {
     $('#ui_print_alert').hide();
-    if(this.mobile) { this.togglePanel() }
     window.print()     
   },
   render: function() {
@@ -128,25 +101,11 @@ var PrintControlPanelView = BackboneRelativeView.extend({
       return this._newPlaceCardView(guest).render().el
     }, this)
     
-    var colours = thisProduct.get("colours") 
-    for(var i=0; i < colours.length; i++) {
-      var $div = $('<div class="colour_picker_wrapper"></div>');
-      $('#ui_print_colour_picker_container').append($div);
-      $div.colorPicker({
-        default_color: colours[i], 
-        listen_to: thisProduct,
-        index: i
-      });
-    }       
-    this.$('#ui_font_picker').fontPicker({
-      fonts: casamiento_fonts, 
-      selected_font: thisProduct.get("font")
-    }) 
-    
     var guests_collection_view = new GuestCollectionView({collection:thisProduct.get("guests")}).render().el
     this.$('#ui_guests_quick').append(guests_collection_view)
     
     this.$('#actual_cards').prepend(place_cards)
+   
     return this;
   },
   renderPrice: function() {
