@@ -71,10 +71,10 @@
   <script type="text/javascript">
     $(function() {    
     $('#mainmenulines').click(function() {
-      $('#left_menu').toggle();
+      $('#left_menu').fadeToggle();
     })
     $('#close_left_menu').click(function() {
-      $('#left_menu').hide();
+      $('#left_menu').fadeOut();
     })
       FastClick.attach(document.body);  
     })

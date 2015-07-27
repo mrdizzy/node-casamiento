@@ -186,17 +186,6 @@ input.cmn-toggle-yes-no:checked + label:before {
 input.cmn-toggle-yes-no:checked + label:after {
   transform: rotateY(0);
 }
-    
-    #ui_guests {
-      width:3%;
-      padding:1%;
-      opacity:0.3;
-      float:left;
-    }
-    #ui_guests:hover {
-      opacity:1;
-      cursor:pointer;
-    }
         
 #actual_cards { 
   background-color:white; /* stop body background image seeping through */
@@ -215,10 +204,6 @@ input.cmn-toggle-yes-no:checked + label:after {
   }
     
   .place_card_view:nth-child(even) .place_card_wrapper { float:left; }
-  
-  #ui_guests_quick .input_container { width:25%;display:inline-block; }
-  
-  #ui_guests_quick .input_container input { width:100%; }
 
 .mobile, #print_ui, #print_ui #ipad_blurb { display:none;}
 
@@ -233,12 +218,12 @@ input.cmn-toggle-yes-no:checked + label:after {
 @media all and (min-width: 300px) and (max-width: 500px) {  
 /* ----------------------------------------------------------------------------- */    
   .mobile { display:block; }
-  .desktop { display:none; }
+  .desktop, #ui_printer_icon { display:none; }
   
   #control_panel { padding-top:0; }
   
   #menu_lines {
-    float:left;
+    float:right;
     z-index:99999999999999999999999999999999;
     padding:2px;
     padding-right:6px;
@@ -270,10 +255,8 @@ input.cmn-toggle-yes-no:checked + label:after {
     }
         
   #ui_logo_container,   
-  #ui_print_colour_picker_container,
   #ui_printer_icon,
-  #layout_icons_wrapper, 
-  #ui_print_font_picker_container { 
+  #layout_icons_wrapper { 
     float:none; 
     clear:both;
     width:100%;
@@ -318,24 +301,13 @@ input.cmn-toggle-yes-no:checked + label:after {
   #menu_lines { display:none; } 
   #ui_print_alert { width:70%; }
   
-    
     #ui_global_font div {
       width:45px;
       height:25px;
       line-height:25px;
       background-size: 18px 18px;
     }
-    #ui_font_picker tr { 
-      height:40px
-    }
-    
-   
-  .selected_font td.font_image {
-    border-radius:0;
-    border-top-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-  }    
-  
+     
     #actual_cards .place_card_view { width:100%; }
     
     #actual_cards .place_card_view:nth-child(even) .place_card_parent { float:right; }
@@ -357,6 +329,4 @@ input.cmn-toggle-yes-no:checked + label:after {
 
 /* HIDDEN DIVS FOR PRINT
 ==================================== */  
-#printsvg { 
-  display:none; 
-}
+#printsvg { display:none; }

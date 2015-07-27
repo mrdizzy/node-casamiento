@@ -24,6 +24,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   },
   events: {
     "click #add_another": "addGuest",
+    "click #menu_lines": "toggleMainMenu",
     "click .global_baseline_up": "baselineUp",
     "click .global_baseline_down": "baselineDown",
     "click .global_font_increase": "fontIncrease",
@@ -35,6 +36,9 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     "click .layout_icon_container": "changeLayout",
     'click #print_now': "printNow",
     "click #ui_print_alert .close": "closePrintAlert"
+  },
+  toggleMainMenu: function() {
+     $('#left_menu').fadeToggle();  
   },
   checkout: function() {
       this.$('.buy').hide();

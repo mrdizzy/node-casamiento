@@ -261,7 +261,7 @@ input {
       float:none; 
       width:100%;
     }
-    
+    #left_menu { width:50%;}
     #middle_column { padding-top:38px; }
 }
 
