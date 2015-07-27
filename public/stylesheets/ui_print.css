@@ -1,3 +1,5 @@
+.mobile, #print_ui, #print_ui #ipad_blurb, #mobile_ui_printer_icon { display:none;}
+
 #top_of_page { position:relative; }
 
   #control_panel {
@@ -15,7 +17,8 @@
     #ui_printer_icon { 
       margin:0;
       float:left;
-      width:30%;
+      width:35px;
+      margin-left:10%;
       text-align:center;
     }
     
@@ -23,7 +26,6 @@
     #ui_global_font_mobile {
       width:70%;
       float:right;
-      height:50px;
       text-align:center;
     }
       #ui_global_font div,  
@@ -42,21 +44,11 @@
           cursor:pointer;
         }
       
-      .global_font_increase {
-        background: url('/gfx/font_increase.svg') no-repeat center;       
-      } 
-      .global_font_decrease {
-        background: url('/gfx/font_decrease.svg') no-repeat center;          
-      } 
-      .global_baseline_up {
-        background: url('/gfx/baseline_up.svg') no-repeat center; 
-      } 
-      .global_baseline_down {
-        background: url('/gfx/baseline_down.svg') no-repeat center; 
-      } 
-      .global_font_reset {
-        background: url('/gfx/cancel4.svg') no-repeat center; 
-      } 
+      .global_font_increase { background: url('/gfx/font_increase.svg') no-repeat center; } 
+      .global_font_decrease { background: url('/gfx/font_decrease.svg') no-repeat center; } 
+      .global_baseline_up { background: url('/gfx/baseline_up.svg') no-repeat center; } 
+      .global_baseline_down { background: url('/gfx/baseline_down.svg') no-repeat center; } 
+      .global_font_reset { background: url('/gfx/cancel4.svg') no-repeat center; } 
     
     #ui_print_alert {
       display:none;
@@ -205,8 +197,6 @@ input.cmn-toggle-yes-no:checked + label:after {
     
   .place_card_view:nth-child(even) .place_card_wrapper { float:left; }
 
-.mobile, #print_ui, #print_ui #ipad_blurb { display:none;}
-
 /* ipad */
 #print_ui.ipad #ipad_blurb { display:block;}
 #print_ui.ipad #per_page_4_container,
@@ -221,29 +211,39 @@ input.cmn-toggle-yes-no:checked + label:after {
   .desktop, #ui_printer_icon { display:none; }
   
   #control_panel { padding-top:0; }
-  
+  #control_panel_top_row { width:100%;}
   #menu_lines {
     float:right;
     z-index:99999999999999999999999999999999;
-    padding:2px;
-    padding-right:6px;
-    width:20px;
+  
+    padding-top:8px;
+    width:5%;
+    padding-right:2%;
     cursor:pointer;
   }
   
   #mobile_print_logo {
-    padding-top:3px;
+    padding-top:2px;
+    padding-left:1%;
+    padding-bottom:2px;
     width:24%;
     float:left;
     z-index:999999999999999999999999999;
+  }
+  
+  #mobile_ui_printer_icon { 
+    display:block;
+    padding-top:2px;
+    width:7%;
+    padding-left:3%;
+    margin-top:2px;
+    float:left;
   }
 
   #ui_global_font_mobile {
     padding:0;    
     padding-top:3px;
-    padding-left:0;
-    height:30px;
-    width:60%;
+    width:58%;
   }
 
     #ui_global_font_mobile div {

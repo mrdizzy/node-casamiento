@@ -59,9 +59,7 @@
       .spec { display:inline-block; }
         .spec img { width:100%; }
 
-    .highlight { 
-      box-shadow:5px 5px 0 0 lightgrey;
-    }
+    .highlight { box-shadow:5px 5px 0 0 lightgrey; }
 
     .step { 
       border-bottom-left-radius:10px;
@@ -111,17 +109,12 @@
 
 
       #qty { 
-        color:black; 
+        color:#000; 
         font: normal 2em 'OS Light';
       }
       
-      #guests {
-        display:none;
-      }
-      #quick_guests {
-        width:90%;
-        font: normal 1.2em 'OS Light'
-      }
+      #guests { display:none; }
+      
     input { 
       border:1px solid darkgrey; 
       font: normal 1.2em "OS";
@@ -135,7 +128,6 @@
       padding:0.25em;
     }
     
-   
       .paypal { 
         padding-top:0.25em;
         width:90px;
@@ -143,7 +135,8 @@
       
       .paypal_spinner { 
         padding:2.5em;
-        display:none; }
+        display:none; 
+      }
       
 /* Smartphone */
 @media all and (min-width: 220px) and (max-width: 500px) {
@@ -157,7 +150,7 @@
     #second_product_type_icon,
     #description_container .shell { display:none; } 
     
-body.printui_view .left_column {
+  body.printui_view .left_column {
     background-color:white;
     z-index:10;
     width:100%;
@@ -167,15 +160,22 @@ body.printui_view .left_column {
     overflow:scroll;
     overflow-x: hidden;
   }   
-body.printui_view #header_wrapper, body.printui_view #middle_column { display:none}
+  
+  body.printui_view #header_wrapper, 
+  body.printui_view #middle_column { display:none }
+  
   #mobile_spacer {
     z-index:100000000000000000000000000000000000000000;
    /* width: 95%;*/
     display:block;
-   
   /*  padding-bottom: 70.714285714285714285714285714286%;*/
   }
-  .right_column { clear:both; }
+  
+  .right_column { 
+    clear:both; 
+    border-left:0;
+  }
+      
   #description_container { 
     float:none;
     width:90%;
@@ -190,16 +190,16 @@ body.printui_view #header_wrapper, body.printui_view #middle_column { display:no
 /* Phablet */
 @media all and (min-width: 501px) and (max-width: 800px) {
 /* ----------------------------------------------------------------------------- */    
-.left_column { width:65%; }
-.right_column { margin-left:65%; }
-    .buy { padding-top:0.75em; }
-.slide, 
-#description_container { 
-  width:100%;
-  float:none;
-}
+  .left_column { width:65%; }
+  .right_column { margin-left:65%; }
+  .buy { padding-top:0.75em; }
+  .slide, 
+  #description_container { 
+    width:100%;
+    float:none;
+  }
 
-.chat-bubble { display:block; left:3em; }
+  .chat-bubble { display:block; left:3em; }
 
   .texture { display:block; }
 }
