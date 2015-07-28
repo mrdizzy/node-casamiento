@@ -222,15 +222,17 @@ input {
     border-bottom:1px solid black;
     background-color:white;
     z-index:9999999999999999999999999999999999999999999;
-    height:38px;
+  
     position:fixed;
     width:100%;
   }
     #logo { 
       display:block;
-      width:112px;
-      padding:0.2em;
+      width:30%;
+      padding:1%;
+      padding-left:1%;
       margin:0 auto;
+      
     }
     
     #dreams_slogan { display:none; }
@@ -239,16 +241,15 @@ input {
         display:inline-block;
         font: normal 1.2em 'OS Light';
         margin-top:2px;
-        height:30px;
+        height:28px;
         line-height:30px;
-        border-left:1px solid black;
-        padding-left:10px;
+        
       }     
-        #browse img { width:30px; }
+        #browse img { width:20px; }
           #mainmenulines {
-      width:30px;
-      margin-top:7px;
-      margin-right:2px;
+      width:20px;
+      margin-top:10px;
+      margin-right:5px;
     }
     #inner_page_container { width:100%;}
 

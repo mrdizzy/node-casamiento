@@ -149,7 +149,7 @@
     .slide .shell, 
     #second_product_type_icon,
     #description_container .shell { display:none; } 
-    
+
   body.printui_view .left_column {
     background-color:white;
     z-index:10;
