@@ -181,7 +181,6 @@ input.cmn-toggle-yes-no:checked + label:after {
         
 #actual_cards { 
   background-color:white; /* stop body background image seeping through */
-  padding-top:60px;
 }
  
   #actual_cards .place_card_view.add_another, 

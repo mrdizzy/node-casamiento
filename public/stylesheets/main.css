@@ -181,7 +181,7 @@ input {
     }
           
     .left_column { 
-      float:left; 
+      position:fixed;
       width:70%; 
       background-color:#fff
     }
@@ -251,7 +251,10 @@ input {
       margin-top:10px;
       margin-right:5px;
     }
-    #inner_page_container { width:100%;}
+    #inner_page_container { 
+      width:100%;
+      border:0;
+    }
 
     .left_column, 
     .right_column,

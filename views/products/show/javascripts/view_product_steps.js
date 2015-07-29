@@ -23,11 +23,22 @@ var StepView = Backbone.View.extend({
     "mouseleave .spc": "hoverOut",     
     "click .texture": "updateTexture", 
     "click .weight": "updateWeight",
-    "blur #quick_guests": "updateGuests"
+    "blur #quick_guests": "updateGuests",
+    "blur #quick_guests": "clearingtimer",
+    "focus #quick_guests": "focusGuests"
+  },
+  focusGuests: function() {
+    this.guest_timeout_id = setInterval(this.updateGuests, 2000)
+    console.log(this.guest_timeout_id)
+    console.log("Focus")
   },
   changeStepToFont: function() {
     if (this.current_step < 2) this.current_step = 2;  
     this.changeStep();
+  },
+  clearingtimer: function() {
+    console.log("clearing timeout")
+    clearInterval(this.guest_timeout_id);  
   },
   changeStepToThickness: function() { 
     if (this.current_step < 4) this.current_step = 4;
@@ -58,6 +69,7 @@ var StepView = Backbone.View.extend({
     this.$('#quick_guests').val(thisProduct.get("guests").pluck("name").join("\n"))
   },
   updateGuests: function() {
+  console.log("Updating guests")
     this.changed_names = true;
     var guests = ($('#quick_guests').val());
     if (!($.trim(guests ) == '')) {

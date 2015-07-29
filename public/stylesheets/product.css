@@ -1,5 +1,13 @@
 .product_type_icon { width:130px; }
   
+  .left_column {
+      position:fixed;
+      height:100%;
+  }
+  #preview {
+  margin-top:60px;
+    overflow:scroll;height:73%;overflow-x:hidden;
+  }
   #product_container .product_type_icon { display:none; }
   
   .slide { 
@@ -115,6 +123,11 @@
       
       #guests { display:none; }
       
+      #quick_guests {
+        width:90%;
+        font: normal 1.2em 'OS Light'
+      }
+      
     input { 
       border:1px solid darkgrey; 
       font: normal 1.2em "OS";
@@ -171,6 +184,14 @@
   /*  padding-bottom: 70.714285714285714285714285714286%;*/
   }
   
+  .left_column {
+    position:static;
+  }
+  
+  #preview {
+     margin-top:0;
+   height:auto;
+  }
   .right_column { 
     clear:both; 
     border-left:0;
