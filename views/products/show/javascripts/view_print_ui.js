@@ -45,7 +45,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
       this.$('.paypal_spinner').show()
       thisProduct.makePurchase();
   },
-  addGuest:     function() {            thisProduct.set("quantity", thisProduct.get("quantity") + 1) },
+  addGuest:     function() {            thisProduct.get("guests").add({}) },
   fontReset:    function() {           thisProduct.get("guests").resetFont(); },
   fontIncrease: function() {        thisProduct.get("guests").invoke('adjustFontSize',1.05) },
   fontDecrease: function() {        thisProduct.get("guests").invoke('adjustFontSize',0.95) },

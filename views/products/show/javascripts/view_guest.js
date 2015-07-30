@@ -3,16 +3,16 @@ var GuestView = BackboneRelativeView.extend({
   initialize: function() {
     BackboneRelativeView.prototype.initialize.apply(this)
     this.listenTo(this.model, "change:name", this._renderName);
+    this.listenTo(this.model, "remove", this.deleteGuest)
   },
   events: {
     "blur input": 'updateGuest',
-    'focus input': 'clearGuest',
-    'click .trash': 'deleteGuest'
+    'focus input': 'clearGuest'
   },
   deleteGuest: function() {
-    this.model.destroy();
+  thisProduct.get("guests").remove(this.model);
+  console.log("Deleting guest", this.model.get("name"))
     var that = this;
-    thisProduct.set("quantity", thisProduct.get("quantity") -1)  
     this.$el.fadeOut(function() {
       that.remove();
     });

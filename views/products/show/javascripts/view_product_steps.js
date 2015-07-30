@@ -23,14 +23,14 @@ var StepView = Backbone.View.extend({
     "mouseleave .spc": "hoverOut",     
     "click .texture": "updateTexture", 
     "click .weight": "updateWeight",
-    "keypress #quick_guests": "keyPressGuests"
+    "keyup #quick_guests": "keyPressGuests"
   },
   keyPressGuests: function() {
     var that = this;
     clearTimeout(this.timeout_id)
     this.timeout_id = setTimeout(function(){
         that.updateGuests(); 
-      }, 2000);   
+      }, 1000);   
   },
   changeStepToFont: function() {
     if (this.current_step < 2) this.current_step = 2;  
@@ -73,25 +73,44 @@ var StepView = Backbone.View.extend({
     } else {
       guests = guests.split(",")
     }
-   
+          var collection =  thisProduct.get("guests")
     var names = _.map(guests, function(name) {
       name = $.trim(name);
       return name;
-     // return {name: name}
     })   
 
-    var length = thisProduct.get("guests").length;
+    var existing_length = thisProduct.get("guests").length;
     var counter = 0;
-    thisProduct.get("guests").forEach(function(guest) {
     
-       guest.set("name", names[counter])
-       counter = counter + 1;
+    console.log("New names", names.length, "Existing names", existing_length)
 
-    })
-    if (names.length > counter) {
-       for(var i = counter; i < names.length; i++) {
-        thisProduct.get("guests").create({ name: names[i] });
-       }
+    if (names.length == existing_length) {
+      thisProduct.get("guests").forEach(function(guest) {    
+        guest.set("name", names[counter])
+        counter = counter + 1;
+      })
+    } else if (names.length > existing_length) {
+
+      thisProduct.get("guests").forEach(function(guest) {    
+        guest.set("name", names[counter])
+        counter = counter + 1;
+      })
+      for(var i = counter; i < names.length; i++) {
+        collection.add({ name: names[i] });
+      }
+    } else if (names.length < existing_length) {
+    console.log("LESS", counter, names.length, existing_length)
+    for(var i = counter; i < names.length; i++) {
+       console.log("Guest", thisProduct.get("guests").at(i).get("name"))
+       console.log(names[i])
+        var guest = thisProduct.get("guests").at(i)
+        guest.set({name: names[i]});
+        counter= counter + 1;
+      }
+      for(var i = counter; i < existing_length; i++) {
+      console.log(existing_length)
+        thisProduct.get("guests").pop()
+      }
     }
     }
   },

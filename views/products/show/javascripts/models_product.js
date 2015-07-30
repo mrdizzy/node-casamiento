@@ -51,9 +51,13 @@ var Product = Backbone.Model.extend({
     this.on("change:weight", this.saveProduct)
     this.on("change:colours", this.saveProduct)   
     this.on("change:quantity", this.calculatePrice) // must come before adjust guests
-    this.on("change:quantity", this.adjustGuests)
-    this.on("change:quantity", this.saveProduct)
-    this.listenTo(this.guests, "change", this.saveGuests)
+   // this.on("change:quantity", this.saveProduct)
+    this.listenTo(this.guests, "change", this.saveGuests)    
+    this.listenTo(this.guests, "add", this.saveGuests)    
+    this.listenTo(this.guests, "add", this.updateQuantityFromGuests)
+    this.listenTo(this.guests, "change", this.updateQuantityFromGuests)
+    this.listenTo(this.guests, "remove", this.saveGuests)
+        this.listenTo(this.guests, "remove", this.updateQuantityFromGuests)
     this.listenTo(this.guests, "reset", this.updateQuantityFromGuests)
   },
   updateQuantityFromGuests: function() {
@@ -65,19 +69,6 @@ var Product = Backbone.Model.extend({
     this.set("colours", colours).trigger("change:colours")    
     $('.colour_0').css("background-color", this.get("colours")[0])   
     $('.colour_1').css("background-color", this.get("colours")[1])  
-  },
-  adjustGuests: function() {
-    var adjustment = this.get("quantity") - this.guests.length
-    if (adjustment > 0) {
-      for(var i =0;  i < adjustment; i++) {
-        (i == adjustment - 1) ? this.guests.add({}) : this.guests.add({}, {silent:true})
-      }
-    } else if (adjustment < 0) {
-      adjustment = adjustment * -1;
-      for(var i =0;  i < adjustment; i++) {
-        (i == adjustment - 1) ? this.guests.pop() : this.guests.pop({silent:true})
-      }
-    }
   },
   calculatePrice: function() {     
     var price, 
