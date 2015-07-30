@@ -1,12 +1,12 @@
 .product_type_icon { width:130px; }
   
-  .left_column {
+ .printui_view .left_column {
       position:fixed;
       height:100%;
   }
-  #preview {
-  margin-top:60px;
-    overflow:scroll;height:73%;overflow-x:hidden;
+  .printui_view #preview {
+    overflow:scroll;
+    overflow-x:hidden;
   }
   #product_container .product_type_icon { display:none; }
   

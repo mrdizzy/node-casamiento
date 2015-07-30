@@ -180,6 +180,7 @@ input.cmn-toggle-yes-no:checked + label:after {
 }
         
 #actual_cards { 
+  padding-top:60px;
   background-color:white; /* stop body background image seeping through */
 }
  

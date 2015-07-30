@@ -181,7 +181,6 @@ input {
     }
           
     .left_column { 
-      position:fixed;
       width:70%; 
       background-color:#fff
     }
