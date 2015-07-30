@@ -1,13 +1,6 @@
 .product_type_icon { width:130px; }
   
- .printui_view .left_column {
-      position:fixed;
-      height:100%;
-  }
-  .printui_view #preview {
-    overflow:scroll;
-    overflow-x:hidden;
-  }
+
   #product_container .product_type_icon { display:none; }
   
   .slide { 
@@ -184,9 +177,7 @@
   /*  padding-bottom: 70.714285714285714285714285714286%;*/
   }
   
-  .left_column {
-    position:static;
-  }
+  .left_column { position:static; }
   
   #preview {
      margin-top:0;
