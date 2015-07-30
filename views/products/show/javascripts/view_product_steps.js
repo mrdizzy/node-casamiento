@@ -23,22 +23,18 @@ var StepView = Backbone.View.extend({
     "mouseleave .spc": "hoverOut",     
     "click .texture": "updateTexture", 
     "click .weight": "updateWeight",
-    "blur #quick_guests": "updateGuests",
-    "blur #quick_guests": "clearingtimer",
-    "focus #quick_guests": "focusGuests"
+    "keypress #quick_guests": "keyPressGuests"
   },
-  focusGuests: function() {
-    this.guest_timeout_id = setInterval(this.updateGuests, 2000)
-    console.log(this.guest_timeout_id)
-    console.log("Focus")
+  keyPressGuests: function() {
+    var that = this;
+    clearTimeout(this.timeout_id)
+    this.timeout_id = setTimeout(function(){
+        that.updateGuests(); 
+      }, 2000);   
   },
   changeStepToFont: function() {
     if (this.current_step < 2) this.current_step = 2;  
     this.changeStep();
-  },
-  clearingtimer: function() {
-    console.log("clearing timeout")
-    clearInterval(this.guest_timeout_id);  
   },
   changeStepToThickness: function() { 
     if (this.current_step < 4) this.current_step = 4;
@@ -69,7 +65,6 @@ var StepView = Backbone.View.extend({
     this.$('#quick_guests').val(thisProduct.get("guests").pluck("name").join("\n"))
   },
   updateGuests: function() {
-  console.log("Updating guests")
     this.changed_names = true;
     var guests = ($('#quick_guests').val());
     if (!($.trim(guests ) == '')) {
@@ -81,9 +76,23 @@ var StepView = Backbone.View.extend({
    
     var names = _.map(guests, function(name) {
       name = $.trim(name);
-      return {name: name}
+      return name;
+     // return {name: name}
     })   
-    thisProduct.get("guests").reset(names)
+
+    var length = thisProduct.get("guests").length;
+    var counter = 0;
+    thisProduct.get("guests").forEach(function(guest) {
+    
+       guest.set("name", names[counter])
+       counter = counter + 1;
+
+    })
+    if (names.length > counter) {
+       for(var i = counter; i < names.length; i++) {
+        thisProduct.get("guests").create({ name: names[i] });
+       }
+    }
     }
   },
   updateTexture: function(e) {

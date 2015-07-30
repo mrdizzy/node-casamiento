@@ -18,6 +18,7 @@ var PlaceCardView = GuestView.extend({
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);   
     this.listenTo(this.model, "change:font_size", this._renderFontSize);
     this.listenTo(this.model, "change:baseline", this._renderBaseline)
+    this.listenTo(this.model, "change:name", this._renderName)
   },  
   events: {
     'click .plus_font': 'increaseFont',    

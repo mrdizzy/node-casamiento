@@ -81,10 +81,17 @@ var CoordinatorView = Backbone.View.extend({
     else {
        var header_height = $('#header_wrapper').height();
       var viewport_height = $(window).height()
-      console.log(header_height, viewport_height)
       $('#preview').height(viewport_height-header_height)
     }
     }
+    $(window).on("resize", function() {
+      if(that.current_view == "printui") {
+         var header_height = $('#header_wrapper').height();
+          var viewport_height = $(window).height()
+
+      $('#preview').height(viewport_height-header_height)
+      }
+    }); 
     this.current_view = "printui"
     app_router.navigate("print")
   },
