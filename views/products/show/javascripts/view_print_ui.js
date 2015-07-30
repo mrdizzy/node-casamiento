@@ -1,14 +1,3 @@
-// Used by control panel for fast editing of guests
-var GuestCollectionView = Backbone.View.extend({
-  render: function() {
-    var guests_html = this.collection.map(function(guest) {  
-      return(new GuestView({model:guest}).render().el);
-    })
-    this.$el.html(guests_html)
-    return this;
-  }
-})
-
 var PrintControlPanelView = BackboneRelativeView.extend({
   el: '#print_ui',
   initialize: function() {
@@ -104,10 +93,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     var place_cards = thisProduct.get("guests").map(function(guest) {   
       return this._newPlaceCardView(guest).render().el
     }, this)
-    
-    var guests_collection_view = new GuestCollectionView({collection:thisProduct.get("guests")}).render().el
-    this.$('#ui_guests_quick').append(guests_collection_view)
-    
+        
     this.$('#actual_cards').prepend(place_cards)
    
     return this;

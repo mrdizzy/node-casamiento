@@ -5,8 +5,7 @@ var StepView = Backbone.View.extend({
   initialize: function() {
     this.changed_names = false;
     this.weights_reference = {2: "200", 3: "300" } // number refers to position of element in HTML hierarchy
-    this.listenTo(thisProduct, 'change:quantity', this._renderGuests)
-    this.listenTo(thisProduct.get("guests"), 'change:name', this._renderQuickGuests)
+    this.listenTo(thisProduct.get("guests"), 'change', this._renderQuickGuests)
     this.listenTo(thisProduct.get("guests"), 'remove', this._renderQuickGuests)
     this.listenTo(thisProduct.get("guests"), 'add', this._renderQuickGuests)
     this.listenToOnce(thisProduct, 'change:colours', this.changeStepToFont);   
@@ -73,25 +72,22 @@ var StepView = Backbone.View.extend({
     } else {
       guests = guests.split(",")
     }
-          var collection =  thisProduct.get("guests")
+    var collection =  thisProduct.get("guests")
     var names = _.map(guests, function(name) {
       name = $.trim(name);
       return name;
     })   
 
-    var existing_length = thisProduct.get("guests").length;
+    var existing_length = collection.length;
     var counter = 0;
     
-    console.log("New names", names.length, "Existing names", existing_length)
-
     if (names.length == existing_length) {
-      thisProduct.get("guests").forEach(function(guest) {    
+      collection.forEach(function(guest) {    
         guest.set("name", names[counter])
         counter = counter + 1;
       })
     } else if (names.length > existing_length) {
-
-      thisProduct.get("guests").forEach(function(guest) {    
+      collection.forEach(function(guest) {    
         guest.set("name", names[counter])
         counter = counter + 1;
       })
@@ -99,17 +95,13 @@ var StepView = Backbone.View.extend({
         collection.add({ name: names[i] });
       }
     } else if (names.length < existing_length) {
-    console.log("LESS", counter, names.length, existing_length)
     for(var i = counter; i < names.length; i++) {
-       console.log("Guest", thisProduct.get("guests").at(i).get("name"))
-       console.log(names[i])
-        var guest = thisProduct.get("guests").at(i)
+        var guest = collection.at(i)
         guest.set({name: names[i]});
         counter= counter + 1;
       }
       for(var i = counter; i < existing_length; i++) {
-      console.log(existing_length)
-        thisProduct.get("guests").pop()
+        collection.pop()
       }
     }
     }
@@ -150,7 +142,7 @@ var StepView = Backbone.View.extend({
     var $result = $(Handlebars.template(templates["products_show_step_through"])(json_product));         
     
     this.$el.html($result)
-    this._renderGuests($result.find('#guests'));  // Input fields for guests
+   
     var colours = thisProduct.get("colours");
     for(var i=0; i < colours.length; i++) {
       var $div = $('<div></div>')
@@ -167,20 +159,12 @@ var StepView = Backbone.View.extend({
       selected_font: thisProduct.get("font")
     });  
     this.renderWeight();
+    this.renderQtyAndPrice();
     return this;
   },  
   renderQtyAndPrice: function() { 
     this.$('#qty').val(thisProduct.get("quantity"))   
     this.$('#pound').text(thisProduct.get("pounds"));
     this.$('#decimal').text("." + thisProduct.get("pence"));  
-  },
-  _renderGuests: function($element) {
-    if ($element.set) $element = undefined;
-    var $element = $element || this.$('#guests')
-    var guests_html = thisProduct.get("guests").map(function(guest) {    
-      return new GuestView({model:guest}).render().el;
-    })
-    $element.html(guests_html);    
-    this.renderQtyAndPrice();
   }
 })

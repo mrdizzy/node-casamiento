@@ -9,26 +9,40 @@
   _renderBaseline, which will rerender the font and baseline when
   the window is resized
 */
-var PlaceCardView = GuestView.extend({
+var PlaceCardView = BackboneRelativeView.extend({
   className: 'place_card_view',
   initialize: function() {      
-    GuestView.prototype.initialize.apply(this)
+    BackboneRelativeView.prototype.initialize.apply(this)
     $(window).bind("resize", _.bind(this._renderFontSize, this));
     $(window).bind("resize", _.bind(this._renderBaseline, this));
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);   
     this.listenTo(this.model, "change:font_size", this._renderFontSize);
     this.listenTo(this.model, "change:baseline", this._renderBaseline)
     this.listenTo(this.model, "change:name", this._renderName)
+    this.listenTo(this.model, "remove", this.deleteGuest)
   },  
-  events: {
-    'click .plus_font': 'increaseFont',    
+  events: {  
     "blur .guest_name": 'updateGuestFromDiv',
+    'focus .guest_name': 'clearGuest',  
+    'click .delete_guest': 'deleteGuest',
+    'click .plus_font': 'increaseFont',  
     'click .minus_font': 'decreaseFont',
     'click .up_baseline': 'upBaseline',
-    'click .down_baseline': 'downBaseline',   
-    'click .delete_guest': 'deleteGuest', // see parent GuestView for implementation
-    'focus .guest_name': 'clearGuest' // see parent GuestView for implementation
-  }, 
+    'click .down_baseline': 'downBaseline'
+  },   
+  deleteGuest: function() {
+    thisProduct.get("guests").remove(this.model);
+    var that = this;
+    this.$el.fadeOut(function() {
+      that.remove();
+    });
+  },
+  clearGuest: function() {
+    if(this.model.get("name") == "Guest Name") this.$('.guest_name').text("")     
+  },
+  updateGuestFromDiv: function() {
+    this.model.set("name", this.$('.guest_name').text()).trigger("change:name")
+  },
   increaseFont: function() {
     this.model.adjustFontSize(1.03) // percentage increase
   },
@@ -41,8 +55,12 @@ var PlaceCardView = GuestView.extend({
   downBaseline: function() {
     this.model.adjustBaseline(0.5);
   },  
-  updateGuestFromDiv: function() {
-    this.model.set("name", this.$('.guest_name').text()).trigger("change:name")
+  _renderBaseline: function() {
+    var baseline = this.model.calculateBaselineOffset(this.calculatedWidth);
+    this.$('.guest_name').css({
+      "margin-top": baseline.top_half + "px", 
+      "height":baseline.bottom_half + "px", 
+      "line-height": baseline.bottom_half + "px"});
   },
   _renderName: function() {
     this.$('.guest_name').text(this.model.get("name"))            
@@ -53,13 +71,6 @@ var PlaceCardView = GuestView.extend({
   _renderFontSize: function() {
     var font_size = this.calculatedWidth * this.model.get("font_size");
     this.$('.guest_name').css('font-size', font_size + "px");   
-  },
-  _renderBaseline: function() {
-    var baseline = this.model.calculateBaselineOffset(this.calculatedWidth);
-    this.$('.guest_name').css({
-      "margin-top": baseline.top_half + "px", 
-      "height":baseline.bottom_half + "px", 
-      "line-height": baseline.bottom_half + "px"});
   },
   render: function() {     
     var compiled_template = Handlebars.template(templates["place_card"]),
