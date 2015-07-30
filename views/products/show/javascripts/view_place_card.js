@@ -27,8 +27,7 @@ var PlaceCardView = GuestView.extend({
     'click .up_baseline': 'upBaseline',
     'click .down_baseline': 'downBaseline',   
     'click .delete_guest': 'deleteGuest', // see parent GuestView for implementation
-    "blur input": 'updateGuest', // see parent GuestView for implementation
-    'focus input': 'clearGuest' // see parent GuestView for implementation
+    'focus .guest_name': 'clearGuest' // see parent GuestView for implementation
   }, 
   increaseFont: function() {
     this.model.adjustFontSize(1.03) // percentage increase

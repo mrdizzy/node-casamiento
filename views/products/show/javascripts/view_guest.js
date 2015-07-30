@@ -18,7 +18,7 @@ var GuestView = BackboneRelativeView.extend({
     });
   },
   clearGuest: function() {
-    if(this.model.get("name") == "Guest Name") this.$('input').val("")     
+    if(this.model.get("name") == "Guest Name") this.$('.guest_name').text("")     
   },
   updateGuest: function() {
    var name = this.$('input').val()
