@@ -43,6 +43,7 @@ var CoordinatorView = Backbone.View.extend({
   },
   renderFlatPreview: function() {
     var that = this;   
+    console.log($('#eleanor').width())
     this.stopListening(thisProduct, 'change:colours');
     this.stopListening(thisProduct, 'change:font')
     if(this.current_view == "home") { // If we are on the products slides page
@@ -77,12 +78,15 @@ var CoordinatorView = Backbone.View.extend({
        var mobile_split_div_height = $('.place_card_view').height() + $('#control_panel').height();
        $('.left_column').height(mobile_split_div_height)
        $('#mobile_spacer').height(mobile_split_div_height)
+       
     }
     else {
        var header_height = $('#header_wrapper').height();
       var viewport_height = $(window).height()
       $('#preview').height(viewport_height-header_height)
     }
+    
+    
     }
     $(window).on("resize", function() {
       if(that.current_view == "printui") {

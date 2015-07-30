@@ -22,6 +22,10 @@ var BackboneRelativeView = Backbone.View.extend({
   calculateWidth: function() {
     var widths_relative_to_viewport = this.options.widths_relative_to_viewport;
     var viewport = $('body').width();
+
+    var helperDiv = $('<div />');
+    $('#actual_cards').append(helperDiv);
+
     if (widths_relative_to_viewport) { // doesn't exist in plain GuestView
       if(viewport < 501) {
         this.calculatedWidth = (widths_relative_to_viewport.mobile/100) * viewport; 
