@@ -97,6 +97,9 @@ $(window).trigger("resize")
       $('#preview').height(viewport_height-header_height)
       }
     }); 
+    $('#print_now').click(function() {
+      that.print_ui_view.printNow();
+    })
     this.current_view = "printui"
     app_router.navigate("print")
   },
