@@ -30,7 +30,7 @@ var BackboneRelativeView = Backbone.View.extend({
         this.calculatedWidth = (95/100) * viewport; 
         console.log(this.calculatedWidth)
       } else if(viewport > 500 && viewport < 801){ 
-        this.calculatedWidth = (95/100) * viewport;
+        this.calculatedWidth = ((95/100)*(65/100)) * viewport;
       }  else if(viewport > 800 && viewport < 1026){ 
         this.calculatedWidth = netbook_panel_width * viewport;
       } else {
