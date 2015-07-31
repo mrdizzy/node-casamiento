@@ -83,6 +83,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     window.print()     
   },
   render: function() {
+    
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
       pounds: thisProduct.get("pounds"),
       pence: thisProduct.get("pence")
@@ -108,7 +109,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
       model: guest,      
       widths_relative_to_viewport: {
         netbook: 37.04890873,
-        desktop: 31.65055379746835,
+        desktop: 32.646875,
         tablet: 61.746742671,
         mobile: 88.65156576200418
       },

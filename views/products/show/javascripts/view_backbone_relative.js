@@ -20,21 +20,20 @@ var BackboneRelativeView = Backbone.View.extend({
   // It calculates and returns an absolute width of the element based on the 
   // current viewport size and the device type
   calculateWidth: function() {
-    var widths_relative_to_viewport = this.options.widths_relative_to_viewport;
+  
     var viewport = $('body').width();
-
-    var helperDiv = $('<div />');
-    $('#actual_cards').append(helperDiv);
-
-    if (widths_relative_to_viewport) { // doesn't exist in plain GuestView
+      var desktop_panel_width = netbook_panel_width= ((95/100) * ($('#print_ui').width()/$('body').width()/2));
+      var phablet = smartphone = (95/100) * ($('#print_ui').width()/$('body').width());
+  console.log($('#print_ui').width())
+    if (this.options.widths_relative_to_viewport) { // doesn't exist in plain GuestView
       if(viewport < 501) {
-        this.calculatedWidth = (widths_relative_to_viewport.mobile/100) * viewport; 
+        this.calculatedWidth = (smartphone * viewport); 
       } else if(viewport > 500 && viewport < 801){ 
-        this.calculatedWidth = (widths_relative_to_viewport.tablet/100) * viewport;
+        this.calculatedWidth = (phablet * viewport);
       }  else if(viewport > 800 && viewport < 1026){ 
-        this.calculatedWidth = (widths_relative_to_viewport.netbook/100) * viewport;
+        this.calculatedWidth = netbook_panel_width * viewport;
       } else {
-        this.calculatedWidth = (widths_relative_to_viewport.desktop/100) * viewport;
+        this.calculatedWidth = desktop_panel_width * viewport;
       }
       
     }

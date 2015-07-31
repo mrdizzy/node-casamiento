@@ -1,7 +1,7 @@
 .mobile, #print_ui, #print_ui #ipad_blurb, #mobile_ui_printer_icon { display:none;}
  .printui_view .left_column {
       position:fixed;
-      width:67.9%;
+      width:67.9%; /* This is because a fixed panel uses widths based on the overall page width, not parent elements, so we do 70% of 97% (innerpagecontainer is 97% of the body, and rightcol is 70% of inner page container) */
       height:100%;
   }
   .printui_view #preview {
