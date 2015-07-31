@@ -309,11 +309,13 @@ input.cmn-toggle-yes-no:checked + label:after {
   #menu_lines { display:none; } 
   #ui_print_alert { width:70%; }
   .printui_view .left_column { width:65%; }
- 
+ #ui_printer_icon {
+   width:25px; 
+ }
     #ui_global_font div {
-      width:45px;
-      height:25px;
-      line-height:25px;
+      width:40px;
+      height:20px;
+      margin:0;
       background-size: 18px 18px;
     }
      

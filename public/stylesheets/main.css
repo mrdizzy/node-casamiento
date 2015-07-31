@@ -289,12 +289,16 @@ input {
     }
     #logo {
       margin:0;
-      width:145px;
+      width:100px;
       padding:7px;
     }
+    #mainmenulines { 
+      margin-right:10px;
+      margin-top:10px;
+      }
     #menu_lines {
       display:block;
-      padding-top:15px;
+      padding-top:5px;
     }
     #header_wrapper { 
       z-index:999999999999999999999999999999999999999999; 
@@ -303,30 +307,30 @@ input {
       width:100%; 
       top:0;
       left:0;
-      height:60px;
+      height:45px;
       border-bottom:1px solid black;
     } 
     
     #browse {
         display:inline-block;
         font: normal 1.4em 'OS Light';
-        margin-top:10px;
+        margin-top:5px;
         height:37px;
         line-height:30px;
         border-left:1px solid black;
         padding-left:10px;
       }     
-        #browse img { width:40px; }
+        #browse img { width:30px; }
         
       #dreams_slogan { 
-        margin-top:15px;
+        margin-top:10px;
         margin-right:10px;
         float:right;
         display:block;
-        width:150px;
+        width:120px;
       }
       
-      #middle_column { padding-top:60px; }
+      #middle_column { padding-top:45px; }
 }  
 
   /* Netbook
