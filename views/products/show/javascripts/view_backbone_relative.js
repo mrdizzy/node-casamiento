@@ -23,13 +23,14 @@ var BackboneRelativeView = Backbone.View.extend({
   
     var viewport = $('body').width();
       var desktop_panel_width = netbook_panel_width= ((95/100) * ($('#print_ui').width()/$('body').width()/2));
-      var phablet = smartphone = (95/100) * ($('#print_ui').width()/$('body').width());
+      var phablet = smartphone = 
   console.log($('#print_ui').width())
     if (this.options.widths_relative_to_viewport) { // doesn't exist in plain GuestView
       if(viewport < 501) {
-        this.calculatedWidth = (smartphone * viewport); 
+        this.calculatedWidth = (95/100) * viewport; 
+        console.log(this.calculatedWidth)
       } else if(viewport > 500 && viewport < 801){ 
-        this.calculatedWidth = (phablet * viewport);
+        this.calculatedWidth = (95/100) * viewport;
       }  else if(viewport > 800 && viewport < 1026){ 
         this.calculatedWidth = netbook_panel_width * viewport;
       } else {
