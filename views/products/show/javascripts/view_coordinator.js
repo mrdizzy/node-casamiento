@@ -74,8 +74,8 @@ var CoordinatorView = Backbone.View.extend({
       that.print_ui_view.render().$el.show()
       if (that.print_ui_view.mobile) {
       
-       // var mobile_split_div_height = $('.place_card_view').height() + $('#control_panel').height();
-        //$('.left_column').height(mobile_split_div_height)
+        var mobile_split_div_height = $('.place_card_view').height() + $('#control_panel').height();
+        $('.left_column').height(mobile_split_div_height)
         $('#mobile_spacer').height(mobile_split_div_height)
        
     }
