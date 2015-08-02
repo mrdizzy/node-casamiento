@@ -2,10 +2,11 @@
  .printui_view .left_column {
       position:fixed;
       width:67.9%; /* This is because a fixed panel uses widths based on the overall page width, not parent elements, so we do 70% of 97% (innerpagecontainer is 97% of the body, and rightcol is 70% of inner page container) */
-      height:100%;
+     
   }
   .printui_view #preview {
-    overflow:scroll;
+    overflow:none;
+    height:100%;
     overflow-x:hidden;
   }
 #top_of_page { position:relative; }
