@@ -141,9 +141,9 @@
       
       .paypal_spinner,
       #step_print_spinner {
-        width:25%;
+        width:64px;
         display:block;
-        padding:7%;
+        padding:1em;
         margin:0 auto;
         display:none;
       }
