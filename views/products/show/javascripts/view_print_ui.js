@@ -1,11 +1,15 @@
 var PrintControlPanelView = BackboneRelativeView.extend({
   el: '#print_ui',
   initialize: function() {
-    if(thisProduct.get("browser")) this.$el.addClass(thisProduct.get("browser"))
+  
+    console.log(thisProduct.get("browser"))
+    if(thisProduct.get("browser")) {
+    $('body').addClass(thisProduct.get("browser"))
+    }
     BackboneRelativeView.prototype.initialize.apply(this)
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
-    this.listenTo(thisProduct, "readyforprint", this.renderPrintDialog)
     this.listenTo(thisProduct.get("guests"), 'add', this.appendPlaceCard)
+    this.ui_alert_box_view = new PrintAlertBoxView();
     this._place_card_print_collection = new PrintPlaceCardCollectionView({
       collection: thisProduct.get("guests")
     })
@@ -20,19 +24,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     "click .global_font_decrease": "fontDecrease",
     "click .global_font_reset": "fontReset",
     "click .buy": "checkout",
-    "click #ui_printer_icon": "printPage",    
-    "click #cutting_marks": "toggleCuttingMarks",
-    "click .layout_icon_container": "changeLayout",
-    'click #print_now': "printNow",
-    "click #ui_print_alert .close": "closePrintAlert"
-  },
-  toggleMainMenu: function() {
-     $('#left_menu').fadeToggle();  
-  },
-  checkout: function() {
-      this.$('.buy').hide();
-      this.$('.paypal_spinner').show()
-      thisProduct.makePurchase();
+    "click #ui_printer_icon": "printPage"
   },
   addGuest:     function() {            thisProduct.get("guests").add({}) },
   fontReset:    function() {           thisProduct.get("guests").resetFont(); },
@@ -40,22 +32,19 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   fontDecrease: function() {        thisProduct.get("guests").invoke('adjustFontSize',0.95) },
   baselineUp:   function() {          thisProduct.get("guests").invoke('adjustBaseline', -1) },
   baselineDown: function() {        thisProduct.get("guests").invoke('adjustBaseline', 1) },
-  toggleCuttingMarks: function() {  thisProduct.toggleCuttingMarks(); },
+  toggleMainMenu: function() { $('#left_menu').fadeToggle(); },
   
+  checkout: function() {
+      this.$('.buy').hide();
+      this.$('.paypal_spinner').show()
+      thisProduct.makePurchase();
+  },
   appendPlaceCard: function(guest) {
     var place_card = this._newPlaceCardView(guest, "appended_place_card").render().el   
     var place_card = $(place_card);
     this.$( ".add_another" ).before(place_card)    
     place_card.fadeIn(2000);
   },
-  changeLayout: function(e) {
-    var per_page = [8,3,4][$(e.currentTarget).index()]
-    $('.layout_icon_container').removeClass('layout_selected');
-    $(e.currentTarget).addClass('layout_selected')
-    $("input[type=radio]").prop("checked", false)
-    $("#radio_" + per_page).prop("checked", true)
-    thisProduct.set("per_page", per_page)
-  },  
   loadFont: function(e, font) {
     $('.font_spinner').hide();
     $('.guest_name').show()  
@@ -71,19 +60,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     this._place_card_print_collection.render()
     $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
   },
-  closePrintAlert: function() {
-    $('#ui_print_alert').fadeOut();
-  },
-  renderPrintDialog: function() {
-    $('#ui_print_alert').fadeIn();
-    $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
-  },
-  printNow: function() {
-    $('#ui_print_alert').hide();
-    window.print()     
-  },
   render: function() {
-    
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
       pounds: thisProduct.get("pounds"),
       pence: thisProduct.get("pence")

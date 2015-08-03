@@ -103,6 +103,7 @@ var Product = Backbone.Model.extend({
     this.set("cutting_marks", cutting_marks)
   },
   calculateUserAgent: function() {
+  console.log(navigator.userAgent)
     if(navigator.userAgent.match(/Chrome/i) != null) {
       this.set("browser", "chrome") 
     } else if(navigator.userAgent.match(/firefox/i) != null) {
