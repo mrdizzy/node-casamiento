@@ -58,7 +58,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   // Create the SVG print view
   printPage: function(e) {    
     this._place_card_print_collection.render()
-    $('#ui_printer_icon img').attr('src', "/gfx/spinner.gif");
+    $('#ui_printer_icon').attr('src', "/gfx/spinners/360.gif");
   },
   render: function() {
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({

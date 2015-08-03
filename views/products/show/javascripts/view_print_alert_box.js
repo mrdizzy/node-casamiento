@@ -7,18 +7,20 @@ var PrintAlertBoxView = Backbone.View.extend({
     "click .layout_icon_container": "changeLayout",
     'click #print_now': "printNow",    
     "click #cutting_marks": "toggleCuttingMarks",
-    "click #ui_print_alert .close": "closePrintAlert"
+    "click .close": "closePrintAlert"
   },
   closePrintAlert: function() {
     $('#ui_print_alert').fadeOut();
+    $('#ui_printer_icon').attr('src', "/gfx/printer_icon.svg")
   },
   renderPrintDialog: function() {
     $('#ui_print_alert').fadeIn();
-    $('#ui_printer_icon img').attr('src', "/gfx/printer_icon.svg")
-  },
-  
+    $('#ui_printer_icon').attr('src', "/gfx/printer_icon.svg")    
+    $('#step_print_spinner').hide();
+    $('#print_button').show()
+  },  
   printNow: function() {
-    $('#ui_print_alert').fadeOut();
+    $('#ui_print_alert').hide();
     window.print()     
   },
   changeLayout: function(e) {
