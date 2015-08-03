@@ -82,9 +82,7 @@ var CoordinatorView = Backbone.View.extend({
     else {
        var header_height = $('#header_wrapper').height();
       var viewport_height = $(window).height()
-      $('#preview').height(viewport_height-header_height)
-
-      
+      $('#preview').height(viewport_height-header_height)     
     }
     
     $(window).trigger("resize")

@@ -5,8 +5,8 @@
      
   }
   .printui_view #preview {
-    overflow:hidden;
     height:100%;
+    overflow:scroll;
     overflow-x:hidden;
   }
 #top_of_page { position:relative; }

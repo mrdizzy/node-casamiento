@@ -61,7 +61,6 @@ var PlaceCardView = BackboneRelativeView.extend({
       "margin-top": baseline.top_half + "px", 
       "height":baseline.bottom_half + "px", 
       "line-height": baseline.bottom_half + "px"});
-        $('body').append("BAseline: " + baseline.top_half, baseline.bottom_half)
   },
   _renderName: function() {
     this.$('.guest_name').text(this.model.get("name"))            
@@ -72,7 +71,6 @@ var PlaceCardView = BackboneRelativeView.extend({
   _renderFontSize: function() {
     var font_size = this.calculatedWidth * this.model.get("font_size");
     this.$('.guest_name').css('font-size', font_size + "px");   
-            $('body').append("fontsize: " + font_size)
   },
   render: function() {     
     var compiled_template = Handlebars.template(templates["place_card"]),
