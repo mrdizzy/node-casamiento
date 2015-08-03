@@ -21,6 +21,8 @@ var CoordinatorView = Backbone.View.extend({
     "click #print_button": "printing"
   },
   printing: function() {
+    $('#step_print_spinner').show();
+    $('#print_button').hide()
     this.print_ui_view.printPage();
   },
   // This is the default home view that is always rendered when the URL has no hashtags appended

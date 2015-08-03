@@ -139,11 +139,14 @@
         width:90px;
       }      
       
-      .paypal_spinner { 
-        padding:2.5em;
-        display:none; 
+      .paypal_spinner,
+      #step_print_spinner {
+        width:25%;
+        display:block;
+        padding:7%;
+        margin:0 auto;
+        display:none;
       }
-      
 /* Smartphone */
 @media all and (min-width: 220px) and (max-width: 500px) {
 /* ----------------------------------------------------------------------------- */    

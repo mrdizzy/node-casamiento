@@ -58,6 +58,8 @@
       border-top-left-radius: 15px;
     }    
     
+    .font_image img { max-width:97%;}
+    
   #fonts .selected_font td, #ui_font_picker .selected_font td {
     border-bottom:0; 
   }
