@@ -135,7 +135,8 @@
           top:50%;
           display:none;
           width:100%;
-          background: url('/gfx/spinner.gif') no-repeat center center; 
+          background: url('/gfx/244.gif') no-repeat center center;           
+          background-size:128px 6px;
           position:absolute;
           z-index:1;
         }
