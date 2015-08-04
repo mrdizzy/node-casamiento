@@ -72,10 +72,16 @@
 /* Print
 //////////////////////////////// */
   @media print {
-     
+  
     body { background-image:none; }
     
     #printsvg { display:block; }
     
     #background_container, #ui_print_alert { display:none; }  
   }
+  @page{
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+margin-bottom: 0px;
+}
