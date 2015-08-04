@@ -50,7 +50,10 @@ var CoordinatorView = Backbone.View.extend({
     this.stopListening(thisProduct, 'change:font')
     if(this.current_view == "home") { // If we are on the products slides page
       that.slides_view.$el.fadeOut(function() {        
-        that.print_ui_view.render().$el.fadeIn(1000);   
+        that.print_ui_view.render().$el.fadeIn(500, function() {
+            
+    $(window).trigger("resize")
+        });   
         that.current_view = "printui"        
         $('body').addClass("printui_view")
         if (that.print_ui_view.mobile) {       
@@ -87,7 +90,6 @@ var CoordinatorView = Backbone.View.extend({
       $('#preview').height(viewport_height-header_height)     
     }
     
-    $(window).trigger("resize")
     }
     $(window).on("resize", function() {
       if(that.current_view == "printui") {
@@ -100,6 +102,7 @@ var CoordinatorView = Backbone.View.extend({
     $('#print_now').click(function() {
       that.print_ui_view.printNow();
     })
+    
     this.current_view = "printui"
     app_router.navigate("print")
   },
