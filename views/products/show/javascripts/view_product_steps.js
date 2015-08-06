@@ -34,29 +34,11 @@ var StepView = BackboneRelativeView.extend({
     "click .texture": "updateTexture", 
     "click .weight": "updateWeight",
     "click #quick_guests": "updateCaretAfterClick",
-    "focus #quick_guests": "showQuickGuestsForMobile",
-    "blur #quick_guests": "hideQuickGuestsForMobile",
     "keyup #quick_guests": "keyPressGuests"
   },
   // If you happen to click somewhere else on the textarea in the split second before rendering, this stops the caret from jumping to the previous location
   updateCaretAfterClick: function() {
     this.caret_position = this.$('#quick_guests')[0].selectionStart;
-  },
-  showQuickGuestsForMobile: function() {
-      console.log("UUES")
-
-     this.$('#quick_guests').addClass("quick_guests_show");
-     $('.left_column').addClass("hide_for_quick_guests")
-     $('#header_wrapper').addClass("hide_for_quick_guests")
-      
-  },
-  
-  hideQuickGuestsForMobile: function() {
-
-     this.$('#quick_guests').removeClass("quick_guests_show");
-      
-     $('.left_column').removeClass("hide_for_quick_guests")
-     $('#header_wrapper').removeClass("hide_for_quick_guests")
   },
   updateWeight: function(e) {   
     var weight_selected = $(e.currentTarget).index();
