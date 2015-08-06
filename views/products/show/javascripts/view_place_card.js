@@ -41,7 +41,7 @@ var PlaceCardView = BackboneRelativeView.extend({
     if(this.model.get("name") == "Guest Name") this.$('.guest_name').text("")     
   },
   updateGuestFromDiv: function() {
-    this.model.set("name", this.$('.guest_name').text()).trigger("change:name")
+    this.model.set("name", $.trim(this.$('.guest_name').text())).trigger("change:name")
   },
   increaseFont: function() {
     this.model.adjustFontSize(1.03) // percentage increase

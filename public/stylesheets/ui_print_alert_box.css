@@ -128,3 +128,19 @@ input.cmn-toggle-yes-no:checked + label:after {
   transform: rotateY(0);
 }
         
+        
+        
+/* Smartphone */
+@media all and (min-width: 300px) and (max-width: 500px) {  
+/* ----------------------------------------------------------------------------- */    
+  #ui_print_alert {
+    width:100%;
+    height:100%;
+    border-radius:0;
+    border:0;
+    margin:0;
+    position:fixed;
+    padding:2vw;
+    z-index:90;
+  } 
+  }

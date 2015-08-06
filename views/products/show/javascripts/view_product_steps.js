@@ -38,8 +38,8 @@ var StepView = BackboneRelativeView.extend({
     "blur #quick_guests": "hideQuickGuestsForMobile",
     "keyup #quick_guests": "keyPressGuests"
   },
+  // If you happen to click somewhere else on the textarea in the split second before rendering, this stops the caret from jumping to the previous location
   updateCaretAfterClick: function() {
-
     this.caret_position = this.$('#quick_guests')[0].selectionStart;
   },
   showQuickGuestsForMobile: function() {
