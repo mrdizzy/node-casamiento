@@ -33,7 +33,7 @@ var StepView = BackboneRelativeView.extend({
     "mouseleave .spc": "hoverOut",     
     "click .texture": "updateTexture", 
     "click .weight": "updateWeight",
-    "focus #quick_guests": "updateCaretAfterClick",
+    "click #quick_guests": "updateCaretAfterClick",
     "focus #quick_guests": "showQuickGuestsForMobile",
     "blur #quick_guests": "hideQuickGuestsForMobile",
     "keyup #quick_guests": "keyPressGuests"
