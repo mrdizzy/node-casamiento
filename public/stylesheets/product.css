@@ -228,9 +228,9 @@
     
     
 @media screen and (min-width:600px) and (max-height:200px) {
-     .left_column, #header_wrapper { display:none; } 
+     body.quick_guests_selected .left_column, body.quick_guests_selected #header_wrapper { display:none; } 
 }
     
 @media screen and (max-width:599px) and (max-height:300px) {
-     .left_column, #header_wrapper { display:none} 
+    body.quick_guests_selected .left_column, body.quick_guests_selected #header_wrapper { display:none} 
 }

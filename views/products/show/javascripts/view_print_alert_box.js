@@ -15,8 +15,7 @@ var PrintAlertBoxView = Backbone.View.extend({
   },
   renderPrintDialog: function() {
     $('#ui_print_alert').fadeIn();
-    $('#ui_printer_icon').attr('src', "/gfx/printer_icon.svg")   
-    
+    $('#ui_printer_icon').attr('src', "/gfx/printer_icon.svg")    
     $('#mobile_ui_printer_icon').attr('src', "/gfx/printer_icon.svg")    
     $('#step_print_spinner').hide();
     $('#print_button').show()

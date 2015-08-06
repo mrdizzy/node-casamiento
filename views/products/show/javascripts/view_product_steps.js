@@ -7,8 +7,8 @@ var StepView = BackboneRelativeView.extend({
     this.changed_names = false;
     this.weights_reference = {2: "200", 3: "300" } // number refers to position of element in HTML hierarchy
     this.listenTo(thisProduct.get("guests"), 'change', this._renderQuickGuests)
-        this.listenTo(thisProduct.get("guests"), 'remove', this._renderQuickGuests)
-            this.listenTo(thisProduct.get("guests"), 'add', this._renderQuickGuests)
+    this.listenTo(thisProduct.get("guests"), 'remove', this._renderQuickGuests)
+    this.listenTo(thisProduct.get("guests"), 'add', this._renderQuickGuests)
     this.listenTo(thisProduct, 'change:weight', this.renderWeight);
     this.listenTo(thisProduct, "change:total", this.renderQtyAndPrice)
     this.current_step = 1;
@@ -19,8 +19,16 @@ var StepView = BackboneRelativeView.extend({
     "mouseleave .spc": "hoverOut",     
     "click .texture": "updateTexture", 
     "click .weight": "updateWeight",
+    "focus #quick_guests": "selectQuickGuests",    
+    "blur #quick_guests": "hideQuickGuests",
     "click #quick_guests": "updateCaretAfterClick",
     "keyup #quick_guests": "keyPressGuests"
+  },
+  selectQuickGuests: function() {
+     $('body').addClass("quick_guests_selected")  
+  },
+  hideQuickGuests: function() {
+     $('body').removeClass("quick_guests_selected") 
   },
   // If you happen to click somewhere else on the textarea in the split second before rendering, this stops the caret from jumping to the previous location
   updateCaretAfterClick: function() {
