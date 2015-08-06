@@ -34,7 +34,6 @@ var StepView = Backbone.View.extend({
     "click .weight": "updateWeight",
     "focus #quick_guests": "hideQuickGuestsForMobile",
     
-    "blur #quick_guests": "changeQuickGuestsForMobile",
     "keyup #quick_guests": "keyPressGuests"
   },
   changeQuickGuestsForMobile: function() {
