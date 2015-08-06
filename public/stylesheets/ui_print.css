@@ -17,7 +17,7 @@
     background-color:white;
     padding-top:0.5em;
     position:fixed; 
-    z-index:9999999;  
+    z-index:9999999; 
     opacity:0.9;
     border-bottom:1px solid black; 
     border-top:1px solid black;
@@ -88,10 +88,15 @@
 @media all and (min-width: 300px) and (max-width: 500px) {  
 /* ----------------------------------------------------------------------------- */    
   .mobile { display:block; }
-  .desktop, #ui_printer_icon { display:none; }
+  .desktop, 
+  #ui_printer_icon { display:none; }
   
-  #control_panel { padding-top:0; width:100%; }
+  #control_panel { 
+    padding-top:0; 
+    width:100%; 
+  }
   #control_panel_top_row { width:100%;}
+  
   #menu_lines {
     float:right;
     z-index:99999999999999999999999999999999;  
@@ -166,29 +171,35 @@
   
 /* Phablet */
 @media all and (min-width: 501px) and (max-width: 800px) {  
-/* ----------------------------------------------------------------------------- */    
-  #control_panel { padding-top:0.2em; width:65%; }
-  #menu_lines { display:none; } 
-  #ui_print_alert { width:70%; }
+/* ----------------------------------------------------------------------------- */  
+
   .printui_view .left_column { width:65%; }
- #ui_printer_icon {
-   width:25px; 
- }
+    
+  #menu_lines { display:none; } 
+  
+  #control_panel { 
+    padding-top:7px; 
+    width:65%; 
+    height:28px;
+  }
+  
+  #ui_printer_icon { width:25px; }
+    
     #ui_global_font div {
       width:40px;
       height:20px;
       margin:0;
       background-size: 18px 18px;
     }
-     
-    #actual_cards .place_card_view { width:100%; }
+    #actual_cards { padding-top:35px;}
+      #actual_cards .place_card_view { width:100%; }
     
-    #actual_cards .place_card_view:nth-child(even) .place_card_parent { float:right; }
-  .place_card_view:nth-child(even) .font_size_adjust_buttons, 
-  .place_card_view:nth-child(even) .font_baseline_adjust_buttons,
-  .place_card_view:nth-child(even) .delete_button {
-    left:1%;
-  }
+      #actual_cards .place_card_view:nth-child(even) .place_card_parent { float:right; }
+      .place_card_view:nth-child(even) .font_size_adjust_buttons, 
+      .place_card_view:nth-child(even) .font_baseline_adjust_buttons,
+      .place_card_view:nth-child(even) .delete_button {
+        left:1%;
+      }
   
   #actual_cards .place_card_view.add_another, 
   #actual_cards .place_card_view.checkout {
@@ -207,10 +218,10 @@
  ============================================================================================================ */
   
   @media all and (min-width: 801px) and (max-width:1025px) {
-  #control_panel { width:78%; }
-    .printui_view .left_column { 
-      width:78%;
-    }
+  
+    #control_panel, 
+    .printui_view .left_column { width:78%; }
+    
   }
   
   
