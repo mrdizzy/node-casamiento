@@ -225,12 +225,6 @@
     
     
 @media screen and (max-height:320px) {
-     .quick_guests_show {
-        position:fixed;
-        top:0;
-        left:0;
-        width:100%;
-      }
-      .hide_for_quick_guests { display:none} 
+     .left_column, #header_wrapper { display:none} 
 
 }
