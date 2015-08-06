@@ -292,7 +292,7 @@ input {
     #logo {
       margin:0;
       width:100px;
-      padding:7px;
+      padding:5px;
     }
     #mainmenulines { 
       margin-right:10px;
@@ -309,15 +309,15 @@ input {
       width:100%; 
       top:0;
       left:0;
-      height:45px;
+      height:40px;
       border-bottom:1px solid black;
     } 
     #browse {
         display:inline-block;
         font: normal 1.4em 'OS Light';
-        margin-top:5px;
-        height:37px;
-        line-height:30px;
+        margin-top:2px;
+        height:35px;
+        line-height:36px;
         border-left:1px solid black;
         padding-left:10px;
       }     
@@ -343,15 +343,15 @@ input {
   #header_wrapper {
     border-bottom:1px solid black;
     background-color:white;
-    height:35px;
+    height:33px;
     z-index:90;  
     position:fixed;
   }
     #logo { 
       display:block;
-      width:30%;
-      padding:1%;
-      padding-left:1%;
+      width:92px;
+      padding:2px;
+      padding-left:4px;
       margin:0 auto;
     }
     
@@ -362,14 +362,13 @@ input {
         font: normal 1.2em 'OS Light';
         margin-top:2px;
         height:28px;
-        line-height:30px;
-        
+        line-height:28px;        
       }     
         #browse img { width:20px; }
         
     #mainmenulines {
       width:25px;
-      margin-top:10px;
+      margin-top:8px;
       margin-right:5px;
     }
     #inner_page_container { 
@@ -387,7 +386,7 @@ input {
       width:100%;
     }
     #left_menu { width:50%;}
-    #middle_column { padding-top:38px; }
+    #middle_column { padding-top:34px; }
 }
 
 /* GLOBAL CLASSES
