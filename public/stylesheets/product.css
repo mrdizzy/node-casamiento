@@ -1,5 +1,6 @@
 .product_type_icon { width:130px; }
-  
+  #header_wrapper { position:fixed; width:100%;top:0;left:0;}
+  #inner_page_container { margin-top:80px;}
 
   #product_container .product_type_icon { display:none; }
   
@@ -154,11 +155,12 @@
 /* Smartphone */
 @media all and (min-width: 220px) and (max-width: 500px) {
 /* ----------------------------------------------------------------------------- */    
-   
+   #inner_page_container { margin:0;}
   .slide { 
     width:100%;
     float:none;
   }
+  #header_wrapper { height:45px;}
     .slide .shell, 
     #second_product_type_icon,
     #description_container .shell { display:none; } 
@@ -217,6 +219,9 @@
     width:100%;
     float:none;
   }
+  #inner_page_container {
+      margin-top:45px;
+      }
 
   .chat-bubble { display:block; left:3em; }
 
