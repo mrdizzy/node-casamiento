@@ -224,7 +224,7 @@
 }
     
     
-@media screen and (max-height:320px) {
+@media screen and (max-height:300px) {
      .left_column, #header_wrapper { display:none} 
 
 }
