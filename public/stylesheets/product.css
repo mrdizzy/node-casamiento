@@ -152,6 +152,9 @@
    .left_column {
      display:none;
    }
+   #header_wrapper {
+     display:none;
+   }
       #quick_guests {
         position:fixed;
         top:0;
