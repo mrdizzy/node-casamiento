@@ -14,9 +14,10 @@ function setSelectionRange(input, selectionStart, selectionEnd) {
 
 // STEP VIEW
 ////////////////////////////////////////////////////////////////////////////// 
-var StepView = Backbone.View.extend({ 
+var StepView = BackboneRelativeView.extend({ 
   el: '.right_column',
   initialize: function() {
+  BackboneRelativeView.prototype.initialize.apply(this)
     this.changed_names = false;
     this.weights_reference = {2: "200", 3: "300" } // number refers to position of element in HTML hierarchy
     this.listenTo(thisProduct.get("guests"), 'change', this._renderQuickGuests)
@@ -33,10 +34,10 @@ var StepView = Backbone.View.extend({
     "click .texture": "updateTexture", 
     "click .weight": "updateWeight",
     "focus #quick_guests": "changeQuickGuestsForMobile",
-    
     "keyup #quick_guests": "keyPressGuests"
   },
   changeQuickGuestsForMobile: function() {
+   /* if(this.mobile) {
      this.$('#quick_guests').css({
         position:"fixed",
         top:0,
@@ -45,6 +46,7 @@ var StepView = Backbone.View.extend({
       });
       $('.left_column').hide();
       $('#header_wrapper').hide();
+      } */
   },
   updateWeight: function(e) {   
     var weight_selected = $(e.currentTarget).index();

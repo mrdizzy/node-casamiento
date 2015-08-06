@@ -148,7 +148,17 @@
         display:none;
       }
       
- 
+   @media screen and (max-height: 420px) {
+   .left_column {
+     display:none;
+   }
+      #quick_guests {
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+      }
+      }
 /* Smartphone */
 @media all and (min-width: 220px) and (max-width: 500px) {
 /* ----------------------------------------------------------------------------- */    
