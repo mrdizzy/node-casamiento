@@ -1,3 +1,17 @@
+function setSelectionRange(input, selectionStart, selectionEnd) {
+  if (input.setSelectionRange) {
+    input.focus();
+    input.setSelectionRange(selectionStart, selectionEnd);
+  }
+  else if (input.createTextRange) {
+    var range = input.createTextRange();
+    range.collapse(true);
+    range.moveEnd('character', selectionEnd);
+    range.moveStart('character', selectionStart);
+    range.select();
+  }
+}
+
 // STEP VIEW
 ////////////////////////////////////////////////////////////////////////////// 
 var StepView = Backbone.View.extend({ 
@@ -6,13 +20,9 @@ var StepView = Backbone.View.extend({
     this.changed_names = false;
     this.weights_reference = {2: "200", 3: "300" } // number refers to position of element in HTML hierarchy
     this.listenTo(thisProduct.get("guests"), 'change', this._renderQuickGuests)
-    this.listenTo(thisProduct.get("guests"), 'remove', this._renderQuickGuests)
-    this.listenTo(thisProduct.get("guests"), 'add', this._renderQuickGuests)
-    this.listenToOnce(thisProduct, 'change:colours', this.changeStepToFont);   
-    this.listenTo(thisProduct, 'change:font', this.changeStepToThickness);   
-    this.listenToOnce(thisProduct, 'change:weight', this.changeStepToQuantity);   
+        this.listenTo(thisProduct.get("guests"), 'remove', this._renderQuickGuests)
+            this.listenTo(thisProduct.get("guests"), 'add', this._renderQuickGuests)
     this.listenTo(thisProduct, 'change:weight', this.renderWeight);
-    this.listenToOnce(thisProduct, 'change:quantity', this.changeStepToNames);
     this.listenTo(thisProduct, "change:total", this.renderQtyAndPrice)
     this.current_step = 1;
   },
@@ -23,33 +33,6 @@ var StepView = Backbone.View.extend({
     "click .texture": "updateTexture", 
     "click .weight": "updateWeight",
     "keyup #quick_guests": "keyPressGuests"
-  },
-  keyPressGuests: function() {
-    var that = this;
-    clearTimeout(this.timeout_id)
-    this.timeout_id = setTimeout(function(){
-        that.updateGuests(); 
-      }, 1000);   
-  },
-  changeStepToFont: function() {
-    if (this.current_step < 2) this.current_step = 2;  
-    this.changeStep();
-  },
-  changeStepToThickness: function() { 
-    if (this.current_step < 4) this.current_step = 4;
-    this.changeStep();
-  },  
-  changeStepToQuantity: function() { 
-    if (this.current_step < 5) this.current_step = 5;
-    this.changeStep();
-  },  
-  changeStepToNames: function() { 
-    if (this.current_step < 6) this.current_step = 6;
-    this.changeStep();
-  },
-  changeStep: function() {
-      this.$('.step').css("background-color", "#BBB") 
-      this.$('#step_' + this.current_step + " .step").addClass('colour_0')   
   },
   updateWeight: function(e) {   
     var weight_selected = $(e.currentTarget).index();
@@ -62,6 +45,21 @@ var StepView = Backbone.View.extend({
   },
   _renderQuickGuests: function() {
     this.$('#quick_guests').val(thisProduct.get("guests").pluck("name").join("\n"))
+  },
+  _renderCaret: function() {
+    if(this.caret_position) {        
+    setSelectionRange($('#quick_guests')[0], this.caret_position, this.caret_position);
+    this.caret_position = undefined
+   }  
+  },
+  keyPressGuests: function() {
+    var that = this;
+    this.caret_position = this.$('#quick_guests')[0].selectionStart;
+    
+    clearTimeout(this.timeout_id)
+    this.timeout_id = setTimeout(function(){
+        that.updateGuests(); 
+      }, 1000);   
   },
   updateGuests: function() {
     this.changed_names = true;
@@ -105,6 +103,7 @@ var StepView = Backbone.View.extend({
       }
     }
     }
+    this._renderCaret();
   },
   updateTexture: function(e) {
     var texture_selected = $(e.currentTarget)
