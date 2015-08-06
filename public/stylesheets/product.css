@@ -148,6 +148,9 @@
         display:none;
       }
       
+      
+   
+      
 /* Smartphone */
 @media all and (min-width: 220px) and (max-width: 500px) {
 /* ----------------------------------------------------------------------------- */    
@@ -221,18 +224,13 @@
 }
     
     
-    
-   @media screen and (max-height: 420px) {
-   .left_column {
-     display:none;
-   }
-   #header_wrapper {
-     display:none;
-   }
-      #quick_guests {
+@media screen and (max-height:320px) {
+     .quick_guests_show {
         position:fixed;
         top:0;
         left:0;
         width:100%;
       }
-      }
+      .hide_for_quick_guests { display:none} 
+
+}

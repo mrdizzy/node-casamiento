@@ -33,20 +33,30 @@ var StepView = BackboneRelativeView.extend({
     "mouseleave .spc": "hoverOut",     
     "click .texture": "updateTexture", 
     "click .weight": "updateWeight",
-    "focus #quick_guests": "changeQuickGuestsForMobile",
+    "focus #quick_guests": "updateCaretAfterClick",
+    "focus #quick_guests": "showQuickGuestsForMobile",
+    "blur #quick_guests": "hideQuickGuestsForMobile",
     "keyup #quick_guests": "keyPressGuests"
   },
-  changeQuickGuestsForMobile: function() {
-   /* if(this.mobile) {
-     this.$('#quick_guests').css({
-        position:"fixed",
-        top:0,
-        left:0,
-        width:"100%",
-      });
-      $('.left_column').hide();
-      $('#header_wrapper').hide();
-      } */
+  updateCaretAfterClick: function() {
+
+    this.caret_position = this.$('#quick_guests')[0].selectionStart;
+  },
+  showQuickGuestsForMobile: function() {
+      console.log("UUES")
+
+     this.$('#quick_guests').addClass("quick_guests_show");
+     $('.left_column').addClass("hide_for_quick_guests")
+     $('#header_wrapper').addClass("hide_for_quick_guests")
+      
+  },
+  
+  hideQuickGuestsForMobile: function() {
+
+     this.$('#quick_guests').removeClass("quick_guests_show");
+      
+     $('.left_column').removeClass("hide_for_quick_guests")
+     $('#header_wrapper').removeClass("hide_for_quick_guests")
   },
   updateWeight: function(e) {   
     var weight_selected = $(e.currentTarget).index();

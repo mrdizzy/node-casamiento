@@ -6,8 +6,11 @@ var BackboneRelativeView = Backbone.View.extend({
   initialize: function() {
     this.calculateWidth();
     $(window).on("resize", this.testForMobile.bind(this)); 
+    
+    $(window).on("resize", this.testForPhablet.bind(this)); 
     $(window).on("resize", this.calculateWidth.bind(this)); 
     this.testForMobile();
+    this.testForPhablet();
   },
   // This function looks at the widths defined in widths_relative_to_viewport 
   // which should be defined when initialising the View. It is defined as follows:
@@ -37,6 +40,17 @@ var BackboneRelativeView = Backbone.View.extend({
       
     }
   },  
+  testForPhablet: function() {
+    var viewport = $('body').width();
+    if(viewport < 801) {
+      this.phablet = true
+      
+    } else {
+      this.phablet = false;
+    }
+    
+  
+  },
   testForMobile: function() {
     var viewport = $('body').width();
     if(viewport < 501) {
