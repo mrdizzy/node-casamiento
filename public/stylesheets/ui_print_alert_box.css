@@ -1,146 +1,183 @@
-
-    #ui_print_alert {
-      display:none;
-      padding:20px;
-      width:50%;
-      border:1px solid black;
-      position:fixed;
-      background-color:white;
-      z-index:900;
-      right:0;
-      left:0;
-      box-shadow:7px 7px 0 0 lightgrey;
-      margin:auto;
-      margin-top:80px;
-      border-radius:15px;
-      text-align:center;
-    }
-      .close {
-        display:block;
-        position:absolute;
-        cursor:pointer;
-        opacity: 0.4;
-        top:10px;
-        right:10px;
-      }
-        .close:hover { opacity:1; }
-      
-      #choose_layout,
-      #crop_marks {
-        border-bottom:1px solid black;
-        padding-bottom:0.5em;
-        margin-bottom:0.5em;
-        font-family:'OS Light Italic';
-        font-size:1.4em;
-      }
-      
-      #layout_icons_wrapper {      
-        text-align:center;
-        font-size:1em;
-        font-family:'OS Light'
-      }
-        .layout_icon_container {    
-          border-radius:10px;
-          padding:5px;
-          display:inline-block;
-          text-align:center;
-          width:26%;
-          margin-right:4%;
-          font-size:1em;
-          font-family:'OS Light'
-        }
-          .layout_icon_container.layout_selected,
-          .layout_icon_container:hover {
-            cursor:pointer;
-            background-color:#EEE;
-          }            
-          
-        #up_3, 
-        #up_8 { 
-          width:40px; 
-          padding:5px; 
-          display:block;
-          margin:0 auto;         
-        }
-        #up_4 { 
-          width:55px;
-          padding:5px;  
-        }
-        
-    #ui_crosshairs_icon {
-      display:inline-block;      
-      text-align:center;
-      padding-left:10px;
-      padding-right:10px;
-      cursor:pointer;
+#ui_print_alert {
+  display:none;
+  padding:20px;
+  width:50%;
+  border:1px solid black;
+  position:fixed;
+  background-color:white;
+  z-index:100;
+  right:0;
+  left:0;
+  box-shadow:7px 7px 0 0 lightgrey;
+  margin:auto;
+  margin-top:80px;
+  border-radius:15px;
+  text-align:center;
+}
+  .close {
+    display:block;
+    position:absolute;
+    cursor:pointer;
+    opacity: 0.4;
+    top:10px;
+    right:10px;
+  }
+    .close:hover { opacity:1; }
+  
+  #choose_layout,
+  #crop_marks {
+    border-bottom:1px solid black;
+    padding-bottom:0.5em;
+    margin-bottom:0.5em;
+    font-family:'OS Light Italic';
+    font-size:1.4em;
+  }
+  
+  #layout_icons_wrapper {      
+    text-align:center;
+    font-size:1em;
+    font-family:'OS Light'
+  }
+    .layout_icon_container {    
       border-radius:10px;
+      padding:5px;
+      display:inline-block;
+      text-align:center;
+      width:26%;
+      margin-right:4%;
+      font-size:1em;
+      font-family:'OS Light'
     }
+      .layout_icon_container.layout_selected,
+      .layout_icon_container:hover {
+        cursor:pointer;
+        background-color:#EEE;
+      }            
       
-  .cmn-toggle {
-  position: absolute;
-  margin-left: -9999px;
-  visibility: hidden;
+    #up_3, 
+    #up_8 { 
+      width:40px; 
+      padding:5px; 
+      display:block;
+      margin:0 auto;         
+    }
+    #up_4 { 
+      width:55px;
+      padding:5px;  
+    }
+    
+#ui_crosshairs_icon {
+  display:inline-block;      
+  text-align:center;
+  padding-left:10px;
+  padding-right:10px;
+  cursor:pointer;
+  border-radius:10px;
+}
+  
+.cmn-toggle {
+position: absolute;
+margin-left: -9999px;
+visibility: hidden;
 }
 .cmn-toggle + label {
-  display: block;
-  position: relative;
-  cursor: pointer;
-  outline: none;
-  user-select: none;
+display: block;
+position: relative;
+cursor: pointer;
+outline: none;
+user-select: none;
 }
 input.cmn-toggle-yes-no + label {
-  padding: 2px;
-  width: 100px;
-  height: 50px;
+padding: 2px;
+width: 100px;
+height: 50px;
 }
 input.cmn-toggle-yes-no + label:before,
 input.cmn-toggle-yes-no + label:after {
-  display: block;
-  border-radius:10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  color: black;
-  font-family: "OS Light", sans-serif;
-  font-size: 1.4em;
-  text-align: center;
-  line-height: 50px;
+display: block;
+border-radius:10px;
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+color: black;
+font-family: "OS Light", sans-serif;
+font-size: 1.4em;
+text-align: center;
+line-height: 50px;
 }
 input.cmn-toggle-yes-no + label:before {
-  background-color: white;
-  content: attr(data-off);  
-  transition: transform 0.5s;
-  backface-visibility: hidden;
+background-color: white;
+content: attr(data-off);  
+transition: transform 0.5s;
+backface-visibility: hidden;
 }
 input.cmn-toggle-yes-no + label:after {
-  background-color: #EEE;
-  content: attr(data-on);
-  transition: transform 0.5s;
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
+background-color: #EEE;
+content: attr(data-on);
+transition: transform 0.5s;
+transform: rotateY(180deg);
+backface-visibility: hidden;
 }
 input.cmn-toggle-yes-no:checked + label:before {
-  transform: rotateY(180deg);
+transform: rotateY(180deg);
 }
-input.cmn-toggle-yes-no:checked + label:after {
+  input.cmn-toggle-yes-no:checked + label:after {
   transform: rotateY(0);
 }
-        
-        
-        
+    
+    
+
+  /* Netbook
+  ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================ */
+  
+  @media all and (min-width: 801px) and (max-width:1025px) {
+    #ui_print_alert {
+      width:75%;
+      margin-top:30px;
+    } 
+  }    
+    
+  /* Phablet 
+   ============================================================================
+   ============================================================================
+   ============================================================================
+   ============================================================================
+   ============================================================================*/
+  @media all and (min-width: 501px) and (max-width: 800px) {
+    #ui_print_alert {
+      position:fixed;
+      border:0;
+      width:98%;
+      margin:0;
+      top:0;
+      padding:0;
+      padding-left:1%;padding-right:1%;
+      padding-top:5%;
+      box-shadow:0;
+      border-radius:0; 
+      left:0;
+      height:100%;
+    }
+  }
+    
 /* Smartphone */
 @media all and (min-width: 300px) and (max-width: 500px) {  
 /* ----------------------------------------------------------------------------- */    
   #ui_print_alert {
-    width:100%;
+    width:96%;
     height:100%;
     border-radius:0;
     border:0;
+    padding:0;
+    padding:2%;
+    padding-top:2%;
     margin:0;
     position:fixed;
-    padding:2vw;
     z-index:90;
   } 
-  }
+}

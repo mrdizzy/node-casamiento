@@ -24,7 +24,8 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     "click .global_font_decrease": "fontDecrease",
     "click .global_font_reset": "fontReset",
     "click .buy": "checkout",
-    "click #ui_printer_icon": "printPage"
+    "click #ui_printer_icon": "printPage",  
+    "click #mobile_ui_printer_icon": "printPage"
   },
   addGuest:     function() {            thisProduct.get("guests").add({}) },
   fontReset:    function() {           thisProduct.get("guests").resetFont(); },
@@ -59,6 +60,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   printPage: function(e) {    
     this._place_card_print_collection.render()
     $('#ui_printer_icon').attr('src', "/gfx/spinners/360.gif");
+    $('#mobile_ui_printer_icon').attr('src', "/gfx/spinners/360.gif");
   },
   render: function() {
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
