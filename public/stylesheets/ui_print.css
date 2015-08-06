@@ -167,7 +167,7 @@
 /* Phablet */
 @media all and (min-width: 501px) and (max-width: 800px) {  
 /* ----------------------------------------------------------------------------- */    
-  #control_panel { padding-top:0.2em; }
+  #control_panel { padding-top:0.2em; width:65%; }
   #menu_lines { display:none; } 
   #ui_print_alert { width:70%; }
   .printui_view .left_column { width:65%; }
@@ -207,6 +207,7 @@
  ============================================================================================================ */
   
   @media all and (min-width: 801px) and (max-width:1025px) {
+  #control_panel { width:78%; }
     .printui_view .left_column { 
       width:78%;
     }
