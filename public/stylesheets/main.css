@@ -228,6 +228,49 @@ input {
       margin:0;
       padding:0;
     }
+    
+     #logo {
+      margin:0;
+      width:170px;
+      padding:5px;
+    }
+    #mainmenulines { 
+      margin-right:20px;
+      margin-top:20px;
+      }
+    #menu_lines {
+      display:block;
+      padding-top:10px;
+    }
+    #header_wrapper { 
+      z-index:50; 
+      position:fixed; 
+      background-color:white; 
+      width:100%; 
+      top:0;
+      left:0;
+      height:60px;
+      border-bottom:1px solid black;
+    } 
+    #browse {
+        display:inline-block;
+        font: normal 1.7em 'OS Light';
+        margin-top:10px;
+        height:37px;
+        line-height:30px;
+        border-left:1px solid black;
+        padding-left:10px;
+      }     
+        #browse img { width:40px; }
+        
+      #dreams_slogan { 
+        margin-top:15px;
+        margin-right:15px;
+        float:right;
+        display:block;
+        width:155px;
+      }
+    
     .left_column { width:78%;}
     .right_column { margin-left:78%;}
   }

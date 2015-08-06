@@ -1,4 +1,7 @@
-.mobile, #print_ui, #ipad_blurb, #mobile_ui_printer_icon { display:none;}
+.mobile, 
+#print_ui, 
+#ipad_blurb, 
+#mobile_ui_printer_icon { display:none; }
  
 .printui_view .left_column {
   position:fixed;
@@ -221,6 +224,9 @@
   
     #control_panel, 
     .printui_view .left_column { width:78%; }
+    
+    #control_panel { height:52px;}
+    #actual_cards { padding-top:60px;}
     
   }
   
