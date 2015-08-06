@@ -32,7 +32,19 @@ var StepView = Backbone.View.extend({
     "mouseleave .spc": "hoverOut",     
     "click .texture": "updateTexture", 
     "click .weight": "updateWeight",
+    "focus #quick_guests": "hideQuickGuestsForMobile",
+    
+    "blur #quick_guests": "changeQuickGuestsForMobile",
     "keyup #quick_guests": "keyPressGuests"
+  },
+  changeQuickGuestsForMobile: function() {
+     this.$('#quick_guests').css({
+        position:"fixed",
+        top:0,
+        left:0,
+        width:"100%",
+      });
+      $('.left_column').hide();
   },
   updateWeight: function(e) {   
     var weight_selected = $(e.currentTarget).index();
