@@ -148,7 +148,7 @@
         display:none;
       }
       
-   @media screen and (max-height: 220px) {
+   @media screen and (max-height: 320px) {
    .left_column {
      display:none;
    }
