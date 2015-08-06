@@ -147,9 +147,7 @@
         padding:1em;
         margin:0 auto;
         display:none;
-      }
-      
-      
+      }      
    
       
 /* Smartphone */
@@ -211,7 +209,7 @@
 /* Phablet */
 @media all and (min-width: 501px) and (max-width: 800px) {
 /* ----------------------------------------------------------------------------- */    
-  .left_column { width:65%; }
+  .left_column { width:65%; float:left;}
   .right_column { margin-left:65%; }
   .buy { padding-top:0.75em; }
   .slide, 
