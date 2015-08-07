@@ -58,6 +58,7 @@ var PlaceCardView = BackboneRelativeView.extend({
   },
   _renderName: function() {
     if (!this.updated_from_div) {
+      this.updated_from_div = false;
       this.$('.guest_name').text(this.model.get("name"))   
     }         
   },
