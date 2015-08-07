@@ -39,7 +39,7 @@ var PlaceCardView = BackboneRelativeView.extend({
   },
   updateGuestFromDiv: function() {
     this.updated_from_div = true;
-    this.model.set("name", $.trim(this.$('.guest_name').text()))
+ //  this.model.set("name", $.trim(this.$('.guest_name').text()))
   },
   clearGuest: function() { 
     if(!this.model.get("preset_name")) {
