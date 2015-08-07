@@ -23,7 +23,7 @@ var PlaceCardView = BackboneRelativeView.extend({
   },  
   events: {  
     "blur .guest_name": 'updateGuestFromDiv',
-   // 'focus .guest_name': 'clearGuest',  
+    'click .guest_name': 'clearGuest',  
     'click .delete_guest': 'deleteGuest',
     'click .plus_font': 'increaseFont',  
     'click .minus_font': 'decreaseFont',
@@ -42,7 +42,9 @@ var PlaceCardView = BackboneRelativeView.extend({
       this.updated_from_div = true;
     this.model.set("name", $.trim(this.$('.guest_name').text()))
   },
-  clearGuest: function() { if(this.model.get("name") == "Guest Name") this.$('.guest_name').text("") },
+  clearGuest: function() { if(this.model.get("name") == "Guest Name") this.$('.guest_name').text("");
+  this.$('.guest_name')get(0).focus()
+  },
   increaseFont:   function() { this.model.adjustFontSize(1.03) }, // percentage increase
   decreaseFont:   function() { this.model.adjustFontSize(0.97) }, // percentage decrease
   upBaseline:     function() { this.model.adjustBaseline(-0.5); },
