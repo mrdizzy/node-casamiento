@@ -18,7 +18,7 @@ var PlaceCardView = BackboneRelativeView.extend({
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);   
     this.listenTo(this.model, "change:font_size", this._renderFontSize);
     this.listenTo(this.model, "change:baseline", this._renderBaseline)
-    this.listenTo(this.model, "change:name", this._renderName)
+   // this.listenTo(this.model, "change:name", this._renderName)
     this.listenTo(this.model, "remove", this.deleteGuest)
   },  
   events: {  
@@ -43,18 +43,11 @@ var PlaceCardView = BackboneRelativeView.extend({
   updateGuestFromDiv: function() {
     this.model.set("name", $.trim(this.$('.guest_name').text())).trigger("change:name")
   },
-  increaseFont: function() {
-    this.model.adjustFontSize(1.03) // percentage increase
-  },
-  decreaseFont: function() {
-   this.model.adjustFontSize(0.97) // percentage decrease
-  },
-  upBaseline: function() {
-    this.model.adjustBaseline(-0.5);
-  },
-  downBaseline: function() {
-    this.model.adjustBaseline(0.5);
-  },  
+  increaseFont:   function() { this.model.adjustFontSize(1.03) }, // percentage increase
+  decreaseFont:   function() { this.model.adjustFontSize(0.97) }, // percentage decrease
+  upBaseline:     function() { this.model.adjustBaseline(-0.5); },
+  downBaseline:   function() { this.model.adjustBaseline(0.5); },  
+  
   _renderBaseline: function() {
     var baseline = this.model.calculateBaselineOffset(this.calculatedWidth);
     this.$('.guest_name').css({
