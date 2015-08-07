@@ -37,13 +37,12 @@ var PlaceCardView = BackboneRelativeView.extend({
       that.remove();
     });
   },
-  clearGuest: function() {
-    if(this.model.get("name") == "Guest Name") this.$('.guest_name').text("")     
-  },
   updateGuestFromDiv: function() {
+    console.log("Updating from div routine")
       this.updated_from_div = true;
-    this.model.set("name", $.trim(this.$('.guest_name').text())).trigger("change:name")
+    this.model.set("name", $.trim(this.$('.guest_name').text()))
   },
+  clearGuest: function() { if(this.model.get("name") == "Guest Name") this.$('.guest_name').text("") },
   increaseFont:   function() { this.model.adjustFontSize(1.03) }, // percentage increase
   decreaseFont:   function() { this.model.adjustFontSize(0.97) }, // percentage decrease
   upBaseline:     function() { this.model.adjustBaseline(-0.5); },
@@ -57,7 +56,7 @@ var PlaceCardView = BackboneRelativeView.extend({
       "line-height": baseline.bottom_half + "px"});
   },
   _renderName: function() {
-  console.log("Updated from div", this.updated_from_div)
+  
     if (!this.updated_from_div) {
       this.$('.guest_name').text(this.model.get("name"))   
     }         
