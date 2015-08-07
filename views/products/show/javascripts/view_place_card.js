@@ -40,7 +40,11 @@ var PlaceCardView = BackboneRelativeView.extend({
   },
   focusPlaceCard: function() {
   console.log("Focusing")
+    if(this.$('.guest_name').is(':focus')) {
+      console.log("In focus")
+    } else {
     this.$('.guest_name')[0].focus()
+    }
   },
   updateGuestFromDiv: function() {
     console.log("Updating from div routine")
