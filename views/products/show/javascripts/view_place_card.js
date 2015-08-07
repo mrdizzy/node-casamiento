@@ -43,8 +43,11 @@ var PlaceCardView = BackboneRelativeView.extend({
     this.model.set("name", $.trim(this.$('.guest_name').text()))
   },
   clearGuest: function() { 
-    if(this.model.get("name") == "Guest Name") this.$('.guest_name').text("");
-    this.$('.guest_name').get(0).focus()
+  console.log("Clearing guest")
+    if(this.model.get("name") == "Guest Name") {
+      this.$('.guest_name').text("");
+    setSelectionRange(this.$('.guest_name')[0], 0,0);
+    }
   },
   increaseFont:   function() { this.model.adjustFontSize(1.03) }, // percentage increase
   decreaseFont:   function() { this.model.adjustFontSize(0.97) }, // percentage decrease
