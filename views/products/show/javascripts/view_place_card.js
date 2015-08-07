@@ -38,15 +38,15 @@ var PlaceCardView = BackboneRelativeView.extend({
     });
   },
   updateGuestFromDiv: function() {
-    console.log("Updating from div routine")
       this.updated_from_div = true;
     this.model.set("name", $.trim(this.$('.guest_name').text()))
   },
   clearGuest: function() { 
-  console.log("Clearing guest")
+  console.log("Clearing guest", this)
+  
     if(this.model.get("name") == "Guest Name") {
       this.$('.guest_name').text("");
-    setSelectionRange(this.$('.guest_name')[0], 0,0);
+    this.$('.guest_name')[0].focus();
     }
   },
   increaseFont:   function() { this.model.adjustFontSize(1.03) }, // percentage increase
