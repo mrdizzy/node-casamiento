@@ -23,7 +23,6 @@ var PlaceCardView = BackboneRelativeView.extend({
   },  
   events: {  
     "blur .guest_name": 'updateGuestFromDiv',
-    'click': 'focusPlaceCard',
     'focus .guest_name': 'clearGuest',  
     'click .delete_guest': 'deleteGuest',
     'click .plus_font': 'increaseFont',  
@@ -37,14 +36,6 @@ var PlaceCardView = BackboneRelativeView.extend({
     this.$el.fadeOut(function() {
       that.remove();
     });
-  },
-  focusPlaceCard: function() {
-  console.log("Focusing")
-    if(this.$('.guest_name').is(':focus')) {
-      console.log("In focus")
-    } else {
-    this.$('.guest_name')[0].focus()
-    }
   },
   updateGuestFromDiv: function() {
     console.log("Updating from div routine")
