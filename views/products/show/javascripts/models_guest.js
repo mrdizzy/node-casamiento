@@ -1,6 +1,6 @@
 var Guest = Backbone.Model.extend({ // rename PlaceCardBluePrint?
   defaults: {
-    name: "Guest Name",
+    name:"",
     baseline: (<%= product.baseline %> || 0),
     font_size: "<%= product.font_size %>"
   },
