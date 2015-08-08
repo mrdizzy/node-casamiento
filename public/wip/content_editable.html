@@ -6,16 +6,15 @@
 
 <script src="/javascripts/libraries/fastclick.js"></script>
 <style type="text/css">
+html, body, div, p { padding:0;margin:0;border:0;}
+#right_column div { height:200px;}
 p { font-size:100px;margin-top:50px;}
-div { height:250px; border:1px solid black;}
 </style>
-<script>
-$(window).resize(function() {
-$('#stuff').append("Resizing....")
-})</script>
 </head>
-
-<div style="position:fixed;margin-right:50%;width:50%;overflow:scroll;height:500px;z-index:5;">
+<div style="width:95%">
+<div style="width:38%;position:fixed;">
+<div style="overflow:scroll;height:100%;">
+<div>
 <p>Step 1</p>
 
 <p>Step 2</p>
@@ -27,9 +26,10 @@ $('#stuff').append("Resizing....")
 
 <p>Step 8</p>
 <p>Step 9</p>
-
 </div>
-<div style="margin-left:50%">
+</div>
+</div>
+<div id="right_column" style="margin-left:40%">
 
 <div contenteditable="true" style="background-color:yellow">
 Hello, my name is David!
@@ -200,7 +200,7 @@ Hello, my name is David!
 Hello, my name is David!
 </div>
 </div>
-
+</div>
 </body>
 
 </html>
