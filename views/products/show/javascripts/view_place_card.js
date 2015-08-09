@@ -18,12 +18,12 @@ var PlaceCardView = BackboneRelativeView.extend({
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);   
     this.listenTo(this.model, "change:font_size", this._renderFontSize);
     this.listenTo(this.model, "change:baseline", this._renderBaseline)
-   // this.listenTo(this.model, "change:name", this._renderName)
+    this.listenTo(this.model, "change:name", this._renderName)
     this.listenTo(this.model, "remove", this.deleteGuest)
   },  
   events: {  
-   // "blur .guest_name": 'updateGuestFromDiv',
- //   'click .guest_name': 'clearGuest',  
+    "blur .guest_name": 'updateGuestFromDiv',
+    //'focus .guest_name': 'clearGuest',  
     'click .delete_guest': 'deleteGuest',
     'click .plus_font': 'increaseFont',  
     'click .minus_font': 'decreaseFont',
@@ -42,14 +42,11 @@ var PlaceCardView = BackboneRelativeView.extend({
   },
   updateGuestFromDiv: function() {
     this.updated_from_div = true;
- //  this.model.set("name", $.trim(this.$('.guest_name').text()))
+   this.model.set("name", $.trim(this.$('.guest_name').text()))
   },
-  clearGuest: function() { 
-    if(!this.model.get("preset_name")) {
-      this.$('.preset_name').hide();
-      this.model.set("preset_name", true)
-    }
-  },
+ // clearGuest: function() { 
+ //   if(this.model.get("name") == "Guest Name") { this.$('.guest_name').text("")}
+ // },
   increaseFont:   function() { this.model.adjustFontSize(1.03) }, // percentage increase
   decreaseFont:   function() { this.model.adjustFontSize(0.97) }, // percentage decrease
   upBaseline:     function() { this.model.adjustBaseline(-0.5); },
@@ -62,12 +59,8 @@ var PlaceCardView = BackboneRelativeView.extend({
       "height":baseline.bottom_half + "px", 
       "line-height": baseline.bottom_half + "px"});
   },
-  _renderName: function() {
-  
-    if (!this.updated_from_div) {
-      this.$('.guest_name').text(this.model.get("name"))   
-    }         
-    
+  _renderName: function() {  
+    if (!this.updated_from_div) this.$('.guest_name').text(this.model.get("name"))
     this.updated_from_div = false;
   },
   _renderFontFamily: function() {

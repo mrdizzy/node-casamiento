@@ -6,9 +6,7 @@
   background-color:white; /* stop body background image seeping .placethrough */
 }
 
-.appended_place_card {
-    display:none;
-}
+.appended_place_card { display:none; }
 
   #actual_cards .place_card_view {
     width:50%;
@@ -65,8 +63,6 @@
         }        
     
     .delete_button { top:45%; }
-    
-      #flat_preview .delete_button {  display:none; }
     
     .place_card_view:nth-child(odd) .place_card_border {
       border-right:0 
