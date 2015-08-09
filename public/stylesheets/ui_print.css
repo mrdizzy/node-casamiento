@@ -189,6 +189,8 @@
     margin:0;
     margin-right:65%;
     position:fixed;
+    
+    -webkit-overflow-scrolling: touch;
     top:0;
     overflow:scroll;
     height:100%;
