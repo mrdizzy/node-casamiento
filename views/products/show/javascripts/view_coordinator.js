@@ -38,6 +38,7 @@ var CoordinatorView = Backbone.View.extend({
       this.step_view.render();
       that.slides_view.render().$el.fadeIn();  
       this.first_render = false;  
+     
     }  
     this.current_view = "home"
     app_router.navigate("")    
@@ -66,6 +67,14 @@ var CoordinatorView = Backbone.View.extend({
       that.step_view.render();
       $('#loading_main_page_spinner').hide();
       that.print_ui_view.render().$el.show()     
+      
+      if(this.print_ui_view.mobile) {
+        var upper_place_card_space = ((70.714285714285714285714285714286/100) * ((95/100) * $('body').width()))
+        var header_space = 37;
+        var window_height = $(window).height();
+        $('.right_column').css("height", (window_height - header_space - upper_place_card_space))
+        console.log((window_height - header_space - upper_place_card_space))
+      }
     }
  
     $('#print_now').click(function()  { that.print_ui_view.printNow(); })

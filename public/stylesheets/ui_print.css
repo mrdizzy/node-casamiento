@@ -159,7 +159,7 @@
   
     #choose_layout { padding-top:2em; }
   
-  #actual_cards { padding-top:30px; }
+  #actual_cards { padding-top:35px; }
     #actual_cards .place_card_view { width:100%; }
      
     #actual_cards .place_card_view:nth-child(even) .place_card_parent { float:right; }
