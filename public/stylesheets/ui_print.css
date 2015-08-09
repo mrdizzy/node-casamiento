@@ -87,16 +87,17 @@
   
   
   body.printui_view .left_column {
-    position:fixed;
     background-color:white;
     top:0;
-    height:50vh;
+    padding-bottom:50vh;
     float:none;
-    overflow:scroll;
     border-bottom:1px solid black;
   }   
   body.printui_view .right_column {   
-    padding-top:50vh;
+    height:50vh;
+    position:fixed;
+    overflow:scroll;
+    bottom:0;
   }
   body.printui_view #header_wrapper, 
   body.printui_view #middle_column { display:none }
@@ -183,8 +184,18 @@
 @media all and (min-width: 501px) and (max-width: 800px) {  
 /* ----------------------------------------------------------------------------- */  
 
-  .printui_view .left_column { width:65%; overflow:none;margin-left:35%;}
-  .printui_view .right_column { margin:0;margin-right:65%;position:fixed;top:0;overflow:scroll;height:100%;right:0;border-top:0;border-right:1px dotted black;}
+  .printui_view .left_column { width:65%; overflow:none; margin-left:35%;}
+  .printui_view .right_column { 
+    margin:0;
+    margin-right:65%;
+    position:fixed;
+    top:0;
+    overflow:scroll;
+    height:100%;
+    right:0;
+    border-top:0;
+    border-right:1px dotted black;
+  }
     
   #menu_lines { display:none; } 
   
@@ -220,6 +231,11 @@
     float:none;
     width:90%;
   }
+}
+
+/* Keyboard active on phone */
+@media screen and (max-width:599px) and (max-height:300px) {
+    #right_col { display:none} 
 }
 
   /* Netbook
