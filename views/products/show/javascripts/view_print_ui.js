@@ -1,8 +1,6 @@
 var PrintControlPanelView = BackboneRelativeView.extend({
   el: '#print_ui',
   initialize: function() {
-  
-    console.log(thisProduct.get("browser"))
     if(thisProduct.get("browser")) {
     $('body').addClass(thisProduct.get("browser"))
     }

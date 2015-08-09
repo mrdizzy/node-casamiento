@@ -4,7 +4,7 @@
   This allows us to make sure that when the font size is changed
   it remains consistent relative to its container 
   
-  This view inherits from GuestView. It takes a Guest as a model.
+  This view takes a Guest as a model.
   We start by binding the window resize events to two private render methods, _renderFontSize and
   _renderBaseline, which will rerender the font and baseline when
   the window is resized
@@ -18,7 +18,7 @@ var PlaceCardView = BackboneRelativeView.extend({
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily);   
     this.listenTo(this.model, "change:font_size", this._renderFontSize);
     this.listenTo(this.model, "change:baseline", this._renderBaseline)
-    this.listenTo(this.model, "change:name", this._renderName)
+   // this.listenTo(this.model, "change:name", this._renderName)
     this.listenTo(this.model, "remove", this.deleteGuest)
   },  
   events: {  
