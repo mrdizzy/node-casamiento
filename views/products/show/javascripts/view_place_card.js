@@ -22,7 +22,7 @@ var PlaceCardView = BackboneRelativeView.extend({
     this.listenTo(this.model, "remove", this.deleteGuest)
   },  
   events: {  
-    "blur .guest_name": 'updateGuestFromDiv',
+   // "blur .guest_name": 'updateGuestFromDiv',
  //   'click .guest_name': 'clearGuest',  
     'click .delete_guest': 'deleteGuest',
     'click .plus_font': 'increaseFont',  
