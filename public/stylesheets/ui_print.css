@@ -168,7 +168,7 @@
 /* ----------------------------------------------------------------------------- */  
 
   .printui_view .left_column { width:65%; overflow:none;margin-left:35%;}
-  .printui_view .right_column { margin:0;margin-right:65%;position:fixed;top:0;right:0;border-top:0;border-right:1px dotted black;}
+  .printui_view .right_column { margin:0;margin-right:65%;position:fixed;top:0;overflow:scroll;height:100%;right:0;border-top:0;border-right:1px dotted black;}
     
   #menu_lines { display:none; } 
   
