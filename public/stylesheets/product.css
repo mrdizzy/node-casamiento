@@ -162,19 +162,6 @@
     #second_product_type_icon,
     #description_container .shell { display:none; } 
 
-  body.printui_view .left_column {
-    background-color:white;
-    z-index:10;
-    width:100%;
-    position:fixed;
-    float:none;
-    border-bottom:1px solid black;
-    overflow:scroll;
-    overflow-x: hidden;
-  }   
-  
-  body.printui_view #header_wrapper, 
-  body.printui_view #middle_column { display:none }
   
   #mobile_spacer {
     z-index:100000000000000000000000000000000000000000;

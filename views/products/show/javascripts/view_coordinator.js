@@ -57,37 +57,34 @@ var CoordinatorView = Backbone.View.extend({
         $('body').addClass("printui_view")
         if (that.print_ui_view.mobile) {       
          // var mobile_split_div_height = $('.place_card_view').height() + $('#control_panel').height();
-          //$('.left_column').height(mobile_split_div_height)
+         // $('.left_column').height(mobile_split_div_height)
          // $('#mobile_spacer').height(mobile_split_div_height)
         } else {
-         // var header_height = $('#header_wrapper').height();
-         // var viewport_height = $(window).height()
+         //var header_height = $('#header_wrapper').height();
+         //var viewport_height = $(window).height()
 
-         // $('#preview').height(viewport_height-header_height)
+         //$('#preview').height(viewport_height-header_height)
         }
-        window.scrollTo(0,0);
-      })      
+     window.scrollTo(0,0);
+    })      
     } else if (that.current_view == "printui") {    
       that.print_ui_view.$el.fadeOut(function() {
       that.slides_view.$el.fadeIn();
       })
     } else {
-    $('body').addClass("printui_view")
+      $('body').addClass("printui_view")
       that.step_view.render();
       $('#loading_main_page_spinner').hide();
       that.print_ui_view.render().$el.show()
-      if (that.print_ui_view.mobile) {
-      
-        var mobile_split_div_height = $('.place_card_view').height() + $('#control_panel').height();
-        $('.left_column').height(mobile_split_div_height)
-        $('#mobile_spacer').height(mobile_split_div_height)
-       
-    }
-    else {
-       var header_height = $('#header_wrapper').height();
-      var viewport_height = $(window).height()
-      $('#preview').height(viewport_height-header_height)     
-    }
+      //if (that.print_ui_view.mobile) {
+      //  var mobile_split_div_height = $('.place_card_view').height() + $('#control_panel').height();
+      //  $('.left_column').height(mobile_split_div_height)
+      //  $('#mobile_spacer').height(mobile_split_div_height) 
+      //} else {
+      //  var header_height = $('#header_wrapper').height();
+      //  var viewport_height = $(window).height()
+      //  $('#preview').height(viewport_height-header_height)     
+      //}
     
     }
    //$(window).on("resize", function() {
