@@ -184,7 +184,7 @@
 @media all and (min-width: 501px) and (max-width: 800px) {  
 /* ----------------------------------------------------------------------------- */  
 
-  .printui_view .left_column { width:65%; overflow:none; float:right;}
+  .printui_view .left_column { width:65%; overflow:none;margin-left:35%;}
   .printui_view .right_column { 
     margin:0;
     margin-right:65%;
