@@ -3,15 +3,6 @@
 #ipad_blurb, 
 #mobile_ui_printer_icon { display:none; }
  
-.printui_view .left_column {
-  position:fixed;
-  width:67.9%; /* This is because a fixed panel uses widths based on the overall page width, not parent elements, so we do 70% of 97% (innerpagecontainer is 97% of the body, and rightcol is 70% of inner page container) */   
-  }
-  .printui_view #preview {
-    height:100%;
-    overflow:scroll;
-    overflow-x:hidden;
-  }
 #top_of_page { position:relative; }
 
   #control_panel {
@@ -176,7 +167,8 @@
 @media all and (min-width: 501px) and (max-width: 800px) {  
 /* ----------------------------------------------------------------------------- */  
 
-  .printui_view .left_column { width:65%; }
+  .printui_view .left_column { width:65%; overflow:none;}
+  .printui_view .right_column { position:fixed;}
     
   #menu_lines { display:none; } 
   
