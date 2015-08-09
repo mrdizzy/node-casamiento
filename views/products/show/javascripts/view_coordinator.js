@@ -32,17 +32,18 @@ var CoordinatorView = Backbone.View.extend({
     var that = this;
     if(this.first_render) $('#loading_main_page_spinner').hide();
     if(this.current_view == "printui") {
-      this.print_ui_view.$el.fadeOut(function() {
-        that.slides_view.$el.fadeIn();
-      })
+      this.print_ui_view.$el.fadeOut(function() { that.slides_view.$el.fadeIn(); })
+      
     } else {
       this.step_view.render();
       that.slides_view.render().$el.fadeIn();  
       this.first_render = false;  
     }  
     this.current_view = "home"
-    app_router.navigate("")
+    app_router.navigate("")    
   },
+  
+  
   renderFlatPreview: function() {
     var that = this;   
     
@@ -50,22 +51,11 @@ var CoordinatorView = Backbone.View.extend({
     this.stopListening(thisProduct, 'change:font')
     if(this.current_view == "home") { // If we are on the products slides page
       that.slides_view.$el.fadeOut(function() {        
-        that.print_ui_view.render().$el.fadeIn(500, function() {            
-          $(window).trigger("resize")
-        });   
+        that.print_ui_view.render().$el.fadeIn(500, function() { $(window).trigger("resize") });   
         that.current_view = "printui"        
         $('body').addClass("printui_view")
-        if (that.print_ui_view.mobile) {       
-         // var mobile_split_div_height = $('.place_card_view').height() + $('#control_panel').height();
-         // $('.left_column').height(mobile_split_div_height)
-         // $('#mobile_spacer').height(mobile_split_div_height)
-        } else {
-         //var header_height = $('#header_wrapper').height();
-         //var viewport_height = $(window).height()
-
-         //$('#preview').height(viewport_height-header_height)
-        }
-     window.scrollTo(0,0);
+       
+        window.scrollTo(0,0);
     })      
     } else if (that.current_view == "printui") {    
       that.print_ui_view.$el.fadeOut(function() {
@@ -75,29 +65,10 @@ var CoordinatorView = Backbone.View.extend({
       $('body').addClass("printui_view")
       that.step_view.render();
       $('#loading_main_page_spinner').hide();
-      that.print_ui_view.render().$el.show()
-      //if (that.print_ui_view.mobile) {
-      //  var mobile_split_div_height = $('.place_card_view').height() + $('#control_panel').height();
-      //  $('.left_column').height(mobile_split_div_height)
-      //  $('#mobile_spacer').height(mobile_split_div_height) 
-      //} else {
-      //  var header_height = $('#header_wrapper').height();
-      //  var viewport_height = $(window).height()
-      //  $('#preview').height(viewport_height-header_height)     
-      //}
-    
+      that.print_ui_view.render().$el.show()     
     }
-   //$(window).on("resize", function() {
-   //  if(that.current_view == "printui") {
-   //     var header_height = $('#header_wrapper').height();
-   //      var viewport_height = $(window).height()
-
-   //  $('#preview').height(viewport_height-header_height)
-   //  }
-   //}); 
-    $('#print_now').click(function() {
-      that.print_ui_view.printNow();
-    })
+ 
+    $('#print_now').click(function()  { that.print_ui_view.printNow(); })
     
     this.current_view = "printui"
     app_router.navigate("print")
