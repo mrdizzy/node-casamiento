@@ -44,7 +44,14 @@ var CoordinatorView = Backbone.View.extend({
     app_router.navigate("")    
   },
   
-  
+  _calculateSpaceForFixedPosition: function() {
+  if(this.print_ui_view.mobile) { 
+      var upper_place_card_space = ((70.714285714285714285714285714286/100) * ((95/100) * $('body').width()))
+        var header_space = 35;
+        var window_height = $(window).height();
+        $('.right_column').css("height", (window_height - header_space - upper_place_card_space))
+        }
+  },
   renderFlatPreview: function() {
     var that = this;   
     
@@ -56,6 +63,7 @@ var CoordinatorView = Backbone.View.extend({
         that.current_view = "printui"        
         $('body').addClass("printui_view")
        
+      that._calculateSpaceForFixedPosition()
         window.scrollTo(0,0);
     })      
     } else if (that.current_view == "printui") {    
@@ -64,17 +72,12 @@ var CoordinatorView = Backbone.View.extend({
       })
     } else {
       $('body').addClass("printui_view")
+      
+      this._calculateSpaceForFixedPosition()
       that.step_view.render();
       $('#loading_main_page_spinner').hide();
       that.print_ui_view.render().$el.show()     
       
-      if(this.print_ui_view.mobile) {
-        var upper_place_card_space = ((70.714285714285714285714285714286/100) * ((95/100) * $('body').width()))
-        var header_space = 35;
-        var window_height = $(window).height();
-        $('.right_column').css("height", (window_height - header_space - upper_place_card_space))
-        console.log((window_height - header_space - upper_place_card_space))
-      }
     }
  
     $('#print_now').click(function()  { that.print_ui_view.printNow(); })
