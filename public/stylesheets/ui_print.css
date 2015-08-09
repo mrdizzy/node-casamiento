@@ -88,18 +88,19 @@
   
   body.printui_view .left_column {
     background-color:white;
-    z-index:10;
     width:100%;
+  
    position:static;
-   padding-top:50vh;
+   padding-bottom:50vh;
     float:none;
     border-bottom:1px solid black;
 
   }   
   body.printui_view .right_column {
     position:fixed;
+      bottom:0;
     height:50vh;
-    top:0;
+
     overflow:scroll;
   }
   body.printui_view #header_wrapper, 
