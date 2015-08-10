@@ -370,7 +370,8 @@
   body.quick_guests_selected #right_col { /* Hide right column */
     overflow:hidden; 
     width:0;
-    height:100px;
+    height:200px;
+    background-color:yellow;
     top:0;
   }
   
