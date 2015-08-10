@@ -108,10 +108,12 @@
   body.quick_guests_selected #right_col { overflow:visible; }
   body.quick_guests_selected .right_column .spc { display:none;}
   body.quick_guests_selected .right_column #step_3 { display:block;}
+  
+  body.quick_guests_selected .right_column .spc { display:none;}
   body.quick_guests_selected #quick_guests { 
     display:block;
     position:fixed;
-    top:0;left:0;width:100vw;height:50vh;
+    top:0;left:0;
     z-index:99999999999999999999999;
   }
   
