@@ -24,12 +24,14 @@ var AppRouter = Backbone.Router.extend({
    //   coordinator_view.renderFlatPreview();
    // },  
     "print": function() {
-      coordinator_view.renderFlatPreview();    
+      coordinator_view.renderFlatPreview();          
+      $('body').addClass("printui_view")
       $('body').removeClass('guest_focused')  
       $('body').removeClass('quick_guests_selected')  
     }, 
     "": function(actions) {  
       coordinator_view.renderHome();
+       $('body').removeClass("printui_view")
     }
   }
 });
