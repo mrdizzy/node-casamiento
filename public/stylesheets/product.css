@@ -370,7 +370,7 @@
   body.quick_guests_selected #right_col { 
     position:static;
     overflow:auto;
-    height:100vh;
+    height:100%;
   }
   
   body.quick_guests_selected .left_column { /* Hide place cards */
@@ -382,7 +382,7 @@
   body.quick_guests_selected #step_3_container { display:none;}
   
   body.quick_guests_selected { 
-  height:100vh;
+  height:100%;
   }
  
    /* .guest_focused */
