@@ -26,6 +26,7 @@ var PlaceCardView = BackboneRelativeView.extend({
     //'focus .guest_name': 'clearGuest',  
     'focus .guest_name': 'focusGuest',
     'blur .guest_name': 'blurGuest',
+    'blur .guest_name': 'updateGuestFromDiv',
     'click .delete_guest': 'deleteGuest',
     'click .plus_font': 'increaseFont',  
     'click .minus_font': 'decreaseFont',
