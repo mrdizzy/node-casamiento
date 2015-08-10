@@ -30,12 +30,26 @@ var PlaceCardView = BackboneRelativeView.extend({
     'click .plus_font': 'increaseFont',  
     'click .minus_font': 'decreaseFont',
     'click .up_baseline': 'upBaseline',
-    'click .down_baseline': 'downBaseline'
+    'click .down_baseline': 'downBaseline',
+     "keyup .guest_name": "resetFocus"
   },   
   focusGuest: function() {
+  var that = this;
     $('body').addClass("guest_focused")
+     this.timeout_id = setTimeout(function(){
+        that.$('.guest_name').blur();
+      }, 5000);  
+  },
+  resetFocus: function() {
+      var that = this;
+ 
+    clearTimeout(this.timeout_id)
+    this.timeout_id = setTimeout(function(){
+       that.$('.guest_name').blur();
+      }, 5000);   
   },
  blurGuest: function() {
+   clearTimeout(this.timeout_id)
     $('body').removeClass("guest_focused")
   },
   deleteGuest: function() {
