@@ -110,6 +110,7 @@
   top:0;left:0;width:100vw;height:100vh;
   z-index:99999999999999999999999; }
   
+   body.quick_guests_selected .left_column { display:none; width:0;height:0;}
   #control_panel { 
     padding-top:0; 
     width:100%; 
@@ -243,6 +244,10 @@
   }
 }
 
+/* 
+@media screen and (max-width:599px) and (max-height:300px) {
+    #right_col { display:none} 
+}
 */
   /* Netbook
   ============================================================================================================
