@@ -369,8 +369,9 @@
   /* .quick_guests_selected */
   body.quick_guests_selected #right_col { 
     position:static;
-    overflow:auto;
-    height:auto;
+    height:0;
+    overflow:visible;
+    height:150px;
   }
   
   body.quick_guests_selected .left_column { /* Hide place cards */
@@ -382,7 +383,7 @@
   body.quick_guests_selected #step_3_container { display:none;}
   
   body.quick_guests_selected { 
-  height:auto;
+  height:0;
   }
  
    /* .guest_focused */
