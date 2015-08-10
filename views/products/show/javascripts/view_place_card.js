@@ -24,6 +24,8 @@ var PlaceCardView = BackboneRelativeView.extend({
   events: {  
     "blur .guest_name": 'updateGuestFromDiv',
     //'focus .guest_name': 'clearGuest',  
+    'focus .guest_name': 'focusGuest',
+    'blur .guest_name': 'blurGuest',
     'click .delete_guest': 'deleteGuest',
     'click .plus_font': 'increaseFont',  
     'click .minus_font': 'decreaseFont',
@@ -31,7 +33,10 @@ var PlaceCardView = BackboneRelativeView.extend({
     'click .down_baseline': 'downBaseline'
   },   
   focusGuest: function() {
-    this.$('.guest_name').get(0).focus();
+    $('body').addClass("guest_focused")
+  },
+ blurGuest: function() {
+    $('body').removeClass("guest_focused")
   },
   deleteGuest: function() {
     thisProduct.get("guests").remove(this.model);

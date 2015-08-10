@@ -110,7 +110,9 @@
   top:0;left:0;width:100vw;height:100vh;
   z-index:99999999999999999999999; }
   
-   body.quick_guests_selected .left_column { display:none; width:0;height:0;}
+ body.quick_guests_selected .left_column { display:none; width:0;height:0;}
+ 
+ body.guest_focused #right_col { display:none;}
   #control_panel { 
     padding-top:0; 
     width:100%; 
