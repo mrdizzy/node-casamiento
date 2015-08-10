@@ -299,7 +299,7 @@
   #mobile_ui_printer_icon { 
     display:block;
     padding-top:2px;
-    width:7%;
+    width:8%;
     padding-left:3%;
     margin-top:2px;
     float:left;
@@ -308,7 +308,7 @@
   #ui_global_font_mobile {
     padding:0;    
     padding-top:3px;
-    width:58%;
+    width:57%;
   }
 
     #ui_global_font_mobile div {
@@ -356,6 +356,7 @@
   }   
   body.printui_view #right_col {   
     height:50vh;
+    z-index:110;
     border-top:1px solid black;
     position:fixed;
     -webkit-overflow-scrolling: touch; /* So ipad/iphone handles scrolling on panel correctly */
