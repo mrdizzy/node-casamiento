@@ -26,7 +26,7 @@ var AppRouter = Backbone.Router.extend({
     "print": function() {
       coordinator_view.renderFlatPreview();    
       $('body').removeClass('guest_focused')  
-            $('body').removeClass('quick_guests_selected')  
+      $('body').removeClass('quick_guests_selected')  
     }, 
     "": function(actions) {  
       coordinator_view.renderHome();
