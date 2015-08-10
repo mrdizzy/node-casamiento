@@ -397,8 +397,8 @@
  ============================================================================================================ */
 @media all and (min-width: 501px) and (max-width: 800px) {
 /* ----------------------------------------------------------------------------- */    
-  .left_column { width:65%; float:left;}
-  .right_column { margin-left:65%; }
+  .left_column { width:65%;float:right;}
+  .right_column { margin-right:65%;margin-left:0;border-left:0;border-right:1px dotted black; }
   .buy { padding-top:0.75em; }
   .slide, 
   #description_container { 
