@@ -89,7 +89,7 @@
 
     #step_1 { border-top:0;}
   body.printui_view .left_column {
-    background-color:white;
+    background-color:transparent;
     top:0;
     padding-bottom:50vh;
     float:none;
@@ -104,7 +104,13 @@
   }
   body.printui_view #header_wrapper, 
   body.printui_view #middle_column { display:none }
+  body.quick_guests_selected #right_col { overflow:visible; }
+  body.quick_guests_selected #quick_guests { display:block;
+  position:fixed;
+  top:0;left:0;width:100vw;height:100vh;
+  z-index:99999999999999999999999; }
   
+   body.quick_guests_selected .left_column { display:none; width:0;height:0;}
   #control_panel { 
     padding-top:0; 
     width:100%; 

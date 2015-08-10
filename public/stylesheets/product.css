@@ -162,14 +162,6 @@
     #second_product_type_icon,
     #description_container .shell { display:none; } 
 
-  
-  #mobile_spacer {
-    z-index:100000000000000000000000000000000000000000;
-   /* width: 95%;*/
-    display:block;
-  /*  padding-bottom: 70.714285714285714285714285714286%;*/
-  }
-  
   .left_column { position:static; }
   
   #preview {
@@ -180,6 +172,7 @@
     clear:both; 
     border-left:0;
   }
+  
       
   #description_container { 
     float:none;
