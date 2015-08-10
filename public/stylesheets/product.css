@@ -235,14 +235,19 @@
  ============================================================================================================ */
 @media all and (min-width: 220px) and (max-width: 500px) {
 /* ----------------------------------------------------------------------------- */    
-   #inner_page_container { margin:0;}
+   #inner_page_container { margin:0; }
   .slide { 
     width:100%;
     float:none;
   }
     .slide .shell, 
     #second_product_type_icon,
-    #description_container .shell { display:none; } 
+    #description_container .shell,
+    .desktop, 
+    #ui_printer_icon,
+    .tent { display:none; }    
+    
+  .mobile { display:block; }
 
   .left_column { position:static; }
   
@@ -263,52 +268,9 @@
 
     .buy { padding-top:0.75em; }
   #print_button { width:60%; }
- .mobile { display:block; }
-  .desktop, 
-  #ui_printer_icon,
-  .tent { display:none; }  
-
+  
   #step_1 { border-top:0; }
   
-  /* printui_view */
-  body.printui_view .left_column {
-    padding-bottom:50vh;
-    float:none;
-    border-bottom:1px solid black;
-  }   
-  body.printui_view #right_col {   
-    height:50vh;
-    border-top:1px solid black;
-    position:fixed;
-    -webkit-overflow-scrolling: touch; /* So ipad/iphone handles scrolling on panel correctly */
-    overflow:scroll;
-    bottom:0;
-  }
-  body.printui_view #header_wrapper, 
-  body.printui_view #middle_column { display:none; }
-  
-  /* .quick_guests_selected */
-  body.quick_guests_selected #right_col { 
-    overflow:hidden; 
-    width:0;
-    height:0;
-    top:0;
-  }
-  
-  body.quick_guests_selected #quick_guests { 
-    display:block;
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:99999999999999999999999;
-  }
-  
- body.quick_guests_selected .left_column { display:none; width:0;height:0;}
- body.quick_guests_selected  { width:0;height:0;}
- 
-   /* .guest_focused */
- body.guest_focused #right_col { display:none; }
- 
   #control_panel { 
     padding-top:0; 
     width:100%; 
@@ -384,8 +346,54 @@
     clear:both;
     float:none;
     width:90%;
+  } 
+  
+  /* printui_view */
+  body.printui_view .left_column {
+    padding-bottom:50vh;
+    float:none;
+    border-bottom:1px solid black;
+  }   
+  body.printui_view #right_col {   
+    height:50vh;
+    border-top:1px solid black;
+    position:fixed;
+    -webkit-overflow-scrolling: touch; /* So ipad/iphone handles scrolling on panel correctly */
+    overflow:scroll;
+    bottom:0;
+  }
+  body.printui_view #header_wrapper, 
+  body.printui_view #middle_column { display:none; }
+  
+  /* .quick_guests_selected */
+  body.quick_guests_selected #right_col { /* Hide right column */
+    overflow:hidden; 
+    width:0;
+    height:0;
+    top:0;
   }
   
+  body.quick_guests_selected #quick_guests { /* Focus screen on textarea */
+    display:block;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:99999999999999999999999;
+  }
+  
+  body.quick_guests_selected .left_column { /* Hide place cards */
+    display:none; 
+    width:0;
+    height:0;
+  }
+  body.quick_guests_selected  { /* Hide body as it has a default height of 800px */
+    width:0;
+    height:0;
+  }
+ 
+   /* .guest_focused */
+  body.guest_focused #right_col { display:none; }
+ 
 }
   
 /* Phablet ============================================================================================================
