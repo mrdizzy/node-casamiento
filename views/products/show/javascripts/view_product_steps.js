@@ -20,8 +20,8 @@ var StepView = BackboneRelativeView.extend({
     "click .texture": "updateTexture", 
     "click .weight": "updateWeight",
     "focus #quick_guests": "selectQuickGuests",    
-   // "blur #quick_guests": "hideQuickGuests",
-   // "click #quick_guests": "updateCaretAfterClick",
+    "blur #quick_guests": "hideQuickGuests",
+    "click #quick_guests": "updateCaretAfterClick",
     "keyup #quick_guests": "keyPressGuests"
   },
   // When the guests entry textarea is selected we add a class to the root element
