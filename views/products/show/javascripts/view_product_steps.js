@@ -30,7 +30,6 @@ var StepView = BackboneRelativeView.extend({
   selectQuickGuests: function() { 
     $('body').addClass("quick_guests_selected");
     app_router.navigate("editing_quickguests")
-    window.scrollTo(0,0)
   },
   hideQuickGuests: function() { $('body').removeClass("quick_guests_selected") },
   // If you happen to click somewhere else on the textarea in the split second before rendering, this stops the caret from jumping to the previous location
