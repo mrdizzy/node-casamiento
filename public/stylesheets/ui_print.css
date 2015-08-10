@@ -99,6 +99,7 @@
     height:50vh;
     border-top:1px solid black;
     position:fixed;
+        -webkit-overflow-scrolling: touch;
     overflow:scroll;
     bottom:0;
   }
