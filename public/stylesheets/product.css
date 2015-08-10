@@ -367,30 +367,22 @@
   body.printui_view #middle_column { display:none; }
   
   /* .quick_guests_selected */
-  body.quick_guests_selected #right_col { /* Hide right column */
-    overflow:hidden; 
-    width:0;
-    height:200px;
-    background-color:yellow;
-    top:0;
-  }
-  
-  body.quick_guests_selected #quick_guests { /* Focus screen on textarea */
-    display:block;
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:99999999999999999999999;
+  body.quick_guests_selected #right_col { 
+    position:static;
+    overflow:auto;
+    height:100vh;
   }
   
   body.quick_guests_selected .left_column { /* Hide place cards */
     display:none; 
-    width:0;
-    height:0;
   }
-  body.quick_guests_selected  { /* Hide body as it has a default height of 800px */
-    width:0;
-    height:0;
+  
+  body.quick_guests_selected .spc { display:none;}
+  body.quick_guests_selected #step_3 { display:block;}
+  body.quick_guests_selected #step_3_container { display:none;}
+  
+  body.quick_guests_selected { 
+  height:100vh;
   }
  
    /* .guest_focused */
