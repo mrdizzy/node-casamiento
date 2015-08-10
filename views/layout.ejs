@@ -28,30 +28,30 @@
   </div>
   
   <div id="overlay"></div>
-    <div id="printsvg"></div>
+  <div id="printsvg"></div>
   
     <%- main %>
-    <div id="background_container">
+    
+  <div id="background_container">
     <div id="inner_page_container">
+  
       <%= include ./partials/header.ejs %>
-      
+     
       <div id="loading_main_page_spinner">
         <img src="/gfx/spinners/360.gif" style="width:64px;height:64px;" />
       </div>
     
       <div id="middle_column"><%- middle %></div>
       <div class="left_column"><%- left %></div> 
-      
-      
       <div id="right_col" class="right_column"><%- right %></div>
-   
-    
+  
       <div style="clear:both;"></div>
     </div>
     
-<div style="clear:both"></div>
-    </div>
-  </body>
+    <div style="clear:both"></div>
+  </div>
+
+</body>
   
   <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>    
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

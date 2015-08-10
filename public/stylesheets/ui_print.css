@@ -6,7 +6,8 @@
 #top_of_page { position:relative; }
 
   #control_panel {
-    width:67.9%;
+    width:67.9%; /* This element's fixed position is relative to the root element
+                    therefore we calculate the width as it would be relative to the root */
     margin-top:-1px;
     background-color:white;
     padding-top:0.5em;
@@ -78,8 +79,12 @@
   display:none;
 }
   
-/* Smartphone */
-@media all and (min-width: 300px) and (max-width: 500px) {  
+/* Smartphone ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================ */
+  
+@media all and (min-width: 220px) and (max-width: 500px) {  
 /* ----------------------------------------------------------------------------- */    
   .mobile { display:block; }
   .desktop, 
@@ -88,44 +93,50 @@
 
   #step_1 { border-top:0; }
   
+  /* printui_view */
   body.printui_view .left_column {
-    background-color:transparent;
-    top:0;
     padding-bottom:50vh;
     float:none;
     border-bottom:1px solid black;
   }   
-  body.printui_view .right_column {   
+  body.printui_view #right_col {   
     height:50vh;
     border-top:1px solid black;
     position:fixed;
-        -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch; /* So ipad/iphone handles scrolling on panel correctly */
     overflow:scroll;
     bottom:0;
   }
   body.printui_view #header_wrapper, 
-  body.printui_view #middle_column { display:none }
-  body.quick_guests_selected #right_col { overflow:visible; width:0;height:0;}
-  body.quick_guests_selected .right_column .spc,
-  body.quick_guests_selected .right_column #step_3_container { display:none;}
-  body.quick_guests_selected .right_column #step_3 { display:block;}
+  body.printui_view #middle_column { display:none; }
   
+  /* .quick_guests_selected */
+  body.quick_guests_selected #right_col { 
+    overflow:hidden; 
+    width:0;
+    height:0;
+    top:0;
+  }
   
   body.quick_guests_selected #quick_guests { 
     display:block;
     position:fixed;
-    top:0;left:0;
+    top:0;
+    left:0;
     z-index:99999999999999999999999;
   }
   
  body.quick_guests_selected .left_column { display:none; width:0;height:0;}
  body.quick_guests_selected  { width:0;height:0;}
  
+   /* .guest_focused */
  body.guest_focused #right_col { display:none; }
+ 
   #control_panel { 
     padding-top:0; 
     width:100%; 
   }
+  
   #control_panel_top_row { width:100%;}
   
   #menu_lines {
@@ -200,7 +211,11 @@
   
 }
   
-/* Phablet */
+/* Phablet ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================ */
+  
 @media all and (min-width: 501px) and (max-width: 800px) {  
 /* ----------------------------------------------------------------------------- */  
 

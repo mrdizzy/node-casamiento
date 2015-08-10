@@ -148,9 +148,91 @@
         margin:0 auto;
         display:none;
       }      
-   
+   .mobile, 
+#print_ui, 
+#ipad_blurb, 
+#mobile_ui_printer_icon { display:none; }
+ 
+#top_of_page { position:relative; }
+
+  #control_panel {
+    width:67.9%; /* This element's fixed position is relative to the root element
+                    therefore we calculate the width as it would be relative to the root */
+    margin-top:-1px;
+    background-color:white;
+    padding-top:0.5em;
+    position:fixed; 
+    z-index:9999999; 
+    opacity:0.9;
+    border-bottom:1px solid black; 
+    border-top:1px solid black;
+  }
+        
+    #ui_printer_icon { 
+      margin:0;
+      float:left;
+      width:35px;
+      margin-left:10%;
+      text-align:center;
+    }
+    
+    #ui_global_font, 
+    #ui_global_font_mobile {
+      width:70%;
+      float:right;
+      text-align:center;
+    }
+      #ui_global_font div,  
+      #ui_global_font_mobile div {    
+        border:1px solid #AAA;
+        opacity:0.5;
+        display:inline-block;
+        border-bottom-right-radius:12px;
+        border-top-left-radius:12px;
+        width:60px;      
+        height:45px;
+      }
+        #ui_global_font div:hover, 
+        #ui_global_font_mobile div:hover {
+          opacity:1;
+          cursor:pointer;
+        }
       
-/* Smartphone */
+      .global_font_increase { background: url('/gfx/font_increase.svg') no-repeat center; } 
+      .global_font_decrease { background: url('/gfx/font_decrease.svg') no-repeat center; } 
+      .global_baseline_up { background: url('/gfx/baseline_up.svg') no-repeat center; } 
+      .global_baseline_down { background: url('/gfx/baseline_down.svg') no-repeat center; } 
+      .global_font_reset { background: url('/gfx/cancel4.svg') no-repeat center; } 
+    
+#actual_cards { 
+  padding-top:60px;
+  background-color:white; /* stop body background image seeping through */
+}
+ 
+  #actual_cards .place_card_view.add_another, 
+  #actual_cards .place_card_view.checkout {
+    border:1px dotted grey;
+    border-radius:20px;
+    margin-top:20px;
+    width:45%;
+    padding-top:10px;
+    margin-left:2%;
+    margin-right:2%;
+  }
+    
+  .place_card_view:nth-child(even) .place_card_wrapper { float:left; }
+
+/* ipad */
+#print_ui.ipad #ipad_blurb { display:block;}
+#print_ui.ipad #per_page_4_container,
+#print_ui.ipad #per_page_8_container {
+  display:none;
+}
+      
+/* Smartphone ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================ */
 @media all and (min-width: 220px) and (max-width: 500px) {
 /* ----------------------------------------------------------------------------- */    
    #inner_page_container { margin:0;}
@@ -166,13 +248,12 @@
   
   #preview {
      margin-top:0;
-   height:auto;
+     height:auto;
   }
   .right_column { 
     clear:both; 
     border-left:0;
   }
-  
       
   #description_container { 
     float:none;
@@ -182,10 +263,135 @@
 
     .buy { padding-top:0.75em; }
   #print_button { width:60%; }
+ .mobile { display:block; }
+  .desktop, 
+  #ui_printer_icon,
+  .tent { display:none; }  
 
+  #step_1 { border-top:0; }
+  
+  /* printui_view */
+  body.printui_view .left_column {
+    padding-bottom:50vh;
+    float:none;
+    border-bottom:1px solid black;
+  }   
+  body.printui_view #right_col {   
+    height:50vh;
+    border-top:1px solid black;
+    position:fixed;
+    -webkit-overflow-scrolling: touch; /* So ipad/iphone handles scrolling on panel correctly */
+    overflow:scroll;
+    bottom:0;
+  }
+  body.printui_view #header_wrapper, 
+  body.printui_view #middle_column { display:none; }
+  
+  /* .quick_guests_selected */
+  body.quick_guests_selected #right_col { 
+    overflow:hidden; 
+    width:0;
+    height:0;
+    top:0;
+  }
+  
+  body.quick_guests_selected #quick_guests { 
+    display:block;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:99999999999999999999999;
+  }
+  
+ body.quick_guests_selected .left_column { display:none; width:0;height:0;}
+ body.quick_guests_selected  { width:0;height:0;}
+ 
+   /* .guest_focused */
+ body.guest_focused #right_col { display:none; }
+ 
+  #control_panel { 
+    padding-top:0; 
+    width:100%; 
+  }
+  
+  #control_panel_top_row { width:100%;}
+  
+  #menu_lines {
+    float:right;
+    z-index:99999999999999999999999999999999;  
+    padding-top:8px;
+    width:5%;
+    padding-right:2%;
+    cursor:pointer;
+  }
+  
+  #mobile_print_logo {
+    padding-top:2px;
+    padding-left:1%;
+    padding-bottom:2px;
+    width:24%;
+    float:left;
+    z-index:999999999999999999999999999;
+  }
+  
+  #mobile_ui_printer_icon { 
+    display:block;
+    padding-top:2px;
+    width:7%;
+    padding-left:3%;
+    margin-top:2px;
+    float:left;
+  }
+
+  #ui_global_font_mobile {
+    padding:0;    
+    padding-top:3px;
+    width:58%;
+  }
+
+    #ui_global_font_mobile div {
+      width:15%;
+      height:25px;
+      border-top-left-radius:8px;      
+      border-bottom-right-radius:8px;
+      background-size:50%;
+    }
+        
+  #ui_logo_container,   
+  #ui_printer_icon,
+  #layout_icons_wrapper { 
+    float:none; 
+    clear:both;
+    width:100%;
+  } 
+  
+    #choose_layout { padding-top:2em; }
+  
+  #actual_cards { padding-top:35px; }
+    #actual_cards .place_card_view { width:100%; }
+     
+    #actual_cards .place_card_view:nth-child(even) .place_card_parent { float:right; }
+  .place_card_view:nth-child(even) .font_size_adjust_buttons, 
+  .place_card_view:nth-child(even) .font_baseline_adjust_buttons,
+  .place_card_view:nth-child(even) .delete_button {
+    left:1%;
+  }
+  
+  #actual_cards .place_card_view.add_another, 
+  #actual_cards .place_card_view.checkout {
+    margin:0 auto;
+    margin-bottom:10px;
+    clear:both;
+    float:none;
+    width:90%;
+  }
+  
 }
   
-/* Phablet */
+/* Phablet ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================ */
 @media all and (min-width: 501px) and (max-width: 800px) {
 /* ----------------------------------------------------------------------------- */    
   .left_column { width:65%; float:left;}
@@ -203,4 +409,80 @@
   .chat-bubble { display:block; left:3em; }
 
   .texture { display:block; }
+  
+   .printui_view .left_column { 
+    width:65%; 
+    overflow:none;
+    margin-left:35%;
+  }
+  .printui_view .right_column { 
+    margin:0;
+    margin-right:65%;
+    position:fixed;    
+    -webkit-overflow-scrolling: touch;
+    overflow:scroll;
+    height:100%;
+    top:0;
+    right:0;
+    border-top:0;
+    border-right:1px dotted black;
+  }
+    
+  #menu_lines { display:none; } 
+  
+  #control_panel { 
+    padding-top:7px; 
+    width:65%; 
+    height:28px;
+  }
+  
+  #ui_printer_icon { width:25px; }
+    
+    #ui_global_font div {
+      width:40px;
+      height:20px;
+      margin:0;
+      background-size: 18px 18px;
+    }
+    #actual_cards { padding-top:35px;}
+      #actual_cards .place_card_view { width:100%; }
+    
+      #actual_cards .place_card_view:nth-child(even) .place_card_parent { float:right; }
+      .place_card_view:nth-child(even) .font_size_adjust_buttons, 
+      .place_card_view:nth-child(even) .font_baseline_adjust_buttons,
+      .place_card_view:nth-child(even) .delete_button {
+        left:1%;
+      }
+  
+  #actual_cards .place_card_view.add_another, 
+  #actual_cards .place_card_view.checkout {
+    margin:0 auto;
+    margin-bottom:10px;
+    clear:both;
+    float:none;
+    width:90%;
+  }
 }
+
+
+
+  /* Netbook
+  ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================ */
+  
+  @media all and (min-width: 801px) and (max-width:1025px) {
+  
+    #control_panel, 
+    .printui_view .left_column { width:78%; }
+    
+    #control_panel { height:52px;}
+    #actual_cards { padding-top:60px;}
+    
+  }
+  
+
+/* HIDDEN DIVS FOR PRINT
+==================================== */  
+#printsvg { display:none; }
