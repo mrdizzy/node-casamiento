@@ -34,6 +34,7 @@ var PlaceCardView = BackboneRelativeView.extend({
      "keyup .guest_name": "resetFocus"
   },   
   focusGuest: function() {
+  app_router.navigate("editing_place_cards")
   var that = this;
     $('body').addClass("guest_focused")
      this.timeout_id = setTimeout(function(){

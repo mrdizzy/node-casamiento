@@ -27,7 +27,10 @@ var StepView = BackboneRelativeView.extend({
   // When the guests entry textarea is selected we add a class to the root element
   // to enable us to detect that it has been focused and therefore make adjustments to
   // the layout for mobile devices that do not have enough screen space
-  selectQuickGuests: function() { $('body').addClass("quick_guests_selected")},
+  selectQuickGuests: function() { 
+    $('body').addClass("quick_guests_selected");
+    app_router.navigate("editing_quickguests")
+  },
   hideQuickGuests: function() { $('body').removeClass("quick_guests_selected") },
   // If you happen to click somewhere else on the textarea in the split second before rendering, this stops the caret from jumping to the previous location
   updateCaretAfterClick: function() { this.caret_position = this.$('#quick_guests')[0].selectionStart; },

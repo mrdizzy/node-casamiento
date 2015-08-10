@@ -67,9 +67,7 @@ var CoordinatorView = Backbone.View.extend({
         window.scrollTo(0,0);
     })      
     } else if (that.current_view == "printui") {    
-      that.print_ui_view.$el.fadeOut(function() {
-      that.slides_view.$el.fadeIn();
-      })
+          $('body').removeClass("guest_focused")
     } else {
       $('body').addClass("printui_view")
       
