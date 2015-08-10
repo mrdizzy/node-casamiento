@@ -106,6 +106,8 @@
   body.printui_view #header_wrapper, 
   body.printui_view #middle_column { display:none }
   body.quick_guests_selected #right_col { overflow:visible; }
+  body.quick_guests_selected .right_column .spc { display:none;}
+  body.quick_guests_selected .right_column #step_3 { display:block;}
   body.quick_guests_selected #quick_guests { 
     display:block;
     position:fixed;
@@ -114,6 +116,7 @@
   }
   
  body.quick_guests_selected .left_column { display:none; width:0;height:0;}
+ body.quick_guests_selected  { width:0;height:0;}
  
  body.guest_focused #right_col { display:none; }
   #control_panel { 
