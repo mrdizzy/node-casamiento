@@ -28,7 +28,7 @@ var StepView = BackboneRelativeView.extend({
   // to enable us to detect that it has been focused and therefore make adjustments to
   // the layout for mobile devices that do not have enough screen space
   selectQuickGuests: function() { 
-    $('body').addClass("quick_guests_selected");
+   // $('body').addClass("quick_guests_selected");
     app_router.navigate("editing_quickguests")
   },
   hideQuickGuests: function() { $('body').removeClass("quick_guests_selected") },
