@@ -397,9 +397,10 @@
  ============================================================================================================ */
 @media all and (min-width: 501px) and (max-width: 800px) {
 /* ----------------------------------------------------------------------------- */    
-  .left_column { width:65%;float:right;}
+  .left_column { width:65%;float:right;position:static;}
   .right_column { 
     margin-right:65%;
+
     margin-left:0;
     border-left:0;
     border-right:1px dotted black; 
@@ -420,20 +421,20 @@
   
    .printui_view .left_column { 
     width:65%; 
-    overflow:none;
-    margin-left:35%;
+    
+    border-left:1px dotted black;
+    float:right;
+    margin-left:0;
   }
   .printui_view .right_column { 
     margin:0;
     margin-right:65%;
-    position:fixed;    
+    position:static;
     -webkit-overflow-scrolling: touch;
-    overflow:scroll;
     height:100%;
     top:0;
     right:0;
     border-top:0;
-    border-right:1px dotted black;
   }
     
   #menu_lines { display:none; } 
