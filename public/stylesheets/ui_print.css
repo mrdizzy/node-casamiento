@@ -84,10 +84,10 @@
   .mobile { display:block; }
   .desktop, 
   #ui_printer_icon,
-    .tent { display:none; }
-  
+  .tent { display:none; }  
 
-    #step_1 { border-top:0;}
+  #step_1 { border-top:0; }
+  
   body.printui_view .left_column {
     background-color:transparent;
     top:0;

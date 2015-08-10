@@ -48,7 +48,7 @@ var CoordinatorView = Backbone.View.extend({
       var upper_place_card_space = ((70.714285714285714285714285714286/100) * ((95/100) * $('body').width()))
       var header_space = 35;
       var window_height = $(window).height();
-      $('.right_column').css("height", (window_height - header_space - upper_place_card_space))
+      //$('.right_column').css("height", (window_height - header_space - upper_place_card_space))
     }
   },
   renderFlatPreview: function() {
