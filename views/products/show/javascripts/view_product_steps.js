@@ -28,8 +28,10 @@ var StepView = BackboneRelativeView.extend({
   // to enable us to detect that it has been focused and therefore make adjustments to
   // the layout for mobile devices that do not have enough screen space
   selectQuickGuests: function() { 
+    if (this.mobile) {
+      app_router.navigate("editing_mobile_guests")
+    }
     $('body').addClass("quick_guests_selected");
-    app_router.navigate("editing_quickguests")
     this.$('#quick_guests').focus();
   },
   hideQuickGuests: function() { 
@@ -62,17 +64,18 @@ var StepView = BackboneRelativeView.extend({
     clearTimeout(this.timeout_id)
     this.timeout_id = setTimeout(function(){
         that.updateGuests(); 
-      }, 1000);   
+      }, 1500);   
   },
   updateGuests: function() {
     this.changed_names = true;
     var guests = ($('#quick_guests').val());
     if (!($.trim(guests ) == '')) {
-    if(guests.indexOf(',') === -1) { // Check how the names are delimited (comma or newline)
-      guests = guests.split("\n")
-    } else {
-      guests = guests.split(",")
-    }
+      if(guests.indexOf(',') === -1) { // Check how the names are delimited (comma or newline)
+        guests = guests.split("\n")
+      } else {
+        guests = guests.split(",")
+      }
+    
     var collection =  thisProduct.get("guests")
     var names = _.map(guests, function(name) {
       name = $.trim(name);

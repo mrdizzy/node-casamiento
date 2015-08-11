@@ -111,6 +111,7 @@ input {
     border-right: 1px dotted #000;
     margin:auto; 
     width:97%;
+    margin-top:81px;
   }  
    
     #header_wrapper {
@@ -168,8 +169,7 @@ input {
         display:block;
         width:170px;
       }
-      
-      
+    
     #mainmenulines {
       opacity:0.5;
       display:block;
