@@ -162,7 +162,7 @@
     background-color:white;
     padding-top:0.5em;
     position:fixed; 
-    z-index:9999999; 
+    z-index:81; 
     opacity:0.9;
     border-bottom:1px solid black; 
     border-top:1px solid black;
@@ -280,7 +280,7 @@
   
   #menu_lines {
     float:right;
-    z-index:99999999999999999999999999999999;  
+    z-index:91;  
     padding-top:8px;
     width:5%;
     padding-right:2%;
@@ -293,7 +293,7 @@
     padding-bottom:2px;
     width:24%;
     float:left;
-    z-index:999999999999999999999999999;
+    z-index:90;
   }
   
   #mobile_ui_printer_icon { 
@@ -356,7 +356,6 @@
   }   
   body.printui_view #right_col {   
     height:50vh;
-    z-index:110;
     border-top:1px solid black;
     position:fixed;
     -webkit-overflow-scrolling: touch; /* So ipad/iphone handles scrolling on panel correctly */

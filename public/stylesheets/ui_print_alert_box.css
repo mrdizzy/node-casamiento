@@ -5,7 +5,7 @@
   border:1px solid black;
   position:fixed;
   background-color:white;
-  z-index:100;
+  z-index:95;
   right:0;
   left:0;
   box-shadow:7px 7px 0 0 lightgrey;
@@ -178,6 +178,5 @@ transform: rotateY(180deg);
     padding-top:2%;
     margin:0;
     position:fixed;
-    z-index:90;
   } 
 }
