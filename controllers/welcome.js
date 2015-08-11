@@ -3,7 +3,7 @@ var _ = require('underscore'),
 		colours = require('./../lib/colour_lookup');
 
 exports.index = function(req, res) {
-	db.get(["botanic_sketch-name_place", "new_york_skyline-name_place"], function(err, docs) {
+	db.get(["botanic_sketch-name_place", "new_york_skyline-name_place", "paris_skyline-name_place", "london_skyline-name_place", "egyptian_floret-name_place", "beautiful-name_place", "simple_butterfly-name_place"], function(err, docs) {
 		docs = docs.toArray();  
 		docs.forEach(function(card) {
 			card.colour_0 = colours[card.colours[0]]
