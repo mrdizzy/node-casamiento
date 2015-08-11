@@ -455,7 +455,7 @@
     width:100%; 
     height:28px;
   }
-  body.printui_view #right_col { padding-top:37px; }
+  body.printui_view #right_col { padding-top:37px;  }
   #ui_printer_icon { width:25px; }
     
     #ui_global_font div {
