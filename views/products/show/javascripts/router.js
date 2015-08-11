@@ -7,6 +7,9 @@ var AppRouter = Backbone.Router.extend({
     "editing_place_cards": function() {
       
     },
+    "editing_mobile_guests": function() {
+      
+    },
    // "preview_place_card/colour0/:colour0": function(colour_0) {      
    //   thisProduct.updateColour(0, "#" + colour_0)
    //   coordinator_view.renderFlatPreview();
