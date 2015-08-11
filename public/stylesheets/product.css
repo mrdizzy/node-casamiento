@@ -370,20 +370,13 @@
   body.quick_guests_selected #right_col { 
     position:static;
     height:auto;
-    overflow:visible;
   }
   
   body.quick_guests_selected .left_column { /* Hide place cards */
     display:none; 
   }
   
-  body.quick_guests_selected .spc { display:none;}
-  body.quick_guests_selected #step_3 { display:block;}
-  body.quick_guests_selected #step_3_container { display:none;}
   
-  body.quick_guests_selected { 
-  height:auto;
-  }
  
    /* .guest_focused */
   body.guest_focused #right_col { display:none; }
