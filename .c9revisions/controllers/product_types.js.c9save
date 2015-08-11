@@ -1,0 +1,13 @@
+{"ts":1362513995013,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1362515446186,"patch":[[{"diffs":[[1,"var db = require('./config/database').test_ebay;\n\nexports.index = function(req, res) {\n    db.view('themes/all', { key: \"theme\" },  function(err, docs) {\n        console.log(err, docs)\n    })\n}"]],"start1":0,"start2":0,"length1":0,"length2":193}]],"length":193,"saved":false}
+{"ts":1362515458450,"patch":[[{"diffs":[[0,"uire('./"],[1,"../"],[0,"config/d"]],"start1":12,"start2":12,"length1":16,"length2":19}]],"length":196,"saved":false}
+{"ts":1362515778181,"patch":[[{"diffs":[[0,"ew('"],[-1,"themes/all"],[1,"all/type"],[0,"', {"]],"start1":99,"start2":99,"length1":18,"length2":16}]],"length":194,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1362607034316,"patch":[[{"diffs":[[0,"    })\n}"],[1,"\n\nexports.create = function(req, res) {\n    \n    console.log(req.theme, req.body)\n}"]],"start1":186,"start2":186,"length1":8,"length2":91}]],"length":277,"saved":false}
+{"ts":1362607196925,"patch":[[{"diffs":[[0,"    "],[-1,"\n    console.log(req.theme, req.body"],[1,"db.save({req.body}, function(error, docs) {\n        console.log(docs)\n    }"],[0,")\n}"]],"start1":234,"start2":234,"length1":43,"length2":82}]],"length":316,"saved":false}
+{"ts":1362607222834,"patch":[[{"diffs":[[0,"ave("],[-1,"{"],[0,"req.body"],[-1,"}"],[0,", fu"]],"start1":242,"start2":242,"length1":18,"length2":16}]],"length":314,"saved":false}
+{"ts":1362607614830,"patch":[[{"diffs":[[0,"    "],[-1,"console.log(docs)"],[1,"if(error) {\n            console.log(error)\n        } else {\n            res.json(req.body)\n        }"],[0,"\n   "]],"start1":284,"start2":284,"length1":25,"length2":108}]],"length":397,"saved":false}
+{"ts":1362607618863,"patch":[[{"diffs":[[0,"q.body)\n"],[1,"            res.end()\n"],[0,"        "]],"start1":371,"start2":371,"length1":16,"length2":38}]],"length":419,"saved":false}
+{"ts":1362607664703,"patch":[[{"diffs":[[0,"req, res) {\n"],[1,"    req.body.type = \"theme\"\n"],[0,"    db.save("]],"start1":222,"start2":222,"length1":24,"length2":52}]],"length":447,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1362665010287,"patch":[[{"diffs":[[0,"ig/d"],[-1,"atabase"],[1,"b"],[0,"').t"]],"start1":27,"start2":27,"length1":15,"length2":9}]],"length":441,"saved":false}
+{"ts":1362665019406,"patch":[[{"diffs":[[0,"type = \""],[-1,"them"],[1,"product_typ"],[0,"e\"\n    d"]],"start1":241,"start2":241,"length1":20,"length2":27}]],"length":448,"saved":false}
+{"ts":1362665026523,"patch":[[{"diffs":[[0,"y: \""],[-1,"them"],[1,"product_typ"],[0,"e\" }"]],"start1":112,"start2":112,"length1":12,"length2":19}]],"length":455,"saved":false}

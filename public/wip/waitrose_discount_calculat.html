@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<!-- This just calculates the total of 15% of discount --> 
+<body>
+<textarea id="items"></textarea>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  </body>
+  
+<script>
+    
+    $('#items').on("blur", function(e, f) {
+      var items = ($('#items').val());
+      var lines = items.split("\n");
+      var total = 0;
+      lines.forEach(function(line) {
+          total = total +parseFloat(line);
+      })
+      console.log(total - ((15/100) * total))
+    })
+</script>
+</html>

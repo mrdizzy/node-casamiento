@@ -183,14 +183,16 @@ input {
           
     .left_column { 
       width:70%; 
-      background-color:#fff
+      background-color:#fff;
+      float:left;
     }
     .right_column {
       background-color:#fff; 
       border-left:1px dotted black;
       margin-left: 70%; 
+      width:30%;
       text-align:center; 
-      min-width:180px;
+      
     }
     #footer { 
       border-left: 1px dotted #939598;      
@@ -271,7 +273,7 @@ input {
       }
     
     .left_column { width:78%;}
-    .right_column { margin-left:78%;}
+    .right_column { margin-left:78%;width:22%;}
   }
 
   /* Phablet 
