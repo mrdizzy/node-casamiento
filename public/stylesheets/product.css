@@ -365,7 +365,7 @@
   }
   body.printui_view #header_wrapper, 
   body.printui_view #middle_column { display:none; }
-  
+   comm
   body.quick_guests_selected { 
   height:0;
   overflow:visible;}
