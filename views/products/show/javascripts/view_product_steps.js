@@ -29,8 +29,8 @@ var StepView = BackboneRelativeView.extend({
   // the layout for mobile devices that do not have enough screen space
   selectQuickGuests: function() { 
     $('body').addClass("quick_guests_selected");
-    app_router.navigate("editing_mobile_guests")
-    
+   // app_router.navigate("editing_mobile_guests")
+    location.hash = "#editing_mobile_guests";
     this.$('#quick_guests').focus();
   },
   hideQuickGuests: function() { 
