@@ -1,6 +1,6 @@
 .product_type_icon { width:130px; }
   #header_wrapper { position:fixed; width:100%;top:0;left:0;}
-  #inner_page_container { margin-top:61px;}
+  #inner_page_container { margin-top:81px;}
 
   #product_container .product_type_icon { display:none; }
   
@@ -156,11 +156,10 @@
 #top_of_page { position:relative; }
 
   #control_panel {
-    width:67.9%; /* This element's fixed position is relative to the root element
+    width:97%; /* This element's fixed position is relative to the root element
                     therefore we calculate the width as it would be relative to the root */
-    margin-top:-1px;
+                    margin-top:-1px;
     background-color:white;
-    padding-top:0.5em;
     position:fixed; 
     z-index:81; 
     opacity:0.9;
@@ -205,7 +204,7 @@
       .global_font_reset { background: url('/gfx/cancel4.svg') no-repeat center; } 
     
 #actual_cards { 
-  padding-top:60px;
+  padding-top:52px;
   background-color:white; /* stop body background image seeping through */
 }
  
@@ -364,7 +363,7 @@
   }
   body.printui_view #header_wrapper, 
   body.printui_view #middle_column { display:none; }
-   comm
+  
   body.quick_guests_selected { 
   height:0;
   overflow:visible;}
@@ -379,8 +378,6 @@
   body.quick_guests_selected .left_column { /* Hide place cards */
     display:none; 
   }
-  
-  
  
    /* .guest_focused */
   body.guest_focused #right_col { display:none; }
@@ -478,9 +475,9 @@
   
   @media all and (min-width: 801px) and (max-width:1025px) {
   
-    #control_panel, 
+    #control_panel { width:100%; }
     .printui_view .left_column { width:78%; }
-    
+      #inner_page_container { margin-top:61px;}
     #control_panel { height:52px;}
     #actual_cards { padding-top:60px;}
     
