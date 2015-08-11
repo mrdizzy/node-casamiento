@@ -47,7 +47,7 @@ var PlaceCardView = BackboneRelativeView.extend({
     clearTimeout(this.timeout_id)
     this.timeout_id = setTimeout(function(){
        that.$('.guest_name').blur();
-      }, 5000);   
+      }, 3000);   
   },
  blurGuest: function() {
    clearTimeout(this.timeout_id)
