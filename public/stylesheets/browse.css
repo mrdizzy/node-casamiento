@@ -101,7 +101,7 @@
   font-size:1.9em;
 }
 
-@media all and (min-width: 320px) and (max-width: 500px) {
+@media all and (min-width: 220px) and (max-width: 500px) {
 /* ----------------------------------------------------------------------------- */    
    
   .browse_left_column,
@@ -118,7 +118,7 @@
   .related_4 h2 { 
     margin-top:0.3em;
     margin-bottom:0.3em;
-    font-size:1.4em;
+    font-size:1.2em;
     letter-spacing:0.2em;
   }
  
@@ -126,7 +126,7 @@
   .related_2 h2, 
   .related_5 h2,
   .related_6 h2 { 
-    font-size:1.8em; 
+    font-size:1.7em; 
     margin-top:0.3em;
     margin-bottom:0.3em;
     letter-spacing:0.2em;
