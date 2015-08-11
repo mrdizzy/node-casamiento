@@ -1,5 +1,19 @@
-.product_type_icon { width:130px; }
-  #header_wrapper { position:fixed; width:100%;top:0;left:0;}
+.left_column { 
+  width:70%; 
+  background-color:#fff;
+  float:left;
+}
+
+.right_column {
+  background-color:#fff; 
+  border-left:1px dotted black;
+  margin-left: 70%; 
+  width:30%;
+  text-align:center; 
+}
+
+  .product_type_icon { width:130px; }
+
   #inner_page_container { margin-top:81px;}
 
   #product_container .product_type_icon { display:none; }
@@ -30,8 +44,6 @@
     width:48%;
   }
     
-  #mobile_spacer { display:none; }
-  
   #print_button, 
   #add_another {
     margin:0 auto;    
@@ -115,19 +127,10 @@
         font: normal 2em 'OS Light';
       }
       
-      #guests { display:none; }
-      
       #quick_guests {
         width:90%;
         font: normal 1.2em 'OS Light'
       }
-      
-    input { 
-      border:1px solid darkgrey; 
-      font: normal 1.2em "OS";
-      padding:0.25em; 
-      text-align:center;
-    }
   
     .buy {
       font-size:1.2em;
@@ -207,6 +210,8 @@
   padding-top:52px;
   background-color:white; /* stop body background image seeping through */
 }
+
+#right_col { padding-top:52px; }
  
   #actual_cards .place_card_view.add_another, 
   #actual_cards .place_card_view.checkout {
@@ -247,15 +252,17 @@
     .tent { display:none; }    
     
   .mobile { display:block; }
-
-  .left_column { position:static; }
   
   #preview {
      margin-top:0;
      height:auto;
   }
-  .right_column { 
+  .left_column { width:100%; }
+  #right_col { 
+    width:100%;
     clear:both; 
+    margin:0;
+    padding:0;
     border-left:0;
   }
       
@@ -328,15 +335,16 @@
   
     #choose_layout { padding-top:2em; }
   
-  #actual_cards { padding-top:35px; }
+   #actual_cards { padding-top:35px; }
     #actual_cards .place_card_view { width:100%; }
      
     #actual_cards .place_card_view:nth-child(even) .place_card_parent { float:right; }
-  .place_card_view:nth-child(even) .font_size_adjust_buttons, 
-  .place_card_view:nth-child(even) .font_baseline_adjust_buttons,
-  .place_card_view:nth-child(even) .delete_button {
-    left:1%;
-  }
+                  
+                  .place_card_view:nth-child(even) .font_size_adjust_buttons, 
+                  .place_card_view:nth-child(even) .font_baseline_adjust_buttons,
+                  .place_card_view:nth-child(even) .delete_button {
+                    left:1%;
+                  }
   
   #actual_cards .place_card_view.add_another, 
   #actual_cards .place_card_view.checkout {
@@ -348,11 +356,16 @@
   } 
   
   /* printui_view */
+  
+  body.printui_view #header_wrapper, 
+  body.printui_view #middle_column { display:none; }
+  
   body.printui_view .left_column {
     padding-bottom:50vh;
     float:none;
     border-bottom:1px solid black;
-  }   
+  } 
+  
   body.printui_view #right_col {   
     height:50vh;
     border-top:1px solid black;
@@ -361,12 +374,11 @@
     overflow:scroll;
     bottom:0;
   }
-  body.printui_view #header_wrapper, 
-  body.printui_view #middle_column { display:none; }
   
   body.quick_guests_selected { 
-  height:0;
-  overflow:visible;}
+    height:0;
+    overflow:visible;
+  }
   
   /* .quick_guests_selected */
   body.quick_guests_selected #right_col { 
@@ -390,10 +402,13 @@
  ============================================================================================================ */
 @media all and (min-width: 501px) and (max-width: 800px) {
 /* ----------------------------------------------------------------------------- */    
-  .left_column { width:65%;float:right;position:static;}
+  .left_column { 
+    width:65%;
+    float:right;
+  }
+  
   .right_column { 
     margin-right:65%;
-
     margin-left:0;
     border-left:0;
     border-right:1px dotted black; 
@@ -404,9 +419,7 @@
     width:100%;
     float:none;
   }
-  #inner_page_container {
-      margin-top:41px;
-      }
+  #inner_page_container { margin-top:41px; }
 
   .chat-bubble { display:block; left:3em; }
 
@@ -414,7 +427,6 @@
   
    .printui_view .left_column { 
     width:65%; 
-    
     border-left:1px dotted black;
     float:right;
     margin-left:0;
@@ -475,11 +487,24 @@
   
   @media all and (min-width: 801px) and (max-width:1025px) {
   
-    #control_panel { width:100%; }
-    .printui_view .left_column { width:78%; }
       #inner_page_container { margin-top:61px;}
-    #control_panel { height:52px;}
-    #actual_cards { padding-top:60px;}
+      
+    .left_column { width:78%; }
+    
+      .printui_view .left_column { width:78%; }
+    
+    .right_column { 
+        margin-left:78%;
+        width:22%;
+    }
+    
+    #control_panel { 
+      width:100%;
+      height:52px;
+    }
+    
+    #actual_cards, 
+    #right_col { padding-top:52px ;}
     
   }
   
