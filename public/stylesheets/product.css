@@ -286,6 +286,7 @@
   
   #menu_lines {
     float:right;
+    display:block;
     z-index:91;  
     padding-top:8px;
     width:5%;
