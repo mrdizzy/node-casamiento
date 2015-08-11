@@ -6,7 +6,6 @@
   background-color:white; /* stop body background image seeping .placethrough */
 }
 
-.guest_name:hover { background-color:lightgrey; }
 
 .appended_place_card { display:none; }
 
