@@ -30,7 +30,7 @@ var StepView = BackboneRelativeView.extend({
   selectQuickGuests: function() { 
     $('body').addClass("quick_guests_selected");
    // app_router.navigate("editing_mobile_guests")
-    location.hash = "#editing_mobile_guests";
+    $('html,body').animate({scrollTop: $("#quick_guests").offset().top},0);
     this.$('#quick_guests').focus();
   },
   hideQuickGuests: function() { 
