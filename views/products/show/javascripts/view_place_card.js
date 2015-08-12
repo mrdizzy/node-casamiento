@@ -54,11 +54,9 @@ var PlaceCardView = BackboneRelativeView.extend({
     $('body').removeClass("guest_focused")
   },
   deleteGuest: function() {
-    thisProduct.get("guests").remove(this.model);
-    var that = this;
-    this.$el.fadeOut(function() {
-      that.remove();
-    });
+    //thisProduct.get("guests").remove(this.model);
+      this.$el.addClass("hide")
+    //});
   },
   updateGuestFromDiv: function() {
     this.updated_from_div = true;
