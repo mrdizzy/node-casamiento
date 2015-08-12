@@ -5,7 +5,7 @@
   border:1px solid black;
   position:fixed;
   background-color:white;
-  z-index:95;
+  z-index:1000;
   right:0;
   left:0;
   box-shadow:7px 7px 0 0 lightgrey;

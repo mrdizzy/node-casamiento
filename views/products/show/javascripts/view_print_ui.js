@@ -7,6 +7,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     BackboneRelativeView.prototype.initialize.apply(this)
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
     this.listenTo(thisProduct.get("guests"), 'add', this.appendPlaceCard)
+    this.listenTo(thisProduct.get("guests"), 'addMultiple', this.appendMultiplePlaceCards)
     this.ui_alert_box_view = new PrintAlertBoxView();
     this._place_card_print_collection = new PrintPlaceCardCollectionView({
       collection: thisProduct.get("guests")
@@ -43,6 +44,16 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     var place_card = $(place_card);
     this.$( ".add_another" ).before(place_card)    
     place_card.fadeIn(2000);
+  },
+  
+  appendMultiplePlaceCards: function(counter) {
+    var results = thisProduct.get("guests").slice(counter)
+    var html = []
+    var that = this;
+    results.forEach(function(guest) {
+        html.push(that._newPlaceCardView(guest, "appended_place_card").render().el)
+    })
+     this.$( ".add_another" ).before(html)    
   },
   loadFont: function(e, font) {
     $('.font_spinner').hide();
