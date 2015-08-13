@@ -5,10 +5,10 @@
 var BackboneRelativeView = Backbone.View.extend({
   initialize: function() {
     this.calculateWidth();
-    $(window).on("resize", this.testForMobile.bind(this)); 
+    //$(window).on("resize", this.testForMobile.bind(this)); 
     
-    $(window).on("resize", this.testForPhablet.bind(this)); 
-    $(window).on("resize", this.calculateWidth.bind(this)); 
+    //$(window).on("resize", this.testForPhablet.bind(this)); 
+    //$(window).on("resize", this.calculateWidth.bind(this)); 
     this.testForMobile();
     this.testForPhablet();
   },
