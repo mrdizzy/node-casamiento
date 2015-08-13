@@ -16,8 +16,7 @@ var PlaceCardView = BackboneRelativeView.extend({
     BackboneRelativeView.prototype.initialize.apply(this)
     this.percentage_font_size = this.model.get("font_size")
     this.display_font_size = this.calculatedWidth * this.percentage_font_size;
-    $(window).bind("resize", _.bind(this._renderFontSize, this));
-    $(window).bind("resize", _.bind(this._renderBaseline, this));
+    $(window).bind("resize", _.bind(this._renderFontAndBaseline, this));
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily); 
     this.listenTo(thisProduct, 'adjustFontSize', this._adjustFontSize)
     this.listenTo(this.model, "change:baseline", this._renderBaseline)
@@ -71,7 +70,12 @@ var PlaceCardView = BackboneRelativeView.extend({
   decreaseFont:   function() { this._adjustFontSize(0.97); thisProduct.saveGuests(); }, // percentage decrease
   upBaseline:     function() { this.model.adjustBaseline(-0.5); },
   downBaseline:   function() { this.model.adjustBaseline(0.5); },  
-  
+  _renderFontAndBaseline: function() {
+    this.calculateWidth()
+    console.log("Go")
+    this._renderFontSize();
+    this._renderBaseline();
+  },
   _renderBaseline: function() {
     var baseline = this.model.calculateBaselineOffset(this.calculatedWidth);
     this.guest_name_element.css({

@@ -5,8 +5,7 @@
 var BackboneRelativeView = Backbone.View.extend({
   initialize: function() {
     this.print_ui_el = $('#print_ui');
-   this.calculateWidth();
-    $(window).on("resize", this.calculateWidth.bind(this)); 
+   //this.calculateWidth();
   },
   // This function looks at the widths defined in widths_relative_to_viewport 
   // which should be defined when initialising the View. It is defined as follows:
@@ -22,8 +21,9 @@ var BackboneRelativeView = Backbone.View.extend({
      var body_width = $('body').width(),
       previous_width = this.previous_body_width;
     if((previous_width != body_width) && !(this.print_ui_el.css('display') == 'none' )) {
-      console.log("rendering")
+
     var print_ui_width = this.print_ui_el.width()
+  
    
       var desktop_panel_width = netbook_panel_width= ((95/100) * (print_ui_width/body_width/2));
       var phablet = smartphone = (95/100) * (print_ui_width/body_width);
