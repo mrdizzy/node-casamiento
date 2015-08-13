@@ -118,10 +118,8 @@ var Product = Backbone.Model.extend({
     }
   },
   saveProduct:  _.debounce(function() { 
-    console.log("Saving product");
     this.save() },1000),
   saveGuests:   _.debounce(function() { 
-  console.log("Saving guests")
   this.save({guests: this.guests}) }, 500),
   parse: function(response) {
     if(response.guests && this.guests) {

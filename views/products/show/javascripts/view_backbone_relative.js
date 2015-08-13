@@ -4,8 +4,8 @@
 // to initialize the utility functions
 var BackboneRelativeView = Backbone.View.extend({
   initialize: function() {
-    this.calculateWidth();
-    //$(window).on("resize", this.calculateWidth.bind(this)); 
+   this.calculateWidth();
+    $(window).on("resize", this.calculateWidth.bind(this)); 
   },
   // This function looks at the widths defined in widths_relative_to_viewport 
   // which should be defined when initialising the View. It is defined as follows:
