@@ -4,6 +4,7 @@
 // to initialize the utility functions
 var BackboneRelativeView = Backbone.View.extend({
   initialize: function() {
+    this.print_ui_el = $('#print_ui');
    this.calculateWidth();
     $(window).on("resize", this.calculateWidth.bind(this)); 
   },
@@ -18,10 +19,12 @@ var BackboneRelativeView = Backbone.View.extend({
   // It calculates and returns an absolute width of the element based on the 
   // current viewport size and the device type
   calculateWidth: function() {
-  
+    if(!(this.print_ui_el.css('display') == 'none' )) {
+    var print_ui_width = this.print_ui_el.width()
+    var body_width = $('body').width();
     var viewport = $('body').width();
-      var desktop_panel_width = netbook_panel_width= ((95/100) * ($('#print_ui').width()/$('body').width()/2));
-      var phablet = smartphone = (95/100) * ($('#print_ui').width()/$('body').width());
+      var desktop_panel_width = netbook_panel_width= ((95/100) * (print_ui_width/body_width/2));
+      var phablet = smartphone = (95/100) * (print_ui_width/body_width);
     if (this.options.widths_relative_to_viewport) { // doesn't exist in plain GuestView
       if(viewport < 501) {
         this.calculatedWidth = (smartphone * viewport); 
@@ -33,6 +36,7 @@ var BackboneRelativeView = Backbone.View.extend({
         this.calculatedWidth = desktop_panel_width * viewport;
       }
       
+    }
     }
   }
 })
