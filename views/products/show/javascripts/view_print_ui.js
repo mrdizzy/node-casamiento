@@ -1,10 +1,9 @@
-var PrintControlPanelView = BackboneRelativeView.extend({
+var PrintControlPanelView = Backbone.View.extend({
   el: '#print_ui',
   initialize: function() {
     if(thisProduct.get("browser")) {
     $('body').addClass(thisProduct.get("browser"))
     }
-    BackboneRelativeView.prototype.initialize.apply(this)
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
     this.listenTo(thisProduct.get("guests"), 'add', this.appendPlaceCard)
     this.listenTo(thisProduct.get("guests"), 'addMultiple', this.appendMultiplePlaceCards)
