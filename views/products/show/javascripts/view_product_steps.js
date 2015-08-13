@@ -22,12 +22,12 @@ var StepView = BackboneRelativeView.extend({
     "click .weight": "updateWeight",
     "focus #quick_guests": "selectQuickGuests",    
     "blur #quick_guests": "hideQuickGuests",
-   // "click #quick_guests": "updateCaretAfterClick",
-    "keyup #quick_guests": "keyPressGuests"
+    "click #quick_guests": "updateCaretAfterClick",
+    "keyup #quick_guests": "newKeyPressGuests"
   },
-  // When the guests entry textarea is selected we add a class to the root element
-  // to enable us to detect that it has been focused and therefore make adjustments to
-  // the layout for mobile devices that do not have enough screen space
+  // When the guests entry textarea is selected we add a class to the root element to enable us to detect that it 
+  // has been focused and therefore make adjustments to the layout for mobile devices that do not have enough 
+  // screen space when the onscreen keyboard appears
   selectQuickGuests: function() { 
     $('body').addClass("quick_guests_selected");
     if(this.mobile) $('html,body').scrollTop($("#quick_guests").offset().top)
@@ -56,19 +56,11 @@ var StepView = BackboneRelativeView.extend({
     this.caret_position = undefined
    }  
   },
-  keyPressGuests: function() {
-    var that = this;
+  newKeyPressGuests: _.debounce(function() {
     this.caret_position = this.$('#quick_guests')[0].selectionStart;
-    
-    clearTimeout(this.timeout_id)
-    this.timeout_id = setTimeout(function(){
-        that.updateGuests(); 
-      }, 1500);   
-  },
-  updateGuests: function() {
     this.changed_names = true;
     var guests = ($('#quick_guests').val());
-    if (!($.trim(guests ) == '')) {
+    if (!($.trim(guests) == '')) {
       if(guests.indexOf(',') === -1) { // Check how the names are delimited (comma or newline)
         guests = guests.split("\n")
       } else {
@@ -106,13 +98,14 @@ var StepView = BackboneRelativeView.extend({
         guest.set({name: names[i]});
         counter= counter + 1;
       }
+      var to_remove = [];
       for(var i = counter; i < existing_length; i++) {
-        collection.pop()
+      collection.pop()
       }
     }
     }
     this._renderCaret();
-  },
+  },500),
   updateTexture: function(e) {
     var texture_selected = $(e.currentTarget)
     this.model.set("texture", texture_selected.index());

@@ -34,8 +34,8 @@ var PlaceCardView = BackboneRelativeView.extend({
      "keyup .guest_name": "resetFocus"
   },   
   focusGuest: function() {
-  app_router.navigate("editing_place_cards")
-  var that = this;
+    app_router.navigate("editing_place_cards")
+    var that = this;
     $('body').addClass("guest_focused")
      this.timeout_id = setTimeout(function(){
         that.$('.guest_name').blur();
@@ -56,6 +56,7 @@ var PlaceCardView = BackboneRelativeView.extend({
   deleteGuest: function() {
     //thisProduct.get("guests").remove(this.model);
       this.$el.addClass("hide")
+      
     //});
   },
   updateGuestFromDiv: function() {
@@ -77,10 +78,6 @@ var PlaceCardView = BackboneRelativeView.extend({
       "height":baseline.bottom_half + "px", 
       "line-height": baseline.bottom_half + "px"});
   },
-  _renderName: function() {  
-    if (!this.updated_from_div) this.$('.guest_name').text(this.model.get("name"))
-    this.updated_from_div = false;
-  },
   _renderFontFamily: function() { this.$('.guest_name').css('font-family', thisProduct.get("font")); },
   _renderFontSize: function() {
     this.guest_name_element = this.guest_name_element || this.$('.guest_name') 
@@ -91,6 +88,10 @@ var PlaceCardView = BackboneRelativeView.extend({
     this.display_font_size = this.calculatedWidth * this.percentage_font_size;
     this._renderFontSize();
     this.model.set("font_size", this.percentage_font_size, {silent:true})
+  },
+  _renderName: function() {  
+    if (!this.updated_from_div) this.$('.guest_name').text(this.model.get("name"))
+    this.updated_from_div = false;
   },
   render: function() {     
     var compiled_template = Handlebars.template(templates["place_card"]),
