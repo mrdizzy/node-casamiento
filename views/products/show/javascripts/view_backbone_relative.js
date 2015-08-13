@@ -19,8 +19,9 @@ var BackboneRelativeView = Backbone.View.extend({
   // It calculates and returns an absolute width of the element based on the 
   // current viewport size and the device type
   calculateWidth: function() {
-     var body_width = $('body').width();
-    if(!(this.print_ui_el.css('display') == 'none' ) && (this.previous_body_width != body_width)) {
+     var body_width = $('body').width(),
+      previous_width = this.previous_body_width;
+    if((previous_width != body_width) && !(this.print_ui_el.css('display') == 'none' )) {
       console.log("rendering")
     var print_ui_width = this.print_ui_el.width()
    
