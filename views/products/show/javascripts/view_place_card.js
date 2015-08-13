@@ -9,17 +9,16 @@
   _renderBaseline, which will rerender the font and baseline when
   the window is resized
 */
-var PlaceCardView = BackboneRelativeView.extend({
+var PlaceCardView = Backbone.View.extend({
   className: 'place_card_view',
-  initialize: function() {      
-    
-    BackboneRelativeView.prototype.initialize.apply(this)
+  initialize: function() {   
+    this.print_ui_el = $('#print_ui');
     this.percentage_font_size = this.model.get("font_size")
     this.display_font_size = this.calculatedWidth * this.percentage_font_size;
     $(window).bind("resize", _.bind(this._renderFontAndBaseline, this));
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily); 
     this.listenTo(thisProduct, 'adjustFontSize', this._adjustFontSize)
-    this.listenTo(this.model, "change:baseline", this._renderBaseline)
+    this.listenTo(thisProduct, 'adjustBaseline', this._adjustBaseline)
     this.listenTo(this.model, "change:name", this._renderName)
     this.listenTo(this.model, "remove", this.deleteGuest)
   },  
@@ -68,14 +67,40 @@ var PlaceCardView = BackboneRelativeView.extend({
   },
   increaseFont:   function() { this._adjustFontSize(1.03); thisProduct.saveGuests(); }, // percentage increase
   decreaseFont:   function() { this._adjustFontSize(0.97); thisProduct.saveGuests(); }, // percentage decrease
-  upBaseline:     function() { this.model.adjustBaseline(-0.5); },
-  downBaseline:   function() { this.model.adjustBaseline(0.5); },  
+  upBaseline:     function() { this._adjustBaseline(-1); thisProduct.saveGuests(); },
+  downBaseline:   function() { this._adjustBaseline(); thisProduct.saveGuests(); }, 
+  
+  _adjustBaseline: function(amount) { this.model.set("baseline", this.model.get("baseline") + amount, {silent:true}); this._renderBaseline() },
   _renderFontAndBaseline: function() {
+    var body_width = $('body').width(),
+      previous_width = this.previous_body_width;
+    if((previous_width != body_width) && !(this.print_ui_el.css('display') == 'none' )) {
     this.calculateWidth()
-    console.log("Go")
     this._renderFontSize();
     this._renderBaseline();
+    
+      this.previous_body_width = body_width;
+    }
+  
   },
+  calculateWidth: function() {
+     var body_width = $('body').width()
+    var print_ui_width = this.print_ui_el.width()
+  
+         var desktop_panel_width = netbook_panel_width= ((95/100) * (print_ui_width/body_width/2));
+      var phablet = smartphone = (95/100) * (print_ui_width/body_width);
+    if (this.options.widths_relative_to_viewport) { // doesn't exist in plain GuestView
+      if(body_width < 501) {
+        this.calculatedWidth = (smartphone * body_width); 
+      } else if(body_width > 500 && body_width < 801){ 
+        this.calculatedWidth = (phablet * body_width);
+      }  else if(body_width > 800 && body_width < 1026){ 
+        this.calculatedWidth = netbook_panel_width * body_width;
+      } else {
+        this.calculatedWidth = desktop_panel_width * body_width;
+      }
+    }
+   },
   _renderBaseline: function() {
     var baseline = this.model.calculateBaselineOffset(this.calculatedWidth);
     this.guest_name_element.css({

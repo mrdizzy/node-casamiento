@@ -29,8 +29,8 @@ var PrintControlPanelView = Backbone.View.extend({
   fontReset:    function() {           thisProduct.get("guests").resetFont(); },
   fontIncrease: function() {           thisProduct.trigger('adjustFontSize', 1.05).saveGuests()  },
   fontDecrease: function() {         thisProduct.trigger('adjustFontSize', 0.95).saveGuests()  },
-  baselineUp:   function() {          thisProduct.get("guests").invoke('adjustBaseline', -1) },
-  baselineDown: function() {        thisProduct.get("guests").invoke('adjustBaseline', 1) },
+  baselineUp:   function() {          thisProduct.trigger('adjustBaseline', -1) },
+  baselineDown: function() {         thisProduct.trigger('adjustBaseline', 1) },
   toggleMainMenu: function() { $('#left_menu').fadeToggle(); },
   
   checkout: function() {

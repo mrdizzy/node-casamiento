@@ -46,7 +46,6 @@ $(function() {
   
   <%= include models_guest.js %> 
   <%= include models_product.js %>   
-  <%= include view_backbone_relative.js %>
   <%= include view_product_steps.js %>
   <%= include view_place_card.js %> 
   <%= include view_product_slides.js %>

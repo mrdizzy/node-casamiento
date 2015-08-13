@@ -4,7 +4,6 @@ var Guest = Backbone.Model.extend({ // rename PlaceCardBluePrint?
     baseline: (<%= product.baseline %> || 0),
     font_size: "<%= product.font_size %>"
   },
-  adjustBaseline: function(amount) { this.set("baseline", this.get("baseline") + amount) },
   
   // This method calculates how far up or down the guest name on
   // the place card should appear. It returns an object containing 

@@ -1,9 +1,8 @@
 // STEP VIEW
 ////////////////////////////////////////////////////////////////////////////// 
-var StepView = BackboneRelativeView.extend({ 
+var StepView = Backbone.View.extend({ 
   el: '.right_column',
   initialize: function() {
-  BackboneRelativeView.prototype.initialize.apply(this)
     this.changed_names = false;
     this.weights_reference = {2: "200", 3: "300" } // number refers to position of element in HTML hierarchy
     this.listenTo(thisProduct.get("guests"), 'change', this._renderQuickGuests)
