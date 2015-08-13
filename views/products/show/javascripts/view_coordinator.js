@@ -30,7 +30,6 @@ var CoordinatorView = Backbone.View.extend({
     this.listenToOnce(thisProduct, 'change:colours', this.renderFlatPreview)   
     this.listenToOnce(thisProduct, 'change:font', this.renderFlatPreview)
     var that = this;
-    this.print_ui_view.render();
     if(this.first_render) $('#loading_main_page_spinner').hide();
     if(this.current_view == "printui") {
       this.print_ui_view.$el.fadeOut(function() { that.slides_view.$el.fadeIn(); })      
@@ -38,6 +37,8 @@ var CoordinatorView = Backbone.View.extend({
       this.step_view.render();
       that.slides_view.render().$el.fadeIn();  
       this.first_render = false;       
+      
+   this.print_ui_view.render();
     }  
     this.current_view = "home"
     app_router.navigate("")    
@@ -69,8 +70,7 @@ var CoordinatorView = Backbone.View.extend({
     } 
     this._calculateSpaceForFixedPosition()
     that.step_view.render();
-    $('#loading_main_page_spinner').hide();
-    that.print_ui_view.render().$el.show()    
+    $('#loading_main_page_spinner').hide(); 
  
     $('#print_now').click(function()  { that.print_ui_view.printNow(); })
     
