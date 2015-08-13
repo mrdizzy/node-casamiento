@@ -46,7 +46,7 @@ var CoordinatorView = Backbone.View.extend({
   },
   
   _calculateSpaceForFixedPosition: function() {
-    if(this.print_ui_view.mobile) { 
+    if(casamiento_test_for_mobile) { 
       var upper_place_card_space = ((70.714285714285714285714285714286/100) * ((95/100) * $('body').width()))
       var header_space = 35;
       var window_height = $(window).height();

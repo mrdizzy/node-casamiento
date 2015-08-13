@@ -13,6 +13,30 @@ function setSelectionRange(input, selectionStart, selectionEnd) {
 }
 
 $(function() {
+   
+   var casamiento_test_for_mobile,
+     casamiento_test_for_phablet;
+  
+  var testForPhablet = _.debounce(function () {
+    var viewport = $('body').width();
+    if(viewport < 801) {
+      casamiento_test_for_phablet = true
+    } else {
+      casamiento_test_for_phablet = false;
+    }
+  }, 500)
+  
+  var testForMobile = _.debounce(function testForMobile() {
+    var viewport = $('body').width();
+    if(viewport < 501) {
+     casamiento_test_for_mobile = true
+    } else {
+      casamiento_test_for_mobile = false;
+    }
+  }, 500)
+  
+  $(window).on("resize", testForPhablet())
+  $(window).on("resize", testForMobile())
 
   Backbone.Collection.prototype.save = function (options) {
     Backbone.sync("create", this, options);

@@ -30,7 +30,7 @@ var StepView = BackboneRelativeView.extend({
   // screen space when the onscreen keyboard appears
   selectQuickGuests: function() { 
     $('body').addClass("quick_guests_selected");
-    if(this.mobile) $('html,body').scrollTop($("#quick_guests").offset().top)
+    if(casamiento_test_for_mobile) $('html,body').scrollTop($("#quick_guests").offset().top)
 //    this.$('#quick_guests').focus();
   },
   hideQuickGuests: function() { 
