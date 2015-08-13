@@ -61,7 +61,6 @@ var CoordinatorView = Backbone.View.extend({
     if(this.current_view == "home") { // If we are on the products slides page
       that.slides_view.$el.fadeOut(function() {        
         that.print_ui_view.$el.show();
-       // $(window).trigger("resize")
         that.current_view = "printui"        
         $('body').addClass("printui_view")       
         that._calculateSpaceForFixedPosition()

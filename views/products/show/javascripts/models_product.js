@@ -42,8 +42,6 @@ var Product = Backbone.Model.extend({
     }
   },
   initialize: function() {  
-    
-    $(window).bind("resize", _.bind(this.adjustOnResize, this));
     this.calculateUserAgent();
     this.calculatePrice();
     this.guests = this.get("guests")
@@ -100,15 +98,6 @@ var Product = Backbone.Model.extend({
     var cutting_marks = this.get("cutting_marks") ? false : true;
     this.set("cutting_marks", cutting_marks)
   },
-  adjustOnResize: function() {
-    console.log("resize")
-    this.guests.forEach(function(guest) {
-      var cid = guest.cid;
-      console.log(guest.cid)
-      $('#guest_' + cid).css("font-size", "50px")
-    })
-  },
-  
   calculateUserAgent: function() {
   console.log(navigator.userAgent)
     if(navigator.userAgent.match(/Chrome/i) != null) {
