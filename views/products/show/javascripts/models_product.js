@@ -14,15 +14,14 @@ var Product = Backbone.Model.extend({
   },
   makePurchase: function() {    
     if (this.get("quantity") > 7) {
-    $.form('/payments', { 
-    
-      "object": JSON.stringify(this.toJSON()),
-      "L_PAYMENTREQUEST_0_AMT0": this.get("total") / this.get("quantity"),
-      "PAYMENTREQUEST_0_AMT": this.get("total"), 
-      "L_PAYMENTREQUEST_0_QTY0": this.get("quantity"), 
-      "L_PAYMENTREQUEST_0_NAME0": this.get("name"), 
-      "L_PAYMENTREQUEST_0_DESC0": "Place cards" 
-    }).submit();  
+      $.form('/payments', { 
+        "object": JSON.stringify(this.toJSON()),
+        "L_PAYMENTREQUEST_0_AMT0": this.get("total") / this.get("quantity"),
+        "PAYMENTREQUEST_0_AMT": this.get("total"), 
+        "L_PAYMENTREQUEST_0_QTY0": this.get("quantity"), 
+        "L_PAYMENTREQUEST_0_NAME0": this.get("name"), 
+        "L_PAYMENTREQUEST_0_DESC0": "Place cards" 
+      }).submit();  
     } else {
       var price_each  = this.get("total") / 8;
       var qty = this.get("quantity");
@@ -51,18 +50,15 @@ var Product = Backbone.Model.extend({
     this.on("change:weight", this.saveProduct)
     this.on("change:colours", this.saveProduct)   
     this.on("change:quantity", this.calculatePrice) // must come before adjust guests
-   // this.on("change:quantity", this.saveProduct)
     this.listenTo(this.guests, "change", this.saveGuests)    
     this.listenTo(this.guests, "add", this.saveGuests)    
     this.listenTo(this.guests, "add", this.updateQuantityFromGuests)
     this.listenTo(this.guests, "change", this.updateQuantityFromGuests)
     this.listenTo(this.guests, "remove", this.saveGuests)
-        this.listenTo(this.guests, "remove", this.updateQuantityFromGuests)
+    this.listenTo(this.guests, "remove", this.updateQuantityFromGuests)
     this.listenTo(this.guests, "reset", this.updateQuantityFromGuests)
   },
-  updateQuantityFromGuests: function() {
-    this.set("quantity", this.guests.length)
-  },
+  updateQuantityFromGuests: function() { this.set("quantity", this.guests.length) },
   updateColour: function(index, colour) {
     var colours = this.get("colours");
     colours[index] = colour;
@@ -121,19 +117,8 @@ var Product = Backbone.Model.extend({
       return (url + "/font/" + this.get("font"))  
     }
   },
-  saveProduct: function() {
-    var that = this;
-    if(!this.currently_saving) {
-      that.currently_saving = true;
-      setTimeout(function(){
-        that.save(); 
-        that.currently_saving = false;
-      }, 2000);
-    } 
-  },
-  saveGuests: function() {
-    this.save({guests: this.guests})  
-  },
+  saveProduct:  _.debounce(function() { this.save() },1000),
+  saveGuests:   _.debounce(function() { this.save({guests: this.guests}) }, 500),
   parse: function(response) {
     if(response.guests && this.guests) {
       this.guests.reset(response.guests)
@@ -143,9 +128,7 @@ var Product = Backbone.Model.extend({
     }
     return response;
   },
-  svgURL: function() {
-    return "/svg/" + this.get("_id") + "/" + this.hex();
-  },
+  svgURL: function() { return "/svg/" + this.get("_id") + "/" + this.hex(); },
   hex: function() { // This provides a URL for calling the /svg function with the appropriate hex values
     var monochromatic = this.get("monochromatic"),
       colour_0 = this.get("colours")[0].substring(1) // remove hash from #000000
@@ -178,7 +161,5 @@ var Product = Backbone.Model.extend({
       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   },
   stale: ['attachments_order', 'baseline', 'pence', 'pounds', 'font_size', 'per_page', 'cutting_marks', 'browser'],
-  toJSON: function() {
-    return _.omit(this.attributes, this.stale);
-  }
+  toJSON: function() { return _.omit(this.attributes, this.stale); }
 });

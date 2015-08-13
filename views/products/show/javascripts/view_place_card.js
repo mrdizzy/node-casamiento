@@ -12,20 +12,20 @@
 var PlaceCardView = BackboneRelativeView.extend({
   className: 'place_card_view',
   initialize: function() {      
+    this.percentage_font_size = this.model.get("font_size")
+    this.display_font_size = this.calculatedWidth * this.percentage_font_size;
     BackboneRelativeView.prototype.initialize.apply(this)
     $(window).bind("resize", _.bind(this._renderFontSize, this));
     $(window).bind("resize", _.bind(this._renderBaseline, this));
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily); 
-    this.listenTo(this.model, "change:font_size", this._renderFontSize);
+    this.listenTo(thisProduct, 'adjustFontSize', this._adjustFontSize)
     this.listenTo(this.model, "change:baseline", this._renderBaseline)
     this.listenTo(this.model, "change:name", this._renderName)
     this.listenTo(this.model, "remove", this.deleteGuest)
   },  
   events: {  
     "blur .guest_name": 'updateGuestFromDiv',
-    //'focus .guest_name': 'clearGuest',  
     'focus .guest_name': 'focusGuest',
-    'blur .guest_name': 'updateGuestFromDiv',
     'click .delete_guest': 'deleteGuest',
     'click .plus_font': 'increaseFont',  
     'click .minus_font': 'decreaseFont',
@@ -65,11 +65,8 @@ var PlaceCardView = BackboneRelativeView.extend({
    clearTimeout(this.timeout_id)
     $('body').removeClass("guest_focused")
   },
- // clearGuest: function() { 
- //   if(this.model.get("name") == "Guest Name") { this.$('.guest_name').text("")}
- // },
-  increaseFont:   function() { this.model.adjustFontSize(1.03) }, // percentage increase
-  decreaseFont:   function() { this.model.adjustFontSize(0.97) }, // percentage decrease
+  increaseFont:   function() { this._adjustFontSize(1.03); thisProduct.saveGuests(); }, // percentage increase
+  decreaseFont:   function() { this._adjustFontSize(0.97); thisProduct.saveGuests(); }, // percentage decrease
   upBaseline:     function() { this.model.adjustBaseline(-0.5); },
   downBaseline:   function() { this.model.adjustBaseline(0.5); },  
   
@@ -84,12 +81,16 @@ var PlaceCardView = BackboneRelativeView.extend({
     if (!this.updated_from_div) this.$('.guest_name').text(this.model.get("name"))
     this.updated_from_div = false;
   },
-  _renderFontFamily: function() {
-    this.$('.guest_name').css('font-family', thisProduct.get("font"));  
-  },
+  _renderFontFamily: function() { this.$('.guest_name').css('font-family', thisProduct.get("font")); },
   _renderFontSize: function() {
-    var font_size = this.calculatedWidth * this.model.get("font_size");
-    this.guest_name_element.css('font-size', font_size + "px");   
+    this.guest_name_element = this.guest_name_element || this.$('.guest_name') 
+    this.guest_name_element.css('font-size', this.display_font_size + "px");   
+  },
+  _adjustFontSize: function(amount) {
+    this.percentage_font_size = this.percentage_font_size * amount;
+    this.display_font_size = this.calculatedWidth * this.percentage_font_size;
+    this._renderFontSize();
+    this.model.set("font_size", this.percentage_font_size, {silent:true})
   },
   render: function() {     
     var compiled_template = Handlebars.template(templates["place_card"]),

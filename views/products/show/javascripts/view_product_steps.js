@@ -9,7 +9,6 @@ var StepView = BackboneRelativeView.extend({
     this.listenTo(thisProduct.get("guests"), 'change', this._renderQuickGuests)
     this.listenTo(thisProduct.get("guests"), 'remove', this._renderQuickGuests)
     this.listenTo(thisProduct.get("guests"), 'add', this._renderQuickGuests)
-    
     this.listenTo(thisProduct.get("guests"), 'addMultiple', this._renderQuickGuests)
     this.listenTo(thisProduct, 'change:weight', this.renderWeight);
     this.listenTo(thisProduct, "change:total", this.renderQtyAndPrice)
