@@ -9,9 +9,9 @@ var PrintControlPanelView = BackboneRelativeView.extend({
     this.listenTo(thisProduct.get("guests"), 'add', this.appendPlaceCard)
     this.listenTo(thisProduct.get("guests"), 'addMultiple', this.appendMultiplePlaceCards)
     this.ui_alert_box_view = new PrintAlertBoxView();
-    this._place_card_print_collection = new PrintPlaceCardCollectionView({
-      collection: thisProduct.get("guests")
-    })
+    //this._place_card_print_collection = new PrintPlaceCardCollectionView({
+    //  collection: thisProduct.get("guests")
+    //})
      this.listenTo(thisProduct.get("guests"), 'reset', this.render)     
   },
   events: {
