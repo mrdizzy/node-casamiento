@@ -20,9 +20,7 @@ var BackboneRelativeView = Backbone.View.extend({
   // current viewport size and the device type
   calculateWidth: function() {
      var body_width = $('body').width();
-     console.log(this.previous_body_width == body_width)
     if(!(this.print_ui_el.css('display') == 'none' ) || (this.previous_body_width != body_width)) {
-      console.log("calculating")
     var print_ui_width = this.print_ui_el.width()
    
       var desktop_panel_width = netbook_panel_width= ((95/100) * (print_ui_width/body_width/2));
