@@ -19,24 +19,27 @@ var BackboneRelativeView = Backbone.View.extend({
   // It calculates and returns an absolute width of the element based on the 
   // current viewport size and the device type
   calculateWidth: function() {
-    if(!(this.print_ui_el.css('display') == 'none' )) {
+     var body_width = $('body').width();
+     console.log(this.previous_body_width == body_width)
+    if(!(this.print_ui_el.css('display') == 'none' ) || (this.previous_body_width != body_width)) {
+      console.log("calculating")
     var print_ui_width = this.print_ui_el.width()
-    var body_width = $('body').width();
-    var viewport = $('body').width();
+   
       var desktop_panel_width = netbook_panel_width= ((95/100) * (print_ui_width/body_width/2));
       var phablet = smartphone = (95/100) * (print_ui_width/body_width);
     if (this.options.widths_relative_to_viewport) { // doesn't exist in plain GuestView
-      if(viewport < 501) {
-        this.calculatedWidth = (smartphone * viewport); 
-      } else if(viewport > 500 && viewport < 801){ 
-        this.calculatedWidth = (phablet * viewport);
-      }  else if(viewport > 800 && viewport < 1026){ 
-        this.calculatedWidth = netbook_panel_width * viewport;
+      if(body_width < 501) {
+        this.calculatedWidth = (smartphone * body_width); 
+      } else if(body_width > 500 && body_width < 801){ 
+        this.calculatedWidth = (phablet * body_width);
+      }  else if(body_width > 800 && body_width < 1026){ 
+        this.calculatedWidth = netbook_panel_width * body_width;
       } else {
-        this.calculatedWidth = desktop_panel_width * viewport;
+        this.calculatedWidth = desktop_panel_width * body_width;
       }
-      
     }
     }
+    
+      this.previous_body_width = body_width;
   }
 })
