@@ -15,7 +15,7 @@ var PlaceCardView = BackboneRelativeView.extend({
     BackboneRelativeView.prototype.initialize.apply(this)
     $(window).bind("resize", _.bind(this._renderFontSize, this));
     $(window).bind("resize", _.bind(this._renderBaseline, this));
-    this.listenTo(thisProduct, 'change:font', this._renderFontFamily);   
+    this.listenTo(thisProduct, 'change:font', this._renderFontFamily); 
     this.listenTo(this.model, "change:font_size", this._renderFontSize);
     this.listenTo(this.model, "change:baseline", this._renderBaseline)
     this.listenTo(this.model, "change:name", this._renderName)
@@ -75,7 +75,7 @@ var PlaceCardView = BackboneRelativeView.extend({
   
   _renderBaseline: function() {
     var baseline = this.model.calculateBaselineOffset(this.calculatedWidth);
-    this.$('.guest_name').css({
+    this.guest_name_element.css({
       "margin-top": baseline.top_half + "px", 
       "height":baseline.bottom_half + "px", 
       "line-height": baseline.bottom_half + "px"});
@@ -89,7 +89,7 @@ var PlaceCardView = BackboneRelativeView.extend({
   },
   _renderFontSize: function() {
     var font_size = this.calculatedWidth * this.model.get("font_size");
-    this.$('.guest_name').css('font-size', font_size + "px");   
+    this.guest_name_element.css('font-size', font_size + "px");   
   },
   render: function() {     
     var compiled_template = Handlebars.template(templates["place_card"]),
@@ -99,7 +99,7 @@ var PlaceCardView = BackboneRelativeView.extend({
       $template.find('.colour_' + i).css("background-color", colours[i])
     }
     this.$el.html($template)
-    
+    this.guest_name_element = this.$('.guest_name');
     return this;
   }
-})
+});

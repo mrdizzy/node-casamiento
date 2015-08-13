@@ -28,7 +28,7 @@ var PrintControlPanelView = BackboneRelativeView.extend({
   },
   addGuest:     function() {            thisProduct.get("guests").add({}) },
   fontReset:    function() {           thisProduct.get("guests").resetFont(); },
-  fontIncrease: function() {        thisProduct.get("guests").invoke('adjustFontSize',1.05) },
+  fontIncrease: function() {        thisProduct.get("guests").trigger('adjustFontSize') },
   fontDecrease: function() {        thisProduct.get("guests").invoke('adjustFontSize',0.95) },
   baselineUp:   function() {          thisProduct.get("guests").invoke('adjustBaseline', -1) },
   baselineDown: function() {        thisProduct.get("guests").invoke('adjustBaseline', 1) },
