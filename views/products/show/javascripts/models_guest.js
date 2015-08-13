@@ -1,6 +1,6 @@
 var Guest = Backbone.Model.extend({ // rename PlaceCardBluePrint?
   defaults: {
-    name:"Guest Name",
+    name: "Guest Name",
     baseline: (<%= product.baseline %> || 0),
     font_size: "<%= product.font_size %>"
   },
@@ -20,6 +20,7 @@ var Guest = Backbone.Model.extend({ // rename PlaceCardBluePrint?
     var baselines = this.calculateBaselineOffset(absolute_width)
     return {
       font_family: thisProduct.get("font"),   
+      cid: this.cid,
       baseline_top: baselines.top_half,
       baseline_bottom: baselines.bottom_half,
       font_size: absolute_width * this.get("font_size"),

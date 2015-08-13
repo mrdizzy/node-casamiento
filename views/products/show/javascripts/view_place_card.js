@@ -15,7 +15,7 @@ var PlaceCardView = Backbone.View.extend({
     this.print_ui_el = $('#print_ui');
     this.percentage_font_size = this.model.get("font_size")
     this.display_font_size = this.calculatedWidth * this.percentage_font_size;
-    $(window).bind("resize", _.bind(this._renderFontAndBaseline, this));
+   // $(window).bind("resize", _.bind(this._renderFontAndBaseline, this));
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily); 
     this.listenTo(thisProduct, 'adjustFontSize', this._adjustFontSize)
     this.listenTo(thisProduct, 'adjustBaseline', this._adjustBaseline)
