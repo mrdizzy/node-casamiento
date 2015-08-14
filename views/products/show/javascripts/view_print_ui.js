@@ -1,18 +1,14 @@
 var PrintControlPanelView = Backbone.View.extend({
   el: '#print_ui',
   initialize: function() {
-    if(thisProduct.get("browser")) {
-    $('body').addClass(thisProduct.get("browser"))
-    }
+    if(thisProduct.get("browser")) $('body').addClass(thisProduct.get("browser"))
     
     //$(window).bind("resize", _.bind(this.render, this));
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
     this.listenTo(thisProduct.get("guests"), 'add', this.appendPlaceCard)
     this.listenTo(thisProduct.get("guests"), 'addMultiple', this.appendMultiplePlaceCards)
     this.ui_alert_box_view = new PrintAlertBoxView();
-    //this._place_card_print_collection = new PrintPlaceCardCollectionView({
-    //  collection: thisProduct.get("guests")
-    //})
+  
     // Render method is called as soon as the guests are reset
      this.listenTo(thisProduct.get("guests"), 'reset', this.render)     
   },
@@ -58,6 +54,9 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   // Create the SVG print view
   printPage: function(e) {    
+    this._place_card_print_collection = this._place_card_print_collection || new PrintPlaceCardCollectionView({
+      collection: thisProduct.get("guests")
+    })
     this._place_card_print_collection.render()
     $('#ui_printer_icon').attr('src', "/gfx/spinners/360.gif");
     $('#mobile_ui_printer_icon').attr('src', "/gfx/spinners/360.gif");
