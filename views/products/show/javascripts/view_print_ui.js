@@ -4,6 +4,8 @@ var PrintControlPanelView = Backbone.View.extend({
     if(thisProduct.get("browser")) {
     $('body').addClass(thisProduct.get("browser"))
     }
+    
+    //$(window).bind("resize", _.bind(this.render, this));
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
     this.listenTo(thisProduct.get("guests"), 'add', this.appendPlaceCard)
     this.listenTo(thisProduct.get("guests"), 'addMultiple', this.appendMultiplePlaceCards)
@@ -61,7 +63,7 @@ var PrintControlPanelView = Backbone.View.extend({
     $('#mobile_ui_printer_icon').attr('src', "/gfx/spinners/360.gif");
   },
   render: function() {
-  console.log("RENDER")
+  
   var that = this;
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
       pounds: thisProduct.get("pounds"),
