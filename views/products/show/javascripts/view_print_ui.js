@@ -11,6 +11,7 @@ var PrintControlPanelView = Backbone.View.extend({
     //this._place_card_print_collection = new PrintPlaceCardCollectionView({
     //  collection: thisProduct.get("guests")
     //})
+    // Render method is called as soon as the guests are reset
      this.listenTo(thisProduct.get("guests"), 'reset', this.render)     
   },
   events: {
@@ -43,8 +44,7 @@ var PrintControlPanelView = Backbone.View.extend({
     var place_card = $(place_card);
     this.$( ".add_another" ).before(place_card)    
     place_card.fadeIn(2000);
-  },
-  
+  },  
   appendMultiplePlaceCards: function(counter) {
     var results = thisProduct.get("guests").slice(counter)
     var html = []
@@ -54,16 +54,6 @@ var PrintControlPanelView = Backbone.View.extend({
     })
      this.$( ".add_another" ).before(html)    
   },
-  loadFont: function(e, font) {
-    $('.font_spinner').hide();
-    $('.guest_name').show()  
-  },
-  changeFont: function(e, font) { 
-    thisProduct.set("font", font)
-    $('.font_spinner').show();
-    $('.guest_name').hide()  
-    thisProduct.save();
-  },    
   // Create the SVG print view
   printPage: function(e) {    
     this._place_card_print_collection.render()
@@ -71,6 +61,8 @@ var PrintControlPanelView = Backbone.View.extend({
     $('#mobile_ui_printer_icon').attr('src', "/gfx/spinners/360.gif");
   },
   render: function() {
+  console.log("RENDER")
+  var that = this;
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
       pounds: thisProduct.get("pounds"),
       pence: thisProduct.get("pence")
@@ -82,20 +74,46 @@ var PrintControlPanelView = Backbone.View.extend({
       return this._newPlaceCardView(guest).render().el
     }, this)
         
-   this.groups = inGroupsOf(place_cards, 10)
+    this.groups = inGroupsOf(place_cards, 8)
     this.more_counter = 1;
     this.$('#actual_cards').prepend(this.groups[0])
-   
+    
     return this;
   },
-  renderMore: function() {
+  _createMainWaypoint: function() {
+    var that = this;
+      var waypoint =  new Waypoint({
+          element: $('#add_another')[0],
+          handler: function(direction) {         
+            if(direction == "down") {
+              that.renderMore(waypoint);
+            }          
+          },
+          offset:'80%'
+        })   
+  },
+  renderMore: function(waypoint) {
+  
+  console.log("Rebderubg nire")
+ waypoint.destroy();
+  var that = this;
     this.$('.add_another').before(this.groups[this.more_counter]);
     this.more_counter = this.more_counter + 1;
+    var new_waypoint =  new Waypoint({
+          element: $('#add_another')[0],
+          handler: function(direction) {  
+            if(direction == "down") {
+              that.renderMore(new_waypoint);
+            }          
+          },
+          offset:'80%'
+        })   
   },
   renderPrice: function() {
     this.$('#pound').text(thisProduct.get("pounds"));
     this.$('#decimal').text("." + thisProduct.get("pence"))
-  },
+  }, 
+ 
   // convenience method for rendering a new place card view
   _newPlaceCardView: function(guest, appended) {
     return new PlaceCardView(_.extend({
@@ -108,5 +126,15 @@ var PrintControlPanelView = Backbone.View.extend({
       },
       className:"place_card_view " + (appended ? appended : "")
     }))
+  },
+  loadFont: function(e, font) {
+    $('.font_spinner').hide();
+    $('.guest_name').show()  
+  },
+  changeFont: function(e, font) { 
+    thisProduct.set("font", font)
+    $('.font_spinner').show();
+    $('.guest_name').hide()  
+    thisProduct.save();
   }
 })

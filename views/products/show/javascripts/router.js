@@ -2,7 +2,7 @@
 var AppRouter = Backbone.Router.extend({
   routes: {
     "preview_place_card": function() {
-      coordinator_view.renderFlatPreview();
+     // coordinator_view.renderFlatPreview();
     },    
     "editing_place_cards": function() {
       

@@ -13,10 +13,8 @@ var CoordinatorView = Backbone.View.extend({
     this.step_view = new StepView(); 
     this.slides_view = new ProductSlideView();    
     this.print_ui_view = new PrintControlPanelView(); 
-    this.first_print_render = true;
-    
+    this.first_print_render = true;    
   },
-
   events: {
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
@@ -29,6 +27,7 @@ var CoordinatorView = Backbone.View.extend({
   },
   // This is the default home view that is always rendered when the URL has no hashtags appended
   renderHome: function() {  
+
     this.listenToOnce(thisProduct, 'change:colours', this.renderFlatPreview)   
     this.listenToOnce(thisProduct, 'change:font', this.renderFlatPreview)
     var that = this;
@@ -36,55 +35,28 @@ var CoordinatorView = Backbone.View.extend({
     if(this.current_view == "printui") {
       this.print_ui_view.$el.fadeOut(function() { that.slides_view.$el.fadeIn(); })      
     } else {
-      this.step_view.render();
       that.slides_view.render().$el.fadeIn();  
-      this.first_render = false;       
-      
-   this.print_ui_view.render();
+      this.step_view.render();
+      this.first_render = false; 
     }  
     this.current_view = "home"
     app_router.navigate("")    
     window.scrollTo(0,0);
-  },
-  
-  _calculateSpaceForFixedPosition: function() {
-    if(casamiento_test_for_mobile) { 
-      var upper_place_card_space = ((70.714285714285714285714285714286/100) * ((95/100) * $('body').width()))
-      var header_space = 35;
-      var window_height = $(window).height();
-      //$('.right_column').css("height", (window_height - header_space - upper_place_card_space))
-    }
-  },
-  _createWaypoint: function() {
-    var that = this;
-    var waypoint = new Waypoint({
-      element: $('#add_another')[0],
-      handler: function(direction) {
-        if(direction == "down") {
-        that.print_ui_view.renderMore();
-        setTimeout(that._createWaypoint, 1000);
-        }
-      },
-      offset:'80%'
-    })   
-  },
+  },  
   renderFlatPreview: function() {
     var that = this;   
-    
     this.stopListening(thisProduct, 'change:colours');
     this.stopListening(thisProduct, 'change:font')
     if(this.current_view == "home") { // If we are on the products slides page
       that.slides_view.$el.fadeOut(function() {        
         that.print_ui_view.$el.show();
         $(window).trigger("resize")
+         that.print_ui_view._createMainWaypoint();
         that.current_view = "printui"        
         $('body').addClass("printui_view")       
-        that._calculateSpaceForFixedPosition()
         window.scrollTo(0,0);
-        that._createWaypoint();   
       })
     } 
-    this._calculateSpaceForFixedPosition()
     that.step_view.render();
     $('#loading_main_page_spinner').hide(); 
  
@@ -93,6 +65,8 @@ var CoordinatorView = Backbone.View.extend({
     this.current_view = "printui"
     app_router.navigate("print")
   },
+
+  
   loadFont: function(e, font) {
     this.$('.font_spinner').hide();
     this.$('.guest_name').show();

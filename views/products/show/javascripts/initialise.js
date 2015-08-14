@@ -12,8 +12,7 @@ function setSelectionRange(input, selectionStart, selectionEnd) {
   }
 }
 
-$(function() {
-   
+$(function() {   
    var casamiento_test_for_mobile,
      casamiento_test_for_phablet;
   
