@@ -27,7 +27,7 @@ var assetManagerGroups = {
     route: /\/static\/javascripts\/all\.js/,
     path: __dirname + '/public/javascripts/libraries/',
     dataType: 'javascript',
-    files: [ 'localstorage.min.js', 'viewport.js', 'fastclick.js', 'picturefill.min.js', 'in_groups_of.js', 'font_loader.js', 'new_font_picker.js','new_color_picker.js', 'jquery_form.js', 'jquery.slides.min.js' ]
+    files: [ 'jquery.waypoints.min.js','localstorage.min.js', 'viewport.js', 'fastclick.js', 'picturefill.min.js', 'in_groups_of.js', 'font_loader.js', 'new_font_picker.js','new_color_picker.js', 'jquery_form.js', 'jquery.slides.min.js' ]
   },
   'adminjs': {
       route: /\/static\/javascripts\/admin\.js/,

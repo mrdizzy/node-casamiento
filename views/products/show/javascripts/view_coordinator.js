@@ -15,23 +15,8 @@ var CoordinatorView = Backbone.View.extend({
     this.print_ui_view = new PrintControlPanelView(); 
     this.first_print_render = true;
     
-    $(window).bind("scroll", _.bind(this._bindScroll, this));
   },
 
- _loadMore: function() {
-   this.print_ui_view.renderMore();
-     $(window).bind("scroll", _.bind(this._bindScroll, this));
- },
-
- _bindScroll: function(){
-   
-    if(this.current_view == "printui") {
-     if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-       $(window).unbind('scroll');
-     this. _loadMore();
-     }
-   }
-},
   events: {
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",
@@ -70,6 +55,19 @@ var CoordinatorView = Backbone.View.extend({
       //$('.right_column').css("height", (window_height - header_space - upper_place_card_space))
     }
   },
+  _createWaypoint: function() {
+    var that = this;
+    var waypoint = new Waypoint({
+      element: $('#add_another')[0],
+      handler: function(direction) {
+        if(direction == "down") {
+        that.print_ui_view.renderMore();
+        setTimeout(that._createWaypoint, 1000);
+        }
+      },
+      offset:'80%'
+    })   
+  },
   renderFlatPreview: function() {
     var that = this;   
     
@@ -83,14 +81,15 @@ var CoordinatorView = Backbone.View.extend({
         $('body').addClass("printui_view")       
         that._calculateSpaceForFixedPosition()
         window.scrollTo(0,0);
-      })      
+        that._createWaypoint();   
+      })
     } 
     this._calculateSpaceForFixedPosition()
     that.step_view.render();
     $('#loading_main_page_spinner').hide(); 
  
     $('#print_now').click(function()  { that.print_ui_view.printNow(); })
-    
+   
     this.current_view = "printui"
     app_router.navigate("print")
   },

@@ -82,7 +82,7 @@ var PrintControlPanelView = Backbone.View.extend({
       return this._newPlaceCardView(guest).render().el
     }, this)
         
-   this.groups = inGroupsOf(place_cards, 20)
+   this.groups = inGroupsOf(place_cards, 10)
     this.more_counter = 1;
     this.$('#actual_cards').prepend(this.groups[0])
    
