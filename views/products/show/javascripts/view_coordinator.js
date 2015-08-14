@@ -14,7 +14,24 @@ var CoordinatorView = Backbone.View.extend({
     this.slides_view = new ProductSlideView();    
     this.print_ui_view = new PrintControlPanelView(); 
     this.first_print_render = true;
+    
+    $(window).bind("scroll", _.bind(this._bindScroll, this));
   },
+
+ _loadMore: function() {
+   this.print_ui_view.renderMore();
+     $(window).bind("scroll", _.bind(this._bindScroll, this));
+ },
+
+ _bindScroll: function(){
+   
+    if(this.current_view == "printui") {
+     if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+       $(window).unbind('scroll');
+     this. _loadMore();
+     }
+   }
+},
   events: {
     "fontpicker:selected": "changeFont",
     "fontpicker:fontloaded": "loadFont",

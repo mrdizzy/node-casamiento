@@ -27,7 +27,6 @@ var PrintControlPanelView = Backbone.View.extend({
   },
   addGuest:     function() {            thisProduct.get("guests").add({}) },
   fontReset:    function() {           thisProduct.get("guests").resetFont(); },
-  //fontIncrease: function() {          thisProduct.adjustFontSize(1.05); },
   fontIncrease: function() {           thisProduct.trigger('adjustFontSize', 1.05).saveGuests()  },
   fontDecrease: function() {         thisProduct.trigger('adjustFontSize', 0.95).saveGuests()  },
   baselineUp:   function() {          thisProduct.trigger('adjustBaseline', -1) },
@@ -83,9 +82,15 @@ var PrintControlPanelView = Backbone.View.extend({
       return this._newPlaceCardView(guest).render().el
     }, this)
         
-    this.$('#actual_cards').prepend(place_cards)
+   this.groups = inGroupsOf(place_cards, 20)
+    this.more_counter = 1;
+    this.$('#actual_cards').prepend(this.groups[0])
    
     return this;
+  },
+  renderMore: function() {
+    this.$('.add_another').before(this.groups[this.more_counter]);
+    this.more_counter = this.more_counter + 1;
   },
   renderPrice: function() {
     this.$('#pound').text(thisProduct.get("pounds"));
