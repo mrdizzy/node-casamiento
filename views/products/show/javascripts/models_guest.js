@@ -17,6 +17,7 @@ var Guest = Backbone.Model.extend({ // rename PlaceCardBluePrint?
     return { top_half: top_half_height, bottom_half: bottom_half_height }
   },  
   presenter: function(absolute_width) {
+
     var baselines = this.calculateBaselineOffset(absolute_width)
     return {
       font_family: thisProduct.get("font"),   

@@ -33,10 +33,7 @@ var StepView = Backbone.View.extend({
     if(casamiento_test_for_mobile) $('html,body').scrollTop($("#quick_guests").offset().top)
 //    this.$('#quick_guests').focus();
   },
-  hideQuickGuests: function() { 
-    $('body').removeClass("quick_guests_selected");
-    
-  },
+  hideQuickGuests: function() { $('body').removeClass("quick_guests_selected"); },
   // If you happen to click somewhere else on the textarea in the split second before rendering, this stops the caret from jumping to the previous location
   updateCaretAfterClick: function() { this.caret_position = this.$('#quick_guests')[0].selectionStart; },
   
@@ -96,7 +93,6 @@ var StepView = Backbone.View.extend({
         new_models.push({ name: names[i] });
       }
       collection.add(new_models, {silent:true});
-     // collection.reset(_.map(guests, function(name) { return { name: name  }}))
     collection.trigger("addMultiple", counter)
     } else if (names.length < existing_length) {
             console.log("Less")

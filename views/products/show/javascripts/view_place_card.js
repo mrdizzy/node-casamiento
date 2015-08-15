@@ -16,6 +16,7 @@ var PlaceCardView = Backbone.View.extend({
     this.percentage_font_size = this.model.get("font_size")
     this.display_font_size = this.calculatedWidth * this.percentage_font_size;
     $(window).bind("resize", _.bind(this._renderFontAndBaseline, this));
+    
     this.listenTo(thisProduct, 'redraw', this._renderFontAndBaseline)
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily); 
     this.listenTo(thisProduct, 'adjustFontSize', this._adjustFontSize)
@@ -74,6 +75,7 @@ var PlaceCardView = Backbone.View.extend({
   _adjustBaseline: function(amount) { this.model.set("baseline", this.model.get("baseline") + amount, {silent:true}); this._renderBaseline() },
   
   _renderFontAndBaseline: function() {
+  console.log("Rendering font and baseline")
     var body_width = $('body').width(),
       previous_width = this.previous_body_width;
     if((previous_width != body_width) && !(this.print_ui_el.css('display') == 'none' )) {
@@ -110,7 +112,8 @@ var PlaceCardView = Backbone.View.extend({
       "height":baseline.bottom_half + "px", 
       "line-height": baseline.bottom_half + "px"});
   },
-  _renderFontFamily: function() { this.$('.guest_name').css('font-family', thisProduct.get("font")); },
+  _renderFontFamily: function() { this.$('.guest_name').css('font-family', thisProduct.get("font")); 
+  console.log("rendering fontfamily")},
   _renderFontSize: function() {
     this.guest_name_element = this.guest_name_element || this.$('.guest_name') 
     this.display_font_size = this.calculatedWidth * this.percentage_font_size;
