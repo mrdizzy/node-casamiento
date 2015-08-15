@@ -104,7 +104,7 @@ var PrintControlPanelView = Backbone.View.extend({
               that.renderMore(waypoint);
             }          
           },
-          offset:'80%'
+          offset:'120%'
         })   
         }
   },
@@ -114,7 +114,7 @@ var PrintControlPanelView = Backbone.View.extend({
   
   var place_cards = []
     for(var i =0; i < 12; i++) {
-      var guest = thisProduct.get("guests").at(i);
+      var guest = thisProduct.get("guests").at(this.place_view_counter);
       if(guest) {
       place_cards.push(this._newPlaceCardView(guest).render().el)
       this.place_view_counter = this.place_view_counter + 1;
@@ -123,7 +123,8 @@ var PrintControlPanelView = Backbone.View.extend({
   
     this.$('.add_another').before(place_cards);
     thisProduct.trigger("redraw")
-    if(!(this.place_view_counter > thisProduct.get("guests").length)) {
+    console.log(this.place_view_counter, thisProduct.get("guests").length)
+    if(this.place_view_counter < thisProduct.get("guests").length) {
     var new_waypoint =  new Waypoint({
           element: $('#add_another')[0],
           handler: function(direction) {  
@@ -131,7 +132,7 @@ var PrintControlPanelView = Backbone.View.extend({
               that.renderMore(new_waypoint);
             }          
           },
-          offset:'80%'
+          offset:'120%'
         })   
         }
   },
