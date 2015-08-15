@@ -3,7 +3,7 @@ var PrintControlPanelView = Backbone.View.extend({
   initialize: function() {
     if(thisProduct.get("browser")) $('body').addClass(thisProduct.get("browser"))
     
-    //$(window).bind("resize", _.bind(this.render, this));
+   // $(window).bind("resize", _.bind(this.renderAndCreateWaypoint, this));
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
     this.listenTo(thisProduct.get("guests"), 'add', this.appendPlaceCard)
     this.listenTo(thisProduct.get("guests"), 'addMultiple', this.appendMultiplePlaceCards)
@@ -11,6 +11,15 @@ var PrintControlPanelView = Backbone.View.extend({
   
     // Render method is called as soon as the guests are reset
      this.listenTo(thisProduct.get("guests"), 'reset', this.render)     
+     this.listenTo(thisProduct.get("guests"), 'waypoint', this._createMainWaypoint)
+  },
+  renderAndCreateWaypoint: function() {
+  
+  console.log("Rend main and waypoint")
+  
+    Waypoint.destroyAll();
+    this.render();
+    this._createMainWaypoint();  
   },
   events: {
     "click #add_another": "addGuest",
@@ -62,7 +71,6 @@ var PrintControlPanelView = Backbone.View.extend({
     $('#mobile_ui_printer_icon').attr('src', "/gfx/spinners/360.gif");
   },
   render: function() {
-  
   var that = this;
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
       pounds: thisProduct.get("pounds"),
@@ -71,17 +79,23 @@ var PrintControlPanelView = Backbone.View.extend({
     this.$el.html($template)
     
     // Render place cards
-    var place_cards = thisProduct.get("guests").map(function(guest) {   
-      return this._newPlaceCardView(guest).render().el
-    }, this)
+    this.place_view_counter = 0;
+    var place_cards = []
+    for(var i =0; i < 12; i++) {
+      var guest = thisProduct.get("guests").at(i);
+      if(guest) {
+      place_cards.push(this._newPlaceCardView(guest).render().el)
+      this.place_view_counter = this.place_view_counter + 1;
+      }
+   }
         
-    this.groups = inGroupsOf(place_cards, 8)
-    this.more_counter = 1;
-    this.$('#actual_cards').prepend(this.groups[0])
-    
+    this.$('#actual_cards').prepend(place_cards)
     return this;
   },
   _createMainWaypoint: function() {
+  
+  Waypoint.destroyAll();
+    if(thisProduct.get("guests").length > 12) {
     var that = this;
       var waypoint =  new Waypoint({
           element: $('#add_another')[0],
@@ -92,14 +106,24 @@ var PrintControlPanelView = Backbone.View.extend({
           },
           offset:'80%'
         })   
+        }
   },
   renderMore: function(waypoint) {
-  
-  console.log("Rebderubg nire")
  waypoint.destroy();
   var that = this;
-    this.$('.add_another').before(this.groups[this.more_counter]);
-    this.more_counter = this.more_counter + 1;
+  
+  var place_cards = []
+    for(var i =0; i < 12; i++) {
+      var guest = thisProduct.get("guests").at(i);
+      if(guest) {
+      place_cards.push(this._newPlaceCardView(guest).render().el)
+      this.place_view_counter = this.place_view_counter + 1;
+      }
+   }
+  
+    this.$('.add_another').before(place_cards);
+    thisProduct.trigger("redraw")
+    if(!(this.place_view_counter > thisProduct.get("guests").length)) {
     var new_waypoint =  new Waypoint({
           element: $('#add_another')[0],
           handler: function(direction) {  
@@ -109,6 +133,7 @@ var PrintControlPanelView = Backbone.View.extend({
           },
           offset:'80%'
         })   
+        }
   },
   renderPrice: function() {
     this.$('#pound').text(thisProduct.get("pounds"));

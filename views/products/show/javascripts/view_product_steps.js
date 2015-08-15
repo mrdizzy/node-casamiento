@@ -22,7 +22,8 @@ var StepView = Backbone.View.extend({
     "focus #quick_guests": "selectQuickGuests",    
     "blur #quick_guests": "hideQuickGuests",
     "click #quick_guests": "updateCaretAfterClick",
-    "keyup #quick_guests": "newKeyPressGuests"
+    "keyup #quick_guests": "newKeyPressGuests",
+    "paste #quick_guests": "newKeyPressGuests"
   },
   // When the guests entry textarea is selected we add a class to the root element to enable us to detect that it 
   // has been focused and therefore make adjustments to the layout for mobile devices that do not have enough 
@@ -34,7 +35,7 @@ var StepView = Backbone.View.extend({
   },
   hideQuickGuests: function() { 
     $('body').removeClass("quick_guests_selected");
-    $(window).trigger("resize")
+    
   },
   // If you happen to click somewhere else on the textarea in the split second before rendering, this stops the caret from jumping to the previous location
   updateCaretAfterClick: function() { this.caret_position = this.$('#quick_guests')[0].selectionStart; },
@@ -71,37 +72,41 @@ var StepView = Backbone.View.extend({
       name = $.trim(name);
       return name;
     })   
+collection.reset(_.map(guests, function(name) { return { name: name  }}))
 
-    var existing_length = collection.length;
-    var counter = 0;
-    
-    if (names.length == existing_length) {
-      collection.forEach(function(guest) {    
-        guest.set("name", names[counter])
-        counter = counter + 1;
-      })
-    } else if (names.length > existing_length) {
-      collection.forEach(function(guest) {    
-        guest.set("name", names[counter])
-        counter = counter + 1;
-      })
-      var new_models = [];
-      for(var i = counter; i < names.length; i++) {
-        new_models.push({ name: names[i] });
-      }
-      collection.add(new_models, {silent:true});
-      collection.trigger("addMultiple", counter);
-    } else if (names.length < existing_length) {
-    for(var i = counter; i < names.length; i++) {
-        var guest = collection.at(i)
-        guest.set({name: names[i]});
-        counter= counter + 1;
-      }
-      var to_remove = [];
-      for(var i = counter; i < existing_length; i++) {
-      collection.pop()
-      }
-    }
+    thisProduct.get("guests").trigger('waypoint')
+   // var existing_length = collection.length;
+   // var counter = 0;
+   // 
+   // if (names.length == existing_length) {
+   //   collection.forEach(function(guest) {    
+   //     guest.set("name", names[counter])
+   //     counter = counter + 1;
+   //   })
+   // } else if (names.length > existing_length) {
+     // collection.forEach(function(guest) {    
+      //  guest.set("name", names[counter])
+      // counter = counter + 1;
+      //})
+     // var new_models = [];
+     // for(var i = counter; i < names.length; i++) {
+     //   new_models.push({ name: names[i] });
+     // }
+     // collection.add(new_models, {silent:true});
+   //   //collection.trigger("addMultiple", counter);
+   //   collection.reset(_.map(guests, function(name) { return { name: name  }}))
+   //   collection.trigger("waypoint")
+   // } else if (names.length < existing_length) {
+   // for(var i = counter; i < names.length; i++) {
+   //     var guest = collection.at(i)
+   //     guest.set({name: names[i]});
+   //     counter= counter + 1;
+   //   }
+   //   var to_remove = [];
+   //   for(var i = counter; i < existing_length; i++) {
+   //   collection.pop()
+   //   }
+   // }
     }
     this._renderCaret();
   },500),

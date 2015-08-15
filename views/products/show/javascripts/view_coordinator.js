@@ -50,7 +50,8 @@ var CoordinatorView = Backbone.View.extend({
     if(this.current_view == "home") { // If we are on the products slides page
       that.slides_view.$el.fadeOut(function() {        
         that.print_ui_view.$el.show();
-        $(window).trigger("resize")
+        
+    thisProduct.trigger("redraw")
          that.print_ui_view._createMainWaypoint();
         that.current_view = "printui"        
         $('body').addClass("printui_view")       
