@@ -26,6 +26,8 @@ var CoordinatorView = Backbone.View.extend({
     this.print_ui_view.printPage();
   },
   // This is the default home view that is always rendered when the URL has no hashtags appended
+  // the print UI view is automatically rendered by resetting the guests, even though it 
+  // is not displayed
   renderHome: function() {  
 
     this.listenToOnce(thisProduct, 'change:colours', this.renderFlatPreview)   
@@ -49,25 +51,21 @@ var CoordinatorView = Backbone.View.extend({
     this.stopListening(thisProduct, 'change:font')
     if(this.current_view == "home") { // If we are on the products slides page
       that.slides_view.$el.fadeOut(function() {        
-        that.print_ui_view.$el.show();
-        
-    thisProduct.trigger("redraw")
-         that.print_ui_view._createMainWaypoint();
+        that.print_ui_view.$el.show();        
+        thisProduct.trigger("redraw")
+        that.print_ui_view._createMainWaypoint();
         that.current_view = "printui"        
         $('body').addClass("printui_view")       
         window.scrollTo(0,0);
       })
     } 
-    that.step_view.render();
     $('#loading_main_page_spinner').hide(); 
  
     $('#print_now').click(function()  { that.print_ui_view.printNow(); })
    
     this.current_view = "printui"
     app_router.navigate("print")
-  },
-
-  
+  },  
   loadFont: function(e, font) {
     this.$('.font_spinner').hide();
     this.$('.guest_name').show();

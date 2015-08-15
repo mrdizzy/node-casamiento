@@ -1,8 +1,7 @@
 var PrintControlPanelView = Backbone.View.extend({
   el: '#print_ui',
   initialize: function() {
-    if(thisProduct.get("browser")) $('body').addClass(thisProduct.get("browser"))
-    
+    if(thisProduct.get("browser")) $('body').addClass(thisProduct.get("browser"))    
    // $(window).bind("resize", _.bind(this.renderAndCreateWaypoint, this));
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
     this.listenTo(thisProduct.get("guests"), 'add', this.appendPlaceCard)
@@ -53,13 +52,19 @@ var PrintControlPanelView = Backbone.View.extend({
     place_card.fadeIn(2000);
   },  
   appendMultiplePlaceCards: function(counter) {
+  console.log("append multiple", counter)
+  if(counter < 13) {
+  console.log(counter)
     var results = thisProduct.get("guests").slice(counter)
     var html = []
     var that = this;
     results.forEach(function(guest) {
         html.push(that._newPlaceCardView(guest, "appended_place_card").render().el)
     })
-     this.$( ".add_another" ).before(html)    
+     this.$( ".add_another" ).before(html)   
+     }
+     this.place_view_counter = counter;
+     this._createMainWaypoint(); 
   },
   // Create the SVG print view
   printPage: function(e) {    

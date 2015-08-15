@@ -72,43 +72,47 @@ var StepView = Backbone.View.extend({
       name = $.trim(name);
       return name;
     })   
-collection.reset(_.map(guests, function(name) { return { name: name  }}))
+    //collection.reset(_.map(guests, function(name) { return { name: name  }}))
 
-    thisProduct.get("guests").trigger('waypoint')
-   // var existing_length = collection.length;
-   // var counter = 0;
-   // 
-   // if (names.length == existing_length) {
-   //   collection.forEach(function(guest) {    
-   //     guest.set("name", names[counter])
-   //     counter = counter + 1;
-   //   })
-   // } else if (names.length > existing_length) {
-     // collection.forEach(function(guest) {    
-      //  guest.set("name", names[counter])
-      // counter = counter + 1;
-      //})
-     // var new_models = [];
-     // for(var i = counter; i < names.length; i++) {
-     //   new_models.push({ name: names[i] });
-     // }
-     // collection.add(new_models, {silent:true});
-   //   //collection.trigger("addMultiple", counter);
-   //   collection.reset(_.map(guests, function(name) { return { name: name  }}))
-   //   collection.trigger("waypoint")
-   // } else if (names.length < existing_length) {
-   // for(var i = counter; i < names.length; i++) {
-   //     var guest = collection.at(i)
-   //     guest.set({name: names[i]});
-   //     counter= counter + 1;
-   //   }
-   //   var to_remove = [];
-   //   for(var i = counter; i < existing_length; i++) {
-   //   collection.pop()
-   //   }
-   // }
+
+    //thisProduct.trigger('redraw')
+    var existing_length = collection.length;
+    var counter = 0;
+    
+    if (names.length == existing_length) {
+    console.log("Same")
+      collection.forEach(function(guest) {    
+       guest.set("name", names[counter])
+        counter = counter + 1;
+      })
+    } else if (names.length > existing_length) {
+        console.log("More--apend")
+      collection.forEach(function(guest) {    
+        guest.set("name", names[counter])
+       counter = counter + 1;
+      })
+      var new_models = [];
+      for(var i = counter; i < names.length; i++) {
+        new_models.push({ name: names[i] });
+      }
+      collection.add(new_models, {silent:true});
+     // collection.reset(_.map(guests, function(name) { return { name: name  }}))
+    collection.trigger("addMultiple", counter)
+    } else if (names.length < existing_length) {
+            console.log("Less")
+    for(var i = counter; i < names.length; i++) {
+        var guest = collection.at(i)
+        guest.set({name: names[i]});
+        counter= counter + 1;
+      }
+      var to_remove = [];
+      for(var i = counter; i < existing_length; i++) {
+      collection.pop()
+      }
+     }
     }
     this._renderCaret();
+    
   },500),
   updateTexture: function(e) {
     var texture_selected = $(e.currentTarget)
