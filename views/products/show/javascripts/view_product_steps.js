@@ -3,12 +3,13 @@
 var StepView = Backbone.View.extend({ 
   el: '.right_column',
   initialize: function() {
+    var guests = thisProduct.get("guests");
     this.changed_names = false;
     this.weights_reference = {2: "200", 3: "300" } // number refers to position of element in HTML hierarchy
-    this.listenTo(thisProduct.get("guests"), 'change', this._renderQuickGuests)
-    this.listenTo(thisProduct.get("guests"), 'remove', this._renderQuickGuests)
-    this.listenTo(thisProduct.get("guests"), 'add', this._renderQuickGuests)
-    this.listenTo(thisProduct.get("guests"), 'addMultiple', this._renderQuickGuests)
+    this.listenTo(guests, 'change', this._renderQuickGuests)
+    this.listenTo(guests, 'destroy', this._renderQuickGuests)
+    this.listenTo(guests, 'add', this._renderQuickGuests)
+    this.listenTo(guests, 'addMultiple', this._renderQuickGuests)
     this.listenTo(thisProduct, 'change:weight', this.renderWeight);
     this.listenTo(thisProduct, "change:total", this.renderQtyAndPrice)
     this.current_step = 1;
@@ -46,7 +47,7 @@ var StepView = Backbone.View.extend({
     this.$('.weight').removeClass('selected').addClass('deselected');
     this.$('#weight_' + thisProduct.get("weight")).addClass("selected").removeClass('deselected')      
   },
-  _renderQuickGuests: function() { this.$('#quick_guests').val(thisProduct.get("guests").pluck("name").join("\n")) },
+  _renderQuickGuests: function() { console.log("quick guests"); this.$('#quick_guests').val(thisProduct.get("guests").pluck("name").join("\n")) },
   _renderCaret: function() {
     if(this.caret_position) {        
     setSelectionRange($('#quick_guests')[0], this.caret_position, this.caret_position);

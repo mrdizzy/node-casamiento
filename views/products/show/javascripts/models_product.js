@@ -116,10 +116,8 @@ var Product = Backbone.Model.extend({
       return (url + "/font/" + this.get("font"))  
     }
   },
-  saveProduct:  _.debounce(function() { 
-    this.save() },1000),
-  saveGuests:   _.debounce(function() { 
-  this.save({guests: this.guests}) }, 500),
+  saveProduct:  _.debounce(function() { this.save() },1000),
+  saveGuests:   _.debounce(function() { this.save({guests: this.guests}) }, 500),
   parse: function(response) {
     if(response.guests && this.guests) {
       this.guests.reset(response.guests)
