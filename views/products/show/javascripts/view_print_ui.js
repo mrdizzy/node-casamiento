@@ -12,6 +12,13 @@ var PrintControlPanelView = Backbone.View.extend({
     this.listenTo(this.guests, 'addMultiple', this.appendMultiplePlaceCards)
     this.listenTo(this.guests, 'reset', this.render) // Render method is called as soon as the guests are reset
     this.listenTo(this.guests, 'waypoint', this._createMainWaypoint)
+    this.listenTo(this.guests, 'removeMultiple', this.removeMultiple)
+  },
+  removeMultiple: function(number_removed) {
+    if(this.place_view_counter > 12) {
+      this.place_view_counter = this.place_view_counter + number_removed;
+    }
+    this._createMainWaypoint();
   },
   events: {
     "click #add_another": "addGuest",
@@ -52,28 +59,23 @@ var PrintControlPanelView = Backbone.View.extend({
     });
   },  
   appendMultiplePlaceCards: function(counter) {
-    console.log("Appending more", counter, this.place_view_counter)
     var html = []
     
-     if(counter < 12) {
-    for(counter; counter < 12; counter++) {
-      
-     this.place_view_counter =counter;
+    if(counter < 12) {
+      for(counter; counter < 12; counter++) {
+        this.place_view_counter = counter;
      
-      console.log("Adding view", counter, this.place_view_counter)
-      if(!thisProduct.get("guests").at(counter)) {
-        
-       break
+        if(!thisProduct.get("guests").at(counter)) break
+        html.push(this._newPlaceCardView(thisProduct.get("guests").at(counter), "appended_place_card").render().el)
       }
-      html.push(this._newPlaceCardView(thisProduct.get("guests").at(counter), "appended_place_card").render().el)
-      
-     }
-     this.$( ".add_another" ).before(html)   
-     thisProduct.trigger("redraw")
+      this.$( ".add_another" ).before(html)   
+      thisProduct.trigger("redraw")
      
-     this.place_view_counter =this.place_view_counter + 1;
-     }
-     this._createMainWaypoint(); 
+      this.place_view_counter =this.place_view_counter + 1;
+    } else {
+    //this.place_view_counter = counter - this.place_view_counter;
+    }
+    this._createMainWaypoint(); 
   },
   renderAndCreateWaypoint: function() {
     Waypoint.destroyAll();
@@ -117,7 +119,6 @@ var PrintControlPanelView = Backbone.View.extend({
     return this;
   },
   renderMore: function(waypoint) {
-    console.log(this.place_view_counter)
     waypoint.destroy();
     var that = this;
     var place_cards = []

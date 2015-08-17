@@ -81,14 +81,12 @@ var StepView = Backbone.View.extend({
     var counter = 0;
     
     if (names.length == existing_length) {
-    console.log("Same")
       collection.forEach(function(guest) {    
        guest.set("name", names[counter])
         counter = counter + 1;
       })
     //
     } else if (names.length > existing_length) {
-        console.log("More--apend")
       collection.forEach(function(guest) {    
         guest.set("name", names[counter])
        counter = counter + 1;
@@ -103,7 +101,7 @@ var StepView = Backbone.View.extend({
     
     //  
     } else if (names.length < existing_length) {
-      console.log("Less")
+      var number_removed = 0;
       for(var i = counter; i < names.length; i++) {
         var guest = collection.at(i)
         guest.set({name: names[i]}, {silent:true});
@@ -114,7 +112,10 @@ var StepView = Backbone.View.extend({
         
        var model = collection.pop({silent:true})
         model.trigger("removeWithoutAffectingTextarea")
+        number_removed = number_removed - 1;
       }
+      
+        collection.trigger("removeMultiple", number_removed)
       collection.trigger("renderNames", counter)
     }
     }

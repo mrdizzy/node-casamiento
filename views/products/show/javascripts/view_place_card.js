@@ -75,7 +75,6 @@ var PlaceCardView = Backbone.View.extend({
   _adjustBaseline: function(amount) { this.model.set("baseline", this.model.get("baseline") + amount, {silent:true}); this._renderBaseline() },
   
   _renderFontAndBaseline: function() {
-    console.log("Rendering font and baseline")
     var body_width = $('body').width(),
       previous_width = this.previous_body_width;
     if((previous_width != body_width) && !(this.print_ui_el.css('display') == 'none' )) {
