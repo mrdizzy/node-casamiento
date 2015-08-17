@@ -48,9 +48,7 @@ var StepView = Backbone.View.extend({
     this.$('#weight_' + thisProduct.get("weight")).addClass("selected").removeClass('deselected')      
   },
   _renderQuickGuests: function() { 
-    console.log(this.updated_from_textarea)
     if(!this.updated_from_textarea) {
-      console.log(thisProduct.get("guests").pluck("name")); 
       this.$('#quick_guests').val(thisProduct.get("guests").pluck("name").join("\n")) 
     }
     this.updated_from_textarea = false;
@@ -79,7 +77,6 @@ var StepView = Backbone.View.extend({
       return name;
     })   
 
-    //thisProduct.trigger('redraw')
     var existing_length = collection.length;
     var counter = 0;
     
@@ -99,6 +96,7 @@ var StepView = Backbone.View.extend({
       var new_models = [];
       for(var i = counter; i < names.length; i++) {
         new_models.push({ name: names[i] });
+       // counter = counter + 1; // Just added
       }
       collection.add(new_models, {silent:true});
       collection.trigger("addMultiple", counter)

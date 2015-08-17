@@ -36,7 +36,6 @@ var PrintControlPanelView = Backbone.View.extend({
   removeAGuest: function() {
    // Waypoint.refreshAll();
     //this.place_view_counter = this.place_view_counter - 1 ;
-    console.log("removeAGuest", this.place_view_counter)
   },
   checkout: function() {
       this.$('.buy').hide();
@@ -53,23 +52,30 @@ var PrintControlPanelView = Backbone.View.extend({
     });
   },  
   appendMultiplePlaceCards: function(counter) {
-    console.log("Appending more", counter)
+    console.log("Appending more", counter, this.place_view_counter)
     var html = []
-    for(counter; counter < 13; counter++) {
-      console.log("Adding", counter, this.place_view_counter)
+    
+     if(counter < 12) {
+    for(counter; counter < 12; counter++) {
       
      this.place_view_counter =counter;
-      if(!thisProduct.get("guests").at(counter)) break
+     
+      console.log("Adding view", counter, this.place_view_counter)
+      if(!thisProduct.get("guests").at(counter)) {
+        
+       break
+      }
       html.push(this._newPlaceCardView(thisProduct.get("guests").at(counter), "appended_place_card").render().el)
       
      }
-     this.place_view_counter = counter;
      this.$( ".add_another" ).before(html)   
      thisProduct.trigger("redraw")
+     
+     this.place_view_counter =this.place_view_counter + 1;
+     }
      this._createMainWaypoint(); 
   },
   renderAndCreateWaypoint: function() {
-    console.log("Render main and waypoint")
     Waypoint.destroyAll();
     this.render();
     thisProduct.trigger("redraw")
@@ -111,10 +117,9 @@ var PrintControlPanelView = Backbone.View.extend({
     return this;
   },
   renderMore: function(waypoint) {
+    console.log(this.place_view_counter)
     waypoint.destroy();
     var that = this;
-    console.log(this.place_view_counter)
-  
     var place_cards = []
     for(var i =0; i < 12; i++) {
       var guest = thisProduct.get("guests").at(this.place_view_counter);
@@ -126,8 +131,7 @@ var PrintControlPanelView = Backbone.View.extend({
   
     this.$('.add_another').before(place_cards);
     thisProduct.trigger("redraw")
-    console.log(this.place_view_counter, thisProduct.get("guests").length)
-    if(this.place_view_counter < thisProduct.get("guests").length) {
+    if(this.place_view_counter < thisProduct.get("guests").length -1) {
       var new_waypoint = new Waypoint({
         element: $('#add_another')[0],
         handler: function(direction) {  
