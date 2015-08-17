@@ -22,6 +22,9 @@ var PlaceCardView = Backbone.View.extend({
     this.listenTo(thisProduct, 'adjustFontSize', this._adjustFontSize)
     this.listenTo(thisProduct, 'adjustBaseline', this._adjustBaseline)
     this.listenTo(this.model, "change:name", this._renderName)
+    
+    this.listenTo(this.model, "removeWithoutAffectingTextarea", this.deleteGuest)
+    this.listenTo(thisProduct.get("guests"), 'renderNames', this._renderName)
   },  
   events: {  
     "blur .guest_name": 'updateGuestFromDiv',
@@ -31,7 +34,7 @@ var PlaceCardView = Backbone.View.extend({
     'click .minus_font': 'decreaseFont',
     'click .up_baseline': 'upBaseline',
     'click .down_baseline': 'downBaseline',
-     "keyup .guest_name": "resetFocus"
+     "keydown .guest_name": "resetFocus"
   },   
   focusGuest: function() {
     app_router.navigate("editing_place_cards")

@@ -47,7 +47,14 @@ var StepView = Backbone.View.extend({
     this.$('.weight').removeClass('selected').addClass('deselected');
     this.$('#weight_' + thisProduct.get("weight")).addClass("selected").removeClass('deselected')      
   },
-  _renderQuickGuests: function() { console.log("quick guests"); this.$('#quick_guests').val(thisProduct.get("guests").pluck("name").join("\n")) },
+  _renderQuickGuests: function() { 
+    console.log(this.updated_from_textarea)
+    if(!this.updated_from_textarea) {
+      console.log(thisProduct.get("guests").pluck("name")); 
+      this.$('#quick_guests').val(thisProduct.get("guests").pluck("name").join("\n")) 
+    }
+    this.updated_from_textarea = false;
+    },
   _renderCaret: function() {
     if(this.caret_position) {        
     setSelectionRange($('#quick_guests')[0], this.caret_position, this.caret_position);
@@ -55,6 +62,7 @@ var StepView = Backbone.View.extend({
    }  
   },
   newKeyPressGuests: _.debounce(function() {
+    this.updated_from_textarea = true;
     this.caret_position = this.$('#quick_guests')[0].selectionStart;
     this.changed_names = true;
     var guests = ($('#quick_guests').val());
@@ -70,8 +78,6 @@ var StepView = Backbone.View.extend({
       name = $.trim(name);
       return name;
     })   
-    //collection.reset(_.map(guests, function(name) { return { name: name  }}))
-
 
     //thisProduct.trigger('redraw')
     var existing_length = collection.length;
@@ -83,6 +89,7 @@ var StepView = Backbone.View.extend({
        guest.set("name", names[counter])
         counter = counter + 1;
       })
+    //
     } else if (names.length > existing_length) {
         console.log("More--apend")
       collection.forEach(function(guest) {    
@@ -94,19 +101,24 @@ var StepView = Backbone.View.extend({
         new_models.push({ name: names[i] });
       }
       collection.add(new_models, {silent:true});
-    collection.trigger("addMultiple", counter)
+      collection.trigger("addMultiple", counter)
+    
+    //  
     } else if (names.length < existing_length) {
-            console.log("Less")
-    for(var i = counter; i < names.length; i++) {
+      console.log("Less")
+      for(var i = counter; i < names.length; i++) {
         var guest = collection.at(i)
-        guest.set({name: names[i]});
+        guest.set({name: names[i]}, {silent:true});
         counter= counter + 1;
       }
       var to_remove = [];
       for(var i = counter; i < existing_length; i++) {
-      collection.pop()
+        
+       var model = collection.pop({silent:true})
+        model.trigger("removeWithoutAffectingTextarea")
       }
-     }
+      collection.trigger("renderNames", counter)
+    }
     }
     this._renderCaret();
     

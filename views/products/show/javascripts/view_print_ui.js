@@ -4,9 +4,10 @@ var PrintControlPanelView = Backbone.View.extend({
     this.guests = thisProduct.get("guests");
     this.ui_alert_box_view = new PrintAlertBoxView();
     
-    if(thisProduct.get("browser")) $('body').addClass(thisProduct.get("browser"))    
-   // $(window).bind("resize", _.bind(this.renderAndCreateWaypoint, this));
+    if(thisProduct.get("browser")) $('body').addClass(thisProduct.get("browser"))     
+  //$(window).bind("resize", _.bind(this.renderAndCreateWaypoint, this));
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
+    this.listenTo(this.guests, "remove", this.removeAGuest);
     this.listenTo(this.guests, 'add', this.appendPlaceCard)
     this.listenTo(this.guests, 'addMultiple', this.appendMultiplePlaceCards)
     this.listenTo(this.guests, 'reset', this.render) // Render method is called as soon as the guests are reset
@@ -32,6 +33,11 @@ var PrintControlPanelView = Backbone.View.extend({
   baselineDown: function() {         thisProduct.trigger('adjustBaseline', 1) },
   toggleMainMenu: function() { $('#left_menu').fadeToggle(); },
   
+  removeAGuest: function() {
+   // Waypoint.refreshAll();
+    //this.place_view_counter = this.place_view_counter - 1 ;
+    console.log("removeAGuest", this.place_view_counter)
+  },
   checkout: function() {
       this.$('.buy').hide();
       this.$('.paypal_spinner').show()
@@ -47,15 +53,40 @@ var PrintControlPanelView = Backbone.View.extend({
     });
   },  
   appendMultiplePlaceCards: function(counter) {
+    console.log("Appending more", counter)
     var html = []
     for(counter; counter < 13; counter++) {
+      console.log("Adding", counter, this.place_view_counter)
+      
+     this.place_view_counter =counter;
       if(!thisProduct.get("guests").at(counter)) break
       html.push(this._newPlaceCardView(thisProduct.get("guests").at(counter), "appended_place_card").render().el)
+      
      }
+     this.place_view_counter = counter;
      this.$( ".add_another" ).before(html)   
      thisProduct.trigger("redraw")
-     this.place_view_counter = counter;
      this._createMainWaypoint(); 
+  },
+  renderAndCreateWaypoint: function() {
+    console.log("Render main and waypoint")
+    Waypoint.destroyAll();
+    this.render();
+    thisProduct.trigger("redraw")
+    this._createMainWaypoint();  
+  },
+  _createMainWaypoint: function() {
+    Waypoint.destroyAll();
+    if(thisProduct.get("guests").length > 12) {
+    var that = this;
+      var waypoint =  new Waypoint({
+        element: $('#add_another')[0],
+        handler: function(direction) {         
+          if(direction == "down") that.renderMore(waypoint);
+        },
+        offset:'120%'
+      })   
+    }
   },
   render: function() {
   var that = this;
@@ -79,37 +110,10 @@ var PrintControlPanelView = Backbone.View.extend({
     this.$('#actual_cards').prepend(place_cards)
     return this;
   },
-  renderAndCreateWaypoint: function() {
-    console.log("Render main and waypoint")
-    Waypoint.destroyAll();
-    this.render();
-    this._createMainWaypoint();  
-  },
-  _createMainWaypoint: function() {
-    Waypoint.destroyAll();
-    if(thisProduct.get("guests").length > 12) {
-    var that = this;
-      var waypoint =  new Waypoint({
-        element: $('#add_another')[0],
-        handler: function(direction) {         
-          if(direction == "down") that.renderMore(waypoint);
-        },
-        offset:'120%'
-      })   
-    }
-  },
-  // Create the SVG print view
-  printPage: function(e) {    
-    this._place_card_print_collection = this._place_card_print_collection || new PrintPlaceCardCollectionView({
-      collection: thisProduct.get("guests")
-    })
-    this._place_card_print_collection.render()
-    $('#ui_printer_icon').attr('src', "/gfx/spinners/360.gif");
-    $('#mobile_ui_printer_icon').attr('src', "/gfx/spinners/360.gif");
-  },
   renderMore: function(waypoint) {
     waypoint.destroy();
     var that = this;
+    console.log(this.place_view_counter)
   
     var place_cards = []
     for(var i =0; i < 12; i++) {
@@ -132,6 +136,15 @@ var PrintControlPanelView = Backbone.View.extend({
         offset:'120%'
       })   
     }
+  },
+  // Create the SVG print view
+  printPage: function(e) {    
+    this._place_card_print_collection = this._place_card_print_collection || new PrintPlaceCardCollectionView({
+      collection: thisProduct.get("guests")
+    })
+    this._place_card_print_collection.render()
+    $('#ui_printer_icon').attr('src', "/gfx/spinners/360.gif");
+    $('#mobile_ui_printer_icon').attr('src', "/gfx/spinners/360.gif");
   },
   renderPrice: function() {
     this.$('#pound').text(thisProduct.get("pounds"));
