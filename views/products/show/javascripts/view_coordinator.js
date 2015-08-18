@@ -60,9 +60,8 @@ var CoordinatorView = Backbone.View.extend({
         $('body').addClass("printui_view")       
         window.scrollTo(0,0);
         $(window).on("resize", _.bind(function() {
-          alert("Previous" + previous_body_width + "New:" + $('body').width())
-          console.log(previous_body_width, $('body').width())
           if(previous_body_width != $('body').width()) {
+            alert("didnot match")
           window.scrollTo(0,0);
           that.print_ui_view.renderAndCreateWaypoint();
           }
