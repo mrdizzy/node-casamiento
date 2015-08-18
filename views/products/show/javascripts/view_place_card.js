@@ -133,6 +133,7 @@ var PlaceCardView = Backbone.View.extend({
       $template.find('.colour_' + i).css("background-color", colours[i])
     }
     this.$el.html($template)
+    console.log(this.options)
     this.guest_name_element = this.$('.guest_name');
     return this;
   }

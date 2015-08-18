@@ -4,8 +4,7 @@ var PrintControlPanelView = Backbone.View.extend({
     this.guests = thisProduct.get("guests");
     this.ui_alert_box_view = new PrintAlertBoxView();
     
-    if(thisProduct.get("browser")) $('body').addClass(thisProduct.get("browser"))     
-  //$(window).bind("resize", _.bind(this.renderAndCreateWaypoint, this));
+    if(thisProduct.get("browser")) $('body').addClass(thisProduct.get("browser"))   
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
     this.listenTo(this.guests, 'add', this.appendPlaceCard)
     this.listenTo(this.guests, 'addMultiple', this.appendMultiplePlaceCards)
@@ -46,9 +45,8 @@ var PrintControlPanelView = Backbone.View.extend({
     var render = place_card_view.render().el
     var place_card = $(render);
     this.$( ".add_another" ).before(place_card)    
-    place_card.fadeIn(2000, function() {
-      place_card_view._renderFontAndBaseline();
-    });
+    place_card.fadeIn(2000);
+   place_card_view._renderFontAndBaseline();
   },  
   appendMultiplePlaceCards: function(counter) {
     var html = []
@@ -112,12 +110,15 @@ var PrintControlPanelView = Backbone.View.extend({
     for(var i =0; i < 12; i++) {
       var guest = thisProduct.get("guests").at(this.place_view_counter);
       if(guest) {
-        place_cards.push(this._newPlaceCardView(guest).render().el)
+        place_cards.push(this._newPlaceCardView(guest,  "appended_place_card").render().$el)
         this.place_view_counter = this.place_view_counter + 1;
       }
     }
-  
+    
     this.$('.add_another').before(place_cards);
+    place_cards.forEach(function(card) {
+        card.fadeIn(1500)
+    })
     thisProduct.trigger("redraw")
     if(this.place_view_counter < thisProduct.get("guests").length - 1) {
       var new_waypoint = new Waypoint({
