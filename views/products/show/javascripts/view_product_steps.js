@@ -4,7 +4,6 @@ var StepView = Backbone.View.extend({
   el: '.right_column',
   initialize: function() {
     var guests = thisProduct.get("guests");
-    this.changed_names = false;
     this.weights_reference = {2: "200", 3: "300" } // number refers to position of element in HTML hierarchy
     this.listenTo(guests, 'change', this._renderQuickGuests)
     this.listenTo(guests, 'destroy', this._renderQuickGuests)
@@ -22,7 +21,6 @@ var StepView = Backbone.View.extend({
     "click .weight": "updateWeight",
     "focus #quick_guests": "selectQuickGuests",    
     "blur #quick_guests": "hideQuickGuests",
-    "click #quick_guests": "updateCaretAfterClick",
     "keyup #quick_guests": "newKeyPressGuests",
     "paste #quick_guests": "newKeyPressGuests"
   },
@@ -36,7 +34,7 @@ var StepView = Backbone.View.extend({
   },
   hideQuickGuests: function() { $('body').removeClass("quick_guests_selected"); },
   // If you happen to click somewhere else on the textarea in the split second before rendering, this stops the caret from jumping to the previous location
-  updateCaretAfterClick: function() { this.caret_position = this.$('#quick_guests')[0].selectionStart; },
+  //updateCaretAfterClick: function() { this.caret_position = this.$('#quick_guests')[0].selectionStart; },
   
   updateWeight: function(e) {   
     var weight_selected = $(e.currentTarget).index();
@@ -48,80 +46,78 @@ var StepView = Backbone.View.extend({
     this.$('#weight_' + thisProduct.get("weight")).addClass("selected").removeClass('deselected')      
   },
   _renderQuickGuests: function() { 
-    if(!this.updated_from_textarea) {
-      this.$('#quick_guests').val(thisProduct.get("guests").pluck("name").join("\n")) 
-    }
-    this.updated_from_textarea = false;
-    },
-  _renderCaret: function() {
-    if(this.caret_position) {        
-    setSelectionRange($('#quick_guests')[0], this.caret_position, this.caret_position);
-    this.caret_position = undefined
-   }  
+    if(!this.updated_from_textarea) this.$('#quick_guests').val(this.guests.pluck("name").join("\n")) 
+    //this.updated_from_textarea = false;
   },
+   // _renderCaret: function() {
+  //    if(this.caret_position) {        
+  //    setSelectionRange($('#quick_guests')[0], this.caret_position, this.caret_position);
+  //    this.caret_position = undefined
+  // }  
+  //},
   newKeyPressGuests: _.debounce(function() {
-    this.updated_from_textarea = true;
-    this.caret_position = this.$('#quick_guests')[0].selectionStart;
-    this.changed_names = true;
+    //this.updated_from_textarea = true;
+    //this.caret_position = this.$('#quick_guests')[0].selectionStart;
     var guests = ($('#quick_guests').val());
-    if (!($.trim(guests) == '')) {
+    
+    if (!($.trim(guests) == '')) { // Only run this code if the textarea isn't blank!
+      
+    //Change this to check for more than one comma on the same line in order to determine delimiter with more accuracy
       if(guests.indexOf(',') === -1) { // Check how the names are delimited (comma or newline)
         guests = guests.split("\n")
       } else {
         guests = guests.split(",")
       }
     
-    var collection =  thisProduct.get("guests")
-    var names = _.map(guests, function(name) {
-      name = $.trim(name);
-      return name;
-    })   
+      var names_from_textarea = _.map(guests, function(name) {
+        name = $.trim(name);
+        return name;
+      })   
 
-    var existing_length = collection.length;
-    var counter = 0;
+      var existing_length = this.guests.length;
+      var counter = 0;
     
-    if (names.length == existing_length) {
-      collection.forEach(function(guest) {    
-       guest.set("name", names[counter])
-        counter = counter + 1;
-      })
-    //
-    } else if (names.length > existing_length) {
-      collection.forEach(function(guest) {    
-        guest.set("name", names[counter])
-       counter = counter + 1;
-      })
-      var new_models = [];
-      for(var i = counter; i < names.length; i++) {
-        new_models.push({ name: names[i] });
-       // counter = counter + 1; // Just added
-      }
-      collection.add(new_models, {silent:true});
-      collection.trigger("addMultiple", counter)
-    
-    //  
-    } else if (names.length < existing_length) {
-      var number_removed = 0;
-      for(var i = counter; i < names.length; i++) {
-        var guest = collection.at(i)
-        guest.set({name: names[i]}, {silent:true});
-        counter= counter + 1;
-      }
-      var to_remove = [];
-      for(var i = counter; i < existing_length; i++) {
-        
-       var model = collection.pop({silent:true})
-        model.trigger("removeWithoutAffectingTextarea")
-        number_removed = number_removed - 1;
-      }
+      // SAME number of names in textarea and existing collection
+      if (names_from_textarea.length == existing_length) {
+        this.guests.forEach(function(guest) {    
+          guest.set("name", names_from_textarea[counter])
+          counter = counter + 1;
+        })
       
-        collection.trigger("removeMultiple", number_removed)
-      collection.trigger("renderNames", counter)
+      // MORE names in textarea than in existing collection
+      } else if (names_from_textarea.length > existing_length) {
+        this.guests.forEach(function(guest) {    
+          guest.set("name", names_from_textarea[counter])
+          counter = counter + 1;
+        })
+        var new_models = [];
+        for(var i = counter; i < names_from_textarea.length; i++) {
+          new_models.push({ name: names_from_textarea[i] });
+        }
+        this.guests.add(new_models, { silent:true });
+        this.guests.trigger("addMultiple", counter)
+      
+      // LESS names in textarea than in existing collection
+      } else if (names_from_textarea.length < existing_length) {
+        var number_removed = 0;
+        for(var i = counter; i < names_from_textarea.length; i++) {
+          var guest = this.guests.at(i)
+          guest.set({name: names_from_textarea[i]}, {silent:true});
+          counter = counter + 1;
+        }
+        var to_remove = [];
+        for(var i = counter; i < existing_length; i++) {
+          var model = this.guests.pop({silent:true})
+          model.trigger("removeWithoutAffectingTextarea")
+          number_removed = number_removed - 1;
+        }
+        this.guests.trigger("removeMultiple", number_removed)
+        this.guests.trigger("renderNames") //just remnoved counter
+      }
     }
-    }
-    this._renderCaret();
+    //  this._renderCaret();
     
-  },500),
+  },750),
   updateTexture: function(e) {
     var texture_selected = $(e.currentTarget)
     this.model.set("texture", texture_selected.index());

@@ -22,7 +22,6 @@ var PlaceCardView = Backbone.View.extend({
     this.listenTo(thisProduct, 'adjustFontSize', this._adjustFontSize)
     this.listenTo(thisProduct, 'adjustBaseline', this._adjustBaseline)
     this.listenTo(this.model, "change:name", this._renderName)
-    
     this.listenTo(this.model, "removeWithoutAffectingTextarea", this.deleteGuest)
     this.listenTo(thisProduct.get("guests"), 'renderNames', this._renderName)
   },  
@@ -74,16 +73,6 @@ var PlaceCardView = Backbone.View.extend({
   downBaseline:   function() { this._adjustBaseline(); thisProduct.saveGuests(); },
   _adjustBaseline: function(amount) { this.model.set("baseline", this.model.get("baseline") + amount, {silent:true}); this._renderBaseline() },
   
-  _renderFontAndBaseline: function() {
-    var body_width = $('body').width(),
-      previous_width = this.previous_body_width;
-    if((previous_width != body_width) && !(this.print_ui_el.css('display') == 'none' )) {
-      this.calculateWidth()
-      this._renderFontSize();
-      this._renderBaseline();
-      this.previous_body_width = body_width;
-    }
-  },
   calculateWidth: function() {
      var body_width = $('body').width()
     var print_ui_width = this.print_ui_el.width()
@@ -114,6 +103,16 @@ var PlaceCardView = Backbone.View.extend({
     this.guest_name_element = this.guest_name_element || this.$('.guest_name') 
     this.display_font_size = this.calculatedWidth * this.percentage_font_size;
     this.guest_name_element.css('font-size', this.display_font_size + "px");   
+  },
+  _renderFontAndBaseline: function() {
+    var body_width = $('body').width(),
+      previous_width = this.previous_body_width;
+    if((previous_width != body_width) && !(this.print_ui_el.css('display') == 'none' )) {
+      this.calculateWidth()
+      this._renderFontSize();
+      this._renderBaseline();
+      this.previous_body_width = body_width;
+    }
   },
   _adjustFontSize: function(amount) {
     this.percentage_font_size = this.percentage_font_size * amount;

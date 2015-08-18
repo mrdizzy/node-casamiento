@@ -7,17 +7,14 @@ var PrintControlPanelView = Backbone.View.extend({
     if(thisProduct.get("browser")) $('body').addClass(thisProduct.get("browser"))     
   //$(window).bind("resize", _.bind(this.renderAndCreateWaypoint, this));
     this.listenTo(thisProduct, "change:quantity", this.renderPrice)
-    this.listenTo(this.guests, "remove", this.removeAGuest);
     this.listenTo(this.guests, 'add', this.appendPlaceCard)
     this.listenTo(this.guests, 'addMultiple', this.appendMultiplePlaceCards)
     this.listenTo(this.guests, 'reset', this.render) // Render method is called as soon as the guests are reset
     this.listenTo(this.guests, 'waypoint', this._createMainWaypoint)
     this.listenTo(this.guests, 'removeMultiple', this.removeMultiple)
   },
-  removeMultiple: function(number_removed) {
-    if(this.place_view_counter > 12) {
-      this.place_view_counter = this.place_view_counter + number_removed;
-    }
+  removeMultiple: function(number_removed) { // number_removed is a minus figure
+    if(this.place_view_counter > 12) this.place_view_counter = this.place_view_counter + number_removed;
     this._createMainWaypoint();
   },
   events: {
@@ -39,11 +36,6 @@ var PrintControlPanelView = Backbone.View.extend({
   baselineUp:   function() {          thisProduct.trigger('adjustBaseline', -1) },
   baselineDown: function() {         thisProduct.trigger('adjustBaseline', 1) },
   toggleMainMenu: function() { $('#left_menu').fadeToggle(); },
-  
-  removeAGuest: function() {
-   // Waypoint.refreshAll();
-    //this.place_view_counter = this.place_view_counter - 1 ;
-  },
   checkout: function() {
       this.$('.buy').hide();
       this.$('.paypal_spinner').show()
@@ -64,16 +56,13 @@ var PrintControlPanelView = Backbone.View.extend({
     if(counter < 12) {
       for(counter; counter < 12; counter++) {
         this.place_view_counter = counter;
-     
         if(!thisProduct.get("guests").at(counter)) break
         html.push(this._newPlaceCardView(thisProduct.get("guests").at(counter), "appended_place_card").render().el)
       }
       this.$( ".add_another" ).before(html)   
       thisProduct.trigger("redraw")
      
-      this.place_view_counter =this.place_view_counter + 1;
-    } else {
-    //this.place_view_counter = counter - this.place_view_counter;
+      this.place_view_counter = this.place_view_counter + 1;
     }
     this._createMainWaypoint(); 
   },
@@ -86,7 +75,7 @@ var PrintControlPanelView = Backbone.View.extend({
   _createMainWaypoint: function() {
     Waypoint.destroyAll();
     if(thisProduct.get("guests").length > 12) {
-    var that = this;
+      var that = this;
       var waypoint =  new Waypoint({
         element: $('#add_another')[0],
         handler: function(direction) {         
@@ -97,21 +86,19 @@ var PrintControlPanelView = Backbone.View.extend({
     }
   },
   render: function() {
-  var that = this;
+    var place_cards = [];
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
       pounds: thisProduct.get("pounds"),
       pence: thisProduct.get("pence")
     })); 
     this.$el.html($template)
     
-    // Render place cards
     this.place_view_counter = 0;
-    var place_cards = []
-    for(var i =0; i < 12; i++) {
-      var guest = thisProduct.get("guests").at(i);
-      if(guest) {
-      place_cards.push(this._newPlaceCardView(guest).render().el)
-      this.place_view_counter = this.place_view_counter + 1;
+    for(var i =0; i < 12; i++) { // Only render the first 12 place cards (0 to 11 is equivalent to 12!)
+      var guest = this.guests.at(i);
+      if (guest) {
+        place_cards.push(this._newPlaceCardView(guest).render().el)
+        this.place_view_counter = this.place_view_counter + 1;
       }
    }
         
@@ -132,7 +119,7 @@ var PrintControlPanelView = Backbone.View.extend({
   
     this.$('.add_another').before(place_cards);
     thisProduct.trigger("redraw")
-    if(this.place_view_counter < thisProduct.get("guests").length -1) {
+    if(this.place_view_counter < thisProduct.get("guests").length - 1) {
       var new_waypoint = new Waypoint({
         element: $('#add_another')[0],
         handler: function(direction) {  
