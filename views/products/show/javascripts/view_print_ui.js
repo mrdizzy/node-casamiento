@@ -12,10 +12,6 @@ var PrintControlPanelView = Backbone.View.extend({
     this.listenTo(this.guests, 'waypoint', this._createMainWaypoint)
     this.listenTo(this.guests, 'removeMultiple', this.removeMultiple)
   },
-  removeMultiple: function(number_removed) { // number_removed is a minus figure
-    if(this.place_view_counter > 12) this.place_view_counter = this.place_view_counter + number_removed;
-    this._createMainWaypoint();
-  },
   events: {
     "click #add_another": "addGuest",
     "click #menu_lines": "toggleMainMenu",
@@ -40,6 +36,11 @@ var PrintControlPanelView = Backbone.View.extend({
       this.$('.paypal_spinner').show()
       thisProduct.makePurchase();
   },
+  removeMultiple: function(number_removed) { // number_removed is a minus figure
+  console.log("removemultiple", number_removed)
+    if(this.place_view_counter > 12) this.place_view_counter = this.place_view_counter + number_removed;
+    this._createMainWaypoint();
+  },
   appendPlaceCard: function(guest) {
     var place_card_view = this._newPlaceCardView(guest, "appended_place_card")
     var render = place_card_view.render().el
@@ -55,7 +56,7 @@ var PrintControlPanelView = Backbone.View.extend({
       for(counter; counter < 12; counter++) {
         this.place_view_counter = counter;
         if(!thisProduct.get("guests").at(counter)) break
-        html.push(this._newPlaceCardView(thisProduct.get("guests").at(counter), "appended_place_card").render().el)
+        html.push(this._newPlaceCardView(thisProduct.get("guests").at(counter)).render().el)
       }
       this.$( ".add_another" ).before(html)   
       thisProduct.trigger("redraw")
