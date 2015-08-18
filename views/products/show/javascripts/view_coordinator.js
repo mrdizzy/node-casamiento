@@ -64,7 +64,7 @@ var CoordinatorView = Backbone.View.extend({
             alert("didnot match.Previous: " + previous_body_width + "New: " + $('body').width())
           window.scrollTo(0,0);
           that.print_ui_view.renderAndCreateWaypoint();
-          var previous_body_width = $('body').width();
+          previous_body_width = $('body').width();
           }
         }))
         
