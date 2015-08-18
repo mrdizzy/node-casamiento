@@ -1,17 +1,3 @@
-function setSelectionRange(input, selectionStart, selectionEnd) {
-  if (input.setSelectionRange) {
-    input.focus();
-    input.setSelectionRange(selectionStart, selectionEnd);
-  }
-  else if (input.createTextRange) {
-    var range = input.createTextRange();
-    range.collapse(true);
-    range.moveEnd('character', selectionEnd);
-    range.moveStart('character', selectionStart);
-    range.select();
-  }
-}
-
 $(function() {   
    var casamiento_test_for_mobile,
      casamiento_test_for_phablet;
@@ -36,7 +22,6 @@ $(function() {
   
   $(window).on("resize", testForPhablet())
   $(window).on("resize", testForMobile())
-
   Backbone.Collection.prototype.save = function (options) {
     Backbone.sync("create", this, options);
   };

@@ -3,12 +3,10 @@
 var StepView = Backbone.View.extend({ 
   el: '.right_column',
   initialize: function() {
-    var guests = thisProduct.get("guests");
-    this.weights_reference = {2: "200", 3: "300" } // number refers to position of element in HTML hierarchy
-    this.listenTo(guests, 'change', this._renderQuickGuests)
-    this.listenTo(guests, 'destroy', this._renderQuickGuests)
-    this.listenTo(guests, 'add', this._renderQuickGuests)
-    this.listenTo(guests, 'addMultiple', this._renderQuickGuests)
+    this.guests = thisProduct.get("guests");
+    this.weights_reference =  {2: "200", 3: "300" } // number refers to position of element in HTML hierarchy
+    this.listenTo(this.guests, 'change', this._renderQuickGuests)
+    this.listenTo(this.guests, 'destroy', this._renderQuickGuests)
     this.listenTo(thisProduct, 'change:weight', this.renderWeight);
     this.listenTo(thisProduct, "change:total", this.renderQtyAndPrice)
     this.current_step = 1;
@@ -30,11 +28,9 @@ var StepView = Backbone.View.extend({
   selectQuickGuests: function() { 
     $('body').addClass("quick_guests_selected");
     if(casamiento_test_for_mobile) $('html,body').scrollTop($("#quick_guests").offset().top)
-//    this.$('#quick_guests').focus();
   },
   hideQuickGuests: function() { $('body').removeClass("quick_guests_selected"); },
-  // If you happen to click somewhere else on the textarea in the split second before rendering, this stops the caret from jumping to the previous location
-  //updateCaretAfterClick: function() { this.caret_position = this.$('#quick_guests')[0].selectionStart; },
+  _renderQuickGuests: function() { this.$('#quick_guests').val(this.guests.pluck("name").join("\n")) },
   
   updateWeight: function(e) {   
     var weight_selected = $(e.currentTarget).index();
@@ -45,19 +41,7 @@ var StepView = Backbone.View.extend({
     this.$('.weight').removeClass('selected').addClass('deselected');
     this.$('#weight_' + thisProduct.get("weight")).addClass("selected").removeClass('deselected')      
   },
-  _renderQuickGuests: function() { 
-    if(!this.updated_from_textarea) this.$('#quick_guests').val(this.guests.pluck("name").join("\n")) 
-    //this.updated_from_textarea = false;
-  },
-   // _renderCaret: function() {
-  //    if(this.caret_position) {        
-  //    setSelectionRange($('#quick_guests')[0], this.caret_position, this.caret_position);
-  //    this.caret_position = undefined
-  // }  
-  //},
   newKeyPressGuests: _.debounce(function() {
-    //this.updated_from_textarea = true;
-    //this.caret_position = this.$('#quick_guests')[0].selectionStart;
     var guests = ($('#quick_guests').val());
     
     if (!($.trim(guests) == '')) { // Only run this code if the textarea isn't blank!
@@ -87,7 +71,7 @@ var StepView = Backbone.View.extend({
       // MORE names in textarea than in existing collection
       } else if (names_from_textarea.length > existing_length) {
         this.guests.forEach(function(guest) {    
-          guest.set("name", names_from_textarea[counter])
+          guest.set("name", names_from_textarea[counter], {silent:true}).trigger("changeWithoutAffectingTextarea")
           counter = counter + 1;
         })
         var new_models = [];
@@ -112,11 +96,9 @@ var StepView = Backbone.View.extend({
           number_removed = number_removed - 1;
         }
         this.guests.trigger("removeMultiple", number_removed)
-        this.guests.trigger("renderNames") //just remnoved counter
+        this.guests.trigger("renderNames")
       }
     }
-    //  this._renderCaret();
-    
   },750),
   updateTexture: function(e) {
     var texture_selected = $(e.currentTarget)
@@ -149,8 +131,7 @@ var StepView = Backbone.View.extend({
   },
   render: function() {    
     var json_product = thisProduct.toJSON();
-    var guests = thisProduct.get("guests").pluck("name").join("\n")
-    json_product.guests = guests;
+    json_product.guests = this.guests.pluck("name").join("\n");
     var $result = $(Handlebars.template(templates["products_show_step_through"])(json_product));         
     
     this.$el.html($result)

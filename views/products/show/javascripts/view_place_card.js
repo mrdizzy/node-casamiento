@@ -23,6 +23,7 @@ var PlaceCardView = Backbone.View.extend({
     this.listenTo(thisProduct, 'adjustBaseline', this._adjustBaseline)
     this.listenTo(this.model, "change:name", this._renderName)
     this.listenTo(this.model, "removeWithoutAffectingTextarea", this.deleteGuest)
+    this.listenTo(this.model, "changeWithoutAffectingTextarea", this._renderName)
     this.listenTo(thisProduct.get("guests"), 'renderNames', this._renderName)
   },  
   events: {  
