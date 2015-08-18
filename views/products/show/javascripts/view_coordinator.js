@@ -47,6 +47,8 @@ var CoordinatorView = Backbone.View.extend({
   },  
   renderFlatPreview: function() {
     var that = this;   
+    var previous_body_width = $('body').width();
+
     this.stopListening(thisProduct, 'change:colours');
     this.stopListening(thisProduct, 'change:font')
     if(this.current_view == "home") { // If we are on the products slides page
@@ -56,10 +58,13 @@ var CoordinatorView = Backbone.View.extend({
         that.print_ui_view._createMainWaypoint();
         that.current_view = "printui"        
         $('body').addClass("printui_view")       
-         window.scrollTo(0,0);
+        window.scrollTo(0,0);
         $(window).on("resize", _.bind(function() {
-         window.scrollTo(0,0);
+          console.log(previous_body_width, $('body').width())
+          if(previous_body_width != $('body').width()) {
+          window.scrollTo(0,0);
           that.print_ui_view.renderAndCreateWaypoint();
+          }
         }))
         
       })
