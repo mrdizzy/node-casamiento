@@ -58,6 +58,9 @@ var Product = Backbone.Model.extend({
     this.listenTo(this.guests, "remove", this.updateQuantityFromGuests)
     this.listenTo(this.guests, "reset", this.updateQuantityFromGuests)
   },
+  resetFont: function() {
+    this.guests.trigger("resetFont", this.get("baseline"), this.get("font_size"))
+  },
   updateQuantityFromGuests: function() { this.set("quantity", this.guests.length) },
   updateColour: function(index, colour) {
     var colours = this.get("colours");

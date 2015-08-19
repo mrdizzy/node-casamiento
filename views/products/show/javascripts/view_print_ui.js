@@ -25,7 +25,7 @@ var PrintControlPanelView = Backbone.View.extend({
     "click #mobile_ui_printer_icon": "printPage"
   },
   addGuest:     function() {            thisProduct.get("guests").add({}) },
-  fontReset:    function() {           thisProduct.get("guests").resetFont(); },
+  fontReset:    function() {           thisProduct.resetFont(); },
   fontIncrease: function() {           thisProduct.trigger('adjustFontSize', 1.05).saveGuests()  },
   fontDecrease: function() {         thisProduct.trigger('adjustFontSize', 0.95).saveGuests()  },
   baselineUp:   function() {          thisProduct.trigger('adjustBaseline', -1) },
@@ -37,7 +37,6 @@ var PrintControlPanelView = Backbone.View.extend({
       thisProduct.makePurchase();
   },
   removeMultiple: function(number_removed) { // number_removed is a minus figure
-  console.log("removemultiple", number_removed)
     if(this.place_view_counter > 12) this.place_view_counter = this.place_view_counter + number_removed;
     this._createMainWaypoint();
   },
@@ -80,7 +79,7 @@ var PrintControlPanelView = Backbone.View.extend({
         handler: function(direction) {         
           if(direction == "down") that.renderMore(waypoint);
         },
-        offset:'120%'
+        offset:'140%'
       })   
     }
   },
@@ -127,7 +126,7 @@ var PrintControlPanelView = Backbone.View.extend({
         handler: function(direction) {  
           if(direction == "down") that.renderMore(new_waypoint);
         },
-        offset:'120%'
+        offset:'140%'
       })   
     }
   },

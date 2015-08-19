@@ -16,7 +16,7 @@ var PlaceCardView = Backbone.View.extend({
     this.percentage_font_size = this.model.get("font_size")
     this.display_font_size = this.calculatedWidth * this.percentage_font_size;
     $(window).bind("resize", _.bind(this._renderFontAndBaseline, this));
-    
+    this.listenTo(thisProduct.get("guests"), 'resetFont', this._resetFont)
     this.listenTo(thisProduct, 'redraw', this._renderFontAndBaseline)
     this.listenTo(thisProduct, 'change:font', this._renderFontFamily); 
     this.listenTo(thisProduct, 'adjustFontSize', this._adjustFontSize)
@@ -36,6 +36,14 @@ var PlaceCardView = Backbone.View.extend({
     'click .down_baseline': 'downBaseline',
      "keydown .guest_name": "resetFocus"
   },   
+  _resetFont: function(baseline, size) {
+    this.model.set("baseline", 0);
+    this.model.set("font_size", size);
+    this.percentage_font_size = size;
+    this._renderFontSize();
+    this._renderBaseline();
+    
+  },
   focusGuest: function() {
     app_router.navigate("editing_place_cards")
     var that = this;
