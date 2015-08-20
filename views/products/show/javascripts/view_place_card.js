@@ -42,7 +42,6 @@ var PlaceCardView = Backbone.View.extend({
     this.percentage_font_size = size;
     this._renderFontSize();
     this._renderBaseline();
-    
   },
   focusGuest: function() {
     app_router.navigate("editing_place_cards")

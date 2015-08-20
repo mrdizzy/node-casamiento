@@ -46,7 +46,8 @@ var PrintControlPanelView = Backbone.View.extend({
     var place_card = $(render);
     this.$( ".add_another" ).before(place_card)    
     place_card.fadeIn(2000);
-   place_card_view._renderFontAndBaseline();
+    place_card_view.$('.guest_name').text("").focus();
+    place_card_view._renderFontAndBaseline();
   },  
   appendMultiplePlaceCards: function(counter) {
     var html = []
