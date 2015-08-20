@@ -7,6 +7,7 @@
 .right_column {
   background-color:#fff; 
   border-left:1px dotted black;
+  border-right:1px dotted black;
   margin-left: 70%; 
   width:30%;
   text-align:center; 
@@ -172,6 +173,7 @@
     #ui_printer_icon { 
       margin:0;
       float:left;
+      margin-top:10px;
       width:35px;
       margin-left:10%;
       text-align:center;
@@ -191,7 +193,8 @@
         border-bottom-right-radius:12px;
         border-top-left-radius:12px;
         width:60px;      
-        height:45px;
+        height:42px;
+        margin-top:4px;
       }
         #ui_global_font div:hover, 
         #ui_global_font_mobile div:hover {
@@ -264,6 +267,7 @@
     margin:0;
     padding:0;
     border-left:0;
+    border-right:1px dotted black;
   }
       
   #description_container { 

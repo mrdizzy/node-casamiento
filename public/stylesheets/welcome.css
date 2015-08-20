@@ -1,5 +1,3 @@
-@font-face { font-family:"GaraI"; src: url('/f/garamonditalic.eot?') format('eot'), url('/f/garamonditalic.woff') format('woff'); }
-
 #slide_separator {
 	border-top:3px double grey;
 	position:relative;
@@ -7,48 +5,21 @@
 	margin-bottom:2em
 }
 
-#description_column {
-	margin-left:60%;
-	border-left:1px dotted black;
-}
 	#welcome_column h5 { 
-	  font: normal 3em/1.2em 'GaraI', serif;
+	  font: normal 4.5em/1em 'Josefin Slab', serif;
     letter-spacing:-0.01em;
 		margin:0;
 	  text-align:center;
-	  color:#000;
-	  margin-left:0.25em;
-	  margin-right:0.25em;
+	  color:#555;
 	}
 		
-	#welcome_column h6 {
-		font: normal 3em/1.2em 'GaraI', serif;
-		text-align:center;
-		letter-spacing:0.0005em;
-		margin-left:0.5em;
-		margin-right:0.5em;
-	}
 	
-	p { 
-	  font: normal 1.4em/1.4em 'Josefin Slab', sans-serif;
-		margin-right:1em;
-		margin-left:1em;
-		padding-bottom:20px;
-	}
-
-		p.bullet_text {
-			padding-bottom:0.4em;
-			font-size:1.8em;
-			font-style:italic;
-			border-bottom:1px  dotted black;
-			margin-bottom:0.75em;
-		}
 	#loading_main_page_spinner { display:none;}
 	
 	#inner_page_container { background-image:url('/gfx/background_wiggle.svg'); }  
 	
 	#welcome_column {
-		width:85%; 
+		width:80%; 
 		padding:0;
 		background-color:#fff;
 		margin:0 auto;
@@ -56,8 +27,8 @@
 		border-right: 1px dotted #000;
 	}
 #slides_column {	
-	width:60%;
-	float:left;
+	width:100%;
+	margin:0 auto;
 }
 
 	#slides_spinner {
@@ -71,19 +42,23 @@
 
 	.slidesjs-previous, .slidesjs-next {
 		color:#000;
-		margin-top:-0.4em;
+		margin-top:-5em;
+		margin-left:58%;
 		font: normal 1.2em 'OS Light';
 		text-transform: uppercase;
 		display:inline-block;
+		z-index:9999999999999999999999999999999999999;
 		position:absolute;
 		padding:1em;
 	}
 	.slidesjs-previous:before {	content: '\00ab  '}
-	.slidesjs-next { margin-left:6em;	}
+	.slidesjs-next { margin-left:65%;	}
 		.slidesjs-next:after { content: ' \00bb' }
 
 	.slidesjs-pagination {
-		margin: 10px 0 10px;
+		
+		z-index:9999999999999999999999999999999999999;
+		margin: -60px 0 10px;
 		float: right;
 		list-style: none;
 	}
@@ -115,10 +90,10 @@
 		
   .welcome_place_card_container { float:left;} 
 	
-	.right_slide_col { margin-left:55%;	}
+	.right_slide_col { float:left;	width:33.3%;}
 	
   .welcome_slide_container {
-	  width:55%;
+	  width:33.3%;
 	  float:left;
   }
 	.welcome_place_card_container img {
@@ -161,27 +136,6 @@
 		font: normal 1.2em 'OS Light';
 		padding-top:12px;
 		margin-left:7px;
-	}
-	
-	.hex {
-		margin-top:6px;
-		margin-left:32px;
-		width:60px;
-		height:50px;
-		background-image:url('/gfx/hex.svg');
-		background-repeat:no-repeat;
-		background-size:100%;
-		text-align:center;
-		color:#FFF;
-		line-height:50px;
-		float:left;
-		font-size:2.4em;
-		font-weight:700;
-		font-style:italic;
-		font-family:'Josefin Slab';
-	}
-	.how_to_bullet_container {
-		margin-left:85px;
 	}
  /* Smartphone */
 /* ----------------------------------------------------------------------------- */    
