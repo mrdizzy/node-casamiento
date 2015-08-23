@@ -196,6 +196,7 @@
 		width:100%; 
 		border:0;
 	}
+	#slide_separator { top:0; }
 	.welcome_place_card_container { float:left;} 
 	
 	.right_slide_col { 	width:45%;margin:0; }
