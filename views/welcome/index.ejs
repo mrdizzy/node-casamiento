@@ -4,11 +4,13 @@
     <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700italic,400italic' rel='stylesheet' type='text/css'>   
     <link rel="stylesheet" href="/stylesheets/welcome.css" /> 
     <style type="text/css">
-  <% for(var i = 0; i < place_cards.length; i++) { %>
-    <% if (place_cards[i].colours[1]) { %>
-     #welcome_place_<%=i%> .colour_1 { background-color: <%= place_cards[i].colours[1] %>}
-    <% } %>
-  <% } %>
+    
+        
+      <% for(var i = 0; i < place_cards.length; i++) { %>
+        <% if (place_cards[i].colours[1]) { %>
+         #welcome_place_<%=i%> .colour_1 { background-color: <%= place_cards[i].colours[1] %>}
+        <% } %>
+      <% } %>
   
     </style>
   <%- contentFor('main') %>
@@ -121,79 +123,107 @@
       
      <% } %>
      </div>
-     
+     </div>
      <div id="slide_separator"></div>
+     
+     
+     
      <div style="margin-top:-3em;"></div>
-      <h5 style="border-bottom:0;padding-bottom:0.5em;margin-left:0.75em;margin-right:0.75em;">Place cards you can personalise and print instantly straight from your browser—or let us print them for you&hellip;</h5>
+     
+     
+     
+     
+      <h5>Place cards you can personalise and print instantly straight from your browser—or let us print them for you&hellip;</h5>
 
-    <img src="/gfx/welcomeicons/line.svg" style="margin:0 auto;;padding-bottom:4em;display:block;" />
-     <div style="text-align:center;border-radius:1.5em;background-color:#EEE;width:23%;float:left;margin-left:2%;margin-right:2%;padding-left:3%;padding-right:3%;">
+    
+    
+    
+    
+    <!----  THIRD THRE ICONS  -->
+    
+    
+    <img src="/gfx/welcomeicons/line.svg" class="welcome_line"/>
+    
+    
+    
+    
+     <div id="box_1" class="welcome_box_container">
   
     <div style="position:relative;padding-bottom:1em;">
-     <img src="/gfx/welcomeicons/font.svg" style="padding:0;margin:0;display:block;top:-2em;position:absolute;left:0;right:0;margin-left:auto;margin-right:auto;" />
+        
+     <img src="/gfx/welcomeicons/font.svg"  class="welcome_icon" />
      </div>
-       <h5 style="font-size:2.5em;border-bottom:0;padding-top:1em;">Fonts to match<br/>your mood</h5>
-       <p style="font-family:'OS Light Italic';font-size:1.2em;border-top:0;color:#777">Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
+       <h5>Fonts to match<br/>your mood</h5>
+       <p>Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
      </div>
      
      
      
-     <div style="text-align:center;border-radius:1.5em;background-color:#EEE;width:23%;float:left;margin-left:2%;margin-right:2%;padding-left:3%;padding-right:3%;">
+     <div id="box_2"  class="welcome_box_container">
   
     <div style="position:relative;padding-bottom:1em;">
-     <img src="/gfx/welcomeicons/colour.svg" style="padding:0;margin:0;display:block;top:-2em;position:absolute;left:0;right:0;margin-left:auto;margin-right:auto;" />
+     <img src="/gfx/welcomeicons/colour.svg"  class="welcome_icon" />
      </div>
-       <h5 style="font-size:2.5em;border-bottom:0;padding-top:1em;">Customise colours to<br/>match your theme</h5>
-       <p style="font-family:'OS Light Italic';font-size:1.2em;border-top:0;color:#777">Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
+       <h5>Customise colours to match your theme</h5>
+       <p>Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
      </div>
      
   
   
   
   
-     <div style="text-align:center;border-radius:1.5em;background-color:#EEE;width:23%;float:left;margin-left:2%;margin-right:2%;padding-left:3%;padding-right:3%;">
+     <div id="box_3"  class="welcome_box_container">
   
     <div style="position:relative;padding-bottom:1em;">
-     <img src="/gfx/welcomeicons/print.svg" style="padding:0;margin:0;display:block;top:-2em;position:absolute;left:0;right:0;margin-left:auto;margin-right:auto;" />
+     <img src="/gfx/welcomeicons/print.svg"  class="welcome_icon" />
      </div>
-       <h5 style="font-size:2.5em;border-bottom:0;padding-top:1em;">Print instantly from your browser</h5>
-       <p style="font-family:'OS Light Italic';font-size:1.2em;border-top:0;color:#777">Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
+       <h5>Print instantly from your browser</h5>
+       <p>Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
      </div>
      
      
      
-      <img src="/gfx/welcomeicons/line.svg" style="margin:0 auto;padding-top:2em;padding-bottom:4em;display:block;" />
-     <div style="text-align:center;border-radius:1.5em;background-color:#EEE;width:23%;float:left;margin-left:2%;margin-right:2%;padding-left:3%;padding-right:3%;">
+     
+     
+    
+    <!----  SECOND THREE ICONS -->
+     
+      <img src="/gfx/welcomeicons/line.svg"  id="second_line"  class="welcome_line" />
+      
+      
+      
+      
+     <div  id="box_4" class="welcome_box_container">
   
     <div style="position:relative;padding-bottom:1em;">
-     <img src="/gfx/welcomeicons/designs.svg" style="padding:0;margin:0;display:block;top:-2em;position:absolute;left:0;right:0;margin-left:auto;margin-right:auto;" />
+     <img src="/gfx/welcomeicons/designs.svg"  class="welcome_icon" />
      </div>
-       <h5 style="font-size:2.5em;border-bottom:0;padding-top:1em;">100s of designs to match your theme</h5>
-       <p style="font-family:'OS Light Italic';font-size:1.2em;border-top:0;color:#777">Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
+       <h5>100s of designs to match your theme</h5>
+       <p>Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
      </div>
      
      
      
-     <div style="text-align:center;border-radius:1.5em;background-color:#EEE;width:23%;float:left;margin-left:2%;margin-right:2%;padding-left:3%;padding-right:3%;">
+     <div id="box_5"  class="welcome_box_container">
   
     <div style="position:relative;padding-bottom:1em;">
-     <img src="/gfx/welcomeicons/delivery.svg" style="padding:0;margin:0;display:block;top:-2em;position:absolute;left:0;right:0;margin-left:auto;margin-right:auto;" />
+     <img src="/gfx/welcomeicons/delivery.svg" class="welcome_icon" />
      </div>
-       <h5 style="font-size:2.5em;border-bottom:0;padding-top:1em;">Order before 1pm for next day delivery&hellip;</h5>
-       <p style="font-family:'OS Light Italic';font-size:1.2em;border-top:0;color:#777">Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
+       <h5>Order before 1pm for next day delivery&hellip;</h5>
+       <p>Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
      </div>
      
   
   
   
   
-     <div style="text-align:center;border-radius:1.5em;background-color:#EEE;width:23%;float:left;margin-left:2%;margin-right:2%;padding-left:3%;padding-right:3%;">
+     <div  id="box_6" class="welcome_box_container">
   
     <div style="position:relative;padding-bottom:1em;">
-     <img src="/gfx/welcomeicons/editing.svg" style="padding:0;margin:0;display:block;top:-2em;position:absolute;left:0;right:0;margin-left:auto;margin-right:auto;" />
+     <img src="/gfx/welcomeicons/editing.svg" class="welcome_icon" />
      </div>
-       <h5 style="font-size:2.5em;border-bottom:0;padding-top:1em;">Stress-free editing of guest names&hellip;</h5>
-       <p style="font-family:'OS Light Italic';font-size:1.2em;border-top:0;color:#777">Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
+       <h5>Stress-free editing of guest names&hellip;</h5>
+       <p>Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
      </div>
      
      
@@ -202,9 +232,15 @@
      
   
   
-    <img src="/gfx/welcomeicons/line.svg" style="margin:0 auto;;padding-top:1em;padding-bottom:1em;display:block;" />   
+    <img src="/gfx/welcomeicons/line.svg" class="welcome_line" />   
+    
     <div style="clear:both"></div>  
-    <div style="position:relative;width:100%;">
+    
+    
+    
+    <!----  ANIMATION -->
+    
+    <div style="position:relative;width:100%;" id="desktop_animation">
              <div style="position:absolute;z-index:9999999999999999999999999999999999999999999999999999999999999;top:15.5%;">
         <img src="/gfx/top_direction.svg" style="margin-left:10%" />
         <div style="color:#222;margin-left:1%;width:17%;font:normal 1.1em 'OS Light Italic';">
@@ -245,22 +281,32 @@
     </div>
     </div>
 <%- contentFor('javascripts') %>
-  $(function() {              
-    $("#slides_container").slidesjs({
-      width: 360,
-     // height: 207,
-     height:103,
-      pagination: { active: true }, 
-      navigation: { active: true },
-      play: {
-        active: false,
-        auto: true,        
-        interval: 5000
-      },
-      callback: {
-        loaded: function(n) {
-          $('#slides_spinner').hide();
-        }
-      }
-    })
-  })
+
+ $(function() {     
+ var body_width = $('body').width();
+ console.log(body_width)
+if(body_width > 500) {
+var        height = 103; }
+else {
+height = 207;
+}
+
+   $("#slides_container").slidesjs({
+     width: 360,
+     height:height,
+   
+     pagination: { active: true }, 
+     navigation: { active: true },
+     play: {
+       active: false,
+       auto: true,        
+       interval: 5000
+     },
+     callback: {
+       loaded: function(n) {
+         $('#slides_spinner').hide();
+       }
+     }
+   })
+
+ })

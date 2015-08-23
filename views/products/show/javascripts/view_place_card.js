@@ -79,7 +79,8 @@ var PlaceCardView = Backbone.View.extend({
   increaseFont:   function() { this._adjustFontSize(1.03); thisProduct.saveGuests(); }, // percentage increase
   decreaseFont:   function() { this._adjustFontSize(0.97); thisProduct.saveGuests(); }, // percentage decrease
   upBaseline:     function() { this._adjustBaseline(-1); thisProduct.saveGuests(); },
-  downBaseline:   function() { this._adjustBaseline(); thisProduct.saveGuests(); },
+  downBaseline:   function() { this._adjustBaseline(1); thisProduct.saveGuests()
+  console.log(this.model.get("baseline"), amount); },
   _adjustBaseline: function(amount) { this.model.set("baseline", this.model.get("baseline") + amount, {silent:true}); this._renderBaseline() },
   
   calculateWidth: function() {

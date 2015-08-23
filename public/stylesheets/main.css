@@ -284,7 +284,23 @@ input {
       padding:2px;
       padding-left:4px;
       margin:0 auto;
-    }
+    } 
+    
+    
+    .welcome_place_card_container { float:left;} 
+	
+	.right_slide_col { margin-left:55%;	}
+	
+  .welcome_slide_container {
+	  width:55%;
+	  float:left;
+  }
+	.welcome_place_card_container img {
+	  position:relative;
+		display:block;
+		width:100%;
+		z-index:6
+	}
     
     #dreams_slogan { display:none; }
     
