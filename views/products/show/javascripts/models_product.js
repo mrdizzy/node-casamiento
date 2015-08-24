@@ -51,6 +51,8 @@ var Product = Backbone.Model.extend({
     this.on("change:font", this.saveProduct)
     this.on("change:weight", this.saveProduct)
     this.on("change:colours", this.saveProduct)   
+    this.on("adjustBaseline", this._adjustBaseline)
+    this.on("adjustFontSize", this._adjustFontSize)
     this.listenTo(this.guests, "change", this.saveGuests)    
     this.listenTo(this.guests, "add", this.saveGuests)    
     this.listenTo(this.guests, "add", this.calculatePrice)
@@ -60,8 +62,25 @@ var Product = Backbone.Model.extend({
     this.listenTo(this.guests, "addMultiple", this.calculatePrice)
     this.listenTo(this.guests, "removeMultiple", this.calculatePrice)
   },
+  _adjustBaseline: function(amount) { 
+    this.guests.forEach(function(guest) {
+      guest.set("baseline",guest.get("baseline") + amount, {silent:true});
+    })
+    this.guests.trigger("adjustBaseline")
+  },
+  _adjustFontSize: function(amount) {
+     this.guests.forEach(function(guest) {
+      guest.set("font_size",guest.get("font_size") * amount, {silent:true});
+    })
+    
+    this.guests.trigger("adjustFontSize")
+  },
   resetFont: function() {
-    this.guests.trigger("resetFont", this.get("baseline"), this.get("font_size"))
+    this.guests.forEach(function(guest) {
+          guest.set("baseline", 0);
+    guest.set("font_size", thisProduct.get("font_size"));
+    })
+    this.guests.trigger("resetFont")
   },
   updateColour: function(index, colour) {
     var colours = this.get("colours");
