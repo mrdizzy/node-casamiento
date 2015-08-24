@@ -2,25 +2,26 @@
 
 <style type="text/css">
   <% if (product.locked) { %>
-  #overlay {
-    position:fixed;
-    width:100%;
-    height:100%;
-    z-index:100000000000000000000000000000;
-    background-image:url('/gfx/locked.png') 
-  }
-  #middle_column, 
-  #print_ui { 
-    width:100%;
-  }
-  body { height:0; }
+    #overlay {
+      position:fixed;
+      width:100%;
+      height:100%;
+      z-index:100000000000000000000000000000;
+      background-image:url('/gfx/locked.png') 
+    }
+    
+    body { height:0; }  
   <% } %>
   
-  .checkout,
-  .add_another,
-  .delete_button { display:none; }
-
-#inner_page_container { display:none; }
+  .left_column, 
+  #print_ui { width:100%; }
+  
+  #loading_main_page_spinner,
+  .delete_guest { display:none; }
+  .add_another, 
+  .checkout {
+    visibility:hidden;
+  }
   <% for (var i=0; i < product.colours.length; i++) { %>
     .colour_<%= i %> { background-color: <%= product.colours[i] %> }
   <% } %>
@@ -34,17 +35,17 @@
   
 <%- contentFor('main') %>
   
-  <div id="print_ui"></div>
-  
  
 
 <%- contentFor('left') %>
-
   <div id="preview">
-    <div id="flat_preview"></div>
+    
+    <div id="print_ui"></div>
     <div id="product_container"></div>
+    
   </div>
   
+
 
 
 

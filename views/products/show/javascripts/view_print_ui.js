@@ -66,6 +66,7 @@ var PrintControlPanelView = Backbone.View.extend({
     this._createMainWaypoint(); 
   },
   renderAndCreateWaypoint: function() {
+    console.log("rendering and creating waypoint")
     Waypoint.destroyAll();
     this.render();
     thisProduct.trigger("redraw")

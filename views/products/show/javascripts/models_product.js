@@ -18,7 +18,7 @@ var Product = Backbone.Model.extend({
     if (this.get("quantity") > 7) {
       $.form('/payments', { 
         "object": JSON.stringify(this.toJSON()),
-        "L_PAYMENTREQUEST_0_AMT0": this.get("total") / this.get("quantity"),
+        "L_PAYMENTREQUEST_0_AMT0": this.get("total") / this.quantity(),
         "PAYMENTREQUEST_0_AMT": this.get("total"), 
         "L_PAYMENTREQUEST_0_QTY0": this.quantity(), 
         "L_PAYMENTREQUEST_0_NAME0": this.get("name"), 

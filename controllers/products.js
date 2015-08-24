@@ -110,7 +110,7 @@ var order_id = req.params.product;
 }
 
 exports.update = exports.create = function(req, res) {
-  console.log("UPDATING or CREATING")
+
   if(req.product) {
     var rev = req.product.rev,
       id = req.product.id;
