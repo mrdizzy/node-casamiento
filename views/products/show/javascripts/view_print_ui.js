@@ -88,7 +88,8 @@ var PrintControlPanelView = Backbone.View.extend({
     var place_cards = [];
     var $template = $(Handlebars.template(templates["user_interface_for_print"])({
       pounds: thisProduct.get("pounds"),
-      pence: thisProduct.get("pence")
+      pence: thisProduct.get("pence"),
+      quantity: thisProduct.quantity()
     })); 
     this.$el.html($template)
     

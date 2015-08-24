@@ -163,8 +163,8 @@ var StepView = Backbone.View.extend({
     return this;
   },  
   renderQtyAndPrice: function() { 
-    this.$('#qty').text(thisProduct.quantity())   
-    this.$('#pound').text(thisProduct.get("pounds"));
-    this.$('#decimal').text("." + thisProduct.get("pence"));  
+    $('.qty').text(thisProduct.quantity())   
+    $('.pound').text(thisProduct.get("pounds"));
+    $('.decimal').text("." + thisProduct.get("pence"));  
   }
 })

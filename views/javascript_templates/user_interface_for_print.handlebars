@@ -68,11 +68,15 @@
       <img src="/gfx/paypal.png" class="paypal" style="padding-bottom:1em;" />
     </div>
     
-    <div class="price">
-      <span class="pound_sign">&pound;</span>
-      <span class="number" id="pound">{{pounds}}</span>
-      <span class="decimal" id="decimal">.{{pence}}</span>
-    </div>
+   	<div style="border-radius:2em;margin:0 auto;width:60%;text-align:center;">
+		<div class="qty" style="color:#444;font:normal 5em 'OS Light'">{{quantity}}</div>
+		<div style="color:#444;margin:0 auto;font-size:2em;margin-top:0;padding-top:0;line-height:50%;border-bottom:4px double #444;width:70%;padding-bottom:0.5em;" class="qty_cards">CARDS</div>
+		<div class="price">
+			<span style="color:#444;" class="pound_sign">&pound;</span><span class="number pound">{{pounds}}</span><span class="decimal" style="color:#444;" id="decimal">.{{pence}}</span>
+
+		</div>
+	</div>
+
   </div>
   
 </div>

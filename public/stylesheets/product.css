@@ -122,11 +122,11 @@
       }
 
 
-      #qty, #qty_cards { 
+      .qty, .qty_cards { 
         color:#000; 
         font: normal 3em 'OS Light';
       }
-      #qty_cards { font-size:1.4em; }
+      .qty_cards { font-size:1.4em; }
       
       #quick_guests {
         width:90%;
