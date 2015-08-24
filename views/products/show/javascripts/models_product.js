@@ -53,11 +53,12 @@ var Product = Backbone.Model.extend({
     this.on("change:colours", this.saveProduct)   
     this.listenTo(this.guests, "change", this.saveGuests)    
     this.listenTo(this.guests, "add", this.saveGuests)    
-    this.listenTo(this.guests, "add", this.updateQuantityFromGuests)
-    this.listenTo(this.guests, "change", this.updateQuantityFromGuests)
+    this.listenTo(this.guests, "add", this.calculatePrice)
     this.listenTo(this.guests, "remove", this.saveGuests)
-    this.listenTo(this.guests, "remove", this.updateQuantityFromGuests)
-    this.listenTo(this.guests, "reset", this.updateQuantityFromGuests)
+    this.listenTo(this.guests, "remove",this.calculatePrice)
+    this.listenTo(this.guests, "reset", this.calculatePrice)
+    this.listenTo(this.guests, "addMultiple", this.calculatePrice)
+    this.listenTo(this.guests, "removeMultiple", this.calculatePrice)
   },
   resetFont: function() {
     this.guests.trigger("resetFont", this.get("baseline"), this.get("font_size"))

@@ -8,8 +8,12 @@ var StepView = Backbone.View.extend({
     this.listenTo(this.guests, 'change', this._renderQuickGuests)
     this.listenTo(this.guests, 'destroy', this._renderQuickGuests)
     this.listenTo(thisProduct, 'change:weight', this.renderWeight);
+    
+    this.listenTo(thisProduct, 'change:weight', this.renderQtyAndPrice);
     this.listenTo(this.guests, "add", this.renderQtyAndPrice)
     this.listenTo(this.guests, "remove", this.renderQtyAndPrice)
+    this.listenTo(this.guests, "removeMultiple", this.renderQtyAndPrice)
+    this.listenTo(this.guests, "addMultiple", this.renderQtyAndPrice)
     this.listenTo(this.guests, "reset", this.renderQtyAndPrice)
     this.current_step = 1;
   },
@@ -159,7 +163,7 @@ var StepView = Backbone.View.extend({
     return this;
   },  
   renderQtyAndPrice: function() { 
-    this.$('#qty').val(thisProduct.quantity())   
+    this.$('#qty').text(thisProduct.quantity())   
     this.$('#pound').text(thisProduct.get("pounds"));
     this.$('#decimal').text("." + thisProduct.get("pence"));  
   }
