@@ -40,28 +40,27 @@
 
   #fonts td, #ui_font_picker td { 
     border-bottom:1px dotted lightgrey;
+    
+      border-right:1px solid black;
     vertical-align:middle; 
     font: normal 1em 'OS Light';
   }
   #fonts tr, #ui_font_picker tr { 
     height:50px
   }  
-  
-    .selected_font td.font_name {
-      text-align:center;
-      border-bottom-right-radius: 15px;     
-      border-bottom:0;
-    }
     .selected_font td.font_image {
       border-bottom:0;
+     
       text-align:center;
       border-top-left-radius: 15px;
+      border-bottom-right-radius: 15px; 
     }    
     
     .font_image img { max-width:97%;}
     
   #fonts .selected_font td, #ui_font_picker .selected_font td {
     border-bottom:0; 
+     border-right:0;
   }
 .font_selector_container tr:hover, .up_arrow:hover { 
       background-color:lightgrey;

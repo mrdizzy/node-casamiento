@@ -14,6 +14,7 @@ $(function() {
   <%= include ./../show/javascripts/view_print_place_card_collection.js %>
   <%= include ./../show/javascripts/view_print_ui.js %>
   
+  <%= include ./../show/javascripts/view_edit_print_ui.js %>
   var templates = {}
   <% templates.forEach(function(template) { %>
     templates["<%= template.name %>"] = <%- template.template %>;
@@ -21,7 +22,7 @@ $(function() {
   
   var thisProduct = new EditProduct(<%- JSON.stringify(product) %>, {parse:true});
   
-  var print_ui_view = new PrintControlPanelView(); 
+  var print_ui_view = new EditPrintControlPanelView(); 
   print_ui_view.$el.show()
   print_ui_view.renderAndCreateWaypoint();
   $('body').addClass("printui_view")       

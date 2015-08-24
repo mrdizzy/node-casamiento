@@ -11,13 +11,39 @@
     }
     
     body { height:0; }  
-  <% } %>
-  
+  <% } %> 
+  #control_panel { opacity: 1; }
+      .colour_picker_wrapper {
+         width:100%;
+         margin:0 auto;   
+      }
+    
+      .colour_picker_wrapper .dizzycp-static_container { 
+        padding-bottom:15px;
+        clear:both;
+      }
+        .colour_picker_wrapper .dizzycp-swatch_container { 
+          text-align:left;
+        }
+        
+        .colour_picker_wrapper .dizzycp-big_colour_square_frame { 
+          margin-left:20px;
+          float:left;
+        }
+        
+        .colour_picker_wrapper .dizzycp-text_label_for_colour { 
+          text-align:left;
+          margin-left:75px;
+          padding-top:12px;
+        }
   .left_column, 
   #print_ui { width:100%; }
   
   #loading_main_page_spinner,
-  .delete_guest { display:none; }
+  .delete_guest {
+    display:none; 
+  }
+  
   .add_another, 
   .checkout {
     visibility:hidden;
