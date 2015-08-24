@@ -8,7 +8,9 @@ var StepView = Backbone.View.extend({
     this.listenTo(this.guests, 'change', this._renderQuickGuests)
     this.listenTo(this.guests, 'destroy', this._renderQuickGuests)
     this.listenTo(thisProduct, 'change:weight', this.renderWeight);
-    this.listenTo(thisProduct, "change:total", this.renderQtyAndPrice)
+    this.listenTo(this.guests, "add", this.renderQtyAndPrice)
+    this.listenTo(this.guests, "remove", this.renderQtyAndPrice)
+    this.listenTo(this.guests, "reset", this.renderQtyAndPrice)
     this.current_step = 1;
   },
   events: {     
@@ -132,6 +134,7 @@ var StepView = Backbone.View.extend({
   render: function() {    
     var json_product = thisProduct.toJSON();
     json_product.guests = this.guests.pluck("name").join("\n");
+    json_product.quantity = thisProduct.quantity();
     var $result = $(Handlebars.template(templates["products_show_step_through"])(json_product));         
     
     this.$el.html($result)
@@ -156,7 +159,7 @@ var StepView = Backbone.View.extend({
     return this;
   },  
   renderQtyAndPrice: function() { 
-    this.$('#qty').val(thisProduct.get("quantity"))   
+    this.$('#qty').val(thisProduct.quantity())   
     this.$('#pound').text(thisProduct.get("pounds"));
     this.$('#decimal').text("." + thisProduct.get("pence"));  
   }

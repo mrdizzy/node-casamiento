@@ -4,7 +4,6 @@ var Product = Backbone.Model.extend({
   idAttribute: "_id",
   localStorage: new Backbone.LocalStorage("CasamientoProducts"),
   defaults: {
-      quantity: 8,
       font_size: 1,
       guests: new Guests([{},{},{},{},{},{},{},{}]),
       price: 0.10,
@@ -12,26 +11,29 @@ var Product = Backbone.Model.extend({
       cutting_marks: true,
       per_page: 3
   },
+  quantity: function() {
+   return this.get("guests").length
+  },
   makePurchase: function() {    
     if (this.get("quantity") > 7) {
       $.form('/payments', { 
         "object": JSON.stringify(this.toJSON()),
         "L_PAYMENTREQUEST_0_AMT0": this.get("total") / this.get("quantity"),
         "PAYMENTREQUEST_0_AMT": this.get("total"), 
-        "L_PAYMENTREQUEST_0_QTY0": this.get("quantity"), 
+        "L_PAYMENTREQUEST_0_QTY0": this.quantity(), 
         "L_PAYMENTREQUEST_0_NAME0": this.get("name"), 
         "L_PAYMENTREQUEST_0_DESC0": "Place cards" 
       }).submit();  
     } else {
       var price_each  = this.get("total") / 8;
-      var qty = this.get("quantity");
-      var place_cards_total = price_each * this.get("quantity");
+      var qty = this.quantity();
+      var place_cards_total = price_each * this.quantity();
       var minimum_charge = this.get("total") - place_cards_total;
      $.form('/payments', { 
       "object": JSON.stringify(this.toJSON()),
       "L_PAYMENTREQUEST_0_AMT0": price_each,
       "PAYMENTREQUEST_0_AMT": this.get("total"), 
-      "L_PAYMENTREQUEST_0_QTY0": this.get("quantity"), 
+      "L_PAYMENTREQUEST_0_QTY0":this.quantity(), 
       "L_PAYMENTREQUEST_0_NAME0": this.get("name"), 
       "L_PAYMENTREQUEST_0_DESC0": "Place cards",
       "L_PAYMENTREQUEST_0_AMT1": minimum_charge, 
@@ -49,7 +51,6 @@ var Product = Backbone.Model.extend({
     this.on("change:font", this.saveProduct)
     this.on("change:weight", this.saveProduct)
     this.on("change:colours", this.saveProduct)   
-    this.on("change:quantity", this.calculatePrice) // must come before adjust guests
     this.listenTo(this.guests, "change", this.saveGuests)    
     this.listenTo(this.guests, "add", this.saveGuests)    
     this.listenTo(this.guests, "add", this.updateQuantityFromGuests)
@@ -61,7 +62,6 @@ var Product = Backbone.Model.extend({
   resetFont: function() {
     this.guests.trigger("resetFont", this.get("baseline"), this.get("font_size"))
   },
-  updateQuantityFromGuests: function() { this.set("quantity", this.guests.length) },
   updateColour: function(index, colour) {
     var colours = this.get("colours");
     colours[index] = colour;
@@ -71,7 +71,7 @@ var Product = Backbone.Model.extend({
   },
   calculatePrice: function() {     
     var price, 
-      quantity = this.get("quantity"),
+      quantity = this.quantity(),
       total;
     if(quantity >7 && quantity < 17) { price = 0.50 }
     else if (quantity > 15 && quantity < 25) { price = 0.40 }

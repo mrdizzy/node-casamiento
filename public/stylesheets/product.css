@@ -117,15 +117,16 @@
     }
 
       .price {      
-        font:normal 1.4em 'Gara';
+        font:normal 1.5em 'Gara';
         text-align:center;
       }
 
 
-      #qty { 
+      #qty, #qty_cards { 
         color:#000; 
-        font: normal 2em 'OS Light';
+        font: normal 3em 'OS Light';
       }
+      #qty_cards { font-size:1.4em; }
       
       #quick_guests {
         width:90%;
@@ -467,7 +468,7 @@
     height:28px;
   }
   body.printui_view #right_col { padding-top:37px;  }
-  #ui_printer_icon { width:25px; }
+  #ui_printer_icon { width:25px;margin-top:0; }
     
     #ui_global_font div {
       width:40px;
