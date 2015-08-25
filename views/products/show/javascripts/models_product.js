@@ -11,38 +11,6 @@ var Product = Backbone.Model.extend({
       cutting_marks: true,
       per_page: 3
   },
-  quantity: function() {
-   return this.get("guests").length
-  },
-  makePurchase: function() {    
-    if (this.get("quantity") > 7) {
-      $.form('/payments', { 
-        "object": JSON.stringify(this.toJSON()),
-        "L_PAYMENTREQUEST_0_AMT0": this.get("total") / this.quantity(),
-        "PAYMENTREQUEST_0_AMT": this.get("total"), 
-        "L_PAYMENTREQUEST_0_QTY0": this.quantity(), 
-        "L_PAYMENTREQUEST_0_NAME0": this.get("name"), 
-        "L_PAYMENTREQUEST_0_DESC0": "Place cards" 
-      }).submit();  
-    } else {
-      var price_each  = this.get("total") / 8;
-      var qty = this.quantity();
-      var place_cards_total = price_each * this.quantity();
-      var minimum_charge = this.get("total") - place_cards_total;
-     $.form('/payments', { 
-      "object": JSON.stringify(this.toJSON()),
-      "L_PAYMENTREQUEST_0_AMT0": price_each,
-      "PAYMENTREQUEST_0_AMT": this.get("total"), 
-      "L_PAYMENTREQUEST_0_QTY0":this.quantity(), 
-      "L_PAYMENTREQUEST_0_NAME0": this.get("name"), 
-      "L_PAYMENTREQUEST_0_DESC0": "Place cards",
-      "L_PAYMENTREQUEST_0_AMT1": minimum_charge, 
-      "L_PAYMENTREQUEST_0_QTY1": 1, 
-      "L_PAYMENTREQUEST_0_NAME1": "Charge",
-      "L_PAYMENTREQUEST_0_DESC1": "Minimum handling charge" 
-    }).submit();  
-    }
-  },
   initialize: function() {  
     this.calculateUserAgent();
     this.calculatePrice();
@@ -71,7 +39,7 @@ var Product = Backbone.Model.extend({
   },
   _adjustBaseline: function(amount) { 
     this.guests.forEach(function(guest) {
-      guest.set("baseline",guest.get("baseline") + amount, {silent:true});
+      guest.set("baseline",guest.get("baseline") + amount);
     })
       this.set("global_baseline", ((this.get("global_baseline") || this.get("baseline")) + amount))
     this.guests.trigger("adjustBaseline")
@@ -177,6 +145,38 @@ var Product = Backbone.Model.extend({
     }
     return(colour_0)
   },
+  quantity: function() {
+   return this.get("guests").length
+  },
+  makePurchase: function() {    
+    if (this.get("quantity") > 7) {
+      $.form('/payments', { 
+        "object": JSON.stringify(this.toJSON()),
+        "L_PAYMENTREQUEST_0_AMT0": this.get("total") / this.quantity(),
+        "PAYMENTREQUEST_0_AMT": this.get("total"), 
+        "L_PAYMENTREQUEST_0_QTY0": this.quantity(), 
+        "L_PAYMENTREQUEST_0_NAME0": this.get("name"), 
+        "L_PAYMENTREQUEST_0_DESC0": "Place cards" 
+      }).submit();  
+    } else {
+      var price_each  = this.get("total") / 8;
+      var qty = this.quantity();
+      var place_cards_total = price_each * this.quantity();
+      var minimum_charge = this.get("total") - place_cards_total;
+     $.form('/payments', { 
+      "object": JSON.stringify(this.toJSON()),
+      "L_PAYMENTREQUEST_0_AMT0": price_each,
+      "PAYMENTREQUEST_0_AMT": this.get("total"), 
+      "L_PAYMENTREQUEST_0_QTY0":this.quantity(), 
+      "L_PAYMENTREQUEST_0_NAME0": this.get("name"), 
+      "L_PAYMENTREQUEST_0_DESC0": "Place cards",
+      "L_PAYMENTREQUEST_0_AMT1": minimum_charge, 
+      "L_PAYMENTREQUEST_0_QTY1": 1, 
+      "L_PAYMENTREQUEST_0_NAME1": "Charge",
+      "L_PAYMENTREQUEST_0_DESC1": "Minimum handling charge" 
+    }).submit();  
+    }
+  },
   // Designs can have colours that are a darker shade of a main colour. This is implemented
   // using a transparent PNG that has a black tint (100% pure black that has an opacity of between
   // 1% and 99%). In order to translate the colour to an RBG value so that we can process the SVG
@@ -193,6 +193,6 @@ var Product = Backbone.Model.extend({
       ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   },
-  stale: ['attachments_order', 'baseline', 'pence', 'pounds', 'font_size', 'per_page', 'cutting_marks', 'browser'],
+  stale: ['attachments_order', 'pence', 'pounds', 'per_page', 'cutting_marks', 'browser'],
   toJSON: function() { return _.omit(this.attributes, this.stale); }
 });

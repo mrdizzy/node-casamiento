@@ -52,8 +52,7 @@
               </div>
             <% } %>
             
-            <a href="/products/<%= place_card._id %>">
-            <div style="padding-top:1px;">
+            <div id="colour_0_container">
               <div class="welcome_colour_frame">
                 <div class="welcome_colour_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
               </div>
@@ -61,15 +60,18 @@
                 <%= place_card.colour_0 %>    
               </div>
             </div>
-           </a>
+          
            
-           <% if (place_card.colours[1]) { %>                 
+           <% if (place_card.colours[1]) { %>    
+           
+            <div id="colour_1_container">
             <div class="welcome_colour_frame" style="clear:both;">
               <div class="welcome_colour_swatch" style="background-color: <%= place_card.colours[1] %>;"></div>
             </div>
             <div class="welcome_colour_label"> 
               <%= place_card.colour_1 %>                
             </div>           
+            </div>
            <% } %>
            
            </div>
@@ -143,13 +145,13 @@
      
     <div id="box_1" class="welcome_box_container">
   
-      <div class="welcome_icon_container">
-        <img src="/gfx/welcomeicons/font.svg"  class="welcome_icon" />
+     <div class="welcome_icon_container">
+        <img src="/gfx/welcomeicons/colour.svg"  class="welcome_icon" />
       </div>
+      
+      <h5>Customise colours to match your theme</h5>
+      <p>Each design can be changed to any colour of your choice&mdash;you'll see the changes in your browser instantly! </p>
      
-      <h5>Fonts to match<br/>your mood</h5>
-      <p>Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
-       
     </div>
      
      
@@ -157,13 +159,14 @@
      
     <div id="box_2"  class="welcome_box_container">
       
-     <div class="welcome_icon_container">
-        <img src="/gfx/welcomeicons/colour.svg"  class="welcome_icon" />
+    
+      <div class="welcome_icon_container">
+        <img src="/gfx/welcomeicons/font.svg"  class="welcome_icon" />
       </div>
-      
-      <h5>Customise colours to match your theme</h5>
-      <p>Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
      
+      <h5>Fonts to match<br/>your mood</h5>
+      <p>Choose a typeface to match the mood of your theme&mdash;from clever and corporate to fun and frenetic! </p>
+       
      </div>
      
   
@@ -176,8 +179,8 @@
         <img src="/gfx/welcomeicons/print.svg"  class="welcome_icon" />
       </div>
       
-      <h5>Print instantly from your browser</h5>
-      <p>Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
+      <h5>Print instantly from your browser&hellip;</h5>
+      <p>&hellip;no downloading PDF files or waiting around&mdash;in perfect quality: you can also print from your phone or tablet if you have a wifi enabled printer!</p>
     </div>
      
      
@@ -197,7 +200,7 @@
       </div>
       
       <h5>100s of designs to match your theme</h5>
-      <p>Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
+      <p>Whether it's 80s retro or traditional Victorian vintage, you'll find a design to suit! </p>
      
      </div>
      
@@ -210,7 +213,7 @@
       </div>
       
       <h5>Order before 1pm for next day delivery&hellip;</h5>
-      <p>Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
+      <p>If you want us to print your cards, order before 1pm to get them the next day</p>
      
     </div>
      
@@ -222,7 +225,7 @@
     </div>
     
       <h5>Stress-free editing of guest names&hellip;</h5>
-      <p>Choose a typeface to match the mood of your theme—from serious and corporate to fun and frenetic! </p>
+      <p>Just paste a list of names into the quick entry box and hey presto, you suddenly have all your place cards automatically created&hellip;</p>
      
     </div>
      
@@ -287,7 +290,7 @@
 $(function() {
   var body_width = $('body').width();
   if (body_width > 500) {
-    var height = 95;
+    var height = 92;
   }
   else {
     height = 207;

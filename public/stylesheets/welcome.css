@@ -60,11 +60,22 @@ padding-top: 50px;
 
 /* COLOUR LABELS 
 *******************************************************************/
+#colour_0_container {
+	width:100%;
+	margin-left:0.5%;
+	position:absolute;
+}
 
+#colour_1_container {
+	width:99%;
+	left:60%;
+	position:absolute;
+	margin-left:1%;
+}
 .welcome_colour_frame {
 	width: 37px;
 	height: 37px;
-	margin-left: 5%;
+	margin-left: 1%;
 	float: left;
 	border: 1px solid lightgrey;
 	border-radius: 25px;
@@ -237,6 +248,7 @@ padding-top: 50px;
 	font-size: 1.2em;
 	border-top: 0;
 	color: #777;
+	padding-bottom:0.5em;
 }
 
 
@@ -299,6 +311,9 @@ padding-top: 50px;
 		margin-left: 10px;
 		border-radius: 25px;
 	}
+	#colour_1_container, 
+	#colour_0_container { 
+		 position:static; float:none; }
 	.welcome_colour_swatch {
 		width: 19px;
 		height: 19px;
