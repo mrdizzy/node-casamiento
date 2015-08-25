@@ -62,24 +62,35 @@ var Product = Backbone.Model.extend({
     this.listenTo(this.guests, "addMultiple", this.calculatePrice)
     this.listenTo(this.guests, "removeMultiple", this.calculatePrice)
   },
+  globalBaseline: function() {
+    if (this.get("global_baseline") != undefined) {
+      return this.get("global_baseline")
+    } else {
+      return this.get("baseline")
+    }
+  },
   _adjustBaseline: function(amount) { 
     this.guests.forEach(function(guest) {
       guest.set("baseline",guest.get("baseline") + amount, {silent:true});
     })
+      this.set("global_baseline", ((this.get("global_baseline") || this.get("baseline")) + amount))
     this.guests.trigger("adjustBaseline")
   },
   _adjustFontSize: function(amount) {
      this.guests.forEach(function(guest) {
       guest.set("font_size",guest.get("font_size") * amount, {silent:true});
     })
-    
+    this.set("global_font_size", ((this.get("global_font_size") || this.get("font_size")) * amount))
     this.guests.trigger("adjustFontSize")
   },
   resetFont: function() {
     this.guests.forEach(function(guest) {
-          guest.set("baseline", 0);
+          guest.set("baseline",thisProduct.get("baseline"));
     guest.set("font_size", thisProduct.get("font_size"));
     })
+    this.set("global_font_size", this.get("font_size"))
+    
+    this.set("global_baseline", this.get("baseline"))
     this.guests.trigger("resetFont")
   },
   updateColour: function(index, colour) {

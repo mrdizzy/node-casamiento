@@ -24,7 +24,7 @@ var PrintControlPanelView = Backbone.View.extend({
     "click #ui_printer_icon": "printPage",  
     "click #mobile_ui_printer_icon": "printPage"
   },
-  addGuest:     function() {            thisProduct.get("guests").add({}) },
+  addGuest:     function() {            thisProduct.get("guests").add({font_size: thisProduct.get("global_font_size") || thisProduct.get("font_size"), baseline:   thisProduct.globalBaseline() }) },
   fontReset:    function() {           thisProduct.resetFont(); },
   fontIncrease: function() {           thisProduct.trigger('adjustFontSize', 1.05).saveGuests()  },
   fontDecrease: function() {         thisProduct.trigger('adjustFontSize', 0.95).saveGuests()  },

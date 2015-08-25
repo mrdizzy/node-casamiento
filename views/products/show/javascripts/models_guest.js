@@ -62,12 +62,6 @@ var Guests = Backbone.Collection.extend({
       groups: inGroupsOf(this.invoke('printPresenter'), thisProduct.get("per_page"))
     }
   },
-  resetFont: function() {
-    this.invoke('set', {
-      font_size: thisProduct.get("font_size"), 
-      baseline: thisProduct.get("baseline")
-    })
-  },
   model: Guest,
   url: '/guests'
 })

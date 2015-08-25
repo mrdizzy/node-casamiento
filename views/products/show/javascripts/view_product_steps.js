@@ -8,7 +8,6 @@ var StepView = Backbone.View.extend({
     this.listenTo(this.guests, 'change', this._renderQuickGuests)
     this.listenTo(this.guests, 'destroy', this._renderQuickGuests)
     this.listenTo(thisProduct, 'change:weight', this.renderWeight);
-    
     this.listenTo(thisProduct, 'change:weight', this.renderQtyAndPrice);
     this.listenTo(this.guests, "add", this.renderQtyAndPrice)
     this.listenTo(this.guests, "remove", this.renderQtyAndPrice)
@@ -82,7 +81,10 @@ var StepView = Backbone.View.extend({
         })
         var new_models = [];
         for(var i = counter; i < names_from_textarea.length; i++) {
-          new_models.push({ name: names_from_textarea[i] });
+          new_models.push({ name: names_from_textarea[i],
+          font_size: thisProduct.get("global_font_size") || thisProduct.get("font_size"),
+            baseline: thisProduct.globalBaseline()
+          });
         }
         this.guests.add(new_models, { silent:true });
         this.guests.trigger("addMultiple", counter)
