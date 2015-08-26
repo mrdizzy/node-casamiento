@@ -7,6 +7,8 @@ var colours = {"#000000": "Black", "#cd5c5c":"Indian red","#ff4040":"Coral red",
     var settings = $.extend({}, $.fn.colorPicker.defaultOptions, options);
 
     var container_width = settings.width || this.width();
+    console.log("Inside:" + $('#step_1').outerWidth(), $('#step_1').width())
+    console.log(this.width(), container_width, this.innerWidth(), this)
 
     var index = settings.index; // The index number of this colour selector, to differentiate it from other colour selectors on the page
     var listen_to = settings.listen_to

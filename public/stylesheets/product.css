@@ -59,7 +59,7 @@
   #step_1 { border-top:1px dotted #000; }
   
   .spc {   
-    padding-left:0.3em;
+    padding-left:0;
     border-bottom:1px dotted grey; 
   }    
 
@@ -73,7 +73,7 @@
       .spec { display:inline-block; }
         .spec img { width:100%; }
 
-    .highlight { box-shadow:5px 5px 0 0 lightgrey; }
+   
 
     .step { 
       border-bottom-left-radius:10px;
@@ -416,20 +416,7 @@
  ============================================================================================================ */
 @media all and (min-width: 501px) and (max-width: 800px) {
 /* ----------------------------------------------------------------------------- */    
-  .left_column { 
-    width:65%;
-    float:right;
-    z-index:10000;
-  }
-  
-  .right_column { 
-    margin-right:65%;
-    margin-left:0;
-    width:34.75%;
-    padding-top:0;
-    border-left:0;
-    border-right:1px dotted black; 
-  }
+
   .buy { padding-top:0.75em; }
   .slide, 
   #description_container { 
@@ -442,23 +429,6 @@
 
   .texture { display:block; }
   
-   .printui_view .left_column { 
-    width:65%; 
-    border-left:1px dotted black;
-    float:right;
-    margin-left:0;
-  }
-  .printui_view .right_column { 
-    margin:0;
-    margin-right:65%;
-    position:static;
-    -webkit-overflow-scrolling: touch;
-    height:100%;
-    top:0;
-    right:0;
-    border-top:0;
-  }
-    
   #menu_lines { display:none; } 
   
   #control_panel { 
