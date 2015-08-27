@@ -107,6 +107,7 @@ var StepView = Backbone.View.extend({
         this.guests.trigger("renderNames")
       }
     }
+    thisProduct.saveGuests()
   },750),
   updateTexture: function(e) {
     var texture_selected = $(e.currentTarget)

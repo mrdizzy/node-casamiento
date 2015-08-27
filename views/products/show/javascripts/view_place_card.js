@@ -35,8 +35,17 @@ var PlaceCardView = Backbone.View.extend({
     'click .minus_font': 'decreaseFont',
     'click .up_baseline': 'upBaseline',
     'click .down_baseline': 'downBaseline',
-     "keydown .guest_name": "resetFocus"
+     "keydown .guest_name": "resetFocus",
+     "keyup .guest_name": "checkForReturnKey"
   },   
+  checkForReturnKey: function(event) {
+    if(event.keyCode == 13){
+       this.updateGuestFromDiv();
+      if(this.model == thisProduct.get("guests").last()) {
+       thisProduct.trigger("addAnotherAfterReturn")
+      }
+    }
+  },
   focusGuest: function() {
     app_router.navigate("editing_place_cards")
     var that = this;
@@ -66,6 +75,7 @@ var PlaceCardView = Backbone.View.extend({
   updateGuestFromDiv: function() {
     this.updated_from_div = true;
     this.model.set("name", $.trim(this.$('.guest_name').text()))
+    this.$('.guest_name').text(this.model.get("name"));
    
     clearTimeout(this.timeout_id)
     $('body').removeClass("guest_focused")
