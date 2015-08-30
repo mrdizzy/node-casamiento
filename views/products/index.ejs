@@ -1,5 +1,5 @@
-<% var responsive_images = [ { 801: 26, 320: 54 }, { 801: 17, 320: 35 }, { 801: 26, 320: 54 }, { 801: 17, 320: 35 }, { 801: 26, 320: 54 }, { 801: 17, 320: 35 }, { 801: 26, 320: 54 }, { 801: 17, 320: 35 } ] %>
-<% var responsive_images_2 = [ { 801: 43, 320: 89 }, { 801: 21, 320: 44}, { 801: 21, 320: 44}, { 801:16, 320: 35}, { 801: 26, 320: 54} ] %>
+<% var responsive_images = [ { 1025:26, 801: 27, 320: 54 }, { 1025:17, 801: 17, 320: 35 }, { 1025:26, 801: 27, 320: 54 }, { 1025:17, 801: 17, 320: 35 }, { 1025:26, 801: 27, 320: 54 }, { 1025:17, 801: 17, 320: 35 }, { 1025:26, 801: 27, 320: 54 }, { 1025:17, 801: 17, 320: 35 } ] %>
+<% var responsive_images_2 = [ { 1025:100, 801: 43, 320: 89 }, { 1025:100, 801: 21, 320: 44}, { 1025:100, 801: 21, 320: 44}, { 1025:100, 801:16, 320: 35}, { 1025:100, 801: 26, 320: 54} ] %>
 <%- contentFor('inside_headtag') %>
 <style type="text/css">
   #loading_main_page_spinner { display:none; }
@@ -33,7 +33,7 @@
       http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-1 750w,
       http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-1 500w,
       http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/tiny-1 345w"
-      sizes="(min-width:801px) <%= responsive_images[counter]["801"] %>vw, (min-width:320px) <%= responsive_images[counter]["320"] %>vw" />
+      sizes="(min-width:1025px) <%= responsive_images[counter][1025] %>vw, (min-width:801px) <%= responsive_images[counter]["801"] %>vw, (min-width:320px) <%= responsive_images[counter]["320"] %>vw" />
             </div>
            
             <h2><%= product.name %></h2>
