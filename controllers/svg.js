@@ -13,6 +13,7 @@ exports.show = function(req, res) {
     if(colours) {
   var colour_1 =  colours.split("_")[0] || colours;
   var colour_2 =  colours.split("_")[1];
+  console.log(colour_1, colour_2)
 
   // The gzipped version is stored in CouchDB. The gzipped version is NOT 
   // created in Illustrator using its own compressed version, rather a normal 
@@ -30,8 +31,8 @@ exports.show = function(req, res) {
       // Make sure the regexes are in this order (blue first, then red), 
       // as for some reason altering these makes the regexes much slower!
       // We need to work out why!
-      .pipe(es.replace(/0000FF/g, colour_2)) // 0000FF is red
-      .pipe(es.replace(/FF0000/g, colour_1)) // FF0000 is blue      
+      .pipe(es.replace(/0000FF/g, colour_1)) // 0000FF is red
+      .pipe(es.replace(/FF0000/g, colour_2)) // FF0000 is blue      
       .pipe(zlib.createGzip())
       .pipe(res)
   }

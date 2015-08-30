@@ -29,7 +29,7 @@ $(function() {
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
   
   <%= include models_guest.js %> 
-  <%= include models_product.js %>   
+  <%= include models_product.js %>    
   <%= include view_product_steps.js %>
   <%= include view_place_card.js %> 
   <%= include view_product_slides.js %>
@@ -46,7 +46,7 @@ $(function() {
   
   var thisProduct = new Product(<%- JSON.stringify(product) %>),
     guestList = new Guests(),
-    coordinator_view = new CoordinatorView(),   
+    coordinator_view = new CoordinatorView(),
     app_router = new AppRouter;
   
   // thisProduct.fetch looks in localstorage for the product. If we find
