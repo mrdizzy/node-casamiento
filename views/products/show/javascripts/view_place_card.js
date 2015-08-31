@@ -130,7 +130,7 @@ var PlaceCardView = Backbone.View.extend({
     }
   },
   _adjustFontSize: function(amount) {
-    this.percentage_font_size = this.percentage_font_size * amount;
+    this.percentage_font_size = this.model.get("font_size") * amount;
     this.display_font_size = this.calculatedWidth * this.percentage_font_size;
     this.model.set("font_size", this.percentage_font_size)
     this._renderFontSize();

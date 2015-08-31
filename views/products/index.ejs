@@ -1,9 +1,23 @@
-<% var responsive_images = [ { 1025:26, 801: 27, 320: 54 }, { 1025:17, 801: 17, 320: 35 }, { 1025:26, 801: 27, 320: 54 }, { 1025:17, 801: 17, 320: 35 }, { 1025:26, 801: 27, 320: 54 }, { 1025:17, 801: 17, 320: 35 }, { 1025:26, 801: 27, 320: 54 }, { 1025:17, 801: 17, 320: 35 } ] %>
-<% var responsive_images_2 = [ { 1025:100, 801: 43, 320: 89 }, { 1025:100, 801: 21, 320: 44}, { 1025:100, 801: 21, 320: 44}, { 1025:100, 801:16, 320: 35}, { 1025:100, 801: 26, 320: 54} ] %>
+<% var responsive_images = [ { 1025:26, 801: 27, 320: 54 }, 
+  { 1025:17, 801: 17, 320: 35 }, 
+  { 1025:26, 801: 27, 320: 54 },
+  { 1025:17, 801: 17, 320: 35 },
+  { 1025:26, 801: 27, 320: 54 }, 
+  { 1025:17, 801: 17, 320: 35 }, 
+  { 1025:26, 801: 27, 320: 54 }, 
+  { 1025:17, 801: 17, 320: 35 } ] %>
+    
+<% var responsive_images_2 = [ { 1025:100, 801: 43, 320: 89 }, 
+  { 1025:100, 801: 21, 320: 44}, 
+  { 1025:100, 801: 21, 320: 44}, 
+  { 1025:100, 801:16, 320: 35}, 
+  { 1025:100, 801: 26, 320: 54} ] %>
+  
 <%- contentFor('inside_headtag') %>
-<style type="text/css">
-  #loading_main_page_spinner { display:none; }
-</style>
+  <style type="text/css">
+    #loading_main_page_spinner { display:none; }
+  </style>
+  
 <%- contentFor('left') %>
   
 <%- contentFor('right') %>
@@ -16,57 +30,56 @@
   
   
   <% groups.forEach(function(group) { %>
-<% counter = 0 %>
-<div class="browse_left_column">
-<% group[0].forEach(function(product) { %>
+    <% counter = 0 %>
+    <div class="browse_left_column">
+      <% group[0].forEach(function(product) { %>
       
-      <% if (responsive_images[counter]) { %>
-<div id="<%= product._id %>"  class="related related_<%= counter %>">
+        <% if (responsive_images[counter]) { %>
+          <div id="<%= product._id %>"  class="related related_<%= counter %>">
 
-<div class="frame" style="width:90%;margin:0 auto;border-top-left-radius:15px;border-bottom-right-radius:15px;padding:5px;">
+            <div class="frame" style="width:90%;margin:0 auto;border-top-left-radius:15px;border-bottom-right-radius:15px;padding:5px;">
 
-<a href="/products/<%= product._id %>">
-          <div class="place_square">
-            <div class="inner_place_square">
-              <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-3"] %></div>              
-              <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-1 1000w,
-      http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-1 750w,
-      http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-1 500w,
-      http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/tiny-1 345w"
-      sizes="(min-width:1025px) <%= responsive_images[counter][1025] %>vw, (min-width:801px) <%= responsive_images[counter]["801"] %>vw, (min-width:320px) <%= responsive_images[counter]["320"] %>vw" />
-            </div>
-           
-            <h2><%= product.name %></h2>
-          </div>
-          </a>
-          <a href="/products/<%= product._id %>">
-          <div class="place_square" style="float:left;width:49%;">
+              <a href="/products/<%= product._id %>">
+                <div class="place_square">
+                  <div class="inner_place_square">
+                    <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-3"] %></div>              
+                    <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/medium-3 1000w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/display-3 750w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/thumb-3 500w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/tiny-3 345w"
+            sizes="(min-width:1025px) <%= responsive_images[counter][1025] %>vw, (min-width:801px) <%= responsive_images[counter]["801"] %>vw, (min-width:320px) <%= responsive_images[counter]["320"] %>vw" />
+                  </div>
+                 
+                  <h2><%= product.name %></h2>
+                </div>
+              </a>
+              
+              <a href="/products/<%= product._id %>">
+                <div class="place_square" style="float:left;width:49%;">
+                  <div class="inner_place_square">
+                    <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-2"] %></div>              
+                    <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/tiny-2" />
+                  </div>
+                </div>
+              </a>
+          
+              <a href="/products/<%= product._id %>">
+                <div class="place_square"  style="float:right;width:49%;">
     
-            <div class="inner_place_square">
-              <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-2"] %></div>              
-              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/tiny-2" />
-            </div>
-     </div>
-          </a>
+                  <div class="inner_place_square">
+                    <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-4"] %></div>              
+                    <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/tiny-4" />
+                    </div>
+                </div>
+              </a>          
           
-          <a href="/products/<%= product._id %>">
-          <div class="place_square"  style="float:right;width:49%;">
-    
-            <div class="inner_place_square">
-              <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-4"] %></div>              
-              <img src="http://mrdizzy.cloudant.com/test_ebay/<%= product._id %>/tiny-4" />
-            </div>
-     </div>
-          </a>          
-          
-           <p style="clear:both;margin:0;padding:0;padding-top:2px;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: <% if (product.tags) { %>
-         
-           <% product.tags.forEach(function(tag) { %>
-          
-           <a class="a_tag" href="/products/tags/<%= tag %>"><%= tag %></a>
-           
-           <% }) %>
-           <% } %>
+              <p style="clear:both;margin:0;padding:0;padding-top:2px;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: 
+              
+              <% if (product.tags) { %>
+                <% product.tags.forEach(function(tag) { %>
+                   <a class="a_tag" href="/products/tags/<%= tag %>"><%= tag %></a>
+                <% }) %>
+              <% } %>
            
            </p>
         </div>
@@ -146,5 +159,6 @@
 
   
   </div>
-  <%- contentFor('javascripts') %>
+
+<%- contentFor('javascripts') %>
   
