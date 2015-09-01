@@ -193,6 +193,8 @@ module.exports = function(app){
 
   // Homepage
   app.get("/", require("./../controllers/welcome").index)
+  
+  app.get("/about", require("./../controllers/about").index)
 }
 
 // Takes a request and parses the _rev and _id out of it
