@@ -1,118 +1,192 @@
 <%- contentFor('inside_headtag') %>
 <style type="text/css">
-  .grey_background {
-    background-color:#EEE;
-  }
-  .welcome_line {
-    display:block;width:50%;padding-top:2em;padding-bottom:2em;margin:0 auto;text-align:center;
+ 
+  #loading_main_page_spinner  { display: none;  }
+  
+  #inner_page_container { 
+    width: 90%; 
+    color: #666;
   }
   
-  #first_drop_cap_container, 
-  #second_drop_cap_container{
-    background-color:#CA2C92;width:78px;margin:0;height:78px;padding-top:5px;padding-left:5px;float:left;margin-right:0.5em;
+  #first_drop_cap_container,
+  #second_drop_cap_container {
+    background-color: #CA2C92;
+    width: 78px;
+    margin: 0;
+    height: 78px;
+    padding-top: 5px;
+    padding-left: 5px;
+    float: left;
+    margin-right: 0.5em;
   }
+  
   .drop_cap {
-    width:70px;height:70px;border:1px solid white;background-color:#CA2C92;font:normal 4.75em 'Josefin Slab';font-style:italic;text-align:center;color:white;line-height:70px;
+    width: 70px;
+    height: 70px;
+    border: 1px solid white;
+    background-color: #CA2C92;
+    font: normal 4.75em 'Josefin Slab';
+    font-style: italic;
+    text-align: center;
+    color: white;
+    line-height: 70px;
   }
+  
+  .main_headline {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 7em;
+    font-family: 'Josefin Slab';
+    font-weight: 300;
+    line-height: 1.1em;
+    text-align: center;
+  }
+  #flower {
+    margin: 0 auto;
+    display: block;
+    opacity: 0.5
+  }
+  .subheading {
+    width: 80%;
+    margin: 0 auto;
+    font: normal 2.75em 'Josefin Slab';
+    line-height: 1.1em;
+    text-align: center;
+    margin-top:0.6em;
+  }
+  
   p {
-    font:normal 1.7em 'Josefin Slab';color:#333;line-height:1.2em;margin-top:0;margin-bottom:0;text-indent:4em;
+    font: normal 1.7em 'Josefin Slab';
+    color: #333;
+    line-height: 1.2em;
+    margin-top: 0;
+    margin-bottom:0.5em;
+    text-indent: 2em;
   }
   
   p.first {
-    text-indent:0;font:normal 2em 'Josefin Slab';line-height:1.4em;font-style:italic;
+    text-indent: 0;
+    font: normal 2em 'Josefin Slab';
+    line-height: 1.4em;
+    font-style: italic;
   }
-#about_container a:link,#about_container a:visited { color:#CA2C92;text-decoration:underline; }
-#loading_main_page_spinner { display: none; }
-#inner_page_container { width:90%; }
-.main_headline {
-  width:90%;margin:0 auto;font-size:7em;font-family: 'Josefin Slab';font-weight:300;line-height:1.1em;color:#666;text-align:center;
-}
-
-.subheading { 
-  width:80%;margin:0 auto;font:normal 2.75em 'Josefin Slab';line-height:1.2em;color:#666;text-align:center;
-}
-#about_container {
-  width:50%;margin:0 auto;background-color:#EEE;border-radius:1em;padding:1em;margin-top:2em;
   
-}
-
-li {
-  list-style-type:disc;
-  font:normal 1.8em 'Josefin Slab';
-  color:#555;line-height:1.4em;
-  background-color:#EEE;
-}
-
-#right_col {
-  margin-left:50%;
-  border:0;
-  padding-top:2em;
-  width:50%;
-}
-
-#about_us_2 {
-  width:75%;margin:0 auto;border:4px double grey; border-radius:10px;text-align:center;display:block;
-}
-.left_column {
-  width:50%;
-}
-
-/* Smartphone ============================================================================================================
+  .rounded_rectangle {
+     background-color: #EEE;
+    border-radius: 1em;
+    padding: 1em;
+    margin-top: 2em;
+  }
+  
+  #about_container a:link,
+  #about_container a:visited {
+    color: #CA2C92;
+    text-decoration: underline;
+  }
+  #about_container {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #EEE;
+    border-radius: 1em;
+    padding: 1em;
+    margin-top: 2em;
+  }
+    #about_container .welcome_line {
+      width:90%;
+    }
+    #about_container .subheading {
+      margin-top:0;
+      font-size:3.5em;
+    }
+  .about_text_container { padding:2em; }
+  
+  #about1 {
+    width: 100%;
+  }
+  #about2 {
+    width:100%;
+    margin-bottom:2em;
+  }
+  #signature {
+    width:120px;
+    padding-top:1em;
+  }
+  
+  .grey_background {
+    background-color: #DDD;
+  }
+  
+  .welcome_line {
+    display: block;
+    width: 55%;
+    padding-top: 1.4em;
+    margin: 0 auto;
+  }
+  
+  
+  /* Smartphone ============================================================================================================
  ============================================================================================================
  ============================================================================================================
  ============================================================================================================ */
-@media all and (min-width: 220px) and (max-width: 500px) {
-/* ----------------------------------------------------------------------------- */    
-#first_drop_cap_container {
-  width:70px;
-  height:70px;
   
-}
-.drop_cap {
-  width:62px;
-  height:62px;
-  font-size:5.3em;
-  line-height:1.1em;
-}
-.welcome_line {
-  width:100%;
-}
-#inner_page_container { 
-  width:100%;
-  border:0;
-  padding:0;
-}
-#about_container { 
-  width:90%;
-  text-align:center;
-  
-}
-.main_headline { 
-  font-size:4em;
-  margin-top:0;
-  width:95%;
-}
-
-.subheading {
-  font-size:2em;
-  line-height:1.2em;
-}
-p {
-  font-size:1.6em;
-  text-align:left;
-  line-height:1.5em;
-}
-.left_column { 
-  float:none;width:100%;border:0;padding:0;
-}
-#about_us_2 { 
-  float:none;margin:0;padding:0;width:107%;margin:0 auto;clear:both;
-  margin-left:-5%;
-}
-#right_col { 
-  float:none; width:100%; border:0;padding:0;clear:both;margin:0; }
-}
-  
+  @media all and (min-width: 220px) and (max-width: 500px) {
+    /* ----------------------------------------------------------------------------- */
+    #inner_page_container {
+      width: 100%;
+      border: 0;
+      padding: 0;
+    }
+    #about_container {
+      width: 90%;
+      text-align: center;
+    }
+    #about_container .subheading {
+      font-size:2.4em;
+      width:99%;
+    }
+    #flower {
+      width:13%;
+    }
+    
+   .about_text_container 
+   {
+     
+      padding:0;
+      padding-left:0.1em;
+    }
+    .main_headline {
+      margin-top:0.25em;
+      font-size: 3.6em;
+      line-height:1em;
+      width: 99%;
+    }
+    .subheading {
+      font-size: 1.9em;
+      line-height: 1.2em;
+      width:97%;
+      margin-bottom:0;
+      padding-bottom:0;
+    }
+    p {
+      font-size: 1.4em;
+      text-align: left;
+      line-height: 1.3em;
+    }
+    #first_drop_cap_container {
+      width: 70px;
+      height: 70px;
+    }
+    .drop_cap {
+      width: 62px;
+      height: 62px;
+      font-size: 5.3em;
+      line-height: 1.1em;
+    }
+    .welcome_line {
+      width: 100%;
+    }
+ 
+  }
   /* Phablet
   ============================================================================================================
  ============================================================================================================
@@ -120,88 +194,130 @@ p {
  ============================================================================================================ */
   
   @media all and (min-width: 501px) and (max-width:800px) {
-    #inner_page_container { margin:0 auto; width:93%;}
+    #inner_page_container {
+      margin: 0 auto;
+      width: 90%;
+      border-left:1px dotted grey;
+      border-right:1px dotted grey;
+    }
+    #about_container {
+      width: 80%;
+    }
     
-#about_us_2 { 
-  float:none;margin:0;padding:0;width:107%;margin:0 auto;clear:both;
-  margin-left:-5%;
-}
-  #right_col {
-    margin:0;
-    clear:both;float:none;border:0;padding:0;
-    width:100%;
-}
-#about_container {
-  width:80%;
-}
-.left_column {
-  margin:0;
-  clear:both;float:none;border:0;padding:0;
-  width:100%;
-}
     
+    .main_headline {
+      font-size:6em;
+      line-height:1em;
+     padding-top:0.5em;
+    }
+    
+    .subheading {
+      width:92%;
+    }
+    
+    .welcome_line { width:80%; }
   }
 
 </style>
     
   <%- contentFor('main') %>
   <%- contentFor('left') %>
-  
   <%- contentFor('right') %>
-
-
-<%- contentFor('middle') %>
-
-<%- contentFor('about') %> 
-
-
-  <div class="main_headline">
-     <span>Everything starts as an idea in someone's head&hellip;</span>
-  </div>
+  <%- contentFor('middle') %>
+  <%- contentFor('about') %> 
   
-<img src="/gfx/welcomeicons/line.svg" class="welcome_line"/>
-  <div class="subheading">
-   <span style="line-height:1em">&hellip;a better way of doing something: a dream or a fantasy imagined. Sometimes it only takes the smallest spark to ignite a flame that becomes a blaze&hellip;</span>
-  </div>
+<div class="main_headline">
+  Everything starts as an idea in someone's head&hellip;</div>
 
-<div id="about_container">
-  <img src="/gfx/about.jpg" style="background-color:#EEE;background-blend-mode: multiply;width:100%;" />
-  <img src="/gfx/flower.svg" style="margin:0 auto;display:block;opacity:0.5" />
-  <div class="subheading" style="font-size:3.5em">Flowers grow in dirt, not in diamonds&hellip;</div>
-  
-<img src="/gfx/welcomeicons/line.svg" style="width:90%;" class="welcome_line"/>
- <div style="padding:2em;">
-  <div id="first_drop_cap_container">
-    <div class="drop_cap">M</div>
-  </div>
- 
-<p class="first">ost good ideas come out of painful experiences. Pain motivates us to do things better. And so it was that my pain came in the form of an email: “I SPELT CLAIRE WRONG,” it said.</p>
+<img src="/gfx/welcomeicons/line.svg" class="welcome_line" />
 
-	<p>“I should’ve spelled Clair without an e.” I was working on place cards and I’d read similar emails from different clients hundreds of times. So, once again, I loaded up the design, deleted the e, saved a fresh copy  and emailed it back to the client.... all that just for a missing e. </p>
-	
-<p>	Ping! A reply came through: “Actually, can we change the font to something a bit more... flourish-y?” . Sure! Let me just open the design again, find a  flourish-y font, send back a new copy and wait for a reply...</p>
-<p>	“Actually, I prefer the original after all. Can we stick with the original? But maybe in a lighter shade of purple?”
-	Are you getting the picture yet?</p>
-	
-<p>	Welcome to the world of design&hellip; </p>
-
-<p>	A lot of work designers do isn’t about the design. It’s about those little alterations: things that clients can’t do themselves, but which take up a lot time which somehow feels wasted. Simple, repetitive tasks that made me feel more like a robot than a designer. And that got me thinking&hellip;</p>
-
-<p>What if the client could take my place card designs and change the names herself? The colours and the font too? What if she could see the results instantly without having to wait for me to reply? And all at the last minute, a day before she needed them? What if she could even print them herself at the touch of a button, straight from her tablet or phone? All without me being involved? </p>
-
-<p>That would make my life easier. But more importantly, it would make her life easier. She wouldn’t worry about hassling me for little changes, and she could make alterations to her heart’s content, even at the last minute. And I’d be there if she really needed me. </p>
- 
-
-<img src="/gfx/welcomeicons/line.svg" style="display:block;width:90%;margin:0 auto;text-align:center;" class="welcome_line"/>
-<img src="/gfx/about2.jpg" id="about_us_2" style="width:100%;margin-bottom:2em;" />
-
-
-      <div style="background-color:#CA2C92;width:58px;margin:0;height:58px;padding-top:5px;padding-left:5px;float:left;margin-right:0.5em;"><div style="width:50px;height:50px;border:1px solid white;background-color:#CA2C92;font:normal 5em 'Josefin Slab';text-align:center;color:white;">I</div></div>
-      
-<p>We've started with place cards to see if could be done, but the next step will be invitations for christenings, weddings and corporate events. <span style=";background-color:#EEE;font-style:italic;">I'll soon be adding features to allow you to upload logos for your place cards, along with the ability to import friends' or colleagues' names from your Facebook or LinkedIn account.</span> </p>
-
-	<p>By placing an order today, you’re not just participating in a business transaction, you’re helping to realise a dream.</p>
-<p>Casamiento is currently based on the Isle of Wight where you are only ever 5 miles away from the nearest beach, which is nice. I love playing the piano and singing, which you can <a href="facebook.com">see me doing</a> if you decide to <a   href="">add me as a friend</a> on Facebook.</span> </p>
-<img src="/gfx/sig.png" style="width:120px;padding-top:1em;" /> </div>
+<div class="subheading">
+  &hellip;a better way of doing something: a dream or a fantasy imagined. Sometimes it only takes the smallest spark to ignite a flame that becomes a blaze&hellip;
 </div>
+
+<div id="about_container" class="rounded_rectangle">
+
+  <img src="/gfx/about.jpg" id="about1" />
+
+  <img src="/gfx/flower.svg" id="flower" />
+
+  <div class="subheading">Flowers grow in dirt, not in diamonds&hellip;</div>
+
+  <img src="/gfx/welcomeicons/line.svg" class="welcome_line" />
+  
+  <div class="about_text_container">
+    <div id="first_drop_cap_container">
+      <div class="drop_cap">M</div>
+    </div>
+
+    <p class="first">ost good ideas come out of painful experiences. Pain motivates us to do things better. And so it was that my pain came in the form of an email: “I SPELT CLAIRE WRONG,” it said.</p>
+
+    <p>“I should’ve spelled Clair without an e.” I was working on place cards and I’d read similar emails from different clients hundreds of times. So, once again, I loaded up the design, deleted the e, saved a fresh copy and emailed it back to the client&hellip;
+      <span class="grey_background" all that just for a missing e.</span> </p>
+
+    <p> Ping! A reply came through: “Actually, can we change the font to something a bit more&hellip; flourish-y?” . Sure! Let me just open the design again, find a flourish-y font, send back a new copy and wait for a reply&hellip;</p>
+    <p> “Actually, I prefer the original after all. Can we stick with the original? But maybe in a lighter shade of purple?” Are you getting the picture yet?</p>
+
+    <p> Welcome to the world of design&hellip; </p>
+
+    <p><span class="grey_background">A lot of work designers do isn’t about the design.</span> It’s about those little alterations: things that clients can’t do themselves, but which take up a lot time which somehow feels wasted. Simple, repetitive tasks
+      that made me feel more like a robot than a designer. And that got me thinking&hellip;</p>
+
+    <p>What if the client could take my place card designs and change the names herself? The colours and the font too? What if she could see the results instantly without having to wait for me to reply? And all at the last minute, a day before she needed
+      them? What if she could even print them herself at the touch of a button, straight from her tablet or phone? All without me being involved? </p>
+
+    <p>That would make my life easier. But more importantly, it would make her life easier. She wouldn’t worry about hassling me for little changes, and <span class="grey_background">she could make alterations to her heart’s content, even at the last minute.</span>      And I’d be there if she really needed me. </p>
+  </div>
+
+  <img src="/gfx/welcomeicons/line.svg" style="display:block;width:90%;margin:0 auto;text-align:center;" class="welcome_line" />
+
+  <img src="/gfx/about2.jpg" id="about2" />
+  
+  <div class="about_text_container">
+
+
+    <div style="background-color:#CA2C92;width:58px;margin:0;height:58px;padding-top:5px;padding-left:5px;float:left;margin-right:0.5em;">
+      <div style="width:50px;height:50px;border:1px solid white;background-color:#CA2C92;font:normal 5em 'Josefin Slab';text-align:center;color:white;">I</div>
+    </div>
+
+    <p>By placing an order today, you’re not just participating in a business transaction, you’re helping to realise a dream.</p>
+    
+    <p>Casamiento is currently based on the Isle of Wight where you are only ever 5 miles away from the nearest beach, which is nice. I love playing the piano and singing, which you can <a href="facebook.com">see me doing</a> if you decide to <a href="">add me as a friend</a> on Facebook.</p>
+    
+    <img src="/gfx/sig.png" id="signature" /> </div>
+    
+</div>
+
+
+<div class="rounded_rectangle" style="width:40%;float:left;margin-left:5%;">
+  
+  <img src="/gfx/vector.svg" style="display:block;margin:0 auto;"/>
+  
+  <div class="subheading">Sharp, clear graphics&hellip;</div>
+<img src="/gfx/welcomeicons/line.svg" class="welcome_line" style="width:90%;margin-bottom:1em;"/>
+
+  <img src="/gfx/placephoto2.jpg" style="border-radius:1em;width:100%;" />
+  </div>
+
+<div class="rounded_rectangle" style="width:40%;float:right;margin-right:5%;">
+  
+  <img src="/gfx/mileage.svg" style="display:block;margin:0 auto;"/>
+  
+  
+  <div class="subheading">Speed is everything&hellip;</div>
+<img src="/gfx/welcomeicons/line.svg" class="welcome_line"style="width:90%;margin-bottom:1em;"/>
+
+  <img src="/gfx/placephoto1.jpg" style="border-radius:1em;width:100%;" />
+  </div>
+
+
+<div class="rounded_rectangle" style="width:40%;margin:0 auto;clear:both;margin-top:2em;">
+  
+  <div class="subheading">Artificial intelligence&hellip;</div>
+<img src="/gfx/welcomeicons/line.svg" class="welcome_line"style="width:90%;margin-bottom:1em;"/>
+
+  <img src="/gfx/placephoto3.jpg" style="border-radius:1em;width:100%;" />
+  </div>
+</div>
+
 <%- contentFor('javascripts') %>
