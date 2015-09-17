@@ -1,0 +1,180 @@
+<%- contentFor('inside_headtag') %>
+<style type="text/css">
+ 
+  #loading_main_page_spinner  { display: none;  }
+  
+  #inner_page_container { 
+    width: 90%; 
+    color: #666;
+  }
+  .left_column { 
+    width:50%;
+  }
+  #right_col {
+    margin-left:50%;
+    margin-right:0;
+  }
+p.bubble
+{
+	position: relative;
+	width: 50%;
+	text-align: center;
+	margin: 60px auto;
+	padding:1em;
+	background-color: #eee;
+	border-radius: 20px;
+}
+
+p.bubble:before, p.bubble:after
+{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
+p.thought:before, p.thought:after
+{
+	left: -3px;
+	bottom:-20px;
+	width: 40px;
+	height: 40px;
+	background-color: #eee;
+	border-radius: 28px;
+}
+
+p.thought:after
+{
+	width: 25px;
+	height: 25px;
+	left: -7px;
+	bottom:-32px;
+	border-radius: 18px;
+}
+
+ p.pink,
+  p.pink:after,
+  p.pink:before { background-color:#F5CEF5;}
+  .main_headline {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 7em;
+    font-family: 'Josefin Slab';
+    font-weight: 300;
+    line-height: 1.1em;
+    text-align: center;
+  }
+  
+  .subheading {
+    width: 80%;
+    margin: 0 auto;
+    font: normal 2.75em 'Josefin Slab';
+    line-height: 1.1em;
+    text-align: center;
+    margin-top:0.6em;
+  }
+  
+  p {
+    font: normal 1.7em 'Josefin Slab';
+    color: #333;
+    line-height: 1.2em;
+    margin-top: 0;
+    margin-bottom:0.5em;
+  }
+  
+  .welcome_line {
+    display: block;
+    width: 55%;
+    padding-top: 1.4em;
+    margin: 0 auto;
+  }
+  
+  /* Smartphone ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================ */
+  
+  @media all and (min-width: 220px) and (max-width: 500px) {
+    /* ----------------------------------------------------------------------------- */
+    #inner_page_container {
+      width: 100%;
+      border: 0;
+      padding: 0;
+    }
+    .main_headline {
+      margin-top:0.25em;
+      font-size: 3.6em;
+      line-height:1em;
+      width: 99%;
+    }
+    .subheading {
+      font-size: 1.9em;
+      line-height: 1.2em;
+      width:97%;
+      margin-bottom:0;
+      padding-bottom:0;
+    }
+    p {
+      font-size: 1.4em;
+      text-align: left;
+      line-height: 1.3em;
+    }
+    .welcome_line {
+      width: 100%;
+    }
+ 
+  }
+  /* Phablet
+  ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================
+ ============================================================================================================ */
+  
+  @media all and (min-width: 501px) and (max-width:800px) {
+    #inner_page_container {
+      margin: 0 auto;
+      width: 90%;
+      border-left:1px dotted grey;
+      border-right:1px dotted grey;
+    }
+    
+    .main_headline {
+      font-size:6em;
+      line-height:1em;
+     padding-top:0.5em;
+    }
+    
+    .subheading {
+      width:92%;
+    }
+    
+    .welcome_line { width:80%; }
+  }
+
+</style>
+    
+  <%- contentFor('main') %>
+  
+  <%- contentFor('left') %>
+  
+<p class="bubble thought">I think sa better way of doing something: a dream or a fantasy imagined. Sometimes it only takes the smallest spark to ignite a flame that becomes a blaze a better way of doing something: a dream or a fantasy imagined. Sometimes it only takes the smallest spark to ignite a flame that becomes a blaze&hellip;</p>
+
+  <%- contentFor('right') %>
+  
+<p  class="bubble pink thought">I think sa better way of doing something: a dream or a fantasy imagined. Sometimes it only takes the smallest spark to ignite a flame that becomes a blaze a better way of doing something: a dream or a fantasy imagined. Sometimes it only takes the smallest spark to ignite a flame that becomes a blaze&hellip;</p>
+
+  <%- contentFor('middle') %>
+  
+<div class="main_headline">
+  Frequently Asked Questions&hellip;
+</div>
+
+<img src="/gfx/welcomeicons/line.svg" class="welcome_line" />
+
+<div class="subheading">
+  &hellip;a better way of doing something: a dream or a fantasy imagined. Sometimes it only takes the smallest spark to ignite a flame that becomes a blaze&hellip;
+</div>
+  <%- contentFor('about') %> 
+  
+
+<%- contentFor('javascripts') %>
