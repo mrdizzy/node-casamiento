@@ -57,6 +57,7 @@ var PlaceCardView = Backbone.View.extend({
   deleteGuest: function() {
     //thisProduct.get("guests").remove(this.model);
       this.$el.addClass("hide")
+      this.remove();
       Waypoint.refreshAll();
     //});
   },
