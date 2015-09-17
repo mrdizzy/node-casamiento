@@ -1,6 +1,6 @@
 // Login to developer.paypal.com with the usual (and authentic) PayPal login details and then go to the Dashboard.
 // Then look left for the Sandbox menu and select "Accounts"
-// Buyer: paypal-buyer@dizzy.co.uk Password: Jenny333
+// Buyer: jenny@dizzy.co.uk Password: Jenny333
 // In development the return URL needs to be correct for testing to work, depending on the environment. This is usually
 // localhost:3000 but if using cloud9 editor then it should be http://node-casamiento-mrdizzy.c9.io
 

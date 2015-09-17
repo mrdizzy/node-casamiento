@@ -7,6 +7,7 @@
 .right_column {
   background-color:#fff; 
   border-left:1px dotted black;
+  border-right:1px dotted black;
   margin-left: 70%; 
   width:30%;
   text-align:center; 
@@ -58,7 +59,7 @@
   #step_1 { border-top:1px dotted #000; }
   
   .spc {   
-    padding-left:0.3em;
+    padding-left:0;
     border-bottom:1px dotted grey; 
   }    
 
@@ -72,7 +73,7 @@
       .spec { display:inline-block; }
         .spec img { width:100%; }
 
-    .highlight { box-shadow:5px 5px 0 0 lightgrey; }
+   
 
     .step { 
       border-bottom-left-radius:10px;
@@ -116,15 +117,16 @@
     }
 
       .price {      
-        font:normal 1.4em 'Gara';
+        font:normal 1.5em 'Gara';
         text-align:center;
       }
 
 
-      #qty { 
+      .qty, .qty_cards { 
         color:#000; 
-        font: normal 2em 'OS Light';
+        font: normal 3em 'OS Light';
       }
+      .qty_cards { font-size:1.4em; }
       
       #quick_guests {
         width:90%;
@@ -163,6 +165,12 @@
                     margin-top:-1px;
     background-color:white;
     position:fixed; 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     z-index:81; 
     opacity:0.9;
     border-bottom:1px solid black; 
@@ -172,6 +180,7 @@
     #ui_printer_icon { 
       margin:0;
       float:left;
+      margin-top:10px;
       width:35px;
       margin-left:10%;
       text-align:center;
@@ -191,7 +200,8 @@
         border-bottom-right-radius:12px;
         border-top-left-radius:12px;
         width:60px;      
-        height:45px;
+        height:42px;
+        margin-top:4px;
       }
         #ui_global_font div:hover, 
         #ui_global_font_mobile div:hover {
@@ -257,13 +267,13 @@
      margin-top:0;
      height:auto;
   }
-  .left_column { width:100%; }
+  .left_column { width:100%;border:0; }
   #right_col { 
     width:100%;
+    border:0;
     clear:both; 
     margin:0;
     padding:0;
-    border-left:0;
   }
       
   #description_container { 
@@ -405,49 +415,23 @@
  ============================================================================================================ */
 @media all and (min-width: 501px) and (max-width: 800px) {
 /* ----------------------------------------------------------------------------- */    
-  .left_column { 
-    width:65%;
-    float:right;
-    z-index:10000;
-  }
-  
-  .right_column { 
-    margin-right:65%;
-    margin-left:0;
-    width:34.75%;
-    padding-top:0;
-    border-left:0;
-    border-right:1px dotted black; 
-  }
+
   .buy { padding-top:0.75em; }
   .slide, 
   #description_container { 
     width:100%;
     float:none;
   }
+  #right_col {
+    border-right:0;
+  }
+  
   #inner_page_container { margin-top:41px; }
 
   .chat-bubble { display:block; left:3em; }
 
   .texture { display:block; }
   
-   .printui_view .left_column { 
-    width:65%; 
-    border-left:1px dotted black;
-    float:right;
-    margin-left:0;
-  }
-  .printui_view .right_column { 
-    margin:0;
-    margin-right:65%;
-    position:static;
-    -webkit-overflow-scrolling: touch;
-    height:100%;
-    top:0;
-    right:0;
-    border-top:0;
-  }
-    
   #menu_lines { display:none; } 
   
   #control_panel { 
@@ -457,7 +441,7 @@
     height:28px;
   }
   body.printui_view #right_col { padding-top:37px;  }
-  #ui_printer_icon { width:25px; }
+  #ui_printer_icon { width:25px;margin-top:0; }
     
     #ui_global_font div {
       width:40px;

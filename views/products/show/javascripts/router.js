@@ -33,6 +33,7 @@ var AppRouter = Backbone.Router.extend({
       $('body').removeClass('quick_guests_selected')  
     }, 
     "": function(actions) {  
+        console.log("home")
       coordinator_view.renderHome();
        $('body').removeClass("printui_view")
     }

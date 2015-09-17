@@ -33,7 +33,6 @@ var  paypal = require('./../config/paypal_config')(),
 
 exports.create = function(req, res) {
   var product = JSON.parse(req.body.object);
-  console.log(product)
   product.product_id = product._id;
   delete product._rev
   delete product._id
@@ -42,11 +41,12 @@ exports.create = function(req, res) {
   product.status = "UNPAID"
    var localhost = "http://localhost:3000/payments"
    var heroku_test = "http://node-casamiento-mrdizzy.c9.io/payments"
+   var c9 = "http://node-casamiento.mrdizzy.c9.io/payments"
    var production = "http://www.casamiento.co.uk/payments"
   // Change RETURNURL to http://localhost for testing
   var default_options = {
     "PAYMENTREQUEST_0_CURRENCYCODE": "GBP",
-    "RETURNURL": localhost,
+    "RETURNURL": c9,
     "CANCELURL": "http://node-casamiento-mrdizzy.c9.io/products/" + product.product_id, // http://localhost:3000/products or http://node-casamiento-mrdizzy.c9.io/products
     "PAYMENTREQUEST_0_PAYMENTACTION": "Sale",  
     "ALLOWNOTE": 1,

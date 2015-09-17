@@ -115,52 +115,39 @@
 	
 </div>
 
-	<!-- 
-	
-	QUANTITY 
-	
-	-->
-
-<div class="spc" id="step_6">
-	<div class="step_header_container">
-		<h4>Price</h4>
-		<div class="step">STEP 6</div>
-	</div> 
-	
-	<div class="chat-bubble">Choose the number of cards you would like by clicking the + and - buttons or by typing a number into the box and watch the price update. You can order a maximum of 250 cards per order. 
-	</div>
-
-	<div id="qty_container">
-		<input type="text" id="qty" value="{{quantity}}" size="3"></input>
-	</div>
-		
-	<div class="price">
-	  <span class="pound_sign">&pound;</span><span class="number" id="pound">{{pounds}}</span><span class="decimal" id="decimal">.{{pence}}</span>
-		</div>
-</div>
-
 	
 <!--
 
 	BUY 
 
 -->
+<div class="spc" id="step_7">
 
-<div class="spc"  id="step_7">
-
-  <h4>Place your order&hellip;</h4>
-	<div class="step">STEP 7</div>
-  <div id="button_container" style="padding-top:3em;">
-	
-	
-		<img src="/gfx/spinners/360.gif" class="paypal_spinner"/>
-
-	<div class="buy grey_button">
-	  <span style="color:white;font:normal 1em 'OS';">Check out with</span>
-	  <img class="cart_icon" src="/gfx/cart_white.png" style="width:45px;"/><br/>
-      <img src="/gfx/paypal.png" class="paypal"/ style="padding-bottom:1em;">
-  </div>
-
-	</div> 
+	<div class="step_header_container">
+		<h4>Place your order&hellip;</h4>
+		<div class="step">STEP 7</div>
 	</div>
+	<div style="border-radius:2em;margin:0 auto;width:60%;">
+		<div class="qty" style="color:#444;font:normal 5em 'OS Light'">{{quantity}}</div>
+		<div style="color:#444;margin:0 auto;font-size:2em;margin-top:0;padding-top:0;line-height:50%;border-bottom:4px double #444;width:70%;padding-bottom:0.5em;" class="qty_cards">CARDS</div>
+		<div class="price">
+			<span style="color:#444;" class="pound_sign">&pound;</span><span class="number pound">{{pounds}}</span><span class="decimal" style="color:#444;" id="decimal">.{{pence}}</span>
+
+		</div>
+	</div>
+
+	<div id="button_container" style="padding-top:3em;">
+
+
+		<img src="/gfx/spinners/360.gif" class="paypal_spinner" />
+
+		<div class="buy grey_button">
+			<span style="color:white;font:normal 1em 'OS';">Check out with</span>
+			<img class="cart_icon" src="/gfx/cart_white.png" style="width:45px;" />
+			<br/>
+			<img src="/gfx/paypal.png" class="paypal" / style="padding-bottom:1em;">
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+</div>
 </div>

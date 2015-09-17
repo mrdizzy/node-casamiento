@@ -2,25 +2,71 @@
 
 <style type="text/css">
   <% if (product.locked) { %>
-  #overlay {
-    position:fixed;
-    width:100%;
-    height:100%;
-    z-index:100000000000000000000000000000;
-    background-image:url('/gfx/locked.png') 
-  }
-  #middle_column, 
-  #print_ui { 
-    width:100%;
-  }
-  body { height:0; }
-  <% } %>
+    #overlay {
+      position:fixed;
+      width:100%;
+      height:100%;
+      z-index:100000000000000000000000000000;
+      background-image:url('/gfx/locked.png') 
+    }
+    
+    body { height:0; }  
+  <% } %> 
+  #control_panel { opacity: 1; }
+      .colour_picker_wrapper {
+         width:100%;
+         margin:0 auto;   
+      }
+    
+      .colour_picker_wrapper .dizzycp-static_container { 
+        padding-bottom:15px;
+        clear:both;
+      }
+        .colour_picker_wrapper .dizzycp-swatch_container { 
+          text-align:left;
+        }
+        
+        .colour_picker_wrapper .dizzycp-big_colour_square_frame { 
+          margin-left:20px;
+          float:left;
+        }
+        
+        .colour_picker_wrapper .dizzycp-text_label_for_colour { 
+          text-align:left;
+          margin-left:75px;
+          padding-top:12px;
+        }
+    #ui_printer_icon { 
+      margin-left:3%;
+    }
+    #ui_global_font {
+      width:30%;
+    }
+    #ui_font_picker {
+      margin-top:5px;
+      width:20%;float:left;
+      display:block;
+    }
+    #bar_colour_picker {
+      width:25%;
+      margin-left:5%;
+      float:left;
+      display:block;
+    }
+         .checkout { position:absolute;}
+         .add_another { height: 1px; overflow:hidden;}
+  .left_column, 
+  #print_ui { width:100%; }
   
-  .checkout,
-  .add_another,
-  .delete_button { display:none; }
-
-#inner_page_container { display:none; }
+  #loading_main_page_spinner,
+  .delete_guest {
+    display:none; 
+  }
+  
+  .add_another, 
+  .checkout {
+    visibility:hidden;
+  }
   <% for (var i=0; i < product.colours.length; i++) { %>
     .colour_<%= i %> { background-color: <%= product.colours[i] %> }
   <% } %>
@@ -34,17 +80,17 @@
   
 <%- contentFor('main') %>
   
-  <div id="print_ui"></div>
-  
  
 
 <%- contentFor('left') %>
-
   <div id="preview">
-    <div id="flat_preview"></div>
+    
+    <div id="print_ui"></div>
     <div id="product_container"></div>
+    
   </div>
   
+
 
 
 

@@ -18,9 +18,7 @@
     var $selected_font = $('<table class="selected_font" class="fonts_table"></table>');
     var $selected_row = $('<tr></tr>');
     var $selected_image = $('<img src="/fonts/' + selected_font + '.svg">')
-    var $selected_font_name= $('<td class="font_name">'+ selected_font + '</td>');
     $selected_row.append($('<td class="font_image"></td>').append($selected_image));
-    $selected_row.append($selected_font_name)
     $selected_font.append($selected_row)
 
     var $down_arrow = $('<tr style="border-top:1px solid black;"><td class="down_arrow" colspan="2" style="text-align:center;">&#9660;</td></tr>')
@@ -29,14 +27,13 @@
       var $table = $('<table></table>').addClass("fonts_table").css("display", "none");
      
       group.forEach(function(font) {
-        var $tr = $('<tr data-image="' + font + '"></tr>').append("<td class='font_image'><img src='/fonts/" + font + ".svg' /></td>").addClass("font_image").append("<td class='font_name'>" + font + "</td>")
+        var $tr = $('<tr data-image="' + font + '"></tr>').append("<td class='font_image'><img src='/fonts/" + font + ".svg' /></td>").addClass("font_image")
         // Click on a font
         $tr.click(function(e) {
           $.updateFont(font, that);
           that.trigger("fontpicker:selected", font)
           $up_arrow_container.hide()
           $selected_image.attr("src", "/fonts/" + font + ".svg")
-          $selected_font_name.text(font)
           tables[current_index].hide();
         })
         $table.append($tr)

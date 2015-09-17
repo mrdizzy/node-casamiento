@@ -1,16 +1,18 @@
 <%- contentFor('inside_headtag') %>
 
-
-    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700italic,400italic' rel='stylesheet' type='text/css'>   
-    <link rel="stylesheet" href="/stylesheets/welcome.css" /> 
-    <style type="text/css">
-  <% for(var i = 0; i < place_cards.length; i++) { %>
-    <% if (place_cards[i].colours[1]) { %>
-     #welcome_place_<%=i%> .colour_1 { background-color: <%= place_cards[i].colours[1] %>}
-    <% } %>
-  <% } %>
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700italic,400italic' rel='stylesheet' type='text/css'>   
+  <link rel="stylesheet" href="/stylesheets/welcome.css" /> 
   
-    </style>
+  <style type="text/css">
+      
+    <% for(var i = 0; i < place_cards.length; i++) { %>
+      <% if (place_cards[i].colours[1]) { %>
+       #welcome_place_<%=i%> .colour_1 { background-color: <%= place_cards[i].colours[1] %>}
+      <% } %>
+    <% } %>
+
+  </style>
+    
   <%- contentFor('main') %>
   
   <%- contentFor('left') %>
@@ -18,10 +20,12 @@
   <%- contentFor('right') %>
 
 <%- contentFor('middle') %>
+
 <div id="welcome_column">
+    
   <div id="slides_column">
       
-    <img id="slides_spinner" src="/gfx/spinner.gif" />
+    <img id="slides_spinner" src="/gfx/spinners/360.gif" />
  
     <div id="slides_container">
      
@@ -49,8 +53,7 @@
               </div>
             <% } %>
             
-            <a href="/products/<%= place_card._id %>">
-            <div style="padding-top:1px;">
+            <div id="colour_0_container">
               <div class="welcome_colour_frame">
                 <div class="welcome_colour_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
               </div>
@@ -58,15 +61,18 @@
                 <%= place_card.colour_0 %>    
               </div>
             </div>
-           </a>
+          
            
-           <% if (place_card.colours[1]) { %>                 
+           <% if (place_card.colours[1]) { %>    
+           
+            <div id="colour_1_container">
             <div class="welcome_colour_frame" style="clear:both;">
               <div class="welcome_colour_swatch" style="background-color: <%= place_card.colours[1] %>;"></div>
             </div>
             <div class="welcome_colour_label"> 
               <%= place_card.colour_1 %>                
             </div>           
+            </div>
            <% } %>
            
            </div>
@@ -120,95 +126,197 @@
       
      <% } %>
      </div>
+     </div>
      
-     <div id="slide_separator"></div>
+     
+    <div id="slide_separator"></div>
+     
+    <div style="margin-top:-3em;"></div>
+     
+     
+    <h5>Place cards you can personalise and print instantly straight from your browser right now—or let us print them for you&hellip;</h5>
     
-      <h6>How it works&hellip;</h6>
-   
+    <img src="/gfx/welcomeicons/line.svg" class="welcome_line"/>
     
-      <div class="shell"></div>
-      
-      <div class="hex">1</div>      
-      <div class="how_to_bullet_container">
-        <p class="bullet_text">Choose a design</p> 
-        <p style="margin-right:10%;margin-top:0;padding-top:0;">From ornamental to abstract, traditional to contemporary, weddings to Christmas, one of our designs are bound to compliment the theme of your event.
-        </p>
-       </div>
-       
-       <div class="hex">2</div>       
-       <div  class="how_to_bullet_container">
-         <p class="bullet_text">Choose a colour</p> 
-         <p style="margin-right:10%;margin-top:0;padding-top:0;">With hundreds of colours available, there&rsquo;s no doubt you&rsquo;ll find one to co-ordinate with your event. You&rsquo;ll see the colours change instantly on your screen so you know exactly what the finished result will look like.
-         </p>
-       </div>
-       
-      
-      <div style="position:relative;border-top:1px dotted black;border-bottom:1px dotted black;padding:1em;margin:1em;">
-        <img src="/gfx/tutorials/tutorial_4.gif" style="position: absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;width:86.25%;top:11%;max-width:682px;"/>
-        <img src="/gfx/desktop_screen_wide.svg" style="margin:0 auto;width:100%;display:block;"/>
-      </div> 
-       
-      <div class="hex">3</div>
-      <div class="how_to_bullet_container"><p  class="bullet_text">Choose a font</p> 
-        <p style="margin-right:10%;margin-top:0;padding-top:0;">If your holding a corporate conference for lawyers you&rsquo;re going to want a different font than if you&rsquo;re hosting a singles event! So choose the font you want, and see it on-screen immediately&hellip;
-        </p>
-      </div>
-       
-      <div class="hex">4</div>
-      <div class="how_to_bullet_container">
-        <p class="bullet_text">Print yourself</p> 
-        <p style="margin-right:10%;margin-top:0;padding-top:0;">It&rsquo;s quick and easy to print straight from your browser. No downloading PDFs or waiting on screens that say &ldquo;processing&hellip;&rdquo;  for 10 seconds. It&rsquo;s as close to instant as you'll get!</p>
-      </div>
-        
-      </div>
-      
-      <!-- DESCRIPTION COLUMN -->
+    
+    
+    
+     <!--------------------------------------------------------------  FIRST THREE ICONS -------------------------------------->
+     
+     
+    <div id="box_1" class="welcome_box_container">
   
-      <div id="description_column">     
+     <div class="welcome_icon_container">
+        <img src="/gfx/welcomeicons/colour.svg"  class="welcome_icon" />
+      </div>
       
-      <h5>Place cards you can personalise right now in your browser in any colour, printed with your guests&rsquo; names in your choice of font and delivered in 3 working days&hellip;</h5>
-      
-      <div class="shell"></div>
-      
-      <p>Your guests will love seeing their names individually printed on our elegant freestanding place cards&hellip;
-      </p>
-      
-      <p>&hellip;and because you choose the colours and theme, you can co-ordinate them completely with your event so everything matches perfectly! From ornamental to abstract, traditional to contemporary, one of our designs below are bound to compliment your theme&hellip;</p>
-      
-      <h6>Save yourself time, stress and hassle&hellip;</h6>
-    
-      <div class="shell"></div>
-        
-      <p>They'll also save you time and stress: just decide on your options, type in the names of your guests and within three working days you'll have a parcel dropping through your letterbox: no scoring and cutting card, no wonky edges, no smeared ink, just perfect little cards ready to sit on your tables.</p>
-    
-      <p><a href-"/products">Browse our designs</a> and place your order today!</p>
+      <h5>Customise colours to match your theme</h5>
+      <p>Every design can be changed to any colour of your choice&mdash;you'll see the changes in your browser instantly, no reloading or buffering! </p>
      
-      <p style="margin:0;padding:0;text-align:center;">
-        <img src="http://www.casamiento.co.uk/gfx/davidsign.png" style="width:100px"/>
-      </p>
-     
-      <p style="margin-top:0em;padding-top:0;text-align:center;">&mdash;David Pettifer<br/>
-    
-      <span style="font-style:italic;font-size:1.2em;">Lead Designer</span></p>
     </div>
+     
+     
+     
+     
+    <div id="box_2"  class="welcome_box_container">
+      
+    
+      <div class="welcome_icon_container">
+        <img src="/gfx/welcomeicons/font.svg"  class="welcome_icon" />
+      </div>
+     
+      <h5>Fonts to match<br/>your mood</h5>
+      <p>Choose a typeface to match the mood of your theme&mdash;from clever and corporate to fun and frenetic! </p>
+       
+     </div>
+     
+  
+  
+  
+  
+    <div id="box_3"  class="welcome_box_container">
+  
+      <div class="welcome_icon_container">
+        <img src="/gfx/welcomeicons/print.svg"  class="welcome_icon" />
+      </div>
+      
+      <h5>Print instantly from your browser&hellip;</h5>
+      <p>&hellip;no downloading PDF files or waiting around&mdash;press the print icon and print straight from your browser in perfect quality: you can also print from your phone or tablet if you have a wifi enabled printer!</p>
+    </div>
+     
+     
+     
+    
+    <!----------------------------------------------  SECOND THREE ICONS ---------------------------------------------------->
+     
+    <img src="/gfx/welcomeicons/line.svg"  id="second_line"  class="welcome_line" />
+      
+      
+      
+      
+    <div  id="box_4" class="welcome_box_container">
+  
+      <div class="welcome_icon_container">
+        <img src="/gfx/welcomeicons/designs.svg"  class="welcome_icon" />
+      </div>
+      
+      <h5>100s of designs to match your theme</h5>
+      <p>Whether it's 80s retro or traditional Victorian vintage, <a href="/products"><img src="/gfx/browse/open182.svg" style="width:20px;" /> browse our designs</a> and a design to suit! </p>
+     
+     </div>
+     
+     
+     
+    <div id="box_5"  class="welcome_box_container">
+  
+     <div class="welcome_icon_container">
+        <img src="/gfx/welcomeicons/delivery.svg" class="welcome_icon" />
+      </div>
+      
+      <h5>Order before 1pm for next day delivery&hellip;</h5>
+      <p>If you want us to print your cards, order before 1pm to get them the next day</p>
+     
+    </div>
+     
+  
+    <div  id="box_6" class="welcome_box_container">
+  
+    <div class="welcome_icon_container">
+      <img src="/gfx/welcomeicons/editing.svg" class="welcome_icon" />
+    </div>
+    
+      <h5>Stress-free editing of guest names&hellip;</h5>
+      <p>Just paste a list of names into the quick entry box and hey presto, you suddenly have all your place cards automatically created&hellip;</p>
+     
+    </div>
+     
+
+    
+    <img src="/gfx/welcomeicons/line.svg" id="third_line" class="welcome_line" />   
+    
     <div style="clear:both"></div>  
+    
+    
+    
+    <!------------------------------------------  ANIMATION ---------------------------------------------------->
+    
+    <div style="position:relative;width:100%;" id="desktop_animation">
+             <div style="position:absolute;z-index:9999999999999999999999999999999999999999999999999999999999999;top:15.5%;">
+        <img src="/gfx/welcomeicons/top_direction.svg" style="margin-left:10%" />
+        <div style="color:#222;margin-left:0.75%;width:17%;font:normal 1.1em 'OS Light Italic';">
+         <span style="font-family:'OS Condensed'">Change all.</span> These buttons are the same as those on each individual place card, but they will change every single place card!
+        </div>
+      </div>
+    
+        
+        
+        
+      <div style="position:absolute;z-index:9999999999999999999999999999999999999999999999999999999999999;top:45%;">
+        <img src="/gfx/welcomeicons/left_direction.svg" style="margin-left:10%" />
+        <div style="color:#222;margin-left:0.75%;width:14.5%;font:normal 1.1em 'OS Light Italic';">
+         <span style="font-family:'OS Condensed'">Place card view.</span> Here you can edit individual place cards. The <img src="/gfx/font_decrease.svg" style="display:inline-block;opacity:0.6;" /> and <img src="/gfx/font_increase.svg" style="width:15px;opacity:0.7;display:inline-block;" /> buttons next to each card increase or decrease the font size on and the <img src="/gfx/baseline_up.svg" style="width:15px;opacity:0.7;display:inline-block;" />  and  <img src="/gfx/baseline_down.svg" style="width:15px;opacity:0.7;display:inline-block;" />  buttons move the font up or down. Great for those names which are really short or really long!
+        </div>
+      </div>
+    
+      <div style="position:absolute;z-index:9999999999999999999999999999999999999999999999999999999999999;top:63%;right:7%;width:25%;">
+        <img src="/gfx/welcomeicons/bottom_direction.svg" style="margin-left:10%;" />
+        <div style="color:#222;margin-left:1%;font:normal 1.1em 'OS Light Italic';">
+         <span style="font-family:'OS Condensed'">Font panel.</span> Click on the font panel and choose from hundreds of fonts, then watch your place cards update straight away!
+        </div>
+      </div>
+    
+    
+    <div style="position:absolute;z-index:9999999999999999999999999999999999999999999999999999999999999;top:35%;right:0;width:25%;">
+        <img src="/gfx//welcomeicons/right_direction.svg" style="margin-right:10%;" />
+        <div style="color:#222;margin-left:1%;width:58%;font:normal 1.1em 'OS Light Italic';float:right;">
+         <span style="font-family:'OS Condensed'">Colour panel.</span> This is where you select from hundreds of colours and watch your place cards update instantly. No page loading!
+        </div>
+      </div>
+    
+     <div style="position:relative;width:70%;margin:0 auto;z-index:0;">
+       <img src="/gfx/welcomeicons/anim_1.gif" style="width:90%;margin:0 auto;display:inline-block;margin-top:5%;position:absolute;left:0;right:0;margin-left:auto;margin-right:auto;" />
+       <img src="/gfx/welcomeicons/screen.svg" style="width:100%;display:block;"/ > 
+       </div>
+       <img src="/gfx/welcomeicons/STAND.svg" style="margin:0 auto;display:block;"/ > 
     </div>
+    </div>
+    
+    
+    
+    
+    
+    
 <%- contentFor('javascripts') %>
-  $(function() {              
-    $("#slides_container").slidesjs({
-      width: 360,
-      height: 207,
-      pagination: { active: true }, 
-      navigation: { active: true },
-      play: {
-        active: false,
-        auto: true,        
-        interval: 5000
-      },
-      callback: {
-        loaded: function(n) {
-          $('#slides_spinner').hide();
-        }
+
+$(function() {
+  var body_width = $('body').width();
+  if (body_width > 680) {
+    var height = 92;
+  }
+  else {
+    height = 207;
+  }
+
+  $("#slides_container").slidesjs({
+    width: 360,
+    height: height,
+
+    pagination: {
+      active: true
+    },
+    navigation: {
+      active: true
+    },
+    play: {
+      active: false,
+      auto: true,
+      interval: 5000
+    },
+    callback: {
+      loaded: function(n) {
+        $('#slides_spinner').hide();
       }
-    })
+    }
   })
+
+})

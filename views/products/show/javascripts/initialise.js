@@ -1,17 +1,3 @@
-function setSelectionRange(input, selectionStart, selectionEnd) {
-  if (input.setSelectionRange) {
-    input.focus();
-    input.setSelectionRange(selectionStart, selectionEnd);
-  }
-  else if (input.createTextRange) {
-    var range = input.createTextRange();
-    range.collapse(true);
-    range.moveEnd('character', selectionEnd);
-    range.moveStart('character', selectionStart);
-    range.select();
-  }
-}
-
 $(function() {   
    var casamiento_test_for_mobile,
      casamiento_test_for_phablet;
@@ -36,7 +22,6 @@ $(function() {
   
   $(window).on("resize", testForPhablet())
   $(window).on("resize", testForMobile())
-
   Backbone.Collection.prototype.save = function (options) {
     Backbone.sync("create", this, options);
   };
@@ -44,7 +29,7 @@ $(function() {
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
   
   <%= include models_guest.js %> 
-  <%= include models_product.js %>   
+  <%= include models_product.js %>    
   <%= include view_product_steps.js %>
   <%= include view_place_card.js %> 
   <%= include view_product_slides.js %>
@@ -61,7 +46,7 @@ $(function() {
   
   var thisProduct = new Product(<%- JSON.stringify(product) %>),
     guestList = new Guests(),
-    coordinator_view = new CoordinatorView(),   
+    coordinator_view = new CoordinatorView(),
     app_router = new AppRouter;
   
   // thisProduct.fetch looks in localstorage for the product. If we find

@@ -7,23 +7,24 @@ $(function() {
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
 
   <%= include ./../show/javascripts/models_guest.js %> 
+  <%= include ./../show/javascripts/models_product.js %> 
   <%= include ./../show/javascripts/models_edit_product.js %>   
-  <%= include ./../show/javascripts/view_backbone_relative.js %>
-  <%= include ./../show/javascripts/view_guest.js %>
   <%= include ./../show/javascripts/view_place_card.js %>
+  <%= include ./../show/javascripts/view_print_alert_box.js %>
   <%= include ./../show/javascripts/view_print_place_card_collection.js %>
   <%= include ./../show/javascripts/view_print_ui.js %>
   
+  <%= include ./../show/javascripts/view_edit_print_ui.js %>
   var templates = {}
   <% templates.forEach(function(template) { %>
     templates["<%= template.name %>"] = <%- template.template %>;
   <% }) %>
   
-  var thisProduct = new Product(<%- JSON.stringify(product) %>, {parse:true});
+  var thisProduct = new EditProduct(<%- JSON.stringify(product) %>, {parse:true});
   
- 
-  var print_ui_view = new PrintControlPanelView(); 
-  print_ui_view.render().$el.fadeIn(1000)
-  Backbone.history.start();      
-
+  var print_ui_view = new EditPrintControlPanelView(); 
+  print_ui_view.$el.show()
+  print_ui_view.renderAndCreateWaypoint();
+  $('body').addClass("printui_view")       
+        window.scrollTo(0,0);
 })
