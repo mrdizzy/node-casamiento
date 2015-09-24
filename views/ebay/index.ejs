@@ -26,10 +26,25 @@
     <% }) %>
       
     </select></p>
+       <select multiple="true" name="fonts">
+   <% fonts.forEach(function(font) {%>
+   
+   <option value="<%= font.id %>" style="width:200px;height:50px;background-image:url(/fonts/<%= font.id %>.svg);background-repeat:no-repeat;background-position:center;"></option>
+   <% }) %>
+   </select>
+  <br/>
     <input type="submit"></input>
   </form>
 
   <form action="/ebay/places" method="POST">
+   
+       <select multiple="true" name="fonts">
+   <% fonts.forEach(function(font) {%>
+   
+   <option value="<%= font.id %>" style="width:200px;height:50px;background-image:url(/fonts/<%= font.id %>.svg);background-repeat:no-repeat;background-position:center;"></option>
+   <% }) %>
+   </select>
+  <br/>
   <% for (var product_type in documents) { %>
    <% documents[product_type].forEach(function(product) { %>
     <input type="checkbox" name="ids" value="<%= product._id%>"></input><%= product._id %><br/>

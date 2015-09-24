@@ -7,11 +7,10 @@ var colours = {"#000000": "Black", "#cd5c5c":"Indian red","#ff4040":"Coral red",
     var settings = $.extend({}, $.fn.colorPicker.defaultOptions, options);
 
     var container_width = settings.width || this.width();
-    console.log("Inside:" + $('#step_1').outerWidth(), $('#step_1').width())
-    console.log(this.width(), container_width, this.innerWidth(), this)
 
     var index = settings.index; // The index number of this colour selector, to differentiate it from other colour selectors on the page
     var listen_to = settings.listen_to
+    var callback = settings.callback;
     var swatch_width = container_width / settings.colours_per_page;
     var pairs = _.pairs(colours)
     var groups = inGroupsOf(pairs, settings.colours_per_page)
@@ -31,6 +30,7 @@ var colours = {"#000000": "Black", "#cd5c5c":"Indian red","#ff4040":"Coral red",
       })
       listen_to.on("rerender", handleResize)
     }
+    
     
     $(window).resize(handleResize);
     
@@ -82,6 +82,7 @@ var colours = {"#000000": "Black", "#cd5c5c":"Indian red","#ff4040":"Coral red",
       $text_label_for_colour.text(colours[hex])
         that.trigger('dizzy-cp:hoverColor', hex)
        if(listen_to) listen_to.updateColour(index, hex)
+       if (callback) callback(index,hex)
       $big_colour_square_swatch.css("background-color", hex)
     })
     
@@ -92,6 +93,7 @@ var colours = {"#000000": "Black", "#cd5c5c":"Indian red","#ff4040":"Coral red",
       $big_colour_square_swatch.css("background-color", hex)
       that.trigger('dizzy-cp:hoverColor', hex)
      if(listen_to) listen_to.updateColour(index, hex)
+     if(callback) callback(index,hex)
       $container_to_fade_in.hide();
     })
   

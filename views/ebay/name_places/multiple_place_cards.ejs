@@ -17,14 +17,13 @@
 	document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1+ ">");
 	document.write("</" + az + bz + cz + ">");
 </script>
-
+ <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400, 300,100' rel='stylesheet' type='text/css'>   
+  
 <style type="text/css">
 
 <% include css_partials/colour_picker.js %>
 
   @font-face { font-family:"TP"; src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff'); }
-  @font-face { font-family:"GaraI"; src: url('http://www.casamiento.co.uk/f/garamonditalic.eot?') format('eot'), url('http://www.casamiento.co.uk/f/garamonditalic.woff') format('woff'); }
-  @font-face { font-family:"Gara"; src: url('http://www.casamiento.co.uk/f/garamond.eot?') format('eot'), url('http://www.casamiento.co.uk/f/garamond.woff') format('woff'); }
   @font-face { font-family:"OS"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
   @font-face { font-family:"OSReg"; src: url('http://www.casamiento.co.uk/f/OSReg.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSReg.woff') format('woff'); }
   @font-face { font-family:"OS Light"; src: url('http://www.casamiento.co.uk/f/OSL.eot?') format('eot'), url('http://www.casamiento.co.uk/f/OSL.woff') format('woff'); }
@@ -60,7 +59,7 @@
 	
 	p { 
 		padding: 0 0.25em 0.75em 0.25em 0; 
-		font: normal 0.9em "OS", sans-serif;
+		font: normal 1em "OS", sans-serif;
 		line-height: 1.5em; 
 		padding:0; 
 		margin-bottom:1em;
@@ -76,10 +75,11 @@
 	.left_column { 
 		float:left;
 		width:63%;
-		border-right:1px dotted black; 
 	}
 	.right_column { 
 		margin-left:63%; 
+		
+		border-left:1px dotted black; 
 		text-align:center; 
 		min-width:180px;
 	}
@@ -143,7 +143,7 @@ table {
 	.chat-bubble {
 		padding-left:1em;
 		padding-right:1em; 
-		font: normal 0.9em "OS IL"; 
+		font: normal 1em "OS IL"; 
 		margin:10px auto;
 		color:black; 
 	}
@@ -330,10 +330,11 @@ table {
 		
 		<div class="right_column">
 
- <h5 style="font:normal 2.6em GaraI;text-align:center;">Place cards delivered to you in 2 working days in any colour and font of your choice with guest names individually printed&hellip;</h5>
+ <h5 style="font:normal 2.6em 'Josefin Slab';font-weight:300;margin:0.5em;text-align:center;color:#555">Place cards delivered to you in 2 working days in any colour and font of your choice with guest names printed...</h5>
  			
 			
-	<div style="padding-top:1em;padding-bottom:1em;border-bottom:1px dotted black;"><img src="http://www.casamiento.co.uk/gfx/shell.png"></div>
+    
+    <img src="/gfx/welcomeicons/line.svg" style="width:95%;" class="welcome_line"/>
 	
 	
 		<h6 id="this_auction_is_for">This buy-it-now listing is for:</h6>
@@ -351,9 +352,9 @@ table {
 							<td class="table_key" id="table_key_thickness">Card thickness:</td>
 							<td class="table_value" id="table_value_thickness">
 							
-								<div style="padding:1em;">
+								<div style="padding:1em">
 									<div class="weight" style="border-top:3px solid #000;"></div> 
-									<span style="font:normal 0.8em OS;">250gsm</span>
+									<span style="font:normal 0.8em OS;">200gsm</span>
 								</div>
 								
 								<div style="padding:1em;padding-top:0;">
@@ -401,7 +402,7 @@ table {
 	
 	<div class="chat-bubble">Choose a font to suit your event. From small and simple to big and bold, fun and fierce to silent and steely&hellip; choose the font to express the personality you want to convey.
 	</div>
-	 <% ["CaslonPro","ChaparralItalic","EccentricStd","Exmouth","Metroscript","MyriadProLight","Parchment","PerpetuaTitling","PFBodoniScript","PoorRichard","SacramentoRegular","TrajanPro"].forEach(function(font) { %>
+	 <% fonts.forEach(function(font) { %>
 		
 		<div class="a_font">
 			<img src="http://www.casamiento.co.uk/fonts/<%= font %>.svg" />
@@ -421,10 +422,10 @@ table {
 			<div class="step">STEP 3</div>  
 		</div>
 
-		<div class="chat-bubble">Decide the thickness of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm): the higher the number, the thicker the card. A normal sheet of A4 copy paper is usually about 80gsm.
+		<div class="chat-bubble">Decide the thickness of your card. The heavier the card, the thicker and more luxurious it feels. Weight is measured in grams per square inch (gsm): the higher the number, the thicker the card. A normal sheet of A4 copy paper is usually about 70gsm.
 		</div>
-		<div>
-			<div class="weight" style="border-top:5px solid #444444;"></div> <span style="font:normal 0.8em OS;">250gsm</span>
+		<div style="padding-bottom:0.75em;">
+			<div class="weight" style="border-top:3px solid #444444;"></div> <span style="font:normal 0.8em OS;">200gsm</span>
 			</div>
 	<div>
 		 <div class="weight" style="border-top:8px solid #444444;"></div> <span style="font:normal 0.8em OS;margin-top:1em;margin-bottom:3em;">300gsm</span></div>

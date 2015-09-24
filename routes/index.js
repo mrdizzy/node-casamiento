@@ -167,7 +167,7 @@ module.exports = function(app) {
 
    // Admin  
    app.get("/admin/products", require('./../controllers/admin/products').index);
-
+app.get("/products/images/:id", require('./../controllers/products').for_ebay)
    app.get("/admin/orders", require('./../controllers/admin/orders').index);
    app.patch("/admin/orders/:id", require('./../controllers/admin/orders').patch);
    app.delete("/admin/orders/:id", require('./../controllers/admin/orders').destroy);

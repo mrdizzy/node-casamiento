@@ -12,6 +12,7 @@ exports.show = function(req, res) {
   
   db.get(id, function(err, doc) {
     db.view('products/name_place', function(err, related) {
+
       doc.related = related.toArray();
      
       doc.document = doc;
@@ -27,6 +28,8 @@ exports.show = function(req, res) {
 // Creates a single name place card view, as found in /new.ejs
 
 exports.create = function(req, res) {
+  
+  var fonts = req.body.fonts
   var id = req.body.id,
     theme = id.split("-")[0],
     product_type = id.split("-")[1];
@@ -55,6 +58,7 @@ exports.create = function(req, res) {
       related = _.without(related, found)
       doc.related = related;
       doc.document = doc;
+      doc.fonts = fonts;
       doc.params = req.body
       res.render('ebay/' + product_type + 's/new.ejs', {
         layout: false,
@@ -79,6 +83,8 @@ exports.create = function(req, res) {
 //}
 
 exports.places = function(req, res, next) {
+  var fonts = req.body.fonts
+  console.log(fonts)
   db.get(req.body.ids, function(err, docs) {
     var result = _.map(docs.toArray(), function(product) {
       for (var i=1; i< 5; i++) {
@@ -99,18 +105,24 @@ exports.places = function(req, res, next) {
     groups.groups = groups
     res.render('ebay/name_places/multiple_place_cards', {
       layout: false,
+      fonts: fonts,
       locals: groups
     });
   })
 }
 exports.index = function(req, res) {
     db.view('products/all', function(err, docs) {
+      db.view('all/fonts_by_id', function(err, fonts){
+        
       var documents = _.groupBy(docs.toArray(), 'product_type');
       documents.tags =  tags;
       res.render('ebay/index', {
         layout: false,
-        documents: documents
+        documents: documents,
+        fonts: fonts
       });
+      
+      })
   });
 }
 

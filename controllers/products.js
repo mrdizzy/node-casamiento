@@ -154,6 +154,16 @@ exports.update = exports.create = function(req, res) {
   });
 }
 
+exports.for_ebay= function(req, res) {
+  var id = req.params.id;
+  db.get(id, function(err, doc) {
+    
+  console.log(doc)
+    res.render("products/images", {locals: { product: doc }, layout:false})
+  })
+  
+}
+
 exports.destroy = function(req, res) {
   db.remove(req.product.id, req.product.rev, function(err, doc) {
     if (err) {
