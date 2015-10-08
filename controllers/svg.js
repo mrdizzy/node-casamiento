@@ -48,3 +48,11 @@ exports.show = function(req, res) {
      db.getAttachment("svg__" + id, "svg").pipe(zlib.createGunzip()).pipe(res)
   }
 }
+
+exports.check = function(req, res) {
+  console.log("CHeking")
+  var id = req.params.id;
+  var stream =  db.getAttachment("svg__" + id, "svg")
+
+  
+}

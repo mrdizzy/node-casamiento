@@ -27,6 +27,7 @@ $(function() {
   };
   
   var casamiento_fonts = <%- JSON.stringify(fonts) %>;
+  console.log(casamiento_fonts)
   
   <%= include models_guest.js %> 
   <%= include models_product.js %>    

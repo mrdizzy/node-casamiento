@@ -74,9 +74,14 @@ exports.show = function(req, res, next) {
     } else {
       db.view("all/fonts_by_id", function(error, fonts_response) {
         console.log(docs[0].value)
+        console.log(fonts_response.toArray())
+        var fonts = [];
+        fonts_response.toArray().forEach(function(font) {
+          fonts.push(font.id)
+        })
         res.render('products/show/show.ejs', {     
           locals: {
-            fonts: fonts_response.toArray(), 
+            fonts: fonts, 
             product: docs[0].value // First record   
           }
         });
