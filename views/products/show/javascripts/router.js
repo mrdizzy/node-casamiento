@@ -26,14 +26,13 @@ var AppRouter = Backbone.Router.extend({
    //   $.updateFont(font, {trigger: function(){}})
    //   coordinator_view.renderFlatPreview();
    // },  
-    "print": function() {
-      coordinator_view.renderFlatPreview();          
+    "print": function() { 
+      coordinator_view.renderPrintView();       
       $('body').addClass("printui_view")
       $('body').removeClass('guest_focused')  
       $('body').removeClass('quick_guests_selected')  
     }, 
     "": function(actions) {  
-        console.log("home")
       coordinator_view.renderHome();
        $('body').removeClass("printui_view")
     }

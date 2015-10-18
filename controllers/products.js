@@ -2,9 +2,10 @@ var db = require('./../config/db').test_ebay,
   _ = require('underscore'),  
   zlib = require('zlib'),
   inGroupsOf = require('./../lib/in_groups_of');
-
+var default_tags = ["skyline", "arabic", "egyptian","christmas", "victorian", "wallpaper", "damask", "contemporary", "pattern", "floral", "minimalistic", "geometric", "birds", "hearts", "vintage", "dots", "simple", "halloween", "wonderland", "fantasy", "creepy", "romantic", "wedding"].sort();
 exports.tags = function(req, res) {
   db.view('tags/by_tags', { key: [req.params.tag]}, function(err, docs) {
+    console.log(docs.length)
     var result = _.map(docs.toArray(), function(product) {
       for (var i=1; i< 5; i++) {
         var background;
@@ -24,10 +25,11 @@ exports.tags = function(req, res) {
     groups = _.map(groups, function(group) {
       return inGroupsOf(group, 6);
     });  
-     
+     console.log(groups)
     res.render("products/index.ejs", {
       locals: {
-        groups: groups
+        groups: groups,
+        tags: default_tags
       }
     });
   });
@@ -59,7 +61,8 @@ exports.index = function(req, res) {
      
     res.render("products/index.ejs", {
       locals: {
-        groups: groups
+        groups: groups,
+        tags: default_tags
       }
     });
   });
@@ -73,8 +76,7 @@ exports.show = function(req, res, next) {
       return next(myerr); // <---- pass it, not throw it
     } else {
       db.view("all/fonts_by_id", function(error, fonts_response) {
-        console.log(docs[0].value)
-        console.log(fonts_response.toArray())
+      
         var fonts = [];
         fonts_response.toArray().forEach(function(font) {
           fonts.push(font.id)

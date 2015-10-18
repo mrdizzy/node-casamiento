@@ -2,6 +2,8 @@
   position:relative;
 }
   .up_arrow_container { 
+      position:relative;
+
     z-index:10000;
     height:60px;
     top:-60px;
@@ -28,6 +30,7 @@
   }
   
   table.fonts_table {
+    user-select:none;
     text-align:center;
     background-color:white;
     border:1px solid black;

@@ -188,8 +188,6 @@ var Product = Backbone.Model.extend({
     return this.get("guests").length
   },
   makePurchase: function() {
-    
-      console.log(this.quantity(), this.get("total"))
     if (this.quantity() > 7) {
       $.form('/payments', {
         "object": JSON.stringify(this.toJSON()),

@@ -25,7 +25,12 @@
 <%- contentFor('main') %>
 
 <%- contentFor('middle') %>
-
+<div style="width:97%;margin:0 auto;padding-top:0.5em;">
+<% tags.forEach(function(tag) { %>
+   <a class="a_tag" href="/products/tags/<%= tag %>"><%= tag %></a>
+  
+<% }) %>
+</div>
   <div id="browse_designs" style="background-color:white;padding-top:10px;">
   
   

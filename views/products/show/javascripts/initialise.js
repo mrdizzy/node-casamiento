@@ -57,6 +57,7 @@ $(function() {
   thisProduct.fetch({silent: true, success: function(model, resp) {
     $.updateFont(thisProduct.get("font"), {trigger: function(){}}) 
     thisProduct.calculatePrice();
+    thisProduct.updateColour();
     }, error: function(model,resp) {
       var guests = localStorage.getItem("guests")
       if(guests) thisProduct.get("guests").reset(JSON.parse(guests))

@@ -9,10 +9,14 @@ exports.index = function(req, res) {
     }
     else {
       db.view("all/fonts_by_id", function(error, fonts_response) {
+          var fonts = [];
+        fonts_response.toArray().forEach(function(font) {
+          fonts.push(font.id)
+        })
         res.render("admin/products/index", {
           products: docs.toArray(), 
           layout:"admin_layout",
-          fonts: fonts_response.toArray()
+          fonts: fonts
         })
       })
     }

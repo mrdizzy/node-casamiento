@@ -57,6 +57,7 @@ exports.create = function(req, res) {
   paypal.buildQuery("SetExpressCheckout", function(error, response) { 
   console.log(options)
   console.log(error, response)
+  console.log(response.TOKEN)
     product._id = response.TOKEN
     db.save(product, function(err, docs) {
       if(err) {
