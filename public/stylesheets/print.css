@@ -46,7 +46,7 @@
 
   #printsvg.up4 .group, 
   #printsvg.up3 .group { 
-    padding-top:15mm;
+    padding-top:10mm;
   }
     
   #printsvg .cas_print_logo {
@@ -65,8 +65,7 @@
 ///////////////////////////////////////////////////////////// */
 
  #printsvg .group { page-break-after:always;}
- #printsvg.ipad .group { page-break-before:always; 
- padding-top:5mm;}
+ body.ipad .group { page-break-before:always; }
  
 
 /* Print

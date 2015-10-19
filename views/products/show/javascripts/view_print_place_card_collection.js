@@ -13,7 +13,7 @@ var PrintPlaceCardCollectionView = Backbone.View.extend({
   render: function() {  
     var $template = $(Handlebars.template(templates["print_place_card_view_collection"])(thisProduct.get("guests").printPresenter())); 
     this.$el.removeClass().addClass("up" + thisProduct.get("per_page"))
-    if(thisProduct.get("browser")) this.$el.addClass(thisProduct.get("browser"))
+    if(thisProduct.get("browser")) $('body').addClass(thisProduct.get("browser"))
     this.$el.html($template)
    
     // Wait for SVG images to be loaded before printing, and then 

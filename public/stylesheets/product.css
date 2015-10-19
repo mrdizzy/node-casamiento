@@ -237,9 +237,9 @@
     
 
 /* ipad */
-#print_ui.ipad #ipad_blurb { display:block;}
-#print_ui.ipad #per_page_4_container,
-#print_ui.ipad #per_page_8_container {
+body.ipad #ipad_blurb { display:block;}
+body.ipad #per_page_4_container,
+body.ipad #per_page_8_container {
   display:none;
 }
       
