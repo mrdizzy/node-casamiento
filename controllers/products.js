@@ -1,68 +1,69 @@
 var db = require('./../config/db').test_ebay,
-  _ = require('underscore'),  
+  _ = require('underscore'),
   zlib = require('zlib'),
   inGroupsOf = require('./../lib/in_groups_of');
-var default_tags = ["skyline", "arabic", "egyptian","christmas", "victorian", "wallpaper", "damask", "contemporary", "pattern", "floral", "minimalistic", "geometric", "birds", "hearts", "vintage", "dots", "simple", "halloween", "wonderland", "fantasy", "creepy", "romantic", "wedding"].sort();
+
 exports.tags = function(req, res) {
-  db.view('tags/by_tags', { key: [req.params.tag]}, function(err, docs) {
-    console.log(docs.length)
+  db.view('tags/by_tags', {
+    key: [req.params.tag]
+  }, function(err, docs) {
     var result = _.map(docs.toArray(), function(product) {
-      for (var i=1; i< 5; i++) {
+      for (var i = 1; i < 5; i++) {
         var background;
-        if(background = product["background-" + i]) {
+        if (background = product["background-" + i]) {
           var divs = background.split("</div>");
           divs = _.map(divs, function(div) {
-            if (!(/class="nocolor"/.test(div))) 
-              div = div.replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");  
+            if (!(/class="nocolor"/.test(div)))
+              div = div.replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
             return div
-          })          
-          product["background-" + i] = divs.join("</div>")  
+          })
+          product["background-" + i] = divs.join("</div>")
         }
-      }    
+      }
+      var name = product._id.replace(/_/g, " ").split("-")[0];
+name = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+product.name = name
       return product
     })
     var groups = inGroupsOf(result, 11);
     groups = _.map(groups, function(group) {
       return inGroupsOf(group, 6);
-    });  
-     console.log(groups)
+    });
     res.render("products/index.ejs", {
       locals: {
-        groups: groups,
-        tags: default_tags
+        groups: groups
       }
     });
   });
 }
 
 exports.index = function(req, res) {
-  
-  db.view('tags/except_christmas',  function(err, docs) {
+
+  db.view('tags/except_christmas', function(err, docs) {
     var result = _.map(docs.toArray(), function(product) {
-     
-      for (var i=1; i< 5; i++) {
+
+      for (var i = 1; i < 5; i++) {
         var background;
-        if(background = product["background-" + i]) {
+        if (background = product["background-" + i]) {
           var divs = background.split("</div>");
           divs = _.map(divs, function(div) {
-            if (!(/class="nocolor"/.test(div))) 
-              div = div.replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");  
+            if (!(/class="nocolor"/.test(div)))
+              div = div.replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
             return div
-          })          
-          product["background-" + i] = divs.join("</div>")  
+          })
+          product["background-" + i] = divs.join("</div>")
         }
-      }    
+      }
       return product
     })
     var groups = inGroupsOf(result, 11);
     groups = _.map(groups, function(group) {
       return inGroupsOf(group, 6);
-    });  
-     
+    });
+
     res.render("products/index.ejs", {
       locals: {
-        groups: groups,
-        tags: default_tags
+        groups: groups
       }
     });
   });
@@ -70,20 +71,22 @@ exports.index = function(req, res) {
 
 exports.show = function(req, res, next) {
   var id = req.params.product;
-  db.view('all/products_without_attachments', { key: id }, function(error, docs) {
-    if(docs.length == 0) {
+  db.view('all/products_without_attachments', {
+    key: id
+  }, function(error, docs) {
+    if (docs.length == 0) {
       var myerr = new Error('Record not found!');
       return next(myerr); // <---- pass it, not throw it
-    } else {
+    }
+    else {
       db.view("all/fonts_by_id", function(error, fonts_response) {
-      
         var fonts = [];
         fonts_response.toArray().forEach(function(font) {
           fonts.push(font.id)
         })
-        res.render('products/show/show.ejs', {     
+        res.render('products/show/show.ejs', {
           locals: {
-            fonts: fonts, 
+            fonts: fonts,
             product: docs[0].value // First record   
           }
         });
@@ -93,82 +96,99 @@ exports.show = function(req, res, next) {
 };
 
 exports.edit = function(req, res) {
-var order_id = req.params.product;
-    db.get(order_id, function(err, doc) {
-      if(err) {
-        console.log(err)
-      } else {
-        db.view("all/fonts_by_id", function(error, fonts_response) {
+  var order_id = req.params.product;
+  db.get(order_id, function(err, doc) {
+    if (err) {
+      console.log(err)
+    }
+    else {
+      db.view("all/fonts_by_id", function(error, fonts_response) {
+         var fonts = [];
+        fonts_response.toArray().forEach(function(font) {
+          fonts.push(font.id)
+        })
         var product_id = doc.product_id;
         doc._id = product_id;
         doc.order_id = order_id;
-        console.log(doc.order_id)
-        
-          res.render('products/edit/edit.ejs', {     
-            locals: {
-              fonts: fonts_response.toArray(), 
-              product: doc   
-            }
-          });
+
+        res.render('products/edit/edit.ejs', {
+          locals: {
+            fonts: fonts,
+            product: doc
+          }
+        });
       })
-      }
-    })
-  
+    }
+  })
+
 }
 
 exports.update = exports.create = function(req, res) {
 
-  if(req.product) {
+  if (req.product) {
     var rev = req.product.rev,
       id = req.product.id;
-      req.body._rev = rev;
-  } else {
+    req.body._rev = rev;
+  }
+  else {
     var id = req.body._id
   }
   //var svg = req.body.svg.toString() is used to "copy" the string as we are about to delete it in the next line
-  if(req.body.svg) {
-    var svg = req.body.svg.toString();    
+  if (req.body.svg) {
+    var svg = req.body.svg.toString();
     delete req["body"].svg;
   }
   db.save(id, rev, req.body, function(err, documents) {
     console.log(err, documents)
     var new_product = req.body;
     new_product._rev = documents.rev;
-    if (err) {    
+    if (err) {
       console.log("Unable to save main document", err, documents)
       res.status(500);
       res.end();
     }
     else {
-      if(svg) {
+      if (svg) {
         var svg_id = "svg__" + documents.id;
         db.get(svg_id, function(e, record) {
           if (record) var svg_rev = record._rev;
-          db.save(svg_id, svg_rev, {_attachments: { svg: { 'Content-Type': "image/xml+svgz", data: svg}}}, function(anerror, done) {
-              if (anerror) {
-                console.log("Error saving attachment of SVG",anerror)
-                res.status(500);
-                res.end();
-              } else {
-                res.json(new_product)           
+          db.save(svg_id, svg_rev, {
+            _attachments: {
+              svg: {
+                'Content-Type': "image/xml+svgz",
+                data: svg
               }
-            })
-        }) 
-      } else {
+            }
+          }, function(anerror, done) {
+            if (anerror) {
+              console.log("Error saving attachment of SVG", anerror)
+              res.status(500);
+              res.end();
+            }
+            else {
+              res.json(new_product)
+            }
+          })
+        })
+      }
+      else {
         res.json(new_product)
       }
     }
   });
 }
 
-exports.for_ebay= function(req, res) {
+exports.for_ebay = function(req, res) {
   var id = req.params.id;
   db.get(id, function(err, doc) {
-    
-  console.log(doc)
-    res.render("products/images", {locals: { product: doc }, layout:false})
+    res.render("products/images", {
+      locals: {
+        product: doc
+      },
+      layout: false
+    })
   })
-  
+
 }
 
 exports.destroy = function(req, res) {

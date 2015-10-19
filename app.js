@@ -9,8 +9,10 @@ var express = require('express'),
   assetManager = require('connect-assetmanager');
   //Cacher = require("cacher"); 
   //var cacher = new Cacher();
-  
-var app = express();
+ var app = express();
+ 
+
+ 
 var dir = __dirname; // The name of the directory that the currently executing script resides in.
 
 // We use the connect-assetmanager module to concatenate and serve javascript and CSS files.
@@ -62,6 +64,15 @@ app.configure(function() {
     // Compresses static files and res.json responses    
     app.use(compression()); // must be one of the first middlewares to compress effectively
     
+    // Get list of tags
+    app.use(function(req, res, next) {
+      db.get('tags', function(err, docs) {
+        res.locals({
+          tags: docs.tags.sort()
+        });
+      })
+      next();
+    })
     app.use(express.cookieParser());
     app.use(express.favicon());
     app.use(expressLayouts);
