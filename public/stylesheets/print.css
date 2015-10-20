@@ -65,8 +65,9 @@
 ///////////////////////////////////////////////////////////// */
 
  #printsvg .group { page-break-after:always;}
- body.ipad .group { page-break-before:always; }
+ body.ipad #printsvg.up3 .group { padding-top:0;page-break-after:always; }
  
+ body.safari .group { page-break-after:always; }
 
 /* Print
 //////////////////////////////// */

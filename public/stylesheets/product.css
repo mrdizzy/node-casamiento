@@ -155,6 +155,7 @@
    .mobile, 
 #print_ui, 
 #ipad_blurb, 
+#safari_blurb,
 #mobile_ui_printer_icon { display:none; }
  
 #top_of_page { position:relative; }
@@ -238,8 +239,10 @@
 
 /* ipad */
 body.ipad #ipad_blurb { display:block;}
-body.ipad #per_page_4_container,
-body.ipad #per_page_8_container {
+body.safari #safari_blurb { display:block; }
+body.safari #per_page_8_container { display:none; }
+body.ipad #per_page_8_container,
+body.ipad #per_page_4_container{
   display:none;
 }
       
