@@ -2,7 +2,10 @@
 <style type="text/css">
  
   #loading_main_page_spinner  { display: none;  }
-  
+  .question:hover {
+    text-decoration:underline;
+    cursor:pointer;
+  }
   #inner_page_container { 
     width: 90%; 
     color: #666;
@@ -13,11 +16,23 @@
   #right_col {
     margin-left:50%;
     margin-right:0;
+    width:50%;
+  }
+  
+  .faq_subheading {
+    font-family:'Josefin Slab';
+    font-weight:300;
+    line-height:1.2em;
+    font-size:2.2em;width:31%;margin-left:0;margin-right:14%;float:right;margin-bottom:2em;
+  }
+  .question {
+    font-weight:300;font-family:'Josefin Slab';font-style:italic;font-size:1.8em;
+  
   }
 div.bubble
 {
 	position: relative;
-	width: 50%;
+	width:80%;
 	text-align: center;
 	margin: 60px auto;
 	padding:1em;
@@ -25,44 +40,24 @@ div.bubble
 	border-radius: 20px;
 }
 
-div.bubble:before, p.bubble:after
-{
-	content: ' ';
-	position: absolute;
-	width: 0;
-	height: 0;
+.greybar {
+  width:30%;background-color:#DDD;height:1em;margin:0 auto;clear:both;margin-bottom:0.25em;
 }
 
-div.thought:before, p.thought:after
-{
-	left: -3px;
-	bottom:-20px;
-	width: 40px;
-	height: 40px;
-	background-color: #eee;
-	border-radius: 28px;
-}
+.questionmark {
+  width:20px;
 
-div.thought:after
-{
-	width: 25px;
-	height: 25px;
-	left: -7px;
-	bottom:-32px;
-	border-radius: 18px;
 }
-
- div.pink,
-  div.pink:after,
-  div.pink:before { background-color:#F5CEF5;}
-  .main_headline {
-    width: 90%;
+ div.pink { background-color:#F5CEF5;}
+ 
+  .faq_main_headline {
     margin: 0 auto;
-    font-size: 7em;
     font-family: 'Josefin Slab';
     font-weight: 300;
     line-height: 1.1em;
     text-align: center;
+    
+    font-style:italic;font-size:5em;margin-left:5%;width:50%;float:left;
   }
   
   .subheading {
@@ -84,9 +79,11 @@ div.thought:after
   
   .welcome_line {
     display: block;
-    width: 55%;
-    padding-top: 1.4em;
+    width: 100%;
     margin: 0 auto;
+    
+    margin-top: 0.25em;
+    margin-bottom:0.75em;
   }
   
   /* Smartphone ============================================================================================================
@@ -101,18 +98,29 @@ div.thought:after
       border: 0;
       padding: 0;
     }
-    .main_headline {
-      margin-top:0.25em;
-      font-size: 3.6em;
-      line-height:1em;
-      width: 99%;
+    .faq_main_headline {
+      width:90%;
+      text-align:center;
+      float:none;
+      clear:both;
+      padding-bottom:0.25em;
+      font-size:3.4em;
     }
-    .subheading {
-      font-size: 1.9em;
-      line-height: 1.2em;
-      width:97%;
-      margin-bottom:0;
-      padding-bottom:0;
+    .faq_subheading {
+      float:none;
+      width:90%;
+      font-size:1.8em;
+      margin:0 auto;
+      text-align:center;
+      clear:both;
+      padding-bottom:0.5em;
+    }
+    .left_column, #right_col {
+      float:none;
+      clear:both;
+      width:100%;
+      margin:0;
+      
     }
     p {
       font-size: 1.4em;
@@ -155,44 +163,160 @@ div.thought:after
     
   <%- contentFor('main') %>
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <%- contentFor('left') %>
 
-<div  class="bubble thought" style="border:1px dotted black;text-align:left;"><img src="/gfx/faq/ui.svg" style="opacity:0.6;width:60px;display:block;margin:0 auto;position:relative;top:-2em;" /><p style="font: 300 3em 'Josefin Slab', sans-serif;text-align:center;">Creating your place cards&hellip;</p>
+<div  class="bubble thought" style="border:2px dashed white;text-align:left;"><img src="/gfx/faq/ui.svg" style="opacity:0.6;width:60px;display:block;margin:0 auto;position:relative;top:-2em;" /><p style="font: 300 3em 'Josefin Slab', sans-serif;text-align:center;">Creating your place cards&hellip;</p>
 
 
-<img src="/gfx/welcomeicons/line.svg" class="welcome_line" style="width:100%;padding:0;margin:0;" />
+<img src="/gfx/welcomeicons/line.svg" class="welcome_line" />
 
-<p style="font-weight:300;font-family:'Josefin Slab';font-style:italic;"><img src="/gfx/faq/questionmarkgrey.svg" style="width:20px">Printing from an iPad</p>
-<p style="font-weight:300;font-family:'Josefin Slab';font-style:italic;"><img src="/gfx/faq/questionmarkgrey.svg" style="width:20px"> Printing from an Android tablet or phone</p>
-<p style="font-weight:300;font-family:'Josefin Slab';font-style:italic;"><img src="/gfx/faq/questionmarkgrey.svg" style="width:20px"> Printing from Internet Explorer</p>
-<p style="font-weight:300;font-family:'Josefin Slab';font-style:italic;"><img src="/gfx/faq/questionmarkgrey.svg" style="width:20px"> Printing from Chrome</p>
-<p style="font-weight:300;font-family:'Josefin Slab';font-style:italic;"><img src="/gfx/faq/questionmarkgrey.svg" style="width:20px"> My place cards won’t print to the edge of the page?</p></div>
+<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> How do I enter names?</p>
+<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can I add a logo?</p>
+<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can I change the font colour?</p>
+<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can you create a special design for me?</p>
+</div>
+
+
+
+
+<div  class="pink bubble thought" style="text-align:left;"><img src="/gfx/faq/stack.svg" style="opacity:0.6;width:60px;display:block;margin:0 auto;position:relative;top:-2em;" /><p style="font: 300 3em 'Josefin Slab', sans-serif;text-align:center;">When we print your place cards&hellip;</p>
+
+
+<img src="/gfx/welcomeicons/line.svg" class="welcome_line" />
+
+<p class="question"><img src="/gfx/faq/questionmark.svg" class="questionmark"> How do I enter names?</p>
+<p class="question"><img src="/gfx/faq/questionmark.svg" class="questionmark"> Can I add a logo?</p>
+<p class="question"><img src="/gfx/faq/questionmark.svg" class="questionmark"> Can I change the font colour?</p>
+<p class="question"><img src="/gfx/faq/questionmark.svg" class="questionmark"> Can you create a special design for me?</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <%- contentFor('right') %>
   
-<div  class="bubble pink thought" style="text-align:left;width:100%;"><img src="/gfx/faq/printer.svg" style="width:60px;display:block;margin:0 auto;position:relative;top:-2em;" /><p style="font: 300 3em 'Josefin Slab', sans-serif;text-align:center;">When you print yourself</p>
+<div  class="bubble pink thought" style="text-align:left;"><img src="/gfx/faq/printer.svg" style="width:60px;display:block;margin:0 auto;position:relative;top:-2em;" /><p style="font: 300 3em 'Josefin Slab', sans-serif;text-align:center;">When you print yourself</p>
 
 
-<img src="/gfx/welcomeicons/line.svg" class="welcome_line" style="width:100%;padding:0;margin:0;" />
+<img src="/gfx/welcomeicons/line.svg" class="welcome_line" />
 
-<p style="font-weight:300;font-family:'Josefin Slab';font-style:italic;"><img src="/gfx/faq/questionmark.svg" style="width:20px"/ >Printing from an iPad</p>
-<p style="font-weight:300;font-family:'Josefin Slab';font-style:italic;"><img src="/gfx/faq/questionmark.svg" style="width:20px"> Printing from an Android tablet or phone</p>
-<p style="font-weight:300;font-family:'Josefin Slab';font-style:italic;"><img src="/gfx/faq/questionmark.svg" style="width:20px"> Printing from Internet Explorer</p>
-<p style="font-weight:300;font-family:'Josefin Slab';font-style:italic;"><img src="/gfx/faq/questionmark.svg" style="width:20px"> Printing from Chrome</p>
-<p style="font-weight:300;font-family:'Josefin Slab';font-style:italic;"><img src="/gfx/faq/questionmark.svg" style="width:20px"> My place cards won’t print to the edge of the page?</p></div>
+
+<p class="question" id="question_printing_size_and_position"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> Can I change the size and position of place cards?</p>
+
+<p class="answer" id="answer_question_printing_size_and_position" style="font-style:normal;font-family:'OS Light';display:none;font-size:1.2em;line-height:1.6em;">Etiam vulputate turpis eu ligula viverra, eu eleifend nunc placerat. In ac massa gravida, scelerisque nulla vel, porta augue. Praesent congue nisl sed viverra elementum. Morbi leo risus, vulputate ac euismod quis, porta eu lorem. Ut et accumsan mi, vel tincidunt metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut pellentesque augue, ut suscipit lorem. Nam ipsum ligula, feugiat sit amet quam at, vulputate tristique tellus. </p>
+
+<p class="question" id="question_printing_from_an_ipad"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> Printing from an iPad</p>
+
+<p class="answer" id="answer_question_printing_from_an_ipad" style="font-style:normal;font-family:'OS Light';display:none;font-size:1.2em;line-height:1.6em;"><img src="/gfx/faq/safari.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/>Etiam vulputate turpis eu ligula viverra, eu eleifend nunc placerat. In ac massa gravida, scelerisque nulla vel, porta augue. Praesent congue nisl sed viverra elementum. Morbi leo risus, vulputate ac euismod quis, porta eu lorem. Ut et accumsan mi, vel tincidunt metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut pellentesque augue, ut suscipit lorem. Nam ipsum ligula, feugiat sit amet quam at, vulputate tristique tellus. </p>
+
+
+<p class="question" id="question_printing_from_android"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> Printing from an Android tablet or phone</p>
+
+
+
+<p class="answer" id="answer_question_printing_from_android" style="font-style:normal;font-family:'OS Light';display:none;font-size:1.2em;line-height:1.6em;"><img src="/gfx/faq/android.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/>Etiam vulputate turpis eu ligula viverra, eu eleifend nunc placerat. In ac massa gravida, scelerisque nulla vel, porta augue. Praesent congue nisl sed viverra elementum. Morbi leo risus, vulputate ac euismod quis, porta eu lorem. Ut et accumsan mi, vel tincidunt metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut pellentesque augue, ut suscipit lorem. Nam ipsum ligula, feugiat sit amet quam at, vulputate tristique tellus. </p>
+
+
+
+<p class="question" id="question_printing_from_IE"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> Printing from Internet Explorer</p>
+
+<p class="answer" id="answer_question_printing_from_IE" style="font-style:normal;font-family:'OS Light';display:none;font-size:1.2em;line-height:1.6em;"><img src="/gfx/faq/ie.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/>Etiam vulputate turpis eu ligula viverra, eu eleifend nunc placerat. In ac massa gravida, scelerisque nulla vel, porta augue. Praesent congue nisl sed viverra elementum. Morbi leo risus, vulputate ac euismod quis, porta eu lorem. Ut et accumsan mi, vel tincidunt metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut pellentesque augue, ut suscipit lorem. Nam ipsum ligula, feugiat sit amet quam at, vulputate tristique tellus. </p>
+
+
+
+<p class="question" id="question_printing_from_chrome"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> Printing from Chrome</p>
+
+<p class="answer" id="answer_question_printing_from_chrome" style="font-style:normal;font-family:'OS Light';display:none;font-size:1.2em;line-height:1.6em;"><img src="/gfx/faq/chrome.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/>Etiam vulputate turpis eu ligula viverra, eu eleifend nunc placerat. In ac massa gravida, scelerisque nulla vel, porta augue. Praesent congue nisl sed viverra elementum. Morbi leo risus, vulputate ac euismod quis, porta eu lorem. Ut et accumsan mi, vel tincidunt metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut pellentesque augue, ut suscipit lorem. Nam ipsum ligula, feugiat sit amet quam at, vulputate tristique tellus. </p>
+
+
+
+<p class="question" id="question_printing_to_edge"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> My place cards won’t print to the edge of the page?</p></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div  class="bubble thought" style="border:2px dashed white;text-align:left;"><img src="/gfx/faq/lorry.svg" style="opacity:1;width:70px;display:block;margin:0 auto;position:relative;top:-2em;" /><p style="font: 300 3em 'Josefin Slab', sans-serif;text-align:center;">Delivering your place cards&hellip;</p>
+
+
+<img src="/gfx/welcomeicons/line.svg" class="welcome_line"  />
+
+<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> How do I enter names?</p>
+<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can I add a logo?</p>
+<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can I change the font colour?</p>
+<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can you create a special design for me?</p>
+</div>
+
+
+
+
+
+
+
+
+
 
   <%- contentFor('middle') %>
   
   <img src="/gfx/faq/laptop.svg" style="width:100px;opacity:0.6;display:block;margin:0 auto;" />
-<div class="main_headline" style="font-style:italic;font-size:5em;margin-left:5%;width:50%;float:left;">
+<div class="faq_main_headline">
   Frequently<br/> asked questions&hellip;
 </div>
-<div class="main_headline" style="font-size:2.2em;width:31%;margin-left:0;margin-right:14%;float:right;margin-bottom:2em;">
+<div class="faq_subheading">
  If you have a question, check out this page first. If you still need help, contact us and we’ll get back to you&hellip;
 </div>
-<div style="width:30%;background-color:#DDD;height:1em;margin:0 auto;clear:both;margin-bottom:0.25em;"></div>
-<div style="width:30%;background-color:#DDD;height:1em;margin:0 auto;clear:both;margin-bottom:0.25em;"></div>
-<div style="width:30%;background-color:#DDD;height:1em;margin:0 auto;clear:both;margin-bottom:0.25em;"></div>
+
+<div class="greybar"></div>
+<div class="greybar"></div>
+<div class="greybar"></div>
   <%- contentFor('about') %> 
   
 
 <%- contentFor('javascripts') %>
+
+$(function() {
+$('.question').click(function() {
+var id = this.id;
+$('#answer_' + id).slideDown();
+})
+
+})
