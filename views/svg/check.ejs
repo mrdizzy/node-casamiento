@@ -1,0 +1,18 @@
+<table>
+    
+<% products.forEach(function(product) { %>
+<tr>
+    <td><%= product._id %></td>
+<td>
+<div style="position:relative;width:200px;height:50px;float:left;">
+<img src="/svg/<%= product._id %>/#000000" style="display:block;position:absolute;height:100%;width:100%;"/></div>
+</td>
+
+    <td><% product.tags.forEach(function(tag) { %>
+    <%= tag %>, 
+    <% }) %>
+    </td>
+</tr>
+<% }) %>
+
+</table>

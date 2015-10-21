@@ -14,24 +14,7 @@
   </head>
 
   <body>
-  <div id="left_menu">
-  <img src="/gfx/close/close3.svg" class="close" id="close_left_menu"/>
-   <div style="text-align:center;padding:1em;font:normal 1.4em 'OS Light';border-bottom:1px solid black;">
-      &nbsp;
-    </div>
-    <div style="text-align:center;padding:1em;font:normal 1.4em 'OS Light';border-bottom:1px solid black;">
-      <a href="">ABOUT</a>
-    </div>
-    <div style="text-align:center;padding:1em;font:normal 1.4em 'OS Light';border-bottom:1px solid black;">
-      <a href="">CONTACT</a>
-    </div>
-    <div style="text-align:center;padding:1em;font:normal 1.4em 'OS Light';border-bottom:1px solid black;">
-      <a href="/products">BROWSE</a>
-    </div>
-     <div style="text-align:center;padding:1em;font:normal 1.4em 'OS Light';border-bottom:1px solid black;">
-      <a href="/faq">FAQ</a>
-    </div>
-  </div>
+    <%= include ./partials/menu.ejs %>
   
   <div id="overlay"></div>
   <div id="printsvg"></div>
@@ -43,6 +26,7 @@
   
       <%= include ./partials/header.ejs %>
      
+    <%= include ./partials/contact.ejs %>
       <div id="loading_main_page_spinner">
         <img src="/gfx/spinners/360.gif" style="width:64px;height:64px;" />
       </div>

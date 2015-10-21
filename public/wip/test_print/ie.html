@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <style type="text/css">
+  html, body, div { background-image:none; margin:0;padding:0;border:0; }
+/* Print
+//////////////////////////////// */
+  @media print {
+  
+   html, body, div { background-image:none; margin:0;padding:0;border:0; }
+    
+    #printsvg { display:block; }
+    .group { height:296.9mm;width:210mm;page-break-after:always; }
+    #background_container, #ui_print_alert { display:none; }  
+  }
+  @page{
+margin-left: 0;
+margin-right: 0;
+margin-top: 0;
+margin-bottom: 0;
+margin: 0;
+size: A4 portrait;
+}
+  </style>
+</head>
+
+<body>
+<div class="group" style="width:210mm;height:296.9mm;background-color:green;">
+  </div>
+  
+<div class="group" style="width:210mm;height:296.9mm;background-color:red;">
+  </div>
+  
+<div class="group" style="width:210mm;height:296.9mm;background-color:blue;">
+  </div>
+  
+<div class="group" style="width:210mm;height:296.9mm;background-color:yellow;">
+  </div>
+</body>
+
+</html>

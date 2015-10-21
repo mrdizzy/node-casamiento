@@ -50,9 +50,16 @@ exports.show = function(req, res) {
 }
 
 exports.check = function(req, res) {
-  console.log("CHeking")
-  var id = req.params.id;
-  var stream =  db.getAttachment("svg__" + id, "svg")
-
-  
+db.view('all/products_without_attachments', function(error, docs) {
+    console.log(docs.toArray())
+    if (error) {
+      console.log(error)
+    }
+    else {
+      res.render("svg/check", {
+        products: docs.toArray(), 
+        layout:"admin_layout"
+      })
+    }
+  })
 }

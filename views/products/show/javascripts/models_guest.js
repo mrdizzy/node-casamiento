@@ -33,10 +33,13 @@ var Guest = Backbone.Model.extend({ // rename PlaceCardBluePrint?
   printPresenter: function() {
     if (thisProduct.get("browser") == "ipad") {
       var result = { width:120.75, height: 85.3875 }
-    } else {
+    } else if (thisProduct.get("browser") == "MSIE") {
+     var result = {width:105, height:74.225 }
+      }
+      else {
       var result = { width: 105, height: 74.25 }
     }    
-    var baseline = (this.get("baseline") /100) * result.height;
+    var baseline = (this.get("baseline") /100) * result.height; 
     result.name = this.get("name");
     result.font = thisProduct.get("font");
     result.font_size = result.width * this.get("font_size");

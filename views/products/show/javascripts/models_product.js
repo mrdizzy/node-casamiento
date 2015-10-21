@@ -130,11 +130,17 @@ var Product = Backbone.Model.extend({
     if (navigator.userAgent.match(/Chrome/i) != null) {
       this.set("browser", "chrome")
     }
+     else if (navigator.userAgent.match(/Android/i) != null) {
+      this.set("browser", "chrome")
+    }
     else if (navigator.userAgent.match(/firefox/i) != null) {
       this.set("browser", "firefox")
     } 
     else if (navigator.userAgent.match(/iPad/i) != null) {
       this.set("browser", "ipad")
+    }  else if (navigator.userAgent.match(/Trident/i) != null) {
+     this.set("browser", "MSIE")   
+      
     } else if (navigator.userAgent.match(/safari/i) != null) {
       this.set("browser", "safari")
     }

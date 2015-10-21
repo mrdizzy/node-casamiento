@@ -32,6 +32,7 @@
     top:0;
     display:none; /* Default is to hide crop marks */
     left:0;
+    opacity:0.5;
     width:100%;
     height:100%;
     position:absolute;
@@ -73,7 +74,10 @@
 //////////////////////////////// */
   @media print {
   
-    body { background-image:none; }
+    body, #printsvg, html { background-image:none;
+  padding:0;
+  margin:0;
+  border:0; }
     
     #printsvg { display:block; }
     
