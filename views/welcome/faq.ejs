@@ -13,6 +13,15 @@
   .left_column { 
     width:50%;
   }
+  .answer { display:none; }
+.answer p {
+  text-indent:2em;
+  font-style:normal;font-family:'OS Light';font-size:1.2em;line-height:1.6em;
+}
+
+
+.answer .screenshot { border:1px dashed grey; }
+
   #right_col {
     margin-left:50%;
     margin-right:0;
@@ -130,7 +139,7 @@ div.bubble
     .welcome_line {
       width: 100%;
     }
- 
+ div.bubble { width:88%; }
   }
   /* Phablet
   ============================================================================================================
@@ -184,10 +193,39 @@ div.bubble
 
 <img src="/gfx/welcomeicons/line.svg" class="welcome_line" />
 
-<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> How do I enter names?</p>
-<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can I add a logo?</p>
-<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can I change the font colour?</p>
-<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can you create a special design for me?</p>
+
+
+
+<p class="question" id="question_can_i_add_logo"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can I add a logo?</p>
+<div class="answer" id="answer_question_can_i_add_logo"><img src="/gfx/faq/rtm.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/><p>At the moment you cannot add a logo. However we are working on the ability to upload your logo and add it to the back of the place card so that it will appear tastefully against the back of the design! </p>
+
+<div class="greybar"></div>
+<div class="greybar" style="margin-bottom:1em;"></div>
+
+</div>
+
+
+
+
+
+<p class="question" id="question_font_colour"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can I change the font colour?</p>
+<div class="answer" id="answer_question_font_colour"><p>At the moment, you cannot change the colour of the font from black, but we intend to provide this option soon!</p>
+
+<div class="greybar"></div>
+<div class="greybar" style="margin-bottom:1em;"></div>
+
+</div>
+
+
+
+<p class="question" id="question_can_you_create_special_design"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can you create a special design for me?</p>
+<div class="answer" id="answer_question_can_you_create_special_design"><img src="/gfx/faq/graphicseditor7.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/><p>If you can't find what you're looking for, then please get in touch with us using the contact form in the menu <img src="/gfx/menulines.svg" style="opacity:0.7;width:18px;" /> above or by emailing <a href="mailto:enquiries@casamiento.co.uk" style="text-decoration:underline;">enquiries@casamiento.co.uk</a>. We can create a unique place card design to your specification for £25. </p>
+
+<div class="greybar"></div>
+<div class="greybar" style="margin-bottom:1em;"></div>
+</div>
+
+
 </div>
 
 
@@ -198,14 +236,32 @@ div.bubble
 
 <img src="/gfx/welcomeicons/line.svg" class="welcome_line" />
 
-<p class="question"><img src="/gfx/faq/questionmark.svg" class="questionmark"> How do I enter names?</p>
-<p class="question"><img src="/gfx/faq/questionmark.svg" class="questionmark"> Can I add a logo?</p>
-<p class="question"><img src="/gfx/faq/questionmark.svg" class="questionmark"> Can I change the font colour?</p>
-<p class="question"><img src="/gfx/faq/questionmark.svg" class="questionmark"> Can you create a special design for me?</p>
+<p class="question"  id="question_size_of_place_cards"><img src="/gfx/faq/questionmark.svg" class="questionmark"> What size are the place cards?</p>
+<div class="answer" id="answer_question_size_of_place_cards"><img src="/gfx/faq/ruler2.svg" style="width:45px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/><p>Place cards measure 105mm width by 74.25mm tall and they are scored along the middle so they can be folded into a tent which stands up on its own with a front and a back. The front and back then measure 105mm wide by 37.125mm high. </p>
+<div class="greybar"  style="mix-blend-mode: multiply;"></div>
+<div class="greybar" style="margin-bottom:1em;mix-blend-mode:multiply"></div></div>
+
+
+
+<p class="question"  id="question_card_type"><img src="/gfx/faq/questionmark.svg" class="questionmark"> What colour and texture of card do you print on?</p>
+<div class="answer" id="answer_question_card_type"><img src="/gfx/faq/trifold6.svg" style="width:45px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/><p>At the moment, all our cards are printed on plain, smooth white untextured card, and you can choose from 200gsm (thinner) or 300gsm (thicker). We will soon be introducing different textures and colours of card.</p> </p>
+
+<div class="greybar" style="mix-blend-mode: multiply;"></div>
+<div class="greybar" style="margin-bottom:1em;mix-blend-mode: multiply;"></div></div>
+
+
+
+
+<p class="question"  id="question_printing_method"><img src="/gfx/faq/questionmark.svg" class="questionmark"> What printing method do you use?</p>
+<div class="answer" id="answer_question_printing_method"><img src="/gfx/faq/ink4.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/><p>We use a unique method called solid ink printing created by Xerox. Not only is it environmentally friendlier than other forms of printing, but because the ink is a form of metled wax, the colours are brighter and clearer than other methods, and print has a slightly raised feel to it&mdash;if you run your finger along the card you can feel where the print is! </p>
+
+<div class="greybar" style="mix-blend-mode: multiply;"></div>
+<div class="greybar" style="margin-bottom:1em;mix-blend-mode: multiply;"></div>
+
 </div>
 
 
-
+</div>
 
 
 
@@ -226,20 +282,50 @@ div.bubble
 
 
   <%- contentFor('right') %>
+  <div class="bubble pink thought" style="text-align:left;">
+    <img src="/gfx/faq/printer.svg" style="width:60px;display:block;margin:0 auto;position:relative;top:-2em;" />
+    <p style="font: 300 3em 'Josefin Slab', sans-serif;text-align:center;">When you print yourself</p>
   
-<div  class="bubble pink thought" style="text-align:left;"><img src="/gfx/faq/printer.svg" style="width:60px;display:block;margin:0 auto;position:relative;top:-2em;" /><p style="font: 300 3em 'Josefin Slab', sans-serif;text-align:center;">When you print yourself</p>
+    <img src="/gfx/welcomeicons/line.svg" class="welcome_line" />
+  
+  
+  
+  
+    <p class="question" id="question_printing_size_and_position"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> Can I change the size and position of place cards?</p>
+  
+    <div class="answer" id="answer_question_printing_size_and_position" style="font-style:normal;font-family:'OS Light';display:none;font-size:1.2em;line-height:1.6em;"><img src="/gfx/faq/squares87.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;" />
+      <p></p>
+    </div>
+  
 
 
-<img src="/gfx/welcomeicons/line.svg" class="welcome_line" />
 
 
-<p class="question" id="question_printing_size_and_position"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> Can I change the size and position of place cards?</p>
 
-<p class="answer" id="answer_question_printing_size_and_position" style="font-style:normal;font-family:'OS Light';display:none;font-size:1.2em;line-height:1.6em;">Etiam vulputate turpis eu ligula viverra, eu eleifend nunc placerat. In ac massa gravida, scelerisque nulla vel, porta augue. Praesent congue nisl sed viverra elementum. Morbi leo risus, vulputate ac euismod quis, porta eu lorem. Ut et accumsan mi, vel tincidunt metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut pellentesque augue, ut suscipit lorem. Nam ipsum ligula, feugiat sit amet quam at, vulputate tristique tellus. </p>
 
-<p class="question" id="question_printing_from_an_ipad"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> Printing from an iPad</p>
 
-<p class="answer" id="answer_question_printing_from_an_ipad" style="font-style:normal;font-family:'OS Light';display:none;font-size:1.2em;line-height:1.6em;"><img src="/gfx/faq/safari.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/>Etiam vulputate turpis eu ligula viverra, eu eleifend nunc placerat. In ac massa gravida, scelerisque nulla vel, porta augue. Praesent congue nisl sed viverra elementum. Morbi leo risus, vulputate ac euismod quis, porta eu lorem. Ut et accumsan mi, vel tincidunt metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut pellentesque augue, ut suscipit lorem. Nam ipsum ligula, feugiat sit amet quam at, vulputate tristique tellus. </p>
+
+<p class="question" id="question_printing_from_an_ipad"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> Printing from an iPad/iPhone</p>
+
+<div class="answer" id="answer_question_printing_from_an_ipad"><img src="/gfx/faq/safari.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/><p>To print from an iPad/iPhone you will need version 9.0.2 of iOS or above, and an Airprint printer. You will also need to use the Safari browser. Due to the limitations of Safari, you are only able to print 3 place cards per A4 portrait page. </p>
+<p>When you have finished editing your place cards and have the names, colours and fonts just how you want them, click the small printer icon near the top left hand-side of the screen. </p>
+<img src="/gfx/faq/ipad_3.png" class="screenshot" style="width:100%;" />
+<p>This will then bring up our own options screen. On an iPad, the only option available is to choose whether you would like cutting guidelines printed or not. Selecing "yes" for cutting guidelines will print feint marks around your cards to show you where to cut and fold them. After doing this, press the big grey print button.</p>
+<img src="/gfx/faq/ipad_2.png" class="screenshot" style="width:100%;" />
+<p>You will now see the iOS print menu. This will allow you to choose which printer you wish to print to, and also show you a preview of how your printout will look.</p>
+<img src="/gfx/faq/ipad_1.png" class="screenshot" style="width:100%;" />
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 <p class="question" id="question_printing_from_android"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> Printing from an Android tablet or phone</p>
@@ -258,7 +344,7 @@ div.bubble
 
 <p class="question" id="question_printing_from_chrome"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> Printing from Chrome</p>
 
-<p class="answer" id="answer_question_printing_from_chrome" style="font-style:normal;font-family:'OS Light';display:none;font-size:1.2em;line-height:1.6em;"><img src="/gfx/faq/chrome.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/>Etiam vulputate turpis eu ligula viverra, eu eleifend nunc placerat. In ac massa gravida, scelerisque nulla vel, porta augue. Praesent congue nisl sed viverra elementum. Morbi leo risus, vulputate ac euismod quis, porta eu lorem. Ut et accumsan mi, vel tincidunt metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut pellentesque augue, ut suscipit lorem. Nam ipsum ligula, feugiat sit amet quam at, vulputate tristique tellus. </p>
+<div class="answer" id="answer_question_printing_from_chrome" style="font-style:normal;font-family:'OS Light';display:none;font-size:1.2em;line-height:1.6em;"><img src="/gfx/faq/chrome.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/><p>>Etiam vulputate turpis eu ligula viverra, eu eleifend nunc placerat. In ac massa gravida, scelerisque nulla vel, porta augue. Praesent congue nisl sed viverra elementum. Morbi leo risus, vulputate ac euismod quis, porta eu lorem. Ut et accumsan mi, vel tincidunt metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut pellentesque augue, ut suscipit lorem. Nam ipsum ligula, feugiat sit amet quam at, vulputate tristique tellus. </p></div>
 
 
 
@@ -275,15 +361,37 @@ div.bubble
 
 
 
-<div  class="bubble thought" style="border:2px dashed white;text-align:left;"><img src="/gfx/faq/lorry.svg" style="opacity:1;width:70px;display:block;margin:0 auto;position:relative;top:-2em;" /><p style="font: 300 3em 'Josefin Slab', sans-serif;text-align:center;">Delivering your place cards&hellip;</p>
+<div class="bubble thought" style="border:2px dashed white;text-align:left;"><img src="/gfx/faq/lorry.svg" style="opacity:1;width:70px;display:block;margin:0 auto;position:relative;top:-2em;" /><p style="font: 300 3em 'Josefin Slab', sans-serif;text-align:center;">Delivering your place cards&hellip;</p>
 
 
 <img src="/gfx/welcomeicons/line.svg" class="welcome_line"  />
 
-<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> How do I enter names?</p>
-<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can I add a logo?</p>
-<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can I change the font colour?</p>
-<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can you create a special design for me?</p>
+<p class="question" id="question_abroad"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Do you deliver to countries other than the UK?</p>
+
+<div class="answer" id="answer_question_abroad">
+<img src="/gfx/faq/worldgrid.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/>
+<p>At the moment, we only deliver to the United Kingdom, but we will be expanding our delivery options to include the rest of the world soon.</p>
+
+<div class="greybar"></div>
+<div class="greybar" style="margin-bottom:1em;"></div>
+</div>
+
+
+
+
+<p class="question" id="question_how_long_delivery"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> How long does delivery take?</p>
+<div class="answer" id="answer_question_how_long_delivery">
+<img src="/gfx/faq/.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/>
+<p>If you order before 1pm on a weekday, your order will be sent out the same day by first class post and 90% of parcels sent like this will arrive the next working day. If you order on a Saturday or Sunday, your order should arrive on Tuesday.</p>
+
+<div class="greybar"></div>
+<div class="greybar" style="margin-bottom:1em;"></div>
+</div>
+
+<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> I need my place cards urgently&hellip; like tomorrow! What are my options?</p>
+
+
+<p class="question"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> What courier do you use? Do I need to be in to sign for delivery?</p>
 </div>
 
 

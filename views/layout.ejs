@@ -77,6 +77,25 @@ $('#contact_click').click(function() {
   $('#contact_form').slideDown();
     $('#left_menu').fadeOut();
 })
+$('#send_message').click(function() {
+  var message = {
+  message: $('#contact_message').val(),
+  email: $('#contact_email').val(),
+  email_verify: $('#contact_email_verify').val(),
+  first_name:  $('#contact_first_name').val(),
+  last_name:  $('#contact_last_name').val()
+  }
+ $.ajax({
+  type: "POST",
+  url: "/email",
+  data: message,
+  success: function(data) {
+    $('#contact_form').slideUp();
+  }
+});
+  
+  
+})
 })
     <%- javascripts %>
   </script>  

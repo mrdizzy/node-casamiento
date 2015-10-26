@@ -1,32 +1,32 @@
-<div style="background-color:white;padding:2em;width:75%;margin:0 auto;border-right:1px dotted black;border-left:1px dotted black;" id="contact_form">
+<div style="display:none;background-color:white;padding:2em;width:75%;margin:0 auto;border-right:1px dotted black;border-left:1px dotted black;" id="contact_form">
     
     <form>
         
         <div id="form_left" style="width:50%;float:left;">
-   <p><label for="email" style="text-align:center;font: normal 1.4em 'OS Light Italic', sans-serif;"><span style="color:#CCC">&diams;</span> First name:</label><br/>
-    <input type="email" style="padding-left:0.5em;font-size:1.8em;width:80%;border:0;background-color:#EEE;margin-top:0.25em;border-radius:0.5em;height:2em;"></input>
+   <p><label for="contact_first_name" style="text-align:center;font: normal 1.4em 'OS Light Italic', sans-serif;"><span style="color:#CCC">&diams;</span> First name:</label><br/>
+    <input name="contact_first_name" id="contact_first_name" type="text" style="padding-left:0.5em;font-size:1.8em;width:80%;border:0;background-color:#EEE;margin-top:0.25em;border-radius:0.5em;height:2em;"></input>
     </p>
      <p>
-    <label style="text-align:center;font: normal 1.4em 'OS Light Italic', sans-serif;" for="email"><span style="color:#CCC">&diams;</span> Last name:</label></br>
-    <input type="email"  style="padding-left:1em;font-size:1.8em;width:80%;border:0;background-color:#EEE;margin-top:0.25em;border-radius:0.5em;height:2em;"></input>
+    <label style="text-align:center;font: normal 1.4em 'OS Light Italic', sans-serif;" for="contact_last_name"><span style="color:#CCC">&diams;</span> Last name:</label></br>
+    <input name="contact_last_name" id="contact_last_name" type="text"  style="padding-left:1em;font-size:1.8em;width:80%;border:0;background-color:#EEE;margin-top:0.25em;border-radius:0.5em;height:2em;"></input>
     </p>
     </div>
     <div id="form_right"  style="width:50%;float:right;">
-     <p><label for="email" style="text-align:center;font: normal 1.4em 'OS Light Italic', sans-serif;"><span style="color:#CCC">&diams;</span> Email:</label><br/>
-    <input type="email"  style="padding-left:0.5em;font-size:1.8em;width:80%;border:0;background-color:#EEE;margin-top:0.25em;border-radius:0.5em;height:2em;" ></input>
+     <p><label for="contact_email" style="text-align:center;font: normal 1.4em 'OS Light Italic', sans-serif;"><span style="color:#CCC">&diams;</span> Email:</label><br/>
+    <input type="email" name="contact_email" id="contact_email"  style="padding-left:0.5em;font-size:1.8em;width:80%;border:0;background-color:#EEE;margin-top:0.25em;border-radius:0.5em;height:2em;" ></input>
     </p>
     
      <p>
-    <label style="text-align:center;font: normal 1.4em 'OS Light Italic', sans-serif;" for="email"><span style="color:#CCC">&diams;</span> Type your email again:</label></br>
-    <input type="email"  style="padding-left:0.5em;font-size:1.8em;width:80%;border:0;background-color:#EEE;margin-top:0.25em;border-radius:0.5em;height:2em;"></input>
+    <label style="text-align:center;font: normal 1.4em 'OS Light Italic', sans-serif;" for="contact_email_verify"><span style="color:#CCC">&diams;</span> Type your email again:</label></br>
+    <input type="email"  id="contact_email_verify" name="contact_email_verify" style="padding-left:0.5em;font-size:1.8em;width:80%;border:0;background-color:#EEE;margin-top:0.25em;border-radius:0.5em;height:2em;"></input>
     </p>
     </div>
     <p>
-       <label style="text-align:center;font: normal 1.4em 'OS Light Italic', sans-serif;" for="email"><span style="color:#CCC">&diams;</span> Message:</label></br>
-    <textarea rows="6" style="padding:0.5em;border:0;background-color:#EEE;border-radius:0.5em;margin-top:0.25em;width:90%;font: normal 1.8em 'OS Light', sans-serif;" id="message"></textarea>
+       <label style="text-align:center;font: normal 1.4em 'OS Light Italic', sans-serif;" for="contact_message"><span style="color:#CCC">&diams;</span> Message:</label></br>
+    <textarea id="contact_message" name="contact_message" rows="6" style="padding:0.5em;border:0;background-color:#EEE;border-radius:0.5em;margin-top:0.25em;width:90%;font: normal 1.8em 'OS Light', sans-serif;" id="contact_message"></textarea>
     </p>
     
-    <div class="buy grey_button" style="float:right;width:20%;padding-top:1em;padding-bottom:1em;border-top-left-radius:0.75em;border-bottom-right-radius:0.75em;font-size:1.6em;">
+    <div class="buy grey_button" id="send_message" style="float:right;width:20%;padding-top:1em;padding-bottom:1em;border-top-left-radius:0.75em;border-bottom-right-radius:0.75em;font-size:1.6em;">
         <img src="/gfx/email.svg" style="width:30px;" />
 		SEND<br/>MESSAGE	</div>
 			<div style="clear:both;"></div>

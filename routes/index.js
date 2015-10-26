@@ -148,7 +148,7 @@ module.exports = function(app) {
    })
    app.get("/svg/:id/:colours", require("./../controllers/svg").show)
    app.get("/svg_check", require("./../controllers/svg").check)
-
+app.post("/email", require("./../controllers/email").create)
    app.get("/svg/:id", require("./../controllers/svg").show)
    app.resource("payments", require("./../controllers/payments"))
    app.resource("fonts", require("./../controllers/fonts"))

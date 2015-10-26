@@ -61,6 +61,8 @@
 </div>
 <div style="height:200px;clear:both">
 <div style="width:50%;" id="colour_picker"></div>
+
+<div style="width:50%;" id="colour_picker_2"></div>
 </div>
 <script>
   
@@ -70,6 +72,15 @@
         },
         index: 0
       });
+      
+  $('#colour_picker_2').colorPicker({
+        callback: function(index, hex) {
+         $('.colour_1').css("background-color", hex)
+        },
+        index: 0
+      });
+      
+      
 </script>
 
 </html>
