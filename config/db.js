@@ -1,4 +1,4 @@
-var cradle = require('cradle'),
+var cradle = require('cradle'),// port should be 443
     connection = new(cradle.Connection)('https://mrdizzy.cloudant.com', 443, {
         auth: {
             username: "mrdizzy",

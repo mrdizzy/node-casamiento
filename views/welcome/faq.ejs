@@ -15,7 +15,6 @@
   }
   .answer { display:none; }
 .answer p {
-  text-indent:2em;
   font-style:normal;font-family:'OS Light';font-size:1.2em;line-height:1.6em;
 }
 
@@ -35,18 +34,25 @@
     font-size:2.2em;width:31%;margin-left:0;margin-right:14%;float:right;margin-bottom:2em;
   }
   .question {
-    font-weight:300;font-family:'Josefin Slab';font-style:italic;font-size:1.8em;
+    font-weight:300;font-family:'Josefin Slab';font-style:italic;font-size:1.8em;border-bottom:1px dotted grey;padding-bottom:0.25em;
   
   }
+  .answer > img:first-child {
+    width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;background-color:#DDD;padding:0.5em;border-radius:10px;width:50px;display:block;margin:0 auto;padding-bottom:0.25em;margin-bottom:1em;
+  }
+  
+  div.bubble.pink .answer > img:first-child {opacity:1;background-color:#DFC3E5;}
 div.bubble
 {
 	position: relative;
 	width:80%;
 	text-align: center;
 	margin: 60px auto;
-	padding:1em;
 	background-color: #eee;
 	border-radius: 20px;
+}
+div.bubble p {
+  padding-left:0.75em;padding-right:0.75em;
 }
 
 .greybar {
@@ -57,7 +63,7 @@ div.bubble
   width:20px;
 
 }
- div.pink { background-color:#F5CEF5;}
+ div.pink { background-color:#EED5EF;}
  
   .faq_main_headline {
     margin: 0 auto;
@@ -197,7 +203,7 @@ div.bubble
 
 
 <p class="question" id="question_can_i_add_logo"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can I add a logo?</p>
-<div class="answer" id="answer_question_can_i_add_logo"><img src="/gfx/faq/rtm.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/><p>At the moment you cannot add a logo. However we are working on the ability to upload your logo and add it to the back of the place card so that it will appear tastefully against the back of the design! </p>
+<div class="answer" id="answer_question_can_i_add_logo"><img src="/gfx/faq/rtm.svg" style=""/><p>At the moment you cannot add a logo. However we are working on the ability to upload your logo and add it to the back of the place card so that it will appear tastefully against the back of the design! </p>
 
 <div class="greybar"></div>
 <div class="greybar" style="margin-bottom:1em;"></div>
@@ -219,7 +225,7 @@ div.bubble
 
 
 <p class="question" id="question_can_you_create_special_design"><img src="/gfx/faq/questionmarkgrey.svg" class="questionmark"> Can you create a special design for me?</p>
-<div class="answer" id="answer_question_can_you_create_special_design"><img src="/gfx/faq/graphicseditor7.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/><p>If you can't find what you're looking for, then please get in touch with us using the contact form in the menu <img src="/gfx/menulines.svg" style="opacity:0.7;width:18px;" /> above or by emailing <a href="mailto:enquiries@casamiento.co.uk" style="text-decoration:underline;">enquiries@casamiento.co.uk</a>. We can create a unique place card design to your specification for £25. </p>
+<div class="answer" id="answer_question_can_you_create_special_design"><img src="/gfx/faq/graphicseditor7.svg" /><p>If you can't find what you're looking for, then please get in touch with us using the contact form in the menu <img src="/gfx/menulines.svg" style="opacity:0.7;width:18px;" /> above or by emailing <a href="mailto:enquiries@casamiento.co.uk" style="text-decoration:underline;">enquiries@casamiento.co.uk</a>. We can create a unique place card design to your specification for £25. </p>
 
 <div class="greybar"></div>
 <div class="greybar" style="margin-bottom:1em;"></div>
@@ -238,16 +244,16 @@ div.bubble
 
 <p class="question"  id="question_size_of_place_cards"><img src="/gfx/faq/questionmark.svg" class="questionmark"> What size are the place cards?</p>
 <div class="answer" id="answer_question_size_of_place_cards"><img src="/gfx/faq/ruler2.svg" style="width:45px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/><p>Place cards measure 105mm width by 74.25mm tall and they are scored along the middle so they can be folded into a tent which stands up on its own with a front and a back. The front and back then measure 105mm wide by 37.125mm high. </p>
-<div class="greybar"  style="mix-blend-mode: multiply;"></div>
-<div class="greybar" style="margin-bottom:1em;mix-blend-mode:multiply"></div></div>
+<div class="greybar"  style="background-color:#DFC3E5;"></div>
+<div class="greybar" style="margin-bottom:1em;background-color:#DFC3E5;"></div></div>
 
 
 
 <p class="question"  id="question_card_type"><img src="/gfx/faq/questionmark.svg" class="questionmark"> What colour and texture of card do you print on?</p>
 <div class="answer" id="answer_question_card_type"><img src="/gfx/faq/trifold6.svg" style="width:45px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/><p>At the moment, all our cards are printed on plain, smooth white untextured card, and you can choose from 200gsm (thinner) or 300gsm (thicker). We will soon be introducing different textures and colours of card.</p> </p>
 
-<div class="greybar" style="mix-blend-mode: multiply;"></div>
-<div class="greybar" style="margin-bottom:1em;mix-blend-mode: multiply;"></div></div>
+<div class="greybar" style="background-color:#DFC3E5;"></div>
+<div class="greybar" style="margin-bottom:1em;background-color:#DFC3E5;"></div></div>
 
 
 
@@ -255,8 +261,8 @@ div.bubble
 <p class="question"  id="question_printing_method"><img src="/gfx/faq/questionmark.svg" class="questionmark"> What printing method do you use?</p>
 <div class="answer" id="answer_question_printing_method"><img src="/gfx/faq/ink4.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/><p>We use a unique method called solid ink printing created by Xerox. Not only is it environmentally friendlier than other forms of printing, but because the ink is a form of metled wax, the colours are brighter and clearer than other methods, and print has a slightly raised feel to it&mdash;if you run your finger along the card you can feel where the print is! </p>
 
-<div class="greybar" style="mix-blend-mode: multiply;"></div>
-<div class="greybar" style="margin-bottom:1em;mix-blend-mode: multiply;"></div>
+<div class="greybar" style="background-color:#DFC3E5;"></div>
+<div class="greybar" style="margin-bottom:1em;background-color:#DFC3E5;"></div>
 
 </div>
 
@@ -293,7 +299,7 @@ div.bubble
   
     <p class="question" id="question_printing_size_and_position"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> Can I change the size and position of place cards?</p>
   
-    <div class="answer" id="answer_question_printing_size_and_position" style="font-style:normal;font-family:'OS Light';display:none;font-size:1.2em;line-height:1.6em;"><img src="/gfx/faq/squares87.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;" />
+    <div class="answer" id="answer_question_printing_size_and_position" style="font-style:normal;font-family:'OS Light';display:none;font-size:1.2em;line-height:1.6em;"><img src="/gfx/faq/squares87.svg"  />
       <p></p>
     </div>
   
@@ -307,9 +313,9 @@ div.bubble
 
 <p class="question" id="question_printing_from_an_ipad"><img src="/gfx/faq/questionmark.svg" class="questionmark" /> Printing from an iPad/iPhone</p>
 
-<div class="answer" id="answer_question_printing_from_an_ipad"><img src="/gfx/faq/safari.svg" style="width:50px;opacity:0.6;display:block;margin:0 auto;padding-bottom:0.25em;"/><p>To print from an iPad/iPhone you will need version 9.0.2 of iOS or above, and an Airprint printer. You will also need to use the Safari browser. Due to the limitations of Safari, you are only able to print 3 place cards per A4 portrait page. </p>
+<div class="answer" id="answer_question_printing_from_an_ipad"><img src="/gfx/faq/safari.svg"/><p>To print from an iPad/iPhone you will need version 9.0.2 of iOS or above, and an Airprint printer. You will also need to use the Safari browser. Due to the limitations of Safari, you are only able to print 3 place cards per A4 portrait page. </p>
 <p>When you have finished editing your place cards and have the names, colours and fonts just how you want them, click the small printer icon near the top left hand-side of the screen. </p>
-<img src="/gfx/faq/ipad_3.png" class="screenshot" style="width:100%;" />
+<img src="/gfx/faq/ipad_3_pink.png" class="screenshot" style="width:100%;margin-top:1em;margin-bottom:1em;border:3px dashed #DFC3E5;border-left:0;border-right:0;" />
 <p>This will then bring up our own options screen. On an iPad, the only option available is to choose whether you would like cutting guidelines printed or not. Selecing "yes" for cutting guidelines will print feint marks around your cards to show you where to cut and fold them. After doing this, press the big grey print button.</p>
 <img src="/gfx/faq/ipad_2.png" class="screenshot" style="width:100%;" />
 <p>You will now see the iOS print menu. This will allow you to choose which printer you wish to print to, and also show you a preview of how your printout will look.</p>

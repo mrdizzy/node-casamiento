@@ -64,7 +64,12 @@ exports.create = function(req, res) {
         res.send(500)
       } else {
       // If in sandbox mode change to www.sandbox.paypal.com
+      if(process.env.NODE_ENV != 'production') {
         res.redirect("https://www.sandbox.paypal.com/uk/cgi-bin/webscr?cmd=_express-checkout&token="+response.TOKEN)
+      } else {
+        res.redirect("https://www.paypal.com/uk/cgi-bin/webscr?cmd=_express-checkout&token="+response.TOKEN)
+        
+      }
       }      
     })    
   }, options)

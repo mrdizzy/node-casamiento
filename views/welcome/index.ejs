@@ -4,12 +4,11 @@
   
   <style type="text/css">
       
-  #first_drop_cap_container,
-  #second_drop_cap_container {
+  #first_drop_cap_container {
     background-color: #CA2C92;
-    width: 78px;
+    width: 74px;
     margin: 0;
-    height: 78px;
+    height: 74px;
     padding-top: 5px;
     padding-left: 5px;
     float: left;
@@ -18,15 +17,15 @@
 
   
   .drop_cap {
-    width: 70px;
-    height: 70px;
+    width: 66px;
+    height: 66px;
     border: 1px solid white;
     background-color: #CA2C92;
-    font: normal 4.75em 'Josefin Slab';
+    font: normal 6em 'Josefin Slab';
     font-style: italic;
     text-align: center;
     color: white;
-    line-height: 70px;
+    line-height: 1.1em;
   }
   
   #about_container {
@@ -334,9 +333,41 @@
     <img src="/gfx/welcomeicons/line.svg" id="third_line" class="welcome_line" />   
    
     
+    <!------------------------------------------  ANIMATION ---------------------------------------------------->
+    
+    <div style="position:relative;width:100%;" id="desktop_animation">
+             <div style="position:absolute;z-index:9999999999999999999999999999999999999999999999999999999999999;top:17.5%;">
+        <img src="/gfx/welcomeicons/top_direction2.svg" style="margin-left:15%" />
+        <div style="color:#222;margin-left:0.75%;width:22%;font:normal 1.1em 'OS Light Italic';">
+         <span style="font-family:'OS Condensed'">Print yourself.</span> Click the printer icon if you'd like to print your own place cards&mdash;straight from your browser!
+        </div>
+      </div>
+    
+        
+        
+      <div style="position:absolute;z-index:9999999999999999999999999999999999999999999999999999999999999;top:63%;right:7%;width:25%;">
+        <img src="/gfx/welcomeicons/bottom_direction.svg" style="margin-left:10%;" />
+        <div style="color:#222;margin-left:1%;font:normal 1.1em 'OS Light Italic';">
+         <span style="font-family:'OS Condensed'">Quick edit.</span> To quickly create place cards, just enter a list of names here, separated by a line. For blank place cards use blank lines. Your place cards will be created automatically!
+        </div>
+      </div>
+    
+    
+    
+     <div style="position:relative;width:70%;margin:0 auto;z-index:0;">
+       <img src="/gfx/welcomeicons/anim2.gif" style="width:90%;margin:0 auto;display:inline-block;margin-top:5%;position:absolute;left:0;right:0;margin-left:auto;margin-right:auto;" />
+       <img src="/gfx/welcomeicons/screen.svg" style="width:100%;display:block;"/ > 
+       </div>
+       <img src="/gfx/welcomeicons/STAND.svg" style="margin:0 auto;display:block;"/ > 
+    </div>
+    
       
       
       
+    
+    <img src="/gfx/welcomeicons/line.svg" id="third_line" class="welcome_line" />   
+    
+    
     <div  id="box_4" class="welcome_box_container">
   
       <div class="welcome_icon_container">
@@ -388,16 +419,22 @@
       <div class="drop_cap">H</div>
     </div>
 
-    <p class="first">i, I'm David, and as much as I'd love to tell you my life story, I know you're only really interested in what this Web site can do for you, so here are 12 good reasons:</p>
+    <p class="first" style="line-height:1.6em;">I, I'M DAVID and I'm the human behind Casamiento. As much as I'd love to think you want to know my life story, you're probably not too interested&hellip;</p>
+    <p style="text-indent:2em;line-height:1.4em;">&hellip;and anyway, you'd probably learn more about me by checking out my <a href="http://www.facebook.com/david.pettifer.184"><img src="/gfx/welcomeicons/facebook29.svg" style="width:20px;opacity:0.5;"></a> <a href="http://www.facebook.com/david.pettifer.184" style="text-decoration:underline">Facebook page</a> where you can see vanity selfies and even hear me playing the piano&hellip;</p>
 
-<p>Each of our designs can be changed instantly to any colour of your choice, so that it matches your own colour scheme. Colours change instantly, and there is no waiting for images to reload every time you make a change!</p>
+<p style="text-indent:2em;line-height:1.4em;">All I'll say is that this is just the beginning&mdash;eventually I want to offer you a whole range of beautiful stationery that you can customise and print, straight from your browser, no-fuss! By placing an order today, you’re not just participating in a business transaction, you’re helping to realise a dream.</p>
+
+<p>Thank you,</p>
 
 
     <img src="/gfx/welcomeicons/sig.png" id="signature" /> 
     
 </div>
     </div>
+    </div>
     
+    
+    <img src="/gfx/welcomeicons/line.svg" id="third_line" class="welcome_line" />   
 <%- contentFor('javascripts') %>
 
 $(function() {

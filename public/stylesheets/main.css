@@ -365,6 +365,11 @@ input {
 /* GLOBAL CLASSES
 =========================== */
 
+#contact_click:hover { 
+  cursor:pointer;
+  text-decoration:underline;
+}
+
 .deselected { opacity:0.4; }
 
   .deselected:hover, .selected {
