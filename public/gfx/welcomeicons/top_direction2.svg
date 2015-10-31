@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
@@ -13,3 +14,20 @@
 <path fill="#9C9EA0" d="M147.5,15.44c0,1.95-1.59,3.54-3.54,3.54h-11.89c-1.95,0-3.54-1.59-3.54-3.54V3.54
 	c0-1.95,1.59-3.54,3.54-3.54h11.89c1.95,0,3.54,1.59,3.54,3.54V15.44z"/>
 </svg>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  version="1.1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 width="148" height="39" viewBox="0.5 -0.05 148 39" enable-background="new 0.5 -0.05 148 39" xml:space="preserve">
+<defs>
+</defs>
+<polyline fill="none" stroke="#9C9EA0" stroke-width="3" stroke-linecap="round" points="133.5,9.28 1.5,9.28 1.5,37.28 "/>
+<path fill="#9C9EA0" d="M147.5,15.44c0,1.95-1.59,3.54-3.54,3.54h-11.89c-1.95,0-3.54-1.59-3.54-3.54V3.54
+	c0-1.95,1.59-3.54,3.54-3.54h11.89c1.95,0,3.54,1.59,3.54,3.54V15.44z"/>
+</svg>
+>>>>>>> 281eb67f860d7cef211642279e7ef7d7c1e52ef8
