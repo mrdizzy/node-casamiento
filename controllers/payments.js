@@ -1,10 +1,10 @@
-var  paypal = require('./../config/paypal_config')(),
+var paypal = require('./../config/paypal_config')(),
   _ = require('underscore'),
   db = require('./../config/db').test_ebay,
   inGroupsOf = require('./../lib/in_groups_of'),
-  sendgrid  = require('sendgrid')("app7076151@heroku.com", "fbnafrlv8387");
- 
- /* 
+  sendgrid = require('sendgrid')("app7076151@heroku.com", "fbnafrlv8387");
+
+/* 
 [requiredSecurityParameters]
 &METHOD=SetExpressCheckout
 &RETURNURL=http://...
@@ -39,39 +39,39 @@ exports.create = function(req, res) {
   delete req.body.object;
   product.type = "order"
   product.status = "UNPAID"
-   var localhost = "http://localhost:3000/payments"
-   var heroku_test = "http://node-casamiento-mrdizzy.c9.io/payments"
-   var c9 = "http://node-casamiento.mrdizzy.c9.io/payments"
-   var production = "http://www.casamiento.co.uk/payments"
-  // Change RETURNURL to http://localhost for testing
+  var localhost = "http://localhost:3000/payments"
+  var heroku_test = "http://node-casamiento-mrdizzy.c9.io/payments"
+  var c9 = "http://node-casamiento.mrdizzy.c9.io/payments"
+  var production = "http://www.casamiento.co.uk/payments"
+    // Change RETURNURL to http://localhost for testing
   var default_options = {
     "PAYMENTREQUEST_0_CURRENCYCODE": "GBP",
     "RETURNURL": c9,
     "CANCELURL": "http://node-casamiento-mrdizzy.c9.io/products/" + product.product_id, // http://localhost:3000/products or http://node-casamiento-mrdizzy.c9.io/products
-    "PAYMENTREQUEST_0_PAYMENTACTION": "Sale",  
+    "PAYMENTREQUEST_0_PAYMENTACTION": "Sale",
     "ALLOWNOTE": 1,
     "LOGOIMG": "http://www.casamiento.co.uk/gfx/logo/casamiento_black.png"
   };
   var options = _.extend(default_options, req.body);
+
+  paypal.buildQuery("SetExpressCheckout", function(error, response) {
   
-  paypal.buildQuery("SetExpressCheckout", function(error, response) { 
-  console.log(options)
-  console.log(error, response)
-  console.log(response.TOKEN)
     product._id = response.TOKEN
     db.save(product, function(err, docs) {
-      if(err) {
+      if (err) {
         res.send(500)
-      } else {
-      // If in sandbox mode change to www.sandbox.paypal.com
-      if(process.env.NODE_ENV != 'production') {
-        res.redirect("https://www.sandbox.paypal.com/uk/cgi-bin/webscr?cmd=_express-checkout&token="+response.TOKEN)
-      } else {
-        res.redirect("https://www.paypal.com/uk/cgi-bin/webscr?cmd=_express-checkout&token="+response.TOKEN)
-        
       }
-      }      
-    })    
+      else {
+        // If in sandbox mode change to www.sandbox.paypal.com
+        if (process.env.NODE_ENV != 'production') {
+          res.redirect("https://www.sandbox.paypal.com/uk/cgi-bin/webscr?cmd=_express-checkout&token=" + response.TOKEN)
+        }
+        else {
+          res.redirect("https://www.paypal.com/uk/cgi-bin/webscr?cmd=_express-checkout&token=" + response.TOKEN)
+
+        }
+      }
+    })
   }, options)
 }
 
@@ -81,45 +81,65 @@ exports.index = function(req, res) {
       doc.paypal = sanitizePaypalResponse(response);
       doc.status = "PAID"
       db.save(doc, function(new_err, new_doc) {
-        if(new_err) {
+        if (new_err) {
           console.log(new_err, new_doc)
-        } else {
-           paypal.buildQuery("DoExpressCheckoutPayment", function(paymenterror, paymentresponse) { 
-           doc.guests = inGroupsOf(doc.guests, 2);
-           req.app.render("invoices/email", { locals: doc}, function(err, html) {  
-    sendgrid.send({
-      to:       doc.paypal.email,
-      from:     'david@casamiento.co.uk',
-      subject:  "Your order at Casamiento",
-      text:     '',
-      html: html
-    }, function(err, json) {
-      if (err) { return console.error("Error", err); }
-      console.log(json)  
-    })
-
-  });
-      res.render('invoices/thankyou', {
-        locals:doc
-      })
-           }, { TOKEN: req.query.token, PAYERID: req.query.PayerID, PAYMENTACTION: "Sale", PAYMENTREQUEST_0_AMT: doc.paypal.PAYMENTREQUEST_0_AMT,
-       PAYMENTREQUEST_0_CURRENCYCODE: 'GBP' })
+        }
+        else {
+          paypal.buildQuery("DoExpressCheckoutPayment", function(paymenterror, paymentresponse) {
+            if (paymenterror) {
+              
+            } else {
+              sendgrid.send({
+                to: "david.pettifer@googlemail.com",
+                from: "casamiento@casamiento.co.uk",
+                subject: "A new order for " + doc.total,
+                text: "http://www.casamiento.co.uk/products/" + doc._id + "/edit"
+              })
+              doc.guests = inGroupsOf(doc.guests, 2);
+              req.app.render("invoices/email", {
+                locals: doc
+              }, function(err, html) {
+                sendgrid.send({
+                  to: doc.paypal.email,
+                  from: 'david@casamiento.co.uk',
+                  subject: "Your order at Casamiento",
+                  text: '',
+                  html: html
+                }, function(err, json) {
+                  if (err) {
+                    return console.error("Error", err);
+                  }
+                })
+  
+              });
+            }
+            res.render('invoices/thankyou', {
+              locals: doc
+            })
+          }, {
+            TOKEN: req.query.token,
+            PAYERID: req.query.PayerID,
+            PAYMENTREQUEST_0_AMT: doc.total,
+            PAYMENTREQUEST_0_CURRENCYCODE: 'GBP'
+          })
         }
       })
     })
-  }, { TOKEN: req.query.token })
+  }, {
+    TOKEN: req.query.token
+  })
 }
 
 function sanitizePaypalResponse(response) {
   var checkout_details = response.GetExpressCheckoutDetailsResponse[0]
-  return { 
+  return {
     email: response.EMAIL,
     payerid: response.PAYERID,
     firstname: response.FIRSTNAME,
     lastname: response.LASTNAME,
     countrycode: response.COUNTRYCODE,
     shiptoname: response.SHIPTONAME,
-    shiptostreet: response.SHIPTOSTREET, 
+    shiptostreet: response.SHIPTOSTREET,
     shiptocity: response.SHIPTOCITY,
     shiptostate: response.SHIPTOSTATE,
     shiptozip: response.SHIPTOZIP,
