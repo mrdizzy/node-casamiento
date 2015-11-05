@@ -32,7 +32,7 @@ var OrderView = Backbone.View.extend({
     }})
   },
   render: function() {
-    var html= '<li><a href ="/products/' + this.model.id + '/edit">' + this.model.id + " </a>| "
+    var html= '<li><a href ="/products/' + this.model.id + '/edit">' + this.model.id + " </a>| " + this.model.get("status") + " | " + this.model.get("weight") + "|"
     if (this.model.get("locked")) {
     html = html + "LOCKED | "
     } else {
