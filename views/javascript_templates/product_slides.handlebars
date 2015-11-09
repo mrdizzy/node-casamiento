@@ -1,28 +1,30 @@
-<div class="slide">
+<div class="slide" style="width:100%;float:none;">
   <div style="position:relative;">
     
-    <div class="slide_background_container colour_0">
-      {{{background-1}}}
-    </div>
-    
-    <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-1 1000w,
-      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-1 750w,
-      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/thumb-1 500w"
-      sizes="(min-width:801px) 33.95vw, (min-width:500px) 58.2vw, (min-width: 320px), 100vw" class="slide_image" />
+    <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-3 1000w,
+      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-3 750w,
+      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/thumb-3 500w"
+      sizes="(min-width:801px)62vw, (min-width:500px) 58.2vw, (min-width: 320px), 100vw" class="slide_image" />
   </div>
 </div>
     
 <img src="/gfx/product_types/small/name_place_small.png" class="product_type_icon">
         
+<div class="slide" style="float:none;width:90%;">
+    <h1 class="product_name">{{name}}</h1>
+    <div class="ornamental_line" style="float:none;display:block;"></div>
+     <p style="margin:0 auto;padding-top:1em;padding-bottom:1em;margin-right:1em;text-align:center;color:#000;font:normal 1em 'OS'">Tags: 
+           {{#each tags}}
+           <a class="a_tag colour_0" href="/products/tags/{{.}}">{{.}}</a>
+           {{/each}}
+           </p>
+</div>
 <div class="slide">
   <div style="position:relative;">
     
         <div style="width:100%;height:100%;z-index:99999999999999;position:absolute;">
           <div style="height:100%;border-left:1px dotted white;"></div>
         </div>
-    <div class="slide_background_container colour_0">
-      {{{background-2}}}
-    </div>
     
     <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-2 1000w,
       http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-2 750w,
@@ -37,26 +39,14 @@
         <div style="width:100%;height:100%;z-index:99999999999999;position:absolute;">
           <div style="height:100%;border-top:1px dotted white;"></div>
         </div>
-    <div class="slide_background_container colour_0">
-     {{{background-3}}}
-    </div>
     
-    <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-3 1000w,
-      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-3 750w,
-      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/thumb-3 500w"
+    <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-1 1000w,
+      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-1 750w,
+      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/thumb-1 500w"
       sizes="(min-width:801px) 33.95vw,(min-width:500px) 58.2vw, (min-width: 320px), 100vw" class="slide_image" />
   </div>
 </div>
     
-<div class="slide">
-    <h1 class="product_name">{{name}}</h1>
-    <div class="ornamental_line"></div>
-     <p style="margin:0;margin-left:1em;padding:0;padding-top:1em;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: 
-           {{#each tags}}
-           <a class="a_tag colour_0" href="/products/tags/{{.}}">{{.}}</a>
-           {{/each}}
-           </p>
-</div>
   
 <div id="description_container">
   <div class="shell"></div>
@@ -65,8 +55,6 @@
     
 <div class="slide">
   <div style="position:relative;">
-
-    <div class="slide_background_container colour_0">{{{background-4}}}</div>
     
     <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-4 1000w,
         http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-4 750w,
