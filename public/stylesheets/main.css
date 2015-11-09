@@ -388,7 +388,7 @@ input {
 }
 
 .ornamental_line { 
-  background-image:url('/gfx/ornamentalline.png');
+  background-image:url('/gfx/line.png');
   background-repeat:no-repeat; 
   background-position:center;
   background-size:179px 5px;
