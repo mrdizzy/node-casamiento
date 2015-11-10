@@ -11,7 +11,7 @@ exports.index = function(req, res) {
 	console.log(cards_to_show)
     }
     else {
-		cards_to_show =["halloween_skulls-name_place", "halloween_landscape-name_place", "halloween_cobwebs-name_place", "acorn_pattern-name_place", "egyptian_diamonds-name_place", "halloween_spiders-name_place", "paris_skyline-name_place", "london_skyline-name_place",  "zigzag-name_place","birds_of_paradise_trees-name_place", "simple_butterfly-name_place", "wild_vintage-name_place"]
+		cards_to_show =["xmas_sketch,xmas_diamante,xmas_santa_hats,xmas_tree_scribbles,xmas_simple_baubles,xmas_squares"]
 	}
 	db.get(cards_to_show, function(err, docs) {
 		docs = docs.toArray();
