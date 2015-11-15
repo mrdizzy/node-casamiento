@@ -146,6 +146,7 @@ module.exports = function(app) {
          locals: test_thankyou
       })
    })
+   app.get("/xmas",require("./../controllers/landing").xmas)
    app.get("/svg/:id/:colours", require("./../controllers/svg").show)
    app.get("/svg_check", require("./../controllers/svg").check)
 app.post("/email", require("./../controllers/email").create)

@@ -9,6 +9,33 @@ var ProductSlideView = Backbone.View.extend({
       $result.find('.colour_' + i).css("background-color", colours[i])
     }
     this.$el.html($result)
+    
+  $("#product_slideshow").slidesjs({
+    width: 500,
+    height: 320,
+ effect: {
+   fade: {
+        speed: 750,
+      }
+ },
+    pagination: {
+      active: false
+    },
+    navigation: {
+      active: false
+    },
+    play: {
+      active: false,
+      auto: true,
+      effect: "fade"
+    },
+   
+    callback: {
+      loaded: function(n) {
+        $('#slides_spinner').hide();
+      }
+    }
+  })
     return this;
   },  
 })

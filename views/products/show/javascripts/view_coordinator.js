@@ -89,10 +89,10 @@
       thisProduct.trigger("redraw").trigger("change:font")
       this._reattachWayPoint();
       $('#loading_main_page_spinner').hide();
-
-      $('#print_now').click(function() {
-        that.print_ui_view.printNow();
-      })
+  var that = this;
+    //  $('#print_now').click(function() {
+    //    that.print_ui_view.printNow();
+    //  })
 
       this.current_view = "printui"
     },

@@ -1,0 +1,486 @@
+<%- contentFor('inside_headtag') %>
+  <meta name="google-site-verification" content="eBFYIQafAbXCI1PVkDlXJdFwYBU_UuugLowRABkHpss" />
+  <link rel="stylesheet" href="/stylesheets/welcome.css" /> 
+  
+  <style type="text/css">
+
+#inner_page_container {	background-image: url('/gfx/background_wiggle.svg'); }
+
+#slides_column {
+	width: 100%;
+	margin: 0 auto;
+}
+
+#slides_container {	display: none; }
+
+#slide_separator {
+	border-top: 3px double grey;
+	position: relative;
+	margin-bottom: 2em;
+	padding-top: 0.5em;
+}
+
+
+.welcome_place_card_container {
+	float: left;
+}
+
+.right_slide_col {
+	float: left;
+	width: 33.3%;
+}
+
+.welcome_slide_container {
+	width: 33.3%;
+	float: left;
+}
+
+.welcome_place_card_container img {
+	position: relative;
+	display: block;
+	width: 100%;
+	z-index: 6
+}
+/* COLOUR LABELS 
+*******************************************************************/
+#colour_0_container {
+	width:100%;
+	margin-left:0.5%;
+	position:absolute;
+}
+
+#colour_1_container {
+	width:99%;
+	left:60%;
+	position:absolute;
+	margin-left:1%;
+}
+.welcome_colour_frame {
+	width: 37px;
+	height: 37px;
+	margin-left: 1%;
+	float: left;
+	border: 1px solid lightgrey;
+	border-radius: 25px;
+	margin-top: 3px;
+}
+
+.welcome_colour_swatch {
+	width: 31px;
+	height: 31px;
+	margin: 3px;
+	border-radius: 25px;
+}
+
+.welcome_colour_label {
+	text-transform: uppercase;
+	float: left;
+	font: normal 1.2em 'OS Light';
+	padding-top: 12px;
+	margin-left: 7px;
+}
+
+
+/* main 
+*****************************************************************/
+
+#welcome_column {
+	width: 90%;
+	padding: 0;
+	background-color: #fff;
+	margin: 0 auto;
+	border-left: 1px dotted #000;
+	border-right: 1px dotted #000;
+}
+
+	#welcome_column h5 {
+		font: normal 5em/1.1em 'Josefin Slab', serif;
+		font-weight:300;
+		letter-spacing: -0.01em;
+		margin: 0;
+		padding-left:0.5em;
+		padding-right:0.5em;
+		padding-top:0.25em;
+		border-bottom: 0;
+		text-align: center;
+		color: #555;
+	}
+
+#box_4,
+#box_5,
+#box_6 {
+	margin-top: 3em;
+}
+
+#box_4 { clear: both; }
+
+.welcome_line {
+	margin: 0 auto;
+	padding-bottom: 4em;
+	display: block;
+	width: 70%;
+}
+
+#second_line, #third_line {
+	position:relative;
+	top:2em;
+}
+
+.welcome_box_container {
+	text-align: center;
+	border-radius: 1.5em;
+	background-color: #EEE;
+	width: 23%;
+	float: left;
+	margin-left: 2%;
+	margin-right: 2%;
+	padding-left: 3%;
+	padding-right: 3%;
+}
+
+.welcome_icon_container {
+	position:relative;
+	padding-bottom:1em;
+}
+
+.welcome_icon {
+	padding: 0;
+	margin: 0;
+	display: block;
+	top: -2em;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#welcome_column .welcome_box_container h5 {
+	font-size: 2.5em;
+	border-bottom: 0;
+	padding-top: 1em;
+}
+
+#welcome_column .welcome_box_container p {
+	margin-bottom: 0.5em;	
+	font-family: 'OS Light Italic';
+	font-size: 1.2em;
+	border-top: 0;
+	color: #777;
+	padding-bottom:0.5em;
+}
+
+
+
+  </style>
+    
+  <%- contentFor('main') %>
+  
+  <%- contentFor('left') %>
+  
+  <%- contentFor('right') %>
+
+<%- contentFor('middle') %>
+
+<div id="welcome_column">
+    
+  <div id="slides_column">
+      
+ 
+    <div id="slides_container">
+     
+      <% for (var i = 0; i < place_cards.length; i++) { %>
+      
+        <% var place_card = place_cards[i] %>
+        <div id="welcome_place_<%= i %>" class="welcome_place_card_container">
+          <div class="welcome_slide_container" style="position:relative">
+           
+            
+            <a href="/products/<%= place_card._id %>">
+              
+              <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[0]%> 1000w,
+               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[0]%> 750w,
+               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[0]%> 500w,
+               http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/tiny-<%= place_card.attachments_order[0]%> 345w"
+               sizes="(min-width:901px) 27.2vw,(min-width:500px) 40.2vw, (min-width: 320px) 55vw, 100vw" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %><% } %>"/>
+            </a>
+              
+            
+            <div id="colour_0_container">
+              <div class="welcome_colour_frame">
+                <div class="welcome_colour_swatch" style="background-color: <%= place_card.colours[0] %>;"></div>
+              </div>
+              <div class="welcome_colour_label" style="color:#000">  
+                <%= place_card.colour_0 %>    
+              </div>
+            </div>
+          
+           
+           
+           </div>
+         
+           <a href="/products/<%= place_card._id %>">
+         <div class="right_slide_col">
+           
+        <div style="width:100%;height:100%;z-index:99999999999999;position:absolute;">
+          <div style="height:100%;border-left:1px dotted white;"></div>
+        </div>
+       
+            <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[1]%> 100w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[1]%> 750w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[1]%> 500w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/small-<%= place_card.attachments_order[1]%> 400w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/tiny-<%= place_card.attachments_order[1]%> 345w"
+            sizes="(min-width:901px) 22.27vw, (min-width:500px) 10.4vw, (min-width: 320px) 45vw, 100vw" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %>"<% } %>/>
+        
+           
+         </div>            
+           </a>
+           
+           <a href="/products/<%= place_card._id %>">
+         <div class="right_slide_col">
+         
+        <div style="width:100%;height:100%;z-index:99999999999999;position:absolute;">
+          <div style="height:100%;border-left:1px dotted white;"></div>
+        </div>
+        
+            
+           <a href="/products/<%= place_card._id %>">
+            <img srcset="http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/medium-<%= place_card.attachments_order[2]%> 1000w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/display-<%= place_card.attachments_order[2]%> 750w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/thumb-<%= place_card.attachments_order[2]%> 500w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/small-<%= place_card.attachments_order[2]%> 400w,
+            http://mrdizzy.cloudant.com/test_ebay/<%= place_card._id %>/tiny-<%= place_card.attachments_order[2]%> 345w"
+            sizes="(min-width:901px) 22.27vw, (min-width:500px) 10.4vw, (min-width: 320px) 45vw, 100vw" <% if (!place_card.colours[1]) { %>style="background-color:<%= place_card.colours[0] %>"<% } %>/>
+           </a>
+         </div>   
+      </div>
+      </a>
+     <% } %>
+     </div>
+     </div>
+     
+     
+    <div id="slide_separator"></div>
+     
+    <div style="margin-top:-3em;"></div>
+     
+     
+    <h5>Beautiful place cards delivered in 2 working days&mdash;customise your font, colours and guest names&mdash;from just &pound;4</h5>
+    
+    <img src="/gfx/welcomeicons/line.svg" class="welcome_line"/>
+    
+    
+    
+    
+     <!--------------------------------------------------------------  FIRST THREE ICONS -------------------------------------->
+     
+     
+    <div id="box_1" class="welcome_box_container">
+  
+     <div class="welcome_icon_container">
+        <img src="/gfx/welcomeicons/printing3.svg"  class="welcome_icon" style="width:55px;opacity:0.6" />
+      </div>
+      
+      <h5>Customise colours to match your theme&hellip;</h5>
+      <p>Every design can be changed to any colour of your choice&mdash;you'll see the changes in your browser instantly, no reloading or buffering! </p>
+     
+    </div>
+     
+     
+     
+     
+    <div id="box_2"  class="welcome_box_container">
+    
+      <div class="welcome_icon_container"><img src="/gfx/welcomeicons/font.svg"  class="welcome_icon" /></div>
+     
+      <h5>Fonts to match<br/>your mood&hellip;</h5>
+      <p>Choose a typeface to match the mood of your theme&mdash;from clever and corporate to fun and frenetic! </p>
+       
+     </div>
+     
+  
+  
+  
+  
+    <div id="box_3"  class="welcome_box_container">
+        
+      <div class="welcome_icon_container"><img src="/gfx/welcomeicons/print.svg"  class="welcome_icon" /></div>
+      
+      <h5>Print instantly from your browser&mdash;FREE!</h5>
+      <p>&hellip;no waiting around downloading PDF files&mdash;print straight from your browser in perfect quality in seconds: you can also print from your phone or tablet with a wifi enabled printer, all free of charge!</p>
+    </div>
+     
+      
+    <div style="clear:both"></div>  
+    
+    
+    
+    <!------------------------------------------  ANIMATION ---------------------------------------------------->
+    
+    <div style="position:relative;width:100%;" id="desktop_animation">
+             <div style="position:absolute;z-index:9999999999999999999999999999999999999999999999999999999999999;top:15.5%;">
+        <img src="/gfx/welcomeicons/top_direction.svg" style="margin-left:10%" />
+        <div style="color:#222;margin-left:0.75%;width:17%;font:normal 1.1em 'OS Light Italic';">
+         <span style="font-family:'OS Condensed'">Change all.</span> These buttons are the same as those on each individual place card, but they will change every single place card!
+        </div>
+      </div>
+    
+        
+        
+        
+      <div style="position:absolute;z-index:9999999999999999999999999999999999999999999999999999999999999;top:45%;">
+        <img src="/gfx/welcomeicons/left_direction.svg" style="margin-left:10%" />
+        <div style="color:#222;margin-left:0.75%;width:14.5%;font:normal 1.1em 'OS Light Italic';">
+         <span style="font-family:'OS Condensed'">Place card view.</span> Here you can edit individual place cards. The <img src="/gfx/font_decrease.svg" style="display:inline-block;opacity:0.6;" /> and <img src="/gfx/font_increase.svg" style="width:15px;opacity:0.7;display:inline-block;" /> buttons next to each card increase or decrease the font size on and the <img src="/gfx/baseline_up.svg" style="width:15px;opacity:0.7;display:inline-block;" />  and  <img src="/gfx/baseline_down.svg" style="width:15px;opacity:0.7;display:inline-block;" />  buttons move the font up or down. Great for those names which are really short or really long!
+        </div>
+      </div>
+    
+      <div style="position:absolute;z-index:9999999999999999999999999999999999999999999999999999999999999;top:63%;right:7%;width:25%;">
+        <img src="/gfx/welcomeicons/bottom_direction.svg" style="margin-left:10%;" />
+        <div style="color:#222;margin-left:1%;font:normal 1.1em 'OS Light Italic';">
+         <span style="font-family:'OS Condensed'">Font panel.</span> Click on the font panel and choose from hundreds of fonts, then watch your place cards update straight away!
+        </div>
+      </div>
+    
+    
+    <div style="position:absolute;z-index:9999999999999999999999999999999999999999999999999999999999999;top:35%;right:0;width:25%;">
+        <img src="/gfx//welcomeicons/right_direction.svg" style="margin-right:10%;" />
+        <div style="color:#222;margin-left:1%;width:58%;font:normal 1.1em 'OS Light Italic';float:right;">
+         <span style="font-family:'OS Condensed'">Colour panel.</span> This is where you select from hundreds of colours and watch your place cards update instantly. No page loading!
+        </div>
+      </div>
+    
+     <div style="position:relative;width:70%;margin:0 auto;z-index:0;">
+       <img src="/gfx/welcomeicons/anim_1.gif" style="width:90%;margin:0 auto;display:inline-block;margin-top:5%;position:absolute;left:0;right:0;margin-left:auto;margin-right:auto;" />
+       <img src="/gfx/welcomeicons/screen.svg" style="width:100%;display:block;"/ > 
+       </div>
+       <img src="/gfx/welcomeicons/STAND.svg" style="margin:0 auto;display:block;"/ > 
+    </div>
+    
+     
+    
+    <!----------------------------------------------  SECOND THREE ICONS ---------------------------------------------------->
+     
+    <img src="/gfx/welcomeicons/line.svg"  id="second_line"  class="welcome_line" />
+      
+      
+      
+      
+    <div  id="box_4" class="welcome_box_container">
+  
+      <div class="welcome_icon_container">
+        <img src="/gfx/welcomeicons/designs.svg"  class="welcome_icon" />
+      </div>
+      
+      <h5>100s of designs to match your theme</h5>
+      <p>Whether it's 80s retro or traditional Victorian vintage, <a href="/products"><img src="/gfx/browse/open182.svg" style="width:20px;" /> <span style="text-decoration:underline">browse our designs</span></a> and a design to suit! </p>
+     
+     </div>
+     
+     
+     
+    <div id="box_5"  class="welcome_box_container">
+  
+     <div class="welcome_icon_container">
+        <img src="/gfx/welcomeicons/delivery.svg" class="welcome_icon" />
+      </div>
+      
+      <h5>Order before 1pm for next day delivery&hellip;</h5>
+      <p>If you want us to print your cards, order before 1pm to get them the next day</p>
+     
+    </div>
+     
+  
+    <div  id="box_6" class="welcome_box_container">
+  
+    <div class="welcome_icon_container">
+      <img src="/gfx/welcomeicons/editing.svg" class="welcome_icon" />
+    </div>
+    
+      <h5>Stress-free editing of guest names&hellip;</h5>
+      <p>Just paste a list of names into the quick entry box and hey presto, you suddenly have all your place cards automatically created&hellip;</p>
+     
+    </div>
+     
+
+    
+    <img src="/gfx/welcomeicons/line.svg" id="third_line" class="welcome_line" />   
+   
+    
+    <!------------------------------------------  ANIMATION ---------------------------------------------------->
+    
+    <div style="position:relative;width:100%;" id="desktop_animation">
+             <div style="position:absolute;z-index:9999999999999999999999999999999999999999999999999999999999999;top:17.5%;">
+        <img src="/gfx/welcomeicons/top_direction2.svg" style="margin-left:15%" />
+        <div style="color:#222;margin-left:0.75%;width:22%;font:normal 1.1em 'OS Light Italic';">
+         <span style="font-family:'OS Condensed'">Print yourself.</span> Click the printer icon if you'd like to print your own place cards&mdash;straight from your browser!
+        </div>
+      </div>
+    
+        
+        
+      <div style="position:absolute;z-index:9999999999999999999999999999999999999999999999999999999999999;top:63%;right:7%;width:25%;">
+        <img src="/gfx/welcomeicons/bottom_direction.svg" style="margin-left:10%;" />
+        <div style="color:#222;margin-left:1%;font:normal 1.1em 'OS Light Italic';">
+         <span style="font-family:'OS Condensed'">Quick edit.</span> To quickly create place cards, just enter a list of names here, separated by a line. For blank place cards use blank lines. Your place cards will be created automatically!
+        </div>
+      </div>
+    
+    
+    
+     <div style="position:relative;width:70%;margin:0 auto;z-index:0;">
+       <img src="/gfx/welcomeicons/anim2.gif" style="width:90%;margin:0 auto;display:inline-block;margin-top:5%;position:absolute;left:0;right:0;margin-left:auto;margin-right:auto;" />
+       <img src="/gfx/welcomeicons/screen.svg" style="width:100%;display:block;"/ > 
+       </div>
+       <img src="/gfx/welcomeicons/STAND.svg" style="margin:0 auto;display:block;"/ > 
+    </div>
+    
+      
+      
+      
+    
+    <img src="/gfx/welcomeicons/line.svg" id="third_line" class="welcome_line" />   
+    
+    
+    <div  id="box_4" class="welcome_box_container">
+  
+      <div class="welcome_icon_container">
+        <img src="/gfx/welcomeicons/file1.svg"  class="welcome_icon" style="width:55px;opacity:0.7" />
+      </div>
+      
+      <h5>Everything is saved automatically&hellip;</h5>
+      <p>You don't even need to login or create an account: as soon as you start entering names or changing colours, your design is saved automatically. Just go back to the same page in the same browser and you will find everything just how you left it! </p>
+     
+     </div>
+     
+     
+     
+    <div id="box_5"  class="welcome_box_container">
+  
+     <div class="welcome_icon_container">
+        <img src="/gfx/welcomeicons/mileage.svg" class="welcome_icon" style="width:55px;"/>
+      </div>
+      
+      <h5>Blazing fast user interface&hellip;</h5>
+      <p>It's horrible when you click something and you sit and wait for a response: from changing colours and fonts through to entering your guests' names, everything happens fast meaning you spend less time hanging around getting stressed!</p>
+     
+    </div>
+     
+  
+    <div  id="box_6" class="welcome_box_container">
+  
+    <div class="welcome_icon_container">
+      <img src="/gfx/welcomeicons/targeting13.svg" class="welcome_icon" style="width:60px;opacity:0.7" />
+    </div>
+    
+      <h5>Fine-tune each card&hellip;</h5>
+      <p>Adjust the size of each name quickly: make short names like "Lee" bigger and long names smaller with a few clicks&hellip;</p>
+     
+    </div>
+     
+
+    
+    <img src="/gfx/welcomeicons/line.svg" id="third_line" class="welcome_line" />   
+   
+<%- contentFor('javascripts') %>

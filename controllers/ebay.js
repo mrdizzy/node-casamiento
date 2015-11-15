@@ -84,29 +84,30 @@ exports.create = function(req, res) {
 
 exports.places = function(req, res, next) {
   var fonts = req.body.fonts
-  console.log(fonts)
   db.get(req.body.ids, function(err, docs) {
-    var result = _.map(docs.toArray(), function(product) {
-      for (var i=1; i< 5; i++) {
-        var background;
-        if(background = product["background-" + i]) {
-          var divs = background.split("</div>");
-          divs = _.map(divs, function(div) {
-            if (!(/class="nocolor"/.test(div))) 
-              div = div.replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");  
-            return div
-          })          
-          product["background-" + i] = divs.join("</div>")  
-        }
-      }    
-      return product
-    })
-    var groups = inGroupsOf(result, 6);
-    groups.groups = groups
+   // var result = _.map(docs.toArray(), function(product) {
+   //   for (var i=1; i< 5; i++) {
+   //     var background;
+   //     if(background = product["background-" + i]) {
+   //       var divs = background.split("</div>");
+   //       divs = _.map(divs, function(div) {
+   //         if (!(/class="nocolor"/.test(div))) 
+   //           div = div.replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");  
+   //         return div
+   //       })          
+   //       product["background-" + i] = divs.join("</div>")  
+   //     }
+   //   }    
+   //   return product
+   // })
+   docs = docs.toArray();
+   docs.docs = docs;
+ //   var groups = inGroupsOf(result, 6);
+   // groups.groups = groups
     res.render('ebay/name_places/multiple_place_cards', {
       layout: false,
       fonts: fonts,
-      locals: groups
+      locals: docs
     });
   })
 }

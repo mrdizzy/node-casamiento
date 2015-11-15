@@ -177,14 +177,18 @@ var Product = Backbone.Model.extend({
   },
   svgURL: function() {
     return "/svg/" + this.get("_id") + "/" + this.hex();
+    
   },
   hex: function() { // This provides a URL for calling the /svg function with the appropriate hex values
+  console.log("Monochromatic: ", this.get("monochromatic"))
+  console.log(this.toJSON())
     var monochromatic = this.get("monochromatic"),
       colour_0 = this.get("colours")[0].substring(1) // remove hash from #000000
     if (monochromatic) { // Handle shades of grey
       var first_shade = monochromatic[0]
       var rgb = $('.colour_0').css("background-color");
       var hex = this._rgb_to_hex(rgb, first_shade / 100)
+      console.log(colour_0 + "_" + hex.substring(1))
       return (colour_0 + "_" + hex.substring(1));
     }
     if (this.get("colours").length == 2) {

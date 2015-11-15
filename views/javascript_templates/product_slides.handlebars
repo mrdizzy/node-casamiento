@@ -1,19 +1,31 @@
-<div class="slide" style="width:100%;float:none;">
-  <div style="position:relative;">
-    
+<div id="product_slideshow">
     <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-3 1000w,
       http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-3 750w,
       http://mrdizzy.cloudant.com/test_ebay/{{_id}}/thumb-3 500w"
       sizes="(min-width:801px)62vw, (min-width:500px) 58.2vw, (min-width: 320px), 100vw" class="slide_image" />
-  </div>
+  <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-2 1000w,
+      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-2 750w,
+      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/thumb-2 500w"
+       sizes="(min-width:801px)62vw, (min-width:500px) 58.2vw, (min-width: 320px), 100vw" class="slide_image" />
+        <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-1 1000w,
+      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-1 750w,
+      http://mrdizzy.cloudant.com/test_ebay/{{_id}}/thumb-1 500w"
+      sizes="(min-width:801px)62vw, (min-width:500px) 58.2vw, (min-width: 320px), 100vw" class="slide_image" />
+        <img srcset="http://mrdizzy.cloudant.com/test_ebay/{{_id}}/medium-4 1000w,
+        http://mrdizzy.cloudant.com/test_ebay/{{_id}}/display-4 750w,
+        http://mrdizzy.cloudant.com/test_ebay/{{_id}}/thumb-4 500w"
+         sizes="(min-width:801px)62vw, (min-width:500px) 58.2vw, (min-width: 320px), 100vw" class="slide_image" />
 </div>
     
 <img src="/gfx/product_types/small/name_place_small.png" class="product_type_icon">
         
-<div class="slide" style="float:none;width:90%;">
+<div class="slide" style="float:none;width:90%;margin:0 auto;">
     <h1 class="product_name">{{name}}</h1>
     <div class="ornamental_line" style="float:none;display:block;"></div>
-     <p style="margin:0 auto;padding-top:1em;padding-bottom:1em;margin-right:1em;text-align:center;color:#000;font:normal 1em 'OS'">Tags: 
+    
+           
+  <h6 style="width:80%;margin:0 auto;text-align:justify;">{{{description}}}</h6>
+   <p style="margin:0 auto;padding-top:1em;padding-bottom:1em;margin-right:1em;text-align:center;color:#000;font:normal 1em 'OS'">Tags: 
            {{#each tags}}
            <a class="a_tag colour_0" href="/products/tags/{{.}}">{{.}}</a>
            {{/each}}
@@ -50,7 +62,6 @@
   
 <div id="description_container">
   <div class="shell"></div>
-  <h6>{{{description}}}</h6>
 </div>
     
 <div class="slide">
