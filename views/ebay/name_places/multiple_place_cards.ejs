@@ -27,7 +27,9 @@
   @font-face { font-family:"OS Light"; src: url('http://www.dreamsonpaper.co.uk/f/OSL.eot?') format('eot'), url('http://www.dreamsonpaper.co.uk/f/OSL.woff') format('woff'); }
   @font-face { font-family:"OS IL"; src: url('http://www.dreamsonpaper.co.uk/f/OSLI.eot?') format('eot'), url('http://www.dreamsonpaper.co.uk/f/OSLI.woff') format('woff'); }
   @font-face { font-family:"OS Condensed"; src: url('http://www.dreamsonpaper.co.uk/f/OSCB.eot?') format('eot'), url('http://www.dreamsonpaper.co.uk/f/OSCB.woff') format('woff'); }
-
+div.fontbox:nth-child(even) {
+	background-color:#EEE;
+}
   h2 {
 	  text-align:center; 
 	  font: normal 2em "TP", sans-serif; 
@@ -99,65 +101,15 @@
 		<img src="http://www.dreamsonpaper.co.uk/gfx/logo/casamiento_gry.svg" id="logo" />
 		<img src="http://www.dreamsonpaper.co.uk/gfx/logo/drms.svg" id="slogan" />
 			<div style="clear:both;border-top:1px solid black;"></div>
+
+      <h5 style="background-color:#EEE;font:italic  2em 'Josefin Slab';font-weight:300;margin:0 auto;width:70%;;padding:0.5em;text-align:center;color:#555;margin-top:0.5em;margin-bottom:0.5em;border-top-left-radius:30px;border-bottom-right-radius:30px;">Before you go any further, please <a href="http://cgi.ebay.co.uk/ws/eBayISAPI.dll?ViewItem&item=252171843785&ssPageName=STRK:MESE:IT" style="color:black;font-weight:300;">click here</a> for our buy-it-now listing where you can buy the same item in more quantities instantly at half the price&hellip;</h5>
 			
-      <h5 style="border-radius:25px;background-color:#EEE;font:normal  2em 'Josefin Slab';font-weight:300;margin:0 auto;width:50%;;padding:0.5em;text-align:center;color:#555;margin-top:0.5em;margin-bottom:0.5em;">Before you go any further, please <a href="" style="color:black;font-weight:300;">click here</a> for our buy-it-now listing where you can buy the same item in more quantities instantly at half the price&hellip;</h5>
-			
-      
-      <h5 style="font:normal  4em 'Josefin Slab';font-style:italic;font-weight:300;margin:0.5em;margin:0 auto;color:#555;border-bottom:1px solid black;text-align:center;">A. Choose your design&hellip;</h5>
-      <p>Hover over the colour(s) above to bring up the hues panel, then hover over the colour swatches to see the place card change colour instantly. Move through the different hues by clicking the left « and right » arrows.&hellip;</p>
-     
+			<div style="margin-top:2em;position:relative;border-top-right-radius:30px;border-top-left-radius:30px;background-color:#EEE">
+      <img src="http://www.dreamsonpaper.co.uk/gfx/welcomeicons/designs.svg" style="position:relative;margin-top:-2em;width:60px;display:block;margin:0 auto;" />
+      <h5 style="font:normal  3em 'Josefin Slab';font-style:normal;font-weight:300;margin:0.5em;margin:0 auto;color:#555;border-bottom:1px dashed black;text-align:center;">A. Choose your design&hellip;</h5>
+      <p style="width:60%;padding-top:1em;padding-bottom:1em;margin:0 auto;text-align:left;font-size:1.2em;font-family:'OS IL'">Select from our designs below by making a note of the number above the design so you can tell us which one you want.&hellip;</p>
+     </div>
     </div>
-	<!--
-		<h6 id="this_auction_is_for">This buy-it-now listing is for:</h6>
-
-		<table>
-			<tr>
-				<td>
-					<table class="inside_table">						
-						<tr>
-							<td class="table_key" id="table_key_format">Format:</td>              
-							<td class="table_value" id="table_value_format"><img src="http://www.dreamsonpaper.co.uk/gfx/specs/tent.png"></td>
-						</tr>
-						
-						<tr>
-							<td class="table_key" id="table_key_thickness">Card thickness:</td>
-							<td class="table_value" id="table_value_thickness">
-							
-								<div style="padding:1em">
-									<div class="weight" style="border-top:3px solid #000;"></div> 
-									<span style="font:normal 0.8em OS;">200gsm</span>
-								</div>
-								
-								<div style="padding:1em;padding-top:0;">
-									<div class="weight" style="border-top:7px solid #000;"></div> 
-									<span style="font:normal 0.8em OS;">300gsm</span>
-								</div>
-							</td>
-						</tr>
-						
-						<tr class="last_row">
-							<td class="table_key" id="table_key_texture">Card texture:</td>
-							<td class="table_value" id="table_value_texture">
-								<div class="texture"></div><br/>Smooth<br/>White
-							</td>
-						</tr>
-						
-					</table>
-				</td>
-				
-				<td>
-				
-					<div style="font: normal 0.75em 'OS';text-align:center;letter-spacing:0.1em;">PRICES STARTING FROM</div>
-					<h2 class="price_and_quantity" style="text-align:center;font-size:2em;margin:0;padding:0;">&pound;3.99</h2>
-					
-				
-
-				</td>
-				
-			</tr>
-		</table>
-		
-		-->
 
 	</div>
 	
@@ -179,14 +131,18 @@
 	
 	
 	
-		<div>
+		<div style="text-align:center;">
 			<% counter = 0 %>
 		  <% docs.forEach(function(doc) { %>
 		  <% counter = counter + 1%>
 		 <a href="http://www.dreamsonpaper.co.uk/products/images/<%= doc._id %>">
-		  	<div style="padding-top:0.5em;padding-bottom:0.25em;border-bottom:1px dotted black;display:inline-block;width:33%;text-align:center;font:normal 3em 'Josefin Slab';font-weight:100">
+		  	<div style="padding-bottom:0.25em;margin-bottom:0.25em;border:1px dotted black;border-top-left-radius:30px;border-bottom-right-radius:30px;display:inline-block;width:48%;text-align:center;font:normal 4em 'Josefin Slab';font-weight:300">
 		  	 <span style="color:#000">	<%= counter %>.<br/></span>
 		   <img src="http://mrdizzy.cloudant.com/test_ebay/<%= doc._id %>/medium-3" style="width:100%;" />	
+		   <img src="http://mrdizzy.cloudant.com/test_ebay/<%= doc._id %>/display-2" style="width:49%;display:block;float:left;" />
+		   
+		   <img src="http://mrdizzy.cloudant.com/test_ebay/<%= doc._id %>/display-1" style="width:49%;display:block;float:right;" />
+		   <div style="clear:both"></div>
 		  	</div>
 		  	</a>
 		  <% }) %>
@@ -195,13 +151,16 @@
 		
 		
 		
-		
-      <h5 style="font:normal  4em 'Josefin Slab';font-style:italic;font-weight:300;margin:0.5em;margin:0 auto;color:#555;border-bottom:1px solid black;text-align:center;margin-bottom:1em;">B. Choose your font&hellip;</h5>
+			<div style="margin-top:2em;position:relative;border-top-right-radius:30px;border-top-left-radius:30px;background-color:#EEE;border-bottom:1px dotted black;">
+      <img src="http://www.dreamsonpaper.co.uk/gfx/welcomeicons/font.svg" style="position:relative;margin-top:-2em;width:60px;display:block;margin:0 auto;" />
+      <h5 style="font:normal  3em 'Josefin Slab';font-style:normal;font-weight:300;margin:0.5em;margin:0 auto;color:#555;border-bottom:1px dashed black;text-align:center;">B. Choose your font&hellip;</h5>
+      <p style="width:60%;padding-top:1em;padding-bottom:1em;margin:0 auto;text-align:left;font-size:1.2em;font-family:'OS IL'">Look at the fonts below and tell us the name of the font you have chosen&hellip;</p>
+     </div>
 		
 			<div id="fonts" style="text-align:center;">
 	 <% fonts.forEach(function(font) { %>
 		
-		<div style="display:inline-block;vertical-align:middle;height:50px;padding-top:20px;width:24%;border-bottom: 1px solid black;">
+		<div class="fontbox" style="display:inline-block;vertical-align:middle;height:50px;padding-top:20px;width:24%;border-bottom: 1px solid black;">
 			<img src="http://www.dreamsonpaper.co.uk/fonts/<%= font %>.svg" />
 		
 		</div>
@@ -209,9 +168,33 @@
 		<% }) %>
 		<div style="clear:both"></div>
 		</div>
+		
+		
+			<div style="margin-top:2em;position:relative;border-top-right-radius:30px;border-top-left-radius:30px;background-color:#EEE;border-bottom:1px dotted black;">
+      <img src="http://www.dreamsonpaper.co.uk/gfx/welcomeicons/printing3.svg" style="opacity:0.6;position:relative;margin-top:-2em;width:60px;display:block;margin:0 auto;" />
+      <h5 style="font:normal  3em 'Josefin Slab';font-style:normal;font-weight:300;margin:0.5em;margin:0 auto;color:#555;border-bottom:1px dashed black;text-align:center;">C. Choose your colour&hellip;</h5>
+      <p style="width:60%;padding-top:1em;padding-bottom:1em;margin:0 auto;text-align:left;font-size:1.2em;font-family:'OS IL'">Hover or tap on the colour below to bring up the hues panel, then hover over the colour swatches to see the colours available. Move through the different hues by clicking the left « and right » arrows, then make a note of the colour name you would like&hellip;</p>
+     </div>
+     <div style="width:50%;height:100px;margin:0 auto;margin-top:1em;" id="colourchoose"></div>
+		<script>
+			
+  
+  $('#colourchoose').colorPicker({
+        callback: function(index, hex) {
+        
+        },
+        index: 0
+      });
+		</script>
+		
 </div>
 		
 		
+			<div style="margin-top:2em;position:relative;border-top-right-radius:30px;border-top-left-radius:30px;background-color:#EEE;border-bottom:1px dotted black;">
+      <img src="http://www.dreamsonpaper.co.uk/gfx/envelope4.svg" style="opacity:0.6;position:relative;margin-top:-2em;width:60px;display:block;margin:0 auto;" />
+      <h5 style="font:normal  3em 'Josefin Slab';font-style:normal;font-weight:300;margin:0.5em;margin:0 auto;color:#555;border-bottom:1px dashed black;text-align:center;">D. Send us a message with your names&hellip;</h5>
+      <p style="width:60%;padding-top:1em;padding-bottom:1em;margin:0 auto;text-align:left;font-size:1.2em;font-family:'OS IL'">Once you've made all your choices, send them to us in an eBay message along with a list of names and your place cards will be printed and delivered!</p>
+     </div>
 		
 		
 		

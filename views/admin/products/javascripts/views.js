@@ -30,7 +30,7 @@ var ProductView = Backbone.View.extend({
     cpv.render()
   },
   render: function() {
-    this.$el.html(this.model.get("_id") + " | <span class='destroy'>destroy</span>");
+    this.$el.html(this.model.get("_id") + " | " + '<a href="/products/images/' + this.model.get("_id") + '">image</a>' + "<span class='destroy'>destroy</span>");
     return this;
   }
 });

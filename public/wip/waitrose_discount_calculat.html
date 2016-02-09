@@ -3,7 +3,7 @@
 <!-- This just calculates the total of 15% of discount --> 
 <body>
 <textarea id="items"></textarea>
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   </body>
   
 <script>
@@ -14,8 +14,11 @@
       var total = 0;
       lines.forEach(function(line) {
           total = total +parseFloat(line);
+          
       })
-      console.log(total - ((15/100) * total))
+      var remove = ((15/100) * total)
+      total = total - remove;
+      console.log(total)
     })
 </script>
 </html>

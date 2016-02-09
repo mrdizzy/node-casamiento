@@ -133,7 +133,7 @@ var test_thankyou = {
          "L_PAYMENTREQUEST_0_ITEMWIDTHVALUE": "   0.00000",
          "L_PAYMENTREQUEST_0_ITEMHEIGHTVALUE": "   0.00000"
       }],
-      "GetExpressCheckoutDetailsResponseErrors": [ ]
+      "GetExpressCheckoutDetailsResponseErrors": []
    }
 }
 
@@ -146,10 +146,10 @@ module.exports = function(app) {
          locals: test_thankyou
       })
    })
-   app.get("/xmas",require("./../controllers/landing").xmas)
+   app.get("/xmas", require("./../controllers/landing").xmas)
    app.get("/svg/:id/:colours", require("./../controllers/svg").show)
    app.get("/svg_check", require("./../controllers/svg").check)
-app.post("/email", require("./../controllers/email").create)
+   app.post("/email", require("./../controllers/email").create)
    app.get("/svg/:id", require("./../controllers/svg").show)
    app.resource("payments", require("./../controllers/payments"))
    app.resource("fonts", require("./../controllers/fonts"))
@@ -169,7 +169,7 @@ app.post("/email", require("./../controllers/email").create)
 
    // Admin  
    app.get("/admin/products", require('./../controllers/admin/products').index);
-app.get("/products/images/:id", require('./../controllers/products').for_ebay)
+   app.get("/products/images/:id", require('./../controllers/products').for_ebay)
    app.get("/admin/orders", require('./../controllers/admin/orders').index);
    app.patch("/admin/orders/:id", require('./../controllers/admin/orders').patch);
    app.delete("/admin/orders/:id", require('./../controllers/admin/orders').destroy);
