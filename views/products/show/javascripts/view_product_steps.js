@@ -12,6 +12,8 @@ var StepView = Backbone.View.extend({
     this.listenTo(this.guests, 'destroy', this._renderQuickGuests)
     this.listenTo(thisProduct, 'change:weight', this.renderWeight);
     this.listenTo(thisProduct, 'change:weight', this.renderQtyAndPrice);
+    
+    this.listenTo(thisProduct, 'change:discount', this.renderQtyAndPrice);
     this.listenTo(this.guests, "add", this.renderQtyAndPrice)
     this.listenTo(this.guests, "remove", this.renderQtyAndPrice)
     this.listenTo(this.guests, "removeMultiple", this.renderQtyAndPrice)
@@ -26,7 +28,9 @@ var StepView = Backbone.View.extend({
     "click .texture": "updateTexture",
     "click .weight": "updateWeight",
     "focus #quick_guests": "selectQuickGuests",
+    "focus #discount_code": "selectDiscount",
     "blur #quick_guests": "hideQuickGuests",
+    "blur #discount_code": "applyDiscount",
     "keyup #quick_guests": "newKeyPressGuests",
     "paste #quick_guests": "newKeyPressGuests"
   },
@@ -36,6 +40,13 @@ var StepView = Backbone.View.extend({
   selectQuickGuests: function() {
     $('body').addClass("quick_guests_selected");
     if (casamiento_test_for_mobile) $('html,body').scrollTop($("#quick_guests").offset().top)
+  },
+  selectDiscount: function(e) {
+    $(e.currentTarget).val("");
+  },
+  applyDiscount: function(e) {
+    var discount = $(e.currentTarget).val();
+    thisProduct.set("discount", discount);
   },
   hideQuickGuests: function() {
     $('body').removeClass("quick_guests_selected");

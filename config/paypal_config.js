@@ -2,7 +2,8 @@
 // Then look left for the Sandbox menu and select "Accounts"
 // Buyer: jenny@dizzy.co.uk Password: Jenny333
 // In development the return URL needs to be correct for testing to work, depending on the environment. This is usually
-// localhost:3000 but if using cloud9 editor then it should be http://node-casamiento-mrdizzy.c9.io
+// localhost:3000 but if using cloud9 editor then it should be http://node-casamiento-mrdizzy.c9.io. Also make sure the ENV variable
+// NODE_ENV is set to "test" to avoid session errors
 
 var PayPal = require('node-paypal-api-nv'),
 // When using sandbox or production make sure the api.paypal.com host is set correctly in the nv paypal module

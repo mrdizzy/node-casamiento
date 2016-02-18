@@ -21,6 +21,7 @@ var Product = Backbone.Model.extend({
     this.on("change:colours", this.saveProduct)
     this.on("adjustBaseline", this._adjustBaseline)
     this.on("adjustFontSize", this._adjustFontSize)
+    this.on("change:discount", this.calculatePrice)
     this.listenTo(this.guests, "change", this.saveGuests)
     this.listenTo(this.guests, "add", this.saveGuests)
     this.listenTo(this.guests, "add", this.calculatePrice)
@@ -70,6 +71,9 @@ var Product = Backbone.Model.extend({
     $('.colour_1').css("background-color", this.get("colours")[1])
   },
   calculatePrice: function() {
+    if(this.get("discount") == "CLAUDIA") {
+    this.set("pounds",0).set("pence", "01").set("total", 0.01)
+    } else {
     var price,
       quantity = this.quantity(),
       total;
@@ -120,7 +124,9 @@ var Product = Backbone.Model.extend({
     }
     total = total.toFixed(2);
     split_total = total.toString().split(".")
+    
     this.set("pounds", split_total[0]).set("pence", split_total[1]).set("total", total)
+    }
   },
   toggleCuttingMarks: function() {
     var cutting_marks = this.get("cutting_marks") ? false : true;
@@ -200,34 +206,46 @@ var Product = Backbone.Model.extend({
     return this.get("guests").length
   },
   makePurchase: function() {
-    if (this.quantity() > 7) {
-      $.form('/payments', {
-        "object": JSON.stringify(this.toJSON()),
-        "L_PAYMENTREQUEST_0_AMT0": (this.get("total") / this.quantity()).toFixed(2),
-        "PAYMENTREQUEST_0_AMT":(this.get("total") * 1).toFixed(2),
-        "L_PAYMENTREQUEST_0_QTY0": this.quantity(),
-        "L_PAYMENTREQUEST_0_NAME0": this.get("name"),
-        "L_PAYMENTREQUEST_0_DESC0": "Place cards"
-      }).submit();
+    var discount = this.get("discount");
+    if(discount == "CLAUDIA") {
+      this.set("total", "0.01")
     }
-    else {
-      var price_each = (this.get("total") / 8).toFixed(2);
-      var qty = this.quantity();
-      var place_cards_total = price_each * this.quantity();
-      var minimum_charge = this.get("total") - place_cards_total;
-      $.form('/payments', {
-        "object": JSON.stringify(this.toJSON()),
-        "L_PAYMENTREQUEST_0_AMT0": price_each,
-        "PAYMENTREQUEST_0_AMT": (this.get("total") * 1).toFixed(2),
-        "L_PAYMENTREQUEST_0_QTY0": this.quantity(),
-        "L_PAYMENTREQUEST_0_NAME0": this.get("name"),
-        "L_PAYMENTREQUEST_0_DESC0": "Place cards",
-        "L_PAYMENTREQUEST_0_AMT1": minimum_charge,
-        "L_PAYMENTREQUEST_0_QTY1": 1,
-        "L_PAYMENTREQUEST_0_NAME1": "Charge",
-        "L_PAYMENTREQUEST_0_DESC1": "Minimum handling charge"
-      }).submit();
-    }
+    $.form('/payments', {
+  "object": JSON.stringify(this.toJSON()),
+  "L_PAYMENTREQUEST_0_AMT0": this.get("total"),
+  "PAYMENTREQUEST_0_AMT":this.get("total"),
+  "L_PAYMENTREQUEST_0_QTY0": 1,
+  "L_PAYMENTREQUEST_0_NAME0": this.get("name"),
+  "L_PAYMENTREQUEST_0_DESC0": this.quantity() + " Place cards"
+}).submit();
+  // if (this.quantity() > 7) {
+  //   $.form('/payments', {
+  //     "object": JSON.stringify(this.toJSON()),
+  //     "L_PAYMENTREQUEST_0_AMT0": (this.get("total") / this.quantity()).toFixed(2),
+  //     "PAYMENTREQUEST_0_AMT":(this.get("total") * 1).toFixed(2),
+  //     "L_PAYMENTREQUEST_0_QTY0": this.quantity(),
+  //     "L_PAYMENTREQUEST_0_NAME0": this.get("name"),
+  //     "L_PAYMENTREQUEST_0_DESC0": "Place cards"
+  //   }).submit();
+  // }
+  // else {
+  //   var price_each = (this.get("total") / 8).toFixed(2);
+  //   var qty = this.quantity();
+  //   var place_cards_total = price_each * this.quantity();
+  //   var minimum_charge = this.get("total") - place_cards_total;
+  //   $.form('/payments', {
+  //     "object": JSON.stringify(this.toJSON()),
+  //     "L_PAYMENTREQUEST_0_AMT0": price_each,
+  //     "PAYMENTREQUEST_0_AMT": (this.get("total") * 1).toFixed(2),
+  //     "L_PAYMENTREQUEST_0_QTY0": this.quantity(),
+  //     "L_PAYMENTREQUEST_0_NAME0": this.get("name"),
+  //     "L_PAYMENTREQUEST_0_DESC0": "Place cards",
+  //     "L_PAYMENTREQUEST_0_AMT1": minimum_charge,
+  //     "L_PAYMENTREQUEST_0_QTY1": 1,
+  //     "L_PAYMENTREQUEST_0_NAME1": "Charge",
+  //     "L_PAYMENTREQUEST_0_DESC1": "Minimum handling charge"
+  //   }).submit();
+  // }
   },
   // Designs can have colours that are a darker shade of a main colour. This is implemented
   // using a transparent PNG that has a black tint (100% pure black that has an opacity of between
