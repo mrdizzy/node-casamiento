@@ -1,0 +1,535 @@
+<!doctype html>
+<meta name="viewport" content="initial-scale=1,user-scalable=no">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans|Lora:400,400italic' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+	var az = "SC",
+		bz = "RI",
+		cz = "PT",
+		dz = "SR",
+		ez = "C=",
+		fz = "htt",
+		gz = "ps://",
+		pp = "p://";
+	var hz = ".com";
+	var zz = ".co.uk"
+
+	var fz0 = "ajax.googleapis" + hz + "/ajax/libs/jquery/1.9.1/jquery.min.js";
+	var tz2 = "www.casamiento.co.uk" + "/javascripts/libraries/in_groups_of.js";
+	var zz0 = "cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js";
+	document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
+	document.write("</" + az + bz + cz + ">");
+	document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + zz0 + ">");
+	document.write("</" + az + bz + cz + ">");
+	document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + tz2 + ">");
+	document.write("</" + az + bz + cz + ">");
+	document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + pp + fz1 + ">");
+	document.write("</" + az + bz + cz + ">");
+</script>
+
+<script>
+	var colour_lookup = {
+		"#bb3385": "Medium red violet",
+		"#873260": "Boysenberry",
+		"#c54b8c": "Mulberry",
+		"#ff43a4": "Wild Strawberry",
+		"#da3287": "Deep cerise",
+		"#872657": "Dark raspberry",
+		"#f9429e": "Rose bonbon",
+		"#ff69b4": "Hot pink",
+		"#e25098": "Raspberry pink",
+		"#ff55a3": "Brilliant rose",
+		"#673147": "Old mauve",
+		"#ec3b83": "Cerise pink",
+		"#f75394": "Violet Red",
+		"#b03060": "Rich maroon",
+		"#f64a8a": "French rose",
+		"#b3446c": "Raspberry rose",
+		"#e75480": "Dark pink",
+		"#de5d83": "Blush",
+		"#de3163": "Cherry",
+		"#f56991": "Light Crimson",
+		"#ff355e": "Radical Red",
+		"#fb607f": "Brink pink",
+		"#fc6c85": "Wild Watermelon",
+		"#cb4154": "Brick red",
+		"#722f37": "Wine",
+		"#cc4e5c": "Dark terra cotta",
+		"#893f45": "Cordovan",
+		"#e66771": "Light carmine pink",
+		"#e4717a": "Candy pink",
+		"#933d41": "Smokey topaz",
+		"#ab4e52": "Rose vale",
+		"#ef3038": "Deep carmine pink",
+		"#d73b3e": "Jasper",
+		"#cd5c5c": "Indian red",
+		"#ff4040": "Coral red",
+		"#321414": "Seal brown",
+		"#3c1414": "Dark sienna",
+		"#cc3333": "Persian red",
+		"#701c1c": "Persian plum",
+		"#a52a2a": "Red brown",
+		"#922724": "Vivid auburn",
+		"#ff6961": "Pastel red",
+		"#b94e48": "Deep chestnut",
+		"#ff5349": "Red Orange",
+		"#eb4c42": "Carmine pink",
+		"#e03c31": "CG Red",
+		"#fd5e53": "Sunset Orange",
+		"#f88379": "Coral pink",
+		"#e34234": "Vermilion",
+		"#af4035": "Pale carmine",
+		"#fe6f5e": "Bitter sweet",
+		"#592720": "Caput mortuum",
+		"#79443b": "Bole",
+		"#8a3324": "Burnt umber",
+		"#ff6347": "Tomato",
+		"#cd5b45": "Dark coral",
+		"#e2725b": "Terra cotta",
+		"#ff5a36": "Portland Orange",
+		"#ff6e4a": "Outrageous Orange",
+		"#e97451": "Burnt sienna",
+		"#ff8c69": "Salmon",
+		"#ff7f50": "Coral",
+		"#ffa07a": "Light salmon",
+		"#da8a67": "Pale copper",
+		"#ff9966": "Atomic tangerine",
+		"#ff8243": "Mango Tango",
+		"#d68a59": "Raw Sienna",
+		"#6f4e37": "Coffee",
+		"#bb6528": "Ruddy brown",
+		"#80461b": "Russet",
+		"#d99058": "Persian orange",
+		"#f4a460": "Sandy brown",
+		"#b87333": "Copper",
+		"#e08d3c": "Tiger eye",
+		"#e5aa70": "Fawn",
+		"#cd7f32": "Bronze",
+		"#4b3621": "Café noir",
+		"#654321": "Otter brown",
+		"#ffa343": "Neon Carrot",
+		"#e1a95f": "Earth yellow",
+		"#ffae42": "Yellow Orange",
+		"#e3a857": "Indian yellow",
+		"#ffc87c": "Topaz",
+		"#ffb347": "Pastel orange",
+		"#b78727": "California Gold",
+		"#6c541e": "Field drab",
+		"#cba135": "Satin sheen gold",
+		"#e5b73b": "Meat brown",
+		"#f8d568": "Orange Yellow",
+		"#ffdb58": "Mustard",
+		"#fada5e": "Stil de grain yellow",
+		"#cfb53b": "Old gold",
+		"#c5b358": "Vegas gold",
+		"#e9d66b": "Hansa yellow",
+		"#ffe135": "Banana yellow",
+		"#ecd540": "Sand storm",
+		"#b5a642": "Brass",
+		"#fbec5d": "Maize",
+		"#e4d96f": "Straw",
+		"#fff44f": "Lemon Yellow",
+		"#fcf75e": "Icterine",
+		"#ffff66": "Mellow Yellow",
+		"#d1e231": "Pear",
+		"#4b5320": "Army green",
+		"#bdda57": "June bud",
+		"#a4c639": "Android Green",
+		"#6b8e23": "Olive Drab",
+		"#9acd32": "Yellow green",
+		"#556b2f": "Dark olive green",
+		"#b2ec5d": "Inch worm",
+		"#507d2a": "Sap green",
+		"#21421e": "Myrtle",
+		"#228b22": "Forest green",
+		"#32cd32": "Lime green",
+		"#76ff7a": "Screamin Green",
+		"#1e4d2b": "Cal Poly Pomona green",
+		"#50c878": "Paris Green",
+		"#3cd070": "UFO Green",
+		"#2e8b57": "Sea green",
+		"#3cb371": "Medium sea green",
+		"#177245": "Dark spring green",
+		"#123524": "Phthalo green",
+		"#66ddaa": "Medium aquamarine",
+		"#3eb489": "Mint",
+		"#7fffd4": "Aqua marine",
+		"#45cea2": "Shamrock",
+		"#40826d": "Viridian",
+		"#30ba8f": "Mountain Meadow",
+		"#29ab87": "Jungle green",
+		"#18453b": "MSU Green",
+		"#30d5c8": "Turquoise",
+		"#43b3ae": "Verdigris",
+		"#48d1cc": "Medium turquoise",
+		"#7df9ff": "Electric blue",
+		"#367588": "Teal blue",
+		"#73c2fb": "Maya blue",
+		"#4997d0": "Celestial blue",
+		"#4682b4": "Steel blue",
+		"#318ce7": "Bleu de France",
+		"#26619c": "Lapis lazuli",
+		"#417dc1": "Tufts Blue",
+		"#5b92e5": "United Nations blue",
+		"#6495ed": "Corn flower blue",
+		"#446ccf": "Han blue",
+		"#2a52be": "Cerulean blue",
+		"#4169e1": "Royal blue",
+		"#4166f5": "Ultramarine blue",
+		"#324ab2": "Violet Blue",
+		"#23297a": "Saint Patrick Blue",
+		"#191970": "Midnight blue",
+		"#5a4fcf": "Iris",
+		"#6050dc": "Majorelle Blue",
+		"#6a5acd": "Slate blue",
+		"#483d8b": "Dark slate blue",
+		"#7b68ee": "Medium slate blue",
+		"#9457eb": "Lavender indigo",
+		"#7851a9": "Royal purple",
+		"#69359c": "Purple Heart",
+		"#9955bb": "Deep lilac",
+		"#9932cc": "Dark orchid",
+		"#b666d2": "Rich lilac",
+		"#df73ff": "Heliotrope",
+		"#ba55d3": "Medium orchid",
+		"#fc74fd": "Pink Flamingo",
+		"#ff77ff": "Fuchsia pink",
+		"#c154c1": "Deep fuchsia",
+		"#ff6fff": "Ultra pink",
+		"#682860": "Palatinate purple",
+		"#bd33a4": "Byzantine",
+		"#702963": "Byzantium",
+		"#fe4eda": "Purple pizzazz",
+		"#ff66cc": "Rose pink",
+		"#b53389": "Fandango",
+		"#ca2c92": "Royal fuchsia",
+		"#fe59c2": "Neon fuchsia",
+	}
+</script>
+<style type="text/css">
+	@font-face {
+		font-family: "TP";
+		src: url('http://www.casamiento.co.uk/f/t.eot?') format('eot'), url('http://www.casamiento.co.uk/f/t.woff') format('woff');
+	}
+	
+	#inner_page_container_casamiento {
+		min-width: 600px;
+		color: #000;
+	}
+	
+	.nc {
+		border-radius: 50%;
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		margin: 5px;
+		background: darkred;
+		color: white;
+		text-align: center;
+		font: 12px 'Open Sans', sans-serif;
+		line-height: 20px;
+	}
+	
+	#main_logo_casamiento {
+		width: 25%;
+		float: left;
+		padding-left: 20px;
+	}
+	
+	#main_slogan_casamiento {
+		float: right;
+	}
+	
+	#main_slogan_casamiento img {
+		width: 200px;
+	}
+	
+	.left_column {
+		float: left;
+		width: 40%;
+	}
+	
+	.right_column {
+		margin-left: 40%;
+		text-align: center;
+	}
+	
+	ul {
+		width: 70%;
+		text-align: justify;
+		margin: 0 auto;
+		font-family: 'Lora';
+	}
+	
+	li {
+		padding-bottom: 1em;
+	}
+	
+	img {
+		width: 100%;
+	}
+	
+	.colour_0 {
+		background-color: darkred;
+	}
+	
+	.mono {
+		display: inline-block;
+		width: 40%;
+		max-width: 300px;
+		min-width: 220px;
+	}
+	
+	table {
+		border-collapse: collapse;
+		border: 1px dotted grey;
+	}
+	
+	p {
+		font-family: 'Open Sans';
+		letter-spacing: -0.02em;
+		padding: 0;
+		margin: 0;
+		padding-top: 0.5em;
+	}
+	
+	td {
+		border-collapse: collapse;
+		border: 1px dotted grey;
+		text-align: center;
+	}
+	
+	.step {
+		font-family: 'Lora';
+		font-weight: 400;
+		font-size: 14pt;
+		letter-spacing: 0;
+	}
+</style>
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div id="inner_page_container_casamiento">
+
+	<div class="caz" id="header_container_casamiento" style="padding-top:0.5em;border-bottom:1px solid #000;margin:0;padding-bottom:0.5em;text-align:center;">
+
+		<div id="main_logo_casamiento" class="caz">
+			<img src="http://www.casamiento.co.uk/gfx/logo/casamiento_black.svg" style="width:202px;" id="logo" class="caz">
+		</div>
+
+		<img src="http://www.casamiento.co.uk/gfx/ebay/product_types/invitation_small.png" style="width:150px;margin-top:1em;" />
+		<div id="main_slogan_casamiento" class="caz"><img src="http://www.casamiento.co.uk/gfx/logo/drms.svg"></div>
+
+		<div style="clear:both;"></div>
+
+	</div>
+
+	<div>
+
+
+		<div style="width:99%;padding-left:0.1%;">
+			<img src="/gfx/ebay/invitations/ace/COLLAGE_RIBBON.jpg" class="caz_100" style="display:block;" />
+		</div>
+	</div>
+	<div style="clear:both;">
+
+
+
+		<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+		<div class="left_column">
+
+
+			<div class="spc" style="clear:both">
+
+			</div>
+
+			<h5 style="margin:0 auto;width:75%;text-align:center;font-family:'Lora';font-style:italic;font-weight:400;font-size:20pt;">"Beautiful <span style="font-family:'TP';font-size:18pt;font-style:normal;"> 	invites, brilliant communication....I wish all sellers were like David</span></h5>
+
+
+			<img src="/gfx/ebay/new/line.svg" style="width:66%;padding-top:2em;display:block;margin:0 auto;text-align:center;padding-bottom:2em;" />
+
+
+			<h5 style="margin:0 auto;width:75%;text-align:center;font-family:'Lora';font-style:italic;font-weight:400;font-size:20pt;">"Quality ,<span style="font-family:'TP';font-size:18pt;font-style:normal;"> product, better than described and great communication. Thanks"</span></h5>
+
+
+			<img src="/gfx/ebay/new/line.svg" style="width:66%;padding-top:2em;display:block;margin:0 auto;text-align:center;padding-bottom:2em;" />
+
+
+			<h5 style="margin:0 auto;width:75%;text-align:center;font-family:'Lora';font-style:italic;font-weight:400;font-size:20pt;">"Amazing,<span style="font-family:'TP';font-size:18pt;font-style:normal;"> my invites are beautiful and couldn't have asked for  anything better!!!&hellip;"</span></h5>
+
+
+			<img src="/gfx/ebay/new/line.svg" style="width:66%;padding-top:2em;display:block;margin:0 auto;text-align:center;padding-bottom:2em;" />
+
+
+			<h5 style="margin:0 auto;width:75%;text-align:center;font-family:'Lora';font-style:italic;font-weight:400;font-size:20pt;">"So pleased<span style="font-family:'TP';font-size:18pt;font-style:normal;"> 
+			
+			
+with the quality! Amazing value and they look so expensive!"</span></h5>
+			<img src="/gfx/ebay/new/line.svg" style="width:66%;padding-top:2em;display:block;margin:0 auto;text-align:center;padding-bottom:2em;" />
+			<ul>
+				<li>
+					Matching envelopes printed with your monogram bearing your names. Each envelope can also be individually addressed with your guest names and addresses</li>
+				<div style="text-align:center;margin-bottom:1em;">
+					<img src="/gfx/ebay/new/shell.svg" style="width:25px;" />
+				</div>
+				<li> A wax printing process called "solid ink" that makes the ink feel like it is slightly raised and products colours that are solid, bright and bold and difficult to smudge unlike inkjet printing.</li>
+				<div style="text-align:center;margin-bottom:1em;">
+					<img src="/gfx/ebay/new/shell.svg" style="width:25px;" />
+				</div>
+				<li> For fold-out invitations, vellum inserts are provided that have a faint watermark of your monogram: these will take your breath away but they also serve as a practical way of stopping the ink on the inside of the invitation impressing on the blank
+					side during posting when the invitation is folded (something not many people think about!)</li>
+			</ul>
+		</div>
+
+
+
+
+		<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+		<div class="right_column" style="text-align:left;">
+
+
+			<div style="text-align:center;border-bottom:1px solid grey;padding-top:1em;"><img src="/gfx/ebay/new/diamond.svg" style="width:50px;" /></div>
+
+			<p class="step">
+				<img src="/gfx/ebay/new/1.svg" style="width:45px;display:inline-block;float:left;"><span style="font-weight:bold;font-size:14pt;font-style:italic;">Step One</span>&mdash;Choose an embellishment</p>
+			<p style="font-size:11pt;margin-left:3em;margin-right:5em;">
+				<br/> Give your invitations that little extra special touch by adding one of our embellishments. From a simple paper wrap <span style="font=style:italic;">(best value for money)</span> to a pearl buckle <span style="font=style:italic;">(expensive but very classy),</span>				the choice is yours:</p>
+
+
+			<div style="text-align:center;">
+				<div style="display:inline-block;text-align:center;width:24%;"><img src="/gfx/ebay/new/ribbon.jpg" style="width:100%;" />
+					<span style="font-family:'Lora';font-size:12pt;font-weight:400;font-style:italic;">Ribbon bow</span>
+				</div>
+
+				<div style="display:inline-block;text-align:center;width:24%;"><img src="/gfx/ebay/new/pearl.jpg" style="width:100%;" />
+					<span style="font-family:'Lora';font-size:12pt;font-weight:400;font-style:italic;">Pearl buckle</span>
+				</div>
+
+				<div style="display:inline-block;text-align:center;width:24%;"><img src="/gfx/ebay/new/curl.jpg" style="width:100%;" />
+					<span style="font-family:'Lora';font-size:12pt;font-weight:400;font-style:italic;">Curling ribbon</span>
+				</div>
+				<div style="display:inline-block;text-align:center;width:24%;"><img src="/gfx/ebay/new/WRAP.jpg" style="width:100%;" />
+					<span style="font-family:'Lora';font-size:12pt;font-weight:400;font-style:italic;">Paper wrap</span>
+				</div>
+			</div>
+
+
+			<div style="text-align:center;border-bottom:1px dotted grey;border-top:1px solid grey;margin-top:2em;"><img src="/gfx/ebay/new/format.svg" style="width:40px;" /></div>
+
+			<p class="step">
+				<img src="/gfx/ebay/new/2.svg" style="width:45px;display:inline-block;float:left;"><span style="font-weight:bold;font-size:14pt;font-style:italic;">Step Two</span>&mdash;Choose your card format</p>
+			<p style="font-size:11pt;margin-left:3em;margin-right:5em;">
+				<br/>Choose whether you would like flat invitations, or invitations that open out. All our cards are printed on 300gsm smooth white card.</p>
+
+
+
+			<div style="text-align:center">
+				<img src="/gfx/ebay/new/flat.svg" style="width:24%;margin-right:1em;margin-bottom:1em;max-width:7em;" />
+				<img src="/gfx/ebay/new/foldout.svg" style="margin-left:1em;margin-bottom:1em;width:24%;max-width:7em;" />
+
+			</div>
+
+			<div style="text-align:center;border-bottom:1px dotted grey;border-top:1px solid grey;padding:0.5em;margin-top:2em;"><img src="/gfx/ebay/new/aa.svg" style="width:50px;" /></div>
+
+			<p class="step">
+				<img src="/gfx/ebay/new/3.svg" style="width:45px;display:inline-block;float:left;"><span style="font-weight:bold;font-size:14pt;font-style:italic;">Step Three</span>&mdash;Choose your monogram</p>
+			<p style="font-size:11pt;margin-left:3em;margin-right:5em;">
+				Each design comes with your own unique monogram. Bearing the name of you and your partner, and underscored with the date or location of your ceremony, it provides the ultimate touch of understated sophistication.</p>
+
+			<p style="font-size:11pt;margin-left:3em;margin-right:5em;">
+				We have many styles of monogram available, the only problem you'll have is deciding which one is for you:</p>
+
+			<table style="margin:0 auto;margin-top:1em;">
+				<tr>
+					<td>
+						<div class="nc">A</div>
+						<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/1.png" /></td>
+					<td>
+						<div class="nc">B</div>
+						<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/2.png" /></td>
+				</tr>
+				<tr>
+					<td>
+
+						<div class="nc">C</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/3.png" /></td>
+					<td>
+						<div class="nc">D</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/4.png" /></td>
+				</tr>
+				<tr>
+					<td>
+						<div class="nc">E</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/5.png" /></td>
+					<td>
+						<div class="nc">F</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/6.png" /></td>
+				</tr>
+				<tr>
+					<td>
+						<div class="nc">G</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/7.png" /></td>
+					<td>
+						<div class="nc">H</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/8.png" /></td>
+				</tr>
+				<tr>
+					<td>
+						<div class="nc">I</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/9.png" /></td>
+					<td>
+						<div class="nc">J</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/10.png" /></td>
+				</tr>
+				<tr>
+					<td>
+						<div class="nc">K</div> <img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/11.png" /></td>
+					<td>
+						<div class="nc">L</div> <img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/12.png" /></td>
+				</tr>
+				<tr>
+					<td>
+						<div class="nc">M</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/13.png" /></td>
+					<td>
+						<div class="nc">N</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/14.png" /></td>
+				</tr>
+				<tr>
+					<td>
+						<div class="nc">O</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/15.png" /></td>
+					<td>
+						<div class="nc">P</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/16.png" /></td>
+				</tr>
+				<tr>
+					<td>
+						<div class="nc">Q</div><img class="casamiento mono" style="border-bottom:0" src="http://www.casamiento.co.uk/gfx/ebay/m/17.png" /></TD>
+				</tr>
+			</table>
+			<div style="text-align:center;border-bottom:1px dotted grey;border-top:1px solid grey;padding:0.5em;margin-top:2em;"><img src="/gfx/ebay/new/palette.svg" style="width:40px;" /></div>
+
+			<p class="step">
+				<img src="/gfx/ebay/new/4.svg" style="width:45px;display:inline-block;float:left;"><span style="font-weight:bold;font-size:14pt;font-style:italic;">Step Four</span>&mdash;Choose your colours</p>
+			<p style="font-size:11pt;margin-left:3em;margin-right:5em;">
+				Each design comes with your own unique monogram. Bearing the name of you and your partner, and underscored with the date or location of your ceremony, it provides the ultimate touch of understated sophistication.</p>
+
+
+			<div id="colours"></div>
+			<div style="clear:left;"></div>
+			<div style="text-align:center;border-bottom:1px dotted grey;border-top:1px solid grey;padding:0.5em;margin-top:2em;clear:left;"><img src="/gfx/ebay/new/wording.svg" style="width:30px;;" /></div>
+
+			<p class="step">
+				<img src="/gfx/ebay/new/5.svg" style="width:45px;display:inline-block;float:left;"><span style="font-weight:bold;font-size:14pt;font-style:italic;">Step Five</span>&mdash;Choose your wording</p>
+			<p style="font-size:11pt;margin-left:3em;margin-right:5em;">
+				Each design comes with your own unique monogram. Bearing the name of you and your partner, and underscored with the date or location of your ceremony, it provides the ultimate touch of understated sophistication.</p>
+
+			<div style="text-align:center;border-bottom:1px dotted grey;border-top:1px solid grey;padding:0.5em;margin-top:2em;clear:left;"><img src="/gfx/ebay/new/pen.svg" style="width:40px;;" /></div>
+
+			<p class="step">
+				<img src="/gfx/ebay/new/6.svg" style="width:45px;display:inline-block;float:left;"><span style="font-weight:bold;font-size:14pt;font-style:italic;">Step Six</span>&mdash;Send your guest names</p>
+			<p style="font-size:11pt;margin-left:3em;margin-right:5em;">
+				Each design comes with your own unique monogram. Bearing the name of you and your partner, and underscored with the date or location of your ceremony, it provides the ultimate touch of understated sophistication.</p>
+			<div style="clear:both;"></div>
+		</div>
+
+		<script>
+			for (var colour in colour_lookup) {
+
+				if (colour_lookup.hasOwnProperty(colour)) {
+					$('#colours').append('<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;"><div style="width:65px;height:65px;display:inline-block;background-color:' + colour + ';"></div><br/><span style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:' + "'Open Sans'" + ';">' + colour_lookup[colour] + '</span></div>')
+				}
+			}
+		</script>

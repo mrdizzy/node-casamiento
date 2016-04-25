@@ -1,64 +1,97 @@
 <html>
+
 <head>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
 
-<script type="text/javascript">
+  <script type="text/javascript">
+    var quantities_discount = {
+      1: 0,
+      10: 0,
+      25: 10,
+      50: 20
+    }
 
-var quantities = [ 10]
-var quantities_discount = { 10: 100 }
-// cost per 10
-var options = { flat: (4.99 / 10), foldout: (5.99 / 10), envelopes:( 1.99/10), envelopes_matching: (2.99/10), envelopes_matching_and_addressed: (4.99/10), rsvp:(1.99/10), wrap: (1.99/10)}
+    var card_styles = {
+      flat: (4.99 / 10),
+      foldout: (6.99 / 10)
+    }
 
-$(function() {
-["flat", "foldout"].forEach(function(format) {
+    var rsvps = {
+      no: 0,
+      yes: 0.20
+    }
+    var envelopes = {
+      none: 0,
+      blank: 0.15,
+      matching: 0.20,
+      matching_address: 0.27
 
-    var cost_per_1 = options[format]
-    var cost_with_envelopes = cost_per_1 + options["envelopes"];
-    var cost_with_matching_envelopes = cost_per_1 + options["envelopes_matching"];
-    var cost_with_matching_envelopes_addressed = cost_per_1 + options["envelopes_matching_and_addressed"]
-    var cost_with_rsvps = cost_per_1 + options["rsvp"];
-    var cost_with_wraps = cost_per_1 + options["wrap"];
-    var cost_with_envelopes_and_wraps = cost_with_envelopes + options["wrap"];
-    var cost_with_envelopes_and_rsvps = cost_with_envelopes + options["rsvp"];
-    var cost_with_envelopes_matching_and_wraps = cost_with_matching_envelopes + options["wrap"];
-    var cost_with_envelopes_matching_and_rsvps = cost_with_matching_envelopes + options["rsvp"];
-    var cost_with_envelopes_addressed_and_wraps = cost_with_matching_envelopes_addressed + options["wrap"];
-    var cost_with_envelopes_addressed_and_rsvps = cost_with_matching_envelopes_addressed + options["rsvp"];
-    var cost_with_rsvps_and_wraps = cost_with_rsvps + options["wrap"];
-    var cost_with_all = (90/100) * (cost_with_rsvps_and_wraps + options["envelopes"])
-    var cost_with_all_matching_envelopes = (90/100) * ( cost_with_rsvps_and_wraps + options["envelopes_matching"])
-    var cost_with_all_addressed_envelopes = (90/100) * (cost_with_rsvps_and_wraps + options["envelopes_matching_and_addressed"])
-    quantities.forEach(function(quantity) {
-    qty_discount = (quantities_discount[quantity] / 100)
-    
-    $('#results').append("<h1>" + format + "</h1>")
-    $('#results').append("<b>Cost per " + quantity + " " + format + ":" + (qty_discount * (cost_per_1 * quantity)).toFixed(2) + "<br/>");
-    $('#results').append("<b>Cost per " + quantity + " " +format + " with envelopes" + (qty_discount * (cost_with_envelopes * quantity )).toFixed(2)+ "<br/>");
-    $('#results').append("<b>Cost per " + quantity + " " + format + " with rsvps" + (qty_discount * (cost_with_rsvps * quantity )).toFixed(2)+ "<br/>");
-    $('#results').append("<b>Cost per " + quantity + " " + format + " with wraps" + (qty_discount * (cost_with_wraps * quantity)).toFixed(2)+ "<br/>")
-        $('#results').append("<b>Cost per " + quantity + " " + format + " with blank envelopes and wraps" + (qty_discount * (cost_with_envelopes_and_wraps * quantity)).toFixed(2)+ "<br/>")
-         $('#results').append("<b>Cost per " + quantity + " " + format + " with matching envelopes and wraps" + (qty_discount * (cost_with_envelopes_matching_and_wraps * quantity)).toFixed(2)+ "<br/>")
-         $('#results').append("<b>Cost per " + quantity + " " + format + " with addressed envelopes and wraps" + (qty_discount * (cost_with_envelopes_addressed_and_wraps * quantity)).toFixed(2)+ "<br/>")
+    }
+    var embellishments = {
+      none: 0,
+      pearl: 1.29,
+      ribbon: 0.55,
+      curl: 0.35,
+      wrap: 0.20,
+    }
+var counter = 0;
+    var results = ""
+
+    $(function() {
+      [1, 10, 25, 50].forEach(function(quantity) {
+
+        results += "<h1>" + quantity + "</h1>";
+
+
+        ["flat", "foldout"].forEach(function(format) {
          
-         $('#results').append("<b>Cost per " + quantity + " " + format + " with blank envelopes and rsvps" + (qty_discount * (cost_with_envelopes_and_rsvps * quantity)).toFixed(2)+ "<br/>")
-         $('#results').append("<b>Cost per " + quantity + " " + format + " with matching envelopes and rsvps" + (qty_discount * (cost_with_envelopes_matching_and_rsvps * quantity)).toFixed(2)+ "<br/>")
-          $('#results').append("<b>Cost per " + quantity + " " + format + " with addressed envelopes and rsvps" + (qty_discount * (cost_with_envelopes_addressed_and_rsvps * quantity)).toFixed(2)+ "<br/>")
-       
-        
-            $('#results').append("<b>Cost per " + quantity + " " + format + " with RSVPS and wraps" + (qty_discount * (cost_with_rsvps_and_wraps * quantity)).toFixed(2)+ "<br/>")
-                $('#results').append("<b>Cost per " + quantity + " " + format + " with EVERYTHING" + (qty_discount * (cost_with_all * quantity)).toFixed(2)+ "<br/>")
-                $('#results').append("<b>Cost per " + quantity + " " + format + " with EVERYTHING + matching_envelopes" + (qty_discount * (cost_with_all_matching_envelopes * quantity)).toFixed(2)+ "<br/>")
-                $('#results').append("<b>Cost per " + quantity + " " + format + " with EVERYTHING + matching addressed envelopes" + (qty_discount * (cost_with_all_addressed_envelopes * quantity)).toFixed(2)+ "<br/>")
-    })
-    $('#results').append("<hr/>")
-})
-});
+          results += "<b>" + format + "</b>: "
+          results += "<ul>"
+          for (var key in envelopes) {
+            if (envelopes.hasOwnProperty(key)) {
+              results += "<li>envelopes: " + key + " - "
+            }
+            results += "<ul>"
+            for (var embellishment in embellishments) {
 
-</script>
+              if (embellishments.hasOwnProperty(embellishment)) {
+                results += "<li>embellishments: " + embellishment + "</li>"
+              }
+
+              results += "<ul>"
+              for (var rsvp in rsvps) {
+
+                if (rsvps.hasOwnProperty(rsvp)) {
+                  
+         var total =  (card_styles[format] + envelopes[key] + embellishments[embellishment] + rsvps[rsvp])* quantity
+         var total = total - ((quantities_discount[quantity] /100) * total)
+                  results += "<li>RSVP: " + rsvp + " <b>" + total + "</b> ------" + counter + "</li>"
+                  counter= counter + 1;
+                }
+
+              }
+
+              results += "</ul>"
+
+            }
+            results += "</ul>"
+
+          }
+
+          results += "</ul><hr/>";
+        })
+      })
+      $('#results').html(results)
+      
+    $('#results').append("<h1>" + counter + "</h1>")
+    });
+  </script>
 </head>
+
 <body>
-<div id="results"></div>
+  <div id="results"></div>
 </body>
+
 </html>
