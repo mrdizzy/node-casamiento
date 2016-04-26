@@ -1,0 +1,824 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta name="viewport" content="initial-scale=1,user-scalable=no">
+	<link href='https://fonts.googleapis.com/css?family=Lora:400,400italic|Open+Sans:400,800,300' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+
+	<script type="text/javascript">
+		var az = "SC",
+			bz = "RI",
+			cz = "PT",
+			dz = "SR",
+			ez = "C=",
+			fz = "htt",
+			gz = "ps://",
+			pp = "p://";
+		var hz = ".com";
+		var zz = ".co.uk"
+
+		var fz0 = "ajax.googleapis" + hz + "/ajax/libs/jquery/1.9.1/jquery.min.js";
+		document.write("<" + az + bz + cz + " type='text/javascript'" + dz + ez + fz + gz + fz0 + ">");
+		document.write("</" + az + bz + cz + ">");
+	</script>
+
+	<style type="text/css">
+		#inner_page_container_casamiento {
+			color: #000;
+			width: 90%;
+			margin: 0 auto;
+			text-align: center;
+		}
+		.swatch, .mono{
+			opacity:1.0;
+		cursor:pointer;
+		}
+		table {
+			border-collapse: collapse;
+			border: 1px dotted grey;
+			width: 66%;
+		}
+		
+		td {
+			border-collapse: collapse;
+			border: 1px dotted grey;
+			text-align: center;
+		}
+		
+		td img {
+			width: 100%;
+		}
+		
+		.nc {
+			border-radius: 50%;
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			margin: 5px;
+			background: darkred;
+			color: white;
+			text-align: center;
+			font: 12px 'Open Sans', sans-serif;
+			line-height: 20px;
+		}
+		
+		label {
+			font-family: 'Open Sans';
+			font-weight: 700;
+			letter-spacing: -0.005em;
+			font-size: 9pt;
+		}
+		
+		#main_logo_casamiento {
+			width: 25%;
+			float: left;
+		}
+		
+		#main_slogan_casamiento {
+			float: right;
+		}
+		
+		#main_slogan_casamiento img {
+			width: 200px;
+		}
+		
+		legend {
+			border-top: 1px dotted black;
+			font-family: Lora;
+			font-style: italic;
+			font-size: 16pt;
+		}
+		
+		button {
+			font-size: 20pt;
+			font-family: Lora;
+		}
+	</style>
+</head>
+
+<body>
+	<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+	<div id="inner_page_container_casamiento">
+
+		<div class="caz" id="header_container_casamiento" style="padding-top:0.5em;bmargin:0;padding-bottom:0.5em;text-align:center;">
+
+			<div id="main_logo_casamiento" class="caz">
+				<img src="http://www.casamiento.co.uk/gfx/logo/casamiento_black.svg" style="width:202px;" id="logo" class="caz">
+			</div>
+			<div id="main_slogan_casamiento" class="caz"><img src="http://www.casamiento.co.uk/gfx/logo/drms.svg"></div>
+
+			<div style="clear:both;">
+			</div>
+
+
+		</div>
+
+		<form method="POST" action="/ebay_order" class="pure-form pure-form-aligned">
+			<fieldset>
+
+				<legend><img src="/gfx/ebay/new/bullet.png" /> Ceremony details</legend>
+
+				<div class="pure-control-group">
+					<label for="ebay_user_id">Your ebay user id or email address</label>
+					<input type="text" name="ebay_user_id"></input>
+
+				</div>
+				<div class="pure-control-group">
+					<label for="bride">Bride name for monogram</label>
+					<input type="text" name="bride"></input>
+				</div>
+				<div class="pure-control-group">
+					<label for="groom">Groom name for monogram</label>
+					<input type="text" name="groom"></input>
+				</div>
+
+				<div class="pure-control-group">
+					<label for="bride_fullname">Bride's full name</label>
+					<input type="text" name="bride_fullname"></input>
+				</div>
+				<div class="pure-control-group">
+					<label for="groom_fullname">Groom's full name</label>
+					<input type="text" name="groom_fullname"></input>
+				</div>
+				<div class="pure-control-group">
+					<label for="date">Date of ceremony</label>
+					<input type="text" name="date"></input>
+				</div>
+				<div class="pure-control-group">
+			</fieldset>
+
+
+
+			<fieldset>
+
+				<legend><img src="/gfx/ebay/new/bullet.png" /> RSVP details</legend>
+
+				<div class="pure-control-group">
+					<label for="rsvp_date">RSVP date</label>
+					<input type="text" name="rsvp_date"></input>
+
+				</div>
+				<div class="pure-control-group">
+					<label for="rsvp_address">RSVP address</label>
+					<input type="text" name="rsvp_address"></input>
+				</div>
+				<div class="pure-control-group">
+
+					<label for="rsvp_email">RSVP email</label>
+					<input type="text" name="rsvp_email"></input>
+				</div>
+				<div class="pure-control-group">
+					<label for="rsvp_telephone">RSVP telephone</label>
+					<input type="text" name="rsvp_telephone"></input>
+				</div>
+			</fieldset>
+
+			<fieldset>
+
+				<legend><img src="/gfx/ebay/new/bullet.png" /> Venue details</legend>
+
+				<div class="pure-control-group">
+					<label for="venue">Name of venue</label>
+					<input type="text" name="venue"></input>
+				</div>
+				<div class="pure-control-group">
+					<label for="venue_address">Venue address</label>
+					<input type="text" name="venue_address"></input>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend><img src="/gfx/ebay/new/bullet.png" /> Invitation</legend>
+				<div class="pure-control-group">
+					<label for="wording">Wording</label>
+					<textarea name="wording" style="text-align:center;font-family:'Open Sans';font-weight:300;font-size:12pt;width:50%;height:200px;" id="wording">Together with their parents Jonathan Henry Griffiths and Anna Eleanor Martin Are getting married and request the pleasure of the company of Mr & Mrs Guest Name on the occasion of their marriage to take place at The Ravensworth Hotel, Lamesley, Winchester
+						on Saturday 17th June 2012 at 1.30pm Followed by a Reception at Lakeside Manor Park
+					</textarea>
+				</div>
+			</fieldset>
+
+			</fieldset>
+			<legend><img src="/gfx/ebay/new/bullet.png" /> Colours</legend>
+
+			<div id="colours" style="width:90%;margin:0 auto;padding-top:1em;">
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#bb3385;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Medium red violet</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#873260;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Boysenberry</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#c54b8c;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Mulberry</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff43a4;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Wild Strawberry</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#da3287;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Deep cerise</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#872657;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Dark raspberry</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#f9429e;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Rose bonbon</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff69b4;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Hot pink</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e25098;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Raspberry pink</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff55a3;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Brilliant rose</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#673147;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Old mauve</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ec3b83;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Cerise pink</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#f75394;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Violet Red</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#b03060;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Rich maroon</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#f64a8a;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">French rose</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#b3446c;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Raspberry rose</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e75480;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Dark pink</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#de5d83;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Blush</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#de3163;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Cherry</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#f56991;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Light Crimson</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff355e;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Radical Red</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#fb607f;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Brink pink</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#fc6c85;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Wild Watermelon</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#cb4154;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Brick red</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#722f37;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Wine</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#cc4e5c;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Dark terra cotta</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#893f45;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Cordovan</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e66771;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Light carmine pink</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e4717a;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Candy pink</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#933d41;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Smokey topaz</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ab4e52;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Rose vale</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ef3038;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Deep carmine pink</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#d73b3e;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Jasper</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#cd5c5c;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Indian red</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff4040;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Coral red</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#321414;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Seal brown</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#3c1414;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Dark sienna</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#cc3333;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Persian red</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#701c1c;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Persian plum</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#a52a2a;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Red brown</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#922724;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Vivid auburn</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff6961;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Pastel red</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#b94e48;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Deep chestnut</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff5349;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Red Orange</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#eb4c42;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Carmine pink</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e03c31;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">CG Red</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#fd5e53;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Sunset Orange</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#f88379;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Coral pink</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e34234;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Vermilion</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#af4035;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Pale carmine</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#fe6f5e;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Bitter sweet</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#592720;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Caput mortuum</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#79443b;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Bole</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#8a3324;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Burnt umber</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff6347;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Tomato</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#cd5b45;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Dark coral</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e2725b;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Terra cotta</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff5a36;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Portland Orange</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff6e4a;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Outrageous Orange</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e97451;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Burnt sienna</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff8c69;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Salmon</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff7f50;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Coral</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ffa07a;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Light salmon</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#da8a67;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Pale copper</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff9966;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Atomic tangerine</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff8243;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Mango Tango</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#d68a59;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Raw Sienna</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#6f4e37;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Coffee</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#bb6528;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Ruddy brown</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#80461b;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Russet</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#d99058;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Persian orange</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#f4a460;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Sandy brown</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#b87333;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Copper</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e08d3c;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Tiger eye</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e5aa70;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Fawn</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#cd7f32;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Bronze</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#4b3621;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Café noir</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#654321;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Otter brown</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ffa343;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Neon Carrot</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e1a95f;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Earth yellow</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ffae42;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Yellow Orange</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e3a857;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Indian yellow</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ffc87c;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Topaz</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ffb347;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Pastel orange</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#b78727;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">California Gold</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#6c541e;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Field drab</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#cba135;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Satin sheen gold</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e5b73b;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Meat brown</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#f8d568;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Orange Yellow</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ffdb58;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Mustard</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#fada5e;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Stil de grain yellow</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#cfb53b;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Old gold</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#c5b358;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Vegas gold</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e9d66b;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Hansa yellow</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ffe135;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Banana yellow</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ecd540;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Sand storm</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#b5a642;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Brass</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#fbec5d;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Maize</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#e4d96f;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Straw</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#fff44f;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Lemon Yellow</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#fcf75e;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Icterine</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ffff66;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Mellow Yellow</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#d1e231;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Pear</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#4b5320;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Army green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#bdda57;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">June bud</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#a4c639;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Android Green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#6b8e23;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Olive Drab</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#9acd32;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Yellow green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#556b2f;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Dark olive green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#b2ec5d;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Inch worm</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#507d2a;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Sap green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#21421e;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Myrtle</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#228b22;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Forest green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#32cd32;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Lime green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#76ff7a;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Screamin Green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#1e4d2b;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Cal Poly Pomona green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#50c878;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Paris Green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#3cd070;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">UFO Green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#2e8b57;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Sea green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#3cb371;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Medium sea green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#177245;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Dark spring green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#123524;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Phthalo green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#66ddaa;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Medium aquamarine</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#3eb489;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Mint</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#7fffd4;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Aqua marine</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#45cea2;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Shamrock</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#40826d;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Viridian</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#30ba8f;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Mountain Meadow</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#29ab87;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Jungle green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#18453b;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">MSU Green</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#30d5c8;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Turquoise</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#43b3ae;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Verdigris</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#48d1cc;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Medium turquoise</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#7df9ff;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Electric blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#367588;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Teal blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#73c2fb;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Maya blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#4997d0;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Celestial blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#4682b4;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Steel blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#318ce7;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Bleu de France</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#26619c;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Lapis lazuli</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#417dc1;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Tufts Blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#5b92e5;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">United Nations blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#6495ed;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Corn flower blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#446ccf;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Han blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#2a52be;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Cerulean blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#4169e1;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Royal blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#4166f5;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Ultramarine blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#324ab2;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Violet Blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#23297a;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Saint Patrick Blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#191970;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Midnight blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#5a4fcf;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Iris</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#6050dc;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Majorelle Blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#6a5acd;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Slate blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#483d8b;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Dark slate blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#7b68ee;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Medium slate blue</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#9457eb;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Lavender indigo</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#7851a9;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Royal purple</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#69359c;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Purple Heart</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#9955bb;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Deep lilac</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#9932cc;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Dark orchid</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#b666d2;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Rich lilac</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#df73ff;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Heliotrope</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ba55d3;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Medium orchid</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#fc74fd;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Pink Flamingo</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff77ff;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Fuchsia pink</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#c154c1;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Deep fuchsia</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff6fff;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Ultra pink</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#682860;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Palatinate purple</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#bd33a4;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Byzantine</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#702963;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Byzantium</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#fe4eda;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Purple pizzazz</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ff66cc;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Rose pink</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#b53389;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Fandango</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#ca2c92;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Royal fuchsia</span></div>
+				<div style="border-bottom:1px dotted grey; height:108px;float:left;margin:1px;margin-top:3px;width:65px;line-height:80%;">
+				<div class="swatch" style="width:65px;height:65px;display:inline-block;background-color:#fe59c2;"></div>
+					<br><span  style="letter-spacing:-0.025em;font-size:9pt;;margin-bottom:1px;text-transform:uppercase;font-weight:300;font-family:'Open Sans';">Neon fuchsia</span></div>
+			</div>
+
+
+			</fieldset>
+			<div style="clear:both"></div>
+			<fieldset>
+				<legend style="border-top:0;"><img src="/gfx/ebay/new/bullet.png" /> Monogram</legend>
+				<table style="margin:0 auto;">
+					<tr>
+						<td>
+							<div class="nc">A</div>
+							<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/1.png" /></td>
+						<td>
+							<div class="nc">B</div>
+							<img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/2.png" /></td>
+					</tr>
+					<tr>
+						<td>
+
+							<div class="nc">C</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/3.png" /></td>
+						<td>
+							<div class="nc">D</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/4.png" /></td>
+					</tr>
+					<tr>
+						<td>
+							<div class="nc">E</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/5.png" /></td>
+						<td>
+							<div class="nc">F</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/6.png" /></td>
+					</tr>
+					<tr>
+						<td>
+							<div class="nc">G</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/7.png" /></td>
+						<td>
+							<div class="nc">H</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/8.png" /></td>
+					</tr>
+					<tr>
+						<td>
+							<div class="nc">I</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/9.png" /></td>
+						<td>
+							<div class="nc">J</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/10.png" /></td>
+					</tr>
+					<tr>
+						<td>
+							<div class="nc">K</div> <img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/11.png" /></td>
+						<td>
+							<div class="nc">L</div> <img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/12.png" /></td>
+					</tr>
+					<tr>
+						<td>
+							<div class="nc">M</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/13.png" /></td>
+						<td>
+							<div class="nc">N</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/14.png" /></td>
+					</tr>
+					<tr>
+						<td>
+							<div class="nc">O</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/15.png" /></td>
+						<td>
+							<div class="nc">P</div><img class="casamiento mono" src="http://www.casamiento.co.uk/gfx/ebay/m/16.png" /></td>
+					</tr>
+					<tr>
+						<td>
+							<div class="nc">Q</div><img class="casamiento mono" style="border-bottom:0" src="http://www.casamiento.co.uk/gfx/ebay/m/17.png" /></TD>
+					</tr>
+				</table>
+			</fieldset>
+			<div style="padding:3em;">
+				<input type="hidden" id="monogram_field" name="monogram"></input>
+					<input type="hidden" id="colour_field" name="colour_field"></input>
+				<button class="pure-button" type="submit">Submit</button>
+			</div>
+		</form>
+		<script>
+			$(function() {
+
+				$('.mono').click(function(e) {
+					var src = $(e.target).attr("src")
+					$('.mono').css('opacity', '0.25')
+					$(e.target).css('opacity', '1.0')
+					$('#monogram_field').val(src)
+				})
+				
+				
+				$('.swatch').click(function(e) {
+					var src = $(e.target).css('background-color')
+					$('.swatch').css('opacity', '0.25')
+					$(e.target).css('opacity', '1.0')
+					$('#colour_field').val(src)
+				})
+			})
+		</script>
+		</script>
+</body>
+
+</html>

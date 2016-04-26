@@ -159,7 +159,7 @@ module.exports = function(app) {
    app.get("/products/tags/:tag", require('./../controllers/products').tags)
    var attachments = app.resource("attachments", require('./../controllers/attachments'));
    products.add(attachments);
-
+app.post("/ebay_order", require('./../controllers/save').create)
    // eBay
    app.get("/ebay", require('./../controllers/ebay').index);
    app.post("/ebay", require('./../controllers/ebay').create);
