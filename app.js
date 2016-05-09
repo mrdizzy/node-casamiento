@@ -64,16 +64,26 @@ app.configure(function() {
     // Compresses static files and res.json responses    
     app.use(compression()); // must be one of the first middlewares to compress effectively
     
-    // Get list of tags
-  //  app.use(function(req, res, next) {
-  //    db.get('tags', function(err, docs) {
-  //      console.log("err", err)
-  //      res.locals({
-  //        tags: docs.tags.sort()
-  //      });
-  //    })
-  //    next();
-  //  })
+  
+// Get list of tags
+  
+  app.use(function(req, res, next) {
+  
+    db.get('tags', function(err, docs) {
+  
+      console.log("err", err)
+  
+      res.locals({
+  
+        tags: docs.tags.sort()
+  
+      });
+  
+    })
+  
+    next();
+  
+  })
     app.use(express.cookieParser());
     app.use(express.favicon());
     app.use(expressLayouts);
