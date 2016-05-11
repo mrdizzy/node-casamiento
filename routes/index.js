@@ -1,5 +1,8 @@
 var fs = require('fs'),
-   inGroupsOf = require('./../lib/in_groups_of');
+   inGroupsOf = require('./../lib/in_groups_of'),
+  sendgrid  = require('sendgrid')("app7076151@heroku.com", "fbnafrlv8387");
+
+
 
 var test_thankyou = {
    "_id": "EC-54J34043EK665930X",
@@ -179,9 +182,17 @@ app.post("/ebay_order", require('./../controllers/save').create)
    // Homepage and static
   // app.get("/", require("./../controllers/welcome").index)
   app.get('/', function(req, res) {
-     res.render('welcome/invitations', { layout: false});
-     
-		console.log(req.headers)
+  sendgrid.send({
+      to:     "david.pettifer@googlemail.com",
+      from:     "admin@casamiento.co.uk",
+      subject:  "Customer hit to casamiento.co.uk",
+      text:     "Headers" + JSON.stringify(req.headers)
+    }, function(err, json) {
+      if (err) { return console.error("Error", err); }
+      console.log(json)  
+    })
+res.render('welcome/invitations', { layout: false});
+
   })
    app.get("/about", require("./../controllers/welcome").about)
    app.get("/faq", require("./../controllers/welcome").faq)
