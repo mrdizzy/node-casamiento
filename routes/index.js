@@ -177,7 +177,12 @@ app.post("/ebay_order", require('./../controllers/save').create)
    app.resource("invoices", require('./../controllers/invoices'))
 
    // Homepage and static
-   app.get("/", require("./../controllers/welcome").index)
+  // app.get("/", require("./../controllers/welcome").index)
+  app.get('/', function(req, res) {
+     res.render('welcome/invitations', { layout: false});
+     
+		console.log(req.headers)
+  })
    app.get("/about", require("./../controllers/welcome").about)
    app.get("/faq", require("./../controllers/welcome").faq)
 }
