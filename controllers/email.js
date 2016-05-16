@@ -7,7 +7,7 @@ var db = require('./../config/db').test_ebay,
 exports.create = function(req, res, next) {
   sendgrid.send({
       to:     "david.pettifer@googlemail.com",
-      from:     req.body.email,
+      from:     "david.pettifer@casamiento.co.uk",
       subject:  "Customer enquiry from casamiento.co.uk",
       text:     "From: " + req.body.first_name + " " + req.body.last_name + "\n\n" + req.body.message,
     }, function(err, json) {
