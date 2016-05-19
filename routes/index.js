@@ -182,19 +182,19 @@ app.post("/ebay_order", require('./../controllers/save').create)
    // Homepage and static
   // app.get("/", require("./../controllers/welcome").index)
   app.get('/', function(req, res) {
-     if (req.headers["user-agent"] == "Pingdom.com_bot_version_1.4_(http://www.pingdom.com/)") {
-     } else {
-  sendgrid.send({
-      to:     "david.pettifer@googlemail.com",
-      from:     "admin@casamiento.co.uk",
-      subject:  "Customer hit to casamiento.co.uk",
-      text:     "Headers" + JSON.stringify(req.headers)
-    }, function(err, json) {
-      if (err) { return console.error("Error", err); }
-      console.log(json)  
-    })
-     }
-res.render('welcome/invitations', { layout: false});
+  //   if (req.headers["user-agent"] == "Pingdom.com_bot_version_1.4_(http://www.pingdom.com/)") {
+  //   } else {
+  //sendgrid.send({
+  //    to:     "david.pettifer@googlemail.com",
+  //    from:     "admin@casamiento.co.uk",
+  //    subject:  "Customer hit to casamiento.co.uk",
+  //    text:     "Headers" + JSON.stringify(req.headers)
+  //  }, function(err, json) {
+  //    if (err) { return console.error("Error", err); }
+  //    console.log(json)  
+  //  })
+  //   }
+res.render('welcome/index', { layout: false});
 
   })
    app.get("/about", require("./../controllers/welcome").about)

@@ -17,8 +17,23 @@
 			src: url('/f/garamonditalic.eot?') format('eot'), url('/f/garamonditalic.woff') format('woff');
 		}
 		
+		@font-face {
+			font-family: "TP";
+			src: url('/f/t.eot?') format('eot'), url('/f/t.woff') format('woff');
+		}
+		
+		#slides img {
+			display: block;
+		}
+		
 		#form_panel {
-			padding:0;width:85%;background-color:#EEE;border-radius:1em;margin:0 auto;margin-top:-3em;
+			padding: 0;
+			width: 55%;
+			text-align: center;
+			background-color: #EEE;
+			border-radius: 1em;
+			margin: 0 auto;
+			margin-top: 3em;
 		}
 		
 		#slides {
@@ -38,11 +53,35 @@
 		}
 		
 		#headline {
-			width:85%;margin:0 auto;padding-top:0;margin-top:0.25em;padding-bottom:0.25em;font-family:'Gara';color:#000;font-size:42pt;text-align:center;line-height:1.3em;padding-bottom:0.5em;margin-bottom:0.5em;border-bottom: 1px dotted black;
+			font-family: 'TP';
+			background-color: #F1F0F0;
+			padding-top: 0em;
+			width: 85%;
+			text-align: center;
+			font-size: 36pt;
+			line-height: 1.4em;
+			border-bottom: 0;
+			padding-left: 2em;
+			padding-right: 2em;
+			margin: 0 auto;
+			padding-bottom: 0;
+			margin: 0;
+			padding-bottom: 0.5em;
+			padding-top: 0.5em;
 		}
+		
 		.benefit {
-			 text-align:left;text-indent:0.75em;font-family:'Open Sans';font-weight:300;line-height:1.5em;font-size:12pt;padding-top:1em;width:85%;margin:0 auto;
+			text-align: left;
+			text-indent: 0.75em;
+			font-family: 'Open Sans';
+			font-weight: 300;
+			line-height: 1.5em;
+			font-size: 13pt;
+			padding-top: 1em;
+			width: 85%;
+			margin: 0 auto;
 		}
+		
 		#inner_page_container_casamiento {
 			color: #000;
 			padding: 0;
@@ -71,8 +110,8 @@
 			font-family: 'Open Sans';
 			font-weight: 300;
 			border-radius: 10px;
-			padding-top:1em;
-			padding-bottom:1em;
+			padding-top: 1em;
+			padding-bottom: 1em;
 		}
 		
 		#dreams_slogan {
@@ -86,10 +125,21 @@
 			border-bottom-left-radius: 10px;
 			width: 180px;
 		}
+		
 		ul {
-			font-family:GaraI;line-height:1.2em;font-size:16pt;padding-top:1em;width:90%;text-align:left;
+			font-family: GaraI;
+			line-height: 1.2em;
+			font-size: 16pt;
+			padding-top: 1em;
+			width: 90%;
+			text-align: left;
 		}
-		li { padding-top:0.45em; margin-left:2em;}
+		
+		li {
+			padding-top: 0.45em;
+			margin-left: 2em;
+		}
+		
 		#genesis {
 			display: block;
 			margin: 0 auto;
@@ -113,13 +163,8 @@
 		}
 		
 		.left_column {
-			float: left;
-			width: 60%;
-		}
-		
-		.right_column {
-			margin-left: 60%;
-			text-align: center;
+			margin: 0 auto;
+			width: 75%;
 		}
 		
 		input {
@@ -132,42 +177,43 @@
 		}
 		/* Smartphone */
 		/* ----------------------------------------------------------------------------- */
-		
+		/*
 		@media all and (min-width: 260px) and (max-width: 680px) {
 			#inner_page_container_casamiento {
 				width: 100%;
 				padding: 0;
 			}
 			#headline {
-				width:95%;
-				padding-top:0;margin-top:0;
-				font-size:1pt;
+				width: 95%;
+				padding-top: 0;
+				margin-top: 0;
+				font-size: 1pt;
 			}
 			#form_panel {
-				margin:0 auto;
-				margin-top:2em;
-				width:95%;
+				margin: 0 auto;
+				margin-top: 2em;
+				width: 95%;
 			}
 			#genesis {
-			margin-top:-0.75em;
-				width:60%;
-				max-width:280px;
-				padding:0.25em;
-				position:relative;
-				margin-bottom:1.5em;
+				margin-top: -0.75em;
+				width: 60%;
+				max-width: 280px;
+				padding: 0.25em;
+				position: relative;
+				margin-bottom: 1.5em;
 			}
 			#casamiento_logo {
-				position:static;
+				position: static;
 				width: 130px;
 				padding: 0px;
-				float:left;
+				float: left;
 				background-color: white;
 				border-bottom-right-radius: 5px;
 			}
 			#dreams_slogan {
-				padding-top:5px;
-				float:right;
-				position:static;
+				padding-top: 5px;
+				float: right;
+				position: static;
 				padding-left: 2px;
 				background-color: white;
 				z-index: 100;
@@ -179,9 +225,8 @@
 				clear: both;
 				float: none;
 				width: 100%;
-				margin:0;
+				margin: 0;
 			}
-		
 			#slides {
 				width: 100%;
 				float: none;
@@ -222,193 +267,304 @@
 
 
 		<div id="slides">
-			<img src="http://www.casamiento.co.uk/gfx/ebay/invitations/ace/invitation_collage_ribbon.jpg" style="display:block;border-top:1px solid black;" />
+			<img src="http://www.casamiento.co.uk/gfx/ebay/invitations/ace/invitation_collage_ribbon.jpg" />
 
-			<img src="/gfx/ebay/invitations/ace/four.jpg" style="display:block;border-top:1px solid black;" />
+			<img src="/gfx/ebay/invitations/ace/four.jpg" />
 
-			<img src="/gfx/ebay/invitations/butterfly/invitation_collage.jpg" style="display:block;border-top:1px solid black;" />
+			<img src="/gfx/ebay/invitations/butterfly/invitation_collage.jpg" />
 
-			<img src="/gfx/ebay/invitations/butterfly/four.jpg" style="display:block;border-top:1px solid black;" />
+			<img src="/gfx/ebay/invitations/butterfly/four.jpg" />
 
-			<img src="/gfx/ebay/invitations/bop_spirals/invitation_collage_grass.jpg" style="display:block;border-top:1px solid black;" />
+			<img src="/gfx/ebay/invitations/bop_spirals/invitation_collage_grass.jpg" />
 
-			<img src="/gfx/ebay/invitations/bop_spirals/four.jpg" style="display:block;border-top:1px solid black;" />
+			<img src="/gfx/ebay/invitations/bop_spirals/four.jpg" />
 
-			<img src="/gfx/ebay/invitations/rose/invitation_collage_grass.jpg" style="display:block;border-top:1px solid black;" />
 
-			<img src="/gfx/ebay/invitations/rose/four.jpg" style="display:block;border-top:1px solid black;" />
+			<img src="/gfx/ebay/invitations/serif_frame/collage.jpg" />
+
+			<img src="/gfx/ebay/invitations/serif_frame/four.jpg" />
+			<img src="/gfx/ebay/invitations/rose/invitation_collage_grass.jpg" />
+
+			<img src="/gfx/ebay/invitations/rose/four.jpg" />
 		</div>
 		<img src="/gfx/ebay/invitations/genesis.svg" id="genesis" />
 
-	<p id="headline" style="background-color:#F1F0F0;padding-top:0em;width:75%;text-align:center;font-size:42pt;line-height:1.1em;border-bottom:0;padding-left:2em;padding-right:2em;margin:0 auto;padding-bottom:0;margin:0;padding-bottom:0.5em;padding-top:0.5em;">
-				
-Don't risk disapointing your guests: impress them instead by avoiding these invitation no-nos&hellip;</p>
-<img src="/gfx/triangle.svg" style="margin:0;padding:0;display:block;margin:0 auto;" />
+		<p id="headline" style="">
+
+			Don't risk making a bad first impression: make sure your invitations follow these golden rules&hellip;</p>
+		<img src="/gfx/triangle.svg" style="margin-left:20%;padding:0;display:block;" />
 
 		<div class="left_column">
 
 
-			<p style="margin:0 auto;font-family:GaraI;font-size:20pt;text-align:left;line-height:1.4em;width:85%;margin:0 auto;">
+			<p style="margin:0 auto;font-family:GaraI;font-size:24pt;text-align:left;line-height:1.4em;width:85%;margin:0 auto;">
 
-Picture the scene&hellip; a plain, white envelope with a hastily-scribbled address plops through the letterbox. It's been raining, so the writing is smudged and the postcode is wrong. The paper feels cheap&hellip;</p>
+				Picture the scene&hellip; a plain, white envelope with a hastily-scribbled address plops through the letterbox. It's been raining, so the writing is smudged and the postcode is wrong. The paper feels cheap&hellip;</p>
 
-<p class="benefit">&hellip;opening it, you find a flimsy invitation with a cringeworthy photo of your friend and her fiancé on the front. The photo looks washed-out and there&lsquo;s too much flash: your friend&lsquo;s skin looks shinier than a helium balloon&hellip;</p>
+			<p class="benefit">&hellip;opening it, you find a flimsy invitation with a washed-out photo of your friend and her fiancé on the front.
 
-<p class="benefit">
-So what&lsquo;s your impression of your friend and her special day so far? 
-</p>
-<p class="benefit">
-The words cheap, hasty, careless and tacky come to mind&hellip; sure, you love her to bits, but your subconcious still makes judgements: I don&lsquo;t need to tell you that you&lsquo;re judged on appearance every day: that&lsquo;s life. </p>
+				<p class="benefit">
+					What&lsquo;s your impression of your friend and her special day so far?
+				</p>
 
-	<p class="benefit">Yet when planning a wedding, so many people risk giving their special day a bad first impression with poorly-chosen, unprofessional stationery: and there&lsquo;s never a second chance to make a first impression&hellip; </p>
+				<div id="form_panel">
+					<img src="/gfx/ebay/invitations/book-3.svg" style="width:50px;display:block;margin:0 auto;margin-top:-1.5em;" />
 
-<p class="benefit">&hellip;would you wear an ill-fitting, badly-sewn wedding dress? No. Yet just like your clothes, you&lsquo;ll be judged on the quality of your invitations&mdash;it&lsquo;s the first chance guests will have to form an opinion about your big day if it&lsquo;s something for them to get excited about. Opening an invitation should feel like opening a special gift that delights the recipient: that's why it&lsquo;s very important that you get it right.
-	</P>
-	
-	
- 	<p class="benefit" style="text-align:center;font-family:GaraI;line-height:1.2em;font-size:20pt;padding-top:1em;width:90%;">
-It&lsquo;s not just about beauty&hellip;
- 
- </p>
+					<div style="padding:0.5em;">
 
- 	<p class="benefit" style="font-family:Gara;line-height:1.2em;font-size:16pt;width:90%;">
- 
-When choosing your invitation, how it looks is usually the first thing you will think about, but remember! Beauty is only skin deep&mdash; invitations are there to serve many practical purposes&mdash;not just to impress your guests, but also to make your life easier&mdash; yet most people foolishly overlook this as they're too consumed with aesthetics. So ask yourself, what should a good wedding invitation achieve?
-</p>
-<ul>
-<li>Help you avoid those awkward conversations by inviting specific people to your wedding.<br/><span style="font-family:Gara">Personalisation is the future. By explicitly naming your guests in your invitations, for example, "Sarah, Jane & Jenny", it takes the guesswork away from your guests: Sarah knows straight away that she can bring her flatmate and daughter. If it just says "Sarah & Guest", she knows she is invited and can bring any guest. An invitation that isn't personalised makes it awkward for your guests to know who they can and can't bring along (and awkward for you to know who they are bringing along too), but if you address your guests individually, you'll make things easier for yourself and your guests from the start: it avoids that difficult conversation when they ask you, "Can I bring the kids/boyfriend I met last week?".</span></li>
-<li>  To get people excited and feel honoured to be invited</li>
-<li> To Set the tone of your wedding using design and language&mdash;will it be fun and frollicks, or serious and traditional?</li>
-<li>  To make it easy for guests to RSVP, and therefore easy for you to plan for numbers without constantly chasing them up.</br>
-<span style="font-family:Gara">
-Your guests are human, and like most humans, they're more likely to do something if it's easy and pain-free. That's why reply cards are important&mdash;no reply cards means no replies: and no replies means, among the other 101 things you need to do, you're going to have the hassle of chasing your guests to find out who is, or isn't, coming. A pre-addressed reply card increases your chances of getting responses quickly as it is very easy for your guests just tick a box and post the card. Invitations with reply cards get four times as many responses as invitations without.</span> </li>
+						<p style="text-align:center;font-family:'Open Sans';font-size:11pt;font-weight:300;width:75%;margin:0 auto;padding-bottom:1em;">&hellip;to get your own <span style="font-weight:800;">FREE</span> sample pack usually worth £9.99, just enter your name and address&hellip;</p>
 
-<li>  To reduce stress for you by providing guests with all the information they need about your big day so they don't have to hassle you with questions</li>
-<li>To give friends and family, and yourself, a keepsake of your day to remember</li>
+						<form class="pure-form form-aligned">
+							<div class="pure-control-group">
 
-</ul>
-
-
-	<div style="display:inline-block;text-align:center;width:14%;padding-top:1em;"><img src="http://www.casamiento.co.uk/gfx/ebay/new/pearl.jpg" style="width:100%;" />
-				</div>
-
-	<div style="display:inline-block;text-align:center;width:14%;padding-top:1em;"><img src="http://www.casamiento.co.uk/gfx/ebay/new/WRAP.jpg" style="width:100%;" />
-				</div>
-			
-
-
-
-		</div>
-		</div>
-
-		<div class="right_column">
-
-			<div id="form_panel">
-				<img src="/gfx/ebay/invitations/book-3.svg" style="width:50px;display:block;margin:0 auto;margin-top:-1.5em;" />
-
-				<div style="padding:0.5em;">
-					<p style="text-align:center;font-family:'Open Sans';font-size:11pt;font-weight:300;">Download your own <span style="font-weight:800;">FREE</span> catalogue filled with our beautiful invitations, and <span style="font-weight:800;">TODAY ONLY</span>, receive a discount code that will give you <span style="font-weight:800;">15% OFF</span> a stationery order or <span style="font-weight:800;">50 INVITATIONS FOR £50</span>&mdash;you choose which deal&mdash;by entering your email address&hellip;</p>
-					<form class="pure-form pure-form-aligned">
-						<fieldset>
+								<input type="text" name="address" placeholder="House number or name"></input>
+							</div>
 
 
 							<div class="pure-control-group">
-								<label for="email">· Email</label>
-								<input type="text" name="email"></input>
 
+								<input type="text" name="postcode" placeholder="Your postcode"></input>
 							</div>
+
+							</fieldset>
 							<div style="text-align:center;">
-								<button type="submit" class="pure-button pure-button-primary">Get my discount code!</button>
+								<button type="submit" class="pure-button pure-button-primary" style="margin:0.5em">Post my catalogue!</button>
 
 							</div>
-							<p style="text-align:center;font-family:'Open Sans';font-style:italic;font-weight:300;font-size:14pt;">&hellip;and theres nothing like real paper, so&hellip;</p>
-							<p style="text-align:center;font-family:'Open Sans';font-size:11pt;font-weight:300;">&hellip;to get your own <span style="font-weight:800;">FREE</span> beautiful printed catalogue and a collection of actual invitation samples, just enter your name and address&hellip;</p>
-
-							<div class="pure-control-group">
-								<label for="name">· Name</label>
-								<input type="text" name="name"></input>
-							</div>
-
-
-							<div class="pure-control-group">
-
-								<label for="address">· Address</label>
-								<input type="text" name="address"></input>
-							</div>
-
-
-							<div class="pure-control-group">
-
-								<label for="town">· Town</label>
-								<input type="text" name="town"></input>
-							</div>
-
-
-							<div class="pure-control-group">
-
-								<label for="county">· County</label>
-								<input type="text" name="county"></input>
-							</div>
-
-							<div class="pure-control-group">
-
-								<label for="county">· Postcode</label>
-								<input type="text" name="county"></input>
-							</div>
-						</fieldset>
-						<div style="text-align:center;">
-							<button type="submit" class="pure-button pure-button-primary">Post my catalogue!</button>
-
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
-				<div style="background: linear-gradient(#EEE,white);height:5em;width:100%;">
+				<img src="/gfx/triangle.svg" style="margin:0 auto;padding:0;display:block;" />
+				<p class="benefit" style="font-weight:400;font-size:14pt">
+					I don&lsquo;t need to tell you that you&lsquo;re judged on appearance every day: that&lsquo;s life. </p>
 
+				<p class="benefit">Yet when planning a wedding, so many people risk giving their special day a bad first impression with poorly-chosen, unprofessional stationery: </p>
+
+				<p class="benefit">&hellip;would you wear an ill-fitting, badly-sewn wedding dress? No. Yet just like your clothes, you&lsquo;ll be judged on the quality of your invitations&mdash;it&lsquo;s the first chance guests will have to form an opinion about your big day if
+					it&lsquo;s something for them to get excited about. Opening an invitation should feel like opening a special gift: that's why it&lsquo;s important that you get it right.
+				</P>
+
+				<div style="margin-top:0.5em;background-color:#F1EFF0;"> <img src="/gfx/copywriting/diamond.svg" style="padding-top:1em;display:block;margin:0 auto;padding-bottom:0;margin-bottom:0;width:45px;" /></div><img src="/gfx/triangle.svg" style="margin:0 auto;padding:0;display:block;" />
+
+
+				<p class="benefit" style="padding-top:0;margin-top:0;text-align:center;font-family:GaraI;line-height:1.2em;font-size:24pt;padding-bottom:0.5em;margin-top:0;width:70%;border-bottom:1px solid black;">
+					Delight your guests' senses with stunning embellishments&hellip;
+
+				</p>
+				<p class="benefit">
+
+					Opening an invitation is a very tactile experience&mdash;like I said earlier, it should be like unwrapping a gift:</p>
+					
+					<p class="benefit" style="font-weight:400;font-size:14pt">Have you ever opened an expensive box of chocolates?</p><p class="benefit"> First there's the cellophane wrapping, then finding the tabs to open the cardboard
+					lid</p>
+
+				<img src="/gfx/copywriting/invite.png" style="display:block;margin:0 auto;width:275px;" />
+
+				<p class="benefit">Usually there's a layer of card to lift up underneath which each chocolate sits in its own unique place on the carefully moulded tray. Some chocolates are individually wrapped in foil, and of course there is the little instruction booklet. All of
+					those things add to the pleasure of eating the chocolate&mdash;it's so much better than putting your fingers into a bag of minstrels.
+
+				</p>
+
+				<div style="text-align:center;">
+					<img src="/gfx/copywriting/ribbon.png" style="padding:0.5em;display:inline-block;width:140px;text-align:center;" />
+					<img src="/gfx/copywriting/wrap.png" style="padding:0.5em;display:inline-block;width:140px;text-align:center;" />
+					<img src="/gfx/copywriting/pearl.png" style="padding:0.5em;display:inline-block;width:150px;text-align:center;" />
 				</div>
-			</div>
+
+
+				<!--------------------------  BENEFIT ------->
+
+				<div style="margin-top:0.5em;background-color:#F1EFF0;"> <img src="/gfx/copywriting/diamond.svg" style="padding-top:1em;display:block;margin:0 auto;padding-bottom:0;margin-bottom:0;width:45px;" /></div><img src="/gfx/triangle.svg" style="margin:0 auto;padding:0;display:block;" />
+
+
+				<p class="benefit" style="padding-top:0;margin-top:0;text-align:center;font-family:GaraI;line-height:1.2em;font-size:24pt;padding-bottom:0.5em;margin-top:0;width:70%;border-bottom:1px solid black;">
+					Vellum covers protect and enhance&hellip;
+
+				</p>
+
+				<p class="benefit">
+					When choosing your invitation, how it looks is usually the first thing you will think about, but remember! Beauty is only skin deep&mdash; invitations are there to serve many practical purposes&mdash;not just to impress your guests, but also to make your
+				</p>
+				<div style="margin:0 auto;width:80%;">
+					<p style="padding-top:5em;float:left;width:20%;display:inline-block;font-family:'Open Sans';font-weight:300;font-size:12pt;text-align:right;font-style:italic;">
+						Beautiful vellum covers are watermarked with a matching design and monogram<img src="/gfx/copywriting/pointer.svg" style="padding-top:1em;width:80px;display:block;margin-right:-3em;z-index:90000;position:relative;float:right;" /></p>
+
+					<img src="/gfx/copywriting/vellum.png" style="width:460px;display:block;float:left;" />
+				</div>
+				<p class="benefit" style="clear:both;">
+					life easier&mdash; yet most people foolishly overlook this as they're too consumed with aesthetics. So ask yourself, what should a good wedding invitation achieve?
+				</p>
+
+
+				<!--------------------------  BENEFIT ------->
+
+				<div style="margin-top:0.5em;background-color:#F1EFF0;"> <img src="/gfx/copywriting/colours.svg" style="padding-top:1em;display:block;margin:0 auto;padding-bottom:0;margin-bottom:0;width:45px;" /></div><img src="/gfx/triangle.svg" style="margin:0 auto;padding:0;display:block;" />
+
+
+				<p class="benefit" style="padding-top:0;margin-top:0;text-align:center;font-family:GaraI;line-height:1.2em;font-size:24pt;padding-bottom:0.5em;margin-top:0;width:70%;border-bottom:1px solid black;">
+					The packaging is as important as the gift&hellip;
+
+				</p>
+
+				<p class="benefit">
+					When choosing your invitation, how it looks is usually the first thing you will think about, but remember! Beauty is only skin deep&mdash; invitations are there to serve many practical purposes&mdash;not just to impress your guests, but also to make your
+				</p>
+
+				<img src="/gfx/copywriting/envelopebox.png" style="max-width:600px;padding-top:1em;width:70%;display:block;margin:0 auto;" />
+
+
+				<!--------------------------  BENEFIT ------->
+
+				<div style="margin-top:0.5em;background-color:#F1EFF0;"> <img src="/gfx/copywriting/colours.svg" style="padding-top:1em;display:block;margin:0 auto;padding-bottom:0;margin-bottom:0;width:45px;" /></div><img src="/gfx/triangle.svg" style="margin:0 auto;padding:0;display:block;" />
+
+
+				<p class="benefit" style="padding-top:0;margin-top:0;text-align:center;font-family:GaraI;line-height:1.2em;font-size:24pt;padding-bottom:0.5em;margin-top:0;width:70%;border-bottom:1px solid black;">
+					Colours are about feelings&hellip;
+
+				</p>
+
+				<p class="benefit">
+					When choosing your invitation, how it looks is usually the first thing you will think about, but remember! Beauty is only skin deep&mdash; invitations are there to serve many practical purposes&mdash;not just to impress your guests, but also to make your
+				</p>
+
+				<img src="/gfx/copywriting/colours.png" style="padding-top:1em;width:60%;display:block;margin:0 auto;" />
+
+
+				<!--------------------------  BENEFIT ------->
+
+				<div style="margin-top:0.5em;background-color:#F1EFF0;"> <img src="/gfx/copywriting/colours.svg" style="padding-top:1em;display:block;margin:0 auto;padding-bottom:0;margin-bottom:0;width:45px;" /></div><img src="/gfx/triangle.svg" style="margin:0 auto;padding:0;display:block;" />
+
+
+				<p class="benefit" style="padding-top:0;margin-top:0;text-align:center;font-family:GaraI;line-height:1.2em;font-size:24pt;padding-bottom:0.5em;margin-top:0;width:70%;border-bottom:1px solid black;">
+				Monograms&hellip;
+
+				</p>
+
+				<p class="benefit">
+					When choosing your invitation, how it looks is usually the first thing you will think about, but remember! Beauty is only skin deep&mdash; invitations are there to serve many practical purposes&mdash;not just to impress your guests, but also to make your
+				</p>
+
+				<div style="text-align:center"><img src="/gfx/copywriting/monograms.png" style="display:inline-block;width:500px;" />
+				</div>
+
+
+				<!--------------------------  BENEFIT ------->
+
+				<div style="margin-top:0.5em;background-color:#F1EFF0;"> <img src="/gfx/copywriting/colours.svg" style="padding-top:1em;display:block;margin:0 auto;padding-bottom:0;margin-bottom:0;width:45px;" /></div><img src="/gfx/triangle.svg" style="margin:0 auto;padding:0;display:block;" />
+
+
+				<p class="benefit" style="padding-top:0;margin-top:0;text-align:center;font-family:GaraI;line-height:1.2em;font-size:24pt;padding-bottom:0.5em;margin-top:0;width:70%;border-bottom:1px solid black;">
+					Addressing your invitations&hellip;
+
+				</p>
+
+				<p class="benefit">
+					When choosing your invitation, how it looks is usually the first thing you will think about, but remember! Beauty is only skin deep&mdash; invitations are there to serve many practical purposes&mdash;not just to impress your guests, but also to make your
+				</p>
+
+				<div style="text-align:center"><img src="/gfx/copywriting/name.png" style="display:inline-block;width:200px;" />
+					<img src="/gfx/copywriting/address.png" style="display:inline-block;width:400px;" />
+				</div>
+
+
+				<!--------------------------  BENEFIT ------->
+
+				<div style="margin-top:0.5em;background-color:#F1EFF0;"> <img src="/gfx/copywriting/colours.svg" style="padding-top:1em;display:block;margin:0 auto;padding-bottom:0;margin-bottom:0;width:45px;" /></div><img src="/gfx/triangle.svg" style="margin:0 auto;padding:0;display:block;" />
+
+
+				<p class="benefit" style="padding-top:0;margin-top:0;text-align:center;font-family:GaraI;line-height:1.2em;font-size:24pt;padding-bottom:0.5em;margin-top:0;width:70%;border-bottom:1px solid black;">
+					Addressing your invitations&hellip;
+
+				</p>
+
+				<p class="benefit">
+					When choosing your invitation, how it looks is usually the first thing you will think about, but remember! Beauty is only skin deep&mdash; invitations are there to serve many practical purposes&mdash;not just to impress your guests, but also to make your
+				</p>
+
+					<img src="/gfx/copywriting/envelopeliner.png" style="display:inline-block;width:400px;" />
+			
+				
+				
+		<!--------------------------  BENEFIT ------->
 		
+			<div style="margin-top:0.5em;background-color:#F1EFF0;"> <img src="/gfx/copywriting/colours.svg" style="padding-top:1em;display:block;margin:0 auto;padding-bottom:0;margin-bottom:0;width:45px;" /></div><img src="/gfx/triangle.svg" style="margin:0 auto;padding:0;display:block;" />
 		
-	</div>
+
+			<p class="benefit" style="padding-top:0;margin-top:0;text-align:center;font-family:GaraI;line-height:1.2em;font-size:24pt;padding-bottom:0.5em;margin-top:0;width:70%;border-bottom:1px solid black;">
+	Addressing your invitations&hellip;
+
+			</p>
+			
+				<p class="benefit">
+				When choosing your invitation, how it looks is usually the first thing you will think about, but remember! Beauty is only skin deep&mdash; invitations are there to serve many practical purposes&mdash;not just to impress your guests, but also to make your
+				</p>
+				
+					<img src="/gfx/copywriting/info.png" style="display:inline-block;width:400px;" />
 
 
 
-	<script>
-		$(function() {
+		<!--------------------------  BENEFIT ------->
+		
+			<div style="margin-top:0.5em;background-color:#F1EFF0;"> <img src="/gfx/copywriting/colours.svg" style="padding-top:1em;display:block;margin:0 auto;padding-bottom:0;margin-bottom:0;width:45px;" /></div><img src="/gfx/triangle.svg" style="margin:0 auto;padding:0;display:block;" />
+		
 
-			$("#slides").slidesjs({
-				width: 2000,
-				height: 1409,
+			<p class="benefit" style="padding-top:0;margin-top:0;text-align:center;font-family:GaraI;line-height:1.2em;font-size:24pt;padding-bottom:0.5em;margin-top:0;width:70%;border-bottom:1px solid black;">
+	Addressing your invitations&hellip;
 
-				pagination: {
-					active: false
-				},
-				effect: {
-					slide: {
-						speed: 1000,
+			</p>
+			
+				<p class="benefit">
+				When choosing your invitation, how it looks is usually the first thing you will think about, but remember! Beauty is only skin deep&mdash; invitations are there to serve many practical purposes&mdash;not just to impress your guests, but also to make your
+				</p>
+				
+			
+				<div style="text-align:center;">
+					<img src="/gfx/copywriting/pearlescent.png" style="padding:0.5em;display:inline-block;width:140px;text-align:center;" />
+					<img src="/gfx/copywriting/hammered.png" style="padding:0.5em;display:inline-block;width:140px;text-align:center;" />
+					<img src="/gfx/copywriting/linen.png" style="padding:0.5em;display:inline-block;width:150px;text-align:center;" />
+				</div>
+</div>
+				
+		</div>
+
+
+		<script>
+			$(function() {
+
+				$("#slides").slidesjs({
+					width: 2000,
+					height: 1409,
+
+					pagination: {
+						active: false
 					},
-					fade: {
-						speed: 3000,
-						// [number] Speed in milliseconds of the fade animation.
-						crossfade: true
-							// [boolean] Cross-fade the transition.
+					effect: {
+						slide: {
+							speed: 1000,
+						},
+						fade: {
+							speed: 3000,
+							// [number] Speed in milliseconds of the fade animation.
+							crossfade: true
+								// [boolean] Cross-fade the transition.
+						}
+					},
+					play: {
+						active: false,
+						auto: true,
+						interval: 2500,
+						effect: 'fade'
+					},
+					navigation: {
+						active: false
+					},
+					callback: {
+						loaded: function(n) {
+							$('#slides_spinner').hide();
+						}
 					}
-				},
-				play: {
-					active: false,
-					auto: true,
-					interval: 2500,
-					effect: 'fade'
-				},
-				navigation: {
-					active: false
-				},
-				callback: {
-					loaded: function(n) {
-						$('#slides_spinner').hide();
-					}
-				}
-			})
+				})
 
-		})
-	</script>
+			})
+		</script>
 </body>
