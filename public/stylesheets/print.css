@@ -26,7 +26,7 @@
     position:absolute;
     z-index:1000;
     text-align:center;
-    color:rgb(25, 25, 112);
+    color:#000;
   }		  
   
   #printsvg .crop_marks_overlay {
