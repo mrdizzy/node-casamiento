@@ -180,8 +180,8 @@ app.post("/ebay_order", require('./../controllers/save').create)
    app.resource("invoices", require('./../controllers/invoices'))
 
    // Homepage and static
-  // app.get("/", require("./../controllers/welcome").index)
-  app.get('/', function(req, res) {
+   app.get("/", require("./../controllers/welcome").index)
+//  app.get('/', function(req, res) {
   //   if (req.headers["user-agent"] == "Pingdom.com_bot_version_1.4_(http://www.pingdom.com/)") {
   //   } else {
   //sendgrid.send({
@@ -194,9 +194,9 @@ app.post("/ebay_order", require('./../controllers/save').create)
   //    console.log(json)  
   //  })
   //   }
-res.render('welcome/index', { layout: false});
+//res.render('welcome/index');
 
-  })
+  //})
    app.get("/about", require("./../controllers/welcome").about)
    app.get("/faq", require("./../controllers/welcome").faq)
 }
