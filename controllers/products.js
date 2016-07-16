@@ -3,42 +3,7 @@ var db = require('./../config/db').test_ebay,
   zlib = require('zlib'),
   inGroupsOf = require('./../lib/in_groups_of');
 
-exports.tags = function(req, res) {
-  db.view('tags/by_tags', {
-    key: [req.params.tag]
-  }, function(err, docs) {
-    var result = _.map(docs.toArray(), function(product) {
-      for (var i = 1; i < 5; i++) {
-        var background;
-        if (background = product["background-" + i]) {
-          var divs = background.split("</div>");
-          divs = _.map(divs, function(div) {
-            if (!(/class="nocolor"/.test(div)))
-              div = div.replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
-            return div
-          })
-          product["background-" + i] = divs.join("</div>")
-        }
-      }
-      var name = product._id.replace(/_/g, " ").split("-")[0];
-name = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-product.name = name
-      return product
-    })
-    var groups = inGroupsOf(result, 11);
-    groups = _.map(groups, function(group) {
-      return inGroupsOf(group, 6);
-    });
-    res.render("products/index.ejs", {
-      locals: {
-        groups: groups
-      }
-    });
-  });
-}
-
 exports.index = function(req, res) {
-
   db.view('tags/except_christmas', function(err, docs) {
     var result = _.map(docs.toArray(), function(product) {
 
@@ -70,11 +35,11 @@ exports.index = function(req, res) {
 }
 
 exports.show = function(req, res, next) {
-  var id = req.params.product;
+  var id = req.params.product || req.params.id;
   db.view('all/products_without_attachments', {
     key: id
   }, function(error, docs) {
-    console.log(docs[0].value)
+
     if (docs.length == 0) {
       var myerr = new Error('Record not found!');
       return next(myerr); // <---- pass it, not throw it
@@ -104,7 +69,7 @@ exports.edit = function(req, res) {
     }
     else {
       db.view("all/fonts_by_id", function(error, fonts_response) {
-         var fonts = [];
+        var fonts = [];
         fonts_response.toArray().forEach(function(font) {
           fonts.push(font.id)
         })
@@ -125,7 +90,6 @@ exports.edit = function(req, res) {
 }
 
 exports.update = exports.create = function(req, res) {
-
   if (req.product) {
     var rev = req.product.rev,
       id = req.product.id;
@@ -178,6 +142,41 @@ exports.update = exports.create = function(req, res) {
     }
   });
 }
+exports.tags = function(req, res) {
+  db.view('tags/by_tags', {
+    key: [req.params.tag]
+  }, function(err, docs) {
+    var result = _.map(docs.toArray(), function(product) {
+      for (var i = 1; i < 5; i++) {
+        var background;
+        if (background = product["background-" + i]) {
+          var divs = background.split("</div>");
+          divs = _.map(divs, function(div) {
+            if (!(/class="nocolor"/.test(div)))
+              div = div.replace(/style="/g, 'style="background-color:' + product.colours[1] + ";");
+            return div
+          })
+          product["background-" + i] = divs.join("</div>")
+        }
+      }
+      var name = product._id.replace(/_/g, " ").split("-")[0];
+      name = name.replace(/\w\S*/g, function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
+      product.name = name
+      return product
+    })
+    var groups = inGroupsOf(result, 11);
+    groups = _.map(groups, function(group) {
+      return inGroupsOf(group, 6);
+    });
+    res.render("products/index.ejs", {
+      locals: {
+        groups: groups
+      }
+    });
+  });
+}
 
 exports.for_ebay = function(req, res) {
   var id = req.params.id;
@@ -189,7 +188,6 @@ exports.for_ebay = function(req, res) {
       layout: false
     })
   })
-
 }
 
 exports.destroy = function(req, res) {

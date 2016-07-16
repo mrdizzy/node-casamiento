@@ -1,3 +1,5 @@
+<%- contentFor('title_tag') %>Personalised place cards
+
 <% var responsive_images = [ { 1025:26, 801: 27, 320: 54 }, 
   { 1025:17, 801: 17, 320: 35 }, 
   { 1025:26, 801: 27, 320: 54 },
@@ -44,7 +46,7 @@
 
             <div class="frame" style="width:90%;margin:0 auto;border-top-left-radius:15px;border-bottom-right-radius:15px;padding:5px;">
 
-              <a href="/products/<%= product._id %>">
+              <a href="/personalised_place_cards/<%= product._id %>">
                 <div class="place_square">
                   <div class="inner_place_square">
                     <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-3"] %></div>              
@@ -59,7 +61,7 @@
                 </div>
               </a>
               
-              <a href="/products/<%= product._id %>">
+              <a href="/personalised_place_cards/<%= product._id %>">
                 <div class="place_square" style="float:left;width:49%;">
                   <div class="inner_place_square">
                     <div class="browse_background_container" style="background-color:<%= product.colours[0] %>"><%- product["background-2"] %></div>              
@@ -68,7 +70,7 @@
                 </div>
               </a>
           
-              <a href="/products/<%= product._id %>">
+              <a href="/personalised_place_cards/<%= product._id %>">
                 <div class="place_square"  style="float:right;width:49%;">
     
                   <div class="inner_place_square">
@@ -78,13 +80,9 @@
                 </div>
               </a>          
           
-              <p style="clear:both;margin:0;padding:0;padding-top:2px;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: 
+              <p style="clear:both;margin:0;padding:0;padding-top:2px;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'"> 
               
-              <% if (product.tags) { %>
-                <% product.tags.forEach(function(tag) { %>
-                   <a class="a_tag" href="/products/tags/<%= tag %>"><%= tag %></a>
-                <% }) %>
-              <% } %>
+             
            
            </p>
         </div>
@@ -102,12 +100,12 @@
 <% if (group[1]) { %>
 <% group[1].forEach(function(product) { %>
 
-<a href="/products/<%= product._id %>">
+<a href="/personalised_place_cards/<%= product._id %>">
 <div id="<%= product._id %>"  class="related related_<%= counter %>">
 
 <div class="frame" style="width:90%;margin:0 auto;border-top-left-radius:15px;border-bottom-right-radius:15px;padding:5px;">
           
-<a href="/products/<%= product._id %>">
+<a href="/personalised_place_cards/<%= product._id %>">
           <div class="place_square">
     
             <div class="inner_place_square">
@@ -122,7 +120,7 @@
             <h2><%= product.name %></h2>
           </div>
           </a>
-          <a href="/products/<%= product._id %>">
+          <a href="/personalised_place_cards/<%= product._id %>">
           <div class="place_square" style="float:left;width:49%;">
     
             <div class="inner_place_square">
@@ -132,7 +130,7 @@
      </div>
           </a>
           
-          <a href="/products/<%= product._id %>">
+          <a href="/personalised_place_cards/<%= product._id %>">
           <div class="place_square"  style="float:right;width:49%;">
     
             <div class="inner_place_square">
@@ -142,13 +140,9 @@
      </div>
           </a>    
           
-           <p style="clear:both;margin:0;padding:0;padding-top:2px;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'">Tags: <% if (product.tags) { %>
+           <p style="clear:both;margin:0;padding:0;padding-top:2px;margin-right:1em;text-align:left;color:#000;font:normal 1em 'OS'"> <% if (product.tags) { %>
          
-           <% product.tags.forEach(function(tag) { %>
           
-           <a class="a_tag" href="/products/tags/<%= tag %>"><%= tag %></a>
-           
-           <% }) %>
            <% } %>
            </p>
         </div>

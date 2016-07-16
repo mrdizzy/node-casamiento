@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg>
+  <variableSets>
+    <variableSet locked="none">
+      <variables>
+        <variable varName="Variable0" trait="textcontent"/>
+        <variable varName="Variable1" trait="textcontent"/>
+      </variables>
+      <v:sampleDataSets xmlns:v="casamiento">
+      
+      
+      
+      
+        <v:sampleDataSet dataSetName="0">
+        
+            
+        
+          <Variable0>
+            <p>Miss Bernice Jones &amp; Mr Steven Taylor</p>
+          </Variable0>
+          
+          
+            
+        
+          <Variable1>
+            <p>Miss Bushrah Aktar</p>
+          </Variable1>
+          
+          
+        </v:sampleDataSet>
+        
+        
+      
+        <v:sampleDataSet dataSetName="1">
+        
+            
+        
+          <Variable0>
+            <p>Miss Ling Lau</p>
+          </Variable0>
+          
+          
+            
+        
+          <Variable1>
+            <p>Mr Andy Smith &amp; Mrs Helen Smith</p>
+          </Variable1>
+          
+          
+        </v:sampleDataSet>
+        
+        
+      
+        <v:sampleDataSet dataSetName="2">
+        
+            
+        
+          <Variable0>
+            <p>Mr Dave Mills-Ellis &amp; Mrs Louise Mills-ellis</p>
+          </Variable0>
+          
+          
+            
+        
+          <Variable1>
+            <p>Mr David Thomas &amp; Mrs Pamela Thomas</p>
+          </Variable1>
+          
+          
+        </v:sampleDataSet>
+        
+        
+      
+        <v:sampleDataSet dataSetName="3">
+        
+            
+        
+          <Variable0>
+            <p>Mr Gary Fisher &amp; Mrs Jean Fisher</p>
+          </Variable0>
+          
+          
+            
+        
+          <Variable1>
+            <p>Mr Gary Thorpe &amp; Mrs Jenny Thorpe</p>
+          </Variable1>
+          
+          
+        </v:sampleDataSet>
+        
+        
+      
+        <v:sampleDataSet dataSetName="4">
+        
+            
+        
+          <Variable0>
+            <p>Mr John Woodhouse &amp; Mrs Christine Holman-Joyce</p>
+          </Variable0>
+          
+          
+            
+        
+          <Variable1>
+            <p>Mr Mark Whyte &amp; Mrs Luciya Whyte</p>
+          </Variable1>
+          
+          
+        </v:sampleDataSet>
+        
+        
+      
+        <v:sampleDataSet dataSetName="5">
+        
+            
+        
+          <Variable0>
+            <p>Mr Matt Cooper, Mrs Kelly Cooper &amp; Master Charlie Cooper</p>
+          </Variable0>
+          
+          
+            
+        
+          <Variable1>
+            <p>Mr Mervyn Chapman &amp; Mrs Margaret Chapman</p>
+          </Variable1>
+          
+          
+        </v:sampleDataSet>
+        
+        
+      
+        <v:sampleDataSet dataSetName="6">
+        
+            
+        
+          <Variable0>
+            <p>Mr Neil Hillman &amp; Mrs Heather Hillman</p>
+          </Variable0>
+          
+          
+            
+        
+          <Variable1>
+            <p>Mr Noel Devitt &amp; Mrs Bridget Devitt</p>
+          </Variable1>
+          
+          
+        </v:sampleDataSet>
+        
+        
+      
+        <v:sampleDataSet dataSetName="7">
+        
+            
+        
+          <Variable0>
+            <p>Mr Paul Glynn &amp; Mrs Jill Glynn</p>
+          </Variable0>
+          
+          
+            
+        
+          <Variable1>
+            <p>Mr Peter Lamb &amp; Mrs Suzanne Lamb</p>
+          </Variable1>
+          
+          
+        </v:sampleDataSet>
+        
+        
+      
+        <v:sampleDataSet dataSetName="8">
+        
+            
+        
+          <Variable0>
+            <p>Mr Shaun Wilkes &amp; Mrs Fiona Fan</p>
+          </Variable0>
+          
+          
+            
+        
+          <Variable1>
+            <p>Mrs Jane Tomkinson</p>
+          </Variable1>
+          
+          
+        </v:sampleDataSet>
+        
+        
+      
+        <v:sampleDataSet dataSetName="9">
+        
+            
+        
+          <Variable0>
+            <p>Mrs Jean Smith</p>
+          </Variable0>
+          
+          
+            
+        
+          <Variable1>
+            <p>Mrs Louisa Wale &amp; Mr Jeff Wale</p>
+          </Variable1>
+          
+          
+        </v:sampleDataSet>
+        
+        
+      </v:sampleDataSets>
+    </variableSet>
+  </variableSets>
+</svg>

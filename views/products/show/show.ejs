@@ -1,10 +1,13 @@
+<%- contentFor('title_tag') %>Personalised name place cards
+
+
+<%- contentFor('inside_headtag') %>
+
+
 <!-- 
 
 We start by defining inline CSS styles. Colours are defined by classes .colour_0, .colour_1, .colour_2 and so on. Therefore we loop through the colours and define a colour for each class. We also load the current font that the place card uses.
 -->
-
-<%- contentFor('inside_headtag') %>
-
 <style type="text/css">
 
   <% for (var i=0; i < product.colours.length; i++) { %>

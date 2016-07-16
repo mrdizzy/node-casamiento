@@ -70,15 +70,10 @@ app.configure(function() {
   app.use(function(req, res, next) {
   
     db.get('tags', function(err, docs) {
-  
       console.log("err", err)
-  
       res.locals({
-  
         tags: docs.tags.sort()
-  
       });
-  
     })
   
     next();

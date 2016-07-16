@@ -1,8 +1,6 @@
 var fs = require('fs'),
    inGroupsOf = require('./../lib/in_groups_of'),
-  sendgrid  = require('sendgrid')("app7076151@heroku.com", "fbnafrlv8387");
-
-
+   sendgrid = require('sendgrid')("app7076151@heroku.com", "fbnafrlv8387");
 
 var test_thankyou = {
    "_id": "EC-54J34043EK665930X",
@@ -142,6 +140,13 @@ var test_thankyou = {
 
 test_thankyou.guests = inGroupsOf(test_thankyou.guests, 2);
 module.exports = function(app) {
+   
+   var products = app.resource('products', require('./../controllers/products'), {
+      load: parseRevision
+   });
+   app.get("/personalised_place_cards", require('./../controllers/products').index)
+   app.get("/personalised_place_cards/:id", require('./../controllers/products').show)
+
    app.get("/thankyou", function(req, res) {
 
       console.log(test_thankyou.guests)
@@ -156,14 +161,12 @@ module.exports = function(app) {
    app.get("/svg/:id", require("./../controllers/svg").show)
    app.resource("payments", require("./../controllers/payments"))
    app.resource("fonts", require("./../controllers/fonts"))
-   var products = app.resource('products', require('./../controllers/products'), {
-      load: parseRevision
-   });
+
    app.get("/products/tags/:tag", require('./../controllers/products').tags)
    var attachments = app.resource("attachments", require('./../controllers/attachments'));
    products.add(attachments);
-app.post("/ebay_order", require('./../controllers/save').create)
-   // eBay
+   app.post("/ebay_order", require('./../controllers/save').create)
+      // eBay
    app.get("/ebay", require('./../controllers/ebay').index);
    app.post("/ebay", require('./../controllers/ebay').create);
    app.get('/ebay/:id', require('./../controllers/ebay').show)
@@ -181,22 +184,22 @@ app.post("/ebay_order", require('./../controllers/save').create)
 
    // Homepage and static
    app.get("/", require("./../controllers/welcome").index)
-//  app.get('/', function(req, res) {
-  //   if (req.headers["user-agent"] == "Pingdom.com_bot_version_1.4_(http://www.pingdom.com/)") {
-  //   } else {
-  //sendgrid.send({
-  //    to:     "david.pettifer@googlemail.com",
-  //    from:     "admin@casamiento.co.uk",
-  //    subject:  "Customer hit to casamiento.co.uk",
-  //    text:     "Headers" + JSON.stringify(req.headers)
-  //  }, function(err, json) {
-  //    if (err) { return console.error("Error", err); }
-  //    console.log(json)  
-  //  })
-  //   }
-//res.render('welcome/index');
+      //  app.get('/', function(req, res) {
+      //   if (req.headers["user-agent"] == "Pingdom.com_bot_version_1.4_(http://www.pingdom.com/)") {
+      //   } else {
+      //sendgrid.send({
+      //    to:     "david.pettifer@googlemail.com",
+      //    from:     "admin@casamiento.co.uk",
+      //    subject:  "Customer hit to casamiento.co.uk",
+      //    text:     "Headers" + JSON.stringify(req.headers)
+      //  }, function(err, json) {
+      //    if (err) { return console.error("Error", err); }
+      //    console.log(json)  
+      //  })
+      //   }
+      //res.render('welcome/index');
 
-  //})
+   //})
    app.get("/about", require("./../controllers/welcome").about)
    app.get("/faq", require("./../controllers/welcome").faq)
 }
