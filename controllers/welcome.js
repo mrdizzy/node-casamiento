@@ -3,6 +3,7 @@ var _ = require('underscore'),
 	colours = require('./../lib/colour_lookup');
 
 exports.index = function(req, res) {
+	console.log("GO")
     if (req.query.show) {
     		var cards_to_show = req.query.show.split(",")
 	cards_to_show = _.map(cards_to_show, function(card) {
@@ -13,7 +14,7 @@ exports.index = function(req, res) {
 		cards_to_show =["birds_of_paradise_trees-name_place", "birds_of_paradise_spirals-name_place", "acorn_pattern-name_place", "botanic_sketch-name_place", "damask-name_place", "egyptian_diamonds-name_place", "egyptian_motif-name_place", "foliage-name_place", "garden_of_life-name_place", "guilloche-name_place", "chequers-name_place", "ornamental-name_place", "modern_floral-name_place", "wild_magic-name_place", "wild_vintage-name_place", "zigzag-name_place"]
 	}
 	db.get(cards_to_show, function(err, docs) {
-
+console.log(err,docs)
 		docs = docs.toArray();
 		
 		docs.forEach(function(card) {

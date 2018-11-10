@@ -1,6 +1,6 @@
 {
-	"host": "https://mrdizzy.cloudant.com",
+	"host": "https://couchdb-b7071a.smileupps.com",
 	"port": "443",
-	"username": "mrdizzy",
-	"password": "world1"
+	"username": "admin",
+	"password": "85c910d6bdca"
 }

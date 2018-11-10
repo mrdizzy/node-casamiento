@@ -75,7 +75,7 @@
     return this;
   }
   $.fn.fontPicker.defaultOptions ={
-    fonts: ["Metroscript", "PoorRichard", "TrajanPro", "CaslonPro", "EccentricStd", "MyriadProLight", "SacramentoRegular", "ChaparralItalic", "Exmouth", "PerpetuaTitling"],
+    fonts: ["Vast Shadow", "Abril Fatface", "TrajanPro", "CaslonPro", "EccentricStd", "MyriadProLight", "SacramentoRegular", "ChaparralItalic", "Exmouth", "PerpetuaTitling"],
     selected_font: "Metroscript",
     in_groups_of: 3
   }
@@ -83,13 +83,15 @@
 }(jQuery))
 
 $.updateFont = function(font, obj) {
+alert("Updating font" + font + obj)
+var font_for_google_api = font.split(" ").join("+")
   var obj = obj || { trigger: function() {}}
-  $('head').append("<style type='text/css'> @font-face { font-family:'" + font + "'; src: url('/fonts/"+ font + ".eot?') format('eot'), url('/fonts/" + font + ".woff') format('woff'); }</style>");
+  $('head').append("<style type='text/css'>@import url('https://fonts.googleapis.com/css?family=" + font_for_google_api + "');</style>");
   var fontLoader = new FontLoader([font], {
     "fontsLoaded": function(error) {
       if (error !== null) {
         // Reached the timeout but not all fonts were loaded
-        console.log(error.message);
+        console.log("ERROR: " + font + " " + error.message);
       } else {       
         console.log("all fonts were loaded");
       }
@@ -98,6 +100,6 @@ $.updateFont = function(font, obj) {
       // One of the fonts was loaded
       obj.trigger("fontpicker:fontloaded", fontFamily)
     }
-  }, null);
+  }, 3000);
   fontLoader.loadFonts();
 }
