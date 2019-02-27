@@ -37,36 +37,28 @@ exports.index = function(req, res) {
 exports.show = function(req, res, next) {
   var id = req.params.product || req.params.id;
   db.view('all/products_without_attachments', {
- //db.get(id,
-   
     key: id
   },
   function(error, docs) {
-    console.log(docs)
-res.render('products/show/show.ejs', {
-  locals: {
-    fonts: ["Cinzel", "Vast Shadow", "Abril Fatface", "Shrikhand", "Rye", "Raleway", "Life Savers"],// fonts,
-    product: docs[0].value // First record   
-  }
-});
-  // if (docs.length == 0) {
-  //   var myerr = new Error('Record not found!');
-  //   return next(myerr); // <---- pass it, not throw it
-  // }
-   // else {
-   //   db.view("all/fonts_by_id", function(error, fonts_response) {
-   //     var fonts = [];
-   //     fonts_response.toArray().forEach(function(font) {
-   //       fonts.push(font.id)
-   //     })
-   //     res.render('products/show/show.ejs', {
-   //       locals: {
-   //         fonts: [],// fonts,
-   //         product: docs[0].value // First record   
-   //       }
-   //     });
-   //   })
-   // }
+
+   if (docs.length == 0) {
+     var myerr = new Error('Record not found!');
+     return next(myerr); // <---- pass it, not throw it
+   }
+    else {
+      db.view("all/fonts_by_id", function(error, fonts_response) {
+        var fonts = [];
+        fonts_response.forEach(function(key, row, id) {
+          fonts.push(id)
+        })
+        res.render('products/show/show.ejs', {
+          locals: {
+            fonts: fonts,
+            product: docs[0].value // First record   
+          }
+        });
+      })
+    }
   });
 };
 

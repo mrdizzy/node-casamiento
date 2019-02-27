@@ -83,7 +83,6 @@
 }(jQuery))
 
 $.updateFont = function(font, obj) {
-alert("Updating font" + font + obj)
 var font_for_google_api = font.split(" ").join("+")
   var obj = obj || { trigger: function() {}}
   $('head').append("<style type='text/css'>@import url('https://fonts.googleapis.com/css?family=" + font_for_google_api + "');</style>");

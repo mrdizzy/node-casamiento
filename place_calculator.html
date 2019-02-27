@@ -1,0 +1,21 @@
+<html>
+
+
+<script>
+
+var price_for_5 = 2.27;
+var price_for_5_metallic = 3.47;
+var sliding_discounts=[0,15,20,25,30,32,34,36,38,40,42,44,46,48,50,52,54];
+var quantities = [5, 10,15,20,25,30,35,40,45,50,60,70,80,90, 100]
+var counter = 0;
+quantities.forEach(function(quantity) {
+        var discount = sliding_discounts[counter]/100
+    var price = (quantity/5) * price_for_5
+    var total = price - (discount * price) 
+    console.log(quantity, total)
+    counter = counter + 1;
+})
+
+</script>
+
+</html>

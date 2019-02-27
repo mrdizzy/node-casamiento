@@ -1,0 +1,70 @@
+<html>
+
+<head>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
+
+  <script type="text/javascript">
+  
+  // rICOH SP150 TONER £24.99 per 1500 prints
+  
+  // Normal letter size 240mm x 165mm = group place cards in 4 
+  var cello_bags_a7_100 = 2.50;
+  var A7_in_square_meters = 0.00777;
+  var ebay_sponsored_percentage = 25/100
+  var ebay_final_value_percentage=   25/100;
+  var quantities = [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135];
+  var foil_patsy_may = {
+    price:7.40,
+    length: 15000
+  }
+  var colotech_200gsm = 0.00775;
+  var margin_error =10/100;
+  
+  
+  quantities.forEach(function(quantity) {
+    var cost_of_foiling_1 = (foil_patsy_may.price/foil_patsy_may.length)* 74.25;s
+    var cost_of_foiling =quantity*cost_of_foiling_1;
+    var cost_of_1_card_200gsm = colotech_200gsm/8;
+    var cost_of_card = cost_of_1_card_200gsm*quantity;
+    var cost_of_toner_per_place_card = (24.99/1500)/8;
+    var total_cost = (cost_of_card+cost_of_foiling + cost_of_toner_per_place_card)
+    console.log("Margin error " + total_cost + "," + margin_error*total_cost)
+    var total_cost_with_margin_error = (margin_error*total_cost)+total_cost
+    console.log("Quantity " + quantity + ": " + total_cost)
+    var weight = A7_in_square_meters * quantity * 200;
+    if ((quantity < 21) && (weight <100)) {
+      var postage = 0.58;
+      console.log("Postage: Small letter 0.58")
+    }
+    if ((quantity > 20) && (weight < 100)) {
+      console.log("Postage: Large letter 100gsm £0.79")
+      var postage = 0.79
+    }
+    if((quantity > 20) && (weight > 99) && (weight < 250)) {
+      console.log("Postage: Large letter 100-250gsm £1.26")
+      var postage = 1.26;
+    }
+    console.log("TOTAL COST:" + (postage+total_cost_with_margin_error) +" ---- " + weight + "grams \n\n")
+    var cost = postage+total_cost_with_margin_error;
+    var markup = 450/100;
+    var price = (markup * cost) + cost;
+    var ebay_fees = 120/100* ((10/100) * price);
+    var paypal_fees = ((3.4/100) * price) + 0.20;
+    var ebay_sponsored_fees = 120/100*(ebay_sponsored_percentage * price);
+    var all_fees = ebay_fees + paypal_fees + ebay_sponsored_fees
+    console.log("PRICE: " + price)
+    console.log("Cost including fees: " + (cost + all_fees) + "\n")
+    console.log("Total profit: " + (price - (cost + all_fees)) + "\n\n\n\n\"")
+  })
+
+
+  </script>
+</head>
+
+<body>
+  <div id="results"></div>
+</body>
+
+</html>

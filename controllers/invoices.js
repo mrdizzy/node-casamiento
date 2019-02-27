@@ -7,7 +7,7 @@ var db = require('couchdb-migrator').db,
 
 module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[1,2,3,4]
  
-  var transactions = req.body.transaction_ids || req.body.envelope_transaction_ids || req.body.label_transaction_ids;
+  var transactions = req.body.transaction_ids || req.body.envelope_transaction_ids || req.body.label_8_transaction_ids || req.body.label_10_transaction_ids;
   
    // If we are only submitting one transaction from the form then we need to make it into an array
   if(typeof transactions === "string") transactions = [transactions]
@@ -39,9 +39,11 @@ module.exports.create = function(req, res) { // POST /invoices?transaction_ids=[
     } else {
       if(req.body.envelope_transaction_ids) {   
       res.render("invoices/envelope.ejs",{ layout: false, locals: { transactions: results }})        
-    } else if (req.body.label_transaction_ids) {
+    } else if (req.body.label_8_transaction_ids) {
       res.render("invoices/label.ejs", { layout: false, locals: { transactions: results }})
-    } else {
+    } else if (req.body.label_10_transaction_ids) {
+      res.render("invoices/label_10.ejs", { layout: false, locals: { transactions: results }})
+    }  else {
       res.render("invoices/show.ejs", { layout: false, locals: { transactions: results }})
       }
     }
@@ -65,7 +67,7 @@ module.exports.index = function(req, res) {  // GET /invoices
   }, {
     startdate: timeAgo.toISOString(),
     enddate: timeNow.toISOString(),
-    transactionclass: "BalanceAffecting"
+    transactionclass: "Received"
   })
 }
 
