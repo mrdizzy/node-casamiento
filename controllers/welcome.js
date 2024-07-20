@@ -11,7 +11,9 @@ exports.index = function(req, res) {
 	})
     }
     else {
-		cards_to_show =["birds_of_paradise_trees-name_place", "birds_of_paradise_spirals-name_place", "acorn_pattern-name_place", "botanic_sketch-name_place", "damask-name_place", "egyptian_diamonds-name_place", "egyptian_motif-name_place", "foliage-name_place", "garden_of_life-name_place", "guilloche-name_place", "chequers-name_place", "ornamental-name_place", "modern_floral-name_place", "wild_magic-name_place", "wild_vintage-name_place", "zigzag-name_place"]
+// cards_to_show =["birds_of_paradise_trees-name_place", "birds_of_paradise_spirals-name_place", "acorn_pattern-name_place", "botanic_sketch-name_place", "damask-name_place", "egyptian_diamonds-name_place", "egyptian_motif-name_place", "foliage-name_place", "garden_of_life-name_place", "guilloche-name_place", "chequers-name_place", "ornamental-name_place", "modern_floral-name_place", "wild_magic-name_place", "wild_vintage-name_place", "zigzag-name_place"]
+
+cards_to_show =["xmas_contemporary_baubles", "xmas_characters"]	
 	}
 	db.get(cards_to_show, function(err, docs) {
 console.log(err,docs)
