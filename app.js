@@ -2,7 +2,6 @@ var express = require('express'),
   http = require('http'),
   compression = require('compression'), // gzip compression for static files
   resource = require('express-resource'),
-  db = require('./config/db').test_ebay,
   exposeTemplates = require('./lib/middleware/expose_handlebars_to_client'),
   partials = require('express-partials'),
   expressLayouts = require('express-ejs-layouts');
@@ -10,11 +9,7 @@ var express = require('express'),
   //Cacher = require("cacher"); 
   //var cacher = new Cacher();
  var app = express();
- var airbrake = require('airbrake').createClient("6f9e82bf8659e335183d7ce2a265965b");
-airbrake.handleExceptions();
  
-var dir = __dirname; // The name of the directory that the currently executing script resides in.
-
 // We use the connect-assetmanager module to concatenate and serve javascript and CSS files.
 var assetManagerGroups = {
   'css': { 

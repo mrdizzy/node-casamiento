@@ -12,14 +12,12 @@ var cradle = require('cradle');// port should be 443
     var connection =new(cradle.Connection)('http://127.0.0.1', 5984, {
         secure: false,
             auth: {
-                username: "david.pettifer@dizzy.co.uk",
-                password: "World@667"
+                username: "admin",
+                password: "admin"
             },
             cache: false
         });
     
-    console.log("Connection",connection)
-
     
     var databases = {}
 databases.connection = connection;

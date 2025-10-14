@@ -2,20 +2,24 @@
   "name": "node-casamiento",
   "version": "0.0.1",
   "dependencies": {
-    "express": "3.4.x",
-    "cradle": "0.6.x",
-    "express-resource": "1.0.x",
-    "underscore": "1.3.x",
-    "node-paypal-api-nv": "git://github.com/mrdizzy/node-paypal-api-nv.git",
-    "node-ebay-trading-api": "git://github.com/mrdizzy/node-ebay-trading-api.git",
     "async": "0.1.x",
- "sendgrid": "1.0.4",
-    "xml2js": "0.1.x",
+    "compression": "^1.8.1",
+    "connect-assetmanager": "0.0.28",
+    "cradle": "0.6.x",
+    "debug": "2.2.0",
     "ejs": "0.8.x",
-    "express-partials": "0.1.x"
+    "event-stream": "^4.0.1",
+    "express": "3.4.x",
+    "express-ejs-layouts": "^2.5.1",
+    "express-partials": "0.1.x",
+    "express-resource": "1.0.x",
+    "express3-handlebars": "^0.5.2",
+    "sendgrid": "1.0.4",
+    "underscore": "1.3.x",
+    "xml2js": "0.1.x"
   },
   "engines": {
-    "node": "0.8.x",
-    "npm": "1.1.x"
+    "node": ">=4.0.0 <5.0.0",
+    "npm": ">=2.0.0"
   }
 }

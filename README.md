@@ -1,3 +1,8 @@
+Run using: node app.js
+Make sure CouchDB v3.3.3 for Windows is installed
+Use the same login and password credentials that are set during the installation, configured in config/db.js
+You can copy CouchDB data by copying the entire data folder
+
 DEPENDENCIES USED
 =================
 
