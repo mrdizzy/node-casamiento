@@ -1,22 +1,30 @@
 var cradle = require('cradle');// port should be 443
     // connection = new(cradle.Connection)('https://984c464d-1c23-4359-81fb-561712a67b6a-bluemix:562483426d05944e298d24f854f7c0866df18d6e55010ffb8c1d613756e6a78a@984c464d-1c23-4359-81fb-561712a67b6a-bluemix.cloudant.com', 443, {
-    var connection =new(cradle.Connection)('https://984c464d-1c23-4359-81fb-561712a67b6a-bluemix.cloudant.com', 443, {
-    secure: true,
-        auth: {
-            username: "984c464d-1c23-4359-81fb-561712a67b6a-bluemix",
-            password: "562483426d05944e298d24f854f7c0866df18d6e55010ffb8c1d613756e6a78a"
-        },
-        cache: false
-    });
+    // var connection =new(cradle.Connection)('https://984c464d-1c23-4359-81fb-561712a67b6a-bluemix.cloudant.com', 443, {
+    // secure: true,
+    //     auth: {
+    //         username: "984c464d-1c23-4359-81fb-561712a67b6a-bluemix",
+    //         password: "562483426d05944e298d24f854f7c0866df18d6e55010ffb8c1d613756e6a78a"
+    //     },
+    //     cache: false
+    // });
 
-
+    var connection =new(cradle.Connection)('http://127.0.0.1', 5984, {
+        secure: false,
+            auth: {
+                username: "david.pettifer@dizzy.co.uk",
+                password: "World@667"
+            },
+            cache: false
+        });
+    
     console.log("Connection",connection)
 
     
     var databases = {}
 databases.connection = connection;
 databases.ebay_messages = connection.database("ebay_messages");
-databases.test_ebay = connection.database("test_ebay");
+databases.test_ebay = connection.database("casamiento");
 
 databases.test_ebay.documents = [
 // Design documents

@@ -1,0 +1,29 @@
+{
+  "total_rows": 80,
+  "offset": 36,
+  "rows": [
+    {
+      "id": "_design/all",
+      "key": "_design/all",
+      "value": {
+        "rev": "14-512df6a5da2ad3ad783ee84ac990d8ab"
+      },
+      "doc": {
+        "_id": "_design/all",
+        "_rev": "14-512df6a5da2ad3ad783ee84ac990d8ab",
+        "views": {
+          "type": {
+            "map": "map: function(doc) {\n                if (doc.type) {\n                    emit(doc.type, doc);\n                }\n            }"
+          },
+          "products_without_attachments": {
+            "map": "function (doc) {\n  if(doc.type == \"product\") {\n    var dw = {};\n    dw._id= doc._id,\n    dw.colours = doc.colours,\n    dw.type = \"product\",\n    dw.font_size = doc.font_size,\n    dw.baseline = doc.baseline,\n    dw.font = doc.font,\n    dw.price = doc.price,\n  dw.buy_it_now_number = doc.buy_it_now_number,\n  dw.description = doc.description,\n  dw.svgupload = doc.svgupload,\n dw.monochromatic = doc.monochromatic,\n       dw.tags = doc.tags\n  \n    emit(doc._id, dw)\n  }\n}"
+          },
+          "fonts_by_id": {
+            "map": "function (doc) {\n  if(doc.type==\"font\") {\n  emit(doc._id, 1);  \n  }\n}"
+          }
+        },
+        "language": "javascript"
+      }
+    }
+  ]
+}

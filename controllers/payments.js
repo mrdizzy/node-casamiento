@@ -1,5 +1,5 @@
-var paypal = require('./../config/paypal_config')(),
-  _ = require('underscore'),
+var paypal;   //=require('./../config/paypal_config')(),
+  var _ = require('underscore'),
   db = require('./../config/db').test_ebay,
   inGroupsOf = require('./../lib/in_groups_of'),
   sendgrid = require('sendgrid')("app7076151@heroku.com", "fbnafrlv8387");

@@ -1,7 +1,7 @@
 var db = require('couchdb-migrator').db,
   async = require('async'),
-  _ = require('underscore'),
-  paypal = require('./../config/paypal_config')();
+  _ = require('underscore');
+  // paypal = require('./../config/paypal_config')();
 
 // Downloads PayPal Transactions for immediate display -- it does not save them to Couch
 

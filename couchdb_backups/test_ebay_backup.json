@@ -1,0 +1,5423 @@
+{
+  "total_rows": 80,
+  "offset": 0,
+  "rows": [
+    {
+      "id": "Abril Fatface",
+      "key": "Abril Fatface",
+      "value": {
+        "rev": "4-e49a8803378d6acd9163b2e81b23b6a0"
+      },
+      "doc": {
+        "_id": "Abril Fatface",
+        "_rev": "4-e49a8803378d6acd9163b2e81b23b6a0",
+        "name": "Abril Fatface",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-SJD/SukatUMvjwt6oBuBxg==",
+            "length": 6056,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Adobe Garamond Pro",
+      "key": "Adobe Garamond Pro",
+      "value": {
+        "rev": "4-183ae46326a7783f1873cfcab12f1ac6"
+      },
+      "doc": {
+        "_id": "Adobe Garamond Pro",
+        "_rev": "4-183ae46326a7783f1873cfcab12f1ac6",
+        "name": "Adobe Garamond Pro",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-jqJsDitSmu4oCzi7LsLk4w==",
+            "length": 13008,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Arabic Typesetting",
+      "key": "Arabic Typesetting",
+      "value": {
+        "rev": "4-0b530614c123653b96023147596f3233"
+      },
+      "doc": {
+        "_id": "Arabic Typesetting",
+        "_rev": "4-0b530614c123653b96023147596f3233",
+        "name": "Arabic Typesetting",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-W+6Y8P7X5gQXx1CQinWvsg==",
+            "length": 26211,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Broadway",
+      "key": "Broadway",
+      "value": {
+        "rev": "3-7d767759c95687e5063ac8e22a037c75"
+      },
+      "doc": {
+        "_id": "Broadway",
+        "_rev": "3-7d767759c95687e5063ac8e22a037c75",
+        "name": "Broadway",
+        "size": "0.1",
+        "type": "font"
+      }
+    },
+    {
+      "id": "Cinzel",
+      "key": "Cinzel",
+      "value": {
+        "rev": "4-931457d2f6fda5f636822cf577439bad"
+      },
+      "doc": {
+        "_id": "Cinzel",
+        "_rev": "4-931457d2f6fda5f636822cf577439bad",
+        "name": "Cinzel",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-YmniHnT+3sU2Qk4XoThMKg==",
+            "length": 3039,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Cookie",
+      "key": "Cookie",
+      "value": {
+        "rev": "4-9c91c63342e274239467f235aae51288"
+      },
+      "doc": {
+        "_id": "Cookie",
+        "_rev": "4-9c91c63342e274239467f235aae51288",
+        "name": "Cookie",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-h2sDaBcYzG2htLjrPTXx1A==",
+            "length": 5684,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Diplomata SC",
+      "key": "Diplomata SC",
+      "value": {
+        "rev": "4-89cd08a6305b1c5e1e9a613b0e7f930c"
+      },
+      "doc": {
+        "_id": "Diplomata SC",
+        "_rev": "4-89cd08a6305b1c5e1e9a613b0e7f930c",
+        "name": "Diplomata SC",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-sH4dQAQ5tvRL3nxt5ma1MA==",
+            "length": 5917,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Domine",
+      "key": "Domine",
+      "value": {
+        "rev": "4-c92c99c952db4f60b94cb6126e23a7b3"
+      },
+      "doc": {
+        "_id": "Domine",
+        "_rev": "4-c92c99c952db4f60b94cb6126e23a7b3",
+        "name": "Domine",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-rk5Nu8rNYKfjvmVomGpB/A==",
+            "length": 5155,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "EB Garamond",
+      "key": "EB Garamond",
+      "value": {
+        "rev": "4-d664e73fbcc9646a772686f46f640283"
+      },
+      "doc": {
+        "_id": "EB Garamond",
+        "_rev": "4-d664e73fbcc9646a772686f46f640283",
+        "name": "EB Garamond",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-sRRNiweeg7GoDYxxMaDnyw==",
+            "length": 17656,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "EC-3FB0635643310981M",
+      "key": "EC-3FB0635643310981M",
+      "value": {
+        "rev": "1-52ed5e7cb7e4e47725ddd1b8882740f6"
+      },
+      "doc": {
+        "_id": "EC-3FB0635643310981M",
+        "_rev": "1-52ed5e7cb7e4e47725ddd1b8882740f6",
+        "colours": [
+          "#32cd32"
+        ],
+        "type": "order",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "0.99",
+        "buy_it_now_number": "123",
+        "description": "Christmas Diamante",
+        "svgupload": "C:\\fakepath\\svg_template.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "guests": [
+          {
+            "name": "Guest Name",
+            "baseline": 0,
+            "font_size": "0.08"
+          },
+          {
+            "name": "Guest Name",
+            "baseline": 0,
+            "font_size": "0.08"
+          },
+          {
+            "name": "Guest Name",
+            "baseline": 0,
+            "font_size": "0.08"
+          },
+          {
+            "name": "Guest Name",
+            "baseline": 0,
+            "font_size": "0.08"
+          },
+          {
+            "name": "Guest Name",
+            "baseline": 0,
+            "font_size": "0.08"
+          },
+          {
+            "name": "Guest Name",
+            "baseline": 0,
+            "font_size": "0.08"
+          },
+          {
+            "name": "Guest Name",
+            "baseline": 0,
+            "font_size": "0.08"
+          },
+          {
+            "name": "Guest Name",
+            "baseline": 0,
+            "font_size": "0.08"
+          }
+        ],
+        "weight": 200,
+        "total": "4.00",
+        "product_id": "xmas_diamante",
+        "status": "UNPAID"
+      }
+    },
+    {
+      "id": "Fredericka the Great",
+      "key": "Fredericka the Great",
+      "value": {
+        "rev": "4-616717f82cfabbc6379e90ee61a1337a"
+      },
+      "doc": {
+        "_id": "Fredericka the Great",
+        "_rev": "4-616717f82cfabbc6379e90ee61a1337a",
+        "name": "Fredericka the Great",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-Qsom3mamRVKgtXM0nNqMzQ==",
+            "length": 78830,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Gabriela",
+      "key": "Gabriela",
+      "value": {
+        "rev": "4-f6058b5c7cf36925d711f5b9e8f1efce"
+      },
+      "doc": {
+        "_id": "Gabriela",
+        "_rev": "4-f6058b5c7cf36925d711f5b9e8f1efce",
+        "name": "Gabriela",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-c0SDL5+Um8rZYCA4Rxbmzg==",
+            "length": 5611,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Great Vibes",
+      "key": "Great Vibes",
+      "value": {
+        "rev": "8-b88e82dfb05612f9f5e1dd2bd60defb9"
+      },
+      "doc": {
+        "_id": "Great Vibes",
+        "_rev": "8-b88e82dfb05612f9f5e1dd2bd60defb9",
+        "name": "Great Vibes",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 8,
+            "digest": "md5-4uc0T1kfJNl1EOSEuXsUuw==",
+            "length": 12013,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 7,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 6,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Henny Penny",
+      "key": "Henny Penny",
+      "value": {
+        "rev": "4-af1b505f8d8daaf194b2cb25521eed03"
+      },
+      "doc": {
+        "_id": "Henny Penny",
+        "_rev": "4-af1b505f8d8daaf194b2cb25521eed03",
+        "name": "Henny Penny",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-4QbVBlJ5wwL5TqkbxiFNEA==",
+            "length": 31427,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Life Savers",
+      "key": "Life Savers",
+      "value": {
+        "rev": "4-b2ae8f24b9018c1b45d12d847c99ccc1"
+      },
+      "doc": {
+        "_id": "Life Savers",
+        "_rev": "4-b2ae8f24b9018c1b45d12d847c99ccc1",
+        "name": "Life Savers",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-V3yRikcsU/Ff8JrfMjyWNg==",
+            "length": 17276,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Lily Script One",
+      "key": "Lily Script One",
+      "value": {
+        "rev": "4-6488e077b93116c666e93b47cd25887d"
+      },
+      "doc": {
+        "_id": "Lily Script One",
+        "_rev": "4-6488e077b93116c666e93b47cd25887d",
+        "name": "Lily Script One",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-bOVJdZrBCvdn1gQqJDxG2A==",
+            "length": 10693,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Lobster",
+      "key": "Lobster",
+      "value": {
+        "rev": "5-65b41232794ea9e6766803f304c3c56c"
+      },
+      "doc": {
+        "_id": "Lobster",
+        "_rev": "5-65b41232794ea9e6766803f304c3c56c",
+        "name": "Lobster",
+        "size": "0.2",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-025guotCTOKxApibtRijnw==",
+            "length": 5053,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Metroscript",
+      "key": "Metroscript",
+      "value": {
+        "rev": "4-6b37f31507bf05b903c96de35d733afd"
+      },
+      "doc": {
+        "_id": "Metroscript",
+        "_rev": "4-6b37f31507bf05b903c96de35d733afd",
+        "name": "Metroscript",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-IL32nEqmyHGoZ6Pah/LORA==",
+            "length": 8737,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Monsieur La Doulaise",
+      "key": "Monsieur La Doulaise",
+      "value": {
+        "rev": "4-e6a429f07e65e65e9ff86e0675649121"
+      },
+      "doc": {
+        "_id": "Monsieur La Doulaise",
+        "_rev": "4-e6a429f07e65e65e9ff86e0675649121",
+        "name": "Monsieur La Doulaise",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-2uheJUpAVoVCwifcUmxEMA==",
+            "length": 20289,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Mountains of Christmas",
+      "key": "Mountains of Christmas",
+      "value": {
+        "rev": "4-9bf94d3013c31c33ecaea07605c44f7d"
+      },
+      "doc": {
+        "_id": "Mountains of Christmas",
+        "_rev": "4-9bf94d3013c31c33ecaea07605c44f7d",
+        "name": "Mountains of Christmas",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-Rd7E7onSxpt+yC6YcpmcFw==",
+            "length": 104629,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Old Standard TT",
+      "key": "Old Standard TT",
+      "value": {
+        "rev": "4-883708b48ae5f2c597f8e8379f429a1b"
+      },
+      "doc": {
+        "_id": "Old Standard TT",
+        "_rev": "4-883708b48ae5f2c597f8e8379f429a1b",
+        "name": "Old Standard TT",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-PHl5egfZ5nupFowju9+HfA==",
+            "length": 8307,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-PHl5egfZ5nupFowju9+HfA==",
+            "length": 8307,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-PHl5egfZ5nupFowju9+HfA==",
+            "length": 8307,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Park Lane NF",
+      "key": "Park Lane NF",
+      "value": {
+        "rev": "4-e28af8a0b8e0a6bd18ab1a32d7c62a40"
+      },
+      "doc": {
+        "_id": "Park Lane NF",
+        "_rev": "4-e28af8a0b8e0a6bd18ab1a32d7c62a40",
+        "name": "Park Lane NF",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-tAsO3b1vOeIC8oHzcjZ0LA==",
+            "length": 3109,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Pastiche NF",
+      "key": "Pastiche NF",
+      "value": {
+        "rev": "3-2e406e9f4a6fac791f5c1ac77d19a067"
+      },
+      "doc": {
+        "_id": "Pastiche NF",
+        "_rev": "3-2e406e9f4a6fac791f5c1ac77d19a067",
+        "name": "Pastiche NF",
+        "size": "0.1",
+        "type": "font"
+      }
+    },
+    {
+      "id": "Perpetua Titling",
+      "key": "Perpetua Titling",
+      "value": {
+        "rev": "4-211be4f1c1d21fa75b08da3a5e1f0bff"
+      },
+      "doc": {
+        "_id": "Perpetua Titling",
+        "_rev": "4-211be4f1c1d21fa75b08da3a5e1f0bff",
+        "name": "Perpetua Titling",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-RnuzUcOg+xQ5xEv/DuNm2A==",
+            "length": 6936,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Perpetua Titling MT Light",
+      "key": "Perpetua Titling MT Light",
+      "value": {
+        "rev": "9-0990fc5799226a17ad91b06a943533b1"
+      },
+      "doc": {
+        "_id": "Perpetua Titling MT Light",
+        "_rev": "9-0990fc5799226a17ad91b06a943533b1",
+        "name": "Perpetua Titling MT Light",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 9,
+            "digest": "md5-o8fbNUp3DXqiLgiIk60J0A==",
+            "length": 9450,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 8,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 7,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Philosopher",
+      "key": "Philosopher",
+      "value": {
+        "rev": "4-ae7826b087b52af2e9fb9ffecdfa3ea2"
+      },
+      "doc": {
+        "_id": "Philosopher",
+        "_rev": "4-ae7826b087b52af2e9fb9ffecdfa3ea2",
+        "name": "Philosopher",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-Gd9vA25RxIYEsUsD2GO2qA==",
+            "length": 8572,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Pinyon Script",
+      "key": "Pinyon Script",
+      "value": {
+        "rev": "4-f7630900d4ebefd1879af1599eeffd32"
+      },
+      "doc": {
+        "_id": "Pinyon Script",
+        "_rev": "4-f7630900d4ebefd1879af1599eeffd32",
+        "name": "Pinyon Script",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-7ZC41RLXZdddXRweP6I69Q==",
+            "length": 18456,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Playfair Display",
+      "key": "Playfair Display",
+      "value": {
+        "rev": "4-a87a30e986d4af693d9d2e2516f3807e"
+      },
+      "doc": {
+        "_id": "Playfair Display",
+        "_rev": "4-a87a30e986d4af693d9d2e2516f3807e",
+        "name": "Playfair Display",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-4ldhVuPic3e1LqTRtb3IYQ==",
+            "length": 10588,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Playfair Display SC",
+      "key": "Playfair Display SC",
+      "value": {
+        "rev": "4-f270ddac2d7250c775126d0f8c0e7d3e"
+      },
+      "doc": {
+        "_id": "Playfair Display SC",
+        "_rev": "4-f270ddac2d7250c775126d0f8c0e7d3e",
+        "name": "Playfair Display SC",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-F6N6HAbaNOUWvSakLuT3kQ==",
+            "length": 8908,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Raleway",
+      "key": "Raleway",
+      "value": {
+        "rev": "4-ff6ac77a95acfcf88ed3c1f256f54b84"
+      },
+      "doc": {
+        "_id": "Raleway",
+        "_rev": "4-ff6ac77a95acfcf88ed3c1f256f54b84",
+        "name": "Raleway",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-DZf9LMWNIAifjbuKxvUspg==",
+            "length": 5241,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Rye",
+      "key": "Rye",
+      "value": {
+        "rev": "4-b76f7a34964472f845193bc5ebbfccec"
+      },
+      "doc": {
+        "_id": "Rye",
+        "_rev": "4-b76f7a34964472f845193bc5ebbfccec",
+        "name": "Rye",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-Fv3985tbbjYEknlO2x0P1w==",
+            "length": 21826,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "ShangriLaNFSmallCaps",
+      "key": "ShangriLaNFSmallCaps",
+      "value": {
+        "rev": "4-0473f6963b3240b66b7e86d931970164"
+      },
+      "doc": {
+        "_id": "ShangriLaNFSmallCaps",
+        "_rev": "4-0473f6963b3240b66b7e86d931970164",
+        "name": "ShangriLaNFSmallCaps",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-x3iUBSnZuCCFV0tyNzO0Hw==",
+            "length": 10456,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Shrikhand",
+      "key": "Shrikhand",
+      "value": {
+        "rev": "4-59db8b0331f3657e780e65138917248d"
+      },
+      "doc": {
+        "_id": "Shrikhand",
+        "_rev": "4-59db8b0331f3657e780e65138917248d",
+        "name": "Shrikhand",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-QIpiyXylFQva4Y2KJnWhHA==",
+            "length": 12459,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Strong Glasgow DEMO light",
+      "key": "Strong Glasgow DEMO light",
+      "value": {
+        "rev": "4-ae5682b13789f26b6befce095157ccff"
+      },
+      "doc": {
+        "_id": "Strong Glasgow DEMO light",
+        "_rev": "4-ae5682b13789f26b6befce095157ccff",
+        "name": "Strong Glasgow DEMO light",
+        "size": "0.10",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-kR5F+zRGAJSopmgH4xzLEA==",
+            "length": 8524,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Tangerine",
+      "key": "Tangerine",
+      "value": {
+        "rev": "4-b701253fc1b98525b2a922992fe2fd18"
+      },
+      "doc": {
+        "_id": "Tangerine",
+        "_rev": "4-b701253fc1b98525b2a922992fe2fd18",
+        "name": "Tangerine",
+        "size": "0.1",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-a3gx1bl9bHA7ZwWJvDRBQQ==",
+            "length": 12589,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "Vast Shadow",
+      "key": "Vast Shadow",
+      "value": {
+        "rev": "4-5c49a017794cc4875e8d8291a8de416e"
+      },
+      "doc": {
+        "_id": "Vast Shadow",
+        "_rev": "4-5c49a017794cc4875e8d8291a8de416e",
+        "name": "Vast Shadow",
+        "size": "",
+        "type": "font",
+        "_attachments": {
+          "svg": {
+            "content_type": "image/svg+xml",
+            "revpos": 4,
+            "digest": "md5-eNpYrpxeCuqsnBtbn/W14w==",
+            "length": 18715,
+            "stub": true
+          },
+          "eot": {
+            "content_type": "application/vnd.ms-fontobject",
+            "revpos": 3,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          },
+          "woff": {
+            "content_type": "application/font-woff",
+            "revpos": 2,
+            "digest": "md5-1B2M2Y8AsgTpgAmY7PhCfg==",
+            "length": 0,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "_design/all",
+      "key": "_design/all",
+      "value": {
+        "rev": "14-512df6a5da2ad3ad783ee84ac990d8ab"
+      },
+      "doc": {
+        "_id": "_design/all",
+        "_rev": "14-512df6a5da2ad3ad783ee84ac990d8ab",
+        "views": {
+          "type": {
+            "map": "map: function(doc) {\n                if (doc.type) {\n                    emit(doc.type, doc);\n                }\n            }"
+          },
+          "products_without_attachments": {
+            "map": "function (doc) {\n  if(doc.type == \"product\") {\n    var dw = {};\n    dw._id= doc._id,\n    dw.colours = doc.colours,\n    dw.type = \"product\",\n    dw.font_size = doc.font_size,\n    dw.baseline = doc.baseline,\n    dw.font = doc.font,\n    dw.price = doc.price,\n  dw.buy_it_now_number = doc.buy_it_now_number,\n  dw.description = doc.description,\n  dw.svgupload = doc.svgupload,\n dw.monochromatic = doc.monochromatic,\n       dw.tags = doc.tags\n  \n    emit(doc._id, dw)\n  }\n}"
+          },
+          "fonts_by_id": {
+            "map": "function (doc) {\n  if(doc.type==\"font\") {\n  emit(doc._id, 1);  \n  }\n}"
+          }
+        },
+        "language": "javascript"
+      }
+    },
+    {
+      "id": "abstract_butterfly",
+      "key": "abstract_butterfly",
+      "value": {
+        "rev": "2-ae075d911d9e3debd28e2fcb319dd492"
+      },
+      "doc": {
+        "_id": "abstract_butterfly",
+        "_rev": "2-ae075d911d9e3debd28e2fcb319dd492",
+        "colours": [
+          "#23297a"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "32",
+        "buy_it_now_number": "23901",
+        "description": "Da",
+        "svgupload": "",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 2,
+            "digest": "md5-NbjbZAOQTHz8agnA+FSZVA==",
+            "length": 12386,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "abstract_flowers",
+      "key": "abstract_flowers",
+      "value": {
+        "rev": "1-08e6d110eb57410393c6f60cdbbb96b5"
+      },
+      "doc": {
+        "_id": "abstract_flowers",
+        "_rev": "1-08e6d110eb57410393c6f60cdbbb96b5",
+        "colours": [
+          "#23297a"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "1.99",
+        "buy_it_now_number": "",
+        "description": "Abstract flowers",
+        "svgupload": "C:\\fakepath\\flowers_1.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6NU7hCD3syxsLV0yVu0rlw==",
+            "length": 22871,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "art_deco_arrows",
+      "key": "art_deco_arrows",
+      "value": {
+        "rev": "1-304bb308e6890c412b6d7dae3c0079a2"
+      },
+      "doc": {
+        "_id": "art_deco_arrows",
+        "_rev": "1-304bb308e6890c412b6d7dae3c0079a2",
+        "colours": [
+          "#000000"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "2.99",
+        "buy_it_now_number": "321",
+        "description": "Desc",
+        "svgupload": "C:\\fakepath\\art_deco_arrows.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Unv1YX6B9zdIRdR6w4YsTg==",
+            "length": 6421,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "art_deco_bars",
+      "key": "art_deco_bars",
+      "value": {
+        "rev": "1-abfe6858553882c47c26d42d5a590251"
+      },
+      "doc": {
+        "_id": "art_deco_bars",
+        "_rev": "1-abfe6858553882c47c26d42d5a590251",
+        "colours": [
+          "#23297a"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "2.99",
+        "buy_it_now_number": "123",
+        "description": "",
+        "svgupload": "C:\\fakepath\\art_deco_bars.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Exy+JmkKhNnvvwmSG9qCLg==",
+            "length": 7873,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "art_deco_circles",
+      "key": "art_deco_circles",
+      "value": {
+        "rev": "1-cc3219e5aa55436b61a747fd6aa697f8"
+      },
+      "doc": {
+        "_id": "art_deco_circles",
+        "_rev": "1-cc3219e5aa55436b61a747fd6aa697f8",
+        "colours": [
+          "#23297a"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "2.99",
+        "buy_it_now_number": "",
+        "description": "circles",
+        "svgupload": "C:\\fakepath\\circles.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-BJ0Mb0qdThPRWjhkdJWK7Q==",
+            "length": 18506,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "art_deco_waves",
+      "key": "art_deco_waves",
+      "value": {
+        "rev": "1-8f4e83f7a08550ddb0c0cc9e8ed68585"
+      },
+      "doc": {
+        "_id": "art_deco_waves",
+        "_rev": "1-8f4e83f7a08550ddb0c0cc9e8ed68585",
+        "colours": [
+          "#23297a"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "2.99",
+        "buy_it_now_number": "",
+        "description": "Waves",
+        "svgupload": "C:\\fakepath\\waves.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-A8be7hHKy9DR1rq+eoQuLQ==",
+            "length": 22309,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "cubes",
+      "key": "cubes",
+      "value": {
+        "rev": "1-1c3db6758e315db1efd1969e76188105"
+      },
+      "doc": {
+        "_id": "cubes",
+        "_rev": "1-1c3db6758e315db1efd1969e76188105",
+        "colours": [
+          "#23297a"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "3.9",
+        "buy_it_now_number": "232",
+        "description": "",
+        "svgupload": "C:\\fakepath\\cubes.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Q5fI2fJwNHs/qIozHdAgbQ==",
+            "length": 9537,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "leaves",
+      "key": "leaves",
+      "value": {
+        "rev": "1-43d03dc2c60c9631435b69454dd50eb0"
+      },
+      "doc": {
+        "_id": "leaves",
+        "_rev": "1-43d03dc2c60c9631435b69454dd50eb0",
+        "colours": [
+          "#000000"
+        ],
+        "type": "product",
+        "font_size": 0.08,
+        "baseline": 0,
+        "font": "Pinyon Script",
+        "price": "2.99",
+        "buy_it_now_number": "2323",
+        "description": "Leaves",
+        "svgupload": "C:\\fakepath\\leaves.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3nSFGxJ75Qm4MnirT4e5Og==",
+            "length": 16398,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "spots",
+      "key": "spots",
+      "value": {
+        "rev": "1-5e8ea7e5fa89d09e5ca10c3213551168"
+      },
+      "doc": {
+        "_id": "spots",
+        "_rev": "1-5e8ea7e5fa89d09e5ca10c3213551168",
+        "colours": [
+          "#23297a"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "",
+        "buy_it_now_number": "21345",
+        "description": "",
+        "svgupload": "C:\\fakepath\\spots.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ubndSH8+bArV6v4zSNTMlg==",
+            "length": 3990,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "stripes",
+      "key": "stripes",
+      "value": {
+        "rev": "1-bdf9db759e2dd0991dfbe6be9e5ed991"
+      },
+      "doc": {
+        "_id": "stripes",
+        "_rev": "1-bdf9db759e2dd0991dfbe6be9e5ed991",
+        "colours": [
+          "#23297a"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "0.99",
+        "buy_it_now_number": "23232",
+        "description": "Stripes",
+        "svgupload": "C:\\fakepath\\svg_template.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-su/4j82Ue1b0ZqzjdU8z5g==",
+            "length": 5499,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__abstract_butterfly",
+      "key": "svg__abstract_butterfly",
+      "value": {
+        "rev": "1-43ae5b44232a6d3c549f6ef0de99b9b1"
+      },
+      "doc": {
+        "_id": "svg__abstract_butterfly",
+        "_rev": "1-43ae5b44232a6d3c549f6ef0de99b9b1",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-smEm3RFErYGOnd1qcbiePQ==",
+            "length": 9754,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__abstract_flowers",
+      "key": "svg__abstract_flowers",
+      "value": {
+        "rev": "1-ba4efa8b0fcea52d1f3454a14e454494"
+      },
+      "doc": {
+        "_id": "svg__abstract_flowers",
+        "_rev": "1-ba4efa8b0fcea52d1f3454a14e454494",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-37o3iWNfikuVqqOZveDppg==",
+            "length": 89879,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__art_deco_arrows",
+      "key": "svg__art_deco_arrows",
+      "value": {
+        "rev": "1-6ac903675b28689286e4ba4437adf849"
+      },
+      "doc": {
+        "_id": "svg__art_deco_arrows",
+        "_rev": "1-6ac903675b28689286e4ba4437adf849",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-7bE69IfneQImXTXGvvFe+g==",
+            "length": 10041,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__art_deco_bars",
+      "key": "svg__art_deco_bars",
+      "value": {
+        "rev": "1-0dc1904d374b2a69479c43acbc3bdf47"
+      },
+      "doc": {
+        "_id": "svg__art_deco_bars",
+        "_rev": "1-0dc1904d374b2a69479c43acbc3bdf47",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-Le6T6rjh//EYK1/ezU7ElQ==",
+            "length": 31088,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__art_deco_circles",
+      "key": "svg__art_deco_circles",
+      "value": {
+        "rev": "1-f580085331fca62bd9f379ad2288e9be"
+      },
+      "doc": {
+        "_id": "svg__art_deco_circles",
+        "_rev": "1-f580085331fca62bd9f379ad2288e9be",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-prf41iUViZua0DPfetCEbQ==",
+            "length": 34799,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__art_deco_waves",
+      "key": "svg__art_deco_waves",
+      "value": {
+        "rev": "1-1b64bab8c487efb216d689010d7fb1e3"
+      },
+      "doc": {
+        "_id": "svg__art_deco_waves",
+        "_rev": "1-1b64bab8c487efb216d689010d7fb1e3",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-T1kchDKfRvKjA9Isx8DJNA==",
+            "length": 84124,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__birds_of_paradise_spirals",
+      "key": "svg__birds_of_paradise_spirals",
+      "value": {
+        "rev": "1-25cc43b432e275501d1418b59e787777"
+      },
+      "doc": {
+        "_id": "svg__birds_of_paradise_spirals",
+        "_rev": "1-25cc43b432e275501d1418b59e787777",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-hvjixUNwjmUWMHjPdtVn2g==",
+            "length": 26148,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__cubes",
+      "key": "svg__cubes",
+      "value": {
+        "rev": "1-ac83d0799fdac71dcfede0850d0f5852"
+      },
+      "doc": {
+        "_id": "svg__cubes",
+        "_rev": "1-ac83d0799fdac71dcfede0850d0f5852",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-KlX9Mx3NI+GhLFjkCRXWTQ==",
+            "length": 11889,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__leaves",
+      "key": "svg__leaves",
+      "value": {
+        "rev": "1-bc01e13b92076c3a39a11a7289494ba2"
+      },
+      "doc": {
+        "_id": "svg__leaves",
+        "_rev": "1-bc01e13b92076c3a39a11a7289494ba2",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-XIkA0+WV3xTMPYOasXFqMw==",
+            "length": 74886,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__spots",
+      "key": "svg__spots",
+      "value": {
+        "rev": "1-d028f990c54bc49818e9f24166d1e4ff"
+      },
+      "doc": {
+        "_id": "svg__spots",
+        "_rev": "1-d028f990c54bc49818e9f24166d1e4ff",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-2hIxe5gSxkXRRSeK6wqF5w==",
+            "length": 1009,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__stripes",
+      "key": "svg__stripes",
+      "value": {
+        "rev": "1-6289865d5e1cbf99e9db710548294d57"
+      },
+      "doc": {
+        "_id": "svg__stripes",
+        "_rev": "1-6289865d5e1cbf99e9db710548294d57",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-tVhUo1uVOgYgGeuMYncHmw==",
+            "length": 2941,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__xmas_baubles",
+      "key": "svg__xmas_baubles",
+      "value": {
+        "rev": "1-f1e062a1bc6abd70752d8a9bd5f5f6df"
+      },
+      "doc": {
+        "_id": "svg__xmas_baubles",
+        "_rev": "1-f1e062a1bc6abd70752d8a9bd5f5f6df",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-C/vxpTBufK+A242LJGYT2A==",
+            "length": 196458,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__xmas_characters",
+      "key": "svg__xmas_characters",
+      "value": {
+        "rev": "4-6d867b28c87e69e4cec969270b142bd5"
+      },
+      "doc": {
+        "_id": "svg__xmas_characters",
+        "_rev": "4-6d867b28c87e69e4cec969270b142bd5",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 4,
+            "digest": "md5-ki8nbZUWNt6MXIW1VS1IBg==",
+            "length": 39312,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__xmas_contemporary_baubles",
+      "key": "svg__xmas_contemporary_baubles",
+      "value": {
+        "rev": "1-992ad5c1b657678208218c5c5e83e5d0"
+      },
+      "doc": {
+        "_id": "svg__xmas_contemporary_baubles",
+        "_rev": "1-992ad5c1b657678208218c5c5e83e5d0",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-DnWMQMSSupkzvuqSw2suYg==",
+            "length": 10729,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__xmas_diamante",
+      "key": "svg__xmas_diamante",
+      "value": {
+        "rev": "2-438047579c161c5789628ccd9d22444f"
+      },
+      "doc": {
+        "_id": "svg__xmas_diamante",
+        "_rev": "2-438047579c161c5789628ccd9d22444f",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 2,
+            "digest": "md5-AepH4NrO3MzRvFNl14vjcA==",
+            "length": 15506,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__xmas_hand_drawn",
+      "key": "svg__xmas_hand_drawn",
+      "value": {
+        "rev": "1-620a879eeebb7041963fcdb69a6c1919"
+      },
+      "doc": {
+        "_id": "svg__xmas_hand_drawn",
+        "_rev": "1-620a879eeebb7041963fcdb69a6c1919",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-45IQqQNHpfQoAiie337o3g==",
+            "length": 9805,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__xmas_medley",
+      "key": "svg__xmas_medley",
+      "value": {
+        "rev": "3-702953433670de7ef712b02609d4d742"
+      },
+      "doc": {
+        "_id": "svg__xmas_medley",
+        "_rev": "3-702953433670de7ef712b02609d4d742",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 3,
+            "digest": "md5-cHVa7NMHddlhZ7DXrHoeaQ==",
+            "length": 53930,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__xmas_reindeer_pattern",
+      "key": "svg__xmas_reindeer_pattern",
+      "value": {
+        "rev": "1-80460482d0a6e1cf60afd7d086a50fb5"
+      },
+      "doc": {
+        "_id": "svg__xmas_reindeer_pattern",
+        "_rev": "1-80460482d0a6e1cf60afd7d086a50fb5",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-t1zYSI67T85FxkEB2sreEg==",
+            "length": 19545,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__xmas_santa_hats",
+      "key": "svg__xmas_santa_hats",
+      "value": {
+        "rev": "1-278d0bc021efc4167d4db7a7df85e020"
+      },
+      "doc": {
+        "_id": "svg__xmas_santa_hats",
+        "_rev": "1-278d0bc021efc4167d4db7a7df85e020",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-fIzH5dLnoxYlLelXMu9mQg==",
+            "length": 19311,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__xmas_simple_baubles",
+      "key": "svg__xmas_simple_baubles",
+      "value": {
+        "rev": "1-543754e8e2a93e3cb8da4cb204a4f864"
+      },
+      "doc": {
+        "_id": "svg__xmas_simple_baubles",
+        "_rev": "1-543754e8e2a93e3cb8da4cb204a4f864",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-cZy5xKdfabG9J8681M93Ig==",
+            "length": 128173,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__xmas_squares",
+      "key": "svg__xmas_squares",
+      "value": {
+        "rev": "7-42aa7bef87916da7b23bc1224fea5a94"
+      },
+      "doc": {
+        "_id": "svg__xmas_squares",
+        "_rev": "7-42aa7bef87916da7b23bc1224fea5a94",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 7,
+            "digest": "md5-gYQpJSewPNVUYpXL8Zqqqg==",
+            "length": 27887,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "svg__xmas_tree_scribbles",
+      "key": "svg__xmas_tree_scribbles",
+      "value": {
+        "rev": "1-e06907e4ffd16bdd589ffce2f3342889"
+      },
+      "doc": {
+        "_id": "svg__xmas_tree_scribbles",
+        "_rev": "1-e06907e4ffd16bdd589ffce2f3342889",
+        "_attachments": {
+          "svg": {
+            "content_type": "application/octet-stream",
+            "revpos": 1,
+            "digest": "md5-3GtcYjtLaAEmd27PULL0Fg==",
+            "length": 43602,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "xmas_baubles",
+      "key": "xmas_baubles",
+      "value": {
+        "rev": "1-cdbc36cde711656080b39e4d68e2ee0f"
+      },
+      "doc": {
+        "_id": "xmas_baubles",
+        "_rev": "1-cdbc36cde711656080b39e4d68e2ee0f",
+        "colours": [
+          "#FF0000"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "0.99",
+        "buy_it_now_number": "12345",
+        "description": "Ornamental baubles",
+        "svgupload": "C:\\fakepath\\svg_template.svg.gz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-12gwBodUlb6Ccy7PeKiKNg==",
+            "length": 39940,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-jtPrJrTKr83qK6/st47ItA==",
+            "length": 53602,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-nIbzWbzUHEfsfz7/TSZZxQ==",
+            "length": 83618,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-6nCVzx8DlusWrrhh4UPAoQ==",
+            "length": 122825,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-oQ6OEFBMwIzSQNzXC/ovXg==",
+            "length": 39415,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-VRFKZ9BDM0aIcaw5vD0yGg==",
+            "length": 52146,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-cY6v5zjCosKF3bSdx+iPJA==",
+            "length": 80375,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-9a/AWJzB6eoTZQ2Lh/wKOQ==",
+            "length": 116220,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-vgLqQ7SD1FxEb89DCozfaQ==",
+            "length": 36778,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-IFBa0X1MOtDmkIBHjvT24Q==",
+            "length": 47323,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-hDICUWohFyNqtCQ80XFzLA==",
+            "length": 71002,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-4NG3gVQGC/fXlSqdt2mzEQ==",
+            "length": 102008,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-VKwR/4vr1Qsa1ld/4KNmeA==",
+            "length": 42889,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-nbyrHDL4OZLBK+FLJI3k5Q==",
+            "length": 59566,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-sN/CgCGdO/f+36CIqIx0NQ==",
+            "length": 95473,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-a75CR5LeYpmMpnPf82u4oA==",
+            "length": 140836,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-YVIeGV3TEBjW5Q6ydLzJdw==",
+            "length": 10086,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-OS6D8/EULllvWN4YDO+ZYA==",
+            "length": 18199,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-xav9nycMjY4lcxYX3AFwvw==",
+            "length": 34013,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-0LkqHTOyzwzt0HEhTGIWTg==",
+            "length": 52025,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "xmas_characters",
+      "key": "xmas_characters",
+      "value": {
+        "rev": "4-de2ed2528f2816f6e11c74f522899c7d"
+      },
+      "doc": {
+        "_id": "xmas_characters",
+        "_rev": "4-de2ed2528f2816f6e11c74f522899c7d",
+        "colours": [
+          "#FF0000"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "0.93",
+        "buy_it_now_number": "23235",
+        "description": "Christmas characters",
+        "svgupload": "C:\\fakepath\\svg_template_metallic.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-5rf7lPGClsra5d6BB4ML9A==",
+            "length": 41582,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-5UkRtDBUPKsMtXdMh9gISQ==",
+            "length": 52752,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-Ov/DdRzb0piWx+4ckIHQpA==",
+            "length": 76002,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-HoEHGkdVSTo2E3QUD5D8mw==",
+            "length": 106264,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-wXASgaq7lAGsrXjSaeee7w==",
+            "length": 41542,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-EuXrWLacZ8BhcqneMhzQ4A==",
+            "length": 53197,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-e0nG6tX7beJlvPceFL4JFg==",
+            "length": 75266,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-tG4QuzvCKBjsQeoN9AMjaw==",
+            "length": 102292,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-LeXoUxXjrn41I1sG9/pyDQ==",
+            "length": 38868,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-L1eRTWuCKh1CDO66Eg7KSg==",
+            "length": 48789,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-9KZryyxwTPQNhTRZyjIiww==",
+            "length": 68938,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-y+rribcuk3ChWApCTebZzw==",
+            "length": 94328,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-iP3ckYGplRQC4JLsMv6M8Q==",
+            "length": 45396,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-xhjLjOFraqF8L6IeDEk3Xw==",
+            "length": 58502,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-KMub9OoP7dMBOjdMnnBxWw==",
+            "length": 83923,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-PoE9UnOKyOk/g2/89QcsxA==",
+            "length": 115134,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-hxD2s3lTt4YYsI1JVIgfEQ==",
+            "length": 40892,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-G8hjEkrLZBzjrHH0egmCow==",
+            "length": 29272,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-idOecMUs0Z1a2QHjxGjRog==",
+            "length": 18390,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-dABfGmRr3kv/W6Gx6PoD4Q==",
+            "length": 12026,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "xmas_contemporary_baubles",
+      "key": "xmas_contemporary_baubles",
+      "value": {
+        "rev": "2-0da753bbfcbba9829ba77262f2f3ab8c"
+      },
+      "doc": {
+        "_id": "xmas_contemporary_baubles",
+        "_rev": "2-0da753bbfcbba9829ba77262f2f3ab8c",
+        "colours": [
+          "#9acd32",
+          "#FF0000"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "0.99",
+        "buy_it_now_number": "21234",
+        "description": "Contemporary baubles",
+        "svgupload": "",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-Pbk6h/2ljw2PQgUmRb+gGg==",
+            "length": 41995,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-2Y9sDge3jE1LKcdyFOv/tA==",
+            "length": 54053,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-7Ycjbp+HBZvPYRCSjrmP+A==",
+            "length": 78904,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-QlfqLHm1N7H0m9aVriGQIg==",
+            "length": 111459,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-D5IdlOGVVBHdCxa10TSRYw==",
+            "length": 41318,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-xZizfmhVGL+hKHUevPD2Aw==",
+            "length": 52626,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-JiAfGq4EbzsEJVnVShpMMw==",
+            "length": 75432,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-KnwH5EWNFyW1j4GdYKraCA==",
+            "length": 104226,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-iIeEVkAPR+tcjn7LyGXnZg==",
+            "length": 38805,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-aWt93HCoAKMkISVswvDSKQ==",
+            "length": 48924,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-qRGwgaDZqsvdLwi3RqY+2g==",
+            "length": 69343,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-vK5TQyrfi5gYuNQxGAY7oA==",
+            "length": 95625,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-J05hALDHcKoQZ+LkflikWg==",
+            "length": 44492,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-nm2ShJBcseSbSGImaDqk9w==",
+            "length": 57460,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-7OMLRrqGAS6g7FrL6NhFGQ==",
+            "length": 84436,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-T3utsp2Pq72n1WycH0Zrdg==",
+            "length": 117506,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-NCj+7jBGDxsqhNGRvWvZRA==",
+            "length": 20263,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-KaMcYt6T1PVMTcYI60cmCw==",
+            "length": 30369,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-5N9BvAoCeBbgEpQtnpH1Yg==",
+            "length": 48817,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-m4rpSlNOYHO69HBbusLdAQ==",
+            "length": 67117,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "xmas_diamante",
+      "key": "xmas_diamante",
+      "value": {
+        "rev": "2-bd35de4180ac8d34ab236cbff6bd7f6b"
+      },
+      "doc": {
+        "_id": "xmas_diamante",
+        "_rev": "2-bd35de4180ac8d34ab236cbff6bd7f6b",
+        "colours": [
+          "#32cd32"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "0.99",
+        "buy_it_now_number": "123",
+        "description": "Christmas Diamante",
+        "svgupload": "C:\\fakepath\\svg_template.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-GPHR5YTNntOig0Nyhr64lw==",
+            "length": 15013,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-pvSZZEc8Rqmg+1hepRSltg==",
+            "length": 9598,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-GPHR5YTNntOig0Nyhr64lw==",
+            "length": 15013,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-NeGAgMNvQsLgTamsoyW2BA==",
+            "length": 24153,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-6f2g7udRuHrzS9CxWS64Bw==",
+            "length": 34480,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "xmas_hand_drawn",
+      "key": "xmas_hand_drawn",
+      "value": {
+        "rev": "1-37f5e424172048e9f2a96ee5c3e78bd1"
+      },
+      "doc": {
+        "_id": "xmas_hand_drawn",
+        "_rev": "1-37f5e424172048e9f2a96ee5c3e78bd1",
+        "colours": [
+          "#FF0000"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "0.49",
+        "buy_it_now_number": "23232",
+        "description": "Hand drawn",
+        "svgupload": "C:\\fakepath\\svg_template.svg.gz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-7srHAvmh1PA18FWInxiEpQ==",
+            "length": 36343,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-rMcatjPJHKCp2zMby3vJTA==",
+            "length": 45571,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-WjLWaPiFviBsPLWdCOljig==",
+            "length": 64046,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-2o94WcoiMmFhjDNLN/v29A==",
+            "length": 89326,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-ORuUzxuMjePyjRFjI4FF5w==",
+            "length": 36022,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-4VLbIf+nunTZAafvynurCQ==",
+            "length": 44568,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-IqxGZrMZqk9I7/y13TTp+g==",
+            "length": 62069,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-cnFvHrsdjQobjurNfPW8RA==",
+            "length": 83668,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-tNl8tpQXEawqxZf2SwKDbQ==",
+            "length": 34865,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-aMNHCRX5yjiMv7+KpDDtag==",
+            "length": 42886,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-yo3Hps8Kf5T0UxLMWkUFqA==",
+            "length": 59187,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-L1y9Ne68afSlS38V3I0LNQ==",
+            "length": 80002,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-fS+rN/vuXomM57B8LJk8SQ==",
+            "length": 36429,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-TBpqWaAqRKK9d8+dWRu21g==",
+            "length": 45375,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-DBixNolw+elH5v5oJBwEoA==",
+            "length": 63705,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-zliz+4qFh2jF+CqNp48Z4g==",
+            "length": 86594,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-MtOPDX2JkdGJtuq51EtL9g==",
+            "length": 7057,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-B8ckeXaHSktK8CmujNlCvg==",
+            "length": 11028,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-1IUhOOjMX7/FPoVxxEcPDw==",
+            "length": 18924,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Qggr87DMipCZbj9eDPRzJQ==",
+            "length": 27684,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "xmas_medley",
+      "key": "xmas_medley",
+      "value": {
+        "rev": "4-3f3c353f717f84c81128e5dc87b9c99f"
+      },
+      "doc": {
+        "_id": "xmas_medley",
+        "_rev": "4-3f3c353f717f84c81128e5dc87b9c99f",
+        "colours": [
+          "#23297a",
+          "#cd5c5c"
+        ],
+        "type": "product",
+        "font_size": 0.08,
+        "baseline": 0,
+        "font": "Cinzel",
+        "price": "0.99",
+        "buy_it_now_number": "123",
+        "description": "Medleyof Christmas designs",
+        "svgupload": "C:\\fakepath\\svg_template.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-RRZjT9S2MMtPjXdh4ue4vw==",
+            "length": 23850,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-fUR+IhYhjbwIX+0nzmpcOw==",
+            "length": 39440,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "xmas_reindeer_pattern",
+      "key": "xmas_reindeer_pattern",
+      "value": {
+        "rev": "1-37e518d6df7d850f2469051f07e85e57"
+      },
+      "doc": {
+        "_id": "xmas_reindeer_pattern",
+        "_rev": "1-37e518d6df7d850f2469051f07e85e57",
+        "colours": [
+          "#32cd32"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "0.99",
+        "buy_it_now_number": "12345",
+        "description": "Christmas reindeer pattern",
+        "svgupload": "C:\\fakepath\\svg_template.svg.gz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-d6svvCEyeX/A0LpDDx6eXw==",
+            "length": 50085,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-ushg7JqmexBedZiQsR6OpA==",
+            "length": 67494,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-3o6UfqReKBt5fn8od7j8xQ==",
+            "length": 103844,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-k3kEuum3A/4nCsFDCVkN/g==",
+            "length": 150437,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-7D3k97fDGjueiYaT7jMgQA==",
+            "length": 48845,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-R9GEJQ9ROdOZt4yd1fXZZg==",
+            "length": 65618,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-iErtEL0qgzH58eSH5mFp5g==",
+            "length": 100249,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-MOlxM8gdhbdTmbXjOSf8zA==",
+            "length": 142818,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-I3jneysi8WS2hk3hbHIBvw==",
+            "length": 57705,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-W33LK8nsQVPJ+guFGsolSg==",
+            "length": 86572,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-2GfZuSUC40Ifmt3Sd4CktA==",
+            "length": 122566,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-2GfZuSUC40Ifmt3Sd4CktA==",
+            "length": 122566,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-pUJ8Ad/J7uq5DYoI07aNRg==",
+            "length": 54695,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-iK46mM4OWPxR6gmpaw+iqQ==",
+            "length": 75154,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-bEBPGQTr0e7GzNmZRbHyJA==",
+            "length": 116423,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-w0jaTM0m2Pu9pZ4LbohoPw==",
+            "length": 166102,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-M4TB3w9N4sK7VwsdLrbtzg==",
+            "length": 13176,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-sAJpQNmB1rMjFS2v8m+m+g==",
+            "length": 21008,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-Ee11pSwLe5YNNb0plZPN4Q==",
+            "length": 33727,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-ZSEMdFdrykLDYtbFphhcJw==",
+            "length": 43970,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "xmas_santa_hats",
+      "key": "xmas_santa_hats",
+      "value": {
+        "rev": "1-631e0ea569a4e5c9365f0b0cfe15bbf4"
+      },
+      "doc": {
+        "_id": "xmas_santa_hats",
+        "_rev": "1-631e0ea569a4e5c9365f0b0cfe15bbf4",
+        "colours": [
+          "#FF0000"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "0.99",
+        "buy_it_now_number": "1234",
+        "description": "Santa hats",
+        "svgupload": "C:\\fakepath\\svg_template.svg.gz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-5+rjb1g+iiKfTluR7cL+xA==",
+            "length": 39373,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-dAjEqEmogHSLyiQZKKEk3Q==",
+            "length": 49529,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-zZqWx7jV3TXmzUGlxSJNLA==",
+            "length": 70463,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-vsZDzLkmE2iEvR5YeWgbyQ==",
+            "length": 97370,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-Z7EH7SnrVd46kO+uyQw6xg==",
+            "length": 39439,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-AqNgl1j/1HSnwJNk26zlmQ==",
+            "length": 49179,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-YUHWhnDiKPPuYztLIfb4zw==",
+            "length": 69028,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-UOmEaHoDFRZN44VFBiu0tQ==",
+            "length": 93589,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-uOiiOfAyHAm9Hu66rjs6ew==",
+            "length": 37807,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-J9Rqpj+WGS/BEIYPa46VYQ==",
+            "length": 47356,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-BkeZPs34yWoEBaxChDQoow==",
+            "length": 65479,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-4KRwqLlDWeqE8vHHSM9KtA==",
+            "length": 88870,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-0Cs6WLjmpAq349Xl34E7NA==",
+            "length": 39138,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-b13UoqcGnxDAaRndGiWC2Q==",
+            "length": 49240,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-tfO2CsqxZmHsGqdScuTZgw==",
+            "length": 69750,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-ly3HUHm0Svbfot6sVNnexw==",
+            "length": 95053,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-VJYtUWdTDNVKzK4N+MgqVA==",
+            "length": 5478,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-aMd4yYlAmpcNhDwbReznLw==",
+            "length": 7915,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-plPhAwktG0BScSksTtyxMA==",
+            "length": 12969,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-LztLJ0KnzfpVv5but7s9tg==",
+            "length": 18731,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "xmas_simple_baubles",
+      "key": "xmas_simple_baubles",
+      "value": {
+        "rev": "1-adf380af980cd5154a2d4aded0e25e4f"
+      },
+      "doc": {
+        "_id": "xmas_simple_baubles",
+        "_rev": "1-adf380af980cd5154a2d4aded0e25e4f",
+        "colours": [
+          "#f9429e"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "0.49",
+        "buy_it_now_number": "32312354",
+        "description": "Simple Christmas Baubles",
+        "svgupload": "C:\\fakepath\\svg_template.svg.gz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-i8vxeB2XlOD4KbpZBHPwPA==",
+            "length": 37069,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-3D/9YrATQWp6OXpj3oBGDg==",
+            "length": 47341,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-YiXhhUx9aMlE/jQAT7oKZw==",
+            "length": 69457,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-E9jF1M1HSEU1Ci3y6Ni95g==",
+            "length": 99823,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-fca8GPdvrAreWlqIBFnoVQ==",
+            "length": 36494,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-L4gMVKioNUgoNd4wAdRKfw==",
+            "length": 46568,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-RgovGqhlgKUglLVEbv+ncA==",
+            "length": 66834,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-LOMg64dqXbp+4ENIsEhMZQ==",
+            "length": 94326,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-6zXfAEAVc9MBDEc0fGfyxw==",
+            "length": 35272,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-KNPW/zdk5YLI1aW8NtDe4A==",
+            "length": 44302,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-08ZKl3azFVC+K7KO4m3mMA==",
+            "length": 62583,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-ctIMLpeFXyy/oZLwpSwJNg==",
+            "length": 86776,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-HoX0owY/ON57EZIcvpif8g==",
+            "length": 38158,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-9RqTXFtsaRYdNWs+DQEyVQ==",
+            "length": 48968,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-MR/rdVGQoKaFqNsQiiS5Vg==",
+            "length": 73606,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-nyhBX8qBiakeRpuMIkHNJA==",
+            "length": 108670,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-TJbLffV4Mo2q8EmFw3rDkg==",
+            "length": 26224,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-NN2GkOjjApDhgnAlaZdumQ==",
+            "length": 25284,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-3A4L5DDlZS3NNdANxa0zaQ==",
+            "length": 49389,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-TQHls48BMY4e89frEf94ow==",
+            "length": 79556,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "xmas_squares",
+      "key": "xmas_squares",
+      "value": {
+        "rev": "14-f4434a6764dc481dfbde9250ec053f73"
+      },
+      "doc": {
+        "_id": "xmas_squares",
+        "_rev": "14-f4434a6764dc481dfbde9250ec053f73",
+        "colours": [
+          "#000000"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "0.99",
+        "buy_it_now_number": "34",
+        "description": "3434",
+        "svgupload": "C:\\fakepath\\svg_template_mono.svgz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-weMmp1NuYIfs+2QapRRujg==",
+            "length": 9118,
+            "stub": true
+          }
+        }
+      }
+    },
+    {
+      "id": "xmas_tree_scribbles",
+      "key": "xmas_tree_scribbles",
+      "value": {
+        "rev": "1-58521362e89fe2abca28e605a0aff4b5"
+      },
+      "doc": {
+        "_id": "xmas_tree_scribbles",
+        "_rev": "1-58521362e89fe2abca28e605a0aff4b5",
+        "colours": [
+          "#32cd32"
+        ],
+        "type": "product",
+        "font_size": "0.08",
+        "baseline": 0,
+        "font": "Metroscript",
+        "price": "0.50",
+        "buy_it_now_number": "122335",
+        "description": "Christmas Tree Scribbles",
+        "svgupload": "C:\\fakepath\\svg_template.svg.gz",
+        "monochromatic": null,
+        "tags": [],
+        "attachments_order": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "_attachments": {
+          "tiny-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-QO37IQjXFnMs94x9pRXCXQ==",
+            "length": 34929,
+            "stub": true
+          },
+          "thumb-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-igNd+aJRVccd2T0GWFCDCw==",
+            "length": 43869,
+            "stub": true
+          },
+          "display-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-rBQ/M+QcxpvJPXB051Immg==",
+            "length": 64994,
+            "stub": true
+          },
+          "medium-1": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-3NywUGQA3PdRyfekfzDOBw==",
+            "length": 93528,
+            "stub": true
+          },
+          "tiny-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-Ym9aB+5XcmMJlGn4g6FnzA==",
+            "length": 34901,
+            "stub": true
+          },
+          "thumb-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-mZpxdI5O4CsxJ+EI0BJJ1g==",
+            "length": 43807,
+            "stub": true
+          },
+          "display-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-e/+Ljqts47/x6Cdswa4tXw==",
+            "length": 63486,
+            "stub": true
+          },
+          "medium-2": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-Z2h/EDWhBHyyml0cJrkGjA==",
+            "length": 88621,
+            "stub": true
+          },
+          "tiny-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-ImmK3btQ4/yyx1iSAjdvlA==",
+            "length": 33759,
+            "stub": true
+          },
+          "thumb-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-0RNbtqR33W/5cvK7k9xQ4Q==",
+            "length": 41739,
+            "stub": true
+          },
+          "display-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-VrB+GSLQzNWeYl5D0H51nw==",
+            "length": 58819,
+            "stub": true
+          },
+          "medium-3": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-it2ywy6im0zf4lLLRKyM/A==",
+            "length": 82140,
+            "stub": true
+          },
+          "tiny-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-zy4Gy70FcVvAo73wKD3B4w==",
+            "length": 36075,
+            "stub": true
+          },
+          "thumb-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-K4A0GdyuDQo9XcBMQ1g4Xw==",
+            "length": 47076,
+            "stub": true
+          },
+          "display-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-34v6klFQX+dWRMED/wGJlA==",
+            "length": 70047,
+            "stub": true
+          },
+          "medium-4": {
+            "content_type": "image/jpeg",
+            "revpos": 1,
+            "digest": "md5-oVM8vH+638wHba+Ql/BpnQ==",
+            "length": 99434,
+            "stub": true
+          },
+          "tiny-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-KONr5cTm9nRhEMnoJtzfxA==",
+            "length": 16659,
+            "stub": true
+          },
+          "thumb-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-1pcNtM10d9anhjNPTvfvoQ==",
+            "length": 16967,
+            "stub": true
+          },
+          "display-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-xpx6UAbVzLydrriuwI/sFg==",
+            "length": 29832,
+            "stub": true
+          },
+          "medium-5": {
+            "content_type": "image/png",
+            "revpos": 1,
+            "digest": "md5-065+frhFF9HOxPsglVqq7w==",
+            "length": 44266,
+            "stub": true
+          }
+        }
+      }
+    }
+  ]
+}
